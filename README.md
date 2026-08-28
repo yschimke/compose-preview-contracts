@@ -1,0 +1,74 @@
+# compose-preview-contracts
+
+The wire contracts a Compose Preview client speaks — the daemon's JSON-RPC shapes, the
+device catalog, the Build Tools API result shapes and the agent-grant vocabulary — published
+to Maven Central under `ee.schimke.composeai`, without the daemon implementation behind them.
+
+Extracted from [yschimke/compose-ai-tools](https://github.com/yschimke/compose-ai-tools)
+(see [#4732](https://github.com/yschimke/compose-ai-tools/issues/4732)) with history.
+
+## What is published
+
+| coordinate | what it is |
+| --- | --- |
+| `daemon-protocol` | the `@Serializable` request / response / notification shapes, the stream frame header and the reason enums |
+| `daemon-devices` | the device catalog and the `spec:` parser |
+| `daemon-bta` | Build Tools API shapes — `CompileErrorDetail`, `SourceChangeSet` |
+| `agent-grant-protocol` | the `--agent-grants` vocabulary; the server mints, the client asks |
+
+Plus the closure those four re-export as `api`, which has to ship with them or their POMs
+would not resolve: `data-render-core`, `data-layoutinspector-core`, `data-theme-core`,
+`data-preview-overrides-core` (payload schemas that appear as protocol fields) and
+`common-io`.
+
+Every module is `explicitApi()` with Kotlin ABI validation wired into `check`, because these
+are contracts two repositories compile across.
+
+## What is deliberately NOT here
+
+**`render-session-api`.** It is on #4732's contract list and it was in the original scope for
+this repo. It is not here because its `api` dependency is `:daemon:core` — the daemon
+*implementation*, 122 source files with 48 dependents in the upstream build. Its own
+`build.gradle.kts` says why: consumers see `RenderSession`'s parameters as
+`ee.schimke.composeai.daemon.protocol.*` and it re-exposes them rather than duplicating DTOs.
+
+Publishing it from here would therefore publish the daemon from here, which is the opposite of
+what a contracts repo is for. Extracting it needs its ABI narrowed to `daemon-protocol` first,
+and that is a change to the upstream module, not a packaging decision.
+
+**Anything that reads a file, opens a socket, or computes a result.** The split is shape
+versus behaviour. `HistoryDataDelta` (a shape) is here; `HistoryDataDiff` (which reads two
+archived entries off disk to produce one) stays upstream.
+
+## Cross-repo checks
+
+Two things in this repo can only be verified against an upstream checkout, and both are wired
+to do so rather than quietly dropped:
+
+- **`docs/daemon/protocol-fixtures/`** — the cross-language wire goldens. The Kotlin suite here
+  and the TypeScript suite in
+  [compose-preview-vscode](https://github.com/yschimke/compose-preview-vscode) parse the same
+  files; that shared parse is the drift check. This repo is now their canonical home.
+- **`DeviceDimensionsCatalogDriftTest`** — `DeviceDimensions` is duplicated in
+  `gradle-plugin/preview-discovery` upstream, and the catalog and `spec:` grammar have drifted
+  before. The test looks for a checkout via `COMPOSE_AI_TOOLS_ROOT`, then a sibling
+  `../compose-ai-tools`, and **skips** rather than fails when it finds neither — "you have not
+  checked out the other repo" is not a drift signal. CI sets it, so the check still gates.
+
+## Versioning
+
+Seeded at `1.46.2`, the upstream release these modules were extracted from, so published
+coordinates line up with the release that already carries them.
+
+**That is lockstep by default, not a decision.** #4732 lists "decide the versioning story" as
+open: two repos need either independent versions with a compatibility range on the contracts,
+or lockstep releases. Nothing here forecloses either — moving to independent versions is a
+change to `release-please-config.json` plus a range in the consumer.
+
+## Build
+
+```sh
+./gradlew check              # compile, test, ktfmt, checkKotlinAbi
+./gradlew publishToMavenLocal
+COMPOSE_AI_TOOLS_ROOT=../compose-ai-tools ./gradlew check   # includes the cross-repo drift check
+```

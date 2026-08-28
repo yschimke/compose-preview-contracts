@@ -1,0 +1,72 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          path: compose-preview-contracts
+
+      # `DeviceDimensionsCatalogDriftTest` compares `DeviceDimensions` against the copy in the
+      # upstream Gradle plugin. That copy is in another repository now, and the test SKIPS when it
+      # cannot find a checkout — which would make the check silently vacuous on CI, the one place
+      # it has to be real. So CI checks upstream out and points the test at it.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: yschimke/compose-ai-tools
+          persist-credentials: false
+          path: compose-ai-tools
+          # Only the plugin's DeviceDimensions.kt is read; no need for the full history.
+          fetch-depth: 1
+
+      - uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4.7.1
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@06832c7b30a0129d7fb559bcc6e43d26f6374244 # v4.4.1
+
+      - name: Check
+        working-directory: compose-preview-contracts
+        env:
+          COMPOSE_AI_TOOLS_ROOT: ${{ github.workspace }}/compose-ai-tools
+        run: ./gradlew --no-daemon check
+
+      - name: Assert the cross-repo drift check actually ran
+        working-directory: compose-preview-contracts
+        # A skipped drift test reports the same green as a passing one. Fail loudly if the
+        # upstream checkout did not take, rather than shipping a check that verifies nothing.
+        run: |
+          set -euo pipefail
+          report=$(find daemon/devices/build/test-results/test -name '*CatalogDrift*.xml' | head -1)
+          if [ -z "$report" ]; then
+            echo "::error::no DeviceDimensionsCatalogDriftTest results found"; exit 1
+          fi
+          if grep -q "<skipped" "$report"; then
+            echo "::error::the cross-repo drift check SKIPPED on CI — COMPOSE_AI_TOOLS_ROOT did not resolve"
+            grep -o 'message="[^"]*"' "$report" | head -3
+            exit 1
+          fi
+          echo "cross-repo drift check ran for real"
+
+      - name: Publish to mavenLocal
+        working-directory: compose-preview-contracts
+        # Cheap proof that every module still produces a resolvable POM — the failure mode a
+        # contracts repo cannot afford is publishing coordinates a consumer cannot resolve.
+        run: ./gradlew --no-daemon publishToMavenLocal

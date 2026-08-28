@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "packages": {
+    ".": {
+      "release-type": "simple",
+      "package-name": "compose-preview-contracts",
+      "include-component-in-tag": false,
+      "draft": true,
+      "extra-files": ["README.md"]
+    }
+  },
+  "$comment": [
+    "Seeded at 1.46.2 — the yschimke/compose-ai-tools version these modules were extracted from —",
+    "so published coordinates line up with the release that already carries them and the first",
+    "cutover is a no-op rather than a version jump.",
+    "",
+    "This is LOCKSTEP BY DEFAULT, not a decision. compose-ai-tools#4732 lists 'decide the",
+    "versioning story' as open: two repos need either independent versions with a compatibility",
+    "range on the contracts, or lockstep releases. Nothing here forecloses either — moving to",
+    "independent versions is a change to this file plus a range in the consumer, not a rewrite."
+  ]
+}
