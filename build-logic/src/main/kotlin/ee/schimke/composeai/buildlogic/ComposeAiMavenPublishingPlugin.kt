@@ -6,7 +6,6 @@ import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import com.vanniktech.maven.publish.SourcesJar
 import java.io.File
 import javax.inject.Inject
-import org.gradle.api.GradleException
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.model.ObjectFactory
@@ -56,8 +55,6 @@ class ComposeAiMavenPublishingPlugin : Plugin<Project> {
         extension.displayName.orNull ?: error("composeAiMavenPublishing.displayName is required")
       val artifactDescription =
         extension.description.orNull ?: error("composeAiMavenPublishing.description is required")
-
-      project.guardAgainstPublishingUpstreamCoordinates()
 
       project.extensions.configure<MavenPublishBaseExtension> {
         publishToMavenCentral(automaticRelease = true)
@@ -136,61 +133,4 @@ private fun Project.nextPatchSnapshotVersion(): String {
   val current = Regex(""""\.":\s*"([^"]+)"""").find(manifest.readText())!!.groupValues[1]
   val (major, minor, patch) = current.split(".").map { it.toInt() }
   return "$major.$minor.${patch + 1}-SNAPSHOT"
-}
-
-/**
- * Refuse to publish to Maven Central while yschimke/compose-ai-tools still owns these coordinates.
- *
- * This repository and that one both publish `ee.schimke.composeai:daemon-protocol` and its
- * siblings, because this one was seeded as a COPY of those modules rather than as their new home
- * (compose-ai-tools#4732 took the narrow cut; the cutover, where that repository stops building
- * them and consumes these instead, has not happened). Two repositories cannot own one coordinate:
- * whichever publishes second either collides with an existing version or silently replaces what
- * the other shipped.
- *
- * The seeded version makes it sharper. `.release-please-manifest.json` starts at the upstream
- * release these modules were extracted from, so a release from here would target versions that
- * already exist on Central, published from there — and `publishToMavenCentral(automaticRelease =
- * true)` promotes without a human looking.
- *
- * `publishToMavenLocal` is untouched: it is how CI proves the POMs resolve, and it cannot reach
- * anyone else.
- *
- * At cutover, delete this guard rather than setting the flag — see docs/VERSIONING.md.
- */
-private fun Project.guardAgainstPublishingUpstreamCoordinates() {
-  val cutoverDone =
-    providers.gradleProperty("composeai.contracts.cutover").orNull?.toBoolean() ?: false
-  if (cutoverDone) return
-
-  // Match by task name rather than by type: the publishing plugin registers a family of
-  // `publish…ToMavenCentral…` tasks and a repository-scoped `publishAllPublicationsTo…`, and a
-  // guard that knew only one of their names would leave the others open.
-  tasks.configureEach {
-    val central = name.contains("MavenCentral") || name.contains("SonatypeRepository")
-    if (central && !name.contains("MavenLocal")) {
-      doFirst {
-        throw GradleException(
-          buildString {
-            appendLine("Refusing to run `$name`: yschimke/compose-ai-tools still publishes these coordinates.")
-            appendLine()
-            appendLine(
-              "This repository holds a copy of those modules, not their new home — the cutover " +
-                "in compose-ai-tools#4732 has not happened. Publishing from here would collide " +
-                "with versions already on Maven Central, and automaticRelease promotes them " +
-                "without review."
-            )
-            appendLine()
-            appendLine("`publishToMavenLocal` still works and is what CI uses.")
-            appendLine()
-            append(
-              "When the cutover lands, DELETE this guard (and the versioning decision it " +
-                "enforces) rather than passing -Pcomposeai.contracts.cutover=true; the flag " +
-                "exists so an intentional dry run is possible, not as a permanent setting."
-            )
-          }
-        )
-      }
-    }
-  }
 }
