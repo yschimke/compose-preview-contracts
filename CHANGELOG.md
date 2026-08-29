@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.1.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.0.0...v2.1.0) (2026-08-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* declare the wire shapes in the protocol, not around it ([#23](https://github.com/yschimke/compose-preview-contracts/issues/23))
+
+### Features
+
+* declare the wire shapes in the protocol, not around it ([#23](https://github.com/yschimke/compose-preview-contracts/issues/23)) ([78efe27](https://github.com/yschimke/compose-preview-contracts/commit/78efe27e768248c1046e140bc59768ba09048e97))
+
 ## [2.0.0](https://github.com/yschimke/compose-preview-contracts/compare/v1.46.2...v2.0.0) (2026-08-29)
 
 
