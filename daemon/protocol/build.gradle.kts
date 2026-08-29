@@ -25,15 +25,12 @@ plugins {
 }
 
 dependencies {
-  // Each of these carries a type that appears in a protocol field, so each is `api` rather than
-  // `implementation` — exactly the reasoning `:daemon:core` already applied when it held these
-  // shapes. `SemanticsDelta` and `ThemeDelta` are `HistoryDataDelta` fields;
-  // `PreviewOverrideValue` is a `PreviewOverrides.namedOverrides` value; the render pipeline's
-  // descriptors and sampling policy appear on the render and extension messages.
-  api(project(":data-render-core"))
-  api(project(":data-layoutinspector-core"))
-  api(project(":data-theme-core"))
-  api(project(":data-preview-overrides-core"))
+  // NOTHING from data-*-core. The wire shapes this protocol carries — SemanticsDelta, ThemeDelta,
+  // PreviewOverrideValue, the pipeline and extension descriptors — are declared HERE, in this
+  // module. They used to live in data-layoutinspector-core, data-theme-core,
+  // data-preview-overrides-core and data-render-core, and this module `api`-exported all four: a
+  // client deserialising one message resolved 4,212 lines of published ABI to reach 21 types.
+  // Keep it that way; a wire field's type belongs to the wire.
 
   // The shapes are `@Serializable` and consumers construct their own `Json {}` to encode them.
   api(libs.kotlinx.serialization.json)

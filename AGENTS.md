@@ -10,16 +10,30 @@ first — it says what is here, what is deliberately not, and why.
 into `check` for every module. An implicitly-public declaration is an API decision nobody made,
 and an unrecorded ABI change is a break for a consumer in another repository that will not find
 out until it bumps. If `checkKotlinAbi` fails, either the change was not intended to be public
-or the dump needs updating *deliberately* — `./gradlew updateLegacyAbi`.
+or the dump needs updating *deliberately* — `./gradlew updateKotlinAbi`.
 
 **Shape, never behaviour.** If a type reads a file, opens a socket or computes a result, it
 does not belong here; it belongs in `:daemon:core` upstream. This is the whole basis of the
 split, and the reason `render-session-api` is not here (README).
 
 **Do not add a dependency without asking what it does to the consumers' floor.** Every
-`ee.schimke.composeai` module on a POM here is a module a client must resolve. The four
-`data-*-core` modules and `common-io` are here only because the wire contracts re-export them
-as `api`; that is the bar.
+`ee.schimke.composeai` module on a POM here is a module a client must resolve.
+
+**`:daemon-protocol` depends on no other module here, and must not start.** Until 2.1.0 it
+`api`-exported the four `data-*-core` modules, so a client deserialising one message resolved
+**9,111 lines of published ABI across five coordinates** to reach 21 types. Those types now live
+in `:daemon-protocol` itself — a wire field's type belongs to the wire — and a consumer resolves
+one coordinate and 5,695 lines. The arrow runs the other way now: the four `data-*-core` modules
+take `:daemon-protocol` as `api`.
+
+The five non-contract modules are still published, and that is deliberate. `compose-preview serve`
+depends on all five, and `docs/design/PREVIEW_SERVER_SPLIT.md` upstream requires them to resolve
+**by coordinate, from a repository** — its `preview-server/` build is deliberately not
+`includeBuild`-ed so a missing coordinate is missed rather than silently satisfied from the
+workspace. Un-publishing them would leave that probe green (it publishes to Maven Local at a probe
+version) while the real coordinate stopped advancing: the exact failure that build exists to
+prevent. So the bar for those five is not "is it a wire contract" but "does an extracted preview
+server need it".
 
 **This repository publishes to Maven Central, and nothing else does.** `compose-ai-tools`
 consumes `ee.schimke.composeai:*` from here; it no longer builds these modules. A change to a

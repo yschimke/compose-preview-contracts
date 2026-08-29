@@ -1,7 +1,5 @@
 package ee.schimke.composeai.daemon.protocol
 
-import ee.schimke.composeai.data.layoutinspector.SemanticsDelta
-import ee.schimke.composeai.data.theme.ThemeDelta
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable

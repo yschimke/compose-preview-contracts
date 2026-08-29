@@ -1,5 +1,7 @@
 package ee.schimke.composeai.data.theme
 
+import ee.schimke.composeai.daemon.protocol.ThemeDiffProduct
+import ee.schimke.composeai.daemon.protocol.TypographyToken
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test

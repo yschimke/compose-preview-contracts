@@ -1,5 +1,7 @@
 package ee.schimke.composeai.data.render.extensions
 
+import ee.schimke.composeai.daemon.protocol.DataExtensionId
+
 /**
  * Pure-data context passed to [PostCaptureProcessor.process] after a render's bitmap has been
  * captured. No Compose runtime, no platform-specific types — extensions read declared inputs and

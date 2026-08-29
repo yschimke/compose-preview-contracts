@@ -48,16 +48,23 @@ include(":agent-grant-protocol")
 
 project(":agent-grant-protocol").projectDir = file("api/agent-grant-protocol")
 
-// ---- the closure ---------------------------------------------------------------------------
+// ---- published, but not wire contracts ------------------------------------------------------
 //
-// These are not "wire contracts" by intent, but `:daemon-protocol` re-exports the first four as
-// `api` — their types appear in protocol fields — and `:daemon-bta` / `:data-render-core` need
-// `:common-io`. A contract repo that published `daemon-protocol` without them would publish a POM
-// that cannot resolve, so the boundary follows the ABI rather than the label.
+// `:daemon-protocol` depends on NONE of these. Until 2.1.0 it `api`-exported the four `data-*-core`
+// modules, so a client deserialising one message resolved 9,111 lines of ABI across five
+// coordinates to reach 21 types; those types now live in `:daemon-protocol` itself.
+//
+// They stay HERE, and stay published, because `compose-preview serve` depends on all five and
+// `docs/design/PREVIEW_SERVER_SPLIT.md` in compose-ai-tools requires them to resolve **by
+// coordinate, from a repository** — its `preview-server/` build is deliberately not
+// `includeBuild`-ed so that a missing coordinate is missed. Un-publishing them would keep that
+// probe green (it publishes to Maven Local) while the real coordinate stopped advancing.
+//
+// So the bar for this section is not "is it a wire contract" — it is "does an extracted preview
+// server need it". Nothing may move from here into `:daemon-protocol`'s dependencies.
 
-// Payload schemas that appear as protocol fields: `SemanticsDelta` and `ThemeDelta` are
-// `HistoryDataDelta` fields, `PreviewOverrideValue` is a `PreviewOverrides.namedOverrides` value,
-// and the render descriptors ride on the render and extension messages.
+// The differs, planners and stores that PRODUCE the wire shapes. The shapes themselves moved to
+// `:daemon-protocol`; these four take it as `api` now, which is the arrow the other way round.
 include(":data-render-core")
 
 project(":data-render-core").projectDir = file("data/render/core")
@@ -74,7 +81,8 @@ include(":data-preview-overrides-core")
 
 project(":data-preview-overrides-core").projectDir = file("data/preview-overrides/core")
 
-// Okio path/IO helpers. `:daemon-bta` and `:data-render-core` both take it as `implementation`.
+// Okio path/IO helpers. `:data-render-core` takes it as `implementation`; `:daemon-bta` no longer
+// does (it used one alias for `FileSystem.SYSTEM` and now names okio directly).
 include(":common-io")
 
 project(":common-io").projectDir = file("common/io")

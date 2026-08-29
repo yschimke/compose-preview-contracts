@@ -393,16 +393,16 @@ public final class ee/schimke/composeai/data/render/RenderPreviewExtension {
 	public static final field KIND_DEVICE_CLIP Ljava/lang/String;
 	public static final field KIND_TEST_FAILURE Ljava/lang/String;
 	public static final field KIND_TRACE Ljava/lang/String;
-	public final fun getComposeTraceDescriptor ()Lee/schimke/composeai/data/render/pipeline/PreviewExtensionDescriptor;
-	public final fun getComposeTraceProfiler ()Lee/schimke/composeai/data/render/pipeline/PreviewPipelineStep;
-	public final fun getDeviceBackgroundDescriptor ()Lee/schimke/composeai/data/render/pipeline/PreviewExtensionDescriptor;
-	public final fun getDeviceBackgroundProcessor ()Lee/schimke/composeai/data/render/pipeline/PreviewPipelineStep;
-	public final fun getDeviceClipDescriptor ()Lee/schimke/composeai/data/render/pipeline/PreviewExtensionDescriptor;
-	public final fun getDeviceClipProcessor ()Lee/schimke/composeai/data/render/pipeline/PreviewPipelineStep;
-	public final fun getOverlayLegendDescriptor ()Lee/schimke/composeai/data/render/pipeline/PreviewExtensionDescriptor;
-	public final fun getOverlayLegendProcessor ()Lee/schimke/composeai/data/render/pipeline/PreviewPipelineStep;
-	public final fun getRenderTraceDescriptor ()Lee/schimke/composeai/data/render/pipeline/PreviewExtensionDescriptor;
-	public final fun getRenderTraceProfiler ()Lee/schimke/composeai/data/render/pipeline/PreviewPipelineStep;
+	public final fun getComposeTraceDescriptor ()Lee/schimke/composeai/daemon/protocol/PreviewExtensionDescriptor;
+	public final fun getComposeTraceProfiler ()Lee/schimke/composeai/daemon/protocol/PreviewPipelineStep;
+	public final fun getDeviceBackgroundDescriptor ()Lee/schimke/composeai/daemon/protocol/PreviewExtensionDescriptor;
+	public final fun getDeviceBackgroundProcessor ()Lee/schimke/composeai/daemon/protocol/PreviewPipelineStep;
+	public final fun getDeviceClipDescriptor ()Lee/schimke/composeai/daemon/protocol/PreviewExtensionDescriptor;
+	public final fun getDeviceClipProcessor ()Lee/schimke/composeai/daemon/protocol/PreviewPipelineStep;
+	public final fun getOverlayLegendDescriptor ()Lee/schimke/composeai/daemon/protocol/PreviewExtensionDescriptor;
+	public final fun getOverlayLegendProcessor ()Lee/schimke/composeai/daemon/protocol/PreviewPipelineStep;
+	public final fun getRenderTraceDescriptor ()Lee/schimke/composeai/daemon/protocol/PreviewExtensionDescriptor;
+	public final fun getRenderTraceProfiler ()Lee/schimke/composeai/daemon/protocol/PreviewPipelineStep;
 }
 
 public final class ee/schimke/composeai/data/render/RenderTrace {
@@ -670,7 +670,7 @@ public final class ee/schimke/composeai/data/render/extensions/CommonDataProduct
 
 public abstract interface class ee/schimke/composeai/data/render/extensions/DataExtension {
 	public abstract fun getDefaultConstraints ()Lee/schimke/composeai/data/render/extensions/DataExtensionConstraints;
-	public abstract fun getId-FO0b9DY ()Ljava/lang/String;
+	public abstract fun getId-6nMuUE8 ()Ljava/lang/String;
 	public abstract fun plan (Ljava/lang/Object;)Lee/schimke/composeai/data/render/extensions/PlannedDataExtension;
 }
 
@@ -752,40 +752,6 @@ public final class ee/schimke/composeai/data/render/extensions/DataExtensionCons
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class ee/schimke/composeai/data/render/extensions/DataExtensionDescriptor {
-	public static final field Companion Lee/schimke/composeai/data/render/extensions/DataExtensionDescriptor$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-FO0b9DY ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/util/List;
-	public final fun component4 ()Z
-	public final fun copy-TwftIDk (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Z)Lee/schimke/composeai/data/render/extensions/DataExtensionDescriptor;
-	public static synthetic fun copy-TwftIDk$default (Lee/schimke/composeai/data/render/extensions/DataExtensionDescriptor;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZILjava/lang/Object;)Lee/schimke/composeai/data/render/extensions/DataExtensionDescriptor;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getDisplayName ()Ljava/lang/String;
-	public final fun getId-FO0b9DY ()Ljava/lang/String;
-	public final fun getRecordingScriptEvents ()Ljava/util/List;
-	public final fun getRequiresInteractive ()Z
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class ee/schimke/composeai/data/render/extensions/DataExtensionDescriptor$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lee/schimke/composeai/data/render/extensions/DataExtensionDescriptor$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/data/render/extensions/DataExtensionDescriptor;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/data/render/extensions/DataExtensionDescriptor;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/render/extensions/DataExtensionDescriptor$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
 public final class ee/schimke/composeai/data/render/extensions/DataExtensionHookKind : java/lang/Enum {
 	public static final field AfterCapture Lee/schimke/composeai/data/render/extensions/DataExtensionHookKind;
 	public static final field AfterRender Lee/schimke/composeai/data/render/extensions/DataExtensionHookKind;
@@ -804,39 +770,6 @@ public final class ee/schimke/composeai/data/render/extensions/DataExtensionHook
 }
 
 public final class ee/schimke/composeai/data/render/extensions/DataExtensionHookKind$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/render/extensions/DataExtensionId : java/lang/Comparable {
-	public static final field Companion Lee/schimke/composeai/data/render/extensions/DataExtensionId$Companion;
-	public static final synthetic fun box-impl (Ljava/lang/String;)Lee/schimke/composeai/data/render/extensions/DataExtensionId;
-	public synthetic fun compareTo (Ljava/lang/Object;)I
-	public fun compareTo-JW1uwok (Ljava/lang/String;)I
-	public static fun compareTo-JW1uwok (Ljava/lang/String;Ljava/lang/String;)I
-	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
-	public fun equals (Ljava/lang/Object;)Z
-	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
-	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
-	public final fun getValue ()Ljava/lang/String;
-	public fun hashCode ()I
-	public static fun hashCode-impl (Ljava/lang/String;)I
-	public fun toString ()Ljava/lang/String;
-	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
-	public final synthetic fun unbox-impl ()Ljava/lang/String;
-}
-
-public final synthetic class ee/schimke/composeai/data/render/extensions/DataExtensionId$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lee/schimke/composeai/data/render/extensions/DataExtensionId$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun deserialize-eDgpnLQ (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public final fun serialize-3ZQhOA4 (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/render/extensions/DataExtensionId$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -1006,17 +939,17 @@ public final class ee/schimke/composeai/data/render/extensions/ExtensionContextV
 public final class ee/schimke/composeai/data/render/extensions/ExtensionPostCaptureContext {
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/data/render/extensions/DataProductStore;Lee/schimke/composeai/data/render/extensions/ExtensionContextData;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/data/render/extensions/DataProductStore;Lee/schimke/composeai/data/render/extensions/ExtensionContextData;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-FO0b9DY ()Ljava/lang/String;
+	public final fun component1-6nMuUE8 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Lee/schimke/composeai/data/render/extensions/DataProductStore;
 	public final fun component5 ()Lee/schimke/composeai/data/render/extensions/ExtensionContextData;
-	public final fun copy-EAdUfCk (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/data/render/extensions/DataProductStore;Lee/schimke/composeai/data/render/extensions/ExtensionContextData;)Lee/schimke/composeai/data/render/extensions/ExtensionPostCaptureContext;
-	public static synthetic fun copy-EAdUfCk$default (Lee/schimke/composeai/data/render/extensions/ExtensionPostCaptureContext;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/data/render/extensions/DataProductStore;Lee/schimke/composeai/data/render/extensions/ExtensionContextData;ILjava/lang/Object;)Lee/schimke/composeai/data/render/extensions/ExtensionPostCaptureContext;
+	public final fun copy-OqzNSlA (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/data/render/extensions/DataProductStore;Lee/schimke/composeai/data/render/extensions/ExtensionContextData;)Lee/schimke/composeai/data/render/extensions/ExtensionPostCaptureContext;
+	public static synthetic fun copy-OqzNSlA$default (Lee/schimke/composeai/data/render/extensions/ExtensionPostCaptureContext;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/data/render/extensions/DataProductStore;Lee/schimke/composeai/data/render/extensions/ExtensionContextData;ILjava/lang/Object;)Lee/schimke/composeai/data/render/extensions/ExtensionPostCaptureContext;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun get (Lee/schimke/composeai/data/render/extensions/ExtensionContextKey;)Ljava/lang/Object;
 	public final fun getData ()Lee/schimke/composeai/data/render/extensions/ExtensionContextData;
-	public final fun getExtensionId-FO0b9DY ()Ljava/lang/String;
+	public final fun getExtensionId-6nMuUE8 ()Ljava/lang/String;
 	public final fun getPreviewId ()Ljava/lang/String;
 	public final fun getProducts ()Lee/schimke/composeai/data/render/extensions/DataProductStore;
 	public final fun getRenderMode ()Ljava/lang/String;
@@ -1053,7 +986,7 @@ public final class ee/schimke/composeai/data/render/extensions/OrderedDataExtens
 public abstract interface class ee/schimke/composeai/data/render/extensions/PlannedDataExtension {
 	public abstract fun getConstraints ()Lee/schimke/composeai/data/render/extensions/DataExtensionConstraints;
 	public abstract fun getHooks ()Ljava/util/Set;
-	public abstract fun getId-FO0b9DY ()Ljava/lang/String;
+	public abstract fun getId-6nMuUE8 ()Ljava/lang/String;
 	public abstract fun getInputs ()Ljava/util/Set;
 	public abstract fun getOutputs ()Ljava/util/Set;
 	public abstract fun getTargets ()Ljava/util/Set;
@@ -1110,46 +1043,12 @@ public final class ee/schimke/composeai/data/render/extensions/RecordingScriptDa
 	public static final field PROBE_EVENT Ljava/lang/String;
 	public static final field STATE_RESTORE_EVENT Ljava/lang/String;
 	public static final field STATE_SAVE_EVENT Ljava/lang/String;
-	public final fun getAssertionA11yDescriptor ()Lee/schimke/composeai/data/render/extensions/DataExtensionDescriptor;
-	public final fun getAssertionAndroidDescriptor ()Lee/schimke/composeai/data/render/extensions/DataExtensionDescriptor;
-	public final fun getAssertionDescriptor ()Lee/schimke/composeai/data/render/extensions/DataExtensionDescriptor;
+	public final fun getAssertionA11yDescriptor ()Lee/schimke/composeai/daemon/protocol/DataExtensionDescriptor;
+	public final fun getAssertionAndroidDescriptor ()Lee/schimke/composeai/daemon/protocol/DataExtensionDescriptor;
+	public final fun getAssertionDescriptor ()Lee/schimke/composeai/daemon/protocol/DataExtensionDescriptor;
 	public final fun getDescriptors ()Ljava/util/List;
-	public final fun getRecordingDescriptor ()Lee/schimke/composeai/data/render/extensions/DataExtensionDescriptor;
+	public final fun getRecordingDescriptor ()Lee/schimke/composeai/daemon/protocol/DataExtensionDescriptor;
 	public final fun getRoadmapDescriptors ()Ljava/util/List;
-}
-
-public final class ee/schimke/composeai/data/render/extensions/RecordingScriptEventDescriptor {
-	public static final field Companion Lee/schimke/composeai/data/render/extensions/RecordingScriptEventDescriptor$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()Z
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lee/schimke/composeai/data/render/extensions/RecordingScriptEventDescriptor;
-	public static synthetic fun copy$default (Lee/schimke/composeai/data/render/extensions/RecordingScriptEventDescriptor;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Lee/schimke/composeai/data/render/extensions/RecordingScriptEventDescriptor;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getDisplayName ()Ljava/lang/String;
-	public final fun getId ()Ljava/lang/String;
-	public final fun getSummary ()Ljava/lang/String;
-	public final fun getSupported ()Z
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class ee/schimke/composeai/data/render/extensions/RecordingScriptEventDescriptor$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lee/schimke/composeai/data/render/extensions/RecordingScriptEventDescriptor$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/data/render/extensions/RecordingScriptEventDescriptor;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/data/render/extensions/RecordingScriptEventDescriptor;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/render/extensions/RecordingScriptEventDescriptor$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public final class ee/schimke/composeai/data/render/extensions/RenderDensity {
@@ -1190,11 +1089,11 @@ public final class ee/schimke/composeai/data/render/extensions/RenderSemanticsSn
 
 public abstract interface class ee/schimke/composeai/data/render/extensions/RenderSession {
 	public abstract fun getAppliedExtensionIds ()Ljava/util/Set;
-	public abstract fun isApplied-JW1uwok (Ljava/lang/String;)Z
+	public abstract fun isApplied-b4w2t7o (Ljava/lang/String;)Z
 }
 
 public final class ee/schimke/composeai/data/render/extensions/RenderSession$DefaultImpls {
-	public static fun isApplied-JW1uwok (Lee/schimke/composeai/data/render/extensions/RenderSession;Ljava/lang/String;)Z
+	public static fun isApplied-b4w2t7o (Lee/schimke/composeai/data/render/extensions/RenderSession;Ljava/lang/String;)Z
 }
 
 public abstract interface class ee/schimke/composeai/data/render/extensions/RenderSessionParticipant {
@@ -1210,18 +1109,18 @@ public final class ee/schimke/composeai/data/render/extensions/RenderSessionPart
 public final class ee/schimke/composeai/data/render/extensions/SimplePlannedDataExtension : ee/schimke/composeai/data/render/extensions/PlannedDataExtension {
 	public synthetic fun <init> (Ljava/lang/String;Ljava/util/Set;Lee/schimke/composeai/data/render/extensions/DataExtensionConstraints;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/util/Set;Lee/schimke/composeai/data/render/extensions/DataExtensionConstraints;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-FO0b9DY ()Ljava/lang/String;
+	public final fun component1-6nMuUE8 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/util/Set;
 	public final fun component3 ()Lee/schimke/composeai/data/render/extensions/DataExtensionConstraints;
 	public final fun component4 ()Ljava/util/Set;
 	public final fun component5 ()Ljava/util/Set;
 	public final fun component6 ()Ljava/util/Set;
-	public final fun copy-kyj7FFI (Ljava/lang/String;Ljava/util/Set;Lee/schimke/composeai/data/render/extensions/DataExtensionConstraints;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;)Lee/schimke/composeai/data/render/extensions/SimplePlannedDataExtension;
-	public static synthetic fun copy-kyj7FFI$default (Lee/schimke/composeai/data/render/extensions/SimplePlannedDataExtension;Ljava/lang/String;Ljava/util/Set;Lee/schimke/composeai/data/render/extensions/DataExtensionConstraints;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;ILjava/lang/Object;)Lee/schimke/composeai/data/render/extensions/SimplePlannedDataExtension;
+	public final fun copy-QEIwsDE (Ljava/lang/String;Ljava/util/Set;Lee/schimke/composeai/data/render/extensions/DataExtensionConstraints;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;)Lee/schimke/composeai/data/render/extensions/SimplePlannedDataExtension;
+	public static synthetic fun copy-QEIwsDE$default (Lee/schimke/composeai/data/render/extensions/SimplePlannedDataExtension;Ljava/lang/String;Ljava/util/Set;Lee/schimke/composeai/data/render/extensions/DataExtensionConstraints;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;ILjava/lang/Object;)Lee/schimke/composeai/data/render/extensions/SimplePlannedDataExtension;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getConstraints ()Lee/schimke/composeai/data/render/extensions/DataExtensionConstraints;
 	public fun getHooks ()Ljava/util/Set;
-	public fun getId-FO0b9DY ()Ljava/lang/String;
+	public fun getId-6nMuUE8 ()Ljava/lang/String;
 	public fun getInputs ()Ljava/util/Set;
 	public fun getOutputs ()Ljava/util/Set;
 	public fun getTargets ()Ljava/util/Set;
@@ -1238,98 +1137,12 @@ public final class ee/schimke/composeai/data/render/extensions/SimpleRenderSessi
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAppliedExtensionIds ()Ljava/util/Set;
 	public fun hashCode ()I
-	public fun isApplied-JW1uwok (Ljava/lang/String;)Z
+	public fun isApplied-b4w2t7o (Ljava/lang/String;)Z
 	public fun toString ()Ljava/lang/String;
 }
 
 public final class ee/schimke/composeai/data/render/extensions/SimpleRenderSession$Companion {
 	public final fun fromIdList (Ljava/lang/String;)Lee/schimke/composeai/data/render/extensions/SimpleRenderSession;
-}
-
-public final class ee/schimke/composeai/data/render/pipeline/ExtractionSpec {
-	public static final field Companion Lee/schimke/composeai/data/render/pipeline/ExtractionSpec$Companion;
-	public fun <init> (Ljava/lang/String;Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;ZZZ)V
-	public synthetic fun <init> (Ljava/lang/String;Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;ZZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;
-	public final fun component3 ()Z
-	public final fun component4 ()Z
-	public final fun component5 ()Z
-	public final fun copy (Ljava/lang/String;Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;ZZZ)Lee/schimke/composeai/data/render/pipeline/ExtractionSpec;
-	public static synthetic fun copy$default (Lee/schimke/composeai/data/render/pipeline/ExtractionSpec;Ljava/lang/String;Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;ZZZILjava/lang/Object;)Lee/schimke/composeai/data/render/pipeline/ExtractionSpec;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getAggregate ()Z
-	public final fun getKind ()Ljava/lang/String;
-	public final fun getRequiresImage ()Z
-	public final fun getRequiresSemantics ()Z
-	public final fun getSampling ()Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class ee/schimke/composeai/data/render/pipeline/ExtractionSpec$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lee/schimke/composeai/data/render/pipeline/ExtractionSpec$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/data/render/pipeline/ExtractionSpec;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/data/render/pipeline/ExtractionSpec;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/render/pipeline/ExtractionSpec$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/render/pipeline/PipelineCapability : java/lang/Enum {
-	public static final field AccessibilityFindings Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static final field AccessibilityNodes Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static final field AnimatedArtifact Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static final field AnnotatedImageArtifact Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static final field Companion Lee/schimke/composeai/data/render/pipeline/PipelineCapability$Companion;
-	public static final field DeviceBackground Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static final field DeviceClip Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static final field DeviceGeometry Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static final field Frames Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static final field ImageArtifact Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static final field InteractiveSession Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static final field MultipleFrames Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static final field OverlayAnnotations Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static final field PreviewFunctionAnnotations Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static final field ScrollState Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static final field SemanticsSnapshot Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static final field SingleFrame Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static final field SuggestedPreviews Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static final field TraceEvents Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public static fun valueOf (Ljava/lang/String;)Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-	public static fun values ()[Lee/schimke/composeai/data/render/pipeline/PipelineCapability;
-}
-
-public final class ee/schimke/composeai/data/render/pipeline/PipelineCapability$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/render/pipeline/PipelineStepTrait : java/lang/Enum {
-	public static final field AnnotationInspector Lee/schimke/composeai/data/render/pipeline/PipelineStepTrait;
-	public static final field Check Lee/schimke/composeai/data/render/pipeline/PipelineStepTrait;
-	public static final field Companion Lee/schimke/composeai/data/render/pipeline/PipelineStepTrait$Companion;
-	public static final field DataExtractor Lee/schimke/composeai/data/render/pipeline/PipelineStepTrait;
-	public static final field Encoder Lee/schimke/composeai/data/render/pipeline/PipelineStepTrait;
-	public static final field ExtraPreviewSuggester Lee/schimke/composeai/data/render/pipeline/PipelineStepTrait;
-	public static final field FinalArtifactProcessor Lee/schimke/composeai/data/render/pipeline/PipelineStepTrait;
-	public static final field FrameProcessor Lee/schimke/composeai/data/render/pipeline/PipelineStepTrait;
-	public static final field InteractiveDriver Lee/schimke/composeai/data/render/pipeline/PipelineStepTrait;
-	public static final field Profiler Lee/schimke/composeai/data/render/pipeline/PipelineStepTrait;
-	public static final field ScenarioDriver Lee/schimke/composeai/data/render/pipeline/PipelineStepTrait;
-	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public static fun valueOf (Ljava/lang/String;)Lee/schimke/composeai/data/render/pipeline/PipelineStepTrait;
-	public static fun values ()[Lee/schimke/composeai/data/render/pipeline/PipelineStepTrait;
-}
-
-public final class ee/schimke/composeai/data/render/pipeline/PipelineStepTrait$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public final class ee/schimke/composeai/data/render/pipeline/PipelineValidationError {
@@ -1348,104 +1161,11 @@ public final class ee/schimke/composeai/data/render/pipeline/PipelineValidationE
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class ee/schimke/composeai/data/render/pipeline/PreviewExtensionCliCommand {
-	public static final field Companion Lee/schimke/composeai/data/render/pipeline/PreviewExtensionCliCommand$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZZLjava/util/Set;Ljava/util/List;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZZLjava/util/Set;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()Ljava/util/List;
-	public final fun component5 ()Z
-	public final fun component6 ()Z
-	public final fun component7 ()Ljava/util/Set;
-	public final fun component8 ()Ljava/util/List;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZZLjava/util/Set;Ljava/util/List;)Lee/schimke/composeai/data/render/pipeline/PreviewExtensionCliCommand;
-	public static synthetic fun copy$default (Lee/schimke/composeai/data/render/pipeline/PreviewExtensionCliCommand;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZZLjava/util/Set;Ljava/util/List;ILjava/lang/Object;)Lee/schimke/composeai/data/render/pipeline/PreviewExtensionCliCommand;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getAgentRecommended ()Z
-	public final fun getCommand ()Ljava/util/List;
-	public final fun getDisplayName ()Ljava/lang/String;
-	public final fun getId ()Ljava/lang/String;
-	public final fun getProductKinds ()Ljava/util/List;
-	public final fun getRequiresDaemon ()Z
-	public final fun getSummary ()Ljava/lang/String;
-	public final fun getUsageModes ()Ljava/util/Set;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class ee/schimke/composeai/data/render/pipeline/PreviewExtensionCliCommand$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lee/schimke/composeai/data/render/pipeline/PreviewExtensionCliCommand$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/data/render/pipeline/PreviewExtensionCliCommand;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/data/render/pipeline/PreviewExtensionCliCommand;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/render/pipeline/PreviewExtensionCliCommand$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
 public final class ee/schimke/composeai/data/render/pipeline/PreviewExtensionCommandCatalog {
 	public static final field INSTANCE Lee/schimke/composeai/data/render/pipeline/PreviewExtensionCommandCatalog;
-	public final fun commandById (Ljava/lang/String;)Lee/schimke/composeai/data/render/pipeline/PreviewExtensionCliCommand;
+	public final fun commandById (Ljava/lang/String;)Lee/schimke/composeai/daemon/protocol/PreviewExtensionCliCommand;
 	public final fun getCommands ()Ljava/util/List;
 	public final fun getExtensions ()Ljava/util/List;
-}
-
-public final class ee/schimke/composeai/data/render/pipeline/PreviewExtensionDescriptor {
-	public static final field Companion Lee/schimke/composeai/data/render/pipeline/PreviewExtensionDescriptor$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/Set;Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/Set;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/util/Set;
-	public final fun component4 ()Ljava/util/List;
-	public final fun component5 ()Ljava/util/List;
-	public final fun component6 ()Ljava/util/List;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/Set;Ljava/util/List;Ljava/util/List;Ljava/util/List;)Lee/schimke/composeai/data/render/pipeline/PreviewExtensionDescriptor;
-	public static synthetic fun copy$default (Lee/schimke/composeai/data/render/pipeline/PreviewExtensionDescriptor;Ljava/lang/String;Ljava/lang/String;Ljava/util/Set;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lee/schimke/composeai/data/render/pipeline/PreviewExtensionDescriptor;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getCliCommands ()Ljava/util/List;
-	public final fun getComponentExtensionIds ()Ljava/util/List;
-	public final fun getDisplayName ()Ljava/lang/String;
-	public final fun getId ()Ljava/lang/String;
-	public final fun getSteps ()Ljava/util/List;
-	public final fun getUsageModes ()Ljava/util/Set;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class ee/schimke/composeai/data/render/pipeline/PreviewExtensionDescriptor$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lee/schimke/composeai/data/render/pipeline/PreviewExtensionDescriptor$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/data/render/pipeline/PreviewExtensionDescriptor;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/data/render/pipeline/PreviewExtensionDescriptor;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/render/pipeline/PreviewExtensionDescriptor$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/render/pipeline/PreviewExtensionUsageMode : java/lang/Enum {
-	public static final field Companion Lee/schimke/composeai/data/render/pipeline/PreviewExtensionUsageMode$Companion;
-	public static final field ExplicitEffect Lee/schimke/composeai/data/render/pipeline/PreviewExtensionUsageMode;
-	public static final field SuggestedExtraPreview Lee/schimke/composeai/data/render/pipeline/PreviewExtensionUsageMode;
-	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public static fun valueOf (Ljava/lang/String;)Lee/schimke/composeai/data/render/pipeline/PreviewExtensionUsageMode;
-	public static fun values ()[Lee/schimke/composeai/data/render/pipeline/PreviewExtensionUsageMode;
-}
-
-public final class ee/schimke/composeai/data/render/pipeline/PreviewExtensionUsageMode$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public final class ee/schimke/composeai/data/render/pipeline/PreviewPipelinePlan {
@@ -1463,73 +1183,8 @@ public final class ee/schimke/composeai/data/render/pipeline/PreviewPipelinePlan
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class ee/schimke/composeai/data/render/pipeline/PreviewPipelineStep {
-	public static final field Companion Lee/schimke/composeai/data/render/pipeline/PreviewPipelineStep$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;Lee/schimke/composeai/data/render/pipeline/ExtractionSpec;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;Lee/schimke/composeai/data/render/pipeline/ExtractionSpec;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component10 ()Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;
-	public final fun component11 ()Lee/schimke/composeai/data/render/pipeline/ExtractionSpec;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/util/List;
-	public final fun component4 ()Ljava/util/List;
-	public final fun component5 ()Ljava/util/Set;
-	public final fun component6 ()Ljava/util/Set;
-	public final fun component7 ()Ljava/util/Set;
-	public final fun component8 ()Ljava/util/Set;
-	public final fun component9 ()Ljava/util/Set;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;Lee/schimke/composeai/data/render/pipeline/ExtractionSpec;)Lee/schimke/composeai/data/render/pipeline/PreviewPipelineStep;
-	public static synthetic fun copy$default (Lee/schimke/composeai/data/render/pipeline/PreviewPipelineStep;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;Lee/schimke/composeai/data/render/pipeline/ExtractionSpec;ILjava/lang/Object;)Lee/schimke/composeai/data/render/pipeline/PreviewPipelineStep;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getAnnotationFqns ()Ljava/util/List;
-	public final fun getConflictsWith ()Ljava/util/Set;
-	public final fun getDisplayName ()Ljava/lang/String;
-	public final fun getExtraction ()Lee/schimke/composeai/data/render/pipeline/ExtractionSpec;
-	public final fun getId ()Ljava/lang/String;
-	public final fun getProductKinds ()Ljava/util/List;
-	public final fun getProvides ()Ljava/util/Set;
-	public final fun getRequires ()Ljava/util/Set;
-	public final fun getSampling ()Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;
-	public final fun getTraits ()Ljava/util/Set;
-	public final fun getUsageModes ()Ljava/util/Set;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class ee/schimke/composeai/data/render/pipeline/PreviewPipelineStep$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lee/schimke/composeai/data/render/pipeline/PreviewPipelineStep$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/data/render/pipeline/PreviewPipelineStep;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/data/render/pipeline/PreviewPipelineStep;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/render/pipeline/PreviewPipelineStep$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
 public final class ee/schimke/composeai/data/render/pipeline/PreviewPipelineValidator {
 	public static final field INSTANCE Lee/schimke/composeai/data/render/pipeline/PreviewPipelineValidator;
 	public final fun validate (Lee/schimke/composeai/data/render/pipeline/PreviewPipelinePlan;)Ljava/util/List;
-}
-
-public final class ee/schimke/composeai/data/render/pipeline/SamplingPolicy : java/lang/Enum {
-	public static final field Aggregate Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;
-	public static final field Companion Lee/schimke/composeai/data/render/pipeline/SamplingPolicy$Companion;
-	public static final field EachFrame Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;
-	public static final field End Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;
-	public static final field Failure Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;
-	public static final field OnDemand Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;
-	public static final field Start Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;
-	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public static fun valueOf (Ljava/lang/String;)Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;
-	public static fun values ()[Lee/schimke/composeai/data/render/pipeline/SamplingPolicy;
-}
-
-public final class ee/schimke/composeai/data/render/pipeline/SamplingPolicy$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

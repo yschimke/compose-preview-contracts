@@ -16,10 +16,17 @@ Extracted from [yschimke/compose-ai-tools](https://github.com/yschimke/compose-a
 | `daemon-bta` | Build Tools API shapes — `CompileErrorDetail`, `SourceChangeSet` |
 | `agent-grant-protocol` | the `--agent-grants` vocabulary; the server mints, the client asks |
 
-Plus the closure those four re-export as `api`, which has to ship with them or their POMs
-would not resolve: `data-render-core`, `data-layoutinspector-core`, `data-theme-core`,
-`data-preview-overrides-core` (payload schemas that appear as protocol fields) and
-`common-io`.
+`daemon-protocol` depends on **no other `ee.schimke.composeai` module**: the payload schemas that
+appear as protocol fields — `SemanticsDelta`, `ThemeDelta`, `PreviewOverrideValue`, the pipeline
+and extension descriptors — are declared **in** `daemon-protocol`, because a wire field's type
+belongs to the wire. Until 2.1.0 it `api`-exported four other modules, and deserialising one
+message meant resolving 9,111 lines of ABI across five coordinates to reach 21 types.
+
+Also published, and not wire contracts: `data-render-core`, `data-layoutinspector-core`,
+`data-theme-core`, `data-preview-overrides-core` (the differs and planners that *produce* those
+shapes) and `common-io`. They are here because `compose-preview serve` depends on all five and
+must resolve them by coordinate — see
+[`docs/VERSIONING.md`](docs/VERSIONING.md#the-five-stay-published-and-that-is-the-point).
 
 Every module is `explicitApi()` with Kotlin ABI validation wired into `check`, because these
 are contracts two repositories compile across.

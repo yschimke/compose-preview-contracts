@@ -19,6 +19,11 @@ plugins {
 }
 
 dependencies {
+
+  // The wire shapes this module's differs produce live in the protocol, not here: a wire field's
+  // type belongs to the wire. This is the arrow that used to point the other way — until 2.1.0
+  // `:daemon-protocol` `api`-exported THIS module, which made every protocol consumer resolve it.
+  api(project(":daemon-protocol"))
   // `PreviewOverrideValue` (the typed value variant the declaration and the
   // `renderNow.overrides.namedOverrides` seed share) lives here now, alongside
   // [PreviewOverrideDeclaration] — so this module needs no `:daemon:core` dependency and the daemon

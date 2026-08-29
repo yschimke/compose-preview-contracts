@@ -3,10 +3,10 @@
 
 package ee.schimke.composeai.daemon.bta
 
-import ee.schimke.composeai.io.SystemFileSystem
 import java.io.File
 import java.net.URLClassLoader
 import java.nio.file.Path
+import okio.FileSystem
 import okio.Path.Companion.toPath
 import org.jetbrains.kotlin.buildtools.api.ExperimentalBuildToolsApi
 import org.jetbrains.kotlin.buildtools.api.SourcesChanges
@@ -53,7 +53,7 @@ public fun main() {
 
   val editFile = config.editFile.toFile()
   val original =
-    if (editFile.exists()) SystemFileSystem.read(editFile.path.toPath()) { readUtf8() } else null
+    if (editFile.exists()) FileSystem.SYSTEM.read(editFile.path.toPath()) { readUtf8() } else null
   try {
     runBench(config)
   } catch (t: Throwable) {
@@ -62,7 +62,7 @@ public fun main() {
     // is the real green-gate; this task only produces measurement rows.)
     emit(note("stage-2 driver failed: ${t.javaClass.simpleName}: ${t.message}"))
   } finally {
-    if (original != null) SystemFileSystem.write(editFile.path.toPath()) { writeUtf8(original) }
+    if (original != null) FileSystem.SYSTEM.write(editFile.path.toPath()) { writeUtf8(original) }
   }
 }
 
@@ -98,7 +98,7 @@ private fun runBench(config: BenchConfig) {
   repeat(config.warmups) { compileFull(SourcesChanges.ToBeCalculated) }
 
   val editFile = config.editFile.toFile()
-  val pristine = SystemFileSystem.read(editFile.path.toPath()) { readUtf8() }
+  val pristine = FileSystem.SYSTEM.read(editFile.path.toPath()) { readUtf8() }
   check(config.editMarker in pristine) {
     "${config.editFile} no longer contains ${config.editMarker} — update the bench marker"
   }
@@ -112,7 +112,7 @@ private fun runBench(config: BenchConfig) {
 
   try {
     for (run in 1..config.runs) {
-      SystemFileSystem.write(editFile.path.toPath()) {
+      FileSystem.SYSTEM.write(editFile.path.toPath()) {
         writeUtf8(mutateMarker(pristine, config.editMarker))
       }
       try {
@@ -128,7 +128,7 @@ private fun runBench(config: BenchConfig) {
         }
         emit(row("classloader-swap", "stage-2-warm", run, swapMs, SWAP_NOTE))
       } finally {
-        SystemFileSystem.write(editFile.path.toPath()) { writeUtf8(pristine) }
+        FileSystem.SYSTEM.write(editFile.path.toPath()) { writeUtf8(pristine) }
       }
     }
   } finally {

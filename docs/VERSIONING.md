@@ -83,12 +83,58 @@ was one pull request and one CI run. Now it is: change here → release here →
 bump the coordinate in `compose-ai-tools` → adopt. Two repositories and a release
 in between, for every contract change.
 
-That cost is concentrated where the contracts are thinnest. At cutover
-`common-io` had 37 dependents upstream and `data-render-core` 28 — 65 of the ~70
-call sites — while the four actual wire contracts had 8 between them. Neither of
-those two is a wire contract; they are here only because the contracts re-export
-them as `api`. **Narrowing that re-export is what would make this split pay**, and
-it remains the open work.
+That cost was concentrated where the contracts were thinnest, and **the narrowing
+is now done** — see below.
+
+## The narrowing (2.1.0)
+
+At cutover this repository published nine coordinates. Five of them were not wire
+contracts:
+
+| | published ABI | types `:daemon-protocol` actually used |
+| --- | --- | --- |
+| `data-layoutinspector-core` | 2,030 lines | 2 |
+| `data-render-core` | 1,535 | 3 |
+| `data-preview-overrides-core` | 371 | 1 |
+| `data-theme-core` | 276 | 1 |
+| `common-io` | 16 | — (see below) |
+
+`:daemon-protocol` `api`-exported the first four, so a client deserialising a single
+daemon message resolved **9,111 lines of ABI across five coordinates** to reach
+seven types.
+
+The fix was not to weaken the export — the export was correct, those types really
+are protocol fields. It was to put the types where they belong. The transitive
+closure of the seven roots is 21 types (plus two one-constant `*DiffProduct`
+objects), and they now live in `:daemon-protocol` under
+`ee.schimke.composeai.daemon.protocol`. A consumer resolves **one coordinate and
+5,695 lines** — 37% less ABI, and `daemon-protocol`'s POM carries no
+`ee.schimke.composeai` dependency at all. The arrow runs the other way now: the
+four `data-*-core` modules take `:daemon-protocol` as `api`.
+
+`common-io` was a different story, and the earlier version of this document had it
+wrong: it was never `api`-re-exported. It was `implementation` in two places, used
+by two files importing one symbol — `SystemFileSystem`, which is
+`okio.FileSystem.SYSTEM` behind an alias. `:daemon-bta`'s call site now uses okio
+directly; `:data-render-core` still takes it.
+
+### The five stay published, and that is the point
+
+They are not wire contracts, and an earlier draft of this change removed them from
+this repository entirely. That was wrong. `compose-preview serve` depends on all
+five, and compose-ai-tools' `docs/design/PREVIEW_SERVER_SPLIT.md` builds
+`preview-server/` as a **separate Gradle build, deliberately not `includeBuild`-ed**,
+precisely so every contract resolves "as a published artifact, by coordinate, from a
+repository" and a missing one is *missed*.
+
+Un-publishing them would have kept that probe green — it publishes to Maven Local at
+a fixed probe version — while the real coordinate stopped advancing at 2.0.0. A gate
+that stays green while the thing it guards rots is the failure mode that build exists
+to prevent, so the narrowing stops at the re-export and leaves the coordinates alone.
+
+The cost of that choice is the one this document already names: compose-ai-tools
+keeps a cross-repo release hop for those five. For the preview-server split, their
+being published coordinates is the goal rather than the cost.
 
 ## Consumers
 

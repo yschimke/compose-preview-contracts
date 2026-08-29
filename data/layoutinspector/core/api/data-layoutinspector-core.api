@@ -490,22 +490,6 @@ public final class ee/schimke/composeai/data/layoutinspector/FigmaLayeredSvg$Opt
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class ee/schimke/composeai/data/layoutinspector/FigmaSvgBackgroundMode : java/lang/Enum {
-	public static final field CONTENT_SHAPE Lee/schimke/composeai/data/layoutinspector/FigmaSvgBackgroundMode;
-	public static final field Companion Lee/schimke/composeai/data/layoutinspector/FigmaSvgBackgroundMode$Companion;
-	public static final field DEVICE Lee/schimke/composeai/data/layoutinspector/FigmaSvgBackgroundMode;
-	public static final field FULL_BLEED Lee/schimke/composeai/data/layoutinspector/FigmaSvgBackgroundMode;
-	public static final field NONE Lee/schimke/composeai/data/layoutinspector/FigmaSvgBackgroundMode;
-	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public static fun valueOf (Ljava/lang/String;)Lee/schimke/composeai/data/layoutinspector/FigmaSvgBackgroundMode;
-	public static fun values ()[Lee/schimke/composeai/data/layoutinspector/FigmaSvgBackgroundMode;
-}
-
-public final class ee/schimke/composeai/data/layoutinspector/FigmaSvgBackgroundMode$Companion {
-	public final fun parse (Ljava/lang/String;)Lee/schimke/composeai/data/layoutinspector/FigmaSvgBackgroundMode;
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
 public final class ee/schimke/composeai/data/layoutinspector/FigmaSvgBackgroundRaster {
 	public fun <init> (Ljava/lang/String;IIIIZZZLee/schimke/composeai/data/layoutinspector/LayoutInspectorBounds;)V
 	public synthetic fun <init> (Ljava/lang/String;IIIIZZZLee/schimke/composeai/data/layoutinspector/LayoutInspectorBounds;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -697,8 +681,8 @@ public final class ee/schimke/composeai/data/layoutinspector/FigmaSvgModel {
 public final class ee/schimke/composeai/data/layoutinspector/FigmaSvgModel$Companion {
 	public final fun argbToColor (Ljava/lang/String;Ljava/util/Map;)Lee/schimke/composeai/data/layoutinspector/FigmaSvgColor;
 	public final fun defaultRasterHref (Ljava/lang/String;)Ljava/lang/String;
-	public final fun from (Lee/schimke/composeai/data/layoutinspector/LayoutInspectorPayload;Lee/schimke/composeai/data/layoutinspector/ComposeSemanticsPayload;Ljava/util/Map;FFILjava/util/Set;Lkotlin/jvm/functions/Function1;ZZZLjava/lang/String;Lee/schimke/composeai/data/layoutinspector/FigmaSvgBackgroundMode;Ljava/lang/Integer;Ljava/lang/Integer;)Lee/schimke/composeai/data/layoutinspector/FigmaSvgModel;
-	public static synthetic fun from$default (Lee/schimke/composeai/data/layoutinspector/FigmaSvgModel$Companion;Lee/schimke/composeai/data/layoutinspector/LayoutInspectorPayload;Lee/schimke/composeai/data/layoutinspector/ComposeSemanticsPayload;Ljava/util/Map;FFILjava/util/Set;Lkotlin/jvm/functions/Function1;ZZZLjava/lang/String;Lee/schimke/composeai/data/layoutinspector/FigmaSvgBackgroundMode;Ljava/lang/Integer;Ljava/lang/Integer;ILjava/lang/Object;)Lee/schimke/composeai/data/layoutinspector/FigmaSvgModel;
+	public final fun from (Lee/schimke/composeai/data/layoutinspector/LayoutInspectorPayload;Lee/schimke/composeai/data/layoutinspector/ComposeSemanticsPayload;Ljava/util/Map;FFILjava/util/Set;Lkotlin/jvm/functions/Function1;ZZZLjava/lang/String;Lee/schimke/composeai/daemon/protocol/FigmaSvgBackgroundMode;Ljava/lang/Integer;Ljava/lang/Integer;)Lee/schimke/composeai/data/layoutinspector/FigmaSvgModel;
+	public static synthetic fun from$default (Lee/schimke/composeai/data/layoutinspector/FigmaSvgModel$Companion;Lee/schimke/composeai/data/layoutinspector/LayoutInspectorPayload;Lee/schimke/composeai/data/layoutinspector/ComposeSemanticsPayload;Ljava/util/Map;FFILjava/util/Set;Lkotlin/jvm/functions/Function1;ZZZLjava/lang/String;Lee/schimke/composeai/daemon/protocol/FigmaSvgBackgroundMode;Ljava/lang/Integer;Ljava/lang/Integer;ILjava/lang/Object;)Lee/schimke/composeai/data/layoutinspector/FigmaSvgModel;
 	public final fun getDEFAULT_RASTER_COMPONENTS ()Ljava/util/Set;
 	public final fun lineHeightToPx (Ljava/lang/String;Ljava/lang/String;FF)Ljava/lang/Double;
 	public static synthetic fun lineHeightToPx$default (Lee/schimke/composeai/data/layoutinspector/FigmaSvgModel$Companion;Ljava/lang/String;Ljava/lang/String;FFILjava/lang/Object;)Ljava/lang/Double;
@@ -1573,150 +1557,10 @@ public final class ee/schimke/composeai/data/layoutinspector/SemanticsBounds$Com
 	public final fun parse (Ljava/lang/String;)Lee/schimke/composeai/data/layoutinspector/SemanticsBounds;
 }
 
-public final class ee/schimke/composeai/data/layoutinspector/SemanticsDelta {
-	public static final field Companion Lee/schimke/composeai/data/layoutinspector/SemanticsDelta$Companion;
-	public fun <init> ()V
-	public fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/util/List;
-	public final fun component3 ()Ljava/util/List;
-	public final fun component4 ()Ljava/util/List;
-	public final fun copy (Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;)Lee/schimke/composeai/data/layoutinspector/SemanticsDelta;
-	public static synthetic fun copy$default (Lee/schimke/composeai/data/layoutinspector/SemanticsDelta;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lee/schimke/composeai/data/layoutinspector/SemanticsDelta;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getAdded ()Ljava/util/List;
-	public final fun getChanged ()Ljava/util/List;
-	public final fun getRemoved ()Ljava/util/List;
-	public final fun getSchema ()Ljava/lang/String;
-	public fun hashCode ()I
-	public final fun isEmpty ()Z
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class ee/schimke/composeai/data/layoutinspector/SemanticsDelta$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lee/schimke/composeai/data/layoutinspector/SemanticsDelta$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/data/layoutinspector/SemanticsDelta;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/data/layoutinspector/SemanticsDelta;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/layoutinspector/SemanticsDelta$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
 public final class ee/schimke/composeai/data/layoutinspector/SemanticsDiff {
 	public static final field INSTANCE Lee/schimke/composeai/data/layoutinspector/SemanticsDiff;
-	public final fun diff (Lee/schimke/composeai/data/layoutinspector/ComposeSemanticsNode;Lee/schimke/composeai/data/layoutinspector/ComposeSemanticsNode;)Lee/schimke/composeai/data/layoutinspector/SemanticsDelta;
-	public final fun diff (Lee/schimke/composeai/data/layoutinspector/ComposeSemanticsPayload;Lee/schimke/composeai/data/layoutinspector/ComposeSemanticsPayload;)Lee/schimke/composeai/data/layoutinspector/SemanticsDelta;
-}
-
-public final class ee/schimke/composeai/data/layoutinspector/SemanticsDiffProduct {
-	public static final field INSTANCE Lee/schimke/composeai/data/layoutinspector/SemanticsDiffProduct;
-	public static final field SCHEMA Ljava/lang/String;
-}
-
-public final class ee/schimke/composeai/data/layoutinspector/SemanticsFieldChange {
-	public static final field Companion Lee/schimke/composeai/data/layoutinspector/SemanticsFieldChange$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lee/schimke/composeai/data/layoutinspector/SemanticsFieldChange;
-	public static synthetic fun copy$default (Lee/schimke/composeai/data/layoutinspector/SemanticsFieldChange;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/data/layoutinspector/SemanticsFieldChange;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getField ()Ljava/lang/String;
-	public final fun getFrom ()Ljava/lang/String;
-	public final fun getTo ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class ee/schimke/composeai/data/layoutinspector/SemanticsFieldChange$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lee/schimke/composeai/data/layoutinspector/SemanticsFieldChange$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/data/layoutinspector/SemanticsFieldChange;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/data/layoutinspector/SemanticsFieldChange;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/layoutinspector/SemanticsFieldChange$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/layoutinspector/SemanticsNodeChange {
-	public static final field Companion Lee/schimke/composeai/data/layoutinspector/SemanticsNodeChange$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/util/List;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Lee/schimke/composeai/data/layoutinspector/SemanticsNodeChange;
-	public static synthetic fun copy$default (Lee/schimke/composeai/data/layoutinspector/SemanticsNodeChange;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lee/schimke/composeai/data/layoutinspector/SemanticsNodeChange;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getAnchor ()Ljava/lang/String;
-	public final fun getChanges ()Ljava/util/List;
-	public final fun getRef ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class ee/schimke/composeai/data/layoutinspector/SemanticsNodeChange$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lee/schimke/composeai/data/layoutinspector/SemanticsNodeChange$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/data/layoutinspector/SemanticsNodeChange;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/data/layoutinspector/SemanticsNodeChange;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/layoutinspector/SemanticsNodeChange$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/layoutinspector/SemanticsNodeSummary {
-	public static final field Companion Lee/schimke/composeai/data/layoutinspector/SemanticsNodeSummary$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()Ljava/lang/String;
-	public final fun component5 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lee/schimke/composeai/data/layoutinspector/SemanticsNodeSummary;
-	public static synthetic fun copy$default (Lee/schimke/composeai/data/layoutinspector/SemanticsNodeSummary;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/data/layoutinspector/SemanticsNodeSummary;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getLabel ()Ljava/lang/String;
-	public final fun getRef ()Ljava/lang/String;
-	public final fun getRole ()Ljava/lang/String;
-	public final fun getTestTag ()Ljava/lang/String;
-	public final fun getText ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class ee/schimke/composeai/data/layoutinspector/SemanticsNodeSummary$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lee/schimke/composeai/data/layoutinspector/SemanticsNodeSummary$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/data/layoutinspector/SemanticsNodeSummary;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/data/layoutinspector/SemanticsNodeSummary;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/layoutinspector/SemanticsNodeSummary$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public final fun diff (Lee/schimke/composeai/data/layoutinspector/ComposeSemanticsNode;Lee/schimke/composeai/data/layoutinspector/ComposeSemanticsNode;)Lee/schimke/composeai/daemon/protocol/SemanticsDelta;
+	public final fun diff (Lee/schimke/composeai/data/layoutinspector/ComposeSemanticsPayload;Lee/schimke/composeai/data/layoutinspector/ComposeSemanticsPayload;)Lee/schimke/composeai/daemon/protocol/SemanticsDelta;
 }
 
 public final class ee/schimke/composeai/data/layoutinspector/SemanticsPoint {
