@@ -1,5 +1,7 @@
 package ee.schimke.composeai.data.render.extensions
 
+import ee.schimke.composeai.daemon.protocol.DataExtensionId
+
 /**
  * Shared state for one preview-render invocation. Extensions opt into the session via the
  * [appliedExtensionIds] set the host passes in; once applied, a [RenderSessionParticipant] is

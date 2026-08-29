@@ -36,11 +36,14 @@ dependencies {
   // `CompileErrorDetail` and `SourceChangeSet` are protocol shapes on this module's own surface.
   api(project(":daemon-protocol"))
 
+  // Was arriving transitively through common-io, which this module no longer
+  // depends on: it used one alias for `FileSystem.SYSTEM`.
+  implementation(libs.okio)
+
   // `api`, not `implementation` — see the header. These types are in public signatures.
   api("org.jetbrains.kotlin:kotlin-build-tools-api:${libs.versions.kotlin.get()}")
 
   // Okio file IO for the benchmark entry point's source scan.
-  implementation(project(":common-io"))
 
   testImplementation(libs.junit)
   testImplementation(kotlin("test"))

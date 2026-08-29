@@ -5,21 +5,21 @@ public final class ee/schimke/composeai/data/theme/Material3ThemeProduct {
 }
 
 public final class ee/schimke/composeai/data/theme/NodeThemeFacts {
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/data/theme/TypographyToken;Ljava/lang/String;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/data/theme/TypographyToken;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/daemon/protocol/TypographyToken;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/daemon/protocol/TypographyToken;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()Lee/schimke/composeai/data/theme/TypographyToken;
+	public final fun component4 ()Lee/schimke/composeai/daemon/protocol/TypographyToken;
 	public final fun component5 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/data/theme/TypographyToken;Ljava/lang/String;)Lee/schimke/composeai/data/theme/NodeThemeFacts;
-	public static synthetic fun copy$default (Lee/schimke/composeai/data/theme/NodeThemeFacts;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/data/theme/TypographyToken;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/data/theme/NodeThemeFacts;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/daemon/protocol/TypographyToken;Ljava/lang/String;)Lee/schimke/composeai/data/theme/NodeThemeFacts;
+	public static synthetic fun copy$default (Lee/schimke/composeai/data/theme/NodeThemeFacts;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/daemon/protocol/TypographyToken;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/data/theme/NodeThemeFacts;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getBackgroundColor ()Ljava/lang/String;
 	public final fun getForegroundColor ()Ljava/lang/String;
 	public final fun getNodeId ()Ljava/lang/String;
 	public final fun getShape ()Ljava/lang/String;
-	public final fun getTextStyle ()Lee/schimke/composeai/data/theme/TypographyToken;
+	public final fun getTextStyle ()Lee/schimke/composeai/daemon/protocol/TypographyToken;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -89,50 +89,9 @@ public final class ee/schimke/composeai/data/theme/ThemeConsumerAttribution {
 	public final fun attribute (Ljava/util/List;Lee/schimke/composeai/data/theme/ResolvedThemeTokens;)Ljava/util/List;
 }
 
-public final class ee/schimke/composeai/data/theme/ThemeDelta {
-	public static final field Companion Lee/schimke/composeai/data/theme/ThemeDelta$Companion;
-	public fun <init> ()V
-	public fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/util/List;
-	public final fun component3 ()Ljava/util/List;
-	public final fun component4 ()Ljava/util/List;
-	public final fun copy (Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;)Lee/schimke/composeai/data/theme/ThemeDelta;
-	public static synthetic fun copy$default (Lee/schimke/composeai/data/theme/ThemeDelta;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lee/schimke/composeai/data/theme/ThemeDelta;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getColorScheme ()Ljava/util/List;
-	public final fun getSchema ()Ljava/lang/String;
-	public final fun getShapes ()Ljava/util/List;
-	public final fun getTypography ()Ljava/util/List;
-	public fun hashCode ()I
-	public final fun isEmpty ()Z
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class ee/schimke/composeai/data/theme/ThemeDelta$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lee/schimke/composeai/data/theme/ThemeDelta$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/data/theme/ThemeDelta;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/data/theme/ThemeDelta;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/theme/ThemeDelta$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
 public final class ee/schimke/composeai/data/theme/ThemeDiff {
 	public static final field INSTANCE Lee/schimke/composeai/data/theme/ThemeDiff;
-	public final fun diff (Lee/schimke/composeai/data/theme/ThemePayload;Lee/schimke/composeai/data/theme/ThemePayload;)Lee/schimke/composeai/data/theme/ThemeDelta;
-}
-
-public final class ee/schimke/composeai/data/theme/ThemeDiffProduct {
-	public static final field INSTANCE Lee/schimke/composeai/data/theme/ThemeDiffProduct;
-	public static final field SCHEMA Ljava/lang/String;
+	public final fun diff (Lee/schimke/composeai/data/theme/ThemePayload;Lee/schimke/composeai/data/theme/ThemePayload;)Lee/schimke/composeai/daemon/protocol/ThemeDelta;
 }
 
 public final class ee/schimke/composeai/data/theme/ThemePayload {
@@ -162,115 +121,6 @@ public final synthetic class ee/schimke/composeai/data/theme/ThemePayload$$seria
 }
 
 public final class ee/schimke/composeai/data/theme/ThemePayload$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/theme/ThemeTokenChange {
-	public static final field Companion Lee/schimke/composeai/data/theme/ThemeTokenChange$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lee/schimke/composeai/data/theme/ThemeTokenChange;
-	public static synthetic fun copy$default (Lee/schimke/composeai/data/theme/ThemeTokenChange;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/data/theme/ThemeTokenChange;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getFrom ()Ljava/lang/String;
-	public final fun getTo ()Ljava/lang/String;
-	public final fun getToken ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class ee/schimke/composeai/data/theme/ThemeTokenChange$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lee/schimke/composeai/data/theme/ThemeTokenChange$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/data/theme/ThemeTokenChange;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/data/theme/ThemeTokenChange;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/theme/ThemeTokenChange$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/theme/ThemeTypographyChange {
-	public static final field Companion Lee/schimke/composeai/data/theme/ThemeTypographyChange$Companion;
-	public fun <init> (Ljava/lang/String;Lee/schimke/composeai/data/theme/TypographyToken;Lee/schimke/composeai/data/theme/TypographyToken;)V
-	public synthetic fun <init> (Ljava/lang/String;Lee/schimke/composeai/data/theme/TypographyToken;Lee/schimke/composeai/data/theme/TypographyToken;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Lee/schimke/composeai/data/theme/TypographyToken;
-	public final fun component3 ()Lee/schimke/composeai/data/theme/TypographyToken;
-	public final fun copy (Ljava/lang/String;Lee/schimke/composeai/data/theme/TypographyToken;Lee/schimke/composeai/data/theme/TypographyToken;)Lee/schimke/composeai/data/theme/ThemeTypographyChange;
-	public static synthetic fun copy$default (Lee/schimke/composeai/data/theme/ThemeTypographyChange;Ljava/lang/String;Lee/schimke/composeai/data/theme/TypographyToken;Lee/schimke/composeai/data/theme/TypographyToken;ILjava/lang/Object;)Lee/schimke/composeai/data/theme/ThemeTypographyChange;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getFrom ()Lee/schimke/composeai/data/theme/TypographyToken;
-	public final fun getTo ()Lee/schimke/composeai/data/theme/TypographyToken;
-	public final fun getToken ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class ee/schimke/composeai/data/theme/ThemeTypographyChange$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lee/schimke/composeai/data/theme/ThemeTypographyChange$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/data/theme/ThemeTypographyChange;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/data/theme/ThemeTypographyChange;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/theme/ThemeTypographyChange$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/theme/TypographyToken {
-	public static final field Companion Lee/schimke/composeai/data/theme/TypographyToken$Companion;
-	public fun <init> ()V
-	public fun <init> (Ljava/lang/String;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/String;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/Float;
-	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()Ljava/lang/String;
-	public final fun component5 ()Ljava/lang/String;
-	public final fun component6 ()Ljava/lang/Float;
-	public final fun component7 ()Ljava/lang/String;
-	public final fun component8 ()Ljava/lang/Float;
-	public final fun component9 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/String;)Lee/schimke/composeai/data/theme/TypographyToken;
-	public static synthetic fun copy$default (Lee/schimke/composeai/data/theme/TypographyToken;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/data/theme/TypographyToken;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getFontFamily ()Ljava/lang/String;
-	public final fun getFontSize ()Ljava/lang/Float;
-	public final fun getFontSizeUnit ()Ljava/lang/String;
-	public final fun getFontStyle ()Ljava/lang/String;
-	public final fun getFontWeight ()Ljava/lang/String;
-	public final fun getLetterSpacing ()Ljava/lang/Float;
-	public final fun getLetterSpacingUnit ()Ljava/lang/String;
-	public final fun getLineHeight ()Ljava/lang/Float;
-	public final fun getLineHeightUnit ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class ee/schimke/composeai/data/theme/TypographyToken$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lee/schimke/composeai/data/theme/TypographyToken$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/data/theme/TypographyToken;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/data/theme/TypographyToken;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class ee/schimke/composeai/data/theme/TypographyToken$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

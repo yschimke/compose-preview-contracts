@@ -1,5 +1,6 @@
 package ee.schimke.composeai.data.overrides
 
+import ee.schimke.composeai.daemon.protocol.PreviewOverrideValue
 import kotlinx.serialization.Serializable
 
 /**

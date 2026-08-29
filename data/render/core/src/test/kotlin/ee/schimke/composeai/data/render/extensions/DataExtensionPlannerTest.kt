@@ -1,5 +1,6 @@
 package ee.schimke.composeai.data.render.extensions
 
+import ee.schimke.composeai.daemon.protocol.DataExtensionId
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull

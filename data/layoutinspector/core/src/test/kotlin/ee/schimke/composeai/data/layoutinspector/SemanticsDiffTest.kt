@@ -1,5 +1,6 @@
 package ee.schimke.composeai.data.layoutinspector
 
+import ee.schimke.composeai.daemon.protocol.SemanticsFieldChange
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue

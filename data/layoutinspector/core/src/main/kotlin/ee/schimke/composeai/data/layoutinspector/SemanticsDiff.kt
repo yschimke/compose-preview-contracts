@@ -1,12 +1,9 @@
 package ee.schimke.composeai.data.layoutinspector
 
-import kotlinx.serialization.EncodeDefault
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.Serializable
-
-public object SemanticsDiffProduct {
-  public const val SCHEMA: String = "compose-semantics-diff/v1"
-}
+import ee.schimke.composeai.daemon.protocol.SemanticsDelta
+import ee.schimke.composeai.daemon.protocol.SemanticsFieldChange
+import ee.schimke.composeai.daemon.protocol.SemanticsNodeChange
+import ee.schimke.composeai.daemon.protocol.SemanticsNodeSummary
 
 /**
  * A structural, content-aware diff of two [ComposeSemanticsPayload] trees (issue #1785).
@@ -100,40 +97,4 @@ public object SemanticsDiff {
       text = text,
       label = label,
     )
-}
-
-@Serializable
-public data class SemanticsFieldChange(val field: String, val from: String?, val to: String?)
-
-@Serializable
-public data class SemanticsNodeChange(
-  val ref: String,
-  /** testTag/role anchor of the node, for human-readable output. */
-  val anchor: String? = null,
-  val changes: List<SemanticsFieldChange>,
-)
-
-@Serializable
-public data class SemanticsNodeSummary(
-  val ref: String,
-  val role: String? = null,
-  val testTag: String? = null,
-  val text: String? = null,
-  val label: String? = null,
-)
-
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable
-public data class SemanticsDelta(
-  // `@EncodeDefault` so the versioned schema rides every wire surface — including JSON encoders
-  // configured with `encodeDefaults = false` (the daemon's `history/diff mode=SEMANTICS` result and
-  // the MCP `diff_semantics` payload). Without it an empty-or-default delta would serialize without
-  // its `schema`, defeating the "versioned JSON delta" contract (issue #1785).
-  @EncodeDefault val schema: String = SemanticsDiffProduct.SCHEMA,
-  val added: List<SemanticsNodeSummary> = emptyList(),
-  val removed: List<SemanticsNodeSummary> = emptyList(),
-  val changed: List<SemanticsNodeChange> = emptyList(),
-) {
-  val isEmpty: Boolean
-    get() = added.isEmpty() && removed.isEmpty() && changed.isEmpty()
 }

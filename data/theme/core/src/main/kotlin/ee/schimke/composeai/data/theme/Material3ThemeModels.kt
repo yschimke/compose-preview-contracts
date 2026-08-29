@@ -1,5 +1,6 @@
 package ee.schimke.composeai.data.theme
 
+import ee.schimke.composeai.daemon.protocol.TypographyToken
 import kotlinx.serialization.Serializable
 
 /**
@@ -32,16 +33,3 @@ public data class ResolvedThemeTokens(
 )
 
 public @Serializable data class ThemeConsumer(val nodeId: String, val tokens: List<String>)
-
-@Serializable
-public data class TypographyToken(
-  val fontFamily: String? = null,
-  val fontSize: Float? = null,
-  val fontSizeUnit: String? = null,
-  val fontWeight: String? = null,
-  val fontStyle: String? = null,
-  val lineHeight: Float? = null,
-  val lineHeightUnit: String? = null,
-  val letterSpacing: Float? = null,
-  val letterSpacingUnit: String? = null,
-)

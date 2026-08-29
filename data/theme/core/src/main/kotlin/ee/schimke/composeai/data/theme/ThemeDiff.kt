@@ -1,12 +1,9 @@
 package ee.schimke.composeai.data.theme
 
-import kotlinx.serialization.EncodeDefault
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.Serializable
-
-public object ThemeDiffProduct {
-  public const val SCHEMA: String = "compose-theme-diff/v1"
-}
+import ee.schimke.composeai.daemon.protocol.ThemeDelta
+import ee.schimke.composeai.daemon.protocol.ThemeTokenChange
+import ee.schimke.composeai.daemon.protocol.ThemeTypographyChange
+import ee.schimke.composeai.daemon.protocol.TypographyToken
 
 /**
  * A structural diff of two [ThemePayload]s' resolved Material 3 tokens (issue #1873) — the theme
@@ -52,33 +49,4 @@ public object ThemeDiff {
       val to = head[token]
       if (from != to) ThemeTypographyChange(token = token, from = from, to = to) else null
     }
-}
-
-@Serializable
-public data class ThemeTokenChange(
-  val token: String,
-  val from: String? = null,
-  val to: String? = null,
-)
-
-@Serializable
-public data class ThemeTypographyChange(
-  val token: String,
-  val from: TypographyToken? = null,
-  val to: TypographyToken? = null,
-)
-
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable
-public data class ThemeDelta(
-  // `@EncodeDefault` so the versioned schema discriminator rides every wire surface even under
-  // `encodeDefaults = false` (the daemon's `history/diff mode=data` result), matching the
-  // `SemanticsDelta` contract.
-  @EncodeDefault val schema: String = ThemeDiffProduct.SCHEMA,
-  val colorScheme: List<ThemeTokenChange> = emptyList(),
-  val shapes: List<ThemeTokenChange> = emptyList(),
-  val typography: List<ThemeTypographyChange> = emptyList(),
-) {
-  val isEmpty: Boolean
-    get() = colorScheme.isEmpty() && shapes.isEmpty() && typography.isEmpty()
 }

@@ -1,5 +1,8 @@
 package ee.schimke.composeai.data.render.pipeline
 
+import ee.schimke.composeai.daemon.protocol.PreviewExtensionCliCommand
+import ee.schimke.composeai.daemon.protocol.PreviewExtensionDescriptor
+import ee.schimke.composeai.daemon.protocol.PreviewExtensionUsageMode
 import ee.schimke.composeai.data.render.RenderPreviewExtension
 
 /**

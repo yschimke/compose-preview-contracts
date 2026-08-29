@@ -1,5 +1,7 @@
 package ee.schimke.composeai.data.theme
 
+import ee.schimke.composeai.daemon.protocol.TypographyToken
+
 /**
  * Per-node resolved facts pulled from the rendered tree, fed to [ThemeConsumerAttribution] to work
  * out which theme tokens a node read.

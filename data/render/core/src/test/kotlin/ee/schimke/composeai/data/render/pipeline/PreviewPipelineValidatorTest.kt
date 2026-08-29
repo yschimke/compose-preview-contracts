@@ -1,5 +1,10 @@
 package ee.schimke.composeai.data.render.pipeline
 
+import ee.schimke.composeai.daemon.protocol.ExtractionSpec
+import ee.schimke.composeai.daemon.protocol.PipelineCapability
+import ee.schimke.composeai.daemon.protocol.PipelineStepTrait
+import ee.schimke.composeai.daemon.protocol.PreviewPipelineStep
+import ee.schimke.composeai.daemon.protocol.SamplingPolicy
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test

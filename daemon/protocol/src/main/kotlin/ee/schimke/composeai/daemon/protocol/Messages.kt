@@ -1,11 +1,5 @@
 package ee.schimke.composeai.daemon.protocol
 
-import ee.schimke.composeai.data.layoutinspector.FigmaSvgBackgroundMode
-import ee.schimke.composeai.data.layoutinspector.SemanticsDelta
-import ee.schimke.composeai.data.overrides.PreviewOverrideValue
-import ee.schimke.composeai.data.render.extensions.DataExtensionDescriptor
-import ee.schimke.composeai.data.render.pipeline.PreviewExtensionDescriptor
-import ee.schimke.composeai.data.render.pipeline.SamplingPolicy
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
