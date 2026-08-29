@@ -46,6 +46,14 @@ release commit — the parent of the extraction. Without it release-please walks
 all 709 inherited upstream commits and writes their history into this
 repository's first changelog.
 
+**`last-release-sha` is a root option, not a per-package one.** Nested inside
+`packages["."]` it is silently ignored: the schema's package object accepts
+unknown keys, so neither `jq` nor a schema validator objects, and release-please
+walks the whole history regardless. That is what killed the second run — it died
+with `other side closed` part-way through backfilling those commits. Only the
+root `properties` list carries the key, and the only real evidence it is taking
+effect is a run that stops walking.
+
 One consequence, until the first release lands: `ComposeAiMavenPublishingPlugin`
 derives dev snapshots from the same manifest, so a local `publishToMavenLocal`
 stamps `1.46.3-SNAPSHOT`. Nothing consumes it, and it corrects itself the moment
