@@ -1,0 +1,100 @@
+# Keeps a "chore(main): release X.Y.Z" pull request up to date, and turns merging it into a
+# Maven Central publish.
+#
+# Two release-please invocations, deliberately — see AGENTS.md. A single one computes the next
+# candidate PR in the same run that cuts the release, and because our releases are drafts (and a
+# draft creates no tag) that half reads the PREVIOUS release as its baseline and re-proposes the
+# version being released. That produced a phantom PR in compose-preview-vscode#5; the same shape
+# would happen here.
+name: Release PR
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  # Quoted: the `chore(main): release ` literal contains `: `, which YAML would otherwise read as
+  # a nested mapping. A merged release PR gets its own slot so an ordinary push cannot replace it
+  # while the publish is still pending.
+  group: "release-please-${{ github.ref }}-${{ github.event_name == 'push' && startsWith(github.event.head_commit.message, 'chore(main): release ') && github.sha || 'updates' }}"
+  cancel-in-progress: false
+
+jobs:
+  release-please:
+    name: Release PR
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # create tags + GitHub Releases
+      pull-requests: write # open/update the release PR
+    outputs:
+      release_created: ${{ steps.rp.outputs.release_created }}
+      tag_name: ${{ steps.rp.outputs.tag_name }}
+    steps:
+      - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+        id: rp
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+          skip-github-pull-request: true
+
+      # A draft release does not create its tag — GitHub writes the ref only on publish — and
+      # `release.yml` checks out `ref: <tag>`. Idempotent, and `!cancelled()` so a late failure in
+      # the action cannot leave the manifest naming a version with no tag.
+      - name: Ensure the release tag exists for the draft
+        if: ${{ !cancelled() && steps.rp.outputs.release_created == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ steps.rp.outputs.tag_name }}
+          SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          if gh api "repos/{owner}/{repo}/git/ref/tags/${TAG}" >/dev/null 2>&1; then
+            echo "tag ${TAG} already exists"
+            exit 0
+          fi
+          gh api --method POST "repos/{owner}/{repo}/git/refs" \
+            -f "ref=refs/tags/${TAG}" -f "sha=${SHA}" >/dev/null
+          echo "created tag ${TAG} at ${SHA}"
+
+  release:
+    name: Release
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created == 'true' }}
+    uses: ./.github/workflows/release.yml
+    permissions:
+      contents: write
+    with:
+      tag_name: ${{ needs.release-please.outputs.tag_name }}
+    secrets:
+      SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+      SIGNING_KEY_ID: ${{ secrets.SIGNING_KEY_ID }}
+      SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+      MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+      MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+
+  # The PR half, split out so it never runs against a half-published release. Runs on an ordinary
+  # push (the normal case) or straight after a SUCCESSFUL release, to open the next one against a
+  # baseline that includes the tag just published. Deliberately not after a failed release: the
+  # baseline is stale in exactly the way that produces a phantom PR.
+  update-release-pr:
+    name: Update the release PR
+    needs: [release-please, release]
+    if: >-
+      ${{ !cancelled()
+      && (needs.release-please.outputs.release_created != 'true'
+      || needs.release.result == 'success') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+          skip-github-release: true
