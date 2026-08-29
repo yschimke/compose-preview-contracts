@@ -57,13 +57,16 @@ to do so rather than quietly dropped:
 
 ## Versioning
 
-Seeded at `1.46.2`, the upstream release these modules were extracted from, so published
-coordinates line up with the release that already carries them.
+**Decided: independent versioning at cutover, and no publishing to Maven Central before
+then.** See [docs/VERSIONING.md](docs/VERSIONING.md).
 
-**That is lockstep by default, not a decision.** #4732 lists "decide the versioning story" as
-open: two repos need either independent versions with a compatibility range on the contracts,
-or lockstep releases. Nothing here forecloses either — moving to independent versions is a
-change to `release-please-config.json` plus a range in the consumer.
+The short version: this repository holds a *copy* of modules yschimke/compose-ai-tools still
+builds and publishes, so both would publish `ee.schimke.composeai:daemon-protocol` — and the
+seeded version points at releases that already exist there. `ComposeAiMavenPublishingPlugin`
+refuses every Central publish task until the cutover, with that explanation.
+`publishToMavenLocal` still works and is what CI uses.
+
+Until cutover the version here is bookkeeping. Nothing consumes it.
 
 ## Build
 
