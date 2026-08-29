@@ -118,7 +118,7 @@ graphics-shapes = "1.1.0"
 # is what the 1.11 line above now ships. (On the old 1.10.3 floor this was held at 2.1.0 precisely so
 # it could not drag a *newer* Compose onto the renderer classpath — the failure direction
 # `docs/RENDERER_COMPATIBILITY.md` warns about. Bump only in lockstep with `compose-multiplatform`.)
-compottie = "2.2.4"
+compottie = "2.3.0"
 activity-compose = "1.13.0"
 # `androidx.navigation:navigation-compose` — used only by the
 # `:samples:android` NavHost preview that exercises the daemon's
