@@ -325,7 +325,7 @@ coil2 = "2.7.0"
 # `FigmaSvgRasterizedTextFieldRenderTest` dies with `AbstractMethodError` inside the Compose test
 # rule. 3.5.0 stops at foundation 1.11.2 and is green. Bump this when the repo's Compose floor
 # moves to 1.12, not before; the pin lives in `.github/renovate.json`.
-coil3 = "3.5.0"
+coil3 = "3.6.0"
 
 [libraries]
 # `@com.android.tools.screenshot.PreviewTest` — the marker Google's screenshot plugin requires on a
