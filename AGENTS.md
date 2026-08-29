@@ -35,38 +35,44 @@ trailer naming an agent, and no agent identity as author or committer.
 
 Renovate, configured in `renovate.json` at the repo root, extending the shared
 preset [`yschimke/renovate-config`](https://github.com/yschimke/renovate-config).
-The preset owns the schedule, the grouping-by-release-train philosophy, the
-kotlinx `-compat` filter, `rangeStrategy: pin`, and automerge of minor/patch once
-CI is green. Repo-specific rules go in this repo's own `packageRules`, which are
-appended after the preset and therefore override it.
+Repo-specific rules go in this repo's own `packageRules`, which are appended
+after the preset and therefore override it.
 
 **One config file, at the root.** Renovate refuses to run at all if it finds more
-than one of `renovate.json`, `.github/renovate.json`, `.renovaterc` and friends —
-it fails with "Found multiple config file names" rather than picking one.
+than one of `renovate.json`, `.github/renovate.json`, `.renovaterc` and friends.
+The preset also covers GitHub Actions, so there is deliberately no
+`dependabot.yml`; do not copy `compose-ai-tools`' across.
 
-**Renovate also handles GitHub Actions** (the preset has a `github-actions`
-group), so there is deliberately no `dependabot.yml` here. Upstream
-`compose-ai-tools` splits the work the other way, because it predates the preset;
-do not copy its `dependabot.yml` across.
+**Gradle updates queue on the dependency dashboard and never auto-land.** Until
+cutover this repository is a copy of modules that still build and publish from
+`compose-ai-tools`; CI checks the device-dimensions catalog against a checkout of
+it, and publishing is hard-blocked (see [`docs/VERSIONING.md`](docs/VERSIONING.md)).
+Moving the toolchain independently is divergence for no benefit while nothing here
+ships. Delete that rule at cutover.
 
-**Gradle updates do not open PRs on their own here.** They queue on the
-dependency dashboard and never auto-land, overriding the preset. Both reasons
-expire at cutover:
+### Keep the catalog minimal — it is a safety mechanism
 
-1. **This repository is a copy, not yet the home.** These modules still build and
-   publish from `compose-ai-tools`; CI checks the device-dimensions catalog
-   against a checkout of it, and publishing is hard-blocked (see
-   [`docs/VERSIONING.md`](docs/VERSIONING.md)). Letting the toolchain drift
-   independently buys nothing while nothing here ships, and creates divergence to
-   reconcile by hand later.
-2. **The catalog is unpruned.** `gradle/libs.versions.toml` came across whole —
-   174 entries, of which the nine modules here reference about 13. Renovate reads
-   the catalog, not the build files, so unattended it would open PRs for ~160
-   dependencies this repository does not consume.
+`gradle/libs.versions.toml` is pruned to exactly what the modules here reference:
+**9 versions, 3 libraries, 4 plugins**. It arrived from `compose-ai-tools` whole,
+at 174 entries, and that mattered more than tidiness:
 
-**At cutover:** prune the catalog, then delete that rule. The Robolectric
-`-SNAPSHOT` guard below it is written to keep applying, and
-`gradle/libs.versions.toml` cites it by name.
+- Renovate reads the **catalog**, not the build files, so every unused entry is a
+  dependency it will offer to bump.
+- **The build cannot fail on such a bump**, because nothing compiles against it.
+  Green CI is not evidence for an unused entry.
+- Most of those entries are held at a deliberate compatibility floor by
+  `compose-ai-tools`' `.github/renovate.json` — published-ABI floors for Compose,
+  coil3, compottie, material-kolor, `androidx.core`, `slf4j-nop`. Those ceiling
+  rules were not carried across at the split.
+
+The result was eight Renovate PRs, each past one of those floors, each with green
+CI. They were closed and the catalog pruned.
+
+**So: adding an entry here is a commitment.** If a module needing Android, Compose
+or Robolectric dependencies moves into this repository, port the matching ceiling
+rule from `compose-ai-tools`' `.github/renovate.json` **in the same change**. The
+Robolectric `-SNAPSHOT` guard is kept in `renovate.json` as the worked example,
+even though the catalog no longer carries Robolectric.
 
 ## Cross-repo checks
 

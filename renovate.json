@@ -5,7 +5,7 @@
   ],
   "packageRules": [
     {
-      "description": "Gradle updates land on the dependency dashboard instead of opening PRs, and never auto-land — overriding the preset's automerge of minor/patch. Two reasons, both of which expire at cutover. (1) This repository is still a COPY of modules that build and publish from compose-ai-tools; its CI checks the device-dimensions catalog against a compose-ai-tools checkout, and its publishing is hard-blocked (see docs/VERSIONING.md). Letting the toolchain drift independently creates divergence to reconcile by hand later, for no benefit while nothing here ships. (2) gradle/libs.versions.toml came across whole: 174 entries, of which the nine modules here reference about 13. Renovate reads the catalog, not the build files, so unattended it would open PRs for ~160 dependencies this repository does not consume. Prune the catalog and finish the cutover, then delete this rule — the Robolectric guard below is written to still apply.",
+      "description": "Gradle updates land on the dependency dashboard instead of opening PRs, and never auto-land \u2014 overriding the preset's automerge of minor/patch. Until cutover this repository is a COPY of modules that still build and publish from compose-ai-tools; its CI checks the device-dimensions catalog against a compose-ai-tools checkout, and its publishing is hard-blocked (see docs/VERSIONING.md). Moving the toolchain independently is divergence for no benefit while nothing here ships, and it has to be reconciled by hand at cutover. Delete this rule at cutover, when this repository owns these coordinates and can version them on its own.",
       "matchManagers": [
         "gradle",
         "gradle-wrapper"
@@ -14,7 +14,7 @@
       "automerge": false
     },
     {
-      "description": "robolectric: released versions only. Robolectric publishes a rolling `4.17-SNAPSHOT` to Sonatype and Renovate ranks it above `4.17-beta-2`, but this build declares no snapshot repository (nor should it, for a reproducible build) — so the bump resolves nowhere and fails every Android configuration. Betas and RCs are still fair game; only `-SNAPSHOT` is excluded. gradle/libs.versions.toml cites this rule by name. The preset's `-compat` filter covers the kotlinx side; this is the separate Robolectric trap.",
+      "description": "robolectric: released versions only. Robolectric publishes a rolling `4.17-SNAPSHOT` to Sonatype and Renovate ranks it above `4.17-beta-2`, but this build declares no snapshot repository (nor should it, for a reproducible build) \u2014 so the bump resolves nowhere and fails every Android configuration. Kept deliberately even though the pruned catalog no longer carries Robolectric: this repository grows as modules move across, and the guard costs nothing until one of them needs it. The same applies to the other ceiling rules in compose-ai-tools' .github/renovate.json (compose-bom, material-kolor, coil3, compottie, org.jetbrains.compose, androidx.core, slf4j-nop) \u2014 port the matching one WITH the dependency whenever an entry comes back into libs.versions.toml. Eight PRs past those floors were opened and closed here before the catalog was pruned; every one of them had green CI, because nothing compiled against the dependency it bumped.",
       "matchManagers": [
         "gradle"
       ],
