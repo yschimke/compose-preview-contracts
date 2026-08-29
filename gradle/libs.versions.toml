@@ -292,7 +292,7 @@ checker-qual = "4.2.2"
 # 4.0.x in `.github/renovate.json`; bumping the supported floor is a
 # manual decision (re-check `:data-wallpaper-connector:compileKotlin`
 # against `compose-bom-compat` when raising it).
-material-kolor = "4.0.5"
+material-kolor = "5.0.0"
 # Metro — Zac Sweers' compile-time DI framework, used only by the JDK 21+
 # `:samples:sdk21:android-metro-viewmodel` module to demonstrate that
 # constructor-injected ViewModels render under the renderer's @Preview
