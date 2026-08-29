@@ -1,18 +1,26 @@
 {
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "last-release-sha": "56a1f9f4360058968bcc60bb75b2251f48783dbb",
   "packages": {
     ".": {
       "release-type": "simple",
       "package-name": "compose-preview-contracts",
       "include-component-in-tag": false,
       "draft": true,
-      "last-release-sha": "56a1f9f4360058968bcc60bb75b2251f48783dbb",
       "extra-files": [
         "README.md"
       ]
     }
   },
   "$comment": [
+    "last-release-sha is a ROOT option, not a per-package one. Nested inside packages['.'] it is",
+    "silently ignored - the schema's package object accepts unknown keys, so nothing complains and",
+    "release-please walks the whole inherited history anyway. Run 2 died with `other side closed`",
+    "part-way through backfilling it. Only the ROOT properties list carries this key.",
+    "",
+    "It points at the 1.46.2 release commit, the parent of the extraction, so the changelog covers",
+    "this repository's own commits rather than 709 inherited compose-ai-tools ones.",
+    "",
     "The manifest seeds 1.46.2 - the LAST version already released under these coordinates, which is",
     "what release-please reads it as. It is not the version to release next. The cutover commit is a",
     "`feat!:`, so the first release cut here is 2.0.0: derived, not declared. Asserting 2.0.0 in the",
@@ -22,11 +30,9 @@
     "modules were extracted from; restarting at 1.0.0 would rank below it and make `latest` resolve",
     "to the stale upstream artifact. See docs/VERSIONING.md.",
     "",
-    "last-release-sha is that 1.46.2 release commit, the parent of the extraction. Without it",
-    "release-please walks all 709 inherited upstream commits and writes their history into this",
-    "repository's first changelog.",
-    "",
     "Versions here are INDEPENDENT of compose-ai-tools. That repository consumes these coordinates",
-    "at the version its gradle/libs.versions.toml pins; it no longer builds these modules."
+    "at the version its gradle/libs.versions.toml pins; it no longer builds these modules.",
+    "",
+    "$comment is the one key the schema rejects; everything else here validates against it."
   ]
 }
