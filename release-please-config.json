@@ -6,16 +6,25 @@
       "package-name": "compose-preview-contracts",
       "include-component-in-tag": false,
       "draft": true,
+      "last-release-sha": "56a1f9f4360058968bcc60bb75b2251f48783dbb",
       "extra-files": [
         "README.md"
       ]
     }
   },
   "$comment": [
-    "Re-based to 2.0.0 at cutover. The seeded 1.46.2 was the yschimke/compose-ai-tools release these",
-    "modules were extracted from; carrying it forward would have implied a lineage this repository",
-    "does not have, and re-basing DOWN (to 1.0.0, say) would rank below the 1.4x artifacts already on",
-    "Central and make `latest` resolve to the stale upstream-built ones. See docs/VERSIONING.md.",
+    "The manifest seeds 1.46.2 - the LAST version already released under these coordinates, which is",
+    "what release-please reads it as. It is not the version to release next. The cutover commit is a",
+    "`feat!:`, so the first release cut here is 2.0.0: derived, not declared. Asserting 2.0.0 in the",
+    "manifest instead told release-please 2.0.0 was already out and to propose the NEXT one.",
+    "",
+    "Re-basing had to go UP. 1.46.2 is on Central already, built from the compose-ai-tools tree these",
+    "modules were extracted from; restarting at 1.0.0 would rank below it and make `latest` resolve",
+    "to the stale upstream artifact. See docs/VERSIONING.md.",
+    "",
+    "last-release-sha is that 1.46.2 release commit, the parent of the extraction. Without it",
+    "release-please walks all 709 inherited upstream commits and writes their history into this",
+    "repository's first changelog.",
     "",
     "Versions here are INDEPENDENT of compose-ai-tools. That repository consumes these coordinates",
     "at the version its gradle/libs.versions.toml pins; it no longer builds these modules."

@@ -107,6 +107,15 @@ The signing three are needed by the **mavenLocal dry run as well**, not just the
 a release version fails with `No configured signatory` without them. A snapshot skips signing,
 which is why a local `./gradlew publishToMavenLocal` works with no keys at all.
 
+### The manifest is the LAST released version
+
+`.release-please-manifest.json` says what has already shipped, not what to ship next. It seeds
+`1.46.2` and the cutover `feat!:` computes `2.0.0` from it; writing `2.0.0` there instead told
+release-please 2.0.0 was already out and made it propose the version *after* one nothing had
+tagged. `last-release-sha` in `release-please-config.json` keeps the 709 inherited upstream
+commits out of this repository's first changelog. Both:
+[`docs/VERSIONING.md`](docs/VERSIONING.md).
+
 ### release-please runs in two halves
 
 `release-please.yml` invokes the action twice — once to cut (`skip-github-pull-request`) and once
