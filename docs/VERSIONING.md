@@ -34,6 +34,23 @@ to the stale upstream-built artifact — a silent downgrade for anyone not pinni
 exactly. `2.0.0` is a genuine re-base that is still unambiguously the newest
 thing under these coordinates.
 
+**2.0.0 is derived, not declared.** `.release-please-manifest.json` seeds
+`1.46.2`, because release-please reads the manifest as *the version already
+released* — not the one to release next. The cutover commit is a `feat!:`, so
+the first release cut here computes to `2.0.0` on its own. Writing `2.0.0` into
+the manifest instead said "2.0.0 is out already" and made release-please propose
+the version *after* it.
+
+`release-please-config.json` also pins `last-release-sha` to that `1.46.2`
+release commit — the parent of the extraction. Without it release-please walks
+all 709 inherited upstream commits and writes their history into this
+repository's first changelog.
+
+One consequence, until the first release lands: `ComposeAiMavenPublishingPlugin`
+derives dev snapshots from the same manifest, so a local `publishToMavenLocal`
+stamps `1.46.3-SNAPSHOT`. Nothing consumes it, and it corrects itself the moment
+`2.0.0` is released and the manifest moves.
+
 ### Independent, not lockstep
 
 Three reasons, unchanged by cutover:
