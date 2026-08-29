@@ -78,6 +78,43 @@ rule from `compose-ai-tools`' `.github/renovate.json` **in the same change**. Th
 Robolectric `-SNAPSHOT` guard is kept in `renovate.json` as the worked example,
 even though the catalog no longer carries Robolectric.
 
+## Releasing
+
+Merging the `chore(main): release X.Y.Z` pull request is the whole release: it cuts the tag,
+drafts the GitHub Release, publishes all nine coordinates to Maven Central, then un-drafts.
+
+**A published coordinate is permanent.** Central does not accept a second upload of the same
+GAV, and `publishToMavenCentral(automaticRelease = true)` promotes without a human looking. So
+every check that can run before the upload does: `check` for all nine modules, the tag against
+`.release-please-manifest.json`, a `publishToMavenLocal` dry run asserting each module produced a
+POM, and a credentials preflight that names any missing secret. The release stays a draft until
+the upload succeeds, so a failure never leaves a release announcing artifacts that are not there.
+
+### Secrets
+
+Five, the same names `compose-ai-tools` uses:
+
+| Secret | Maps to |
+| --- | --- |
+| `SIGNING_KEY` | `ORG_GRADLE_PROJECT_signingInMemoryKey` — the armoured GPG private key |
+| `SIGNING_KEY_ID` | `ORG_GRADLE_PROJECT_signingInMemoryKeyId` |
+| `SIGNING_KEY_PASSWORD` | `ORG_GRADLE_PROJECT_signingInMemoryKeyPassword` |
+| `MAVEN_CENTRAL_USERNAME` | `ORG_GRADLE_PROJECT_mavenCentralUsername` — Central Portal token |
+| `MAVEN_CENTRAL_PASSWORD` | `ORG_GRADLE_PROJECT_mavenCentralPassword` |
+
+The signing three are needed by the **mavenLocal dry run as well**, not just the Central upload:
+`ComposeAiMavenPublishingPlugin` signs every non-snapshot publication, so `publishToMavenLocal` at
+a release version fails with `No configured signatory` without them. A snapshot skips signing,
+which is why a local `./gradlew publishToMavenLocal` works with no keys at all.
+
+### release-please runs in two halves
+
+`release-please.yml` invokes the action twice — once to cut (`skip-github-pull-request`) and once
+afterwards for the PR (`skip-github-release`). Do not collapse them. A single invocation computes
+the next candidate PR while the release it just cut is still a **tagless draft**, so that half
+reads the previous release as its baseline and re-proposes the version being released. That is
+compose-preview-vscode#5, which happened on that repository's first release.
+
 ## Cross-repo checks
 
 `DeviceDimensionsCatalogDriftTest` compares a catalog duplicated in the upstream Gradle plugin.

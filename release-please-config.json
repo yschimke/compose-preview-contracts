@@ -6,17 +6,18 @@
       "package-name": "compose-preview-contracts",
       "include-component-in-tag": false,
       "draft": true,
-      "extra-files": ["README.md"]
+      "extra-files": [
+        "README.md"
+      ]
     }
   },
   "$comment": [
-    "Seeded at 1.46.2 — the yschimke/compose-ai-tools version these modules were extracted from —",
-    "so published coordinates line up with the release that already carries them and the first",
-    "cutover is a no-op rather than a version jump.",
+    "Re-based to 2.0.0 at cutover. The seeded 1.46.2 was the yschimke/compose-ai-tools release these",
+    "modules were extracted from; carrying it forward would have implied a lineage this repository",
+    "does not have, and re-basing DOWN (to 1.0.0, say) would rank below the 1.4x artifacts already on",
+    "Central and make `latest` resolve to the stale upstream-built ones. See docs/VERSIONING.md.",
     "",
-    "This is LOCKSTEP BY DEFAULT, not a decision. compose-ai-tools#4732 lists 'decide the",
-    "versioning story' as open: two repos need either independent versions with a compatibility",
-    "range on the contracts, or lockstep releases. Nothing here forecloses either — moving to",
-    "independent versions is a change to this file plus a range in the consumer, not a rewrite."
+    "Versions here are INDEPENDENT of compose-ai-tools. That repository consumes these coordinates",
+    "at the version its gradle/libs.versions.toml pins; it no longer builds these modules."
   ]
 }
