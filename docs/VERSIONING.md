@@ -1,40 +1,42 @@
 # Versioning
 
-compose-ai-tools#4732 lists "decide the versioning story" as open, with two
+compose-ai-tools#4732 listed "decide the versioning story" as open, with two
 options: independent versions with a compatibility range on the contracts, or
-lockstep releases. This is that decision.
+lockstep releases. This is that decision, and the cutover it was waiting on.
 
 ## The decision
 
-**Independent versioning, at cutover. No publishing from here before then.**
+**Independent versioning. This repository owns these coordinates.**
 
-Two parts, because they bind at different times.
+### Cutover: done
 
-### Now: this repository does not publish to Maven Central
+This repository publishes `ee.schimke.composeai:daemon-protocol` and its siblings
+to Maven Central. `compose-ai-tools` no longer builds them — it consumes the
+published artifacts.
 
-It cannot, safely. It was seeded as a **copy** of the contract modules in
-yschimke/compose-ai-tools, not as their new home — #4732 took the narrow cut, and
-the cutover (that repository dropping these modules and consuming these artifacts
-instead) has not happened. Both repositories therefore build
-`ee.schimke.composeai:daemon-protocol` and its siblings.
+Before cutover it could not publish at all, and `ComposeAiMavenPublishingPlugin`
+refused every Central task to enforce that: this repository held a **copy** of
+modules that still built and published upstream, and two repositories cannot own
+one coordinate — whichever publishes second either collides with a version that
+exists or silently replaces what the other shipped. That guard is deleted, which
+is what cutover means. Do not reintroduce it.
 
-Two repositories cannot own one coordinate. Whichever publishes second either
-collides with a version that exists or silently replaces what the other shipped.
-The seeded version sharpens it: `.release-please-manifest.json` starts at the
-upstream release these modules were extracted from, so a release from here would
-target versions **already on Central, published from there** — and
-`publishToMavenCentral(automaticRelease = true)` promotes without review.
+### The version was re-based to 2.0.0
 
-`ComposeAiMavenPublishingPlugin` refuses every Central publish task with that
-explanation. `publishToMavenLocal` is untouched: it is how CI proves the POMs
-resolve, and it reaches nobody.
+Not continued from `1.46.2`. That number was the upstream release these modules
+were extracted from, and carrying it forward would imply a lineage this
+repository does not have — the artifacts published under `1.4x` came from
+`compose-ai-tools`, built from its tree.
 
-Until cutover the version in this repository is **bookkeeping, not a contract**.
-Nothing consumes it.
+**Re-basing had to go up, not down.** `1.46.2` is on Central already. A restart at
+`1.0.0` would be ranked *older* by Gradle and Renovate, so "latest" would resolve
+to the stale upstream-built artifact — a silent downgrade for anyone not pinning
+exactly. `2.0.0` is a genuine re-base that is still unambiguously the newest
+thing under these coordinates.
 
-### At cutover: independent, with a declared compatibility range
+### Independent, not lockstep
 
-Not lockstep, for three reasons.
+Three reasons, unchanged by cutover:
 
 1. **Lockstep forces empty releases.** compose-ai-tools releases far more often
    than its wire contracts change — most releases touch renderers, the CLI, the
@@ -49,27 +51,27 @@ Not lockstep, for three reasons.
    churns. A version that moves with the churn contradicts the reason for the
    split.
 
-So: this repository versions on its own cadence, driven by changes to the
-contracts themselves, and consumers declare the range they work against.
+## What cutover cost, and what it bought
 
-### What cutover requires
+The price is **atomicity**. Before, a change to a wire contract and its consumers
+was one pull request and one CI run. Now it is: change here → release here →
+bump the coordinate in `compose-ai-tools` → adopt. Two repositories and a release
+in between, for every contract change.
 
-- compose-ai-tools stops building these modules and depends on the published
-  coordinates.
-- **Delete the guard** in `ComposeAiMavenPublishingPlugin` — do not leave it
-  behind a permanently-set flag. `-Pcomposeai.contracts.cutover=true` exists so
-  an intentional dry run is possible, not as a setting.
-- Re-base the version. Continuing from the seeded upstream number would imply a
-  lineage this repository does not have.
-- Consumers declare a range rather than a point pin.
+That cost is concentrated where the contracts are thinnest. At cutover
+`common-io` had 37 dependents upstream and `data-render-core` 28 — 65 of the ~70
+call sites — while the four actual wire contracts had 8 between them. Neither of
+those two is a wire contract; they are here only because the contracts re-export
+them as `api`. **Narrowing that re-export is what would make this split pay**, and
+it remains the open work.
 
-## Consumers today
+## Consumers
 
 | consumer | how it versions | how it pins |
 | --- | --- | --- |
-| [compose-preview-vscode](https://github.com/yschimke/compose-preview-vscode) | its own (`package.json`), already independent | `composeAiPlugin` in `plugin-version.json`, a point pin on a compose-ai-tools **release** |
-| compose-ai-tools | release-please, one version for that repository | builds its own copy of these modules; consumes nothing from here |
+| [compose-preview-vscode](https://github.com/yschimke/compose-preview-vscode) | its own (`package.json`) | `composeAiPlugin` in `plugin-version.json`, a point pin on a compose-ai-tools **release** |
+| compose-ai-tools | release-please, one version for that repository | `composeaiContractsVersion` in `gradle.properties`, a point pin on a release from here |
 
-The extension is the shape this repository should take at cutover: its own
-version, an explicit pin on what it consumes, and a gate that fails when the pin
-and the vendored copy disagree.
+Both pin a point rather than a range today. A range is the eventual shape — it is
+what lets a consumer take a patch without a pull request — but it needs a
+compatibility story this repository has not yet had to state.

@@ -21,7 +21,13 @@ split, and the reason `render-session-api` is not here (README).
 `data-*-core` modules and `common-io` are here only because the wire contracts re-export them
 as `api`; that is the bar.
 
-**Run the formatter before committing.** `./gradlew ktfmtFormatAll` (or
+**This repository publishes to Maven Central, and nothing else does.** `compose-ai-tools`
+consumes `ee.schimke.composeai:*` from here; it no longer builds these modules. A change to a
+wire contract therefore reaches that repository only through a release — change here, release,
+then bump `composeaiContractsVersion` there. That is the cost the split bought, and the reason
+an ABI break is expensive: see [`docs/VERSIONING.md`](docs/VERSIONING.md).
+
+**Run the formatter before committing.** `./gradlew ktfmtFormat` (or
 `:<module>:ktfmtFormatMain :<module>:ktfmtFormatTest`). `check` runs `ktfmtCheck` and it is a
 hard gate.
 
@@ -43,12 +49,10 @@ than one of `renovate.json`, `.github/renovate.json`, `.renovaterc` and friends.
 The preset also covers GitHub Actions, so there is deliberately no
 `dependabot.yml`; do not copy `compose-ai-tools`' across.
 
-**Gradle updates queue on the dependency dashboard and never auto-land.** Until
-cutover this repository is a copy of modules that still build and publish from
-`compose-ai-tools`; CI checks the device-dimensions catalog against a checkout of
-it, and publishing is hard-blocked (see [`docs/VERSIONING.md`](docs/VERSIONING.md)).
-Moving the toolchain independently is divergence for no benefit while nothing here
-ships. Delete that rule at cutover.
+Gradle updates follow the preset — the "queue everything on the dashboard until
+cutover" rule is gone, because the cutover happened: this repository owns its
+coordinates and versions on its own cadence (see
+[`docs/VERSIONING.md`](docs/VERSIONING.md)).
 
 ### Keep the catalog minimal — it is a safety mechanism
 
