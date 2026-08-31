@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "callId": "call-1",
+  "actorId": "agent-1",
+  "request": {
+    "type": "exportDesign",
+    "sessionId": "session-1",
+    "revision": 8,
+    "format": "svg"
+  }
+}

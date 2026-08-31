@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "sessionId": "session-1",
+  "afterSequence": 12,
+  "throughSequence": 13,
+  "currentRevision": 8,
+  "retainedFromSequence": 1,
+  "operations": [
+    {
+      "sequence": 13,
+      "revision": 8,
+      "operation": {
+        "schemaVersion": 1,
+        "operationId": "operation-2",
+        "actorId": "actor-b",
+        "baseRevision": 7,
+        "issuedAtEpochMillis": 3100,
+        "command": {"type": "renameDesign", "name": "Shared player"}
+      },
+      "outcome": {
+        "operationId": "operation-2",
+        "revision": 8,
+        "sequence": 13,
+        "appliedCommand": {"type": "renameDesign", "name": "Shared player"}
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "requestId": "request-1",
+  "actorId": "actor-a",
+  "request": {
+    "type": "applyOperation",
+    "sessionId": "session-1",
+    "operation": {
+      "schemaVersion": 1,
+      "operationId": "operation-1",
+      "actorId": "actor-a",
+      "baseRevision": 7,
+      "issuedAtEpochMillis": 3000,
+      "command": {
+        "type": "batch",
+        "commands": [
+          {"type": "insertNode", "parentId": "root", "parentSlot": "content", "index": 0, "node": {"nodeId": "button", "componentKey": "Button"}},
+          {"type": "moveNode", "nodeId": "button", "parentId": "root", "parentSlot": "bottomBar", "index": 0},
+          {"type": "deleteNode", "nodeId": "old"},
+          {"type": "restoreSubtree", "parentId": "root", "parentSlot": "content", "index": 1, "rootNodeId": "old", "nodes": {"old": {"nodeId": "old", "componentKey": "Text"}}},
+          {"type": "setProperty", "nodeId": "button", "propertyKey": "label", "value": {"type": "string", "value": "Play"}},
+          {"type": "removeProperty", "nodeId": "button", "propertyKey": "icon"},
+          {"type": "setNodeState", "nodeId": "button", "state": {"visible": false}},
+          {"type": "setPresentation", "presentation": {"viewport": {"widthPx": 360, "heightPx": 800, "density": 3.0}, "theme": "light"}},
+          {"type": "renameDesign", "name": "Player"},
+          {"type": "undo", "targetOperationId": "operation-0"},
+          {"type": "redo", "targetOperationId": "operation-0"}
+        ]
+      }
+    }
+  }
+}

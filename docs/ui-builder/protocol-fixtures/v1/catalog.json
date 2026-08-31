@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "reference": {
+    "catalogId": "material3",
+    "catalogVersion": "1.0.0",
+    "catalogDigest": "sha256:catalog"
+  },
+  "displayName": "Material 3",
+  "components": [
+    {
+      "componentKey": "Scaffold",
+      "displayName": "Scaffold",
+      "kind": "scaffold",
+      "slots": [
+        {
+          "slotName": "content",
+          "displayName": "Content",
+          "cardinality": "exactlyOne",
+          "acceptedKinds": ["container", "composable"]
+        }
+      ],
+      "properties": [
+        {
+          "propertyKey": "containerColor",
+          "displayName": "Container color",
+          "valueKind": "color",
+          "defaultValue": {"type": "color", "argbHex": "fffef7ff"}
+        },
+        {
+          "propertyKey": "alignment",
+          "displayName": "Alignment",
+          "valueKind": "enum",
+          "enumValues": ["start", "center", "end"]
+        }
+      ],
+      "tags": ["layout"]
+    }
+  ],
+  "exportCapabilities": {"composeCode": true, "svg": true, "png": true}
+}

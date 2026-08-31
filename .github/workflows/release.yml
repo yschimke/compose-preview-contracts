@@ -102,7 +102,7 @@ jobs:
           echo "publishing $have"
 
       # Everything the artifacts have to survive, before they are permanent: compile, test, ktfmt
-      # and checkKotlinAbi for all nine modules.
+      # and checkKotlinAbi for all ten modules.
       - name: Check
         env:
           PLUGIN_VERSION: ${{ inputs.tag_name }}
@@ -127,12 +127,19 @@ jobs:
           V="${TAG_NAME#v}"
           PLUGIN_VERSION="$V" ./gradlew --no-daemon publishToMavenLocal
           for m in daemon-protocol daemon-devices daemon-bta agent-grant-protocol \
+                   ui-builder-protocol \
                    data-render-core data-layoutinspector-core data-theme-core \
                    data-preview-overrides-core common-io; do
             pom="$HOME/.m2/repository/ee/schimke/composeai/$m/$V/$m-$V.pom"
             [ -f "$pom" ] || { echo "::error::$m did not produce a POM at $V"; exit 1; }
           done
-          echo "all nine modules produced artifacts at $V"
+          # A KMP root POM can exist while one target publication is missing. Verify both concrete
+          # variants the UI builder's server and browser resolve, not only its metadata coordinate.
+          for m in ui-builder-protocol-jvm ui-builder-protocol-wasm-js; do
+            pom="$HOME/.m2/repository/ee/schimke/composeai/$m/$V/$m-$V.pom"
+            [ -f "$pom" ] || { echo "::error::$m did not produce a POM at $V"; exit 1; }
+          done
+          echo "all ten modules (twelve coordinates) produced artifacts at $V"
 
       - name: Publish to Maven Central
         env:
