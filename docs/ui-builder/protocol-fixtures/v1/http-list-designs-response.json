@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "requestId": "request-list-1",
+  "response": {
+    "type": "designs",
+    "designs": [
+      {
+        "designId": "design-1",
+        "title": "Jetcaster Discover",
+        "revision": 42,
+        "accessRevision": 5,
+        "catalogPin": {
+          "systemId": "m3-catalog",
+          "catalogRevision": "candidate",
+          "capabilityDigest": "sha256:catalog",
+          "nativeRuntimeId": "m3-catalog-wasm"
+        },
+        "createdAtEpochMillis": 1750000000000,
+        "updatedAtEpochMillis": 1750000010000,
+        "ownerActorId": "actor-reader",
+        "requesterAccess": {
+          "actorId": "actor-reader",
+          "role": "owner",
+          "allowedActions": ["read", "write", "export", "manageAccess", "delete"]
+        }
+      }
+    ],
+    "nextCursor": "cursor-next-page"
+  }
+}

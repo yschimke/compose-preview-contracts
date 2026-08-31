@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "callId": "call-access-read-1",
+  "actorId": "actor-reader",
+  "request": {
+    "type": "getDesignAccess",
+    "designId": "design-1"
+  }
+}

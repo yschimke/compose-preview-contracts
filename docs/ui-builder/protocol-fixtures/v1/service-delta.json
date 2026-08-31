@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "designId": "design-1",
+  "afterSequence": 12,
+  "throughSequence": 13,
+  "currentRevision": 8,
+  "retainedFromSequence": 1,
+  "operations": [
+    {
+      "submission": {"type": "batch", "designId": "design-1", "operationId": "operation-2", "actorId": "actor-b", "clientId": "mcp-b", "baseRevision": 7, "operations": [{"type": "setProperty", "nodeId": "title", "property": "text", "value": {"type": "string", "value": "Shared player"}}]},
+      "outcome": {"operationId": "operation-2", "committedRevision": 8, "sequence": 13, "documentHash": "7694f4a66316e53c8cdd9d9954bd611d0aabb11fc398230982d7d851c9766a5c", "idempotentReplay": false}
+    }
+  ]
+}

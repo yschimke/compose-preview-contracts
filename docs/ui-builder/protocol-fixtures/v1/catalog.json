@@ -1,0 +1,50 @@
+{
+  "schema": "compose-ui-builder-capabilities/v1-candidate",
+  "benchmark": {
+    "id": "jetcaster-discover-expanded",
+    "sourceRevision": "android-compose-samples@018c5207",
+    "catalogSystemId": "m3-catalog",
+    "catalogRevision": "1.0.0",
+    "nativeRuntimeId": "m3-wasm@1.0.0"
+  },
+  "statusSemantics": {"adapterStatus": {"supported": "Current Wasm adapter"}},
+  "components": [
+    {
+      "componentId": "layout/scaffold",
+      "displayName": "Scaffold",
+      "role": "Scaffold",
+      "traits": ["ScreenContent", "SlotContent"],
+      "slots": [
+        {
+          "name": "content",
+          "cardinality": {"min": 1, "max": 1},
+          "ordered": true,
+          "acceptedRoles": ["Container", "Leaf"],
+          "acceptedTraits": ["AnyContent"]
+        }
+      ],
+      "properties": [
+        {
+          "name": "containerColor",
+          "jsonType": ["string", "null"],
+          "required": true,
+          "allowedValues": ["background", "surface"],
+          "notes": "Token or explicit color"
+        }
+      ],
+      "modifierCapabilities": ["fillMaxSize", "padding"],
+      "wasm": {"platformSupported": true, "adapterStatus": "supported", "notes": "Pinned adapter"},
+      "code": {"symbol": "Scaffold", "imports": ["androidx.compose.material3.Scaffold"]},
+      "svg": {"status": "raster-fallback-required", "fallback": "embedded-raster", "blocksExport": false, "notes": "Named fallback only"}
+    },
+    {
+      "componentId": "layout/supporting-pane-scaffold",
+      "displayName": "Supporting pane scaffold",
+      "role": "Scaffold",
+      "traits": ["ScreenContent", "AdaptivePaneLayout"],
+      "properties": [{"name": "layoutMode", "jsonType": "string", "allowedValues": ["adaptive", "expandedTwoPane"]}],
+      "wasm": {"platformSupported": "unverified", "adapterStatus": "unsupported"}
+    }
+  ],
+  "exportCapabilities": {"composeCode": true, "svg": true, "png": true}
+}

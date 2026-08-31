@@ -44,6 +44,21 @@ public enum class AgentGrantCapability(
     // days" would understate the exposure on any box configured for longer — on the one page whose
     // job is to state accurately what is being agreed to.
     "Upload rendered preview images, published at unlisted URLs on this server until they expire",
+  ),
+
+  /** Read catalogs, design listings, snapshots and deltas without persistent mutation rights. */
+  UI_BUILDER_READ("ui-builder-read", "Read UI builder catalogs and persistent designs"),
+
+  /** Create and mutate persistent designs, including their owner-controlled sharing policy. */
+  UI_BUILDER_WRITE(
+    "ui-builder-write",
+    "Create and edit persistent UI builder designs and manage their sharing",
+  ),
+
+  /** Request revision-pinned Compose, SVG or PNG exports from persistent designs. */
+  UI_BUILDER_EXPORT(
+    "ui-builder-export",
+    "Export revision-pinned UI builder designs as Compose, SVG or PNG",
   );
 
   public companion object {

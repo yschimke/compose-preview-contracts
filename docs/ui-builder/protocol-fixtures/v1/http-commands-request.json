@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "requestId": "request-1",
+  "actorId": "actor-a",
+  "request": {
+    "type": "applyOperation",
+    "submission": {
+      "type": "batch",
+      "designId": "design-1",
+      "operationId": "operation-1",
+      "actorId": "actor-a",
+      "clientId": "wasm-a",
+      "baseRevision": 7,
+      "operations": [
+        {"type": "insertNode", "node": {"id": "button", "componentId": "m3/button", "properties": {}, "modifiers": [], "slots": {}, "eventBindings": {}}, "location": {"parent": {"nodeId": "root", "slot": "content"}, "afterNodeId": "title"}},
+        {"type": "setProperty", "nodeId": "button", "property": "label", "value": {"type": "string", "value": "Play"}}
+      ]
+    }
+  }
+}

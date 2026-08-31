@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "callId": "call-1",
+  "response": {
+    "type": "export",
+    "artifact": {
+      "format": "svg",
+      "mediaType": "image/svg+xml",
+      "encoding": "utf8",
+      "content": "<svg/>",
+      "contentDigest": "sha256:svg",
+      "diagnostics": [
+        {"severity": "warning", "code": "rasterized", "message": "one image is embedded", "nodeId": "cover"}
+      ]
+    }
+  }
+}

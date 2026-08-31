@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "lastSequence": 12,
+  "document": {
+    "schema": "compose-ui-builder-document/v1-candidate",
+    "id": "design-1",
+    "title": "Jetcaster home",
+    "revision": 7,
+    "catalogPin": {"systemId": "m3-catalog", "catalogRevision": "candidate", "capabilityDigest": "sha256:catalog", "nativeRuntimeId": "candidate"},
+    "environment": {"widthDp": 1280, "heightDp": 800, "density": 2.0, "theme": "dark", "locale": "en-GB", "fontScale": 1.1, "layoutDirection": "ltr"},
+    "roots": ["root"],
+    "nodes": {
+      "root": {
+        "id": "root",
+        "componentId": "layout/scaffold",
+        "properties": {"title": {"type": "string", "value": "Jetcaster"}, "dark": {"type": "bool", "value": true}, "count": {"type": "int", "value": 3}, "alpha": {"type": "float", "value": 0.75}},
+        "modifiers": [],
+        "slots": {"content": ["title"]},
+        "eventBindings": {}
+      },
+      "title": {"id": "title", "componentId": "m3/text", "properties": {}, "modifiers": [], "slots": {}, "eventBindings": {}}
+    },
+    "createdAtEpochMillis": 1000,
+    "updatedAtEpochMillis": 2000
+  }
+}

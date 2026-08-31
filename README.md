@@ -15,6 +15,7 @@ Extracted from [yschimke/compose-ai-tools](https://github.com/yschimke/compose-a
 | `daemon-devices` | the device catalog and the `spec:` parser |
 | `daemon-bta` | Build Tools API shapes — `CompileErrorDetail`, `SourceChangeSet` |
 | `agent-grant-protocol` | the `--agent-grants` vocabulary; the server mints, the client asks |
+| `ui-builder-protocol` | versioned catalog, design, command, collaboration and transport-envelope shapes shared by the UI builder's browser, server and MCP clients |
 
 `daemon-protocol` depends on **no other `ee.schimke.composeai` module**: the payload schemas that
 appear as protocol fields — `SemanticsDelta`, `ThemeDelta`, `PreviewOverrideValue`, the pipeline
@@ -27,6 +28,13 @@ Also published, and not wire contracts: `data-render-core`, `data-layoutinspecto
 shapes) and `common-io`. They are here because `compose-preview serve` depends on all five and
 must resolve them by coordinate — see
 [`docs/VERSIONING.md`](docs/VERSIONING.md#the-five-stay-published-and-that-is-the-point).
+
+`ui-builder-protocol` is deliberately independent of Compose and the preview server. Its v1 DTOs
+describe catalog capabilities, persisted designs, typed edit commands, collaboration snapshots and
+deltas, actor-specific listings, independently revisioned owner/ACL/share-link access control, and
+HTTP/MCP envelopes. It contains no reducer, store, renderer or transport implementation. Agent
+grants expose UI builder read, write and export as three independent capabilities; none is implied
+by the preview/live/playground scope ladder.
 
 Every module is `explicitApi()` with Kotlin ABI validation wired into `check`, because these
 are contracts two repositories compile across.

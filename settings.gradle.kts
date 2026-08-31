@@ -1,6 +1,6 @@
 // The compose-preview wire contracts, extracted from yschimke/compose-ai-tools.
 //
-// What is here is the closure of the four client-facing protocol modules — the shapes a
+// What is here is the closure of the client-facing protocol modules — the shapes a
 // preview client (the VS Code extension, an extracted `compose-preview serve`, any other
 // consumer) needs in order to speak to the daemon — and nothing that implements them.
 // See README.md for why `render-session-api` is NOT here.
@@ -47,6 +47,13 @@ project(":daemon-bta").projectDir = file("daemon/bta")
 include(":agent-grant-protocol")
 
 project(":agent-grant-protocol").projectDir = file("api/agent-grant-protocol")
+
+// The shared v1 wire vocabulary for the standalone Compose UI builder. Browser, server and MCP
+// clients all compile against these shapes; reducers, persistence and transports stay in their
+// owning implementation repositories.
+include(":ui-builder-protocol")
+
+project(":ui-builder-protocol").projectDir = file("api/ui-builder-protocol")
 
 // ---- published, but not wire contracts ------------------------------------------------------
 //

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "requestId": "request-list-1",
+  "actorId": "actor-reader",
+  "request": {
+    "type": "listDesigns",
+    "cursor": "cursor-previous-page",
+    "limit": 25
+  }
+}

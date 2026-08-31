@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "requestId": "request-access-conflict-1",
+  "response": {
+    "type": "error",
+    "error": {
+      "code": "accessRevisionMismatch",
+      "message": "access revision mismatch",
+      "currentAccessRevision": 8
+    }
+  }
+}

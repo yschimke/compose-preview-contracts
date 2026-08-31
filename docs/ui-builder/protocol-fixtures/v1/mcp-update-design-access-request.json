@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "callId": "call-access-1",
+  "actorId": "actor-owner",
+  "request": {
+    "type": "updateDesignAccess",
+    "designId": "design-1",
+    "baseAccessRevision": 5,
+    "mutations": [
+      {
+        "type": "grantActor",
+        "actorId": "actor-editor",
+        "role": "editor",
+        "allowedActions": ["read", "write", "export"]
+      },
+      {
+        "type": "revokeActor",
+        "actorId": "actor-old-viewer"
+      },
+      {
+        "type": "createShareLink",
+        "role": "viewer",
+        "allowedActions": ["read"],
+        "expiresAtEpochMillis": 1751000000000
+      },
+      {
+        "type": "revokeShareLink",
+        "shareId": "share-old-secret"
+      },
+      {
+        "type": "transferOwnership",
+        "newOwnerActorId": "actor-next-owner"
+      }
+    ]
+  }
+}

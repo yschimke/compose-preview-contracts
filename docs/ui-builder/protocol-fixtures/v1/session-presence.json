@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "designId": "design-1",
+  "update": {
+    "type": "presence",
+    "update": {
+      "type": "upsert",
+      "presence": {
+        "actorId": "actor-a",
+        "clientId": "wasm-a",
+        "displayName": "Ada",
+        "colorArgbHex": "ff6750a4",
+        "selectedNodeIds": ["button"],
+        "pointer": {"x": 120.5, "y": 300.0},
+        "observedRevision": 8
+      }
+    }
+  }
+}
