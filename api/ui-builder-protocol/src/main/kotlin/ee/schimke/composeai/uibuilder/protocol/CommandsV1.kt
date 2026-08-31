@@ -107,6 +107,12 @@ public data class AcceptedOutcomeV1(
   public val documentHash: String,
   public val idempotentReplay: Boolean,
   public val conflicts: List<CommandConflictV1> = emptyList(),
+  /**
+   * Authoritative [DesignDocumentV1.updatedAtEpochMillis] included in [documentHash]. Delta clients
+   * need this server-owned value to reconstruct and verify the committed document without fetching
+   * a snapshot. Null identifies an outcome produced before this additive field was available.
+   */
+  public val documentUpdatedAtEpochMillis: Long? = null,
 ) : CommandOutcomeV1
 
 @Serializable

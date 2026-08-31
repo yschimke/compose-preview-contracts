@@ -514,7 +514,7 @@ sealed interface ee.schimke.composeai.uibuilder.protocol/UiValueV1 { // ee.schim
 }
 
 final class ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1 : ee.schimke.composeai.uibuilder.protocol/CommandOutcomeV1 { // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1|null[0]
-    constructor <init>(kotlin/String, kotlin/Long, kotlin/Long, kotlin/String, kotlin/Boolean, kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/CommandConflictV1> = ...) // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.<init>|<init>(kotlin.String;kotlin.Long;kotlin.Long;kotlin.String;kotlin.Boolean;kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.CommandConflictV1>){}[0]
+    constructor <init>(kotlin/String, kotlin/Long, kotlin/Long, kotlin/String, kotlin/Boolean, kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/CommandConflictV1> = ..., kotlin/Long? = ...) // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.<init>|<init>(kotlin.String;kotlin.Long;kotlin.Long;kotlin.String;kotlin.Boolean;kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.CommandConflictV1>;kotlin.Long?){}[0]
 
     final val committedRevision // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.committedRevision|{}committedRevision[0]
         final fun <get-committedRevision>(): kotlin/Long // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.committedRevision.<get-committedRevision>|<get-committedRevision>(){}[0]
@@ -522,6 +522,8 @@ final class ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1 : ee.schim
         final fun <get-conflicts>(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/CommandConflictV1> // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.conflicts.<get-conflicts>|<get-conflicts>(){}[0]
     final val documentHash // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.documentHash|{}documentHash[0]
         final fun <get-documentHash>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.documentHash.<get-documentHash>|<get-documentHash>(){}[0]
+    final val documentUpdatedAtEpochMillis // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.documentUpdatedAtEpochMillis|{}documentUpdatedAtEpochMillis[0]
+        final fun <get-documentUpdatedAtEpochMillis>(): kotlin/Long? // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.documentUpdatedAtEpochMillis.<get-documentUpdatedAtEpochMillis>|<get-documentUpdatedAtEpochMillis>(){}[0]
     final val idempotentReplay // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.idempotentReplay|{}idempotentReplay[0]
         final fun <get-idempotentReplay>(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.idempotentReplay.<get-idempotentReplay>|<get-idempotentReplay>(){}[0]
     final val operationId // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.operationId|{}operationId[0]
@@ -535,7 +537,8 @@ final class ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1 : ee.schim
     final fun component4(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.component4|component4(){}[0]
     final fun component5(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.component5|component5(){}[0]
     final fun component6(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/CommandConflictV1> // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.component6|component6(){}[0]
-    final fun copy(kotlin/String = ..., kotlin/Long = ..., kotlin/Long = ..., kotlin/String = ..., kotlin/Boolean = ..., kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/CommandConflictV1> = ...): ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1 // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.copy|copy(kotlin.String;kotlin.Long;kotlin.Long;kotlin.String;kotlin.Boolean;kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.CommandConflictV1>){}[0]
+    final fun component7(): kotlin/Long? // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.component7|component7(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/Long = ..., kotlin/Long = ..., kotlin/String = ..., kotlin/Boolean = ..., kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/CommandConflictV1> = ..., kotlin/Long? = ...): ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1 // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.copy|copy(kotlin.String;kotlin.Long;kotlin.Long;kotlin.String;kotlin.Boolean;kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.CommandConflictV1>;kotlin.Long?){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/AcceptedOutcomeV1.toString|toString(){}[0]
