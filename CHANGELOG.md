@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.1.0...v2.2.0) (2026-08-31)
+
+
+### Features
+
+* add UI builder protocol ([#27](https://github.com/yschimke/compose-preview-contracts/issues/27)) ([1206d09](https://github.com/yschimke/compose-preview-contracts/commit/1206d0901988c66e803556b03eb688a6d6af1f40))
+
 ## [2.1.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.0.0...v2.1.0) (2026-08-29)
 
 
