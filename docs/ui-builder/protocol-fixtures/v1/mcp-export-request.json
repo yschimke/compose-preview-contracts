@@ -4,7 +4,7 @@
   "actorId": "agent-1",
   "request": {
     "type": "exportDesign",
-    "sessionId": "session-1",
+    "designId": "design-1",
     "revision": 8,
     "format": "svg"
   }

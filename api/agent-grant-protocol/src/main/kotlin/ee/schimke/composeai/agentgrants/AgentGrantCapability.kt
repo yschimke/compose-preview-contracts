@@ -44,6 +44,18 @@ public enum class AgentGrantCapability(
     // days" would understate the exposure on any box configured for longer — on the one page whose
     // job is to state accurately what is being agreed to.
     "Upload rendered preview images, published at unlisted URLs on this server until they expire",
+  ),
+
+  /**
+   * Read and persist UI builder designs and request their revision-pinned exports.
+   *
+   * This is independent of the preview/live/playground compute ladder. In particular, even a
+   * playground grant cannot mutate a persistent design unless the approver selected this capability
+   * separately.
+   */
+  UI_BUILDER(
+    "ui-builder",
+    "Read and edit persistent UI builder designs and request their revision-pinned exports",
   );
 
   public companion object {

@@ -1,0 +1,169 @@
+{
+  "document": {
+    "schema": "compose-ui-builder-document/v1-candidate",
+    "id": "design-lossless",
+    "title": "Lossless document",
+    "revision": 42,
+    "catalogPin": {
+      "systemId": "m3-catalog",
+      "catalogRevision": "1.0.0",
+      "capabilityDigest": "sha256:catalog",
+      "nativeRuntimeId": "m3-wasm@1.0.0"
+    },
+    "environment": {
+      "widthDp": 1280,
+      "heightDp": 800,
+      "density": 1.0,
+      "theme": "dark",
+      "dynamicColor": false,
+      "locale": "en-US",
+      "fontScale": 1.0,
+      "layoutDirection": "ltr",
+      "windowPosture": "flat",
+      "browserZoomPercent": 100,
+      "fixedTime": "2024-05-16T12:00:00Z",
+      "animations": "settled",
+      "networkAccess": false,
+      "background": {"type": "colorToken", "value": "background"}
+    },
+    "stateVariables": {
+      "query": {"type": "text", "initialValue": "", "persistence": "preview"},
+      "selected": {"type": "selection", "valueType": "string", "nullable": true, "initialValue": null, "persistence": "session"},
+      "count": {"type": "value", "valueType": "int", "nullable": false, "initialValue": 1, "persistence": "design"}
+    },
+    "roots": ["root-a", "root-b"],
+    "nodes": {
+      "root-a": {
+        "id": "root-a",
+        "componentId": "layout/column",
+        "properties": {"title": {"type": "string", "value": "First"}},
+        "modifiers": [
+          {"type": "fillMaxSize"},
+          {"type": "fillMaxWidth"},
+          {"type": "matchParentSize"},
+          {"type": "padding", "startDp": 1.0, "topDp": 2.0, "endDp": 3.0, "bottomDp": 4.0},
+          {"type": "size", "widthDp": 320.0, "heightDp": 240.0},
+          {"type": "clip", "shape": "large"}
+        ],
+        "slots": {"header": ["root-b"], "content": ["child-a", "child-b"]},
+        "eventBindings": {
+          "change": [
+            {"type": "setText", "variable": "query"},
+            {"type": "select", "variable": "selected", "value": null},
+            {"type": "selectOrClear", "variable": "selected", "value": "one"},
+            {"type": "set", "variable": "count", "value": 2},
+            {"type": "toggle", "variable": "enabled"},
+            {"type": "increment", "variable": "count", "amount": 2.5},
+            {"type": "navigatePage", "pageKey": "details"}
+          ]
+        },
+        "predicate": {
+          "type": "all",
+          "predicates": [
+            {"type": "stateEquals", "variable": "selected", "value": "one"},
+            {"type": "stateTruthy", "variable": "enabled"},
+            {"type": "not", "predicate": {"type": "any", "predicates": [{"type": "stateTruthy", "variable": "hidden"}]}}
+          ]
+        },
+        "accessibility": {
+          "role": "button",
+          "label": "Open",
+          "contentDescription": "Open details",
+          "stateDescription": "Selected",
+          "heading": true,
+          "mergeDescendants": true,
+          "traversalIndex": 1.5
+        },
+        "assetBindings": {"image": "cover"},
+        "tokenBindings": {"containerColor": "surface.primary"}
+      },
+      "root-b": {"id": "root-b", "componentId": "m3/text", "properties": {}, "modifiers": [], "slots": {}, "eventBindings": {}},
+      "child-a": {"id": "child-a", "componentId": "m3/text", "properties": {}, "modifiers": [], "slots": {}, "eventBindings": {}},
+      "child-b": {"id": "child-b", "componentId": "m3/text", "properties": {}, "modifiers": [], "slots": {}, "eventBindings": {}}
+    },
+    "assets": {
+      "cover": {"mediaType": "image/png", "contentDigest": "sha256:cover", "source": {"type": "catalog", "assetKey": "cover.one"}, "widthPx": 640, "heightPx": 480}
+    },
+    "tokenBindings": {"surface.primary": {"type": "color", "value": "#FF6750A4"}},
+    "createdAtEpochMillis": 1000,
+    "updatedAtEpochMillis": 2000
+  },
+  "values": [
+    {"type": "string", "value": "text"},
+    {"type": "bool", "value": true},
+    {"type": "int", "value": 7},
+    {"type": "float", "value": 0.5},
+    {"type": "color", "value": "#FFFFFFFF"},
+    {"type": "colorToken", "value": "surface"},
+    {"type": "dimension", "value": 16.0, "unit": "dp"},
+    {"type": "enum", "value": "center"},
+    {"type": "typographyToken", "value": "bodyLarge"},
+    {"type": "shapeToken", "value": "large"},
+    {"type": "assetKey", "value": "cover.one"},
+    {"type": "state", "variable": "query"},
+    {"type": "stateEquals", "variable": "selected", "value": "one"},
+    {"type": "stateEquals", "variable": "selected", "value": null},
+    {"type": "insets", "value": [0, 0, 0, 0]},
+    {"type": "padding", "startDp": 1.0, "topDp": 2.0, "endDp": 3.0, "bottomDp": 4.0},
+    {"type": "adaptiveGrid", "minimumCellWidthDp": 362.0},
+    {"type": "resource", "resourceKey": "icon", "contentDigest": "sha256:icon"},
+    {"type": "list", "values": [{"type": "string", "value": "one"}]},
+    {"type": "object", "fields": {"one": {"type": "int", "value": 1}}},
+    {"type": "null"}
+  ],
+  "assetSources": [
+    {"type": "catalog", "assetKey": "cover.one"},
+    {"type": "uploaded", "storageKey": "uploads/cover"},
+    {"type": "embedded", "base64": "AA=="}
+  ],
+  "submissions": [
+    {
+      "type": "batch",
+      "designId": "design-lossless",
+      "operationId": "batch-1",
+      "actorId": "actor-a",
+      "clientId": "mcp-a",
+      "baseRevision": 42,
+      "operations": [
+        {"type": "insertNode", "node": {"id": "new", "componentId": "m3/text", "properties": {}, "modifiers": [], "slots": {}, "eventBindings": {}}, "location": {"parent": {"nodeId": "root-a", "slot": "content"}, "afterNodeId": "child-a", "beforeNodeId": "child-b"}},
+        {"type": "moveNode", "nodeId": "child-b", "location": {"afterNodeId": "root-a"}},
+        {"type": "deleteNode", "nodeId": "old"},
+        {"type": "restoreNode", "nodeId": "old", "location": {"beforeNodeId": "root-b"}},
+        {"type": "setProperty", "nodeId": "new", "property": "text", "value": {"type": "string", "value": "New"}}
+      ]
+    },
+    {"type": "undo", "designId": "design-lossless", "operationId": "undo-1", "actorId": "actor-a", "clientId": "mcp-a", "baseRevision": 43, "targetOperationId": "batch-1"},
+    {"type": "redo", "designId": "design-lossless", "operationId": "redo-1", "actorId": "actor-a", "clientId": "mcp-a", "baseRevision": 44, "targetUndoOperationId": "undo-1"}
+  ],
+  "outcomes": [
+    {
+      "type": "accepted",
+      "operationId": "batch-1",
+      "committedRevision": 43,
+      "sequence": 101,
+      "documentHash": "0fcb808e9e4d5a5131f4b1d68fb0bc1f40bd846196cb7fe78a3e2395c2d49615",
+      "idempotentReplay": true,
+      "conflicts": [
+        {"code": "stalePropertyWrite", "nodeId": "new", "field": "text", "overwrittenRevision": 41},
+        {"code": "staleMove", "nodeId": "child-b", "overwrittenRevision": 42}
+      ]
+    },
+    {"type": "rejected", "operationId": "bad-1", "currentRevision": 43, "code": "invalidLocation", "message": "anchor is invalid", "operationIndex": 1, "nodeId": "child-b", "field": "content"}
+  ],
+  "componentKinds": ["screen", "scaffold", "container", "leaf", "composable"],
+  "propertyValueKinds": ["string", "boolean", "integer", "decimal", "color", "dimension", "enum", "resource", "list", "object", "state", "token", "padding"],
+  "dimensionUnits": ["dp", "sp", "px", "percent"],
+  "jsonValueTypes": ["string", "boolean", "number", "integer", "object", "array", "null"],
+  "wasmStatuses": ["supported", "planned", "unsupported"],
+  "svgStatuses": ["verified", "unverified", "raster-fallback-required", "unsupported"],
+  "svgFallbacks": ["none", "embedded-raster"],
+  "themes": ["light", "dark", "system"],
+  "layoutDirections": ["ltr", "rtl"],
+  "windowPostures": ["flat", "book", "tabletop"],
+  "animationStates": ["settled", "running", "disabled"],
+  "stateVariableTypes": ["text", "selection", "value"],
+  "stateValueTypes": ["string", "bool", "int", "float"],
+  "statePersistences": ["design", "preview", "session"],
+  "conflictCodes": ["stalePropertyWrite", "staleMove"],
+  "rejectionCodes": ["designMismatch", "invalidCommand", "revisionMismatch", "operationIdReused", "unknownNode", "deletedNode", "missingPropertyValidator", "malformedProperty", "invalidProperty", "invalidDocument", "revisionNotRetained", "invalidLocation", "cycle", "actorMismatch", "alreadyCompensated", "unsafeCompensation", "unsupportedCompensation", "unknownOperation", "replayDivergence"]
+}

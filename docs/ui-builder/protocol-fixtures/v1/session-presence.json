@@ -1,12 +1,13 @@
 {
   "schemaVersion": 1,
-  "sessionId": "session-1",
+  "designId": "design-1",
   "update": {
     "type": "presence",
     "update": {
       "type": "upsert",
       "presence": {
         "actorId": "actor-a",
+        "clientId": "wasm-a",
         "displayName": "Ada",
         "colorArgbHex": "ff6750a4",
         "selectedNodeIds": ["button"],

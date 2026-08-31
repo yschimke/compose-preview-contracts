@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class ServiceSnapshotV1(
   @EncodeDefault public val schemaVersion: Int = UI_BUILDER_SCHEMA_VERSION_V1,
-  public val sessionId: String,
+  public val designId: String,
   public val state: DesignStateV1,
   public val catalog: CatalogCapabilityV1,
   public val retainedFromSequence: Long,
@@ -20,9 +20,8 @@ public data class ServiceSnapshotV1(
 /** One committed operation in the durable event sequence. Rejections are not committed. */
 @Serializable
 public data class CommittedOperationV1(
-  public val sequence: Long,
-  public val revision: Long,
-  public val operation: DesignOperationV1,
+  public val submission: DesignSubmissionV1,
+  /** Sole authoritative committed revision and sequence for this event. */
   public val outcome: AcceptedOutcomeV1,
 )
 
@@ -30,7 +29,7 @@ public data class CommittedOperationV1(
 @Serializable
 public data class ServiceDeltaV1(
   @EncodeDefault public val schemaVersion: Int = UI_BUILDER_SCHEMA_VERSION_V1,
-  public val sessionId: String,
+  public val designId: String,
   public val afterSequence: Long,
   public val throughSequence: Long,
   public val currentRevision: Long,
@@ -59,12 +58,7 @@ public data object ListCatalogsRequestV1 : UiBuilderRequestV1
 
 @Serializable
 @SerialName("createDesign")
-public data class CreateDesignRequestV1(
-  public val name: String,
-  public val catalog: CatalogReferenceV1,
-  public val rootNode: DesignNodeV1,
-  public val presentation: DesignPresentationV1,
-) : UiBuilderRequestV1
+public data class CreateDesignRequestV1(public val document: DesignDocumentV1) : UiBuilderRequestV1
 
 @Serializable
 @SerialName("openDesign")
@@ -72,22 +66,20 @@ public data class OpenDesignRequestV1(public val designId: String) : UiBuilderRe
 
 @Serializable
 @SerialName("applyOperation")
-public data class ApplyOperationRequestV1(
-  public val sessionId: String,
-  public val operation: DesignOperationV1,
-) : UiBuilderRequestV1
+public data class ApplyOperationRequestV1(public val submission: DesignSubmissionV1) :
+  UiBuilderRequestV1
 
 @Serializable
 @SerialName("getSnapshot")
 public data class GetSnapshotRequestV1(
-  public val sessionId: String,
+  public val designId: String,
   public val revision: Long? = null,
 ) : UiBuilderRequestV1
 
 @Serializable
 @SerialName("getDelta")
 public data class GetDeltaRequestV1(
-  public val sessionId: String,
+  public val designId: String,
   public val afterSequence: Long,
   public val limit: Int = 256,
 ) : UiBuilderRequestV1
@@ -95,14 +87,14 @@ public data class GetDeltaRequestV1(
 @Serializable
 @SerialName("updatePresence")
 public data class UpdatePresenceRequestV1(
-  public val sessionId: String,
+  public val designId: String,
   public val presence: PresenceV1,
 ) : UiBuilderRequestV1
 
 @Serializable
 @SerialName("exportDesign")
 public data class ExportDesignRequestV1(
-  public val sessionId: String,
+  public val designId: String,
   public val revision: Long? = null,
   public val format: ExportFormatV1,
 ) : UiBuilderRequestV1
@@ -138,7 +130,7 @@ public data class DeltaResponseV1(public val delta: ServiceDeltaV1) : UiBuilderR
 @Serializable
 @SerialName("presenceAccepted")
 public data class PresenceAcceptedResponseV1(
-  public val sessionId: String,
+  public val designId: String,
   public val actorId: String,
 ) : UiBuilderResponseV1
 
@@ -235,28 +227,28 @@ public data class McpResponseEnvelopeV1(
   public val response: UiBuilderResponseV1,
 )
 
-/** Server-pushed session message used by concurrent browser and MCP observers. */
-@Serializable public sealed interface SessionUpdateV1
+/** Server-pushed design message used by concurrent browser and MCP observers. */
+@Serializable public sealed interface DesignUpdateV1
 
 @Serializable
 @SerialName("snapshot")
-public data class SnapshotSessionUpdateV1(public val snapshot: ServiceSnapshotV1) : SessionUpdateV1
+public data class SnapshotDesignUpdateV1(public val snapshot: ServiceSnapshotV1) : DesignUpdateV1
 
 @Serializable
 @SerialName("delta")
-public data class DeltaSessionUpdateV1(public val delta: ServiceDeltaV1) : SessionUpdateV1
+public data class DeltaDesignUpdateV1(public val delta: ServiceDeltaV1) : DesignUpdateV1
 
 @Serializable
 @SerialName("presence")
-public data class PresenceSessionUpdateV1(public val update: PresenceUpdateV1) : SessionUpdateV1
+public data class PresenceDesignUpdateV1(public val update: PresenceUpdateV1) : DesignUpdateV1
 
 @Serializable
 @SerialName("outcome")
-public data class OutcomeSessionUpdateV1(public val outcome: CommandOutcomeV1) : SessionUpdateV1
+public data class OutcomeDesignUpdateV1(public val outcome: CommandOutcomeV1) : DesignUpdateV1
 
 @Serializable
-public data class SessionUpdateEnvelopeV1(
+public data class DesignUpdateEnvelopeV1(
   @EncodeDefault public val schemaVersion: Int = UI_BUILDER_SCHEMA_VERSION_V1,
-  public val sessionId: String,
-  public val update: SessionUpdateV1,
+  public val designId: String,
+  public val update: DesignUpdateV1,
 )

@@ -3,22 +3,6 @@
   "requestId": "request-1",
   "response": {
     "type": "operationOutcome",
-    "outcome": {
-      "type": "rejected",
-      "operationId": "operation-1",
-      "revision": 8,
-      "reason": "conflict",
-      "message": "node moved concurrently",
-      "conflicts": [
-        {
-          "kind": "anchorChanged",
-          "nodeId": "button",
-          "conflictingOperationId": "operation-other",
-          "expectedRevision": 7,
-          "actualRevision": 8,
-          "message": "parent anchor changed"
-        }
-      ]
-    }
+    "outcome": {"type": "rejected", "operationId": "operation-1", "currentRevision": 8, "code": "invalidLocation", "message": "node moved concurrently", "operationIndex": 0, "nodeId": "button", "field": "content"}
   }
 }

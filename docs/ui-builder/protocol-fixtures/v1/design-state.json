@@ -1,47 +1,24 @@
 {
   "schemaVersion": 1,
-  "revision": 7,
   "lastSequence": 12,
   "document": {
-    "schemaVersion": 1,
-    "designId": "design-1",
-    "name": "Jetcaster home",
-    "catalog": {
-      "catalogId": "material3",
-      "catalogVersion": "1.0.0",
-      "catalogDigest": "sha256:catalog"
-    },
-    "rootNodeId": "root",
+    "schema": "compose-ui-builder-document/v1-candidate",
+    "id": "design-1",
+    "title": "Jetcaster home",
+    "revision": 7,
+    "catalogPin": {"systemId": "m3-catalog", "catalogRevision": "candidate", "capabilityDigest": "sha256:catalog", "nativeRuntimeId": "candidate"},
+    "environment": {"widthDp": 1280, "heightDp": 800, "density": 2.0, "theme": "dark", "locale": "en-GB", "fontScale": 1.1, "layoutDirection": "ltr"},
+    "roots": ["root"],
     "nodes": {
       "root": {
-        "nodeId": "root",
-        "componentKey": "Scaffold",
-        "childIds": ["title"],
-        "properties": {
-          "title": {"type": "string", "value": "Jetcaster"},
-          "dark": {"type": "boolean", "value": true},
-          "count": {"type": "integer", "value": 3},
-          "alpha": {"type": "decimal", "value": 0.75},
-          "padding": {"type": "dimension", "value": 16.0, "unit": "dp"},
-          "alignment": {"type": "enum", "value": "center"},
-          "art": {"type": "resource", "resourceKey": "cover", "contentDigest": "sha256:art"},
-          "items": {"type": "list", "values": [{"type": "string", "value": "one"}]},
-          "metadata": {"type": "object", "fields": {"tone": {"type": "color", "argbHex": "ff6750a4"}}}
-        }
+        "id": "root",
+        "componentId": "layout/scaffold",
+        "properties": {"title": {"type": "string", "value": "Jetcaster"}, "dark": {"type": "bool", "value": true}, "count": {"type": "int", "value": 3}, "alpha": {"type": "float", "value": 0.75}},
+        "modifiers": [],
+        "slots": {"content": ["title"]},
+        "eventBindings": {}
       },
-      "title": {
-        "nodeId": "title",
-        "componentKey": "Text",
-        "parentId": "root",
-        "parentSlot": "content",
-        "state": {"enabled": false, "variant": "headline"}
-      }
-    },
-    "presentation": {
-      "viewport": {"widthPx": 1280, "heightPx": 800, "density": 2.0},
-      "theme": "dark",
-      "localeTag": "en-GB",
-      "fontScale": 1.1
+      "title": {"id": "title", "componentId": "m3/text", "properties": {}, "modifiers": [], "slots": {}, "eventBindings": {}}
     },
     "createdAtEpochMillis": 1000,
     "updatedAtEpochMillis": 2000

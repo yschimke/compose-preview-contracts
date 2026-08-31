@@ -1,6 +1,7 @@
 public final class ee/schimke/composeai/agentgrants/AgentGrantCapability : java/lang/Enum {
 	public static final field Companion Lee/schimke/composeai/agentgrants/AgentGrantCapability$Companion;
 	public static final field IMAGES Lee/schimke/composeai/agentgrants/AgentGrantCapability;
+	public static final field UI_BUILDER Lee/schimke/composeai/agentgrants/AgentGrantCapability;
 	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public final fun getHumanDescription ()Ljava/lang/String;
 	public final fun getWire ()Ljava/lang/String;

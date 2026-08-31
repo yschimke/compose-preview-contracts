@@ -1,103 +1,97 @@
-@file:OptIn(kotlinx.serialization.ExperimentalSerializationApi::class)
-
 package ee.schimke.composeai.uibuilder.protocol
 
-import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-/** Idempotent command submission with optimistic-concurrency metadata. */
+/** Submission variants processed by the same authoritative collaboration reducer. */
+@Serializable public sealed interface DesignSubmissionV1
+
+/** Atomic ordered mutation batch matching the current reducer's `DesignCommand` semantics. */
 @Serializable
-public data class DesignOperationV1(
-  @EncodeDefault public val schemaVersion: Int = UI_BUILDER_SCHEMA_VERSION_V1,
+@SerialName("batch")
+public data class DesignCommandV1(
+  public val designId: String,
   public val operationId: String,
   public val actorId: String,
+  public val clientId: String,
   public val baseRevision: Long,
-  public val issuedAtEpochMillis: Long,
-  public val command: DesignCommandV1,
-)
+  public val operations: List<DesignMutationV1>,
+) : DesignSubmissionV1
 
-/** Closed command set accepted by a v1 reducer. This module does not implement that reducer. */
-@Serializable public sealed interface DesignCommandV1
+/** Requests a compensating operation for one actor-owned accepted batch. */
+@Serializable
+@SerialName("undo")
+public data class UndoCommandV1(
+  public val designId: String,
+  public val operationId: String,
+  public val actorId: String,
+  public val clientId: String,
+  public val baseRevision: Long,
+  public val targetOperationId: String,
+) : DesignSubmissionV1
+
+/** Compensates an accepted undo; the target is the undo operation, not its original batch. */
+@Serializable
+@SerialName("redo")
+public data class RedoCommandV1(
+  public val designId: String,
+  public val operationId: String,
+  public val actorId: String,
+  public val clientId: String,
+  public val baseRevision: Long,
+  public val targetUndoOperationId: String,
+) : DesignSubmissionV1
+
+/** Closed mutation set inside one atomic batch. */
+@Serializable public sealed interface DesignMutationV1
 
 @Serializable
 @SerialName("insertNode")
-public data class InsertNodeCommandV1(
-  public val parentId: String,
-  public val parentSlot: String,
-  public val index: Int,
+public data class InsertNodeMutationV1(
   public val node: DesignNodeV1,
-) : DesignCommandV1
+  public val location: NodeLocationV1,
+) : DesignMutationV1
 
 @Serializable
 @SerialName("moveNode")
-public data class MoveNodeCommandV1(
+public data class MoveNodeMutationV1(
   public val nodeId: String,
-  public val parentId: String,
-  public val parentSlot: String,
-  public val index: Int,
-) : DesignCommandV1
+  public val location: NodeLocationV1,
+) : DesignMutationV1
 
 @Serializable
 @SerialName("deleteNode")
-public data class DeleteNodeCommandV1(public val nodeId: String) : DesignCommandV1
+public data class DeleteNodeMutationV1(public val nodeId: String) : DesignMutationV1
 
-/** Restores an exact deleted subtree; reducers decide whether its anchor remains valid. */
+/** Restores a reducer-retained tombstone, optionally overriding its retained location anchor. */
 @Serializable
-@SerialName("restoreSubtree")
-public data class RestoreSubtreeCommandV1(
-  public val parentId: String,
-  public val parentSlot: String,
-  public val index: Int,
-  public val rootNodeId: String,
-  public val nodes: Map<String, DesignNodeV1>,
-) : DesignCommandV1
+@SerialName("restoreNode")
+public data class RestoreNodeMutationV1(
+  public val nodeId: String,
+  public val location: NodeLocationV1? = null,
+) : DesignMutationV1
 
 @Serializable
 @SerialName("setProperty")
-public data class SetPropertyCommandV1(
+public data class SetPropertyMutationV1(
   public val nodeId: String,
-  public val propertyKey: String,
+  public val property: String,
   public val value: UiValueV1,
-) : DesignCommandV1
+) : DesignMutationV1
 
+/**
+ * Parent slot or root list plus stable neighbour/position anchors; indexes are never transmitted.
+ */
 @Serializable
-@SerialName("removeProperty")
-public data class RemovePropertyCommandV1(
-  public val nodeId: String,
-  public val propertyKey: String,
-) : DesignCommandV1
+public data class NodeLocationV1(
+  public val parent: ParentSlotV1? = null,
+  public val afterNodeId: String? = null,
+  public val beforeNodeId: String? = null,
+)
 
-@Serializable
-@SerialName("setNodeState")
-public data class SetNodeStateCommandV1(public val nodeId: String, public val state: NodeStateV1) :
-  DesignCommandV1
+@Serializable public data class ParentSlotV1(public val nodeId: String, public val slot: String)
 
-@Serializable
-@SerialName("setPresentation")
-public data class SetPresentationCommandV1(public val presentation: DesignPresentationV1) :
-  DesignCommandV1
-
-@Serializable
-@SerialName("renameDesign")
-public data class RenameDesignCommandV1(public val name: String) : DesignCommandV1
-
-/** Atomically accepted or rejected ordered command group. */
-@Serializable
-@SerialName("batch")
-public data class BatchCommandV1(public val commands: List<DesignCommandV1>) : DesignCommandV1
-
-/** Requests a compensating operation for a previously accepted actor-owned operation. */
-@Serializable
-@SerialName("undo")
-public data class UndoCommandV1(public val targetOperationId: String) : DesignCommandV1
-
-/** Reapplies an operation previously compensated by this actor. */
-@Serializable
-@SerialName("redo")
-public data class RedoCommandV1(public val targetOperationId: String) : DesignCommandV1
-
-/** Stable result of processing an operation, suitable for replay and idempotent retries. */
+/** Stable result returned for an accepted, rejected, undo, redo, or idempotent retry submission. */
 @Serializable
 public sealed interface CommandOutcomeV1 {
   public val operationId: String
@@ -107,52 +101,60 @@ public sealed interface CommandOutcomeV1 {
 @SerialName("accepted")
 public data class AcceptedOutcomeV1(
   override val operationId: String,
-  public val revision: Long,
+  public val committedRevision: Long,
   public val sequence: Long,
-  public val appliedCommand: DesignCommandV1,
-  public val compensatesOperationId: String? = null,
+  /** SHA-256 of the reducer's canonical document JSON; full state is carried by snapshots. */
+  public val documentHash: String,
+  public val idempotentReplay: Boolean,
+  public val conflicts: List<CommandConflictV1> = emptyList(),
 ) : CommandOutcomeV1
 
 @Serializable
 @SerialName("rejected")
 public data class RejectedOutcomeV1(
   override val operationId: String,
-  public val revision: Long,
-  public val reason: RejectionReasonV1,
+  public val currentRevision: Long,
+  public val code: RejectionCodeV1,
   public val message: String,
-  public val conflicts: List<CommandConflictV1> = emptyList(),
+  public val operationIndex: Int? = null,
+  public val nodeId: String? = null,
+  public val field: String? = null,
 ) : CommandOutcomeV1
 
-@Serializable
-public enum class RejectionReasonV1 {
-  @SerialName("invalidCommand") INVALID_COMMAND,
-  @SerialName("invalidStructure") INVALID_STRUCTURE,
-  @SerialName("unknownComponent") UNKNOWN_COMPONENT,
-  @SerialName("unsupportedCapability") UNSUPPORTED_CAPABILITY,
-  @SerialName("staleRevision") STALE_REVISION,
-  @SerialName("conflict") CONFLICT,
-  @SerialName("forbidden") FORBIDDEN,
-  @SerialName("notFound") NOT_FOUND,
-}
-
+/** Located non-fatal conflict notice attached to an accepted convergent operation. */
 @Serializable
 public data class CommandConflictV1(
-  public val kind: ConflictKindV1,
-  public val nodeId: String? = null,
-  public val propertyKey: String? = null,
-  public val conflictingOperationId: String? = null,
-  public val expectedRevision: Long? = null,
-  public val actualRevision: Long? = null,
-  public val message: String,
+  public val code: ConflictCodeV1,
+  public val nodeId: String,
+  public val field: String? = null,
+  public val overwrittenRevision: Long,
 )
 
 @Serializable
-public enum class ConflictKindV1 {
-  @SerialName("revisionAdvanced") REVISION_ADVANCED,
-  @SerialName("nodeChanged") NODE_CHANGED,
-  @SerialName("nodeDeleted") NODE_DELETED,
-  @SerialName("anchorChanged") ANCHOR_CHANGED,
-  @SerialName("propertyChanged") PROPERTY_CHANGED,
-  @SerialName("undoUnavailable") UNDO_UNAVAILABLE,
-  @SerialName("redoUnavailable") REDO_UNAVAILABLE,
+public enum class ConflictCodeV1 {
+  @SerialName("stalePropertyWrite") STALE_PROPERTY_WRITE,
+  @SerialName("staleMove") STALE_MOVE,
+}
+
+@Serializable
+public enum class RejectionCodeV1 {
+  @SerialName("designMismatch") DESIGN_MISMATCH,
+  @SerialName("invalidCommand") INVALID_COMMAND,
+  @SerialName("revisionMismatch") REVISION_MISMATCH,
+  @SerialName("operationIdReused") OPERATION_ID_REUSED,
+  @SerialName("unknownNode") UNKNOWN_NODE,
+  @SerialName("deletedNode") DELETED_NODE,
+  @SerialName("missingPropertyValidator") MISSING_PROPERTY_VALIDATOR,
+  @SerialName("malformedProperty") MALFORMED_PROPERTY,
+  @SerialName("invalidProperty") INVALID_PROPERTY,
+  @SerialName("invalidDocument") INVALID_DOCUMENT,
+  @SerialName("revisionNotRetained") REVISION_NOT_RETAINED,
+  @SerialName("invalidLocation") INVALID_LOCATION,
+  @SerialName("cycle") CYCLE,
+  @SerialName("actorMismatch") ACTOR_MISMATCH,
+  @SerialName("alreadyCompensated") ALREADY_COMPENSATED,
+  @SerialName("unsafeCompensation") UNSAFE_COMPENSATION,
+  @SerialName("unsupportedCompensation") UNSUPPORTED_COMPENSATION,
+  @SerialName("unknownOperation") UNKNOWN_OPERATION,
+  @SerialName("replayDivergence") REPLAY_DIVERGENCE,
 }

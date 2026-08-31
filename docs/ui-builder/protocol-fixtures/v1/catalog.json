@@ -1,39 +1,49 @@
 {
-  "schemaVersion": 1,
-  "reference": {
-    "catalogId": "material3",
-    "catalogVersion": "1.0.0",
-    "catalogDigest": "sha256:catalog"
+  "schema": "compose-ui-builder-capabilities/v1-candidate",
+  "benchmark": {
+    "id": "jetcaster-discover-expanded",
+    "sourceRevision": "android-compose-samples@018c5207",
+    "catalogSystemId": "m3-catalog",
+    "catalogRevision": "1.0.0",
+    "nativeRuntimeId": "m3-wasm@1.0.0"
   },
-  "displayName": "Material 3",
+  "statusSemantics": {"adapterStatus": {"supported": "Current Wasm adapter"}},
   "components": [
     {
-      "componentKey": "Scaffold",
+      "componentId": "layout/scaffold",
       "displayName": "Scaffold",
-      "kind": "scaffold",
+      "role": "Scaffold",
+      "traits": ["ScreenContent", "SlotContent"],
       "slots": [
         {
-          "slotName": "content",
-          "displayName": "Content",
-          "cardinality": "exactlyOne",
-          "acceptedKinds": ["container", "composable"]
+          "name": "content",
+          "cardinality": {"min": 1, "max": 1},
+          "ordered": true,
+          "acceptedRoles": ["Container", "Leaf"],
+          "acceptedTraits": ["AnyContent"]
         }
       ],
       "properties": [
         {
-          "propertyKey": "containerColor",
-          "displayName": "Container color",
-          "valueKind": "color",
-          "defaultValue": {"type": "color", "argbHex": "fffef7ff"}
-        },
-        {
-          "propertyKey": "alignment",
-          "displayName": "Alignment",
-          "valueKind": "enum",
-          "enumValues": ["start", "center", "end"]
+          "name": "containerColor",
+          "jsonType": ["string", "null"],
+          "required": true,
+          "allowedValues": ["background", "surface"],
+          "notes": "Token or explicit color"
         }
       ],
-      "tags": ["layout"]
+      "modifierCapabilities": ["fillMaxSize", "padding"],
+      "wasm": {"platformSupported": true, "adapterStatus": "supported", "notes": "Pinned adapter"},
+      "code": {"symbol": "Scaffold", "imports": ["androidx.compose.material3.Scaffold"]},
+      "svg": {"status": "raster-fallback-required", "fallback": "embedded-raster", "blocksExport": false, "notes": "Named fallback only"}
+    },
+    {
+      "componentId": "layout/supporting-pane-scaffold",
+      "displayName": "Supporting pane scaffold",
+      "role": "Scaffold",
+      "traits": ["ScreenContent", "AdaptivePaneLayout"],
+      "properties": [{"name": "layoutMode", "jsonType": "string", "allowedValues": ["adaptive", "expandedTwoPane"]}],
+      "wasm": {"platformSupported": "unverified", "adapterStatus": "unsupported"}
     }
   ],
   "exportCapabilities": {"composeCode": true, "svg": true, "png": true}
