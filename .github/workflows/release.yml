@@ -86,7 +86,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - uses: gradle/actions/setup-gradle@0723195856401067f7a2779048b490ace7a47d7c # v5.0.2
+      - uses: gradle/actions/setup-gradle@9c971963bec38e04b3d30dcc455b5382be2fdbfb # v6.3.0
 
       # The tag decides what gets published, and a published GAV cannot be taken back. Prove it
       # agrees with the manifest release-please wrote before anything is uploaded.
