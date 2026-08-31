@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "requestId": "request-upgrade-blocked",
+  "response": {
+    "type": "catalogUpgradePreview",
+    "preview": {
+      "designId": "design-1",
+      "baseRevision": 7,
+      "sourceCatalogPin": {
+        "systemId": "m3-catalog",
+        "catalogRevision": "2026.08",
+        "capabilityDigest": "sha256:catalog-old",
+        "nativeRuntimeId": "m3-runtime:2026.08"
+      },
+      "targetCatalogPin": {
+        "systemId": "other-catalog",
+        "catalogRevision": "2026.09",
+        "capabilityDigest": "sha256:other-catalog",
+        "nativeRuntimeId": "other-runtime:2026.09"
+      },
+      "sourceDocumentHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "status": "blocked",
+      "previewDigest": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "issues": [
+        {
+          "severity": "error",
+          "code": "catalog-system-mismatch",
+          "message": "No migration path exists between the catalog systems"
+        }
+      ]
+    }
+  }
+}

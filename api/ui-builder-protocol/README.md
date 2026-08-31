@@ -12,6 +12,8 @@ client, service and MCP adapter. It owns:
   ordered modifiers and named ordered slots;
 - atomic, client-identified edit batches using stable neighbour anchors, plus undo and redo; stable
   position keys remain reducer/server internals and are never client supplied;
+- explicit catalog-pin upgrade previews with deterministic validation, structural diffs and
+  hash-bound apply mutations; rollback is a new compensating mutation and never rewrites history;
 - revisioned snapshots, ordered event deltas and presence updates;
 - independently revisioned ownership, actor ACL and opaque bearer-link sharing metadata, plus
   paginated actor-specific design listings;
@@ -49,5 +51,9 @@ Compatibility rules for v1:
   `environmentField` for environment conflicts. Reducers reject conflicts with both or neither.
 - New optional fields may be added with defaults. Renaming fields, changing requiredness or reusing
   an enum/variant spelling requires a new protocol version.
+- Catalog upgrades are two-step: `previewCatalogUpgrade` does not commit, while an
+  `upgradeCatalog` mutation binds the source and target pins, source and target document hashes,
+  and preview digest. A rollback reverses the pins and names the accepted operation it compensates;
+  both upgrade and rollback appear as ordinary accepted operations in the durable delta.
 - Readers that need forward-compatible minor evolution should use `ignoreUnknownKeys = true`.
   Strict fixture tests intentionally use `false` to catch accidental schema drift here.

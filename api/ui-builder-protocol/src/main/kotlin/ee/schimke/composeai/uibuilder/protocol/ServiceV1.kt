@@ -86,6 +86,16 @@ public data class UpdateDesignAccessRequestV1(
   public val mutations: List<DesignAccessMutationV1>,
 ) : UiBuilderRequestV1
 
+/** Computes and validates a catalog transition without committing it. */
+@Serializable
+@SerialName("previewCatalogUpgrade")
+public data class PreviewCatalogUpgradeRequestV1(
+  public val designId: String,
+  public val baseRevision: Long,
+  public val sourceCatalogPin: CatalogReferenceV1,
+  public val targetCatalogPin: CatalogReferenceV1,
+) : UiBuilderRequestV1
+
 @Serializable
 @SerialName("applyOperation")
 public data class ApplyOperationRequestV1(public val submission: DesignSubmissionV1) :
@@ -149,6 +159,11 @@ public data class DesignAccessResponseV1(
   public val designId: String,
   public val access: DesignAccessControlV1,
 ) : UiBuilderResponseV1
+
+@Serializable
+@SerialName("catalogUpgradePreview")
+public data class CatalogUpgradePreviewResponseV1(public val preview: CatalogUpgradePreviewV1) :
+  UiBuilderResponseV1
 
 @Serializable
 @SerialName("snapshot")

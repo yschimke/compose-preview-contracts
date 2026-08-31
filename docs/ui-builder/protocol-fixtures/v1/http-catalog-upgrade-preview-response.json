@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "requestId": "request-upgrade-preview",
+  "response": {
+    "type": "catalogUpgradePreview",
+    "preview": {
+      "designId": "design-1",
+      "baseRevision": 7,
+      "sourceCatalogPin": {
+        "systemId": "m3-catalog",
+        "catalogRevision": "2026.08",
+        "capabilityDigest": "sha256:catalog-old",
+        "nativeRuntimeId": "m3-runtime:2026.08"
+      },
+      "targetCatalogPin": {
+        "systemId": "m3-catalog",
+        "catalogRevision": "2026.09",
+        "capabilityDigest": "sha256:catalog-new",
+        "nativeRuntimeId": "m3-runtime:2026.09"
+      },
+      "sourceDocumentHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "status": "ready",
+      "previewDigest": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "candidateDocument": {
+        "schema": "compose-ui-builder-document/v1",
+        "id": "design-1",
+        "title": "Catalog upgrade fixture",
+        "revision": 7,
+        "catalogPin": {
+          "systemId": "m3-catalog",
+          "catalogRevision": "2026.09",
+          "capabilityDigest": "sha256:catalog-new",
+          "nativeRuntimeId": "m3-runtime:2026.09"
+        },
+        "environment": {
+          "widthDp": 411,
+          "heightDp": 914,
+          "density": 1.0,
+          "theme": "light",
+          "locale": "en-GB",
+          "fontScale": 1.0,
+          "layoutDirection": "ltr"
+        },
+        "roots": ["root"],
+        "nodes": {
+          "root": {
+            "id": "root",
+            "componentId": "m3/text-v2",
+            "properties": {
+              "label": {"type": "string", "value": "Migrated"}
+            },
+            "modifiers": [],
+            "slots": {},
+            "eventBindings": {}
+          }
+        }
+      },
+      "candidateDocumentHash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "changes": [
+        {
+          "type": "replace",
+          "path": "/catalogPin",
+          "sourceValue": {
+            "systemId": "m3-catalog",
+            "catalogRevision": "2026.08",
+            "capabilityDigest": "sha256:catalog-old",
+            "nativeRuntimeId": "m3-runtime:2026.08"
+          },
+          "targetValue": {
+            "systemId": "m3-catalog",
+            "catalogRevision": "2026.09",
+            "capabilityDigest": "sha256:catalog-new",
+            "nativeRuntimeId": "m3-runtime:2026.09"
+          }
+        },
+        {
+          "type": "replace",
+          "path": "/nodes/root/componentId",
+          "sourceValue": "m3/text",
+          "targetValue": "m3/text-v2"
+        },
+        {
+          "type": "remove",
+          "path": "/nodes/root/properties/deprecated",
+          "sourceValue": {"type": "bool", "value": true}
+        },
+        {
+          "type": "add",
+          "path": "/nodes/root/properties/label",
+          "targetValue": {"type": "string", "value": "Migrated"}
+        }
+      ],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "component-renamed",
+          "path": "/nodes/root/componentId",
+          "message": "Mapped m3/text to m3/text-v2"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "requestId": "request-upgrade-preview",
+  "actorId": "actor-a",
+  "request": {
+    "type": "previewCatalogUpgrade",
+    "designId": "design-1",
+    "baseRevision": 7,
+    "sourceCatalogPin": {
+      "systemId": "m3-catalog",
+      "catalogRevision": "2026.08",
+      "capabilityDigest": "sha256:catalog-old",
+      "nativeRuntimeId": "m3-runtime:2026.08"
+    },
+    "targetCatalogPin": {
+      "systemId": "m3-catalog",
+      "catalogRevision": "2026.09",
+      "capabilityDigest": "sha256:catalog-new",
+      "nativeRuntimeId": "m3-runtime:2026.09"
+    }
+  }
+}

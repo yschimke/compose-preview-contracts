@@ -15,3 +15,7 @@ padding/inset edges—and the operations fixtures' published canonical SHA-256 v
 The list-design and access fixtures lock actor-specific effective actions, independently revisioned
 owner/ACL state, every atomic access mutation, and opaque bearer-link sharing. Transport actor IDs
 are authenticated requester identities; ACL mutation actor IDs identify grant targets.
+
+The catalog-upgrade fixtures lock the non-committing deterministic preview, its exact candidate
+document and structural diff, and the accepted upgrade plus compensating rollback in durable
+history. Rollback reverses the catalog pins and appends history rather than rewriting it.
