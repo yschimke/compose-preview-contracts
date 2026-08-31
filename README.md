@@ -31,7 +31,10 @@ must resolve them by coordinate — see
 
 `ui-builder-protocol` is deliberately independent of Compose and the preview server. Its v1 DTOs
 describe catalog capabilities, persisted designs, typed edit commands, collaboration snapshots and
-deltas, and HTTP/MCP envelopes. It contains no reducer, store, renderer or transport implementation.
+deltas, actor-specific listings, independently revisioned owner/ACL/share-link access control, and
+HTTP/MCP envelopes. It contains no reducer, store, renderer or transport implementation. Agent
+grants expose UI builder read, write and export as three independent capabilities; none is implied
+by the preview/live/playground scope ladder.
 
 Every module is `explicitApi()` with Kotlin ABI validation wired into `check`, because these
 are contracts two repositories compile across.

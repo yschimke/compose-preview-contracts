@@ -11,3 +11,7 @@ Discover references, as well as all v1 mutation, outcome, conflict and rejection
 `materialized-confetti.json` and `materialized-jetcaster.json` are exact documents replayed from the
 authoritative operations fixtures. Their tests lock both strict structure—including explicit zero
 padding/inset edges—and the operations fixtures' published canonical SHA-256 values.
+
+The list-design and access fixtures lock actor-specific effective actions, independently revisioned
+owner/ACL state, every atomic access mutation, and opaque bearer-link sharing. Transport actor IDs
+are authenticated requester identities; ACL mutation actor IDs identify grant targets.

@@ -13,6 +13,8 @@ client, service and MCP adapter. It owns:
 - atomic, client-identified edit batches using stable neighbour anchors, plus undo and redo; stable
   position keys remain reducer/server internals and are never client supplied;
 - revisioned snapshots, ordered event deltas and presence updates;
+- independently revisioned ownership, actor ACL and opaque bearer-link sharing metadata, plus
+  paginated actor-specific design listings;
 - request/response envelopes used over HTTP and by MCP tools.
 
 It deliberately contains no reducer, validation policy, storage, rendering, HTTP, WebSocket or MCP
@@ -29,6 +31,15 @@ Compatibility rules for v1:
   state travels in snapshots and retained deltas.
 - A committed delta event takes its revision and sequence only from its accepted outcome; the event
   wrapper does not duplicate those cursors.
+- Document revision and durable event sequence retain their existing meanings. Access policy uses
+  a separate `accessRevision`, so sharing changes neither the document revision nor its hash.
+- The envelope `actorId` is authenticated by the transport. Nested requester IDs on commands and
+  presence must match it; actor IDs in ACL mutations name targets, not the requester. Services must
+  reject a mismatch rather than trusting client-authored identity.
+- `allowedActions` is authoritative. `role` is a stable presentation and audit label and never
+  implies actions. Owners are represented once by `ownerActorId`, not duplicated in `actorGrants`.
+- Share-link IDs are opaque unguessable bearer secrets. Only actors with `manageAccess` should
+  receive them; transports must not log or expose them through ordinary design listings.
 - Sealed variants use the `type` discriminator and stable lower-camel `@SerialName` values.
 - New optional fields may be added with defaults. Renaming fields, changing requiredness or reusing
   an enum/variant spelling requires a new protocol version.

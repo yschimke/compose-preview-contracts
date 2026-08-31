@@ -31,11 +31,20 @@ class UiBuilderProtocolCompatibilityTest {
       fixtureSerializer("materialized-confetti.json", DesignDocumentV1.serializer()),
       fixtureSerializer("materialized-jetcaster.json", DesignDocumentV1.serializer()),
       fixtureSerializer("design-state.json", DesignStateV1.serializer()),
+      fixtureSerializer("http-access-conflict-response.json", HttpResponseEnvelopeV1.serializer()),
       fixtureSerializer("http-commands-request.json", HttpRequestEnvelopeV1.serializer()),
       fixtureSerializer("http-conflict-response.json", HttpResponseEnvelopeV1.serializer()),
+      fixtureSerializer("http-list-designs-request.json", HttpRequestEnvelopeV1.serializer()),
+      fixtureSerializer("http-list-designs-response.json", HttpResponseEnvelopeV1.serializer()),
       fixtureSerializer("service-delta.json", ServiceDeltaV1.serializer()),
+      fixtureSerializer("mcp-design-access-response.json", McpResponseEnvelopeV1.serializer()),
       fixtureSerializer("mcp-export-request.json", McpRequestEnvelopeV1.serializer()),
       fixtureSerializer("mcp-export-response.json", McpResponseEnvelopeV1.serializer()),
+      fixtureSerializer("mcp-get-design-access-request.json", McpRequestEnvelopeV1.serializer()),
+      fixtureSerializer(
+        "mcp-update-design-access-request.json",
+        McpRequestEnvelopeV1.serializer(),
+      ),
       fixtureSerializer("session-presence.json", DesignUpdateEnvelopeV1.serializer()),
     )
 
@@ -73,6 +82,30 @@ class UiBuilderProtocolCompatibilityTest {
         """{"schemaVersion":1,"requestId":"r","request":{"type":"listCatalogs"}}""",
       )
     }
+  }
+
+  @Test
+  fun actorIdentityIsExplicitAtTransportAndNestedCommandBoundaries() {
+    val request =
+      strictJson.decodeFromString(
+        HttpRequestEnvelopeV1.serializer(),
+        fixture("http-commands-request.json"),
+      )
+    val command = (request.request as ApplyOperationRequestV1).submission as DesignCommandV1
+    assertEquals(request.actorId, command.actorId)
+
+    val listRequest =
+      strictJson.decodeFromString(
+        HttpRequestEnvelopeV1.serializer(),
+        fixture("http-list-designs-request.json"),
+      )
+    val listResponse =
+      strictJson.decodeFromString(
+        HttpResponseEnvelopeV1.serializer(),
+        fixture("http-list-designs-response.json"),
+      )
+    val requester = (listResponse.response as DesignsResponseV1).designs.single().requesterAccess
+    assertEquals(listRequest.actorId, requester.actorId)
   }
 
   @Test

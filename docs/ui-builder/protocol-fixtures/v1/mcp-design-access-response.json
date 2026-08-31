@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "callId": "call-access-1",
+  "response": {
+    "type": "designAccess",
+    "designId": "design-1",
+    "access": {
+      "accessRevision": 6,
+      "ownerActorId": "actor-owner",
+      "actorGrants": [
+        {
+          "actorId": "actor-editor",
+          "role": "editor",
+          "allowedActions": ["read", "write", "export"],
+          "grantedByActorId": "actor-owner",
+          "grantedAtEpochMillis": 1750000020000
+        }
+      ],
+      "shareLinks": [
+        {
+          "shareId": "share-new-secret",
+          "role": "viewer",
+          "allowedActions": ["read"],
+          "createdByActorId": "actor-owner",
+          "createdAtEpochMillis": 1750000030000,
+          "expiresAtEpochMillis": 1751000000000,
+          "revokedAtEpochMillis": 1750500000000
+        }
+      ]
+    }
+  }
+}

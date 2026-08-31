@@ -15,6 +15,8 @@ public data class ServiceSnapshotV1(
   public val catalog: CatalogCapabilityV1,
   public val retainedFromSequence: Long,
   public val presence: List<PresenceV1> = emptyList(),
+  /** Kept separate from [state] so access changes never alter the canonical document hash. */
+  public val access: DesignAccessControlV1? = null,
 )
 
 /** One committed operation in the durable event sequence. Rejections are not committed. */
@@ -61,8 +63,28 @@ public data object ListCatalogsRequestV1 : UiBuilderRequestV1
 public data class CreateDesignRequestV1(public val document: DesignDocumentV1) : UiBuilderRequestV1
 
 @Serializable
+@SerialName("listDesigns")
+public data class ListDesignsRequestV1(
+  public val cursor: String? = null,
+  public val limit: Int = 50,
+) : UiBuilderRequestV1
+
+@Serializable
 @SerialName("openDesign")
 public data class OpenDesignRequestV1(public val designId: String) : UiBuilderRequestV1
+
+@Serializable
+@SerialName("getDesignAccess")
+public data class GetDesignAccessRequestV1(public val designId: String) : UiBuilderRequestV1
+
+/** Access mutations are applied atomically against their own revision. */
+@Serializable
+@SerialName("updateDesignAccess")
+public data class UpdateDesignAccessRequestV1(
+  public val designId: String,
+  public val baseAccessRevision: Long,
+  public val mutations: List<DesignAccessMutationV1>,
+) : UiBuilderRequestV1
 
 @Serializable
 @SerialName("applyOperation")
@@ -113,6 +135,20 @@ public enum class ExportFormatV1 {
 @SerialName("catalogs")
 public data class CatalogsResponseV1(public val catalogs: List<CatalogCapabilityV1>) :
   UiBuilderResponseV1
+
+@Serializable
+@SerialName("designs")
+public data class DesignsResponseV1(
+  public val designs: List<DesignListItemV1>,
+  public val nextCursor: String? = null,
+) : UiBuilderResponseV1
+
+@Serializable
+@SerialName("designAccess")
+public data class DesignAccessResponseV1(
+  public val designId: String,
+  public val access: DesignAccessControlV1,
+) : UiBuilderResponseV1
 
 @Serializable
 @SerialName("snapshot")
@@ -180,12 +216,14 @@ public data class ServiceErrorV1(
   public val message: String,
   public val retryable: Boolean = false,
   public val currentRevision: Long? = null,
+  public val currentAccessRevision: Long? = null,
   public val retainedFromSequence: Long? = null,
 )
 
 @Serializable
 public enum class ServiceErrorCodeV1 {
   @SerialName("badRequest") BAD_REQUEST,
+  @SerialName("accessRevisionMismatch") ACCESS_REVISION_MISMATCH,
   @SerialName("unauthorized") UNAUTHORIZED,
   @SerialName("forbidden") FORBIDDEN,
   @SerialName("notFound") NOT_FOUND,
@@ -195,7 +233,10 @@ public enum class ServiceErrorCodeV1 {
   @SerialName("internal") INTERNAL,
 }
 
-/** HTTP request envelope. Authentication remains transport metadata, never a DTO field. */
+/**
+ * HTTP request envelope. The transport authenticates [actorId]. Any nested requester actor ID (for
+ * example a design command or presence update) must match it; ACL target IDs are not requesters.
+ */
 @Serializable
 public data class HttpRequestEnvelopeV1(
   @EncodeDefault public val schemaVersion: Int = UI_BUILDER_SCHEMA_VERSION_V1,
@@ -211,7 +252,10 @@ public data class HttpResponseEnvelopeV1(
   public val response: UiBuilderResponseV1,
 )
 
-/** MCP tool-call envelope; the MCP adapter maps tool names to the typed request variant. */
+/**
+ * MCP tool-call envelope; the adapter authenticates [actorId], applies the same nested-actor match
+ * rule as HTTP, and maps tool names to typed request variants.
+ */
 @Serializable
 public data class McpRequestEnvelopeV1(
   @EncodeDefault public val schemaVersion: Int = UI_BUILDER_SCHEMA_VERSION_V1,

@@ -7,27 +7,41 @@ import kotlin.test.assertNull
 
 class AgentGrantCapabilityTest {
   @Test
-  fun `ui builder is an independent capability and has a stable wire name`() {
-    assertEquals(AgentGrantCapability.UI_BUILDER, AgentGrantCapability.parse("UI-BUILDER"))
+  fun `ui builder permissions are independent capabilities with stable wire names`() {
     assertEquals(
-      setOf(AgentGrantCapability.IMAGES, AgentGrantCapability.UI_BUILDER),
-      AgentGrantCapability.parseAll("images, ui-builder"),
+      AgentGrantCapability.UI_BUILDER_READ,
+      AgentGrantCapability.parse("UI-BUILDER-READ"),
     )
     assertEquals(
-      listOf("images", "ui-builder"),
+      setOf(
+        AgentGrantCapability.IMAGES,
+        AgentGrantCapability.UI_BUILDER_WRITE,
+        AgentGrantCapability.UI_BUILDER_EXPORT,
+      ),
+      AgentGrantCapability.parseAll("images, ui-builder-write ui-builder-export"),
+    )
+    assertEquals(
+      listOf("images", "ui-builder-read", "ui-builder-write", "ui-builder-export"),
       AgentGrantCapability.wireNames(AgentGrantCapability.entries.toSet()),
     )
+    assertNull(AgentGrantCapability.parse("ui-builder"))
   }
 
   @Test
   fun `scope ladder never implies persistent ui builder permission`() {
-    AgentGrantScope.entries.forEach { scope ->
-      assertFalse(scope.name == AgentGrantCapability.UI_BUILDER.name)
-      assertFalse(scope.wire == AgentGrantCapability.UI_BUILDER.wire)
-      assertFalse(
-        AgentGrantScope.upTo(scope).any { it.wire == AgentGrantCapability.UI_BUILDER.wire }
+    val uiBuilderCapabilities =
+      setOf(
+        AgentGrantCapability.UI_BUILDER_READ,
+        AgentGrantCapability.UI_BUILDER_WRITE,
+        AgentGrantCapability.UI_BUILDER_EXPORT,
       )
+    AgentGrantScope.entries.forEach { scope ->
+      uiBuilderCapabilities.forEach { capability ->
+        assertFalse(scope.name == capability.name)
+        assertFalse(scope.wire == capability.wire)
+        assertFalse(AgentGrantScope.upTo(scope).any { it.wire == capability.wire })
+        assertNull(AgentGrantScope.parse(capability.wire))
+      }
     }
-    assertNull(AgentGrantScope.parse(AgentGrantCapability.UI_BUILDER.wire))
   }
 }
