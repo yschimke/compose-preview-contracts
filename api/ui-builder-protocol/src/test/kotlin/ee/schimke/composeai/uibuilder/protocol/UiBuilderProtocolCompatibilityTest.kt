@@ -138,9 +138,30 @@ class UiBuilderProtocolCompatibilityTest {
     val secondHash = sha256("{\"revision\":43}")
     assertNotEquals(firstHash, secondHash)
 
-    val outcome = AcceptedOutcomeV1("operation", 43, 101, secondHash, false)
+    val outcome =
+      AcceptedOutcomeV1(
+        "operation",
+        43,
+        101,
+        secondHash,
+        false,
+        documentUpdatedAtEpochMillis = 1_750_000_010_123,
+      )
     val encoded = strictJson.encodeToString(AcceptedOutcomeV1.serializer(), outcome)
+    assertEquals(
+      JsonPrimitive(1_750_000_010_123),
+      (strictJson.parseToJsonElement(encoded) as JsonObject)["documentUpdatedAtEpochMillis"],
+    )
     assertEquals(outcome, strictJson.decodeFromString(AcceptedOutcomeV1.serializer(), encoded))
+  }
+
+  @Test
+  fun legacyDeltaWithoutDocumentTimestampStillRoundTrips() {
+    val original = strictJson.parseToJsonElement(fixture("service-delta.json"))
+    val decoded = strictJson.decodeFromJsonElement(ServiceDeltaV1.serializer(), original)
+
+    assertEquals(null, decoded.operations.single().outcome.documentUpdatedAtEpochMillis)
+    assertEquals(original, strictJson.encodeToJsonElement(ServiceDeltaV1.serializer(), decoded))
   }
 
   @Test
