@@ -247,6 +247,28 @@ public data object ResetBackgroundEnvironmentChangeV1 : EnvironmentChangeV1 {
 }
 
 /**
+ * Replaces the document's catalog pin with the exact candidate accepted by a prior deterministic
+ * preview. Both hashes and [previewDigest] prevent applying a result to different source state.
+ *
+ * This must be the only mutation in its [DesignCommandV1], keeping [targetDocumentHash]
+ * unambiguous. Implementations reject mixed batches as invalid commands.
+ *
+ * A rollback is an ordinary compensating mutation with the pins reversed and
+ * [compensatesCatalogUpgradeOperationId] naming the accepted upgrade operation. It is committed as
+ * a new operation; prior history is never rewritten.
+ */
+@Serializable
+@SerialName("upgradeCatalog")
+public data class CatalogUpgradeMutationV1(
+  public val sourceCatalogPin: CatalogReferenceV1,
+  public val targetCatalogPin: CatalogReferenceV1,
+  public val sourceDocumentHash: String,
+  public val targetDocumentHash: String,
+  public val previewDigest: String,
+  public val compensatesCatalogUpgradeOperationId: String? = null,
+) : DesignMutationV1
+
+/**
  * Parent slot or root list plus stable neighbour/position anchors; indexes are never transmitted.
  */
 @Serializable

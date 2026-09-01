@@ -23,6 +23,39 @@ final enum class ee.schimke.composeai.uibuilder.protocol/AnimationStateV1 : kotl
     }
 }
 
+final enum class ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1 : kotlin/Enum<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1> { // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1|null[0]
+    enum entry ERROR // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1.ERROR|null[0]
+    enum entry INFO // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1.INFO|null[0]
+    enum entry WARNING // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1.WARNING|null[0]
+
+    final val entries // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1.values|values#static(){}[0]
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+final enum class ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1 : kotlin/Enum<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1> { // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1|null[0]
+    enum entry BLOCKED // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1.BLOCKED|null[0]
+    enum entry READY // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1.READY|null[0]
+
+    final val entries // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1.values|values#static(){}[0]
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
 final enum class ee.schimke.composeai.uibuilder.protocol/ComponentKindV1 : kotlin/Enum<ee.schimke.composeai.uibuilder.protocol/ComponentKindV1> { // ee.schimke.composeai.uibuilder.protocol/ComponentKindV1|null[0]
     enum entry COMPOSABLE // ee.schimke.composeai.uibuilder.protocol/ComponentKindV1.COMPOSABLE|null[0]
     enum entry CONTAINER // ee.schimke.composeai.uibuilder.protocol/ComponentKindV1.CONTAINER|null[0]
@@ -455,6 +488,16 @@ sealed interface ee.schimke.composeai.uibuilder.protocol/AssetSourceV1 { // ee.s
     }
 }
 
+sealed interface ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeChangeV1 { // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeChangeV1|null[0]
+    abstract val path // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeChangeV1.path|{}path[0]
+        abstract fun <get-path>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeChangeV1.path.<get-path>|<get-path>(){}[0]
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeChangeV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeChangeV1> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeChangeV1.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeChangeV1.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
 sealed interface ee.schimke.composeai.uibuilder.protocol/CommandOutcomeV1 { // ee.schimke.composeai.uibuilder.protocol/CommandOutcomeV1|null[0]
     abstract val operationId // ee.schimke.composeai.uibuilder.protocol/CommandOutcomeV1.operationId|{}operationId[0]
         abstract fun <get-operationId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CommandOutcomeV1.operationId.<get-operationId>|<get-operationId>(){}[0]
@@ -665,6 +708,35 @@ final class ee.schimke.composeai.uibuilder.protocol/AdaptiveGridValueV1 : ee.sch
 
     final object Companion { // ee.schimke.composeai.uibuilder.protocol/AdaptiveGridValueV1.Companion|null[0]
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/AdaptiveGridValueV1> // ee.schimke.composeai.uibuilder.protocol/AdaptiveGridValueV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1 : ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeChangeV1 { // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1|null[0]
+    constructor <init>(kotlin/String, kotlinx.serialization.json/JsonElement) // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.<init>|<init>(kotlin.String;kotlinx.serialization.json.JsonElement){}[0]
+
+    final val path // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.path|{}path[0]
+        final fun <get-path>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.path.<get-path>|<get-path>(){}[0]
+    final val targetValue // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.targetValue|{}targetValue[0]
+        final fun <get-targetValue>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.targetValue.<get-targetValue>|<get-targetValue>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.component1|component1(){}[0]
+    final fun component2(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.component2|component2(){}[0]
+    final fun copy(kotlin/String = ..., kotlinx.serialization.json/JsonElement = ...): ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1 // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.copy|copy(kotlin.String;kotlinx.serialization.json.JsonElement){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1> { // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1 // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1) // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.AddCatalogUpgradeChangeV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1> // ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1.Companion.serializer|serializer(){}[0]
     }
 }
 
@@ -980,6 +1052,168 @@ final class ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 { // ee.s
 
     final object Companion { // ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1.Companion|null[0]
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1> // ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1 { // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1|null[0]
+    constructor <init>(ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1, kotlin/String, kotlin/String? = ..., kotlin/String) // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.CatalogUpgradeIssueSeverityV1;kotlin.String;kotlin.String?;kotlin.String){}[0]
+
+    final val code // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.code|{}code[0]
+        final fun <get-code>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.code.<get-code>|<get-code>(){}[0]
+    final val message // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.message|{}message[0]
+        final fun <get-message>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.message.<get-message>|<get-message>(){}[0]
+    final val path // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.path|{}path[0]
+        final fun <get-path>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.path.<get-path>|<get-path>(){}[0]
+    final val severity // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.severity|{}severity[0]
+        final fun <get-severity>(): ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.severity.<get-severity>|<get-severity>(){}[0]
+
+    final fun component1(): ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.component1|component1(){}[0]
+    final fun component2(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.component2|component2(){}[0]
+    final fun component3(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.component3|component3(){}[0]
+    final fun component4(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.component4|component4(){}[0]
+    final fun copy(ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueSeverityV1 = ..., kotlin/String = ..., kotlin/String? = ..., kotlin/String = ...): ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.copy|copy(ee.schimke.composeai.uibuilder.protocol.CatalogUpgradeIssueSeverityV1;kotlin.String;kotlin.String?;kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1> { // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1) // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.CatalogUpgradeIssueV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1 : ee.schimke.composeai.uibuilder.protocol/DesignMutationV1 { // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1|null[0]
+    constructor <init>(ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1, ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1, kotlin/String, kotlin/String, kotlin/String, kotlin/String? = ...) // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1;ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1;kotlin.String;kotlin.String;kotlin.String;kotlin.String?){}[0]
+
+    final val compensatesCatalogUpgradeOperationId // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.compensatesCatalogUpgradeOperationId|{}compensatesCatalogUpgradeOperationId[0]
+        final fun <get-compensatesCatalogUpgradeOperationId>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.compensatesCatalogUpgradeOperationId.<get-compensatesCatalogUpgradeOperationId>|<get-compensatesCatalogUpgradeOperationId>(){}[0]
+    final val previewDigest // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.previewDigest|{}previewDigest[0]
+        final fun <get-previewDigest>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.previewDigest.<get-previewDigest>|<get-previewDigest>(){}[0]
+    final val sourceCatalogPin // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.sourceCatalogPin|{}sourceCatalogPin[0]
+        final fun <get-sourceCatalogPin>(): ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.sourceCatalogPin.<get-sourceCatalogPin>|<get-sourceCatalogPin>(){}[0]
+    final val sourceDocumentHash // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.sourceDocumentHash|{}sourceDocumentHash[0]
+        final fun <get-sourceDocumentHash>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.sourceDocumentHash.<get-sourceDocumentHash>|<get-sourceDocumentHash>(){}[0]
+    final val targetCatalogPin // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.targetCatalogPin|{}targetCatalogPin[0]
+        final fun <get-targetCatalogPin>(): ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.targetCatalogPin.<get-targetCatalogPin>|<get-targetCatalogPin>(){}[0]
+    final val targetDocumentHash // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.targetDocumentHash|{}targetDocumentHash[0]
+        final fun <get-targetDocumentHash>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.targetDocumentHash.<get-targetDocumentHash>|<get-targetDocumentHash>(){}[0]
+
+    final fun component1(): ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.component1|component1(){}[0]
+    final fun component2(): ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.component2|component2(){}[0]
+    final fun component3(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.component3|component3(){}[0]
+    final fun component4(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.component4|component4(){}[0]
+    final fun component5(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.component5|component5(){}[0]
+    final fun component6(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.component6|component6(){}[0]
+    final fun copy(ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 = ..., ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 = ..., kotlin/String = ..., kotlin/String = ..., kotlin/String = ..., kotlin/String? = ...): ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.copy|copy(ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1;ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1;kotlin.String;kotlin.String;kotlin.String;kotlin.String?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1> { // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1) // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.CatalogUpgradeMutationV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeMutationV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1 : ee.schimke.composeai.uibuilder.protocol/UiBuilderResponseV1 { // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1|null[0]
+    constructor <init>(ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1) // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.CatalogUpgradePreviewV1){}[0]
+
+    final val preview // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1.preview|{}preview[0]
+        final fun <get-preview>(): ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1.preview.<get-preview>|<get-preview>(){}[0]
+
+    final fun component1(): ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1.component1|component1(){}[0]
+    final fun copy(ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1 = ...): ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1.copy|copy(ee.schimke.composeai.uibuilder.protocol.CatalogUpgradePreviewV1){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1> { // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1) // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.CatalogUpgradePreviewResponseV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewResponseV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1 { // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1|null[0]
+    constructor <init>(kotlin/String, kotlin/Long, ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1, ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1, kotlin/String, ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1, kotlin/String, ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1? = ..., kotlin/String? = ..., kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeChangeV1> = ..., kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1> = ...) // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.<init>|<init>(kotlin.String;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1;ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1;kotlin.String;ee.schimke.composeai.uibuilder.protocol.CatalogUpgradePreviewStatusV1;kotlin.String;ee.schimke.composeai.uibuilder.protocol.DesignDocumentV1?;kotlin.String?;kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.CatalogUpgradeChangeV1>;kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.CatalogUpgradeIssueV1>){}[0]
+
+    final val baseRevision // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.baseRevision|{}baseRevision[0]
+        final fun <get-baseRevision>(): kotlin/Long // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.baseRevision.<get-baseRevision>|<get-baseRevision>(){}[0]
+    final val candidateDocument // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.candidateDocument|{}candidateDocument[0]
+        final fun <get-candidateDocument>(): ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1? // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.candidateDocument.<get-candidateDocument>|<get-candidateDocument>(){}[0]
+    final val candidateDocumentHash // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.candidateDocumentHash|{}candidateDocumentHash[0]
+        final fun <get-candidateDocumentHash>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.candidateDocumentHash.<get-candidateDocumentHash>|<get-candidateDocumentHash>(){}[0]
+    final val changes // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.changes|{}changes[0]
+        final fun <get-changes>(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeChangeV1> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.changes.<get-changes>|<get-changes>(){}[0]
+    final val designId // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.designId|{}designId[0]
+        final fun <get-designId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.designId.<get-designId>|<get-designId>(){}[0]
+    final val issues // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.issues|{}issues[0]
+        final fun <get-issues>(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.issues.<get-issues>|<get-issues>(){}[0]
+    final val previewDigest // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.previewDigest|{}previewDigest[0]
+        final fun <get-previewDigest>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.previewDigest.<get-previewDigest>|<get-previewDigest>(){}[0]
+    final val sourceCatalogPin // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.sourceCatalogPin|{}sourceCatalogPin[0]
+        final fun <get-sourceCatalogPin>(): ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.sourceCatalogPin.<get-sourceCatalogPin>|<get-sourceCatalogPin>(){}[0]
+    final val sourceDocumentHash // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.sourceDocumentHash|{}sourceDocumentHash[0]
+        final fun <get-sourceDocumentHash>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.sourceDocumentHash.<get-sourceDocumentHash>|<get-sourceDocumentHash>(){}[0]
+    final val status // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.status|{}status[0]
+        final fun <get-status>(): ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.status.<get-status>|<get-status>(){}[0]
+    final val targetCatalogPin // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.targetCatalogPin|{}targetCatalogPin[0]
+        final fun <get-targetCatalogPin>(): ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.targetCatalogPin.<get-targetCatalogPin>|<get-targetCatalogPin>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.component1|component1(){}[0]
+    final fun component10(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeChangeV1> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.component10|component10(){}[0]
+    final fun component11(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.component11|component11(){}[0]
+    final fun component2(): kotlin/Long // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.component2|component2(){}[0]
+    final fun component3(): ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.component3|component3(){}[0]
+    final fun component4(): ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.component4|component4(){}[0]
+    final fun component5(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.component5|component5(){}[0]
+    final fun component6(): ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.component6|component6(){}[0]
+    final fun component7(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.component7|component7(){}[0]
+    final fun component8(): ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1? // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.component8|component8(){}[0]
+    final fun component9(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.component9|component9(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/Long = ..., ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 = ..., ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 = ..., kotlin/String = ..., ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewStatusV1 = ..., kotlin/String = ..., ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1? = ..., kotlin/String? = ..., kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeChangeV1> = ..., kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeIssueV1> = ...): ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.copy|copy(kotlin.String;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1;ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1;kotlin.String;ee.schimke.composeai.uibuilder.protocol.CatalogUpgradePreviewStatusV1;kotlin.String;ee.schimke.composeai.uibuilder.protocol.DesignDocumentV1?;kotlin.String?;kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.CatalogUpgradeChangeV1>;kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.CatalogUpgradeIssueV1>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1> { // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1 // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1) // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.CatalogUpgradePreviewV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1> // ee.schimke.composeai.uibuilder.protocol/CatalogUpgradePreviewV1.Companion.serializer|serializer(){}[0]
     }
 }
 
@@ -3228,6 +3462,41 @@ final class ee.schimke.composeai.uibuilder.protocol/PresenceV1 { // ee.schimke.c
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1 : ee.schimke.composeai.uibuilder.protocol/UiBuilderRequestV1 { // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1|null[0]
+    constructor <init>(kotlin/String, kotlin/Long, ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1, ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1) // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.<init>|<init>(kotlin.String;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1;ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1){}[0]
+
+    final val baseRevision // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.baseRevision|{}baseRevision[0]
+        final fun <get-baseRevision>(): kotlin/Long // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.baseRevision.<get-baseRevision>|<get-baseRevision>(){}[0]
+    final val designId // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.designId|{}designId[0]
+        final fun <get-designId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.designId.<get-designId>|<get-designId>(){}[0]
+    final val sourceCatalogPin // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.sourceCatalogPin|{}sourceCatalogPin[0]
+        final fun <get-sourceCatalogPin>(): ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.sourceCatalogPin.<get-sourceCatalogPin>|<get-sourceCatalogPin>(){}[0]
+    final val targetCatalogPin // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.targetCatalogPin|{}targetCatalogPin[0]
+        final fun <get-targetCatalogPin>(): ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.targetCatalogPin.<get-targetCatalogPin>|<get-targetCatalogPin>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.component1|component1(){}[0]
+    final fun component2(): kotlin/Long // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.component2|component2(){}[0]
+    final fun component3(): ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.component3|component3(){}[0]
+    final fun component4(): ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.component4|component4(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/Long = ..., ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 = ..., ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 = ...): ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1 // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.copy|copy(kotlin.String;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1;ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1> { // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1 // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1) // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.PreviewCatalogUpgradeRequestV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1> // ee.schimke.composeai.uibuilder.protocol/PreviewCatalogUpgradeRequestV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/PropertyCapabilityV1 { // ee.schimke.composeai.uibuilder.protocol/PropertyCapabilityV1|null[0]
     constructor <init>(kotlin/String, kotlinx.serialization.json/JsonElement, kotlin/Boolean = ..., kotlin.collections/List<kotlinx.serialization.json/JsonElement> = ..., kotlin/String? = ...) // ee.schimke.composeai.uibuilder.protocol/PropertyCapabilityV1.<init>|<init>(kotlin.String;kotlinx.serialization.json.JsonElement;kotlin.Boolean;kotlin.collections.List<kotlinx.serialization.json.JsonElement>;kotlin.String?){}[0]
 
@@ -3356,6 +3625,67 @@ final class ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1 : ee.schim
         final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.Companion.$childSerializers|{}$childSerializers[0]
 
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1> // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1 : ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeChangeV1 { // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1|null[0]
+    constructor <init>(kotlin/String, kotlinx.serialization.json/JsonElement) // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.<init>|<init>(kotlin.String;kotlinx.serialization.json.JsonElement){}[0]
+
+    final val path // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.path|{}path[0]
+        final fun <get-path>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.path.<get-path>|<get-path>(){}[0]
+    final val sourceValue // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.sourceValue|{}sourceValue[0]
+        final fun <get-sourceValue>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.sourceValue.<get-sourceValue>|<get-sourceValue>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.component1|component1(){}[0]
+    final fun component2(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.component2|component2(){}[0]
+    final fun copy(kotlin/String = ..., kotlinx.serialization.json/JsonElement = ...): ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1 // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.copy|copy(kotlin.String;kotlinx.serialization.json.JsonElement){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1> { // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1 // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1) // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.RemoveCatalogUpgradeChangeV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1> // ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1 : ee.schimke.composeai.uibuilder.protocol/CatalogUpgradeChangeV1 { // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1|null[0]
+    constructor <init>(kotlin/String, kotlinx.serialization.json/JsonElement, kotlinx.serialization.json/JsonElement) // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.<init>|<init>(kotlin.String;kotlinx.serialization.json.JsonElement;kotlinx.serialization.json.JsonElement){}[0]
+
+    final val path // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.path|{}path[0]
+        final fun <get-path>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.path.<get-path>|<get-path>(){}[0]
+    final val sourceValue // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.sourceValue|{}sourceValue[0]
+        final fun <get-sourceValue>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.sourceValue.<get-sourceValue>|<get-sourceValue>(){}[0]
+    final val targetValue // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.targetValue|{}targetValue[0]
+        final fun <get-targetValue>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.targetValue.<get-targetValue>|<get-targetValue>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.component1|component1(){}[0]
+    final fun component2(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.component2|component2(){}[0]
+    final fun component3(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.component3|component3(){}[0]
+    final fun copy(kotlin/String = ..., kotlinx.serialization.json/JsonElement = ..., kotlinx.serialization.json/JsonElement = ...): ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1 // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.copy|copy(kotlin.String;kotlinx.serialization.json.JsonElement;kotlinx.serialization.json.JsonElement){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1> { // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1 // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1) // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.ReplaceCatalogUpgradeChangeV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1> // ee.schimke.composeai.uibuilder.protocol/ReplaceCatalogUpgradeChangeV1.Companion.serializer|serializer(){}[0]
     }
 }
 

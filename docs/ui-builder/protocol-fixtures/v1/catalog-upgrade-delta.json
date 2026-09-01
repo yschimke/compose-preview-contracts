@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "designId": "design-1",
+  "afterSequence": 13,
+  "throughSequence": 15,
+  "currentRevision": 9,
+  "retainedFromSequence": 1,
+  "operations": [
+    {
+      "submission": {
+        "type": "batch",
+        "designId": "design-1",
+        "operationId": "catalog-upgrade-1",
+        "actorId": "actor-a",
+        "clientId": "browser-a",
+        "baseRevision": 7,
+        "operations": [
+          {
+            "type": "upgradeCatalog",
+            "sourceCatalogPin": {
+              "systemId": "m3-catalog",
+              "catalogRevision": "2026.08",
+              "capabilityDigest": "sha256:catalog-old",
+              "nativeRuntimeId": "m3-runtime:2026.08"
+            },
+            "targetCatalogPin": {
+              "systemId": "m3-catalog",
+              "catalogRevision": "2026.09",
+              "capabilityDigest": "sha256:catalog-new",
+              "nativeRuntimeId": "m3-runtime:2026.09"
+            },
+            "sourceDocumentHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "targetDocumentHash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "previewDigest": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+          }
+        ]
+      },
+      "outcome": {
+        "operationId": "catalog-upgrade-1",
+        "committedRevision": 8,
+        "sequence": 14,
+        "documentHash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "idempotentReplay": false
+      }
+    },
+    {
+      "submission": {
+        "type": "batch",
+        "designId": "design-1",
+        "operationId": "catalog-upgrade-rollback-1",
+        "actorId": "actor-a",
+        "clientId": "browser-a",
+        "baseRevision": 8,
+        "operations": [
+          {
+            "type": "upgradeCatalog",
+            "sourceCatalogPin": {
+              "systemId": "m3-catalog",
+              "catalogRevision": "2026.09",
+              "capabilityDigest": "sha256:catalog-new",
+              "nativeRuntimeId": "m3-runtime:2026.09"
+            },
+            "targetCatalogPin": {
+              "systemId": "m3-catalog",
+              "catalogRevision": "2026.08",
+              "capabilityDigest": "sha256:catalog-old",
+              "nativeRuntimeId": "m3-runtime:2026.08"
+            },
+            "sourceDocumentHash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "targetDocumentHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "previewDigest": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "compensatesCatalogUpgradeOperationId": "catalog-upgrade-1"
+          }
+        ]
+      },
+      "outcome": {
+        "operationId": "catalog-upgrade-rollback-1",
+        "committedRevision": 9,
+        "sequence": 15,
+        "documentHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "idempotentReplay": false
+      }
+    }
+  ]
+}

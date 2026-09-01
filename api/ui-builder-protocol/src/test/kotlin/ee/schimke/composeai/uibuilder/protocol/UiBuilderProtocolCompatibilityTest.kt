@@ -4,6 +4,7 @@ import java.io.File
 import java.security.MessageDigest
 import kotlin.test.assertFailsWith
 import kotlin.test.assertNotEquals
+import kotlin.test.assertNull
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationException
@@ -27,12 +28,25 @@ class UiBuilderProtocolCompatibilityTest {
   private val fixtures: Map<String, KSerializer<Any>> =
     mapOf(
       fixtureSerializer("catalog.json", CatalogCapabilityV1.serializer()),
+      fixtureSerializer("catalog-upgrade-delta.json", ServiceDeltaV1.serializer()),
       fixtureSerializer("lossless-document-command.json", LosslessProtocolFixtureV1.serializer()),
       fixtureSerializer("materialized-confetti.json", DesignDocumentV1.serializer()),
       fixtureSerializer("materialized-jetcaster.json", DesignDocumentV1.serializer()),
       fixtureSerializer("design-state.json", DesignStateV1.serializer()),
       fixtureSerializer("http-access-conflict-response.json", HttpResponseEnvelopeV1.serializer()),
       fixtureSerializer("http-commands-request.json", HttpRequestEnvelopeV1.serializer()),
+      fixtureSerializer(
+        "http-catalog-upgrade-blocked-response.json",
+        HttpResponseEnvelopeV1.serializer(),
+      ),
+      fixtureSerializer(
+        "http-catalog-upgrade-preview-request.json",
+        HttpRequestEnvelopeV1.serializer(),
+      ),
+      fixtureSerializer(
+        "http-catalog-upgrade-preview-response.json",
+        HttpResponseEnvelopeV1.serializer(),
+      ),
       fixtureSerializer("http-conflict-response.json", HttpResponseEnvelopeV1.serializer()),
       fixtureSerializer("http-list-designs-request.json", HttpRequestEnvelopeV1.serializer()),
       fixtureSerializer("http-list-designs-response.json", HttpResponseEnvelopeV1.serializer()),
@@ -162,6 +176,71 @@ class UiBuilderProtocolCompatibilityTest {
 
     assertEquals(null, decoded.operations.single().outcome.documentUpdatedAtEpochMillis)
     assertEquals(original, strictJson.encodeToJsonElement(ServiceDeltaV1.serializer(), decoded))
+  }
+
+  @Test
+  fun catalogUpgradePreviewBindsAnOrderedDiffToTheExactCandidate() {
+    val envelope =
+      strictJson.decodeFromString(
+        HttpResponseEnvelopeV1.serializer(),
+        fixture("http-catalog-upgrade-preview-response.json"),
+      )
+    val preview = (envelope.response as CatalogUpgradePreviewResponseV1).preview
+
+    assertEquals(CatalogUpgradePreviewStatusV1.READY, preview.status)
+    assertEquals(preview.targetCatalogPin, preview.candidateDocument?.catalogPin)
+    assertEquals(
+      "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      preview.candidateDocumentHash,
+    )
+    assertEquals(preview.changes.map { it.path }.sorted(), preview.changes.map { it.path })
+    assertEquals(
+      listOf(
+        ReplaceCatalogUpgradeChangeV1::class,
+        ReplaceCatalogUpgradeChangeV1::class,
+        RemoveCatalogUpgradeChangeV1::class,
+        AddCatalogUpgradeChangeV1::class,
+      ),
+      preview.changes.map { it::class },
+    )
+  }
+
+  @Test
+  fun blockedCatalogUpgradeHasDiagnosticsWithoutACandidate() {
+    val envelope =
+      strictJson.decodeFromString(
+        HttpResponseEnvelopeV1.serializer(),
+        fixture("http-catalog-upgrade-blocked-response.json"),
+      )
+    val preview = (envelope.response as CatalogUpgradePreviewResponseV1).preview
+
+    assertEquals(CatalogUpgradePreviewStatusV1.BLOCKED, preview.status)
+    assertNull(preview.candidateDocument)
+    assertNull(preview.candidateDocumentHash)
+    assertEquals(0, preview.changes.size)
+    assertEquals(CatalogUpgradeIssueSeverityV1.ERROR, preview.issues.single().severity)
+  }
+
+  @Test
+  fun catalogRollbackIsAnAcceptedCompensatingHistoryEvent() {
+    val delta =
+      strictJson.decodeFromString(
+        ServiceDeltaV1.serializer(),
+        fixture("catalog-upgrade-delta.json"),
+      )
+    val upgrade =
+      ((delta.operations[0].submission as DesignCommandV1).operations.single()
+        as CatalogUpgradeMutationV1)
+    val rollback =
+      ((delta.operations[1].submission as DesignCommandV1).operations.single()
+        as CatalogUpgradeMutationV1)
+
+    assertEquals(upgrade.sourceCatalogPin, rollback.targetCatalogPin)
+    assertEquals(upgrade.targetCatalogPin, rollback.sourceCatalogPin)
+    assertEquals("catalog-upgrade-1", rollback.compensatesCatalogUpgradeOperationId)
+    assertEquals(upgrade.targetDocumentHash, delta.operations[0].outcome.documentHash)
+    assertEquals(rollback.targetDocumentHash, delta.operations[1].outcome.documentHash)
+    assertEquals(listOf(14L, 15L), delta.operations.map { it.outcome.sequence })
   }
 
   @Test
