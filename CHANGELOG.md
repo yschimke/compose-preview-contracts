@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.3.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.2.0...v2.3.0) (2026-09-01)
+
+
+### Features
+
+* **ui-builder:** add catalog upgrade protocol ([#32](https://github.com/yschimke/compose-preview-contracts/issues/32)) ([c58f4c1](https://github.com/yschimke/compose-preview-contracts/commit/c58f4c1295c3377fac3ea8ce795dbdd54c1ee08d))
+* **ui-builder:** add typed environment mutations ([#30](https://github.com/yschimke/compose-preview-contracts/issues/30)) ([0d9575f](https://github.com/yschimke/compose-preview-contracts/commit/0d9575f5ab6f826fa52212093272e16f5a964a23))
+* **ui-builder:** expose committed document timestamp ([#31](https://github.com/yschimke/compose-preview-contracts/issues/31)) ([2087329](https://github.com/yschimke/compose-preview-contracts/commit/2087329ac780987a95ed3ee3e732bc285d69b50a))
+
 ## [2.2.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.1.0...v2.2.0) (2026-08-31)
 
 
