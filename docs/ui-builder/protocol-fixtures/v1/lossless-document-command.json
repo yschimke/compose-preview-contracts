@@ -129,7 +129,30 @@
         {"type": "moveNode", "nodeId": "child-b", "location": {"afterNodeId": "root-a"}},
         {"type": "deleteNode", "nodeId": "old"},
         {"type": "restoreNode", "nodeId": "old", "location": {"beforeNodeId": "root-b"}},
-        {"type": "setProperty", "nodeId": "new", "property": "text", "value": {"type": "string", "value": "New"}}
+        {"type": "setProperty", "nodeId": "new", "property": "text", "value": {"type": "string", "value": "New"}},
+        {"type": "updateEnvironment", "changes": [
+          {"type":"setWidthDp","value":412},
+          {"type":"setHeightDp","value":800},
+          {"type":"setDensity","value":2.0},
+          {"type":"setTheme","value":"dark"},
+          {"type":"setLocale","value":"ar-XB"},
+          {"type":"setFontScale","value":1.3},
+          {"type":"setLayoutDirection","value":"rtl"},
+          {"type":"setDynamicColor","value":false},
+          {"type":"resetDynamicColor"},
+          {"type":"setWindowPosture","value":"book"},
+          {"type":"resetWindowPosture"},
+          {"type":"setBrowserZoomPercent","value":110},
+          {"type":"resetBrowserZoomPercent"},
+          {"type":"setFixedTime","value":"2026-08-31T12:00:00Z"},
+          {"type":"resetFixedTime"},
+          {"type":"setAnimations","value":"settled"},
+          {"type":"resetAnimations"},
+          {"type":"setNetworkAccess","value":false},
+          {"type":"resetNetworkAccess"},
+          {"type":"setBackground","value":{"type":"color","value":"#FF112233"}},
+          {"type":"resetBackground"}
+        ]}
       ]
     },
     {"type": "undo", "designId": "design-lossless", "operationId": "undo-1", "actorId": "actor-a", "clientId": "mcp-a", "baseRevision": 43, "targetOperationId": "batch-1"},
@@ -145,7 +168,8 @@
       "idempotentReplay": true,
       "conflicts": [
         {"code": "stalePropertyWrite", "nodeId": "new", "field": "text", "overwrittenRevision": 41},
-        {"code": "staleMove", "nodeId": "child-b", "overwrittenRevision": 42}
+        {"code": "staleMove", "nodeId": "child-b", "overwrittenRevision": 42},
+        {"code": "staleEnvironmentWrite", "overwrittenRevision": 42, "environmentField": "theme"}
       ]
     },
     {"type": "rejected", "operationId": "bad-1", "currentRevision": 43, "code": "invalidLocation", "message": "anchor is invalid", "operationIndex": 1, "nodeId": "child-b", "field": "content"}
@@ -164,6 +188,6 @@
   "stateVariableTypes": ["text", "selection", "value"],
   "stateValueTypes": ["string", "bool", "int", "float"],
   "statePersistences": ["design", "preview", "session"],
-  "conflictCodes": ["stalePropertyWrite", "staleMove"],
+  "conflictCodes": ["stalePropertyWrite", "staleMove", "staleEnvironmentWrite"],
   "rejectionCodes": ["designMismatch", "invalidCommand", "revisionMismatch", "operationIdReused", "unknownNode", "deletedNode", "missingPropertyValidator", "malformedProperty", "invalidProperty", "invalidDocument", "revisionNotRetained", "invalidLocation", "cycle", "actorMismatch", "alreadyCompensated", "unsafeCompensation", "unsupportedCompensation", "unknownOperation", "replayDivergence"]
 }

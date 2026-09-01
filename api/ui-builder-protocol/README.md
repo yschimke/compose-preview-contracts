@@ -41,6 +41,12 @@ Compatibility rules for v1:
 - Share-link IDs are opaque unguessable bearer secrets. Only actors with `manageAccess` should
   receive them; transports must not log or expose them through ordinary design listings.
 - Sealed variants use the `type` discriminator and stable lower-camel `@SerialName` values.
+- `updateEnvironment` batches ordered typed field changes. Reducers must reject empty changes and
+  duplicate environment fields, validate the complete candidate atomically, version fields
+  independently for stale-write conflicts, and retain exact before/after values for history and
+  undo/redo. Reset variants exist only for nullable environment fields; omission never means reset.
+- A conflict names exactly one target: `nodeId` for node/property/move conflicts or
+  `environmentField` for environment conflicts. Reducers reject conflicts with both or neither.
 - New optional fields may be added with defaults. Renaming fields, changing requiredness or reusing
   an enum/variant spelling requires a new protocol version.
 - Readers that need forward-compatible minor evolution should use `ignoreUnknownKeys = true`.

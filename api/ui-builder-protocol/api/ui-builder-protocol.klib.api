@@ -43,6 +43,7 @@ final enum class ee.schimke.composeai.uibuilder.protocol/ComponentKindV1 : kotli
 }
 
 final enum class ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1 : kotlin/Enum<ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1> { // ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1|null[0]
+    enum entry STALE_ENVIRONMENT_WRITE // ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1.STALE_ENVIRONMENT_WRITE|null[0]
     enum entry STALE_MOVE // ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1.STALE_MOVE|null[0]
     enum entry STALE_PROPERTY_WRITE // ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1.STALE_PROPERTY_WRITE|null[0]
 
@@ -126,6 +127,34 @@ final enum class ee.schimke.composeai.uibuilder.protocol/DimensionUnitV1 : kotli
     final object Companion : kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/DimensionUnitV1.Companion|null[0]
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/DimensionUnitV1> // ee.schimke.composeai.uibuilder.protocol/DimensionUnitV1.Companion.serializer|serializer(){}[0]
         final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/DimensionUnitV1.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+final enum class ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 : kotlin/Enum<ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1> { // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1|null[0]
+    enum entry ANIMATIONS // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.ANIMATIONS|null[0]
+    enum entry BACKGROUND // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.BACKGROUND|null[0]
+    enum entry BROWSER_ZOOM_PERCENT // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.BROWSER_ZOOM_PERCENT|null[0]
+    enum entry DENSITY // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.DENSITY|null[0]
+    enum entry DYNAMIC_COLOR // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.DYNAMIC_COLOR|null[0]
+    enum entry FIXED_TIME // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.FIXED_TIME|null[0]
+    enum entry FONT_SCALE // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.FONT_SCALE|null[0]
+    enum entry HEIGHT_DP // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.HEIGHT_DP|null[0]
+    enum entry LAYOUT_DIRECTION // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.LAYOUT_DIRECTION|null[0]
+    enum entry LOCALE // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.LOCALE|null[0]
+    enum entry NETWORK_ACCESS // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.NETWORK_ACCESS|null[0]
+    enum entry THEME // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.THEME|null[0]
+    enum entry WIDTH_DP // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.WIDTH_DP|null[0]
+    enum entry WINDOW_POSTURE // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.WINDOW_POSTURE|null[0]
+
+    final val entries // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1> // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1> // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.values|values#static(){}[0]
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1> // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
     }
 }
 
@@ -482,6 +511,16 @@ sealed interface ee.schimke.composeai.uibuilder.protocol/DesignUpdateV1 { // ee.
     final object Companion : kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/DesignUpdateV1.Companion|null[0]
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/DesignUpdateV1> // ee.schimke.composeai.uibuilder.protocol/DesignUpdateV1.Companion.serializer|serializer(){}[0]
         final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/DesignUpdateV1.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+sealed interface ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1|null[0]
+    abstract val field // ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1.field|{}field[0]
+        abstract fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
     }
 }
 
@@ -1079,22 +1118,26 @@ final class ee.schimke.composeai.uibuilder.protocol/ColorValueV1 : ee.schimke.co
 }
 
 final class ee.schimke.composeai.uibuilder.protocol/CommandConflictV1 { // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1|null[0]
-    constructor <init>(ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1, kotlin/String, kotlin/String? = ..., kotlin/Long) // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.ConflictCodeV1;kotlin.String;kotlin.String?;kotlin.Long){}[0]
+    constructor <init>(ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1, kotlin/String, kotlin/String?, kotlin/Long) // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.ConflictCodeV1;kotlin.String;kotlin.String?;kotlin.Long){}[0]
+    constructor <init>(ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1, kotlin/String?, kotlin/String? = ..., kotlin/Long, ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1? = ...) // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.ConflictCodeV1;kotlin.String?;kotlin.String?;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.EnvironmentFieldV1?){}[0]
 
     final val code // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.code|{}code[0]
         final fun <get-code>(): ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1 // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.code.<get-code>|<get-code>(){}[0]
+    final val environmentField // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.environmentField|{}environmentField[0]
+        final fun <get-environmentField>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1? // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.environmentField.<get-environmentField>|<get-environmentField>(){}[0]
     final val field // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.field|{}field[0]
         final fun <get-field>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.field.<get-field>|<get-field>(){}[0]
     final val nodeId // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.nodeId|{}nodeId[0]
-        final fun <get-nodeId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.nodeId.<get-nodeId>|<get-nodeId>(){}[0]
+        final fun <get-nodeId>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.nodeId.<get-nodeId>|<get-nodeId>(){}[0]
     final val overwrittenRevision // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.overwrittenRevision|{}overwrittenRevision[0]
         final fun <get-overwrittenRevision>(): kotlin/Long // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.overwrittenRevision.<get-overwrittenRevision>|<get-overwrittenRevision>(){}[0]
 
     final fun component1(): ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1 // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.component1|component1(){}[0]
-    final fun component2(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.component2|component2(){}[0]
+    final fun component2(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.component2|component2(){}[0]
     final fun component3(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.component3|component3(){}[0]
     final fun component4(): kotlin/Long // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.component4|component4(){}[0]
-    final fun copy(ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1 = ..., kotlin/String = ..., kotlin/String? = ..., kotlin/Long = ...): ee.schimke.composeai.uibuilder.protocol/CommandConflictV1 // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.copy|copy(ee.schimke.composeai.uibuilder.protocol.ConflictCodeV1;kotlin.String;kotlin.String?;kotlin.Long){}[0]
+    final fun component5(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1? // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.component5|component5(){}[0]
+    final fun copy(ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1 = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/Long = ..., ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1? = ...): ee.schimke.composeai.uibuilder.protocol/CommandConflictV1 // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.copy|copy(ee.schimke.composeai.uibuilder.protocol.ConflictCodeV1;kotlin.String?;kotlin.String?;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.EnvironmentFieldV1?){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.toString|toString(){}[0]
@@ -3264,12 +3307,15 @@ final class ee.schimke.composeai.uibuilder.protocol/RedoCommandV1 : ee.schimke.c
 }
 
 final class ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1 : ee.schimke.composeai.uibuilder.protocol/CommandOutcomeV1 { // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1|null[0]
-    constructor <init>(kotlin/String, kotlin/Long, ee.schimke.composeai.uibuilder.protocol/RejectionCodeV1, kotlin/String, kotlin/Int? = ..., kotlin/String? = ..., kotlin/String? = ...) // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.<init>|<init>(kotlin.String;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.RejectionCodeV1;kotlin.String;kotlin.Int?;kotlin.String?;kotlin.String?){}[0]
+    constructor <init>(kotlin/String, kotlin/Long, ee.schimke.composeai.uibuilder.protocol/RejectionCodeV1, kotlin/String, kotlin/Int? = ..., kotlin/String? = ..., kotlin/String? = ..., ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1? = ...) // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.<init>|<init>(kotlin.String;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.RejectionCodeV1;kotlin.String;kotlin.Int?;kotlin.String?;kotlin.String?;ee.schimke.composeai.uibuilder.protocol.EnvironmentFieldV1?){}[0]
+    constructor <init>(kotlin/String, kotlin/Long, ee.schimke.composeai.uibuilder.protocol/RejectionCodeV1, kotlin/String, kotlin/Int?, kotlin/String?, kotlin/String?) // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.<init>|<init>(kotlin.String;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.RejectionCodeV1;kotlin.String;kotlin.Int?;kotlin.String?;kotlin.String?){}[0]
 
     final val code // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.code|{}code[0]
         final fun <get-code>(): ee.schimke.composeai.uibuilder.protocol/RejectionCodeV1 // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.code.<get-code>|<get-code>(){}[0]
     final val currentRevision // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.currentRevision|{}currentRevision[0]
         final fun <get-currentRevision>(): kotlin/Long // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.currentRevision.<get-currentRevision>|<get-currentRevision>(){}[0]
+    final val environmentField // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.environmentField|{}environmentField[0]
+        final fun <get-environmentField>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1? // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.environmentField.<get-environmentField>|<get-environmentField>(){}[0]
     final val field // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.field|{}field[0]
         final fun <get-field>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.field.<get-field>|<get-field>(){}[0]
     final val message // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.message|{}message[0]
@@ -3288,7 +3334,8 @@ final class ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1 : ee.schim
     final fun component5(): kotlin/Int? // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.component5|component5(){}[0]
     final fun component6(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.component6|component6(){}[0]
     final fun component7(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.component7|component7(){}[0]
-    final fun copy(kotlin/String = ..., kotlin/Long = ..., ee.schimke.composeai.uibuilder.protocol/RejectionCodeV1 = ..., kotlin/String = ..., kotlin/Int? = ..., kotlin/String? = ..., kotlin/String? = ...): ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1 // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.copy|copy(kotlin.String;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.RejectionCodeV1;kotlin.String;kotlin.Int?;kotlin.String?;kotlin.String?){}[0]
+    final fun component8(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1? // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.component8|component8(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/Long = ..., ee.schimke.composeai.uibuilder.protocol/RejectionCodeV1 = ..., kotlin/String = ..., kotlin/Int? = ..., kotlin/String? = ..., kotlin/String? = ..., ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1? = ...): ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1 // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.copy|copy(kotlin.String;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.RejectionCodeV1;kotlin.String;kotlin.Int?;kotlin.String?;kotlin.String?;ee.schimke.composeai.uibuilder.protocol.EnvironmentFieldV1?){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.toString|toString(){}[0]
@@ -3615,6 +3662,336 @@ final class ee.schimke.composeai.uibuilder.protocol/ServiceSnapshotV1 { // ee.sc
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1|null[0]
+    constructor <init>(ee.schimke.composeai.uibuilder.protocol/AnimationStateV1) // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.AnimationStateV1){}[0]
+
+    final val field // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+    final val value // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.value|{}value[0]
+        final fun <get-value>(): ee.schimke.composeai.uibuilder.protocol/AnimationStateV1 // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): ee.schimke.composeai.uibuilder.protocol/AnimationStateV1 // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.component1|component1(){}[0]
+    final fun copy(ee.schimke.composeai.uibuilder.protocol/AnimationStateV1 = ...): ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.copy|copy(ee.schimke.composeai.uibuilder.protocol.AnimationStateV1){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1> { // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1) // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetAnimationsEnvironmentChangeV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/SetAnimationsEnvironmentChangeV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1|null[0]
+    constructor <init>(ee.schimke.composeai.uibuilder.protocol/UiValueV1) // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.UiValueV1){}[0]
+
+    final val field // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+    final val value // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.value|{}value[0]
+        final fun <get-value>(): ee.schimke.composeai.uibuilder.protocol/UiValueV1 // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): ee.schimke.composeai.uibuilder.protocol/UiValueV1 // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.component1|component1(){}[0]
+    final fun copy(ee.schimke.composeai.uibuilder.protocol/UiValueV1 = ...): ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.copy|copy(ee.schimke.composeai.uibuilder.protocol.UiValueV1){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1> { // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1) // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetBackgroundEnvironmentChangeV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/SetBackgroundEnvironmentChangeV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1|null[0]
+    constructor <init>(kotlin/Int) // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.<init>|<init>(kotlin.Int){}[0]
+
+    final val field // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+    final val value // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.value|{}value[0]
+        final fun <get-value>(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.component1|component1(){}[0]
+    final fun copy(kotlin/Int = ...): ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.copy|copy(kotlin.Int){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1> { // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1) // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetBrowserZoomPercentEnvironmentChangeV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnvironmentChangeV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1|null[0]
+    constructor <init>(kotlin/Double) // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.<init>|<init>(kotlin.Double){}[0]
+
+    final val field // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+    final val value // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.value|{}value[0]
+        final fun <get-value>(): kotlin/Double // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): kotlin/Double // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.component1|component1(){}[0]
+    final fun copy(kotlin/Double = ...): ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.copy|copy(kotlin.Double){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1> { // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1) // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetDensityEnvironmentChangeV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1|null[0]
+    constructor <init>(kotlin/Boolean) // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.<init>|<init>(kotlin.Boolean){}[0]
+
+    final val field // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+    final val value // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.value|{}value[0]
+        final fun <get-value>(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.component1|component1(){}[0]
+    final fun copy(kotlin/Boolean = ...): ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.copy|copy(kotlin.Boolean){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1> { // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1) // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetDynamicColorEnvironmentChangeV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/SetDynamicColorEnvironmentChangeV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1|null[0]
+    constructor <init>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.<init>|<init>(kotlin.String){}[0]
+
+    final val field // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+    final val value // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.value|{}value[0]
+        final fun <get-value>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.component1|component1(){}[0]
+    final fun copy(kotlin/String = ...): ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.copy|copy(kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1> { // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1) // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetFixedTimeEnvironmentChangeV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/SetFixedTimeEnvironmentChangeV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1|null[0]
+    constructor <init>(kotlin/Double) // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.<init>|<init>(kotlin.Double){}[0]
+
+    final val field // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+    final val value // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.value|{}value[0]
+        final fun <get-value>(): kotlin/Double // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): kotlin/Double // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.component1|component1(){}[0]
+    final fun copy(kotlin/Double = ...): ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.copy|copy(kotlin.Double){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1> { // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1) // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetFontScaleEnvironmentChangeV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/SetFontScaleEnvironmentChangeV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1|null[0]
+    constructor <init>(kotlin/Int) // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.<init>|<init>(kotlin.Int){}[0]
+
+    final val field // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+    final val value // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.value|{}value[0]
+        final fun <get-value>(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.component1|component1(){}[0]
+    final fun copy(kotlin/Int = ...): ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.copy|copy(kotlin.Int){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1> { // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1) // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetHeightDpEnvironmentChangeV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1|null[0]
+    constructor <init>(ee.schimke.composeai.uibuilder.protocol/LayoutDirectionV1) // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.LayoutDirectionV1){}[0]
+
+    final val field // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+    final val value // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.value|{}value[0]
+        final fun <get-value>(): ee.schimke.composeai.uibuilder.protocol/LayoutDirectionV1 // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): ee.schimke.composeai.uibuilder.protocol/LayoutDirectionV1 // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.component1|component1(){}[0]
+    final fun copy(ee.schimke.composeai.uibuilder.protocol/LayoutDirectionV1 = ...): ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.copy|copy(ee.schimke.composeai.uibuilder.protocol.LayoutDirectionV1){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1> { // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1) // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetLayoutDirectionEnvironmentChangeV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/SetLayoutDirectionEnvironmentChangeV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1|null[0]
+    constructor <init>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.<init>|<init>(kotlin.String){}[0]
+
+    final val field // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+    final val value // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.value|{}value[0]
+        final fun <get-value>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.component1|component1(){}[0]
+    final fun copy(kotlin/String = ...): ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.copy|copy(kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1> { // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1) // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetLocaleEnvironmentChangeV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1|null[0]
+    constructor <init>(kotlin/Boolean) // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.<init>|<init>(kotlin.Boolean){}[0]
+
+    final val field // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+    final val value // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.value|{}value[0]
+        final fun <get-value>(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.component1|component1(){}[0]
+    final fun copy(kotlin/Boolean = ...): ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.copy|copy(kotlin.Boolean){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1> { // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1) // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetNetworkAccessEnvironmentChangeV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/SetPropertyMutationV1 : ee.schimke.composeai.uibuilder.protocol/DesignMutationV1 { // ee.schimke.composeai.uibuilder.protocol/SetPropertyMutationV1|null[0]
     constructor <init>(kotlin/String, kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiValueV1) // ee.schimke.composeai.uibuilder.protocol/SetPropertyMutationV1.<init>|<init>(kotlin.String;kotlin.String;ee.schimke.composeai.uibuilder.protocol.UiValueV1){}[0]
 
@@ -3675,6 +4052,36 @@ final class ee.schimke.composeai.uibuilder.protocol/SetTextActionV1 : ee.schimke
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1|null[0]
+    constructor <init>(ee.schimke.composeai.uibuilder.protocol/ThemeV1) // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.ThemeV1){}[0]
+
+    final val field // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+    final val value // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.value|{}value[0]
+        final fun <get-value>(): ee.schimke.composeai.uibuilder.protocol/ThemeV1 // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): ee.schimke.composeai.uibuilder.protocol/ThemeV1 // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.component1|component1(){}[0]
+    final fun copy(ee.schimke.composeai.uibuilder.protocol/ThemeV1 = ...): ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.copy|copy(ee.schimke.composeai.uibuilder.protocol.ThemeV1){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1> { // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1) // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetThemeEnvironmentChangeV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/SetValueActionV1 : ee.schimke.composeai.uibuilder.protocol/DesignActionV1 { // ee.schimke.composeai.uibuilder.protocol/SetValueActionV1|null[0]
     constructor <init>(kotlin/String, kotlinx.serialization.json/JsonElement) // ee.schimke.composeai.uibuilder.protocol/SetValueActionV1.<init>|<init>(kotlin.String;kotlinx.serialization.json.JsonElement){}[0]
 
@@ -3701,6 +4108,66 @@ final class ee.schimke.composeai.uibuilder.protocol/SetValueActionV1 : ee.schimk
 
     final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetValueActionV1.Companion|null[0]
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetValueActionV1> // ee.schimke.composeai.uibuilder.protocol/SetValueActionV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1|null[0]
+    constructor <init>(kotlin/Int) // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.<init>|<init>(kotlin.Int){}[0]
+
+    final val field // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+    final val value // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.value|{}value[0]
+        final fun <get-value>(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.component1|component1(){}[0]
+    final fun copy(kotlin/Int = ...): ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.copy|copy(kotlin.Int){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1> { // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1) // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetWidthDpEnvironmentChangeV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/SetWidthDpEnvironmentChangeV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1|null[0]
+    constructor <init>(ee.schimke.composeai.uibuilder.protocol/WindowPostureV1) // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.WindowPostureV1){}[0]
+
+    final val field // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+    final val value // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.value|{}value[0]
+        final fun <get-value>(): ee.schimke.composeai.uibuilder.protocol/WindowPostureV1 // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): ee.schimke.composeai.uibuilder.protocol/WindowPostureV1 // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.component1|component1(){}[0]
+    final fun copy(ee.schimke.composeai.uibuilder.protocol/WindowPostureV1 = ...): ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.copy|copy(ee.schimke.composeai.uibuilder.protocol.WindowPostureV1){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1> { // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1) // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetWindowPostureEnvironmentChangeV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentChangeV1.Companion.serializer|serializer(){}[0]
     }
 }
 
@@ -4246,6 +4713,34 @@ final class ee.schimke.composeai.uibuilder.protocol/UpdateDesignAccessRequestV1 
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1 : ee.schimke.composeai.uibuilder.protocol/DesignMutationV1 { // ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1|null[0]
+    constructor <init>(kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1>) // ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1.<init>|<init>(kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.EnvironmentChangeV1>){}[0]
+
+    final val changes // ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1.changes|{}changes[0]
+        final fun <get-changes>(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1.changes.<get-changes>|<get-changes>(){}[0]
+
+    final fun component1(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1.component1|component1(){}[0]
+    final fun copy(kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1> = ...): ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1 // ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1.copy|copy(kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.EnvironmentChangeV1>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1> { // ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1 // ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1) // ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.UpdateEnvironmentMutationV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1> // ee.schimke.composeai.uibuilder.protocol/UpdateEnvironmentMutationV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/UpdatePresenceRequestV1 : ee.schimke.composeai.uibuilder.protocol/UiBuilderRequestV1 { // ee.schimke.composeai.uibuilder.protocol/UpdatePresenceRequestV1|null[0]
     constructor <init>(kotlin/String, ee.schimke.composeai.uibuilder.protocol/PresenceV1) // ee.schimke.composeai.uibuilder.protocol/UpdatePresenceRequestV1.<init>|<init>(kotlin.String;ee.schimke.composeai.uibuilder.protocol.PresenceV1){}[0]
 
@@ -4373,6 +4868,83 @@ final object ee.schimke.composeai.uibuilder.protocol/NullValueV1 : ee.schimke.co
     final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/NullValueV1> // ee.schimke.composeai.uibuilder.protocol/NullValueV1.serializer|serializer(){}[0]
     final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/NullValueV1.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/NullValueV1.toString|toString(){}[0]
+}
+
+final object ee.schimke.composeai.uibuilder.protocol/ResetAnimationsEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1, kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/ResetAnimationsEnvironmentChangeV1|null[0]
+    final val field // ee.schimke.composeai.uibuilder.protocol/ResetAnimationsEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/ResetAnimationsEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ResetAnimationsEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ResetAnimationsEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ResetAnimationsEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/ResetAnimationsEnvironmentChangeV1.serializer|serializer(){}[0]
+    final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/ResetAnimationsEnvironmentChangeV1.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ResetAnimationsEnvironmentChangeV1.toString|toString(){}[0]
+}
+
+final object ee.schimke.composeai.uibuilder.protocol/ResetBackgroundEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1, kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/ResetBackgroundEnvironmentChangeV1|null[0]
+    final val field // ee.schimke.composeai.uibuilder.protocol/ResetBackgroundEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/ResetBackgroundEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ResetBackgroundEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ResetBackgroundEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ResetBackgroundEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/ResetBackgroundEnvironmentChangeV1.serializer|serializer(){}[0]
+    final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/ResetBackgroundEnvironmentChangeV1.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ResetBackgroundEnvironmentChangeV1.toString|toString(){}[0]
+}
+
+final object ee.schimke.composeai.uibuilder.protocol/ResetBrowserZoomPercentEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1, kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/ResetBrowserZoomPercentEnvironmentChangeV1|null[0]
+    final val field // ee.schimke.composeai.uibuilder.protocol/ResetBrowserZoomPercentEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/ResetBrowserZoomPercentEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ResetBrowserZoomPercentEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ResetBrowserZoomPercentEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ResetBrowserZoomPercentEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/ResetBrowserZoomPercentEnvironmentChangeV1.serializer|serializer(){}[0]
+    final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/ResetBrowserZoomPercentEnvironmentChangeV1.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ResetBrowserZoomPercentEnvironmentChangeV1.toString|toString(){}[0]
+}
+
+final object ee.schimke.composeai.uibuilder.protocol/ResetDynamicColorEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1, kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/ResetDynamicColorEnvironmentChangeV1|null[0]
+    final val field // ee.schimke.composeai.uibuilder.protocol/ResetDynamicColorEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/ResetDynamicColorEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ResetDynamicColorEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ResetDynamicColorEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ResetDynamicColorEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/ResetDynamicColorEnvironmentChangeV1.serializer|serializer(){}[0]
+    final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/ResetDynamicColorEnvironmentChangeV1.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ResetDynamicColorEnvironmentChangeV1.toString|toString(){}[0]
+}
+
+final object ee.schimke.composeai.uibuilder.protocol/ResetFixedTimeEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1, kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/ResetFixedTimeEnvironmentChangeV1|null[0]
+    final val field // ee.schimke.composeai.uibuilder.protocol/ResetFixedTimeEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/ResetFixedTimeEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ResetFixedTimeEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ResetFixedTimeEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ResetFixedTimeEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/ResetFixedTimeEnvironmentChangeV1.serializer|serializer(){}[0]
+    final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/ResetFixedTimeEnvironmentChangeV1.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ResetFixedTimeEnvironmentChangeV1.toString|toString(){}[0]
+}
+
+final object ee.schimke.composeai.uibuilder.protocol/ResetNetworkAccessEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1, kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/ResetNetworkAccessEnvironmentChangeV1|null[0]
+    final val field // ee.schimke.composeai.uibuilder.protocol/ResetNetworkAccessEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/ResetNetworkAccessEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ResetNetworkAccessEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ResetNetworkAccessEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ResetNetworkAccessEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/ResetNetworkAccessEnvironmentChangeV1.serializer|serializer(){}[0]
+    final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/ResetNetworkAccessEnvironmentChangeV1.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ResetNetworkAccessEnvironmentChangeV1.toString|toString(){}[0]
+}
+
+final object ee.schimke.composeai.uibuilder.protocol/ResetWindowPostureEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1, kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/ResetWindowPostureEnvironmentChangeV1|null[0]
+    final val field // ee.schimke.composeai.uibuilder.protocol/ResetWindowPostureEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/ResetWindowPostureEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ResetWindowPostureEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ResetWindowPostureEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ResetWindowPostureEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/ResetWindowPostureEnvironmentChangeV1.serializer|serializer(){}[0]
+    final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/ResetWindowPostureEnvironmentChangeV1.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ResetWindowPostureEnvironmentChangeV1.toString|toString(){}[0]
 }
 
 final const val ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_SCHEMA_VERSION_V1 // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_SCHEMA_VERSION_V1|{}UI_BUILDER_SCHEMA_VERSION_V1[0]
