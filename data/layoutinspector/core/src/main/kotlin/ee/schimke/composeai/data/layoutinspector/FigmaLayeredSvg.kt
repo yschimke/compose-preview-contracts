@@ -442,7 +442,10 @@ public object FigmaLayeredSvg {
       sb.append(inner).append(text(layer, options, familyOverrides)).append('\n')
     }
     layer.curvedTexts.forEach { ct ->
-      sb.append(inner).append(curvedText(ct, "c${curveSeq[0]++}")).append('\n')
+      sb
+        .append(inner)
+        .append(curvedText(ct, "c${curveSeq[0]++}", options, familyOverrides))
+        .append('\n')
     }
     if (turn.isNotEmpty()) sb.append(indent).append("</g>").append('\n')
   }
@@ -478,7 +481,12 @@ public object FigmaLayeredSvg {
    * from +x, so `1.5π` = top). The text is centred on the arc so it reads across the top exactly as
    * the render draws it, and stays editable rather than dropping out or baking to a raster.
    */
-  private fun curvedText(ct: LayoutInspectorCurvedText, id: String): String {
+  private fun curvedText(
+    ct: LayoutInspectorCurvedText,
+    id: String,
+    options: Options,
+    familyOverrides: Map<String, String>,
+  ): String {
     val dir = if (ct.clockwise) 1.0 else -1.0
     val a0 = ct.startAngleRadians
     val a1 = ct.startAngleRadians + dir * ct.sweepRadians
@@ -494,8 +502,20 @@ public object FigmaLayeredSvg {
     val d = "M ${fmt(sx)} ${fmt(sy)} A $r $r 0 $largeArc $sweepFlag ${fmt(ex)} ${fmt(ey)}"
     val fill = ct.colorArgb?.let { curvedColorHex(it) } ?: "#000000"
     val weight = ct.fontWeight?.let { " font-weight=\"$it\"" } ?: ""
+    // Named exactly as a straight run names its own family — an embedded face by the bare name its
+    // `@font-face` declares (via `familyOverrides`), an unbacked one with a generic fallback. Left
+    // off entirely when the capture states no family, so the run inherits the document default as
+    // it always did rather than being pinned to it (compose-preview-server#201: a `TimeText` that
+    // named nothing inherited `Roboto` while the rest of the sticker drew in the theme's face).
+    val family =
+      ct.fontFamily
+        ?.let { captured ->
+          familyOverrides[captured]
+            ?: withGenericFallback(resolveFamily(captured, options.defaultFontFamily))
+        }
+        ?.let { " font-family=\"${escapeAttr(it)}\"" } ?: ""
     return "<path id=\"$pathId\" d=\"$d\" fill=\"none\"/>" +
-      "<text font-size=\"${fmt(ct.fontSizePx)}\"$weight fill=\"$fill\" dominant-baseline=\"alphabetic\">" +
+      "<text font-size=\"${fmt(ct.fontSizePx)}\"$family$weight fill=\"$fill\" dominant-baseline=\"alphabetic\">" +
       "<textPath href=\"#$pathId\" startOffset=\"50%\" text-anchor=\"middle\">" +
       "${escape(ct.text)}</textPath></text>"
   }

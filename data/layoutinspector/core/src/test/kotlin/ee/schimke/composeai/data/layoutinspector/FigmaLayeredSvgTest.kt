@@ -1432,6 +1432,85 @@ class FigmaLayeredSvgTest {
     assertTrue("drops the ARGB alpha for the SVG fill", svg.contains("""fill="#C6C6C7""""))
   }
 
+  /**
+   * compose-preview-server#201: the served sticker embedded the theme's face and named it on every
+   * straight `<text>`, but the curved `TimeText` run carried no `font-family` at all — so it
+   * inherited the document default (`Roboto`) and the clock drew in the wrong font. The run's own
+   * family, mapped through the same `familyOverrides` the straight runs use, is what the embedded
+   * `@font-face` declares.
+   */
+  @Test
+  fun curvedTextNamesTheFamilyItsEmbeddedFaceDeclares() {
+    val svg =
+      FigmaLayeredSvg.render(
+        FigmaSvgModel.from(LayoutInspectorPayload(clockNode(fontFamily = "/fonts/RobotoFlex.ttf"))),
+        FigmaLayeredSvg.Options(defaultFontFamily = "Roboto"),
+        listOf(FigmaSvgFontFace("Roboto Flex", 600, italic = false, dataBase64 = "QUJD")),
+        mapOf("/fonts/RobotoFlex.ttf" to "Roboto Flex"),
+      )
+
+    assertTrue(
+      "the curved run names the embedded face, not the document default",
+      svg.contains("""<text font-size="30" font-family="Roboto Flex""""),
+    )
+  }
+
+  /** An unbacked family still gets the style-correct generic a straight run would get. */
+  @Test
+  fun curvedTextWithNoEmbeddedFaceCarriesAGenericFallback() {
+    val svg =
+      FigmaLayeredSvg.render(
+        FigmaSvgModel.from(LayoutInspectorPayload(clockNode(fontFamily = "Roboto Flex")))
+      )
+
+    // The multi-word face is CSS-quoted so the family list parses, and those quotes are then XML
+    // attribute-escaped like any other.
+    assertTrue(
+      "falls back to sans-serif rather than the viewer's default serif",
+      svg.contains("""font-family="&apos;Roboto Flex&apos;, sans-serif""""),
+    )
+  }
+
+  /**
+   * A capture that predates the field (or simply could not name the face) must export exactly as it
+   * did before: no `font-family` on the run, so it inherits the document family.
+   */
+  @Test
+  fun curvedTextWithNoCapturedFamilyStillInherits() {
+    val svg = FigmaLayeredSvg.render(FigmaSvgModel.from(LayoutInspectorPayload(clockNode())))
+
+    assertTrue("emits the run", svg.contains("""<textPath href="#curve-c0""""))
+    assertFalse(
+      "no family pinned on the run",
+      Regex("""<text font-size="30"[^>]*font-family""").containsMatchIn(svg),
+    )
+  }
+
+  /** A Wear `TimeText` clock on a top-centred arc: centre (192,192), radius 160, ~28° at 270°. */
+  private fun clockNode(fontFamily: String? = null) =
+    LayoutInspectorNode(
+      nodeId = "clock",
+      component = "CurvedLayoutKt",
+      bounds = bounds(0, 0, 384, 384),
+      size = LayoutInspectorSize(384, 384),
+      curvedTexts =
+        listOf(
+          LayoutInspectorCurvedText(
+            text = "10:10",
+            centerXPx = 192.0,
+            centerYPx = 192.0,
+            radiusPx = 160.0,
+            startAngleRadians = 4.4652,
+            sweepRadians = 0.4944,
+            clockwise = true,
+            fontSizePx = 30.0,
+            fontWeight = 600,
+            colorArgb = "#FFC6C6C7",
+            fontFamily = fontFamily,
+          )
+        ),
+    )
+
   @Test
   fun twoCurvedLayoutsWithTheSameNameGetDistinctPathIds() {
     // Duplicate SVG ids make a `<textPath href>` resolve to the first matching path, so two
