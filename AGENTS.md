@@ -95,12 +95,12 @@ even though the catalog no longer carries Robolectric.
 ## Releasing
 
 Merging the `chore(main): release X.Y.Z` pull request is the whole release: it cuts the tag,
-drafts the GitHub Release, publishes all twelve coordinates from ten modules to Maven Central, then
+drafts the GitHub Release, publishes all thirteen coordinates from eleven modules to Maven Central, then
 un-drafts. The UI builder's KMP module owns a metadata coordinate plus JVM and Wasm variants.
 
 **A published coordinate is permanent.** Central does not accept a second upload of the same
 GAV, and `publishToMavenCentral(automaticRelease = true)` promotes without a human looking. So
-every check that can run before the upload does: `check` for all ten modules, the tag against
+every check that can run before the upload does: `check` for all eleven modules, the tag against
 `.release-please-manifest.json`, a `publishToMavenLocal` dry run asserting each module produced a
 POM, and a credentials preflight that names any missing secret. The release stays a draft until
 the upload succeeds, so a failure never leaves a release announcing artifacts that are not there.

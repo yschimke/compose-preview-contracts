@@ -55,6 +55,12 @@ include(":ui-builder-protocol")
 
 project(":ui-builder-protocol").projectDir = file("api/ui-builder-protocol")
 
+// The catalog-published GitHub issue index. Catalog workflows produce it and preview servers
+// consume it, so its versioned JSON shape lives here rather than in either implementation.
+include(":parity-issues-protocol")
+
+project(":parity-issues-protocol").projectDir = file("api/parity-issues-protocol")
+
 // ---- published, but not wire contracts ------------------------------------------------------
 //
 // `:daemon-protocol` depends on NONE of these. Until 2.1.0 it `api`-exported the four `data-*-core`
