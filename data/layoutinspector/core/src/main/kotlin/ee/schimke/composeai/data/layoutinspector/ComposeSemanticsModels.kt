@@ -162,11 +162,16 @@ public object LayoutInspectorProduct {
   // `ImageVector` group above it, so a grouped icon exports as paths rather than falling back to a
   // raster. Additive — older entries decode with `transform = null`, which is what a path no group
   // transforms carries anyway, so they export exactly as before.
+  // v19 (compose-preview-server#201): a `curvedTexts` run may carry its own `fontFamily`. Without
+  // it the figma-svg export emitted a `<textPath>` with no `font-family` at all, so a Wear
+  // `TimeText` inherited the document default (`Roboto`) while every straight run named the
+  // theme's face — the clock rendered in the wrong font, and the family never reached the font
+  // embedder. Additive — older entries decode with `fontFamily = null`, which still inherits.
   //
   // Bumped because the advertised integer is what a client gates payload support on: without it, a
   // v17 capture that predates group transforms and a v18 one that has them are indistinguishable,
   // and an archived artifact is labelled as the schema it is not.
-  public const val SCHEMA_VERSION: Int = 18
+  public const val SCHEMA_VERSION: Int = 19
   public const val FILE: String = "layout-inspector.json"
 }
 
@@ -1005,6 +1010,14 @@ public data class LayoutInspectorCurvedText(
   val fontSizePx: Double,
   val fontWeight: Int? = null,
   val colorArgb: String? = null,
+  /**
+   * The run's resolved font family, named the same way a straight text run names its own family (a
+   * CSS generic, or the resolved face's identity), or null when the capture could not name it.
+   *
+   * Null is not "the default family" — it is *unstated*, and the export leaves the run inheriting
+   * the document family exactly as it did before this field existed.
+   */
+  val fontFamily: String? = null,
 )
 
 @Serializable
