@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.4.0...v2.5.0) (2026-09-02)
+
+
+### Features
+
+* carry the curved-text font family into the figma-svg export ([#38](https://github.com/yschimke/compose-preview-contracts/issues/38)) ([31cac04](https://github.com/yschimke/compose-preview-contracts/commit/31cac046de9a9eceb14d5636f5e9e5d544a12f0a))
+
 ## [2.4.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.3.0...v2.4.0) (2026-09-02)
 
 
