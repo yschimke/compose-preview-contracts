@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.4.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.3.0...v2.4.0) (2026-09-02)
+
+
+### Features
+
+* publish parity issues protocol ([#34](https://github.com/yschimke/compose-preview-contracts/issues/34)) ([253f26b](https://github.com/yschimke/compose-preview-contracts/commit/253f26baf55e3f7339193579893a8788fbd6ce22))
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.android.tools.build:gradle to v9.4.0 ([#36](https://github.com/yschimke/compose-preview-contracts/issues/36)) ([fca552e](https://github.com/yschimke/compose-preview-contracts/commit/fca552efa30155e47fbf29d7747cd7c232cdf0a3))
+* regenerate parity protocol ABI ([#37](https://github.com/yschimke/compose-preview-contracts/issues/37)) ([4044653](https://github.com/yschimke/compose-preview-contracts/commit/40446533ff3398e1ff98cf750310ae583541612d))
+
 ## [2.3.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.2.0...v2.3.0) (2026-09-01)
 
 
