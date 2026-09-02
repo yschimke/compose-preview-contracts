@@ -16,6 +16,7 @@ Extracted from [yschimke/compose-ai-tools](https://github.com/yschimke/compose-a
 | `daemon-bta` | Build Tools API shapes — `CompileErrorDetail`, `SourceChangeSet` |
 | `agent-grant-protocol` | the `--agent-grants` vocabulary; the server mints, the client asks |
 | `ui-builder-protocol` | versioned catalog, design, command, collaboration and transport-envelope shapes shared by the UI builder's browser, server and MCP clients |
+| `parity-issues-protocol` | the versioned catalog artifact that joins GitHub issues back to components, previews and design references |
 
 `daemon-protocol` depends on **no other `ee.schimke.composeai` module**: the payload schemas that
 appear as protocol fields — `SemanticsDelta`, `ThemeDelta`, `PreviewOverrideValue`, the pipeline
