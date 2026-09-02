@@ -87,3 +87,4 @@ public final synthetic class ee/schimke/composeai/parityissues/protocol/ParityIs
 public final class ee/schimke/composeai/parityissues/protocol/ParityIssues$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
+
