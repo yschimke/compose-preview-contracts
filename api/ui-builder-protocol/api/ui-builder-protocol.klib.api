@@ -4355,6 +4355,37 @@ final class ee.schimke.composeai.uibuilder.protocol/SetLocaleEnvironmentChangeV1
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1 : ee.schimke.composeai.uibuilder.protocol/DesignMutationV1 { // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1|null[0]
+    constructor <init>(kotlin/String, kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/DesignModifierV1>) // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.<init>|<init>(kotlin.String;kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.DesignModifierV1>){}[0]
+
+    final val modifiers // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.modifiers|{}modifiers[0]
+        final fun <get-modifiers>(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/DesignModifierV1> // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.modifiers.<get-modifiers>|<get-modifiers>(){}[0]
+    final val nodeId // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.nodeId|{}nodeId[0]
+        final fun <get-nodeId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.nodeId.<get-nodeId>|<get-nodeId>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/DesignModifierV1> // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.component2|component2(){}[0]
+    final fun copy(kotlin/String = ..., kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/DesignModifierV1> = ...): ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1 // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.copy|copy(kotlin.String;kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.DesignModifierV1>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1> { // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1 // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1) // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetModifiersMutationV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1> // ee.schimke.composeai.uibuilder.protocol/SetModifiersMutationV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1|null[0]
     constructor <init>(kotlin/Boolean) // ee.schimke.composeai.uibuilder.protocol/SetNetworkAccessEnvironmentChangeV1.<init>|<init>(kotlin.Boolean){}[0]
 

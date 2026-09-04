@@ -377,6 +377,67 @@ class UiBuilderProtocolCompatibilityTest {
     assertEquals(JsonArray(emptyList()), encoded["actions"])
     assertEquals(unbind, strictJson.decodeFromJsonElement(DesignMutationV1.serializer(), encoded))
   }
+
+  @Test
+  fun aModifierChainRoundTripsInOrderInsideACommandBatch() {
+    // Order is the contract for a modifier chain: padding-then-size is a different layout from
+    // size-then-padding. A round trip that preserved the set and not the sequence would be wrong,
+    // so this asserts the whole list positionally, and covers every modifier v1 declares.
+    val wire =
+      """
+      {"type":"batch","designId":"d","operationId":"o","actorId":"a","clientId":"c",
+       "baseRevision":9,
+       "operations":[
+         {"type":"setModifiers","nodeId":"card","modifiers":[
+           {"type":"padding","startDp":16,"topDp":8,"endDp":16,"bottomDp":8},
+           {"type":"size","widthDp":240,"heightDp":96},
+           {"type":"clip","shape":"medium"},
+           {"type":"fillMaxWidth"},
+           {"type":"fillMaxSize"},
+           {"type":"matchParentSize"}]},
+         {"type":"setModifiers","nodeId":"row","modifiers":[]}
+       ]}
+      """
+        .trimIndent()
+        .replace("\n", "")
+    val decoded = strictJson.decodeFromString(DesignSubmissionV1.serializer(), wire)
+    val command = decoded as DesignCommandV1
+
+    assertEquals(
+      listOf(
+        PaddingModifierV1(JsonPrimitive(16), JsonPrimitive(8), JsonPrimitive(16), JsonPrimitive(8)),
+        SizeModifierV1(JsonPrimitive(240), JsonPrimitive(96)),
+        ClipModifierV1("medium"),
+        FillMaxWidthModifierV1,
+        FillMaxSizeModifierV1,
+        MatchParentSizeModifierV1,
+      ),
+      (command.operations[0] as SetModifiersMutationV1).modifiers,
+    )
+
+    // An empty list clears the chain, and it survives as empty rather than as an absence.
+    assertEquals(
+      emptyList<DesignModifierV1>(),
+      (command.operations[1] as SetModifiersMutationV1).modifiers,
+    )
+    assertEquals(
+      strictJson.parseToJsonElement(wire),
+      strictJson.encodeToJsonElement(DesignSubmissionV1.serializer(), decoded),
+    )
+  }
+
+  @Test
+  fun clearingModifiersSurvivesEncodingRatherThanBecomingAnAbsentField() {
+    // Same trap as SetEventBindingMutationV1.actions, and the reason `modifiers` has no default:
+    // with encodeDefaults = false a defaulted empty list is dropped, so "this node has no
+    // modifiers any more" would reach the reducer as "I said nothing about modifiers".
+    val cleared: DesignMutationV1 = SetModifiersMutationV1("card", emptyList())
+    val encoded =
+      strictJson.encodeToJsonElement(DesignMutationV1.serializer(), cleared) as JsonObject
+
+    assertEquals(JsonArray(emptyList()), encoded["modifiers"])
+    assertEquals(cleared, strictJson.decodeFromJsonElement(DesignMutationV1.serializer(), encoded))
+  }
 }
 
 @Serializable

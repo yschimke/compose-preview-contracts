@@ -144,6 +144,37 @@ public data class SetEventBindingMutationV1(
 ) : DesignMutationV1
 
 /**
+ * Replace every modifier on one node.
+ *
+ * [DesignNodeV1.modifiers] has been part of the document since v1 and is the whole of its layout
+ * vocabulary — padding, size, the two fills, `matchParentSize` and `clip`. Like state and event
+ * bindings, nothing could author it: [SetPropertyMutationV1] reaches `properties` and no mutation
+ * reached this. A client could insert a node carrying modifiers, because [InsertNodeMutationV1]
+ * carries a whole [DesignNodeV1], and then never change one — so padding a container was a matter
+ * of deleting it and building it again.
+ *
+ * Whole-list rather than per-modifier, for a stronger version of the reason given on
+ * [SetEventBindingMutationV1]: a modifier chain is **order-dependent by definition** — padding then
+ * size is a different layout from size then padding — and the list has no per-element identity to
+ * address. Two authors editing a node's chain are editing one thing.
+ *
+ * An empty [modifiers] list clears the chain, which is why the field has **no default**, for the
+ * reason [SetEventBindingMutationV1.actions] states: `encodeDefaults = false` drops a defaulted
+ * empty list, so "clear this node's modifiers" would arrive as an absent field.
+ *
+ * Reducers validate each modifier before committing. A [SizeModifierV1] whose dimensions are not
+ * usable numbers, or a modifier a renderer does not implement, is not a value a design should be
+ * allowed to hold: it is discovered at composition, where the cost is the screen rather than the
+ * write.
+ */
+@Serializable
+@SerialName("setModifiers")
+public data class SetModifiersMutationV1(
+  public val nodeId: String,
+  public val modifiers: List<DesignModifierV1>,
+) : DesignMutationV1
+
+/**
  * Field-granular environment update. Reducers reject duplicate [EnvironmentChangeV1.field] values
  * in one batch, validate every value before committing, and retain before/after values for history
  * and compensation. Stale writes conflict independently per field.
