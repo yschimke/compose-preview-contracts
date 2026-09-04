@@ -3316,6 +3316,33 @@ public final class ee/schimke/composeai/uibuilder/protocol/RemoveCatalogUpgradeC
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class ee/schimke/composeai/uibuilder/protocol/RemoveStateVariableMutationV1 : ee/schimke/composeai/uibuilder/protocol/DesignMutationV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/RemoveStateVariableMutationV1$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lee/schimke/composeai/uibuilder/protocol/RemoveStateVariableMutationV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/RemoveStateVariableMutationV1;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/RemoveStateVariableMutationV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/RemoveStateVariableMutationV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/RemoveStateVariableMutationV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/RemoveStateVariableMutationV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/RemoveStateVariableMutationV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/RemoveStateVariableMutationV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class ee/schimke/composeai/uibuilder/protocol/ReplaceCatalogUpgradeChangeV1 : ee/schimke/composeai/uibuilder/protocol/CatalogUpgradeChangeV1 {
 	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/ReplaceCatalogUpgradeChangeV1$Companion;
 	public fun <init> (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;)V
@@ -3862,6 +3889,37 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetDynamicColorEnviro
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class ee/schimke/composeai/uibuilder/protocol/SetEventBindingMutationV1 : ee/schimke/composeai/uibuilder/protocol/DesignMutationV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/SetEventBindingMutationV1$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Lee/schimke/composeai/uibuilder/protocol/SetEventBindingMutationV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/SetEventBindingMutationV1;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/SetEventBindingMutationV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getActions ()Ljava/util/List;
+	public final fun getEvent ()Ljava/lang/String;
+	public final fun getNodeId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetEventBindingMutationV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/SetEventBindingMutationV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/SetEventBindingMutationV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetEventBindingMutationV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetEventBindingMutationV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class ee/schimke/composeai/uibuilder/protocol/SetFixedTimeEnvironmentChangeV1 : ee/schimke/composeai/uibuilder/protocol/EnvironmentChangeV1 {
 	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/SetFixedTimeEnvironmentChangeV1$Companion;
 	public fun <init> (Ljava/lang/String;)V
@@ -4002,6 +4060,35 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetLocaleEnvironmentC
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class ee/schimke/composeai/uibuilder/protocol/SetModifiersMutationV1 : ee/schimke/composeai/uibuilder/protocol/DesignMutationV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/SetModifiersMutationV1$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/util/List;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/util/List;)Lee/schimke/composeai/uibuilder/protocol/SetModifiersMutationV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/SetModifiersMutationV1;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/SetModifiersMutationV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getModifiers ()Ljava/util/List;
+	public final fun getNodeId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetModifiersMutationV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/SetModifiersMutationV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/SetModifiersMutationV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetModifiersMutationV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetModifiersMutationV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class ee/schimke/composeai/uibuilder/protocol/SetNetworkAccessEnvironmentChangeV1 : ee/schimke/composeai/uibuilder/protocol/EnvironmentChangeV1 {
 	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/SetNetworkAccessEnvironmentChangeV1$Companion;
 	public fun <init> (Z)V
@@ -4058,6 +4145,35 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetProperty
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetPropertyMutationV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetStateVariableMutationV1 : ee/schimke/composeai/uibuilder/protocol/DesignMutationV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/SetStateVariableMutationV1$Companion;
+	public fun <init> (Ljava/lang/String;Lee/schimke/composeai/uibuilder/protocol/StateVariableV1;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lee/schimke/composeai/uibuilder/protocol/StateVariableV1;
+	public final fun copy (Ljava/lang/String;Lee/schimke/composeai/uibuilder/protocol/StateVariableV1;)Lee/schimke/composeai/uibuilder/protocol/SetStateVariableMutationV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/SetStateVariableMutationV1;Ljava/lang/String;Lee/schimke/composeai/uibuilder/protocol/StateVariableV1;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/SetStateVariableMutationV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDeclaration ()Lee/schimke/composeai/uibuilder/protocol/StateVariableV1;
+	public final fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetStateVariableMutationV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/SetStateVariableMutationV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/SetStateVariableMutationV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetStateVariableMutationV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetStateVariableMutationV1$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

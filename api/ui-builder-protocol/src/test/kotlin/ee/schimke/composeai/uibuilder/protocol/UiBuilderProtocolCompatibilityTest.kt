@@ -309,6 +309,135 @@ class UiBuilderProtocolCompatibilityTest {
     }
     error("could not locate UI builder v1 fixtures from ${System.getProperty("user.dir")}")
   }
+
+  @Test
+  fun stateAuthoringMutationsRoundTripInsideACommandBatch() {
+    // They have to survive as `DesignMutationV1`, not just on their own: a client sends them inside
+    // `DesignCommandV1.operations`, so the discriminator is what carries them.
+    val wire =
+      """
+      {"type":"batch","designId":"d","operationId":"o","actorId":"a","clientId":"c",
+       "baseRevision":7,
+       "operations":[
+         {"type":"setStateVariable","name":"expanded",
+          "declaration":{"type":"value","valueType":"bool","initialValue":false,
+                         "persistence":"preview"}},
+         {"type":"setEventBinding","nodeId":"card","event":"click",
+          "actions":[{"type":"toggle","variable":"expanded"}]},
+         {"type":"setEventBinding","nodeId":"card","event":"longPress","actions":[]},
+         {"type":"removeStateVariable","name":"stale"}
+       ]}
+      """
+        .trimIndent()
+        .replace("\n", "")
+    val decoded = strictJson.decodeFromString(DesignSubmissionV1.serializer(), wire)
+    val command = decoded as DesignCommandV1
+
+    val declared = command.operations[0] as SetStateVariableMutationV1
+    assertEquals("expanded", declared.name)
+    assertEquals(StateVariableTypeV1.VALUE, declared.declaration.type)
+
+    val bound = command.operations[1] as SetEventBindingMutationV1
+    assertEquals(listOf(ToggleActionV1("expanded")), bound.actions)
+
+    // An empty list is how an event is unbound, and it survives the round trip as empty rather
+    // than vanishing into the default.
+    val unbound = command.operations[2] as SetEventBindingMutationV1
+    assertEquals(emptyList<DesignActionV1>(), unbound.actions)
+
+    assertEquals("stale", (command.operations[3] as RemoveStateVariableMutationV1).name)
+    assertEquals(
+      strictJson.parseToJsonElement(wire),
+      strictJson.encodeToJsonElement(DesignSubmissionV1.serializer(), decoded),
+    )
+  }
+
+  @Test
+  fun removingAStateVariableIsNotSpelledAsAnAbsentDeclaration() {
+    // Strict readers run with explicitNulls = false, so an absent field and a null one are the same
+    // bytes. If removal were `declaration: null`, it would be indistinguishable from a malformed
+    // declare — so a declare without one is rejected outright and removal has its own type.
+    assertFailsWith<SerializationException> {
+      strictJson.decodeFromString(
+        DesignMutationV1.serializer(),
+        """{"type":"setStateVariable","name":"expanded"}""",
+      )
+    }
+  }
+
+  @Test
+  fun unbindingAnEventSurvivesEncodingRatherThanBecomingAnAbsentField() {
+    // Strict readers run with encodeDefaults = false. When `actions` had a default of `emptyList()`
+    // an unbind encoded to nothing at all, so the reducer could not tell "remove this handler" from
+    // "I said nothing about handlers". Required, it is always on the wire.
+    val unbind: DesignMutationV1 = SetEventBindingMutationV1("card", "click", emptyList())
+    val encoded =
+      strictJson.encodeToJsonElement(DesignMutationV1.serializer(), unbind) as JsonObject
+
+    assertEquals(JsonArray(emptyList()), encoded["actions"])
+    assertEquals(unbind, strictJson.decodeFromJsonElement(DesignMutationV1.serializer(), encoded))
+  }
+
+  @Test
+  fun aModifierChainRoundTripsInOrderInsideACommandBatch() {
+    // Order is the contract for a modifier chain: padding-then-size is a different layout from
+    // size-then-padding. A round trip that preserved the set and not the sequence would be wrong,
+    // so this asserts the whole list positionally, and covers every modifier v1 declares.
+    val wire =
+      """
+      {"type":"batch","designId":"d","operationId":"o","actorId":"a","clientId":"c",
+       "baseRevision":9,
+       "operations":[
+         {"type":"setModifiers","nodeId":"card","modifiers":[
+           {"type":"padding","startDp":16,"topDp":8,"endDp":16,"bottomDp":8},
+           {"type":"size","widthDp":240,"heightDp":96},
+           {"type":"clip","shape":"medium"},
+           {"type":"fillMaxWidth"},
+           {"type":"fillMaxSize"},
+           {"type":"matchParentSize"}]},
+         {"type":"setModifiers","nodeId":"row","modifiers":[]}
+       ]}
+      """
+        .trimIndent()
+        .replace("\n", "")
+    val decoded = strictJson.decodeFromString(DesignSubmissionV1.serializer(), wire)
+    val command = decoded as DesignCommandV1
+
+    assertEquals(
+      listOf(
+        PaddingModifierV1(JsonPrimitive(16), JsonPrimitive(8), JsonPrimitive(16), JsonPrimitive(8)),
+        SizeModifierV1(JsonPrimitive(240), JsonPrimitive(96)),
+        ClipModifierV1("medium"),
+        FillMaxWidthModifierV1,
+        FillMaxSizeModifierV1,
+        MatchParentSizeModifierV1,
+      ),
+      (command.operations[0] as SetModifiersMutationV1).modifiers,
+    )
+
+    // An empty list clears the chain, and it survives as empty rather than as an absence.
+    assertEquals(
+      emptyList<DesignModifierV1>(),
+      (command.operations[1] as SetModifiersMutationV1).modifiers,
+    )
+    assertEquals(
+      strictJson.parseToJsonElement(wire),
+      strictJson.encodeToJsonElement(DesignSubmissionV1.serializer(), decoded),
+    )
+  }
+
+  @Test
+  fun clearingModifiersSurvivesEncodingRatherThanBecomingAnAbsentField() {
+    // Same trap as SetEventBindingMutationV1.actions, and the reason `modifiers` has no default:
+    // with encodeDefaults = false a defaulted empty list is dropped, so "this node has no
+    // modifiers any more" would reach the reducer as "I said nothing about modifiers".
+    val cleared: DesignMutationV1 = SetModifiersMutationV1("card", emptyList())
+    val encoded =
+      strictJson.encodeToJsonElement(DesignMutationV1.serializer(), cleared) as JsonObject
+
+    assertEquals(JsonArray(emptyList()), encoded["modifiers"])
+    assertEquals(cleared, strictJson.decodeFromJsonElement(DesignMutationV1.serializer(), encoded))
+  }
 }
 
 @Serializable

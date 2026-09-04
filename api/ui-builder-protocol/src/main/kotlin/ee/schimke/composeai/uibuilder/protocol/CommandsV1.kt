@@ -80,6 +80,101 @@ public data class SetPropertyMutationV1(
 ) : DesignMutationV1
 
 /**
+ * Declare or redefine one state variable.
+ *
+ * The document has carried [StateVariableV1] declarations and nodes have carried [DesignActionV1]
+ * bindings since v1, but no mutation reached either — so a design could *contain* state and no
+ * client could author it. Every interactive fixture in this repository was written by hand, and an
+ * editor could only ever reproduce the static half of a screen.
+ *
+ * Name-granular like [UpdateEnvironmentMutationV1], and for the same reason: two authors declaring
+ * two different variables are not in conflict, and making the whole map one value would make them
+ * so.
+ *
+ * Removal is [RemoveStateVariableMutationV1] rather than a null [declaration] here, following the
+ * same rule [EnvironmentChangeV1] states for reset: strict readers are configured with
+ * `explicitNulls = false`, so an absent field and a null one are the same bytes, and "remove this
+ * variable" would be indistinguishable from "I sent you no declaration".
+ */
+@Serializable
+@SerialName("setStateVariable")
+public data class SetStateVariableMutationV1(
+  public val name: String,
+  public val declaration: StateVariableV1,
+) : DesignMutationV1
+
+/**
+ * Remove one state variable.
+ *
+ * Explicit rather than encoded as an absent declaration, for the reason given on
+ * [SetStateVariableMutationV1].
+ *
+ * Removal is the operation reducers must treat carefully: a property or an action may still name
+ * the variable, and a document that keeps such a reference renders blank rather than failing. A
+ * reducer rejects a removal that would leave one dangling instead of committing it.
+ */
+@Serializable
+@SerialName("removeStateVariable")
+public data class RemoveStateVariableMutationV1(public val name: String) : DesignMutationV1
+
+/**
+ * Replace the actions bound to one event on one node.
+ *
+ * Whole-list rather than per-action, because the actions on an event run in order and as a unit:
+ * "select this category" then "close the sheet" is one handler, and two authors editing it are
+ * editing the same thing. Per-action addressing would invent an identity for list positions that
+ * the document does not have.
+ *
+ * An empty [actions] list unbinds the event, which is why the field has **no default**. Strict
+ * readers run with `encodeDefaults = false`, so a defaulted empty list is dropped on encode and
+ * "unbind this event" would reach the reducer as an absent field — the same ambiguity that keeps
+ * removal off [SetStateVariableMutationV1]. Required, it is always on the wire, and empty is a
+ * value rather than an absence.
+ *
+ * Reducers validate every action against the design's declared state — an action naming an
+ * undeclared variable is the same defect as a property bound to one — and reject the batch rather
+ * than commit a handler that does nothing at runtime.
+ */
+@Serializable
+@SerialName("setEventBinding")
+public data class SetEventBindingMutationV1(
+  public val nodeId: String,
+  public val event: String,
+  public val actions: List<DesignActionV1>,
+) : DesignMutationV1
+
+/**
+ * Replace every modifier on one node.
+ *
+ * [DesignNodeV1.modifiers] has been part of the document since v1 and is the whole of its layout
+ * vocabulary — padding, size, the two fills, `matchParentSize` and `clip`. Like state and event
+ * bindings, nothing could author it: [SetPropertyMutationV1] reaches `properties` and no mutation
+ * reached this. A client could insert a node carrying modifiers, because [InsertNodeMutationV1]
+ * carries a whole [DesignNodeV1], and then never change one — so padding a container was a matter
+ * of deleting it and building it again.
+ *
+ * Whole-list rather than per-modifier, for a stronger version of the reason given on
+ * [SetEventBindingMutationV1]: a modifier chain is **order-dependent by definition** — padding then
+ * size is a different layout from size then padding — and the list has no per-element identity to
+ * address. Two authors editing a node's chain are editing one thing.
+ *
+ * An empty [modifiers] list clears the chain, which is why the field has **no default**, for the
+ * reason [SetEventBindingMutationV1.actions] states: `encodeDefaults = false` drops a defaulted
+ * empty list, so "clear this node's modifiers" would arrive as an absent field.
+ *
+ * Reducers validate each modifier before committing. A [SizeModifierV1] whose dimensions are not
+ * usable numbers, or a modifier a renderer does not implement, is not a value a design should be
+ * allowed to hold: it is discovered at composition, where the cost is the screen rather than the
+ * write.
+ */
+@Serializable
+@SerialName("setModifiers")
+public data class SetModifiersMutationV1(
+  public val nodeId: String,
+  public val modifiers: List<DesignModifierV1>,
+) : DesignMutationV1
+
+/**
  * Field-granular environment update. Reducers reject duplicate [EnvironmentChangeV1.field] values
  * in one batch, validate every value before committing, and retain before/after values for history
  * and compensation. Stale writes conflict independently per field.
