@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.5.0...v2.6.0) (2026-09-04)
+
+
+### Features
+
+* **ui-builder-protocol:** mutations for the v1 document fields nothing could author ([#40](https://github.com/yschimke/compose-preview-contracts/issues/40)) ([ace921c](https://github.com/yschimke/compose-preview-contracts/commit/ace921cd7066d9dc723b956e7e4fbf64142342bf))
+
 ## [2.5.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.4.0...v2.5.0) (2026-09-02)
 
 
