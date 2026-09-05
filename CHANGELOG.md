@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.6.0...v2.7.0) (2026-09-05)
+
+
+### Features
+
+* **ui-builder-protocol:** carry a theme typeface on the design environment ([#42](https://github.com/yschimke/compose-preview-contracts/issues/42)) ([d47fc38](https://github.com/yschimke/compose-preview-contracts/commit/d47fc381b6b2a15b250f5188db9f62792c0e8080))
+
 ## [2.6.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.5.0...v2.6.0) (2026-09-04)
 
 
