@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.8.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.7.0...v2.8.0) (2026-09-05)
+
+
+### Features
+
+* **ui-builder-protocol:** the layout vocabulary a design can actually be built with ([#44](https://github.com/yschimke/compose-preview-contracts/issues/44)) ([53cb065](https://github.com/yschimke/compose-preview-contracts/commit/53cb065331ab51e50d0526bf156087828eff8dd1))
+
 ## [2.7.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.6.0...v2.7.0) (2026-09-05)
 
 
