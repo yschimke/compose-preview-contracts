@@ -24,7 +24,8 @@
       "fixedTime": "2024-05-16T12:00:00Z",
       "animations": "settled",
       "networkAccess": false,
-      "background": {"type": "colorToken", "value": "background"}
+      "background": {"type": "colorToken", "value": "background"},
+      "typeface": "Space Grotesk"
     },
     "stateVariables": {
       "query": {"type": "text", "initialValue": "", "persistence": "preview"},
@@ -151,7 +152,9 @@
           {"type":"setNetworkAccess","value":false},
           {"type":"resetNetworkAccess"},
           {"type":"setBackground","value":{"type":"color","value":"#FF112233"}},
-          {"type":"resetBackground"}
+          {"type":"resetBackground"},
+          {"type":"setTypeface","value":"Space Grotesk"},
+          {"type":"resetTypeface"}
         ]}
       ]
     },

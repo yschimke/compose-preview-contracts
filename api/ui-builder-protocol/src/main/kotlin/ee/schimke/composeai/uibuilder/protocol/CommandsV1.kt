@@ -206,6 +206,7 @@ public enum class EnvironmentFieldV1 {
   @SerialName("animations") ANIMATIONS,
   @SerialName("networkAccess") NETWORK_ACCESS,
   @SerialName("background") BACKGROUND,
+  @SerialName("typeface") TYPEFACE,
 }
 
 @Serializable
@@ -339,6 +340,24 @@ public data class SetBackgroundEnvironmentChangeV1(public val value: UiValueV1) 
 @SerialName("resetBackground")
 public data object ResetBackgroundEnvironmentChangeV1 : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.BACKGROUND
+}
+
+/**
+ * Names the family for the document's type scale. The value is a family name, never a file or a URL
+ * — see [DesignEnvironmentV1.typeface] for why the document carries a name and the renderer carries
+ * the means to obtain it.
+ */
+@Serializable
+@SerialName("setTypeface")
+public data class SetTypefaceEnvironmentChangeV1(public val value: String) : EnvironmentChangeV1 {
+  override val field: EnvironmentFieldV1 = EnvironmentFieldV1.TYPEFACE
+}
+
+/** Returns the document to the renderer's platform default face. */
+@Serializable
+@SerialName("resetTypeface")
+public data object ResetTypefaceEnvironmentChangeV1 : EnvironmentChangeV1 {
+  override val field: EnvironmentFieldV1 = EnvironmentFieldV1.TYPEFACE
 }
 
 /**
