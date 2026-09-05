@@ -176,6 +176,7 @@ final enum class ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 : ko
     enum entry LOCALE // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.LOCALE|null[0]
     enum entry NETWORK_ACCESS // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.NETWORK_ACCESS|null[0]
     enum entry THEME // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.THEME|null[0]
+    enum entry TYPEFACE // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.TYPEFACE|null[0]
     enum entry WIDTH_DP // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.WIDTH_DP|null[0]
     enum entry WINDOW_POSTURE // ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1.WINDOW_POSTURE|null[0]
 
@@ -1893,7 +1894,7 @@ final class ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1 { // ee.sch
 }
 
 final class ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1 { // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1|null[0]
-    constructor <init>(kotlin/Int, kotlin/Int, kotlin/Double, ee.schimke.composeai.uibuilder.protocol/ThemeV1, kotlin/Boolean? = ..., kotlin/String, kotlin/Double, ee.schimke.composeai.uibuilder.protocol/LayoutDirectionV1, ee.schimke.composeai.uibuilder.protocol/WindowPostureV1? = ..., kotlin/Int? = ..., kotlin/String? = ..., ee.schimke.composeai.uibuilder.protocol/AnimationStateV1? = ..., kotlin/Boolean? = ..., ee.schimke.composeai.uibuilder.protocol/UiValueV1? = ...) // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.<init>|<init>(kotlin.Int;kotlin.Int;kotlin.Double;ee.schimke.composeai.uibuilder.protocol.ThemeV1;kotlin.Boolean?;kotlin.String;kotlin.Double;ee.schimke.composeai.uibuilder.protocol.LayoutDirectionV1;ee.schimke.composeai.uibuilder.protocol.WindowPostureV1?;kotlin.Int?;kotlin.String?;ee.schimke.composeai.uibuilder.protocol.AnimationStateV1?;kotlin.Boolean?;ee.schimke.composeai.uibuilder.protocol.UiValueV1?){}[0]
+    constructor <init>(kotlin/Int, kotlin/Int, kotlin/Double, ee.schimke.composeai.uibuilder.protocol/ThemeV1, kotlin/Boolean? = ..., kotlin/String, kotlin/Double, ee.schimke.composeai.uibuilder.protocol/LayoutDirectionV1, ee.schimke.composeai.uibuilder.protocol/WindowPostureV1? = ..., kotlin/Int? = ..., kotlin/String? = ..., ee.schimke.composeai.uibuilder.protocol/AnimationStateV1? = ..., kotlin/Boolean? = ..., ee.schimke.composeai.uibuilder.protocol/UiValueV1? = ..., kotlin/String? = ...) // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.<init>|<init>(kotlin.Int;kotlin.Int;kotlin.Double;ee.schimke.composeai.uibuilder.protocol.ThemeV1;kotlin.Boolean?;kotlin.String;kotlin.Double;ee.schimke.composeai.uibuilder.protocol.LayoutDirectionV1;ee.schimke.composeai.uibuilder.protocol.WindowPostureV1?;kotlin.Int?;kotlin.String?;ee.schimke.composeai.uibuilder.protocol.AnimationStateV1?;kotlin.Boolean?;ee.schimke.composeai.uibuilder.protocol.UiValueV1?;kotlin.String?){}[0]
 
     final val animations // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.animations|{}animations[0]
         final fun <get-animations>(): ee.schimke.composeai.uibuilder.protocol/AnimationStateV1? // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.animations.<get-animations>|<get-animations>(){}[0]
@@ -1919,6 +1920,8 @@ final class ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1 { // ee.
         final fun <get-networkAccess>(): kotlin/Boolean? // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.networkAccess.<get-networkAccess>|<get-networkAccess>(){}[0]
     final val theme // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.theme|{}theme[0]
         final fun <get-theme>(): ee.schimke.composeai.uibuilder.protocol/ThemeV1 // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.theme.<get-theme>|<get-theme>(){}[0]
+    final val typeface // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.typeface|{}typeface[0]
+        final fun <get-typeface>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.typeface.<get-typeface>|<get-typeface>(){}[0]
     final val widthDp // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.widthDp|{}widthDp[0]
         final fun <get-widthDp>(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.widthDp.<get-widthDp>|<get-widthDp>(){}[0]
     final val windowPosture // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.windowPosture|{}windowPosture[0]
@@ -1930,6 +1933,7 @@ final class ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1 { // ee.
     final fun component12(): ee.schimke.composeai.uibuilder.protocol/AnimationStateV1? // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.component12|component12(){}[0]
     final fun component13(): kotlin/Boolean? // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.component13|component13(){}[0]
     final fun component14(): ee.schimke.composeai.uibuilder.protocol/UiValueV1? // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.component14|component14(){}[0]
+    final fun component15(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.component15|component15(){}[0]
     final fun component2(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.component2|component2(){}[0]
     final fun component3(): kotlin/Double // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.component3|component3(){}[0]
     final fun component4(): ee.schimke.composeai.uibuilder.protocol/ThemeV1 // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.component4|component4(){}[0]
@@ -1938,7 +1942,7 @@ final class ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1 { // ee.
     final fun component7(): kotlin/Double // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.component7|component7(){}[0]
     final fun component8(): ee.schimke.composeai.uibuilder.protocol/LayoutDirectionV1 // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.component8|component8(){}[0]
     final fun component9(): ee.schimke.composeai.uibuilder.protocol/WindowPostureV1? // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.component9|component9(){}[0]
-    final fun copy(kotlin/Int = ..., kotlin/Int = ..., kotlin/Double = ..., ee.schimke.composeai.uibuilder.protocol/ThemeV1 = ..., kotlin/Boolean? = ..., kotlin/String = ..., kotlin/Double = ..., ee.schimke.composeai.uibuilder.protocol/LayoutDirectionV1 = ..., ee.schimke.composeai.uibuilder.protocol/WindowPostureV1? = ..., kotlin/Int? = ..., kotlin/String? = ..., ee.schimke.composeai.uibuilder.protocol/AnimationStateV1? = ..., kotlin/Boolean? = ..., ee.schimke.composeai.uibuilder.protocol/UiValueV1? = ...): ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1 // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.copy|copy(kotlin.Int;kotlin.Int;kotlin.Double;ee.schimke.composeai.uibuilder.protocol.ThemeV1;kotlin.Boolean?;kotlin.String;kotlin.Double;ee.schimke.composeai.uibuilder.protocol.LayoutDirectionV1;ee.schimke.composeai.uibuilder.protocol.WindowPostureV1?;kotlin.Int?;kotlin.String?;ee.schimke.composeai.uibuilder.protocol.AnimationStateV1?;kotlin.Boolean?;ee.schimke.composeai.uibuilder.protocol.UiValueV1?){}[0]
+    final fun copy(kotlin/Int = ..., kotlin/Int = ..., kotlin/Double = ..., ee.schimke.composeai.uibuilder.protocol/ThemeV1 = ..., kotlin/Boolean? = ..., kotlin/String = ..., kotlin/Double = ..., ee.schimke.composeai.uibuilder.protocol/LayoutDirectionV1 = ..., ee.schimke.composeai.uibuilder.protocol/WindowPostureV1? = ..., kotlin/Int? = ..., kotlin/String? = ..., ee.schimke.composeai.uibuilder.protocol/AnimationStateV1? = ..., kotlin/Boolean? = ..., ee.schimke.composeai.uibuilder.protocol/UiValueV1? = ..., kotlin/String? = ...): ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1 // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.copy|copy(kotlin.Int;kotlin.Int;kotlin.Double;ee.schimke.composeai.uibuilder.protocol.ThemeV1;kotlin.Boolean?;kotlin.String;kotlin.Double;ee.schimke.composeai.uibuilder.protocol.LayoutDirectionV1;ee.schimke.composeai.uibuilder.protocol.WindowPostureV1?;kotlin.Int?;kotlin.String?;ee.schimke.composeai.uibuilder.protocol.AnimationStateV1?;kotlin.Boolean?;ee.schimke.composeai.uibuilder.protocol.UiValueV1?;kotlin.String?){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1.toString|toString(){}[0]
@@ -4535,6 +4539,36 @@ final class ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1 
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1|null[0]
+    constructor <init>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.<init>|<init>(kotlin.String){}[0]
+
+    final val field // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+    final val value // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.value|{}value[0]
+        final fun <get-value>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.component1|component1(){}[0]
+    final fun copy(kotlin/String = ...): ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.copy|copy(kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1> { // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1) // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetTypefaceEnvironmentChangeV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/SetValueActionV1 : ee.schimke.composeai.uibuilder.protocol/DesignActionV1 { // ee.schimke.composeai.uibuilder.protocol/SetValueActionV1|null[0]
     constructor <init>(kotlin/String, kotlinx.serialization.json/JsonElement) // ee.schimke.composeai.uibuilder.protocol/SetValueActionV1.<init>|<init>(kotlin.String;kotlinx.serialization.json.JsonElement){}[0]
 
@@ -5387,6 +5421,17 @@ final object ee.schimke.composeai.uibuilder.protocol/ResetNetworkAccessEnvironme
     final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ResetNetworkAccessEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/ResetNetworkAccessEnvironmentChangeV1.serializer|serializer(){}[0]
     final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/ResetNetworkAccessEnvironmentChangeV1.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ResetNetworkAccessEnvironmentChangeV1.toString|toString(){}[0]
+}
+
+final object ee.schimke.composeai.uibuilder.protocol/ResetTypefaceEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1, kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/ResetTypefaceEnvironmentChangeV1|null[0]
+    final val field // ee.schimke.composeai.uibuilder.protocol/ResetTypefaceEnvironmentChangeV1.field|{}field[0]
+        final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/ResetTypefaceEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ResetTypefaceEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ResetTypefaceEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ResetTypefaceEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/ResetTypefaceEnvironmentChangeV1.serializer|serializer(){}[0]
+    final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/ResetTypefaceEnvironmentChangeV1.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ResetTypefaceEnvironmentChangeV1.toString|toString(){}[0]
 }
 
 final object ee.schimke.composeai.uibuilder.protocol/ResetWindowPostureEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1, kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/ResetWindowPostureEnvironmentChangeV1|null[0]

@@ -58,6 +58,19 @@ public data class DesignEnvironmentV1(
   public val animations: AnimationStateV1? = null,
   public val networkAccess: Boolean? = null,
   public val background: UiValueV1? = null,
+  /**
+   * Family name for the document's type scale, or null for the renderer's platform default.
+   *
+   * A **family name only** — never a file, a URL or a weight. The renderer decides how to obtain
+   * it, and the two ways it can differ per host: a family the host vendors resolves offline, and
+   * anything else is a Google Fonts family name the host downloads. Carrying a name rather than a
+   * source is what lets one document render on a host that bundles the face and on one that fetches
+   * it, without the document knowing which it is talking to.
+   *
+   * Appended last on purpose. The constructor is published ABI, so a new field goes on the end
+   * rather than beside [fontScale] where it reads better.
+   */
+  public val typeface: String? = null,
 )
 
 @Serializable

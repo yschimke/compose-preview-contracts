@@ -438,6 +438,101 @@ class UiBuilderProtocolCompatibilityTest {
     assertEquals(JsonArray(emptyList()), encoded["modifiers"])
     assertEquals(cleared, strictJson.decodeFromJsonElement(DesignMutationV1.serializer(), encoded))
   }
+
+  @Test
+  fun anEnvironmentWithoutATypefaceStillDecodes() {
+    // The field is additive, so every document written before it existed must still read. With
+    // explicitNulls = false the absent field and an explicit null are the same wire, and both mean
+    // "the renderer's platform default" rather than "a face called null".
+    val withoutTypeface =
+      """
+      {"widthDp":412,"heightDp":892,"density":2.625,"theme":"light","locale":"en-US",
+       "fontScale":1.0,"layoutDirection":"ltr"}
+      """
+        .trimIndent()
+    val decoded = strictJson.decodeFromString(DesignEnvironmentV1.serializer(), withoutTypeface)
+
+    assertNull(decoded.typeface)
+    // …and it does not reappear on the way out, or every stored document would gain a field.
+    assertNull(
+      (strictJson.encodeToJsonElement(DesignEnvironmentV1.serializer(), decoded) as JsonObject)[
+        "typeface"]
+    )
+  }
+
+  @Test
+  fun aTypefaceIsCarriedAsABareFamilyName() {
+    // The value is a family name, never a file or a URL: the document says WHICH face, and the
+    // renderer decides whether it vendors that family or downloads it. A fixture that let a URL
+    // through here would make the document host-specific.
+    val environment =
+      strictJson.decodeFromString(
+        DesignEnvironmentV1.serializer(),
+        """
+        {"widthDp":412,"heightDp":892,"density":2.625,"theme":"light","locale":"en-US",
+         "fontScale":1.0,"layoutDirection":"ltr","typeface":"Space Grotesk"}
+        """
+          .trimIndent(),
+      )
+
+    assertEquals("Space Grotesk", environment.typeface)
+    assertEquals(
+      strictJson.parseToJsonElement(
+        """{"widthDp":412,"heightDp":892,"density":2.625,"theme":"light","locale":"en-US","fontScale":1.0,"layoutDirection":"ltr","typeface":"Space Grotesk"}"""
+      ),
+      strictJson.encodeToJsonElement(DesignEnvironmentV1.serializer(), environment),
+    )
+  }
+
+  @Test
+  fun settingAndResettingATypefaceRoundTripUnderTheirDiscriminators() {
+    val set: EnvironmentChangeV1 = SetTypefaceEnvironmentChangeV1("Space Grotesk")
+    val reset: EnvironmentChangeV1 = ResetTypefaceEnvironmentChangeV1
+
+    val setWire =
+      strictJson.encodeToJsonElement(EnvironmentChangeV1.serializer(), set) as JsonObject
+    assertEquals(JsonPrimitive("setTypeface"), setWire["type"])
+    assertEquals(JsonPrimitive("Space Grotesk"), setWire["value"])
+    assertEquals(set, strictJson.decodeFromJsonElement(EnvironmentChangeV1.serializer(), setWire))
+
+    val resetWire =
+      strictJson.encodeToJsonElement(EnvironmentChangeV1.serializer(), reset) as JsonObject
+    assertEquals(JsonPrimitive("resetTypeface"), resetWire["type"])
+    assertEquals(
+      reset,
+      strictJson.decodeFromJsonElement(EnvironmentChangeV1.serializer(), resetWire),
+    )
+
+    assertEquals(EnvironmentFieldV1.TYPEFACE, set.field)
+    assertEquals(EnvironmentFieldV1.TYPEFACE, reset.field)
+  }
+
+  @Test
+  fun everyEnvironmentFieldHasAChangeThatNamesIt() {
+    // The enum and the change set are two halves of one vocabulary. A field with no change is a
+    // value a client can read and never write — which is exactly how `typeface` would have shipped
+    // if only the document class had been touched.
+    val named =
+      setOf(
+        SetWidthDpEnvironmentChangeV1(0).field,
+        SetHeightDpEnvironmentChangeV1(0).field,
+        SetDensityEnvironmentChangeV1(1.0).field,
+        SetThemeEnvironmentChangeV1(ThemeV1.LIGHT).field,
+        SetDynamicColorEnvironmentChangeV1(true).field,
+        SetLocaleEnvironmentChangeV1("en").field,
+        SetFontScaleEnvironmentChangeV1(1.0).field,
+        SetLayoutDirectionEnvironmentChangeV1(LayoutDirectionV1.LTR).field,
+        SetWindowPostureEnvironmentChangeV1(WindowPostureV1.FLAT).field,
+        SetBrowserZoomPercentEnvironmentChangeV1(100).field,
+        SetFixedTimeEnvironmentChangeV1("10:10").field,
+        SetAnimationsEnvironmentChangeV1(AnimationStateV1.SETTLED).field,
+        SetNetworkAccessEnvironmentChangeV1(false).field,
+        SetBackgroundEnvironmentChangeV1(StringValueV1("x")).field,
+        SetTypefaceEnvironmentChangeV1("Inter").field,
+      )
+
+    assertEquals(EnvironmentFieldV1.entries.toSet(), named)
+  }
 }
 
 @Serializable
