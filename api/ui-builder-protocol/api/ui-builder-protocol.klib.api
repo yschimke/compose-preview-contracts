@@ -6,6 +6,29 @@
 // - Show declarations: true
 
 // Library unique name: <ee.schimke.composeai:ui-builder-protocol>
+final enum class ee.schimke.composeai.uibuilder.protocol/AlignmentV1 : kotlin/Enum<ee.schimke.composeai.uibuilder.protocol/AlignmentV1> { // ee.schimke.composeai.uibuilder.protocol/AlignmentV1|null[0]
+    enum entry BOTTOM_CENTER // ee.schimke.composeai.uibuilder.protocol/AlignmentV1.BOTTOM_CENTER|null[0]
+    enum entry BOTTOM_END // ee.schimke.composeai.uibuilder.protocol/AlignmentV1.BOTTOM_END|null[0]
+    enum entry BOTTOM_START // ee.schimke.composeai.uibuilder.protocol/AlignmentV1.BOTTOM_START|null[0]
+    enum entry CENTER // ee.schimke.composeai.uibuilder.protocol/AlignmentV1.CENTER|null[0]
+    enum entry CENTER_END // ee.schimke.composeai.uibuilder.protocol/AlignmentV1.CENTER_END|null[0]
+    enum entry CENTER_START // ee.schimke.composeai.uibuilder.protocol/AlignmentV1.CENTER_START|null[0]
+    enum entry TOP_CENTER // ee.schimke.composeai.uibuilder.protocol/AlignmentV1.TOP_CENTER|null[0]
+    enum entry TOP_END // ee.schimke.composeai.uibuilder.protocol/AlignmentV1.TOP_END|null[0]
+    enum entry TOP_START // ee.schimke.composeai.uibuilder.protocol/AlignmentV1.TOP_START|null[0]
+
+    final val entries // ee.schimke.composeai.uibuilder.protocol/AlignmentV1.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<ee.schimke.composeai.uibuilder.protocol/AlignmentV1> // ee.schimke.composeai.uibuilder.protocol/AlignmentV1.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): ee.schimke.composeai.uibuilder.protocol/AlignmentV1 // ee.schimke.composeai.uibuilder.protocol/AlignmentV1.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<ee.schimke.composeai.uibuilder.protocol/AlignmentV1> // ee.schimke.composeai.uibuilder.protocol/AlignmentV1.values|values#static(){}[0]
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/AlignmentV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/AlignmentV1> // ee.schimke.composeai.uibuilder.protocol/AlignmentV1.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/AlignmentV1.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
 final enum class ee.schimke.composeai.uibuilder.protocol/AnimationStateV1 : kotlin/Enum<ee.schimke.composeai.uibuilder.protocol/AnimationStateV1> { // ee.schimke.composeai.uibuilder.protocol/AnimationStateV1|null[0]
     enum entry DISABLED // ee.schimke.composeai.uibuilder.protocol/AnimationStateV1.DISABLED|null[0]
     enum entry RUNNING // ee.schimke.composeai.uibuilder.protocol/AnimationStateV1.RUNNING|null[0]
@@ -222,6 +245,23 @@ final enum class ee.schimke.composeai.uibuilder.protocol/ExportFormatV1 : kotlin
     final object Companion : kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/ExportFormatV1.Companion|null[0]
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ExportFormatV1> // ee.schimke.composeai.uibuilder.protocol/ExportFormatV1.Companion.serializer|serializer(){}[0]
         final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/ExportFormatV1.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+final enum class ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1 : kotlin/Enum<ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1> { // ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1|null[0]
+    enum entry CENTER_HORIZONTALLY // ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1.CENTER_HORIZONTALLY|null[0]
+    enum entry END // ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1.END|null[0]
+    enum entry START // ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1.START|null[0]
+
+    final val entries // ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1> // ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1 // ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1> // ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1.values|values#static(){}[0]
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1> // ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
     }
 }
 
@@ -445,6 +485,23 @@ final enum class ee.schimke.composeai.uibuilder.protocol/ThemeV1 : kotlin/Enum<e
     final object Companion : kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/ThemeV1.Companion|null[0]
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ThemeV1> // ee.schimke.composeai.uibuilder.protocol/ThemeV1.Companion.serializer|serializer(){}[0]
         final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/ThemeV1.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+final enum class ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1 : kotlin/Enum<ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1> { // ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1|null[0]
+    enum entry BOTTOM // ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1.BOTTOM|null[0]
+    enum entry CENTER_VERTICALLY // ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1.CENTER_VERTICALLY|null[0]
+    enum entry TOP // ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1.TOP|null[0]
+
+    final val entries // ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1> // ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1 // ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1> // ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1.values|values#static(){}[0]
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1> // ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
     }
 }
 
@@ -741,6 +798,90 @@ final class ee.schimke.composeai.uibuilder.protocol/AddCatalogUpgradeChangeV1 : 
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1|null[0]
+    constructor <init>(ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1) // ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.HorizontalAlignmentV1){}[0]
+
+    final val alignment // ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1.alignment|{}alignment[0]
+        final fun <get-alignment>(): ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1 // ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1.alignment.<get-alignment>|<get-alignment>(){}[0]
+
+    final fun component1(): ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1 // ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1.component1|component1(){}[0]
+    final fun copy(ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1 = ...): ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1 // ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1.copy|copy(ee.schimke.composeai.uibuilder.protocol.HorizontalAlignmentV1){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1> { // ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1 // ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1) // ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.AlignHorizontalModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1> // ee.schimke.composeai.uibuilder.protocol/AlignHorizontalModifierV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/AlignModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/AlignModifierV1|null[0]
+    constructor <init>(ee.schimke.composeai.uibuilder.protocol/AlignmentV1) // ee.schimke.composeai.uibuilder.protocol/AlignModifierV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.AlignmentV1){}[0]
+
+    final val alignment // ee.schimke.composeai.uibuilder.protocol/AlignModifierV1.alignment|{}alignment[0]
+        final fun <get-alignment>(): ee.schimke.composeai.uibuilder.protocol/AlignmentV1 // ee.schimke.composeai.uibuilder.protocol/AlignModifierV1.alignment.<get-alignment>|<get-alignment>(){}[0]
+
+    final fun component1(): ee.schimke.composeai.uibuilder.protocol/AlignmentV1 // ee.schimke.composeai.uibuilder.protocol/AlignModifierV1.component1|component1(){}[0]
+    final fun copy(ee.schimke.composeai.uibuilder.protocol/AlignmentV1 = ...): ee.schimke.composeai.uibuilder.protocol/AlignModifierV1 // ee.schimke.composeai.uibuilder.protocol/AlignModifierV1.copy|copy(ee.schimke.composeai.uibuilder.protocol.AlignmentV1){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/AlignModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/AlignModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/AlignModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/AlignModifierV1> { // ee.schimke.composeai.uibuilder.protocol/AlignModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/AlignModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/AlignModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/AlignModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/AlignModifierV1 // ee.schimke.composeai.uibuilder.protocol/AlignModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/AlignModifierV1) // ee.schimke.composeai.uibuilder.protocol/AlignModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.AlignModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/AlignModifierV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/AlignModifierV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/AlignModifierV1> // ee.schimke.composeai.uibuilder.protocol/AlignModifierV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1|null[0]
+    constructor <init>(ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1) // ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.VerticalAlignmentV1){}[0]
+
+    final val alignment // ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1.alignment|{}alignment[0]
+        final fun <get-alignment>(): ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1 // ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1.alignment.<get-alignment>|<get-alignment>(){}[0]
+
+    final fun component1(): ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1 // ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1.component1|component1(){}[0]
+    final fun copy(ee.schimke.composeai.uibuilder.protocol/VerticalAlignmentV1 = ...): ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1 // ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1.copy|copy(ee.schimke.composeai.uibuilder.protocol.VerticalAlignmentV1){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1> { // ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1 // ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1) // ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.AlignVerticalModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1> // ee.schimke.composeai.uibuilder.protocol/AlignVerticalModifierV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/AllPredicateV1 : ee.schimke.composeai.uibuilder.protocol/DesignPredicateV1 { // ee.schimke.composeai.uibuilder.protocol/AllPredicateV1|null[0]
     constructor <init>(kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/DesignPredicateV1>) // ee.schimke.composeai.uibuilder.protocol/AllPredicateV1.<init>|<init>(kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.DesignPredicateV1>){}[0]
 
@@ -766,6 +907,32 @@ final class ee.schimke.composeai.uibuilder.protocol/AllPredicateV1 : ee.schimke.
         final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/AllPredicateV1.Companion.$childSerializers|{}$childSerializers[0]
 
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/AllPredicateV1> // ee.schimke.composeai.uibuilder.protocol/AllPredicateV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1|null[0]
+    constructor <init>(kotlinx.serialization.json/JsonElement) // ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1.<init>|<init>(kotlinx.serialization.json.JsonElement){}[0]
+
+    final val alpha // ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1.alpha|{}alpha[0]
+        final fun <get-alpha>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1.alpha.<get-alpha>|<get-alpha>(){}[0]
+
+    final fun component1(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1.component1|component1(){}[0]
+    final fun copy(kotlinx.serialization.json/JsonElement = ...): ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1 // ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1.copy|copy(kotlinx.serialization.json.JsonElement){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1> { // ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1 // ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1) // ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.AlphaModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1> // ee.schimke.composeai.uibuilder.protocol/AlphaModifierV1.Companion.serializer|serializer(){}[0]
     }
 }
 
@@ -822,6 +989,32 @@ final class ee.schimke.composeai.uibuilder.protocol/ApplyOperationRequestV1 : ee
         final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/ApplyOperationRequestV1.Companion.$childSerializers|{}$childSerializers[0]
 
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ApplyOperationRequestV1> // ee.schimke.composeai.uibuilder.protocol/ApplyOperationRequestV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1|null[0]
+    constructor <init>(kotlinx.serialization.json/JsonElement) // ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1.<init>|<init>(kotlinx.serialization.json.JsonElement){}[0]
+
+    final val ratio // ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1.ratio|{}ratio[0]
+        final fun <get-ratio>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1.ratio.<get-ratio>|<get-ratio>(){}[0]
+
+    final fun component1(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1.component1|component1(){}[0]
+    final fun copy(kotlinx.serialization.json/JsonElement = ...): ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1 // ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1.copy|copy(kotlinx.serialization.json.JsonElement){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1> { // ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1 // ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1) // ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.AspectRatioModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1> // ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1.Companion.serializer|serializer(){}[0]
     }
 }
 
@@ -891,6 +1084,37 @@ final class ee.schimke.composeai.uibuilder.protocol/AssetKeyValueV1 : ee.schimke
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1|null[0]
+    constructor <init>(ee.schimke.composeai.uibuilder.protocol/UiValueV1, kotlin/String? = ...) // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.UiValueV1;kotlin.String?){}[0]
+
+    final val color // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.color|{}color[0]
+        final fun <get-color>(): ee.schimke.composeai.uibuilder.protocol/UiValueV1 // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.color.<get-color>|<get-color>(){}[0]
+    final val shape // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.shape|{}shape[0]
+        final fun <get-shape>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.shape.<get-shape>|<get-shape>(){}[0]
+
+    final fun component1(): ee.schimke.composeai.uibuilder.protocol/UiValueV1 // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.component1|component1(){}[0]
+    final fun component2(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.component2|component2(){}[0]
+    final fun copy(ee.schimke.composeai.uibuilder.protocol/UiValueV1 = ..., kotlin/String? = ...): ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1 // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.copy|copy(ee.schimke.composeai.uibuilder.protocol.UiValueV1;kotlin.String?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1> { // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1 // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1) // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.BackgroundModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1> // ee.schimke.composeai.uibuilder.protocol/BackgroundModifierV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/BooleanValueV1 : ee.schimke.composeai.uibuilder.protocol/UiValueV1 { // ee.schimke.composeai.uibuilder.protocol/BooleanValueV1|null[0]
     constructor <init>(kotlin/Boolean) // ee.schimke.composeai.uibuilder.protocol/BooleanValueV1.<init>|<init>(kotlin.Boolean){}[0]
 
@@ -914,6 +1138,40 @@ final class ee.schimke.composeai.uibuilder.protocol/BooleanValueV1 : ee.schimke.
 
     final object Companion { // ee.schimke.composeai.uibuilder.protocol/BooleanValueV1.Companion|null[0]
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/BooleanValueV1> // ee.schimke.composeai.uibuilder.protocol/BooleanValueV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/BorderModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1|null[0]
+    constructor <init>(kotlinx.serialization.json/JsonElement, ee.schimke.composeai.uibuilder.protocol/UiValueV1, kotlin/String? = ...) // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.<init>|<init>(kotlinx.serialization.json.JsonElement;ee.schimke.composeai.uibuilder.protocol.UiValueV1;kotlin.String?){}[0]
+
+    final val color // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.color|{}color[0]
+        final fun <get-color>(): ee.schimke.composeai.uibuilder.protocol/UiValueV1 // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.color.<get-color>|<get-color>(){}[0]
+    final val shape // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.shape|{}shape[0]
+        final fun <get-shape>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.shape.<get-shape>|<get-shape>(){}[0]
+    final val widthDp // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.widthDp|{}widthDp[0]
+        final fun <get-widthDp>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.widthDp.<get-widthDp>|<get-widthDp>(){}[0]
+
+    final fun component1(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.component1|component1(){}[0]
+    final fun component2(): ee.schimke.composeai.uibuilder.protocol/UiValueV1 // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.component2|component2(){}[0]
+    final fun component3(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.component3|component3(){}[0]
+    final fun copy(kotlinx.serialization.json/JsonElement = ..., ee.schimke.composeai.uibuilder.protocol/UiValueV1 = ..., kotlin/String? = ...): ee.schimke.composeai.uibuilder.protocol/BorderModifierV1 // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.copy|copy(kotlinx.serialization.json.JsonElement;ee.schimke.composeai.uibuilder.protocol.UiValueV1;kotlin.String?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/BorderModifierV1> { // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/BorderModifierV1 // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/BorderModifierV1) // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.BorderModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/BorderModifierV1> // ee.schimke.composeai.uibuilder.protocol/BorderModifierV1.Companion.serializer|serializer(){}[0]
     }
 }
 
@@ -2647,6 +2905,61 @@ final class ee.schimke.composeai.uibuilder.protocol/GrantActorAccessMutationV1 :
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1|null[0]
+    constructor <init>(kotlinx.serialization.json/JsonElement? = ..., kotlinx.serialization.json/JsonElement? = ...) // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.<init>|<init>(kotlinx.serialization.json.JsonElement?;kotlinx.serialization.json.JsonElement?){}[0]
+
+    final val maxDp // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.maxDp|{}maxDp[0]
+        final fun <get-maxDp>(): kotlinx.serialization.json/JsonElement? // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.maxDp.<get-maxDp>|<get-maxDp>(){}[0]
+    final val minDp // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.minDp|{}minDp[0]
+        final fun <get-minDp>(): kotlinx.serialization.json/JsonElement? // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.minDp.<get-minDp>|<get-minDp>(){}[0]
+
+    final fun component1(): kotlinx.serialization.json/JsonElement? // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.component1|component1(){}[0]
+    final fun component2(): kotlinx.serialization.json/JsonElement? // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.component2|component2(){}[0]
+    final fun copy(kotlinx.serialization.json/JsonElement? = ..., kotlinx.serialization.json/JsonElement? = ...): ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1 // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.copy|copy(kotlinx.serialization.json.JsonElement?;kotlinx.serialization.json.JsonElement?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1> { // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1 // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1) // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.HeightInModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1> // ee.schimke.composeai.uibuilder.protocol/HeightInModifierV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/HeightModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/HeightModifierV1|null[0]
+    constructor <init>(kotlinx.serialization.json/JsonElement) // ee.schimke.composeai.uibuilder.protocol/HeightModifierV1.<init>|<init>(kotlinx.serialization.json.JsonElement){}[0]
+
+    final val heightDp // ee.schimke.composeai.uibuilder.protocol/HeightModifierV1.heightDp|{}heightDp[0]
+        final fun <get-heightDp>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/HeightModifierV1.heightDp.<get-heightDp>|<get-heightDp>(){}[0]
+
+    final fun component1(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/HeightModifierV1.component1|component1(){}[0]
+    final fun copy(kotlinx.serialization.json/JsonElement = ...): ee.schimke.composeai.uibuilder.protocol/HeightModifierV1 // ee.schimke.composeai.uibuilder.protocol/HeightModifierV1.copy|copy(kotlinx.serialization.json.JsonElement){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/HeightModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/HeightModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/HeightModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/HeightModifierV1> { // ee.schimke.composeai.uibuilder.protocol/HeightModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/HeightModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/HeightModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/HeightModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/HeightModifierV1 // ee.schimke.composeai.uibuilder.protocol/HeightModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/HeightModifierV1) // ee.schimke.composeai.uibuilder.protocol/HeightModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.HeightModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/HeightModifierV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/HeightModifierV1> // ee.schimke.composeai.uibuilder.protocol/HeightModifierV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/HttpRequestEnvelopeV1 { // ee.schimke.composeai.uibuilder.protocol/HttpRequestEnvelopeV1|null[0]
     constructor <init>(kotlin/Int = ..., kotlin/String, kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiBuilderRequestV1) // ee.schimke.composeai.uibuilder.protocol/HttpRequestEnvelopeV1.<init>|<init>(kotlin.Int;kotlin.String;kotlin.String;ee.schimke.composeai.uibuilder.protocol.UiBuilderRequestV1){}[0]
 
@@ -3098,6 +3411,35 @@ final class ee.schimke.composeai.uibuilder.protocol/ObjectValueV1 : ee.schimke.c
         final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/ObjectValueV1.Companion.$childSerializers|{}$childSerializers[0]
 
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ObjectValueV1> // ee.schimke.composeai.uibuilder.protocol/ObjectValueV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1|null[0]
+    constructor <init>(kotlinx.serialization.json/JsonElement = ..., kotlinx.serialization.json/JsonElement = ...) // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.<init>|<init>(kotlinx.serialization.json.JsonElement;kotlinx.serialization.json.JsonElement){}[0]
+
+    final val xDp // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.xDp|{}xDp[0]
+        final fun <get-xDp>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.xDp.<get-xDp>|<get-xDp>(){}[0]
+    final val yDp // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.yDp|{}yDp[0]
+        final fun <get-yDp>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.yDp.<get-yDp>|<get-yDp>(){}[0]
+
+    final fun component1(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.component1|component1(){}[0]
+    final fun component2(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.component2|component2(){}[0]
+    final fun copy(kotlinx.serialization.json/JsonElement = ..., kotlinx.serialization.json/JsonElement = ...): ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1 // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.copy|copy(kotlinx.serialization.json.JsonElement;kotlinx.serialization.json.JsonElement){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1> { // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1 // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1) // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.OffsetModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1> // ee.schimke.composeai.uibuilder.protocol/OffsetModifierV1.Companion.serializer|serializer(){}[0]
     }
 }
 
@@ -3826,6 +4168,61 @@ final class ee.schimke.composeai.uibuilder.protocol/RevokeDesignShareLinkMutatio
 
     final object Companion { // ee.schimke.composeai.uibuilder.protocol/RevokeDesignShareLinkMutationV1.Companion|null[0]
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/RevokeDesignShareLinkMutationV1> // ee.schimke.composeai.uibuilder.protocol/RevokeDesignShareLinkMutationV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/RotateModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/RotateModifierV1|null[0]
+    constructor <init>(kotlinx.serialization.json/JsonElement) // ee.schimke.composeai.uibuilder.protocol/RotateModifierV1.<init>|<init>(kotlinx.serialization.json.JsonElement){}[0]
+
+    final val degrees // ee.schimke.composeai.uibuilder.protocol/RotateModifierV1.degrees|{}degrees[0]
+        final fun <get-degrees>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/RotateModifierV1.degrees.<get-degrees>|<get-degrees>(){}[0]
+
+    final fun component1(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/RotateModifierV1.component1|component1(){}[0]
+    final fun copy(kotlinx.serialization.json/JsonElement = ...): ee.schimke.composeai.uibuilder.protocol/RotateModifierV1 // ee.schimke.composeai.uibuilder.protocol/RotateModifierV1.copy|copy(kotlinx.serialization.json.JsonElement){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/RotateModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/RotateModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/RotateModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/RotateModifierV1> { // ee.schimke.composeai.uibuilder.protocol/RotateModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/RotateModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/RotateModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/RotateModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/RotateModifierV1 // ee.schimke.composeai.uibuilder.protocol/RotateModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/RotateModifierV1) // ee.schimke.composeai.uibuilder.protocol/RotateModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.RotateModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/RotateModifierV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/RotateModifierV1> // ee.schimke.composeai.uibuilder.protocol/RotateModifierV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1|null[0]
+    constructor <init>(kotlinx.serialization.json/JsonElement, kotlinx.serialization.json/JsonElement) // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.<init>|<init>(kotlinx.serialization.json.JsonElement;kotlinx.serialization.json.JsonElement){}[0]
+
+    final val scaleX // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.scaleX|{}scaleX[0]
+        final fun <get-scaleX>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.scaleX.<get-scaleX>|<get-scaleX>(){}[0]
+    final val scaleY // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.scaleY|{}scaleY[0]
+        final fun <get-scaleY>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.scaleY.<get-scaleY>|<get-scaleY>(){}[0]
+
+    final fun component1(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.component1|component1(){}[0]
+    final fun component2(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.component2|component2(){}[0]
+    final fun copy(kotlinx.serialization.json/JsonElement = ..., kotlinx.serialization.json/JsonElement = ...): ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1 // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.copy|copy(kotlinx.serialization.json.JsonElement;kotlinx.serialization.json.JsonElement){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1> { // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1 // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1) // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.ScaleModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1> // ee.schimke.composeai.uibuilder.protocol/ScaleModifierV1.Companion.serializer|serializer(){}[0]
     }
 }
 
@@ -4658,6 +5055,38 @@ final class ee.schimke.composeai.uibuilder.protocol/SetWindowPostureEnvironmentC
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1|null[0]
+    constructor <init>(kotlinx.serialization.json/JsonElement, kotlin/String? = ..., kotlin/Boolean? = ...) // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.<init>|<init>(kotlinx.serialization.json.JsonElement;kotlin.String?;kotlin.Boolean?){}[0]
+
+    final val clip // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.clip|{}clip[0]
+        final fun <get-clip>(): kotlin/Boolean? // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.clip.<get-clip>|<get-clip>(){}[0]
+    final val elevationDp // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.elevationDp|{}elevationDp[0]
+        final fun <get-elevationDp>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.elevationDp.<get-elevationDp>|<get-elevationDp>(){}[0]
+    final val shape // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.shape|{}shape[0]
+        final fun <get-shape>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.shape.<get-shape>|<get-shape>(){}[0]
+
+    final fun component1(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.component1|component1(){}[0]
+    final fun component2(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.component2|component2(){}[0]
+    final fun component3(): kotlin/Boolean? // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.component3|component3(){}[0]
+    final fun copy(kotlinx.serialization.json/JsonElement = ..., kotlin/String? = ..., kotlin/Boolean? = ...): ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1 // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.copy|copy(kotlinx.serialization.json.JsonElement;kotlin.String?;kotlin.Boolean?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1> { // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1 // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1) // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.ShadowModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1> // ee.schimke.composeai.uibuilder.protocol/ShadowModifierV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/ShapeTokenValueV1 : ee.schimke.composeai.uibuilder.protocol/UiValueV1 { // ee.schimke.composeai.uibuilder.protocol/ShapeTokenValueV1|null[0]
     constructor <init>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/ShapeTokenValueV1.<init>|<init>(kotlin.String){}[0]
 
@@ -5047,6 +5476,32 @@ final class ee.schimke.composeai.uibuilder.protocol/SvgCapabilityV1 { // ee.schi
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1|null[0]
+    constructor <init>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1.<init>|<init>(kotlin.String){}[0]
+
+    final val tag // ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1.tag|{}tag[0]
+        final fun <get-tag>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1.tag.<get-tag>|<get-tag>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1.component1|component1(){}[0]
+    final fun copy(kotlin/String = ...): ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1 // ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1.copy|copy(kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1> { // ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1 // ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1) // ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.TestTagModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1> // ee.schimke.composeai.uibuilder.protocol/TestTagModifierV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/ToggleActionV1 : ee.schimke.composeai.uibuilder.protocol/DesignActionV1 { // ee.schimke.composeai.uibuilder.protocol/ToggleActionV1|null[0]
     constructor <init>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/ToggleActionV1.<init>|<init>(kotlin.String){}[0]
 
@@ -5317,6 +5772,152 @@ final class ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1 { // ee.sch
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/WeightModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1|null[0]
+    constructor <init>(kotlinx.serialization.json/JsonElement, kotlin/Boolean? = ...) // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.<init>|<init>(kotlinx.serialization.json.JsonElement;kotlin.Boolean?){}[0]
+
+    final val fill // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.fill|{}fill[0]
+        final fun <get-fill>(): kotlin/Boolean? // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.fill.<get-fill>|<get-fill>(){}[0]
+    final val weight // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.weight|{}weight[0]
+        final fun <get-weight>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.weight.<get-weight>|<get-weight>(){}[0]
+
+    final fun component1(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.component1|component1(){}[0]
+    final fun component2(): kotlin/Boolean? // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.component2|component2(){}[0]
+    final fun copy(kotlinx.serialization.json/JsonElement = ..., kotlin/Boolean? = ...): ee.schimke.composeai.uibuilder.protocol/WeightModifierV1 // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.copy|copy(kotlinx.serialization.json.JsonElement;kotlin.Boolean?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/WeightModifierV1> { // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/WeightModifierV1 // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/WeightModifierV1) // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.WeightModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/WeightModifierV1> // ee.schimke.composeai.uibuilder.protocol/WeightModifierV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1|null[0]
+    constructor <init>(kotlinx.serialization.json/JsonElement? = ..., kotlinx.serialization.json/JsonElement? = ...) // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.<init>|<init>(kotlinx.serialization.json.JsonElement?;kotlinx.serialization.json.JsonElement?){}[0]
+
+    final val maxDp // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.maxDp|{}maxDp[0]
+        final fun <get-maxDp>(): kotlinx.serialization.json/JsonElement? // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.maxDp.<get-maxDp>|<get-maxDp>(){}[0]
+    final val minDp // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.minDp|{}minDp[0]
+        final fun <get-minDp>(): kotlinx.serialization.json/JsonElement? // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.minDp.<get-minDp>|<get-minDp>(){}[0]
+
+    final fun component1(): kotlinx.serialization.json/JsonElement? // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.component1|component1(){}[0]
+    final fun component2(): kotlinx.serialization.json/JsonElement? // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.component2|component2(){}[0]
+    final fun copy(kotlinx.serialization.json/JsonElement? = ..., kotlinx.serialization.json/JsonElement? = ...): ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1 // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.copy|copy(kotlinx.serialization.json.JsonElement?;kotlinx.serialization.json.JsonElement?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1> { // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1 // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1) // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.WidthInModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1> // ee.schimke.composeai.uibuilder.protocol/WidthInModifierV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/WidthModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/WidthModifierV1|null[0]
+    constructor <init>(kotlinx.serialization.json/JsonElement) // ee.schimke.composeai.uibuilder.protocol/WidthModifierV1.<init>|<init>(kotlinx.serialization.json.JsonElement){}[0]
+
+    final val widthDp // ee.schimke.composeai.uibuilder.protocol/WidthModifierV1.widthDp|{}widthDp[0]
+        final fun <get-widthDp>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/WidthModifierV1.widthDp.<get-widthDp>|<get-widthDp>(){}[0]
+
+    final fun component1(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/WidthModifierV1.component1|component1(){}[0]
+    final fun copy(kotlinx.serialization.json/JsonElement = ...): ee.schimke.composeai.uibuilder.protocol/WidthModifierV1 // ee.schimke.composeai.uibuilder.protocol/WidthModifierV1.copy|copy(kotlinx.serialization.json.JsonElement){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/WidthModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/WidthModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/WidthModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/WidthModifierV1> { // ee.schimke.composeai.uibuilder.protocol/WidthModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/WidthModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/WidthModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/WidthModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/WidthModifierV1 // ee.schimke.composeai.uibuilder.protocol/WidthModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/WidthModifierV1) // ee.schimke.composeai.uibuilder.protocol/WidthModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.WidthModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/WidthModifierV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/WidthModifierV1> // ee.schimke.composeai.uibuilder.protocol/WidthModifierV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1|null[0]
+    constructor <init>(ee.schimke.composeai.uibuilder.protocol/AlignmentV1? = ...) // ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.AlignmentV1?){}[0]
+
+    final val alignment // ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1.alignment|{}alignment[0]
+        final fun <get-alignment>(): ee.schimke.composeai.uibuilder.protocol/AlignmentV1? // ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1.alignment.<get-alignment>|<get-alignment>(){}[0]
+
+    final fun component1(): ee.schimke.composeai.uibuilder.protocol/AlignmentV1? // ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1.component1|component1(){}[0]
+    final fun copy(ee.schimke.composeai.uibuilder.protocol/AlignmentV1? = ...): ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1 // ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1.copy|copy(ee.schimke.composeai.uibuilder.protocol.AlignmentV1?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1> { // ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1 // ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1) // ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.WrapContentSizeModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1> // ee.schimke.composeai.uibuilder.protocol/WrapContentSizeModifierV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1|null[0]
+    constructor <init>(kotlinx.serialization.json/JsonElement) // ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1.<init>|<init>(kotlinx.serialization.json.JsonElement){}[0]
+
+    final val zIndex // ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1.zIndex|{}zIndex[0]
+        final fun <get-zIndex>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1.zIndex.<get-zIndex>|<get-zIndex>(){}[0]
+
+    final fun component1(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1.component1|component1(){}[0]
+    final fun copy(kotlinx.serialization.json/JsonElement = ...): ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1 // ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1.copy|copy(kotlinx.serialization.json.JsonElement){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1> { // ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1 // ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1) // ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.ZIndexModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1> // ee.schimke.composeai.uibuilder.protocol/ZIndexModifierV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final object ee.schimke.composeai.uibuilder.protocol/FillMaxHeightModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1, kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/FillMaxHeightModifierV1|null[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/FillMaxHeightModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/FillMaxHeightModifierV1.hashCode|hashCode(){}[0]
+    final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/FillMaxHeightModifierV1> // ee.schimke.composeai.uibuilder.protocol/FillMaxHeightModifierV1.serializer|serializer(){}[0]
+    final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/FillMaxHeightModifierV1.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/FillMaxHeightModifierV1.toString|toString(){}[0]
+}
+
 final object ee.schimke.composeai.uibuilder.protocol/FillMaxSizeModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1, kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/FillMaxSizeModifierV1|null[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/FillMaxSizeModifierV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/FillMaxSizeModifierV1.hashCode|hashCode(){}[0]
@@ -5331,6 +5932,14 @@ final object ee.schimke.composeai.uibuilder.protocol/FillMaxWidthModifierV1 : ee
     final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/FillMaxWidthModifierV1> // ee.schimke.composeai.uibuilder.protocol/FillMaxWidthModifierV1.serializer|serializer(){}[0]
     final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/FillMaxWidthModifierV1.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/FillMaxWidthModifierV1.toString|toString(){}[0]
+}
+
+final object ee.schimke.composeai.uibuilder.protocol/HorizontalScrollModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1, kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/HorizontalScrollModifierV1|null[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/HorizontalScrollModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/HorizontalScrollModifierV1.hashCode|hashCode(){}[0]
+    final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/HorizontalScrollModifierV1> // ee.schimke.composeai.uibuilder.protocol/HorizontalScrollModifierV1.serializer|serializer(){}[0]
+    final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/HorizontalScrollModifierV1.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/HorizontalScrollModifierV1.toString|toString(){}[0]
 }
 
 final object ee.schimke.composeai.uibuilder.protocol/ListCatalogsRequestV1 : ee.schimke.composeai.uibuilder.protocol/UiBuilderRequestV1, kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/ListCatalogsRequestV1|null[0]
@@ -5443,6 +6052,14 @@ final object ee.schimke.composeai.uibuilder.protocol/ResetWindowPostureEnvironme
     final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ResetWindowPostureEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/ResetWindowPostureEnvironmentChangeV1.serializer|serializer(){}[0]
     final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/ResetWindowPostureEnvironmentChangeV1.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ResetWindowPostureEnvironmentChangeV1.toString|toString(){}[0]
+}
+
+final object ee.schimke.composeai.uibuilder.protocol/VerticalScrollModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1, kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/VerticalScrollModifierV1|null[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/VerticalScrollModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/VerticalScrollModifierV1.hashCode|hashCode(){}[0]
+    final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/VerticalScrollModifierV1> // ee.schimke.composeai.uibuilder.protocol/VerticalScrollModifierV1.serializer|serializer(){}[0]
+    final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/VerticalScrollModifierV1.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/VerticalScrollModifierV1.toString|toString(){}[0]
 }
 
 final const val ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_SCHEMA_VERSION_V1 // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_SCHEMA_VERSION_V1|{}UI_BUILDER_SCHEMA_VERSION_V1[0]

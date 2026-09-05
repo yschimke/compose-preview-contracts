@@ -135,6 +135,107 @@ public final class ee/schimke/composeai/uibuilder/protocol/AddCatalogUpgradeChan
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class ee/schimke/composeai/uibuilder/protocol/AlignHorizontalModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/AlignHorizontalModifierV1$Companion;
+	public fun <init> (Lee/schimke/composeai/uibuilder/protocol/HorizontalAlignmentV1;)V
+	public final fun component1 ()Lee/schimke/composeai/uibuilder/protocol/HorizontalAlignmentV1;
+	public final fun copy (Lee/schimke/composeai/uibuilder/protocol/HorizontalAlignmentV1;)Lee/schimke/composeai/uibuilder/protocol/AlignHorizontalModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/AlignHorizontalModifierV1;Lee/schimke/composeai/uibuilder/protocol/HorizontalAlignmentV1;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/AlignHorizontalModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAlignment ()Lee/schimke/composeai/uibuilder/protocol/HorizontalAlignmentV1;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/AlignHorizontalModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/AlignHorizontalModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/AlignHorizontalModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/AlignHorizontalModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/AlignHorizontalModifierV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/AlignModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/AlignModifierV1$Companion;
+	public fun <init> (Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;)V
+	public final fun component1 ()Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;
+	public final fun copy (Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;)Lee/schimke/composeai/uibuilder/protocol/AlignModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/AlignModifierV1;Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/AlignModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAlignment ()Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/AlignModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/AlignModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/AlignModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/AlignModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/AlignModifierV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/AlignVerticalModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/AlignVerticalModifierV1$Companion;
+	public fun <init> (Lee/schimke/composeai/uibuilder/protocol/VerticalAlignmentV1;)V
+	public final fun component1 ()Lee/schimke/composeai/uibuilder/protocol/VerticalAlignmentV1;
+	public final fun copy (Lee/schimke/composeai/uibuilder/protocol/VerticalAlignmentV1;)Lee/schimke/composeai/uibuilder/protocol/AlignVerticalModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/AlignVerticalModifierV1;Lee/schimke/composeai/uibuilder/protocol/VerticalAlignmentV1;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/AlignVerticalModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAlignment ()Lee/schimke/composeai/uibuilder/protocol/VerticalAlignmentV1;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/AlignVerticalModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/AlignVerticalModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/AlignVerticalModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/AlignVerticalModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/AlignVerticalModifierV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/AlignmentV1 : java/lang/Enum {
+	public static final field BOTTOM_CENTER Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;
+	public static final field BOTTOM_END Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;
+	public static final field BOTTOM_START Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;
+	public static final field CENTER Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;
+	public static final field CENTER_END Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;
+	public static final field CENTER_START Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/AlignmentV1$Companion;
+	public static final field TOP_CENTER Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;
+	public static final field TOP_END Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;
+	public static final field TOP_START Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;
+	public static fun values ()[Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/AlignmentV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class ee/schimke/composeai/uibuilder/protocol/AllPredicateV1 : ee/schimke/composeai/uibuilder/protocol/DesignPredicateV1 {
 	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/AllPredicateV1$Companion;
 	public fun <init> (Ljava/util/List;)V
@@ -159,6 +260,33 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/AllPredicat
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/AllPredicateV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/AlphaModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/AlphaModifierV1$Companion;
+	public fun <init> (Lkotlinx/serialization/json/JsonElement;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy (Lkotlinx/serialization/json/JsonElement;)Lee/schimke/composeai/uibuilder/protocol/AlphaModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/AlphaModifierV1;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/AlphaModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAlpha ()Lkotlinx/serialization/json/JsonElement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/AlphaModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/AlphaModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/AlphaModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/AlphaModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/AlphaModifierV1$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -227,6 +355,33 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/ApplyOperat
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/ApplyOperationRequestV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/AspectRatioModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/AspectRatioModifierV1$Companion;
+	public fun <init> (Lkotlinx/serialization/json/JsonElement;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy (Lkotlinx/serialization/json/JsonElement;)Lee/schimke/composeai/uibuilder/protocol/AspectRatioModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/AspectRatioModifierV1;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/AspectRatioModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRatio ()Lkotlinx/serialization/json/JsonElement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/AspectRatioModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/AspectRatioModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/AspectRatioModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/AspectRatioModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/AspectRatioModifierV1$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -301,6 +456,36 @@ public final class ee/schimke/composeai/uibuilder/protocol/AssetSourceV1$Compani
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class ee/schimke/composeai/uibuilder/protocol/BackgroundModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/BackgroundModifierV1$Companion;
+	public fun <init> (Lee/schimke/composeai/uibuilder/protocol/UiValueV1;Ljava/lang/String;)V
+	public synthetic fun <init> (Lee/schimke/composeai/uibuilder/protocol/UiValueV1;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lee/schimke/composeai/uibuilder/protocol/UiValueV1;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Lee/schimke/composeai/uibuilder/protocol/UiValueV1;Ljava/lang/String;)Lee/schimke/composeai/uibuilder/protocol/BackgroundModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/BackgroundModifierV1;Lee/schimke/composeai/uibuilder/protocol/UiValueV1;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/BackgroundModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getColor ()Lee/schimke/composeai/uibuilder/protocol/UiValueV1;
+	public final fun getShape ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/BackgroundModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/BackgroundModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/BackgroundModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/BackgroundModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/BackgroundModifierV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class ee/schimke/composeai/uibuilder/protocol/BooleanValueV1 : ee/schimke/composeai/uibuilder/protocol/UiValueV1 {
 	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/BooleanValueV1$Companion;
 	public fun <init> (Z)V
@@ -325,6 +510,38 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/BooleanValu
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/BooleanValueV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/BorderModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/BorderModifierV1$Companion;
+	public fun <init> (Lkotlinx/serialization/json/JsonElement;Lee/schimke/composeai/uibuilder/protocol/UiValueV1;Ljava/lang/String;)V
+	public synthetic fun <init> (Lkotlinx/serialization/json/JsonElement;Lee/schimke/composeai/uibuilder/protocol/UiValueV1;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun component2 ()Lee/schimke/composeai/uibuilder/protocol/UiValueV1;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Lkotlinx/serialization/json/JsonElement;Lee/schimke/composeai/uibuilder/protocol/UiValueV1;Ljava/lang/String;)Lee/schimke/composeai/uibuilder/protocol/BorderModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/BorderModifierV1;Lkotlinx/serialization/json/JsonElement;Lee/schimke/composeai/uibuilder/protocol/UiValueV1;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/BorderModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getColor ()Lee/schimke/composeai/uibuilder/protocol/UiValueV1;
+	public final fun getShape ()Ljava/lang/String;
+	public final fun getWidthDp ()Lkotlinx/serialization/json/JsonElement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/BorderModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/BorderModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/BorderModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/BorderModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/BorderModifierV1$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -2083,6 +2300,14 @@ public final class ee/schimke/composeai/uibuilder/protocol/ExportResponseV1$Comp
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class ee/schimke/composeai/uibuilder/protocol/FillMaxHeightModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/FillMaxHeightModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
 public final class ee/schimke/composeai/uibuilder/protocol/FillMaxSizeModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
 	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/FillMaxSizeModifierV1;
 	public fun equals (Ljava/lang/Object;)Z
@@ -2217,6 +2442,86 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/GrantActorA
 
 public final class ee/schimke/composeai/uibuilder/protocol/GrantActorAccessMutationV1$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/HeightInModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/HeightInModifierV1$Companion;
+	public fun <init> ()V
+	public fun <init> (Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;)V
+	public synthetic fun <init> (Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun component2 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy (Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;)Lee/schimke/composeai/uibuilder/protocol/HeightInModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/HeightInModifierV1;Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/HeightInModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMaxDp ()Lkotlinx/serialization/json/JsonElement;
+	public final fun getMinDp ()Lkotlinx/serialization/json/JsonElement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/HeightInModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/HeightInModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/HeightInModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/HeightInModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/HeightInModifierV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/HeightModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/HeightModifierV1$Companion;
+	public fun <init> (Lkotlinx/serialization/json/JsonElement;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy (Lkotlinx/serialization/json/JsonElement;)Lee/schimke/composeai/uibuilder/protocol/HeightModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/HeightModifierV1;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/HeightModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHeightDp ()Lkotlinx/serialization/json/JsonElement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/HeightModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/HeightModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/HeightModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/HeightModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/HeightModifierV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/HorizontalAlignmentV1 : java/lang/Enum {
+	public static final field CENTER_HORIZONTALLY Lee/schimke/composeai/uibuilder/protocol/HorizontalAlignmentV1;
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/HorizontalAlignmentV1$Companion;
+	public static final field END Lee/schimke/composeai/uibuilder/protocol/HorizontalAlignmentV1;
+	public static final field START Lee/schimke/composeai/uibuilder/protocol/HorizontalAlignmentV1;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lee/schimke/composeai/uibuilder/protocol/HorizontalAlignmentV1;
+	public static fun values ()[Lee/schimke/composeai/uibuilder/protocol/HorizontalAlignmentV1;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/HorizontalAlignmentV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/HorizontalScrollModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/HorizontalScrollModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/HttpRequestEnvelopeV1 {
@@ -2717,6 +3022,37 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/ObjectValue
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/ObjectValueV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/OffsetModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/OffsetModifierV1$Companion;
+	public fun <init> ()V
+	public fun <init> (Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;)V
+	public synthetic fun <init> (Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun component2 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy (Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;)Lee/schimke/composeai/uibuilder/protocol/OffsetModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/OffsetModifierV1;Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/OffsetModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getXDp ()Lkotlinx/serialization/json/JsonElement;
+	public final fun getYDp ()Lkotlinx/serialization/json/JsonElement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/OffsetModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/OffsetModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/OffsetModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/OffsetModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/OffsetModifierV1$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -3563,6 +3899,62 @@ public final class ee/schimke/composeai/uibuilder/protocol/RevokeDesignShareLink
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class ee/schimke/composeai/uibuilder/protocol/RotateModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/RotateModifierV1$Companion;
+	public fun <init> (Lkotlinx/serialization/json/JsonElement;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy (Lkotlinx/serialization/json/JsonElement;)Lee/schimke/composeai/uibuilder/protocol/RotateModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/RotateModifierV1;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/RotateModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDegrees ()Lkotlinx/serialization/json/JsonElement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/RotateModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/RotateModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/RotateModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/RotateModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/RotateModifierV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/ScaleModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/ScaleModifierV1$Companion;
+	public fun <init> (Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun component2 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy (Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;)Lee/schimke/composeai/uibuilder/protocol/ScaleModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/ScaleModifierV1;Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/ScaleModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getScaleX ()Lkotlinx/serialization/json/JsonElement;
+	public final fun getScaleY ()Lkotlinx/serialization/json/JsonElement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/ScaleModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/ScaleModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/ScaleModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/ScaleModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/ScaleModifierV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class ee/schimke/composeai/uibuilder/protocol/SelectActionV1 : ee/schimke/composeai/uibuilder/protocol/DesignActionV1 {
 	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/SelectActionV1$Companion;
 	public fun <init> (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;)V
@@ -4357,6 +4749,38 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetWindowPostureEnvir
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class ee/schimke/composeai/uibuilder/protocol/ShadowModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/ShadowModifierV1$Companion;
+	public fun <init> (Lkotlinx/serialization/json/JsonElement;Ljava/lang/String;Ljava/lang/Boolean;)V
+	public synthetic fun <init> (Lkotlinx/serialization/json/JsonElement;Ljava/lang/String;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Boolean;
+	public final fun copy (Lkotlinx/serialization/json/JsonElement;Ljava/lang/String;Ljava/lang/Boolean;)Lee/schimke/composeai/uibuilder/protocol/ShadowModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/ShadowModifierV1;Lkotlinx/serialization/json/JsonElement;Ljava/lang/String;Ljava/lang/Boolean;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/ShadowModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getClip ()Ljava/lang/Boolean;
+	public final fun getElevationDp ()Lkotlinx/serialization/json/JsonElement;
+	public final fun getShape ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/ShadowModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/ShadowModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/ShadowModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/ShadowModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/ShadowModifierV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class ee/schimke/composeai/uibuilder/protocol/ShapeTokenValueV1 : ee/schimke/composeai/uibuilder/protocol/UiValueV1 {
 	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/ShapeTokenValueV1$Companion;
 	public fun <init> (Ljava/lang/String;)V
@@ -4814,6 +5238,33 @@ public final class ee/schimke/composeai/uibuilder/protocol/SvgFallbackV1$Compani
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class ee/schimke/composeai/uibuilder/protocol/TestTagModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/TestTagModifierV1$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lee/schimke/composeai/uibuilder/protocol/TestTagModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/TestTagModifierV1;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/TestTagModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getTag ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/TestTagModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/TestTagModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/TestTagModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/TestTagModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/TestTagModifierV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class ee/schimke/composeai/uibuilder/protocol/ThemeV1 : java/lang/Enum {
 	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/ThemeV1$Companion;
 	public static final field DARK Lee/schimke/composeai/uibuilder/protocol/ThemeV1;
@@ -5084,6 +5535,28 @@ public final class ee/schimke/composeai/uibuilder/protocol/UploadedAssetSourceV1
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class ee/schimke/composeai/uibuilder/protocol/VerticalAlignmentV1 : java/lang/Enum {
+	public static final field BOTTOM Lee/schimke/composeai/uibuilder/protocol/VerticalAlignmentV1;
+	public static final field CENTER_VERTICALLY Lee/schimke/composeai/uibuilder/protocol/VerticalAlignmentV1;
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/VerticalAlignmentV1$Companion;
+	public static final field TOP Lee/schimke/composeai/uibuilder/protocol/VerticalAlignmentV1;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lee/schimke/composeai/uibuilder/protocol/VerticalAlignmentV1;
+	public static fun values ()[Lee/schimke/composeai/uibuilder/protocol/VerticalAlignmentV1;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/VerticalAlignmentV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/VerticalScrollModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/VerticalScrollModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
 public final class ee/schimke/composeai/uibuilder/protocol/WasmAdapterStatusV1 : java/lang/Enum {
 	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/WasmAdapterStatusV1$Companion;
 	public static final field PLANNED Lee/schimke/composeai/uibuilder/protocol/WasmAdapterStatusV1;
@@ -5130,6 +5603,94 @@ public final class ee/schimke/composeai/uibuilder/protocol/WasmCapabilityV1$Comp
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class ee/schimke/composeai/uibuilder/protocol/WeightModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/WeightModifierV1$Companion;
+	public fun <init> (Lkotlinx/serialization/json/JsonElement;Ljava/lang/Boolean;)V
+	public synthetic fun <init> (Lkotlinx/serialization/json/JsonElement;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun component2 ()Ljava/lang/Boolean;
+	public final fun copy (Lkotlinx/serialization/json/JsonElement;Ljava/lang/Boolean;)Lee/schimke/composeai/uibuilder/protocol/WeightModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/WeightModifierV1;Lkotlinx/serialization/json/JsonElement;Ljava/lang/Boolean;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/WeightModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFill ()Ljava/lang/Boolean;
+	public final fun getWeight ()Lkotlinx/serialization/json/JsonElement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/WeightModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/WeightModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/WeightModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/WeightModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/WeightModifierV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/WidthInModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/WidthInModifierV1$Companion;
+	public fun <init> ()V
+	public fun <init> (Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;)V
+	public synthetic fun <init> (Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun component2 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy (Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;)Lee/schimke/composeai/uibuilder/protocol/WidthInModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/WidthInModifierV1;Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/WidthInModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMaxDp ()Lkotlinx/serialization/json/JsonElement;
+	public final fun getMinDp ()Lkotlinx/serialization/json/JsonElement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/WidthInModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/WidthInModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/WidthInModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/WidthInModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/WidthInModifierV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/WidthModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/WidthModifierV1$Companion;
+	public fun <init> (Lkotlinx/serialization/json/JsonElement;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy (Lkotlinx/serialization/json/JsonElement;)Lee/schimke/composeai/uibuilder/protocol/WidthModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/WidthModifierV1;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/WidthModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getWidthDp ()Lkotlinx/serialization/json/JsonElement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/WidthModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/WidthModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/WidthModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/WidthModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/WidthModifierV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class ee/schimke/composeai/uibuilder/protocol/WindowPostureV1 : java/lang/Enum {
 	public static final field BOOK Lee/schimke/composeai/uibuilder/protocol/WindowPostureV1;
 	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/WindowPostureV1$Companion;
@@ -5141,6 +5702,62 @@ public final class ee/schimke/composeai/uibuilder/protocol/WindowPostureV1 : jav
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/WindowPostureV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/WrapContentSizeModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/WrapContentSizeModifierV1$Companion;
+	public fun <init> ()V
+	public fun <init> (Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;)V
+	public synthetic fun <init> (Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;
+	public final fun copy (Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;)Lee/schimke/composeai/uibuilder/protocol/WrapContentSizeModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/WrapContentSizeModifierV1;Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/WrapContentSizeModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAlignment ()Lee/schimke/composeai/uibuilder/protocol/AlignmentV1;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/WrapContentSizeModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/WrapContentSizeModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/WrapContentSizeModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/WrapContentSizeModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/WrapContentSizeModifierV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/ZIndexModifierV1 : ee/schimke/composeai/uibuilder/protocol/DesignModifierV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/ZIndexModifierV1$Companion;
+	public fun <init> (Lkotlinx/serialization/json/JsonElement;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy (Lkotlinx/serialization/json/JsonElement;)Lee/schimke/composeai/uibuilder/protocol/ZIndexModifierV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/ZIndexModifierV1;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/ZIndexModifierV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getZIndex ()Lkotlinx/serialization/json/JsonElement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/ZIndexModifierV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/ZIndexModifierV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/ZIndexModifierV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/ZIndexModifierV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/ZIndexModifierV1$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

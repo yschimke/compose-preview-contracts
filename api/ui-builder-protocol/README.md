@@ -9,7 +9,11 @@ client, service and MCP adapter. It owns:
 - pinned catalog identity plus roles, traits, slot cardinalities, JSON property schemas, modifier,
   Wasm, Compose-code and SVG capabilities;
 - persisted multiple-root design documents with a typed render environment, state declarations,
-  ordered modifiers and named ordered slots;
+  ordered modifiers and named ordered slots. The modifier vocabulary is closed and declarative —
+  sizing and constraints, the three fills, alignment (one modifier per scope, because a row aligns
+  vertically and a column horizontally), offset and z-index, background, border, alpha, shadow,
+  rotate, scale, the two scrolls, and a test tag. What is deliberately absent, and why, is on
+  `DesignModifierV1`;
 - atomic, client-identified edit batches using stable neighbour anchors, plus undo and redo; stable
   position keys remain reducer/server internals and are never client supplied;
 - explicit catalog-pin upgrade previews with deterministic validation, structural diffs and
