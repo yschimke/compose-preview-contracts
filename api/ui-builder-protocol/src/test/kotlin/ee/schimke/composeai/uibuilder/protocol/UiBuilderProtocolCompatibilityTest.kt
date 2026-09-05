@@ -8,6 +8,7 @@ import kotlin.test.assertNull
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationException
+import kotlinx.serialization.descriptors.elementNames
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
@@ -264,6 +265,17 @@ class UiBuilderProtocolCompatibilityTest {
     }
   }
 
+  /**
+   * Every subclass discriminator the sealed hierarchy declares, read from the serializer.
+   *
+   * From the descriptor rather than `sealedSubclasses`, which needs `kotlin-reflect` on the test
+   * classpath — and this asks the better question anyway: what a client sees is the serial name,
+   * not the Kotlin class.
+   */
+  @OptIn(kotlinx.serialization.ExperimentalSerializationApi::class)
+  private fun modifierSerialNames(): Set<String> =
+    DesignModifierV1.serializer().descriptor.getElementDescriptor(1).elementNames.toSet()
+
   private fun fixture(name: String): String = File(fixturesDir(), name).readText()
 
   private fun sha256(value: String): String =
@@ -382,7 +394,9 @@ class UiBuilderProtocolCompatibilityTest {
   fun aModifierChainRoundTripsInOrderInsideACommandBatch() {
     // Order is the contract for a modifier chain: padding-then-size is a different layout from
     // size-then-padding. A round trip that preserved the set and not the sequence would be wrong,
-    // so this asserts the whole list positionally, and covers every modifier v1 declares.
+    // so this asserts the whole list positionally. That every *type* round trips is
+    // `everyModifierTypeIsCarriedByTheLosslessFixture`, which reads the fixture rather than a
+    // list here that a new modifier could quietly not join.
     val wire =
       """
       {"type":"batch","designId":"d","operationId":"o","actorId":"a","clientId":"c",
@@ -505,6 +519,70 @@ class UiBuilderProtocolCompatibilityTest {
 
     assertEquals(EnvironmentFieldV1.TYPEFACE, set.field)
     assertEquals(EnvironmentFieldV1.TYPEFACE, reset.field)
+  }
+
+  @Test
+  fun everyModifierTypeIsCarriedByTheLosslessFixture() {
+    // The vocabulary and the fixture are two halves of one promise: the fixture is what proves a
+    // type survives a strict round trip, and a modifier that is not in it is a type nothing has
+    // ever encoded. Reflected over the sealed hierarchy rather than listed, so the next modifier
+    // added to `DesignModifierV1` fails here until the fixture carries it.
+    val document =
+      strictJson
+        .decodeFromString(
+          LosslessProtocolFixtureV1.serializer(),
+          fixture("lossless-document-command.json"),
+        )
+        .document
+    val carried =
+      document.nodes.values
+        .flatMap(DesignNodeV1::modifiers)
+        .map { modifier ->
+          (strictJson.encodeToJsonElement(DesignModifierV1.serializer(), modifier) as JsonObject)
+            .getValue("type")
+            .let { (it as JsonPrimitive).content }
+        }
+        .toSet()
+
+    assertEquals(modifierSerialNames(), carried)
+  }
+
+  @Test
+  fun aScopedModifierNamesTheAxisItsScopeAligns() {
+    // Three alignment modifiers rather than one with every value: a Row aligns vertically and a
+    // Column horizontally, so a single `align` would carry values half its uses must ignore, and
+    // a document could say "align this row child to the start" and mean nothing.
+    val box: DesignModifierV1 = AlignModifierV1(AlignmentV1.BOTTOM_END)
+    val column: DesignModifierV1 = AlignHorizontalModifierV1(HorizontalAlignmentV1.END)
+    val row: DesignModifierV1 = AlignVerticalModifierV1(VerticalAlignmentV1.CENTER_VERTICALLY)
+
+    listOf(box, column, row).forEach { modifier ->
+      val encoded =
+        strictJson.encodeToJsonElement(DesignModifierV1.serializer(), modifier) as JsonObject
+      assertEquals(
+        modifier,
+        strictJson.decodeFromJsonElement(DesignModifierV1.serializer(), encoded),
+      )
+    }
+    assertEquals(
+      "bottomEnd",
+      (strictJson.encodeToJsonElement(DesignModifierV1.serializer(), box) as JsonObject)[
+          "alignment"]
+        ?.let { (it as JsonPrimitive).content },
+    )
+  }
+
+  @Test
+  fun theFillsStayFieldlessSoStoredDocumentsKeepTheirBytes() {
+    // `fillMaxWidth(0.5f)` is deliberately absent: these three are data objects whose encoded form
+    // is the discriminator and nothing else, and giving them a fraction would change the bytes of
+    // every document already stored — and every canonical hash taken over one.
+    listOf(FillMaxSizeModifierV1, FillMaxWidthModifierV1, FillMaxHeightModifierV1).forEach {
+      modifier ->
+      val encoded =
+        strictJson.encodeToJsonElement(DesignModifierV1.serializer(), modifier) as JsonObject
+      assertEquals(setOf("type"), encoded.keys)
+    }
   }
 
   @Test
