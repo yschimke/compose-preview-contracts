@@ -71,12 +71,40 @@ public data class RestoreNodeMutationV1(
   public val location: NodeLocationV1? = null,
 ) : DesignMutationV1
 
+/**
+ * Write one property on one node.
+ *
+ * A [NullValueV1] value is read by the server as an **unset**: the property leaves the node and the
+ * component's own default applies (yschimke/compose-preview-server#480). That spelling stays
+ * accepted for clients written against it; [RemoveNodePropertyMutationV1] is the explicit form.
+ */
 @Serializable
 @SerialName("setProperty")
 public data class SetPropertyMutationV1(
   public val nodeId: String,
   public val property: String,
   public val value: UiValueV1,
+) : DesignMutationV1
+
+/**
+ * Unset one property on one node, so the component's own default applies again.
+ *
+ * [SetPropertyMutationV1] had no inverse (yschimke/compose-preview-server#480): an author who tried
+ * a property and found it wrong could change its value but not the *shape* of the node, and the
+ * only ways back were to delete and rebuild the node — losing its id, its children and its place —
+ * or to guess the renderer's default. The server read a null write as an unset to close that; this
+ * is the same operation said in its own words, following the rule [RemoveStateVariableMutationV1]
+ * states: a removal is its own type rather than a value that means absence.
+ *
+ * A reducer refuses an unset of a required property with the located message it already has for a
+ * document missing one, and accepts an unset of a property the node does not hold as the no-op it
+ * is, so a retry is idempotent.
+ */
+@Serializable
+@SerialName("removeNodeProperty")
+public data class RemoveNodePropertyMutationV1(
+  public val nodeId: String,
+  public val property: String,
 ) : DesignMutationV1
 
 /**
