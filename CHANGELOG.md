@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.10.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.9.0...v2.10.0) (2026-09-06)
+
+
+### Features
+
+* **ui-builder-protocol:** RemoveNodePropertyMutationV1, the explicit spelling of an unset ([#50](https://github.com/yschimke/compose-preview-contracts/issues/50)) ([f158864](https://github.com/yschimke/compose-preview-contracts/commit/f1588649ed7ff39b6002fa708a1e7f437addaff1))
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.squareup.okio:okio to v3.18.2 ([#48](https://github.com/yschimke/compose-preview-contracts/issues/48)) ([92e8802](https://github.com/yschimke/compose-preview-contracts/commit/92e8802a743a4107107441f70d80b797e4dea899))
+
 ## [2.9.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.8.0...v2.9.0) (2026-09-06)
 
 
