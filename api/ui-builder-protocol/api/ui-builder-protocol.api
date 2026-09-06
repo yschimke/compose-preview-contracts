@@ -1585,8 +1585,8 @@ public final class ee/schimke/composeai/uibuilder/protocol/DesignDocumentV1$Comp
 
 public final class ee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1 {
 	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1$Companion;
-	public fun <init> (IIDLee/schimke/composeai/uibuilder/protocol/ThemeV1;Ljava/lang/Boolean;Ljava/lang/String;DLee/schimke/composeai/uibuilder/protocol/LayoutDirectionV1;Lee/schimke/composeai/uibuilder/protocol/WindowPostureV1;Ljava/lang/Integer;Ljava/lang/String;Lee/schimke/composeai/uibuilder/protocol/AnimationStateV1;Ljava/lang/Boolean;Lee/schimke/composeai/uibuilder/protocol/UiValueV1;Ljava/lang/String;)V
-	public synthetic fun <init> (IIDLee/schimke/composeai/uibuilder/protocol/ThemeV1;Ljava/lang/Boolean;Ljava/lang/String;DLee/schimke/composeai/uibuilder/protocol/LayoutDirectionV1;Lee/schimke/composeai/uibuilder/protocol/WindowPostureV1;Ljava/lang/Integer;Ljava/lang/String;Lee/schimke/composeai/uibuilder/protocol/AnimationStateV1;Ljava/lang/Boolean;Lee/schimke/composeai/uibuilder/protocol/UiValueV1;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (IIDLee/schimke/composeai/uibuilder/protocol/ThemeV1;Ljava/lang/Boolean;Ljava/lang/String;DLee/schimke/composeai/uibuilder/protocol/LayoutDirectionV1;Lee/schimke/composeai/uibuilder/protocol/WindowPostureV1;Ljava/lang/Integer;Ljava/lang/String;Lee/schimke/composeai/uibuilder/protocol/AnimationStateV1;Ljava/lang/Boolean;Lee/schimke/composeai/uibuilder/protocol/UiValueV1;Ljava/lang/String;Ljava/util/List;)V
+	public synthetic fun <init> (IIDLee/schimke/composeai/uibuilder/protocol/ThemeV1;Ljava/lang/Boolean;Ljava/lang/String;DLee/schimke/composeai/uibuilder/protocol/LayoutDirectionV1;Lee/schimke/composeai/uibuilder/protocol/WindowPostureV1;Ljava/lang/Integer;Ljava/lang/String;Lee/schimke/composeai/uibuilder/protocol/AnimationStateV1;Ljava/lang/Boolean;Lee/schimke/composeai/uibuilder/protocol/UiValueV1;Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()I
 	public final fun component10 ()Ljava/lang/Integer;
 	public final fun component11 ()Ljava/lang/String;
@@ -1594,6 +1594,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1 {
 	public final fun component13 ()Ljava/lang/Boolean;
 	public final fun component14 ()Lee/schimke/composeai/uibuilder/protocol/UiValueV1;
 	public final fun component15 ()Ljava/lang/String;
+	public final fun component16 ()Ljava/util/List;
 	public final fun component2 ()I
 	public final fun component3 ()D
 	public final fun component4 ()Lee/schimke/composeai/uibuilder/protocol/ThemeV1;
@@ -1602,14 +1603,15 @@ public final class ee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1 {
 	public final fun component7 ()D
 	public final fun component8 ()Lee/schimke/composeai/uibuilder/protocol/LayoutDirectionV1;
 	public final fun component9 ()Lee/schimke/composeai/uibuilder/protocol/WindowPostureV1;
-	public final fun copy (IIDLee/schimke/composeai/uibuilder/protocol/ThemeV1;Ljava/lang/Boolean;Ljava/lang/String;DLee/schimke/composeai/uibuilder/protocol/LayoutDirectionV1;Lee/schimke/composeai/uibuilder/protocol/WindowPostureV1;Ljava/lang/Integer;Ljava/lang/String;Lee/schimke/composeai/uibuilder/protocol/AnimationStateV1;Ljava/lang/Boolean;Lee/schimke/composeai/uibuilder/protocol/UiValueV1;Ljava/lang/String;)Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1;
-	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1;IIDLee/schimke/composeai/uibuilder/protocol/ThemeV1;Ljava/lang/Boolean;Ljava/lang/String;DLee/schimke/composeai/uibuilder/protocol/LayoutDirectionV1;Lee/schimke/composeai/uibuilder/protocol/WindowPostureV1;Ljava/lang/Integer;Ljava/lang/String;Lee/schimke/composeai/uibuilder/protocol/AnimationStateV1;Ljava/lang/Boolean;Lee/schimke/composeai/uibuilder/protocol/UiValueV1;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1;
+	public final fun copy (IIDLee/schimke/composeai/uibuilder/protocol/ThemeV1;Ljava/lang/Boolean;Ljava/lang/String;DLee/schimke/composeai/uibuilder/protocol/LayoutDirectionV1;Lee/schimke/composeai/uibuilder/protocol/WindowPostureV1;Ljava/lang/Integer;Ljava/lang/String;Lee/schimke/composeai/uibuilder/protocol/AnimationStateV1;Ljava/lang/Boolean;Lee/schimke/composeai/uibuilder/protocol/UiValueV1;Ljava/lang/String;Ljava/util/List;)Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1;IIDLee/schimke/composeai/uibuilder/protocol/ThemeV1;Ljava/lang/Boolean;Ljava/lang/String;DLee/schimke/composeai/uibuilder/protocol/LayoutDirectionV1;Lee/schimke/composeai/uibuilder/protocol/WindowPostureV1;Ljava/lang/Integer;Ljava/lang/String;Lee/schimke/composeai/uibuilder/protocol/AnimationStateV1;Ljava/lang/Boolean;Lee/schimke/composeai/uibuilder/protocol/UiValueV1;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAnimations ()Lee/schimke/composeai/uibuilder/protocol/AnimationStateV1;
 	public final fun getBackground ()Lee/schimke/composeai/uibuilder/protocol/UiValueV1;
 	public final fun getBrowserZoomPercent ()Ljava/lang/Integer;
 	public final fun getDensity ()D
 	public final fun getDynamicColor ()Ljava/lang/Boolean;
+	public final fun getExportDevices ()Ljava/util/List;
 	public final fun getFixedTime ()Ljava/lang/String;
 	public final fun getFontScale ()D
 	public final fun getHeightDp ()I
@@ -2031,6 +2033,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1 : 
 	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1$Companion;
 	public static final field DENSITY Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public static final field DYNAMIC_COLOR Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
+	public static final field EXPORT_DEVICES Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public static final field FIXED_TIME Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public static final field FONT_SCALE Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public static final field HEIGHT_DP Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
@@ -3749,6 +3752,15 @@ public final class ee/schimke/composeai/uibuilder/protocol/ResetDynamicColorEnvi
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class ee/schimke/composeai/uibuilder/protocol/ResetExportDevicesEnvironmentChangeV1 : ee/schimke/composeai/uibuilder/protocol/EnvironmentChangeV1 {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/ResetExportDevicesEnvironmentChangeV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
 public final class ee/schimke/composeai/uibuilder/protocol/ResetFixedTimeEnvironmentChangeV1 : ee/schimke/composeai/uibuilder/protocol/EnvironmentChangeV1 {
 	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/ResetFixedTimeEnvironmentChangeV1;
 	public fun equals (Ljava/lang/Object;)Z
@@ -4321,6 +4333,34 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetEventBin
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetEventBindingMutationV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetExportDevicesEnvironmentChangeV1 : ee/schimke/composeai/uibuilder/protocol/EnvironmentChangeV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/SetExportDevicesEnvironmentChangeV1$Companion;
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lee/schimke/composeai/uibuilder/protocol/SetExportDevicesEnvironmentChangeV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/SetExportDevicesEnvironmentChangeV1;Ljava/util/List;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/SetExportDevicesEnvironmentChangeV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
+	public final fun getValue ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetExportDevicesEnvironmentChangeV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/SetExportDevicesEnvironmentChangeV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/SetExportDevicesEnvironmentChangeV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetExportDevicesEnvironmentChangeV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetExportDevicesEnvironmentChangeV1$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

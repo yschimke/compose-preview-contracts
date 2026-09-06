@@ -607,6 +607,7 @@ class UiBuilderProtocolCompatibilityTest {
         SetNetworkAccessEnvironmentChangeV1(false).field,
         SetBackgroundEnvironmentChangeV1(StringValueV1("x")).field,
         SetTypefaceEnvironmentChangeV1("Inter").field,
+        SetExportDevicesEnvironmentChangeV1(listOf("id:pixel_6")).field,
       )
 
     assertEquals(EnvironmentFieldV1.entries.toSet(), named)

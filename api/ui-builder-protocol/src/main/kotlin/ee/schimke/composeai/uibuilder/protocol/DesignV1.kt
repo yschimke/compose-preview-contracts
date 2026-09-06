@@ -71,6 +71,27 @@ public data class DesignEnvironmentV1(
    * rather than beside [fontScale] where it reads better.
    */
   public val typeface: String? = null,
+  /**
+   * Device ids this design is also exported as, beside the one frame [widthDp], [heightDp] and
+   * [density] describe.
+   *
+   * A design is authored at one size and lives at several. The frame fields carry the size it is
+   * *drawn* at — the canvas its author approved — and this carries the others its export should
+   * cover, so "which devices does this screen claim to work on?" is a question the document answers
+   * rather than one each exporter guesses from the catalog it happens to be generating for.
+   *
+   * Ids, not geometry, and deliberately: a device id is what a `@Preview(device = …)` resolves and
+   * what the render lane's own catalog is keyed by, so a document that names one cannot describe a
+   * frame no renderer produces. A width and height here would be a second copy of that catalog,
+   * free to disagree with it.
+   *
+   * Empty means the design exports at its own frame alone, which is what every document written
+   * before this field said and is why that is the default. The frame device itself need not appear
+   * here; a consumer that renders both renders the frame from the fields above.
+   *
+   * Appended last, like [typeface] and for the same reason: the constructor is published ABI.
+   */
+  public val exportDevices: List<String> = emptyList(),
 )
 
 @Serializable

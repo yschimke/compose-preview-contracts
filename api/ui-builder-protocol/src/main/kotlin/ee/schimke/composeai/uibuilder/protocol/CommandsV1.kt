@@ -207,6 +207,7 @@ public enum class EnvironmentFieldV1 {
   @SerialName("networkAccess") NETWORK_ACCESS,
   @SerialName("background") BACKGROUND,
   @SerialName("typeface") TYPEFACE,
+  @SerialName("exportDevices") EXPORT_DEVICES,
 }
 
 @Serializable
@@ -358,6 +359,29 @@ public data class SetTypefaceEnvironmentChangeV1(public val value: String) : Env
 @SerialName("resetTypeface")
 public data object ResetTypefaceEnvironmentChangeV1 : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.TYPEFACE
+}
+
+/**
+ * Replaces the set of device ids the design is exported as — see
+ * [DesignEnvironmentV1.exportDevices].
+ *
+ * The whole set rather than an add and a remove, because the set is what a picker shows and what an
+ * export reads: two mutations that each move one id would let a client's idea of the set drift from
+ * the document's between them, and would make "the design exports at these four" a claim assembled
+ * from history rather than one the last accepted command states.
+ */
+@Serializable
+@SerialName("setExportDevices")
+public data class SetExportDevicesEnvironmentChangeV1(public val value: List<String>) :
+  EnvironmentChangeV1 {
+  override val field: EnvironmentFieldV1 = EnvironmentFieldV1.EXPORT_DEVICES
+}
+
+/** Returns the design to exporting at its own frame alone. */
+@Serializable
+@SerialName("resetExportDevices")
+public data object ResetExportDevicesEnvironmentChangeV1 : EnvironmentChangeV1 {
+  override val field: EnvironmentFieldV1 = EnvironmentFieldV1.EXPORT_DEVICES
 }
 
 /**
