@@ -37,7 +37,7 @@ agp = "9.4.0"
 ktfmt = "0.27.0"
 tapmoc = "0.4.2"
 kotlinx-serialization = "1.11.0"
-okio = "3.18.1"
+okio = "3.18.2"
 junit = "4.13.2"
 maven-publish = "0.37.0"
 
