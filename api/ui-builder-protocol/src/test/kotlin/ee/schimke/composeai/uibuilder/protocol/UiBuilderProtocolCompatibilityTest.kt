@@ -378,6 +378,42 @@ class UiBuilderProtocolCompatibilityTest {
   }
 
   @Test
+  fun unsettingAPropertyHasItsOwnMutationAndSurvivesInsideACommandBatch() {
+    // The explicit spelling of what a null `setProperty` already means to the server (#480): a
+    // property leaves the node. Inside `DesignCommandV1.operations`, because the discriminator is
+    // what carries it, and beside the set it undoes.
+    val wire =
+      """
+      {"type":"batch","designId":"d","operationId":"o","actorId":"a","clientId":"c",
+       "baseRevision":7,
+       "operations":[
+         {"type":"setProperty","nodeId":"body","property":"verticalArrangement",
+          "value":{"type":"enum","value":"spaceBetween"}},
+         {"type":"removeNodeProperty","nodeId":"body","property":"verticalArrangement"}
+       ]}
+      """
+        .trimIndent()
+        .replace("\n", "")
+    val decoded = strictJson.decodeFromString(DesignSubmissionV1.serializer(), wire)
+    val command = decoded as DesignCommandV1
+
+    val removed = command.operations[1] as RemoveNodePropertyMutationV1
+    assertEquals("body", removed.nodeId)
+    assertEquals("verticalArrangement", removed.property)
+    assertEquals(
+      strictJson.parseToJsonElement(wire),
+      strictJson.encodeToJsonElement(DesignSubmissionV1.serializer(), decoded),
+    )
+    // Both fields are required: a removal that names no property is malformed, not a no-op.
+    assertFailsWith<SerializationException> {
+      strictJson.decodeFromString(
+        DesignMutationV1.serializer(),
+        """{"type":"removeNodeProperty","nodeId":"body"}""",
+      )
+    }
+  }
+
+  @Test
   fun unbindingAnEventSurvivesEncodingRatherThanBecomingAnAbsentField() {
     // Strict readers run with encodeDefaults = false. When `actions` had a default of `emptyList()`
     // an unbind encoded to nothing at all, so the reducer could not tell "remove this handler" from

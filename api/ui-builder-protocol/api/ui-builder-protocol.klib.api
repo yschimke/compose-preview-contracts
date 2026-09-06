@@ -4007,6 +4007,35 @@ final class ee.schimke.composeai.uibuilder.protocol/RemoveCatalogUpgradeChangeV1
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1 : ee.schimke.composeai.uibuilder.protocol/DesignMutationV1 { // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1|null[0]
+    constructor <init>(kotlin/String, kotlin/String) // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.<init>|<init>(kotlin.String;kotlin.String){}[0]
+
+    final val nodeId // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.nodeId|{}nodeId[0]
+        final fun <get-nodeId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.nodeId.<get-nodeId>|<get-nodeId>(){}[0]
+    final val property // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.property|{}property[0]
+        final fun <get-property>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.property.<get-property>|<get-property>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.component1|component1(){}[0]
+    final fun component2(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.component2|component2(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ...): ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1 // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.copy|copy(kotlin.String;kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1> { // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1 // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1) // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.RemoveNodePropertyMutationV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1> // ee.schimke.composeai.uibuilder.protocol/RemoveNodePropertyMutationV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/RemoveStateVariableMutationV1 : ee.schimke.composeai.uibuilder.protocol/DesignMutationV1 { // ee.schimke.composeai.uibuilder.protocol/RemoveStateVariableMutationV1|null[0]
     constructor <init>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/RemoveStateVariableMutationV1.<init>|<init>(kotlin.String){}[0]
 

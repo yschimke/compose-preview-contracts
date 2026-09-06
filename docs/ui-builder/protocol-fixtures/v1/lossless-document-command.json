@@ -153,6 +153,7 @@
         {"type": "deleteNode", "nodeId": "old"},
         {"type": "restoreNode", "nodeId": "old", "location": {"beforeNodeId": "root-b"}},
         {"type": "setProperty", "nodeId": "new", "property": "text", "value": {"type": "string", "value": "New"}},
+        {"type": "removeNodeProperty", "nodeId": "new", "property": "style"},
         {"type": "updateEnvironment", "changes": [
           {"type":"setWidthDp","value":412},
           {"type":"setHeightDp","value":800},
