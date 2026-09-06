@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.8.0...v2.9.0) (2026-09-06)
+
+
+### Features
+
+* **ui-builder-protocol:** let a design name the devices it exports as ([#46](https://github.com/yschimke/compose-preview-contracts/issues/46)) ([f3a3ad1](https://github.com/yschimke/compose-preview-contracts/commit/f3a3ad1b1ea494a2639409cf083ac7c92f70ae94))
+
 ## [2.8.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.7.0...v2.8.0) (2026-09-05)
 
 
