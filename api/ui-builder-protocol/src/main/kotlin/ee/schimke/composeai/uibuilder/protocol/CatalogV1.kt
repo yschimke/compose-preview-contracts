@@ -176,6 +176,14 @@ public data class ExportCapabilitiesV1(
   public val composeCode: Boolean = false,
   public val svg: Boolean = false,
   public val png: Boolean = false,
+  /**
+   * Whether this catalog's designs export as a bundle — source plus the picture bytes as files,
+   * rather than the pictures inlined into the source ([ExportFormatV1.BUNDLE]).
+   *
+   * Defaults to false so that a server which cannot write one says so by saying nothing, and an
+   * older server's capability document decodes here unchanged.
+   */
+  public val bundle: Boolean = false,
 )
 
 /** Closed, language-neutral value tree used by node properties and session metadata. */

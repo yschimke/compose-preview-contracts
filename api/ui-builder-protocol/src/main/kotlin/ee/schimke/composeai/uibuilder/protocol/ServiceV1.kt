@@ -131,11 +131,28 @@ public data class ExportDesignRequestV1(
   public val format: ExportFormatV1,
 ) : UiBuilderRequestV1
 
+/**
+ * What an export asks for.
+ *
+ * [COMPOSE] is self-contained source: a design's pictures travel inside the file, base64 for a Wear
+ * widget's background and a stand-in painter for a screen's content image. [BUNDLE] is the same
+ * design as a project fragment — readable source that loads its pictures by path, plus the bytes as
+ * files — for a caller dropping the result into a source set rather than reading it. The two are
+ * separate formats rather than one that changes shape above a size, so a caller branches on what it
+ * asked for and not on how large the artwork turned out to be
+ * (yschimke/compose-preview-server#528).
+ *
+ * A member is additive on the wire in one direction only: a server answers [BUNDLE] to a request
+ * that named it, so a client too old to decode the name never receives it. Whether a server can
+ * produce one at all is [ExportCapabilitiesV1.bundle], which defaults to false for exactly that
+ * reason.
+ */
 @Serializable
 public enum class ExportFormatV1 {
   @SerialName("compose") COMPOSE,
   @SerialName("svg") SVG,
   @SerialName("png") PNG,
+  @SerialName("bundle") BUNDLE,
 }
 
 /** Response payloads shared by HTTP handlers and MCP tools. */
@@ -193,7 +210,12 @@ public data class ExportResponseV1(public val artifact: ExportArtifactV1) : UiBu
 @SerialName("error")
 public data class ErrorResponseV1(public val error: ServiceErrorV1) : UiBuilderResponseV1
 
-/** Inline export result. `content` is UTF-8 text or base64 according to [encoding]. */
+/**
+ * Inline export result. `content` is UTF-8 text or base64 according to [encoding].
+ *
+ * An archive needs no shape of its own: a [ExportFormatV1.BUNDLE] artifact is `application/zip`
+ * under [ExportEncodingV1.BASE64], which is how [ExportFormatV1.PNG] already travels.
+ */
 @Serializable
 public data class ExportArtifactV1(
   public val format: ExportFormatV1,
