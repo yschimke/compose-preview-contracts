@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.11.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.10.0...v2.11.0) (2026-09-07)
+
+
+### Features
+
+* **ui-builder-protocol:** add the bundle export format ([#51](https://github.com/yschimke/compose-preview-contracts/issues/51)) ([0de35e3](https://github.com/yschimke/compose-preview-contracts/commit/0de35e30f66a097c50f1296849a0ad950ed656bb))
+
 ## [2.10.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.9.0...v2.10.0) (2026-09-06)
 
 
