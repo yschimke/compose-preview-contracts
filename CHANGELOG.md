@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.12.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.11.0...v2.12.0) (2026-09-09)
+
+
+### Features
+
+* **ui-builder:** publish the design sidecar wire shapes ([#53](https://github.com/yschimke/compose-preview-contracts/issues/53)) ([2bbe8aa](https://github.com/yschimke/compose-preview-contracts/commit/2bbe8aa63af706900df432c045b9299f6590d3ce))
+
 ## [2.11.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.10.0...v2.11.0) (2026-09-07)
 
 
