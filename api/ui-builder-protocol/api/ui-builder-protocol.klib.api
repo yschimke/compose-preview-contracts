@@ -2278,6 +2278,163 @@ final class ee.schimke.composeai.uibuilder.protocol/DesignCommentV1 { // ee.schi
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1 { // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1|null[0]
+    constructor <init>(kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String) // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.<init>|<init>(kotlin.String?;kotlin.String?;kotlin.String?;kotlin.String){}[0]
+
+    final val author // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.author|{}author[0]
+        final fun <get-author>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.author.<get-author>|<get-author>(){}[0]
+    final val authorId // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.authorId|{}authorId[0]
+        final fun <get-authorId>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.authorId.<get-authorId>|<get-authorId>(){}[0]
+    final val authorKind // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.authorKind|{}authorKind[0]
+        final fun <get-authorKind>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.authorKind.<get-authorKind>|<get-authorKind>(){}[0]
+    final val excerpt // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.excerpt|{}excerpt[0]
+        final fun <get-excerpt>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.excerpt.<get-excerpt>|<get-excerpt>(){}[0]
+
+    final fun component1(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.component1|component1(){}[0]
+    final fun component2(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.component2|component2(){}[0]
+    final fun component3(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.component3|component3(){}[0]
+    final fun component4(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.component4|component4(){}[0]
+    final fun copy(kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String = ...): ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1 // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.copy|copy(kotlin.String?;kotlin.String?;kotlin.String?;kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1> { // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1 // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1) // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.DesignCommentWebhookCommentV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1> // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1 { // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1|null[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlin/String? = ..., kotlin/String? = ...) // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.<init>|<init>(kotlin.String;kotlin.String;kotlin.String?;kotlin.String?){}[0]
+
+    final val catalog // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.catalog|{}catalog[0]
+        final fun <get-catalog>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.catalog.<get-catalog>|<get-catalog>(){}[0]
+    final val id // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.id|{}id[0]
+        final fun <get-id>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.id.<get-id>|<get-id>(){}[0]
+    final val thread // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.thread|{}thread[0]
+        final fun <get-thread>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.thread.<get-thread>|<get-thread>(){}[0]
+    final val title // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.title|{}title[0]
+        final fun <get-title>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.title.<get-title>|<get-title>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.component1|component1(){}[0]
+    final fun component2(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.component2|component2(){}[0]
+    final fun component3(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.component3|component3(){}[0]
+    final fun component4(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.component4|component4(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String? = ..., kotlin/String? = ...): ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1 // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.copy|copy(kotlin.String;kotlin.String;kotlin.String?;kotlin.String?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1> { // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1 // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1) // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.DesignCommentWebhookDesignV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1> // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1 { // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1|null[0]
+    constructor <init>(kotlin/String = ..., kotlin/String, ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1, ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1, ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1, kotlin/String) // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.<init>|<init>(kotlin.String;kotlin.String;ee.schimke.composeai.uibuilder.protocol.DesignCommentWebhookDesignV1;ee.schimke.composeai.uibuilder.protocol.DesignCommentWebhookThreadV1;ee.schimke.composeai.uibuilder.protocol.DesignCommentWebhookCommentV1;kotlin.String){}[0]
+
+    final val comment // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.comment|{}comment[0]
+        final fun <get-comment>(): ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1 // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.comment.<get-comment>|<get-comment>(){}[0]
+    final val design // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.design|{}design[0]
+        final fun <get-design>(): ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1 // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.design.<get-design>|<get-design>(){}[0]
+    final val event // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.event|{}event[0]
+        final fun <get-event>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.event.<get-event>|<get-event>(){}[0]
+    final val schema // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.schema|{}schema[0]
+        final fun <get-schema>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.schema.<get-schema>|<get-schema>(){}[0]
+    final val thread // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.thread|{}thread[0]
+        final fun <get-thread>(): ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1 // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.thread.<get-thread>|<get-thread>(){}[0]
+    final val url // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.url|{}url[0]
+        final fun <get-url>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.url.<get-url>|<get-url>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.component1|component1(){}[0]
+    final fun component2(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.component2|component2(){}[0]
+    final fun component3(): ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1 // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.component3|component3(){}[0]
+    final fun component4(): ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1 // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.component4|component4(){}[0]
+    final fun component5(): ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1 // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.component5|component5(){}[0]
+    final fun component6(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.component6|component6(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookDesignV1 = ..., ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1 = ..., ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookCommentV1 = ..., kotlin/String = ...): ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1 // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.copy|copy(kotlin.String;kotlin.String;ee.schimke.composeai.uibuilder.protocol.DesignCommentWebhookDesignV1;ee.schimke.composeai.uibuilder.protocol.DesignCommentWebhookThreadV1;ee.schimke.composeai.uibuilder.protocol.DesignCommentWebhookCommentV1;kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1> { // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1 // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1) // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.DesignCommentWebhookEventV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.Companion|null[0]
+        final const val EVENT_REOPENED // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.Companion.EVENT_REOPENED|{}EVENT_REOPENED[0]
+            final fun <get-EVENT_REOPENED>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.Companion.EVENT_REOPENED.<get-EVENT_REOPENED>|<get-EVENT_REOPENED>(){}[0]
+        final const val EVENT_REPLY // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.Companion.EVENT_REPLY|{}EVENT_REPLY[0]
+            final fun <get-EVENT_REPLY>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.Companion.EVENT_REPLY.<get-EVENT_REPLY>|<get-EVENT_REPLY>(){}[0]
+        final const val EVENT_RESOLVED // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.Companion.EVENT_RESOLVED|{}EVENT_RESOLVED[0]
+            final fun <get-EVENT_RESOLVED>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.Companion.EVENT_RESOLVED.<get-EVENT_RESOLVED>|<get-EVENT_RESOLVED>(){}[0]
+        final const val EVENT_THREAD // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.Companion.EVENT_THREAD|{}EVENT_THREAD[0]
+            final fun <get-EVENT_THREAD>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.Companion.EVENT_THREAD.<get-EVENT_THREAD>|<get-EVENT_THREAD>(){}[0]
+        final const val SCHEMA // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.Companion.SCHEMA|{}SCHEMA[0]
+            final fun <get-SCHEMA>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.Companion.SCHEMA.<get-SCHEMA>|<get-SCHEMA>(){}[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1> // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookEventV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1 { // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1|null[0]
+    constructor <init>(kotlin/String, kotlin/String? = ..., kotlin/Int = ..., kotlin/Boolean = ...) // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.<init>|<init>(kotlin.String;kotlin.String?;kotlin.Int;kotlin.Boolean){}[0]
+
+    final val anchor // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.anchor|{}anchor[0]
+        final fun <get-anchor>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.anchor.<get-anchor>|<get-anchor>(){}[0]
+    final val comments // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.comments|{}comments[0]
+        final fun <get-comments>(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.comments.<get-comments>|<get-comments>(){}[0]
+    final val id // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.id|{}id[0]
+        final fun <get-id>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.id.<get-id>|<get-id>(){}[0]
+    final val resolved // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.resolved|{}resolved[0]
+        final fun <get-resolved>(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.resolved.<get-resolved>|<get-resolved>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.component1|component1(){}[0]
+    final fun component2(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.component2|component2(){}[0]
+    final fun component3(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.component3|component3(){}[0]
+    final fun component4(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.component4|component4(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String? = ..., kotlin/Int = ..., kotlin/Boolean = ...): ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1 // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.copy|copy(kotlin.String;kotlin.String?;kotlin.Int;kotlin.Boolean){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1> { // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1 // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1) // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.DesignCommentWebhookThreadV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1> // ee.schimke.composeai.uibuilder.protocol/DesignCommentWebhookThreadV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1 { // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1|null[0]
     constructor <init>(kotlin/String, kotlin/String, kotlin/String, kotlin/Long, ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1, ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1, kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/StateVariableV1> = ..., kotlin.collections/List<kotlin/String>, kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/DesignNodeV1>, kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/AssetBindingV1> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiValueV1> = ..., kotlin/Long? = ..., kotlin/Long? = ...) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.<init>|<init>(kotlin.String;kotlin.String;kotlin.String;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1;ee.schimke.composeai.uibuilder.protocol.DesignEnvironmentV1;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.StateVariableV1>;kotlin.collections.List<kotlin.String>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.DesignNodeV1>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.AssetBindingV1>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.UiValueV1>;kotlin.Long?;kotlin.Long?){}[0]
 

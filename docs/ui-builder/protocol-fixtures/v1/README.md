@@ -28,3 +28,11 @@ once, so the field names are as load-bearing as any envelope's. A shipped host a
 bytes in its `links/`, `references/` and `comments/` directories: the shapes may gain a field, and
 may never rename one. Each fixture carries only non-default values, since the strict reader encodes
 no defaults; `schemaVersion` is `@EncodeDefault` and so is always on the wire.
+
+`comment-webhook-event.json` locks the notification a host sends when somebody says something on a
+design's board. It is not the board: it carries an excerpt rather than a body, a sentence rather
+than an anchor's three fields, and a count rather than the comments, because its reader is a person
+deciding whether to click. The chat adapters a host also offers are one-way renderings nobody
+parses, but the `plain` format is this event verbatim and a `plain` receiver is a program written
+against these names — which is what makes it a contract. `schema` is `@EncodeDefault` so a receiver
+can always branch on the version.

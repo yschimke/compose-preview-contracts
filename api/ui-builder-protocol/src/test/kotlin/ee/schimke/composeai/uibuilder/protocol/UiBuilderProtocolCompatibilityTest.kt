@@ -67,6 +67,12 @@ class UiBuilderProtocolCompatibilityTest {
       fixtureSerializer("sidecar-links.json", DesignLinksV1.serializer()),
       fixtureSerializer("sidecar-reference.json", DesignReferenceV1.serializer()),
       fixtureSerializer("sidecar-comment-board.json", DesignCommentBoardV1.serializer()),
+      // The notification a host sends about one change to a board. Its `plain` format is parsed by
+      // receivers outside this codebase, which is what makes it a contract rather than a detail.
+      fixtureSerializer(
+        "comment-webhook-event.json",
+        DesignCommentWebhookEventV1.serializer(),
+      ),
     )
 
   @Test
