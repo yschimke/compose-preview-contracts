@@ -33,6 +33,9 @@ class UiBuilderProtocolCompatibilityTest {
       fixtureSerializer("lossless-document-command.json", LosslessProtocolFixtureV1.serializer()),
       fixtureSerializer("materialized-confetti.json", DesignDocumentV1.serializer()),
       fixtureSerializer("materialized-jetcaster.json", DesignDocumentV1.serializer()),
+      // A design that defines a component and places it, which is the only fixture where a body
+      // hangs outside `roots` and a value reads a parameter rather than saying one.
+      fixtureSerializer("materialized-components.json", DesignDocumentV1.serializer()),
       fixtureSerializer("design-state.json", DesignStateV1.serializer()),
       fixtureSerializer("http-access-conflict-response.json", HttpResponseEnvelopeV1.serializer()),
       fixtureSerializer("http-commands-request.json", HttpRequestEnvelopeV1.serializer()),
