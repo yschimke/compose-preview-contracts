@@ -1,0 +1,22 @@
+{
+  "schema": "compose-preview/ui-builder-comment-event/v1",
+  "event": "reply",
+  "design": {
+    "id": "checkout-screen",
+    "title": "Checkout",
+    "catalog": "m3-catalog",
+    "thread": "https://example.slack.com/archives/C123/p1700000000"
+  },
+  "thread": {
+    "id": "t-1",
+    "anchor": "on node pay-button",
+    "comments": 3
+  },
+  "comment": {
+    "author": "Designer",
+    "authorId": "github:designer",
+    "authorKind": "human",
+    "excerpt": "The play icon looks like a cross"
+  },
+  "url": "https://preview.example/ui-builder/m3-catalog/checkout-screen?thread=t-1"
+}
