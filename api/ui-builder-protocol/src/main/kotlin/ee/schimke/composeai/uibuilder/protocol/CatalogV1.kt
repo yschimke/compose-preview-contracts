@@ -214,6 +214,27 @@ public data class ColorValueV1(public val value: String) : UiValueV1
 @SerialName("colorToken")
 public data class ColorTokenValueV1(public val value: String) : UiValueV1
 
+/**
+ * A read of one key of the dictionary in scope — the one value whose meaning depends on where it
+ * stands.
+ *
+ * Everywhere else a value *is* what it says. This one says a key, and what it resolves to is
+ * supplied by whatever introduced the scope it stands in:
+ *
+ * - inside a [DesignComponentV1] body, the instance's own [DesignComponentInstanceV1.arguments] —
+ *   so the key becomes a parameter of the generated function;
+ * - inside the template of a container that iterates rows, the row: an [ObjectValueV1] out of the
+ *   [ListValueV1] that container names — so the key becomes a property of the generated data class.
+ *
+ * One reader for both because both scopes are the same thing, a dictionary with open keys, and the
+ * difference between a parameter list and a data class is a difference in the code a generator
+ * writes rather than in what the document holds. A key with no scope to read, or no such key in the
+ * scope there is, is a refusal: the name resolves somewhere or it does not resolve.
+ */
+@Serializable
+@SerialName("binding")
+public data class BindingValueV1(public val value: String) : UiValueV1
+
 @Serializable
 @SerialName("dimension")
 public data class DimensionValueV1(

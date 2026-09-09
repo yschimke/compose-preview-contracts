@@ -24,7 +24,83 @@ public data class DesignDocumentV1(
   public val tokenBindings: Map<String, UiValueV1> = emptyMap(),
   public val createdAtEpochMillis: Long? = null,
   public val updatedAtEpochMillis: Long? = null,
+  /**
+   * Composables this design defines once and places many times, by the key an instance names.
+   *
+   * A design says a repeated thing by repeating its nodes, which is the only thing the tree can
+   * say: twelve cells are twelve nodes, and a change to what a cell *is* has to be made twelve
+   * times. A component is the other half of that — one body, placed by reference — and it is the
+   * shape a generator can write as its own `@Composable` rather than as the same call inlined
+   * again.
+   *
+   * The bodies live in [nodes] like everything else, reached from [DesignComponentV1.root]: a
+   * component's subtree is made of the same components, validated by the same rules and drawn by
+   * the same renderer, and putting it in a second map would be a second thing for every reader to
+   * walk. What separates a body from the screen is only that no [roots] entry leads to it.
+   *
+   * Empty in every document written before this field, which is what the default says.
+   */
+  public val components: Map<String, DesignComponentV1> = emptyMap(),
 )
+
+/**
+ * One composable a design defines: what it is called and where its body starts.
+ *
+ * **No parameter list, deliberately.** What an instance passes is a dictionary
+ * ([DesignComponentInstanceV1.arguments]) and what the body reads is a key of it
+ * ([BindingValueV1]); the signature a generator writes is derived from those keys rather than
+ * declared beside them. A declared list would be a second statement of the same fact, free to
+ * disagree with the bodies and the instances it describes — and the disagreement would be found by
+ * whoever generated the screen, not by whoever wrote it.
+ *
+ * A generator therefore reads the keys, gives each the type its values carry, and orders them the
+ * one way that cannot drift between exports: sorted. Values that disagree about a key's type, and a
+ * key an instance never passes, are refusals it can state precisely — which is the same standard
+ * the rest of this vocabulary is held to.
+ *
+ * @property name the generated function's name, in the spelling a person would write —
+ *   `ContributionCell`. A generator that cannot write this name refuses rather than renaming it.
+ * @property root the node the body starts at: a node in [DesignDocumentV1.nodes] that no
+ *   [DesignDocumentV1.roots] entry reaches, so a reader ignoring components sees a subtree nothing
+ *   draws rather than a screen with strange extra content.
+ * @property description what the component is for, for the person choosing it from a palette.
+ */
+@Serializable
+public data class DesignComponentV1(
+  public val name: String,
+  public val root: String,
+  public val description: String? = null,
+)
+
+/**
+ * What makes a node an instance of a [DesignComponentV1] rather than of a catalog component.
+ *
+ * Carried as its own field rather than as a property of the node, because it is not a property: a
+ * reader that has never heard of components can see that this node is one and draw a placeholder,
+ * where a reserved key in the property bag would read as a component with a property nobody
+ * declared. The node's [DesignNodeV1.componentId] is [DESIGN_COMPONENT_INSTANCE_COMPONENT_ID] for
+ * the same reason.
+ *
+ * @property componentKey the key into [DesignDocumentV1.components]. A key that resolves to nothing
+ *   is a refusal at the door, the way an `assetKey` nothing resolves already is.
+ * @property arguments the dictionary the body reads, by key. Open: a key is whatever the author
+ *   used, and it becomes a parameter of the generated function because the body reads it, not
+ *   because anything here declared it. Content an instance supplies is *not* here — children are
+ *   children, and arrive through the node's own [DesignNodeV1.slots].
+ */
+@Serializable
+public data class DesignComponentInstanceV1(
+  public val componentKey: String,
+  @EncodeDefault public val arguments: Map<String, UiValueV1> = emptyMap(),
+)
+
+/**
+ * The component id a node carries when it is an instance of a design's own component.
+ *
+ * Published here because it is where both sides of the wire meet: a host writes it and a renderer
+ * reads it, and a constant they share is one fewer string to spell differently.
+ */
+public const val DESIGN_COMPONENT_INSTANCE_COMPONENT_ID: String = "design/component-instance"
 
 /** One component instance; parentage is represented once, by roots and named slot child lists. */
 @Serializable
@@ -39,6 +115,13 @@ public data class DesignNodeV1(
   public val accessibility: AccessibilityV1? = null,
   public val assetBindings: Map<String, String> = emptyMap(),
   public val tokenBindings: Map<String, String> = emptyMap(),
+  /**
+   * Which of the design's own components this node places, or null for an ordinary catalog node.
+   *
+   * Appended last on purpose: the constructor is published ABI, so a new field goes on the end
+   * rather than beside [componentId] where it reads better.
+   */
+  public val component: DesignComponentInstanceV1? = null,
 )
 
 /** Complete deterministic render environment carried by the current builder document. */
