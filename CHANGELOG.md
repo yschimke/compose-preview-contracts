@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.13.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.12.0...v2.13.0) (2026-09-09)
+
+
+### Features
+
+* **ui-builder:** publish the comment webhook event shape ([#55](https://github.com/yschimke/compose-preview-contracts/issues/55)) ([7fa9500](https://github.com/yschimke/compose-preview-contracts/commit/7fa95005f857af86657d9e35c9124400cdf4ac70))
+
 ## [2.12.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.11.0...v2.12.0) (2026-09-09)
 
 
