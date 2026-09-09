@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "designId": "checkout-screen",
+  "image": {
+    "id": "sha256-9f86d081",
+    "name": "checkout.png",
+    "mediaType": "image/png",
+    "base64": "iVBORw0KGgo=",
+    "widthPx": 1170,
+    "heightPx": 2532,
+    "sourceUrl": "https://www.figma.com/design/abc123/Checkout?node-id=41-207"
+  },
+  "settings": {
+    "mode": "split",
+    "opacityPercent": 60,
+    "offsetXDp": -12.5,
+    "offsetYDp": 4.0,
+    "scalePercent": 105,
+    "splitPercent": 40
+  },
+  "pieces": [
+    {
+      "id": "piece-1",
+      "image": {
+        "id": "sha256-1b2c3d",
+        "name": "pay-button.png",
+        "mediaType": "image/png",
+        "base64": "iVBORw0KGgo=",
+        "widthPx": 320,
+        "heightPx": 96
+      },
+      "left": 0.08,
+      "top": 0.72,
+      "right": 0.92,
+      "bottom": 0.79,
+      "componentId": "m3.button.filled"
+    }
+  ],
+  "marks": [
+    {
+      "id": "mark-1",
+      "kind": "arrow",
+      "points": [0.5, 0.62, 0.5, 0.71],
+      "colorArgb": 4294901760,
+      "text": "this spacing"
+    }
+  ],
+  "updatedAtEpochMillis": 1788900000000
+}

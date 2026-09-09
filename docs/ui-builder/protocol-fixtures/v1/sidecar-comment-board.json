@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "designId": "checkout-screen",
+  "sequence": 4,
+  "threads": [
+    {
+      "id": "t-1",
+      "anchor": {
+        "markId": "mark-1",
+        "nodeId": "node-pay",
+        "x": 0.5,
+        "y": 0.62
+      },
+      "createdAtEpochMillis": 1788900000000,
+      "updatedAtEpochMillis": 1788900300000,
+      "updatedAtSequence": 4,
+      "acknowledgedBy": {
+        "agent:abc123": 2
+      },
+      "comments": [
+        {
+          "id": "c-1",
+          "authorId": "github:designer",
+          "displayName": "Designer",
+          "body": "The play icon looks like a cross",
+          "createdAtEpochMillis": 1788900000000,
+          "reactions": {
+            "eyes": ["agent:abc123"]
+          }
+        },
+        {
+          "id": "c-2",
+          "authorId": "agent:abc123",
+          "authorKind": "agent",
+          "body": "Swapped it for the filled glyph.",
+          "createdAtEpochMillis": 1788900300000,
+          "editedAtEpochMillis": 1788900360000
+        }
+      ]
+    }
+  ],
+  "updatedAtEpochMillis": 1788900300000
+}
