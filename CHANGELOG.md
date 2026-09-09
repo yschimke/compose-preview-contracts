@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.14.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.13.0...v2.14.0) (2026-09-09)
+
+
+### Features
+
+* **ui-builder:** carry a design's own components, and one reader for the dictionary in scope ([#57](https://github.com/yschimke/compose-preview-contracts/issues/57)) ([a236e3f](https://github.com/yschimke/compose-preview-contracts/commit/a236e3f355bb1b359ea32eb934cf476f021beec6))
+
 ## [2.13.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.12.0...v2.13.0) (2026-09-09)
 
 
