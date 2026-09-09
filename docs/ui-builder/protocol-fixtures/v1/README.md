@@ -19,3 +19,12 @@ are authenticated requester identities; ACL mutation actor IDs identify grant ta
 The catalog-upgrade fixtures lock the non-committing deterministic preview, its exact candidate
 document and structural diff, and the accepted upgrade plus compensating rollback in durable
 history. Rollback reverses the catalog pins and appends history rather than rewriting it.
+
+The `sidecar-*` fixtures lock the three records that sit *beside* a design rather than inside it:
+the links record naming what it is for, the reference overlay it is drawn against, and the comment
+board. None of them is part of the design document — no mutation carries them and none of them may
+move a design's revision — but each is an HTTP response body, an MCP payload and a file on disk at
+once, so the field names are as load-bearing as any envelope's. A shipped host already has these
+bytes in its `links/`, `references/` and `comments/` directories: the shapes may gain a field, and
+may never rename one. Each fixture carries only non-default values, since the strict reader encodes
+no defaults; `schemaVersion` is `@EncodeDefault` and so is always on the wire.

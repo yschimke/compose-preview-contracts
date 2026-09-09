@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "designId": "checkout-screen",
+  "issue": "https://github.com/yschimke/compose-preview-server/issues/12",
+  "reference": "https://www.figma.com/design/abc123/Checkout?node-id=41-207",
+  "pr": "https://github.com/yschimke/compose-preview-server/pull/598",
+  "thread": "https://example.slack.com/archives/C123/p1700000000",
+  "previous": "checkout-v1",
+  "updatedAtEpochMillis": 1788900000000
+}

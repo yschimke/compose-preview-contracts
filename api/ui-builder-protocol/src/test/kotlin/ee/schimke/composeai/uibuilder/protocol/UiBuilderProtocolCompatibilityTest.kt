@@ -61,6 +61,12 @@ class UiBuilderProtocolCompatibilityTest {
         McpRequestEnvelopeV1.serializer(),
       ),
       fixtureSerializer("session-presence.json", DesignUpdateEnvelopeV1.serializer()),
+      // The three records that sit beside a design rather than inside it. Pinned here for the
+      // reason every other fixture is: a shipped host has these bytes on disk already, and the
+      // shape may gain a field but may never rename one.
+      fixtureSerializer("sidecar-links.json", DesignLinksV1.serializer()),
+      fixtureSerializer("sidecar-reference.json", DesignReferenceV1.serializer()),
+      fixtureSerializer("sidecar-comment-board.json", DesignCommentBoardV1.serializer()),
     )
 
   @Test
