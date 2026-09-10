@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.15.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.14.0...v2.15.0) (2026-09-10)
+
+
+### Features
+
+* **ui-builder:** record where an imported component's body came from ([#59](https://github.com/yschimke/compose-preview-contracts/issues/59)) ([3acc5da](https://github.com/yschimke/compose-preview-contracts/commit/3acc5da6ba4370459082266c9d684f9d7553d1c8))
+
 ## [2.14.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.13.0...v2.14.0) (2026-09-09)
 
 
