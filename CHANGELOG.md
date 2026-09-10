@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.16.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.15.0...v2.16.0) (2026-09-10)
+
+
+### Features
+
+* **ui-builder:** let a design already open gain a component ([#61](https://github.com/yschimke/compose-preview-contracts/issues/61)) ([905e01d](https://github.com/yschimke/compose-preview-contracts/commit/905e01d44452f9f13d930bcfd3723183e68680db))
+
 ## [2.15.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.14.0...v2.15.0) (2026-09-10)
 
 
