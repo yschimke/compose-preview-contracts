@@ -146,6 +146,51 @@ public data class SetStateVariableMutationV1(
 public data class RemoveStateVariableMutationV1(public val name: String) : DesignMutationV1
 
 /**
+ * Declare one composable this design defines, or replace the declaration under that key.
+ *
+ * The `components` map arrived on [DesignDocumentV1] able to be *carried* but not *authored*: a
+ * design created whole could hold components, and a design already open could never gain one. This
+ * is the mutation that closes that, and it is what an import of a shared component is made of — the
+ * body arrives as ordinary [InsertNodeMutationV1]s and this names it. A batch is atomic, so both
+ * halves land together or neither does, and a design never holds a subtree nothing reaches.
+ *
+ * Key-granular like [SetStateVariableMutationV1], for the reason that one gives: two authors
+ * declaring two different components are not in conflict, and making the whole map one value would
+ * invent a conflict between them.
+ *
+ * [ComponentSourceV1] travels here rather than being inferred, because only the client that read
+ * the library knows the digest the symbol had when it was read. A reducer that recomputed it would
+ * be recording what the library says *now*, which is the one thing a drift check must not assume.
+ *
+ * Removal is [RemoveComponentMutationV1] rather than an absent [declaration], following the rule
+ * [SetStateVariableMutationV1] states: strict readers run with `explicitNulls = false`, so an
+ * absent field and a null one are the same bytes.
+ */
+@Serializable
+@SerialName("declareComponent")
+public data class DeclareComponentMutationV1(
+  public val componentKey: String,
+  public val declaration: DesignComponentV1,
+) : DesignMutationV1
+
+/**
+ * Remove one component declaration.
+ *
+ * The body is not removed with it: those are ordinary nodes, deleted by ordinary
+ * [DeleteNodeMutationV1]s in the same batch when that is what the author meant. Undeclaring alone
+ * leaves a subtree nothing draws, which is a legitimate intermediate state — it is what a body
+ * looks like between being written and being named.
+ *
+ * What a reducer must not commit is the mirror of the state-variable rule: a
+ * [DesignComponentInstanceV1] may still name this key, and a placement whose component is gone
+ * draws nothing while reporting success. A removal that would leave one dangling is rejected rather
+ * than committed.
+ */
+@Serializable
+@SerialName("removeComponent")
+public data class RemoveComponentMutationV1(public val componentKey: String) : DesignMutationV1
+
+/**
  * Replace the actions bound to one event on one node.
  *
  * Whole-list rather than per-action, because the actions on an event run in order and as a unit:
