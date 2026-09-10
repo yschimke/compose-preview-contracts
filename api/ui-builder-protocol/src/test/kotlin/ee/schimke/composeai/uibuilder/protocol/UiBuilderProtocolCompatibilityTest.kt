@@ -162,6 +162,58 @@ class UiBuilderProtocolCompatibilityTest {
     assertEquals(JsonPrimitive(UI_BUILDER_SCHEMA_VERSION_V1), encoded["schemaVersion"])
   }
 
+  /**
+   * A component that came from a project's library records where from; one authored here records
+   * nothing, and must canonicalize to exactly the bytes it did before the field existed.
+   *
+   * The second half is the load-bearing one. The cross-language document hash is taken over this
+   * shape, so a `"source": null` appearing for every component ever written would move the hash of
+   * every design in existence. `@EncodeDefault(NEVER)` is what prevents that, and an encoder asking
+   * for defaults is the case that would catch its removal — the strict reader used everywhere else
+   * in this class has `encodeDefaults = false` and would pass either way.
+   */
+  @Test
+  fun anImportedComponentRecordsItsSourceAndAnAuthoredOneAddsNothing() {
+    // Both switches on: this is the encoder that would write `"source": null` for every
+    // component ever authored, and so the one that catches `@EncodeDefault(NEVER)` going missing.
+    // The strict reader used elsewhere in this class has `explicitNulls = false` and omits a null
+    // whatever the annotation says, so it would pass either way.
+    val eager = Json {
+      classDiscriminator = "type"
+      encodeDefaults = true
+      explicitNulls = true
+    }
+
+    val authored = DesignComponentV1(name = "ContributionCell", root = "cell")
+    val authoredKeys =
+      (eager.encodeToJsonElement(DesignComponentV1.serializer(), authored) as JsonObject).keys
+    // `source` specifically, not the whole key set: `description` predates this field and carries
+    // no such annotation, so it does emit as null under this encoder. That it has done so
+    // harmlessly
+    // is the evidence that no hasher in practice runs with `explicitNulls` on — the annotation here
+    // is belt and braces for the one that might, and this asserts only what it actually guarantees.
+    assertEquals(false, "source" in authoredKeys)
+
+    val imported =
+      authored.copy(
+        source =
+          ComponentSourceV1(
+            system = "m3-catalog",
+            componentId = "contribution-cell",
+            digest = "sha256:abc123",
+          )
+      )
+    val encoded = strictJson.encodeToJsonElement(DesignComponentV1.serializer(), imported)
+    assertEquals(
+      imported,
+      strictJson.decodeFromJsonElement(DesignComponentV1.serializer(), encoded),
+    )
+    assertEquals(
+      JsonPrimitive("sha256:abc123"),
+      ((encoded as JsonObject)["source"] as JsonObject)["digest"],
+    )
+  }
+
   @Test
   fun documentHashTracksCanonicalContentAndSurvivesSerialization() {
     val firstHash = sha256("{\"revision\":42}")
