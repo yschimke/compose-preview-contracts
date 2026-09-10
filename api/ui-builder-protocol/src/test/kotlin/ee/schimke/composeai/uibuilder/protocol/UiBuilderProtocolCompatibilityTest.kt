@@ -172,6 +172,75 @@ class UiBuilderProtocolCompatibilityTest {
    * for defaults is the case that would catch its removal — the strict reader used everywhere else
    * in this class has `encodeDefaults = false` and would pass either way.
    */
+  /**
+   * A design already open can now gain a component, and an imported one carries its provenance.
+   *
+   * The `components` map arrived able to be carried but not authored: only a whole-document create
+   * could hold one. These two mutations are what an import is made of, so their discriminators are
+   * a contract — a reducer written against `declareComponent` must keep matching it — and the
+   * source has to survive the round trip or the drift check has nothing to compare.
+   */
+  @Test
+  fun componentDeclarationsTravelAsMutationsAndKeepTheirSource() {
+    val declare: DesignMutationV1 =
+      DeclareComponentMutationV1(
+        componentKey = "contribution-cell",
+        declaration =
+          DesignComponentV1(
+            name = "ContributionCell",
+            root = "cell",
+            source =
+              ComponentSourceV1(
+                system = "m3-catalog",
+                componentId = "contribution-cell",
+                digest = "sha256:abc123",
+              ),
+          ),
+      )
+    val declareJson =
+      strictJson.encodeToJsonElement(DesignMutationV1.serializer(), declare) as JsonObject
+    assertEquals(JsonPrimitive("declareComponent"), declareJson["type"])
+    assertEquals(
+      declare,
+      strictJson.decodeFromJsonElement(DesignMutationV1.serializer(), declareJson),
+    )
+
+    val remove: DesignMutationV1 = RemoveComponentMutationV1("contribution-cell")
+    val removeJson =
+      strictJson.encodeToJsonElement(DesignMutationV1.serializer(), remove) as JsonObject
+    assertEquals(JsonPrimitive("removeComponent"), removeJson["type"])
+    assertEquals(
+      remove,
+      strictJson.decodeFromJsonElement(DesignMutationV1.serializer(), removeJson),
+    )
+
+    // A batch is atomic, which is why an import needs no operation of its own: the body's inserts
+    // and the declaration that names it land together or not at all.
+    val batch =
+      DesignCommandV1(
+        designId = "d",
+        operationId = "o",
+        actorId = "a",
+        clientId = "c",
+        baseRevision = 7,
+        operations =
+          listOf(
+            InsertNodeMutationV1(
+              node = DesignNodeV1(id = "cell", componentId = "m3/card"),
+              location = NodeLocationV1(),
+            ),
+            declare,
+          ),
+      )
+    assertEquals(
+      batch,
+      strictJson.decodeFromJsonElement(
+        DesignCommandV1.serializer(),
+        strictJson.encodeToJsonElement(DesignCommandV1.serializer(), batch),
+      ),
+    )
+  }
+
   @Test
   fun anImportedComponentRecordsItsSourceAndAnAuthoredOneAddsNothing() {
     // Both switches on: this is the encoder that would write `"source": null` for every
