@@ -64,12 +64,48 @@ public data class DesignDocumentV1(
  *   [DesignDocumentV1.roots] entry reaches, so a reader ignoring components sees a subtree nothing
  *   draws rather than a screen with strange extra content.
  * @property description what the component is for, for the person choosing it from a palette.
+ * @property source where this body came from, when a project's library rather than this design
+ *   defined it. Null for a component authored here, which is every component written before this
+ *   field existed.
  */
 @Serializable
 public data class DesignComponentV1(
   public val name: String,
   public val root: String,
   public val description: String? = null,
+  /**
+   * Never encoded when absent, even by an encoder asking for defaults: the cross-language document
+   * hash is taken over this shape, and a design whose components are its own must canonicalize to
+   * exactly what it did before this field existed.
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val source: ComponentSourceV1? = null,
+)
+
+/**
+ * The published symbol a component's body was imported from, and what it looked like at the time.
+ *
+ * A project shares components between its designs by publishing them, and a design that uses one
+ * holds the body — so it draws, exports and travels without asking anything. Holding the body is
+ * what makes this a *copy* unless something records where it came from, and a copy is not reuse:
+ * the second one stops tracking the first the moment either is edited.
+ *
+ * So the design records the reference beside the body. [digest] is the symbol's content digest as
+ * it was when imported; a later read of the library that computes a different one has found the
+ * library moved, which is reported as drift with a preview rather than silently redrawn. That is
+ * the same bargain [CatalogReferenceV1] strikes for the catalog a design is pinned to, and it is
+ * struck here for the same reason: a design must never quietly become a different design.
+ *
+ * @property system the project the symbol belongs to — the catalog system id of its library.
+ * @property componentId the id that project publishes it under, which is `project/<componentId>`
+ *   where a palette names it.
+ * @property digest the symbol's content digest at import, over the component and its body only, so
+ *   reformatting the published file is not drift and editing what it draws is.
+ */
+@Serializable
+public data class ComponentSourceV1(
+  public val system: String,
+  public val componentId: String,
+  public val digest: String,
 )
 
 /**

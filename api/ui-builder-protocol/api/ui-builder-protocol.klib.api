@@ -1768,6 +1768,38 @@ final class ee.schimke.composeai.uibuilder.protocol/ComponentCapabilityV1 { // e
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1 { // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1|null[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlin/String) // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.<init>|<init>(kotlin.String;kotlin.String;kotlin.String){}[0]
+
+    final val componentId // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.componentId|{}componentId[0]
+        final fun <get-componentId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.componentId.<get-componentId>|<get-componentId>(){}[0]
+    final val digest // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.digest|{}digest[0]
+        final fun <get-digest>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.digest.<get-digest>|<get-digest>(){}[0]
+    final val system // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.system|{}system[0]
+        final fun <get-system>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.system.<get-system>|<get-system>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.component1|component1(){}[0]
+    final fun component2(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.component2|component2(){}[0]
+    final fun component3(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.component3|component3(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String = ...): ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1 // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.copy|copy(kotlin.String;kotlin.String;kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1> { // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1 // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1) // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.ComponentSourceV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1> // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/CreateDesignRequestV1 : ee.schimke.composeai.uibuilder.protocol/UiBuilderRequestV1 { // ee.schimke.composeai.uibuilder.protocol/CreateDesignRequestV1|null[0]
     constructor <init>(ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1) // ee.schimke.composeai.uibuilder.protocol/CreateDesignRequestV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.DesignDocumentV1){}[0]
 
@@ -2493,7 +2525,7 @@ final class ee.schimke.composeai.uibuilder.protocol/DesignComponentInstanceV1 { 
 }
 
 final class ee.schimke.composeai.uibuilder.protocol/DesignComponentV1 { // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1|null[0]
-    constructor <init>(kotlin/String, kotlin/String, kotlin/String? = ...) // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1.<init>|<init>(kotlin.String;kotlin.String;kotlin.String?){}[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlin/String? = ..., ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1? = ...) // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1.<init>|<init>(kotlin.String;kotlin.String;kotlin.String?;ee.schimke.composeai.uibuilder.protocol.ComponentSourceV1?){}[0]
 
     final val description // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1.description|{}description[0]
         final fun <get-description>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1.description.<get-description>|<get-description>(){}[0]
@@ -2501,11 +2533,14 @@ final class ee.schimke.composeai.uibuilder.protocol/DesignComponentV1 { // ee.sc
         final fun <get-name>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1.name.<get-name>|<get-name>(){}[0]
     final val root // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1.root|{}root[0]
         final fun <get-root>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1.root.<get-root>|<get-root>(){}[0]
+    final val source // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1.source|{}source[0]
+        final fun <get-source>(): ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1? // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1.source.<get-source>|<get-source>(){}[0]
 
     final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1.component1|component1(){}[0]
     final fun component2(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1.component2|component2(){}[0]
     final fun component3(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1.component3|component3(){}[0]
-    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String? = ...): ee.schimke.composeai.uibuilder.protocol/DesignComponentV1 // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1.copy|copy(kotlin.String;kotlin.String;kotlin.String?){}[0]
+    final fun component4(): ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1? // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1.component4|component4(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String? = ..., ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1? = ...): ee.schimke.composeai.uibuilder.protocol/DesignComponentV1 // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1.copy|copy(kotlin.String;kotlin.String;kotlin.String?;ee.schimke.composeai.uibuilder.protocol.ComponentSourceV1?){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignComponentV1.toString|toString(){}[0]
