@@ -184,6 +184,10 @@ public data class ExportCapabilitiesV1(
    * older server's capability document decodes here unchanged.
    */
   public val bundle: Boolean = false,
+  /** Authoring JSON export is configured; individual designs can still report lowering errors. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val remoteJson: Boolean = false,
+  /** A compatible compiler is configured to assemble binary Remote Compose documents. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val remoteDocument: Boolean = false,
 )
 
 /** Closed, language-neutral value tree used by node properties and session metadata. */

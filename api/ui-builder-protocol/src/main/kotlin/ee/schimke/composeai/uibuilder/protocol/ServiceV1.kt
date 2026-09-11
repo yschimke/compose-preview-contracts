@@ -153,6 +153,10 @@ public enum class ExportFormatV1 {
   @SerialName("svg") SVG,
   @SerialName("png") PNG,
   @SerialName("bundle") BUNDLE,
+  /** Editable Remote Compose authoring JSON, including any declared compiler profile. */
+  @SerialName("json") JSON,
+  /** Compiled Remote Compose document bytes. The artifact uses BASE64 encoding. */
+  @SerialName("rc") RC,
 }
 
 /** Response payloads shared by HTTP handlers and MCP tools. */
