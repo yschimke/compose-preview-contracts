@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.18.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.17.0...v2.18.0) (2026-09-11)
+
+
+### Features
+
+* extract screen document contracts from source generators ([#65](https://github.com/yschimke/compose-preview-contracts/issues/65)) ([18f8f0e](https://github.com/yschimke/compose-preview-contracts/commit/18f8f0e20f20fc29fd8f948a4a336b635ce4594a))
+
 ## [2.17.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.16.0...v2.17.0) (2026-09-11)
 
 
