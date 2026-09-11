@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.17.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.16.0...v2.17.0) (2026-09-11)
+
+
+### Features
+
+* **ui-builder-protocol:** declare JSON and Remote document exports ([#63](https://github.com/yschimke/compose-preview-contracts/issues/63)) ([bac9248](https://github.com/yschimke/compose-preview-contracts/commit/bac9248795cb2b08d876f5ebb45b0c4afc2b2063))
+
 ## [2.16.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.15.0...v2.16.0) (2026-09-10)
 
 
