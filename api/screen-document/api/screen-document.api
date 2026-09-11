@@ -1,0 +1,832 @@
+public final class ee/schimke/composeai/discovery/ChainLink {
+	public static final field Companion Lee/schimke/composeai/discovery/ChainLink$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/util/Map;ZLjava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/util/Map;ZLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/util/Map;
+	public final fun component4 ()Z
+	public final fun component5 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/util/List;Ljava/util/Map;ZLjava/lang/String;)Lee/schimke/composeai/discovery/ChainLink;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ChainLink;Ljava/lang/String;Ljava/util/List;Ljava/util/Map;ZLjava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ChainLink;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCallableFqn ()Ljava/lang/String;
+	public final fun getNamed ()Ljava/util/Map;
+	public final fun getPositional ()Ljava/util/List;
+	public final fun getProperty ()Z
+	public final fun getReceiverScopeFqn ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ChainLink$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ChainLink$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ChainLink;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ChainLink;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ChainLink$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class ee/schimke/composeai/discovery/ScreenAction {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenAction$Companion;
+	public abstract fun getVariable ()Ljava/lang/String;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenAction$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenAction$Set : ee/schimke/composeai/discovery/ScreenAction {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenAction$Set$Companion;
+	public fun <init> (Ljava/lang/String;Lee/schimke/composeai/discovery/ScreenValue;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lee/schimke/composeai/discovery/ScreenValue;
+	public final fun copy (Ljava/lang/String;Lee/schimke/composeai/discovery/ScreenValue;)Lee/schimke/composeai/discovery/ScreenAction$Set;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenAction$Set;Ljava/lang/String;Lee/schimke/composeai/discovery/ScreenValue;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenAction$Set;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getValue ()Lee/schimke/composeai/discovery/ScreenValue;
+	public fun getVariable ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenAction$Set$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenAction$Set$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenAction$Set;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenAction$Set;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenAction$Set$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenAction$Toggle : ee/schimke/composeai/discovery/ScreenAction {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenAction$Toggle$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lee/schimke/composeai/discovery/ScreenAction$Toggle;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenAction$Toggle;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenAction$Toggle;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getVariable ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenAction$Toggle$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenAction$Toggle$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenAction$Toggle;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenAction$Toggle;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenAction$Toggle$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenDocument {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenDocument$Companion;
+	public fun <init> (Ljava/lang/String;Lee/schimke/composeai/discovery/ScreenNode;Ljava/util/List;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;Lee/schimke/composeai/discovery/ScreenNode;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lee/schimke/composeai/discovery/ScreenNode;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Lee/schimke/composeai/discovery/ScreenNode;Ljava/util/List;Ljava/util/List;)Lee/schimke/composeai/discovery/ScreenDocument;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenDocument;Ljava/lang/String;Lee/schimke/composeai/discovery/ScreenNode;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenDocument;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFunctions ()Ljava/util/List;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getRoot ()Lee/schimke/composeai/discovery/ScreenNode;
+	public final fun getState ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenDocument$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenDocument$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenDocument;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenDocument;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenDocument$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenFunction {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenFunction$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Lee/schimke/composeai/discovery/ScreenNode;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Lee/schimke/composeai/discovery/ScreenNode;
+	public final fun copy (Ljava/lang/String;Ljava/util/List;Lee/schimke/composeai/discovery/ScreenNode;)Lee/schimke/composeai/discovery/ScreenFunction;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenFunction;Ljava/lang/String;Ljava/util/List;Lee/schimke/composeai/discovery/ScreenNode;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenFunction;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getName ()Ljava/lang/String;
+	public final fun getParameters ()Ljava/util/List;
+	public final fun getRoot ()Lee/schimke/composeai/discovery/ScreenNode;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenFunction$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenFunction$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenFunction;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenFunction;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenFunction$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenNode {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenNode$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lee/schimke/composeai/discovery/ScreenSelection;Lee/schimke/composeai/discovery/ScreenRepetition;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lee/schimke/composeai/discovery/ScreenSelection;Lee/schimke/composeai/discovery/ScreenRepetition;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun component3 ()Ljava/util/Map;
+	public final fun component4 ()Ljava/util/Map;
+	public final fun component5 ()Ljava/util/Map;
+	public final fun component6 ()Lee/schimke/composeai/discovery/ScreenSelection;
+	public final fun component7 ()Lee/schimke/composeai/discovery/ScreenRepetition;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lee/schimke/composeai/discovery/ScreenSelection;Lee/schimke/composeai/discovery/ScreenRepetition;Ljava/lang/String;)Lee/schimke/composeai/discovery/ScreenNode;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenNode;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lee/schimke/composeai/discovery/ScreenSelection;Lee/schimke/composeai/discovery/ScreenRepetition;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenNode;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getArguments ()Ljava/util/Map;
+	public final fun getComponentId ()Ljava/lang/String;
+	public final fun getFunction ()Ljava/lang/String;
+	public final fun getHandlers ()Ljava/util/Map;
+	public final fun getRepetition ()Lee/schimke/composeai/discovery/ScreenRepetition;
+	public final fun getSelection ()Lee/schimke/composeai/discovery/ScreenSelection;
+	public final fun getSlotItems ()Ljava/util/Map;
+	public final fun getSlots ()Ljava/util/Map;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenNode$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenNode$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenNode;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenNode;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenNode$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class ee/schimke/composeai/discovery/ScreenParameter {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenParameter$Companion;
+	public abstract fun getName ()Ljava/lang/String;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenParameter$Callback : ee/schimke/composeai/discovery/ScreenParameter {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenParameter$Callback$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lee/schimke/composeai/discovery/ScreenParameter$Callback;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenParameter$Callback;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenParameter$Callback;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenParameter$Callback$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenParameter$Callback$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenParameter$Callback;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenParameter$Callback;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenParameter$Callback$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenParameter$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenParameter$Value : ee/schimke/composeai/discovery/ScreenParameter {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenParameter$Value$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lee/schimke/composeai/discovery/ScreenParameter$Value;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenParameter$Value;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenParameter$Value;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public final fun getTypeFqn ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenParameter$Value$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenParameter$Value$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenParameter$Value;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenParameter$Value;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenParameter$Value$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenRepetition {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenRepetition$Companion;
+	public fun <init> (Ljava/util/Map;Ljava/util/List;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/util/Map;Ljava/util/List;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/Map;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/util/Map;Ljava/util/List;Ljava/lang/String;)Lee/schimke/composeai/discovery/ScreenRepetition;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenRepetition;Ljava/util/Map;Ljava/util/List;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenRepetition;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFields ()Ljava/util/Map;
+	public final fun getRows ()Ljava/util/List;
+	public final fun getTemplateSlot ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenRepetition$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenRepetition$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenRepetition;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenRepetition;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenRepetition$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenSelection {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenSelection$Companion;
+	public fun <init> (Lee/schimke/composeai/discovery/ScreenValue;Ljava/util/Map;Ljava/lang/String;)V
+	public synthetic fun <init> (Lee/schimke/composeai/discovery/ScreenValue;Ljava/util/Map;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lee/schimke/composeai/discovery/ScreenValue;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Lee/schimke/composeai/discovery/ScreenValue;Ljava/util/Map;Ljava/lang/String;)Lee/schimke/composeai/discovery/ScreenSelection;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenSelection;Lee/schimke/composeai/discovery/ScreenValue;Ljava/util/Map;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenSelection;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCases ()Ljava/util/Map;
+	public final fun getElseSlot ()Ljava/lang/String;
+	public final fun getSubject ()Lee/schimke/composeai/discovery/ScreenValue;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenSelection$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenSelection$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenSelection;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenSelection;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenSelection$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenState {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenState$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/discovery/ScreenValue;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lee/schimke/composeai/discovery/ScreenValue;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/discovery/ScreenValue;)Lee/schimke/composeai/discovery/ScreenState;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenState;Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/discovery/ScreenValue;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenState;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getInitial ()Lee/schimke/composeai/discovery/ScreenValue;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getTypeFqn ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenState$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenState$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenState;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenState;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenState$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class ee/schimke/composeai/discovery/ScreenValue {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenValue$Companion;
+	public fun getAndroidxOptIns ()Ljava/util/List;
+	public fun getRequiredOptIns ()Ljava/util/List;
+	public fun getTypeFqn ()Ljava/lang/String;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$ActionLambda : ee/schimke/composeai/discovery/ScreenValue {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenValue$ActionLambda$Companion;
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lee/schimke/composeai/discovery/ScreenValue$ActionLambda;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenValue$ActionLambda;Ljava/util/List;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenValue$ActionLambda;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getActions ()Ljava/util/List;
+	public fun getAndroidxOptIns ()Ljava/util/List;
+	public fun getRequiredOptIns ()Ljava/util/List;
+	public fun getTypeFqn ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenValue$ActionLambda$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenValue$ActionLambda$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenValue$ActionLambda;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenValue$ActionLambda;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$ActionLambda$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Bool : ee/schimke/composeai/discovery/ScreenValue {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenValue$Bool$Companion;
+	public fun <init> (Z)V
+	public final fun component1 ()Z
+	public final fun copy (Z)Lee/schimke/composeai/discovery/ScreenValue$Bool;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenValue$Bool;ZILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenValue$Bool;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAndroidxOptIns ()Ljava/util/List;
+	public fun getRequiredOptIns ()Ljava/util/List;
+	public fun getTypeFqn ()Ljava/lang/String;
+	public final fun getValue ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenValue$Bool$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenValue$Bool$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenValue$Bool;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenValue$Bool;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Bool$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Chain : ee/schimke/composeai/discovery/ScreenValue {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenValue$Chain$Companion;
+	public fun <init> (Lee/schimke/composeai/discovery/ScreenValue;Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;)V
+	public synthetic fun <init> (Lee/schimke/composeai/discovery/ScreenValue;Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lee/schimke/composeai/discovery/ScreenValue;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Ljava/util/List;
+	public final fun copy (Lee/schimke/composeai/discovery/ScreenValue;Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;)Lee/schimke/composeai/discovery/ScreenValue$Chain;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenValue$Chain;Lee/schimke/composeai/discovery/ScreenValue;Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenValue$Chain;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAndroidxOptIns ()Ljava/util/List;
+	public final fun getLinks ()Ljava/util/List;
+	public final fun getReceiver ()Lee/schimke/composeai/discovery/ScreenValue;
+	public fun getRequiredOptIns ()Ljava/util/List;
+	public fun getTypeFqn ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenValue$Chain$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenValue$Chain$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenValue$Chain;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenValue$Chain;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Chain$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Construct : ee/schimke/composeai/discovery/ScreenValue {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenValue$Construct$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/util/Map;Ljava/lang/String;Ljava/util/List;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/util/Map;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/util/Map;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/util/List;
+	public final fun component6 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/util/List;Ljava/util/Map;Ljava/lang/String;Ljava/util/List;Ljava/util/List;)Lee/schimke/composeai/discovery/ScreenValue$Construct;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenValue$Construct;Ljava/lang/String;Ljava/util/List;Ljava/util/Map;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenValue$Construct;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAndroidxOptIns ()Ljava/util/List;
+	public final fun getCallableFqn ()Ljava/lang/String;
+	public final fun getNamed ()Ljava/util/Map;
+	public final fun getPositional ()Ljava/util/List;
+	public fun getRequiredOptIns ()Ljava/util/List;
+	public fun getTypeFqn ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenValue$Construct$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenValue$Construct$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenValue$Construct;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenValue$Construct;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Construct$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$DefaultImpls {
+	public static fun getAndroidxOptIns (Lee/schimke/composeai/discovery/ScreenValue;)Ljava/util/List;
+	public static fun getRequiredOptIns (Lee/schimke/composeai/discovery/ScreenValue;)Ljava/util/List;
+	public static fun getTypeFqn (Lee/schimke/composeai/discovery/ScreenValue;)Ljava/lang/String;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Fractional : ee/schimke/composeai/discovery/ScreenValue {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenValue$Fractional$Companion;
+	public fun <init> (D)V
+	public final fun component1 ()D
+	public final fun copy (D)Lee/schimke/composeai/discovery/ScreenValue$Fractional;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenValue$Fractional;DILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenValue$Fractional;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAndroidxOptIns ()Ljava/util/List;
+	public fun getRequiredOptIns ()Ljava/util/List;
+	public fun getTypeFqn ()Ljava/lang/String;
+	public final fun getValue ()D
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenValue$Fractional$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenValue$Fractional$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenValue$Fractional;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenValue$Fractional;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Fractional$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Fractional32 : ee/schimke/composeai/discovery/ScreenValue {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenValue$Fractional32$Companion;
+	public fun <init> (F)V
+	public final fun component1 ()F
+	public final fun copy (F)Lee/schimke/composeai/discovery/ScreenValue$Fractional32;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenValue$Fractional32;FILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenValue$Fractional32;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAndroidxOptIns ()Ljava/util/List;
+	public fun getRequiredOptIns ()Ljava/util/List;
+	public fun getTypeFqn ()Ljava/lang/String;
+	public final fun getValue ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenValue$Fractional32$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenValue$Fractional32$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenValue$Fractional32;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenValue$Fractional32;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Fractional32$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Lambda : ee/schimke/composeai/discovery/ScreenValue {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenValue$Lambda$Companion;
+	public fun <init> (Lee/schimke/composeai/discovery/ScreenValue;)V
+	public final fun component1 ()Lee/schimke/composeai/discovery/ScreenValue;
+	public final fun copy (Lee/schimke/composeai/discovery/ScreenValue;)Lee/schimke/composeai/discovery/ScreenValue$Lambda;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenValue$Lambda;Lee/schimke/composeai/discovery/ScreenValue;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenValue$Lambda;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAndroidxOptIns ()Ljava/util/List;
+	public fun getRequiredOptIns ()Ljava/util/List;
+	public final fun getResult ()Lee/schimke/composeai/discovery/ScreenValue;
+	public fun getTypeFqn ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenValue$Lambda$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenValue$Lambda$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenValue$Lambda;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenValue$Lambda;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Lambda$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$ParameterRead : ee/schimke/composeai/discovery/ScreenValue {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenValue$ParameterRead$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lee/schimke/composeai/discovery/ScreenValue$ParameterRead;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenValue$ParameterRead;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenValue$ParameterRead;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAndroidxOptIns ()Ljava/util/List;
+	public final fun getParameter ()Ljava/lang/String;
+	public fun getRequiredOptIns ()Ljava/util/List;
+	public fun getTypeFqn ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenValue$ParameterRead$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenValue$ParameterRead$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenValue$ParameterRead;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenValue$ParameterRead;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$ParameterRead$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Reference : ee/schimke/composeai/discovery/ScreenValue {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenValue$Reference$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;)Lee/schimke/composeai/discovery/ScreenValue$Reference;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenValue$Reference;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenValue$Reference;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAndroidxOptIns ()Ljava/util/List;
+	public final fun getMembers ()Ljava/util/List;
+	public fun getRequiredOptIns ()Ljava/util/List;
+	public final fun getRootFqn ()Ljava/lang/String;
+	public fun getTypeFqn ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenValue$Reference$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenValue$Reference$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenValue$Reference;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenValue$Reference;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Reference$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$RowRead : ee/schimke/composeai/discovery/ScreenValue {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenValue$RowRead$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lee/schimke/composeai/discovery/ScreenValue$RowRead;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenValue$RowRead;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenValue$RowRead;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAndroidxOptIns ()Ljava/util/List;
+	public final fun getField ()Ljava/lang/String;
+	public fun getRequiredOptIns ()Ljava/util/List;
+	public fun getTypeFqn ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenValue$RowRead$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenValue$RowRead$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenValue$RowRead;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenValue$RowRead;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$RowRead$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$StateRead : ee/schimke/composeai/discovery/ScreenValue {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenValue$StateRead$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lee/schimke/composeai/discovery/ScreenValue$StateRead;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenValue$StateRead;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenValue$StateRead;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAndroidxOptIns ()Ljava/util/List;
+	public fun getRequiredOptIns ()Ljava/util/List;
+	public fun getTypeFqn ()Ljava/lang/String;
+	public final fun getVariable ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenValue$StateRead$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenValue$StateRead$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenValue$StateRead;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenValue$StateRead;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$StateRead$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Text : ee/schimke/composeai/discovery/ScreenValue {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenValue$Text$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lee/schimke/composeai/discovery/ScreenValue$Text;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenValue$Text;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenValue$Text;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAndroidxOptIns ()Ljava/util/List;
+	public fun getRequiredOptIns ()Ljava/util/List;
+	public fun getTypeFqn ()Ljava/lang/String;
+	public final fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenValue$Text$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenValue$Text$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenValue$Text;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenValue$Text;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Text$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Whole : ee/schimke/composeai/discovery/ScreenValue {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenValue$Whole$Companion;
+	public fun <init> (J)V
+	public final fun component1 ()J
+	public final fun copy (J)Lee/schimke/composeai/discovery/ScreenValue$Whole;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenValue$Whole;JILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenValue$Whole;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAndroidxOptIns ()Ljava/util/List;
+	public fun getRequiredOptIns ()Ljava/util/List;
+	public fun getTypeFqn ()Ljava/lang/String;
+	public final fun getValue ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenValue$Whole$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenValue$Whole$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenValue$Whole;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenValue$Whole;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$Whole$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/SlotItem {
+	public static final field Companion Lee/schimke/composeai/discovery/SlotItem$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/Map;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/util/Map;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/Map;)Lee/schimke/composeai/discovery/SlotItem;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/SlotItem;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/Map;ILjava/lang/Object;)Lee/schimke/composeai/discovery/SlotItem;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCallable ()Ljava/lang/String;
+	public final fun getNamed ()Ljava/util/Map;
+	public final fun getPositional ()Ljava/util/List;
+	public final fun getReceiverScopeFqn ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/SlotItem$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/SlotItem$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/SlotItem;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/SlotItem;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/SlotItem$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+

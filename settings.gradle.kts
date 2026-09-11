@@ -61,6 +61,11 @@ include(":parity-issues-protocol")
 
 project(":parity-issues-protocol").projectDir = file("api/parity-issues-protocol")
 
+// The serializable input to the offline Compose source generator.
+include(":screen-document")
+
+project(":screen-document").projectDir = file("api/screen-document")
+
 // ---- published, but not wire contracts ------------------------------------------------------
 //
 // `:daemon-protocol` depends on NONE of these. Until 2.1.0 it `api`-exported the four `data-*-core`

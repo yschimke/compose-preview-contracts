@@ -16,6 +16,7 @@ Extracted from [yschimke/compose-ai-tools](https://github.com/yschimke/compose-a
 | `daemon-bta` | Build Tools API shapes — `CompileErrorDetail`, `SourceChangeSet` |
 | `agent-grant-protocol` | the `--agent-grants` vocabulary; the server mints, the client asks |
 | `ui-builder-protocol` | versioned catalog, design, command, collaboration and transport-envelope shapes shared by the UI builder's browser, server and MCP clients |
+| `screen-document` | serializable screen trees, values, actions, selections, authored rows and reusable function declarations; generation and validation stay in compose-ai-tools |
 | `parity-issues-protocol` | the versioned catalog artifact that joins GitHub issues back to components, previews and design references |
 
 `daemon-protocol` depends on **no other `ee.schimke.composeai` module**: the payload schemas that
@@ -36,6 +37,13 @@ deltas, actor-specific listings, independently revisioned owner/ACL/share-link a
 HTTP/MCP envelopes. It contains no reducer, store, renderer or transport implementation. Agent
 grants expose UI builder read, write and export as three independent capabilities; none is implied
 by the preview/live/playground scope ladder.
+
+`screen-document` owns the serializable input to the offline screen generator, including its
+structured tree, values, state actions, selections, repetitions and reusable functions. It retains
+the `ee.schimke.composeai.discovery` package and existing JSON discriminators so moving the types
+does not rename persisted data. `screen-model` and `preview-discovery` in compose-ai-tools consume
+and API-export this contract; validation, source generation, editing and highlighting stay there.
+The contract has JVM and Wasm variants and depends only on Kotlin serialization.
 
 Every module is `explicitApi()` with Kotlin ABI validation wired into `check`, because these
 are contracts two repositories compile across.

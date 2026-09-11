@@ -1,0 +1,848 @@
+// Klib ABI Dump
+// Targets: [wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <ee.schimke.composeai:screen-document>
+sealed interface ee.schimke.composeai.discovery/ScreenAction { // ee.schimke.composeai.discovery/ScreenAction|null[0]
+    abstract val variable // ee.schimke.composeai.discovery/ScreenAction.variable|{}variable[0]
+        abstract fun <get-variable>(): kotlin/String // ee.schimke.composeai.discovery/ScreenAction.variable.<get-variable>|<get-variable>(){}[0]
+
+    final class Set : ee.schimke.composeai.discovery/ScreenAction { // ee.schimke.composeai.discovery/ScreenAction.Set|null[0]
+        constructor <init>(kotlin/String, ee.schimke.composeai.discovery/ScreenValue) // ee.schimke.composeai.discovery/ScreenAction.Set.<init>|<init>(kotlin.String;ee.schimke.composeai.discovery.ScreenValue){}[0]
+
+        final val value // ee.schimke.composeai.discovery/ScreenAction.Set.value|{}value[0]
+            final fun <get-value>(): ee.schimke.composeai.discovery/ScreenValue // ee.schimke.composeai.discovery/ScreenAction.Set.value.<get-value>|<get-value>(){}[0]
+        final val variable // ee.schimke.composeai.discovery/ScreenAction.Set.variable|{}variable[0]
+            final fun <get-variable>(): kotlin/String // ee.schimke.composeai.discovery/ScreenAction.Set.variable.<get-variable>|<get-variable>(){}[0]
+
+        final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenAction.Set.component1|component1(){}[0]
+        final fun component2(): ee.schimke.composeai.discovery/ScreenValue // ee.schimke.composeai.discovery/ScreenAction.Set.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., ee.schimke.composeai.discovery/ScreenValue = ...): ee.schimke.composeai.discovery/ScreenAction.Set // ee.schimke.composeai.discovery/ScreenAction.Set.copy|copy(kotlin.String;ee.schimke.composeai.discovery.ScreenValue){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenAction.Set.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenAction.Set.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenAction.Set.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenAction.Set> { // ee.schimke.composeai.discovery/ScreenAction.Set.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenAction.Set.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenAction.Set.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenAction.Set.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenAction.Set // ee.schimke.composeai.discovery/ScreenAction.Set.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenAction.Set) // ee.schimke.composeai.discovery/ScreenAction.Set.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenAction.Set){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenAction.Set.Companion|null[0]
+            final val $childSerializers // ee.schimke.composeai.discovery/ScreenAction.Set.Companion.$childSerializers|{}$childSerializers[0]
+
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenAction.Set> // ee.schimke.composeai.discovery/ScreenAction.Set.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class Toggle : ee.schimke.composeai.discovery/ScreenAction { // ee.schimke.composeai.discovery/ScreenAction.Toggle|null[0]
+        constructor <init>(kotlin/String) // ee.schimke.composeai.discovery/ScreenAction.Toggle.<init>|<init>(kotlin.String){}[0]
+
+        final val variable // ee.schimke.composeai.discovery/ScreenAction.Toggle.variable|{}variable[0]
+            final fun <get-variable>(): kotlin/String // ee.schimke.composeai.discovery/ScreenAction.Toggle.variable.<get-variable>|<get-variable>(){}[0]
+
+        final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenAction.Toggle.component1|component1(){}[0]
+        final fun copy(kotlin/String = ...): ee.schimke.composeai.discovery/ScreenAction.Toggle // ee.schimke.composeai.discovery/ScreenAction.Toggle.copy|copy(kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenAction.Toggle.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenAction.Toggle.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenAction.Toggle.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenAction.Toggle> { // ee.schimke.composeai.discovery/ScreenAction.Toggle.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenAction.Toggle.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenAction.Toggle.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenAction.Toggle.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenAction.Toggle // ee.schimke.composeai.discovery/ScreenAction.Toggle.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenAction.Toggle) // ee.schimke.composeai.discovery/ScreenAction.Toggle.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenAction.Toggle){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenAction.Toggle.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenAction.Toggle> // ee.schimke.composeai.discovery/ScreenAction.Toggle.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.discovery/ScreenAction.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenAction> // ee.schimke.composeai.discovery/ScreenAction.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.discovery/ScreenAction.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+sealed interface ee.schimke.composeai.discovery/ScreenParameter { // ee.schimke.composeai.discovery/ScreenParameter|null[0]
+    abstract val name // ee.schimke.composeai.discovery/ScreenParameter.name|{}name[0]
+        abstract fun <get-name>(): kotlin/String // ee.schimke.composeai.discovery/ScreenParameter.name.<get-name>|<get-name>(){}[0]
+
+    final class Callback : ee.schimke.composeai.discovery/ScreenParameter { // ee.schimke.composeai.discovery/ScreenParameter.Callback|null[0]
+        constructor <init>(kotlin/String) // ee.schimke.composeai.discovery/ScreenParameter.Callback.<init>|<init>(kotlin.String){}[0]
+
+        final val name // ee.schimke.composeai.discovery/ScreenParameter.Callback.name|{}name[0]
+            final fun <get-name>(): kotlin/String // ee.schimke.composeai.discovery/ScreenParameter.Callback.name.<get-name>|<get-name>(){}[0]
+
+        final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenParameter.Callback.component1|component1(){}[0]
+        final fun copy(kotlin/String = ...): ee.schimke.composeai.discovery/ScreenParameter.Callback // ee.schimke.composeai.discovery/ScreenParameter.Callback.copy|copy(kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenParameter.Callback.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenParameter.Callback.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenParameter.Callback.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenParameter.Callback> { // ee.schimke.composeai.discovery/ScreenParameter.Callback.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenParameter.Callback.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenParameter.Callback.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenParameter.Callback.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenParameter.Callback // ee.schimke.composeai.discovery/ScreenParameter.Callback.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenParameter.Callback) // ee.schimke.composeai.discovery/ScreenParameter.Callback.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenParameter.Callback){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenParameter.Callback.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenParameter.Callback> // ee.schimke.composeai.discovery/ScreenParameter.Callback.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class Value : ee.schimke.composeai.discovery/ScreenParameter { // ee.schimke.composeai.discovery/ScreenParameter.Value|null[0]
+        constructor <init>(kotlin/String, kotlin/String) // ee.schimke.composeai.discovery/ScreenParameter.Value.<init>|<init>(kotlin.String;kotlin.String){}[0]
+
+        final val name // ee.schimke.composeai.discovery/ScreenParameter.Value.name|{}name[0]
+            final fun <get-name>(): kotlin/String // ee.schimke.composeai.discovery/ScreenParameter.Value.name.<get-name>|<get-name>(){}[0]
+        final val typeFqn // ee.schimke.composeai.discovery/ScreenParameter.Value.typeFqn|{}typeFqn[0]
+            final fun <get-typeFqn>(): kotlin/String // ee.schimke.composeai.discovery/ScreenParameter.Value.typeFqn.<get-typeFqn>|<get-typeFqn>(){}[0]
+
+        final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenParameter.Value.component1|component1(){}[0]
+        final fun component2(): kotlin/String // ee.schimke.composeai.discovery/ScreenParameter.Value.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ...): ee.schimke.composeai.discovery/ScreenParameter.Value // ee.schimke.composeai.discovery/ScreenParameter.Value.copy|copy(kotlin.String;kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenParameter.Value.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenParameter.Value.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenParameter.Value.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenParameter.Value> { // ee.schimke.composeai.discovery/ScreenParameter.Value.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenParameter.Value.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenParameter.Value.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenParameter.Value.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenParameter.Value // ee.schimke.composeai.discovery/ScreenParameter.Value.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenParameter.Value) // ee.schimke.composeai.discovery/ScreenParameter.Value.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenParameter.Value){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenParameter.Value.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenParameter.Value> // ee.schimke.composeai.discovery/ScreenParameter.Value.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.discovery/ScreenParameter.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenParameter> // ee.schimke.composeai.discovery/ScreenParameter.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.discovery/ScreenParameter.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+sealed interface ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue|null[0]
+    open val androidxOptIns // ee.schimke.composeai.discovery/ScreenValue.androidxOptIns|{}androidxOptIns[0]
+        open fun <get-androidxOptIns>(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ScreenValue.androidxOptIns.<get-androidxOptIns>|<get-androidxOptIns>(){}[0]
+    open val requiredOptIns // ee.schimke.composeai.discovery/ScreenValue.requiredOptIns|{}requiredOptIns[0]
+        open fun <get-requiredOptIns>(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ScreenValue.requiredOptIns.<get-requiredOptIns>|<get-requiredOptIns>(){}[0]
+    open val typeFqn // ee.schimke.composeai.discovery/ScreenValue.typeFqn|{}typeFqn[0]
+        open fun <get-typeFqn>(): kotlin/String? // ee.schimke.composeai.discovery/ScreenValue.typeFqn.<get-typeFqn>|<get-typeFqn>(){}[0]
+
+    final class ActionLambda : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.ActionLambda|null[0]
+        constructor <init>(kotlin.collections/List<ee.schimke.composeai.discovery/ScreenAction>) // ee.schimke.composeai.discovery/ScreenValue.ActionLambda.<init>|<init>(kotlin.collections.List<ee.schimke.composeai.discovery.ScreenAction>){}[0]
+
+        final val actions // ee.schimke.composeai.discovery/ScreenValue.ActionLambda.actions|{}actions[0]
+            final fun <get-actions>(): kotlin.collections/List<ee.schimke.composeai.discovery/ScreenAction> // ee.schimke.composeai.discovery/ScreenValue.ActionLambda.actions.<get-actions>|<get-actions>(){}[0]
+
+        final fun component1(): kotlin.collections/List<ee.schimke.composeai.discovery/ScreenAction> // ee.schimke.composeai.discovery/ScreenValue.ActionLambda.component1|component1(){}[0]
+        final fun copy(kotlin.collections/List<ee.schimke.composeai.discovery/ScreenAction> = ...): ee.schimke.composeai.discovery/ScreenValue.ActionLambda // ee.schimke.composeai.discovery/ScreenValue.ActionLambda.copy|copy(kotlin.collections.List<ee.schimke.composeai.discovery.ScreenAction>){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.ActionLambda.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenValue.ActionLambda.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.ActionLambda.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenValue.ActionLambda> { // ee.schimke.composeai.discovery/ScreenValue.ActionLambda.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenValue.ActionLambda.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenValue.ActionLambda.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenValue.ActionLambda.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenValue.ActionLambda // ee.schimke.composeai.discovery/ScreenValue.ActionLambda.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenValue.ActionLambda) // ee.schimke.composeai.discovery/ScreenValue.ActionLambda.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenValue.ActionLambda){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenValue.ActionLambda.Companion|null[0]
+            final val $childSerializers // ee.schimke.composeai.discovery/ScreenValue.ActionLambda.Companion.$childSerializers|{}$childSerializers[0]
+
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenValue.ActionLambda> // ee.schimke.composeai.discovery/ScreenValue.ActionLambda.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class Bool : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.Bool|null[0]
+        constructor <init>(kotlin/Boolean) // ee.schimke.composeai.discovery/ScreenValue.Bool.<init>|<init>(kotlin.Boolean){}[0]
+
+        final val value // ee.schimke.composeai.discovery/ScreenValue.Bool.value|{}value[0]
+            final fun <get-value>(): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.Bool.value.<get-value>|<get-value>(){}[0]
+
+        final fun component1(): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.Bool.component1|component1(){}[0]
+        final fun copy(kotlin/Boolean = ...): ee.schimke.composeai.discovery/ScreenValue.Bool // ee.schimke.composeai.discovery/ScreenValue.Bool.copy|copy(kotlin.Boolean){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.Bool.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenValue.Bool.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Bool.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenValue.Bool> { // ee.schimke.composeai.discovery/ScreenValue.Bool.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenValue.Bool.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenValue.Bool.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenValue.Bool.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenValue.Bool // ee.schimke.composeai.discovery/ScreenValue.Bool.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenValue.Bool) // ee.schimke.composeai.discovery/ScreenValue.Bool.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenValue.Bool){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenValue.Bool.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenValue.Bool> // ee.schimke.composeai.discovery/ScreenValue.Bool.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class Chain : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.Chain|null[0]
+        constructor <init>(ee.schimke.composeai.discovery/ScreenValue, kotlin.collections/List<ee.schimke.composeai.discovery/ChainLink>, kotlin/String, kotlin.collections/List<kotlin/String> = ..., kotlin.collections/List<kotlin/String> = ...) // ee.schimke.composeai.discovery/ScreenValue.Chain.<init>|<init>(ee.schimke.composeai.discovery.ScreenValue;kotlin.collections.List<ee.schimke.composeai.discovery.ChainLink>;kotlin.String;kotlin.collections.List<kotlin.String>;kotlin.collections.List<kotlin.String>){}[0]
+
+        final val androidxOptIns // ee.schimke.composeai.discovery/ScreenValue.Chain.androidxOptIns|{}androidxOptIns[0]
+            final fun <get-androidxOptIns>(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ScreenValue.Chain.androidxOptIns.<get-androidxOptIns>|<get-androidxOptIns>(){}[0]
+        final val links // ee.schimke.composeai.discovery/ScreenValue.Chain.links|{}links[0]
+            final fun <get-links>(): kotlin.collections/List<ee.schimke.composeai.discovery/ChainLink> // ee.schimke.composeai.discovery/ScreenValue.Chain.links.<get-links>|<get-links>(){}[0]
+        final val receiver // ee.schimke.composeai.discovery/ScreenValue.Chain.receiver|{}receiver[0]
+            final fun <get-receiver>(): ee.schimke.composeai.discovery/ScreenValue // ee.schimke.composeai.discovery/ScreenValue.Chain.receiver.<get-receiver>|<get-receiver>(){}[0]
+        final val requiredOptIns // ee.schimke.composeai.discovery/ScreenValue.Chain.requiredOptIns|{}requiredOptIns[0]
+            final fun <get-requiredOptIns>(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ScreenValue.Chain.requiredOptIns.<get-requiredOptIns>|<get-requiredOptIns>(){}[0]
+        final val typeFqn // ee.schimke.composeai.discovery/ScreenValue.Chain.typeFqn|{}typeFqn[0]
+            final fun <get-typeFqn>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Chain.typeFqn.<get-typeFqn>|<get-typeFqn>(){}[0]
+
+        final fun component1(): ee.schimke.composeai.discovery/ScreenValue // ee.schimke.composeai.discovery/ScreenValue.Chain.component1|component1(){}[0]
+        final fun component2(): kotlin.collections/List<ee.schimke.composeai.discovery/ChainLink> // ee.schimke.composeai.discovery/ScreenValue.Chain.component2|component2(){}[0]
+        final fun component3(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Chain.component3|component3(){}[0]
+        final fun component4(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ScreenValue.Chain.component4|component4(){}[0]
+        final fun component5(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ScreenValue.Chain.component5|component5(){}[0]
+        final fun copy(ee.schimke.composeai.discovery/ScreenValue = ..., kotlin.collections/List<ee.schimke.composeai.discovery/ChainLink> = ..., kotlin/String = ..., kotlin.collections/List<kotlin/String> = ..., kotlin.collections/List<kotlin/String> = ...): ee.schimke.composeai.discovery/ScreenValue.Chain // ee.schimke.composeai.discovery/ScreenValue.Chain.copy|copy(ee.schimke.composeai.discovery.ScreenValue;kotlin.collections.List<ee.schimke.composeai.discovery.ChainLink>;kotlin.String;kotlin.collections.List<kotlin.String>;kotlin.collections.List<kotlin.String>){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.Chain.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenValue.Chain.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Chain.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenValue.Chain> { // ee.schimke.composeai.discovery/ScreenValue.Chain.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenValue.Chain.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenValue.Chain.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenValue.Chain.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenValue.Chain // ee.schimke.composeai.discovery/ScreenValue.Chain.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenValue.Chain) // ee.schimke.composeai.discovery/ScreenValue.Chain.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenValue.Chain){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenValue.Chain.Companion|null[0]
+            final val $childSerializers // ee.schimke.composeai.discovery/ScreenValue.Chain.Companion.$childSerializers|{}$childSerializers[0]
+
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenValue.Chain> // ee.schimke.composeai.discovery/ScreenValue.Chain.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class Construct : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.Construct|null[0]
+        constructor <init>(kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin/String, kotlin.collections/List<kotlin/String> = ..., kotlin.collections/List<kotlin/String> = ...) // ee.schimke.composeai.discovery/ScreenValue.Construct.<init>|<init>(kotlin.String;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>;kotlin.String;kotlin.collections.List<kotlin.String>;kotlin.collections.List<kotlin.String>){}[0]
+
+        final val androidxOptIns // ee.schimke.composeai.discovery/ScreenValue.Construct.androidxOptIns|{}androidxOptIns[0]
+            final fun <get-androidxOptIns>(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ScreenValue.Construct.androidxOptIns.<get-androidxOptIns>|<get-androidxOptIns>(){}[0]
+        final val callableFqn // ee.schimke.composeai.discovery/ScreenValue.Construct.callableFqn|{}callableFqn[0]
+            final fun <get-callableFqn>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Construct.callableFqn.<get-callableFqn>|<get-callableFqn>(){}[0]
+        final val named // ee.schimke.composeai.discovery/ScreenValue.Construct.named|{}named[0]
+            final fun <get-named>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/ScreenValue.Construct.named.<get-named>|<get-named>(){}[0]
+        final val positional // ee.schimke.composeai.discovery/ScreenValue.Construct.positional|{}positional[0]
+            final fun <get-positional>(): kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/ScreenValue.Construct.positional.<get-positional>|<get-positional>(){}[0]
+        final val requiredOptIns // ee.schimke.composeai.discovery/ScreenValue.Construct.requiredOptIns|{}requiredOptIns[0]
+            final fun <get-requiredOptIns>(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ScreenValue.Construct.requiredOptIns.<get-requiredOptIns>|<get-requiredOptIns>(){}[0]
+        final val typeFqn // ee.schimke.composeai.discovery/ScreenValue.Construct.typeFqn|{}typeFqn[0]
+            final fun <get-typeFqn>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Construct.typeFqn.<get-typeFqn>|<get-typeFqn>(){}[0]
+
+        final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Construct.component1|component1(){}[0]
+        final fun component2(): kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/ScreenValue.Construct.component2|component2(){}[0]
+        final fun component3(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/ScreenValue.Construct.component3|component3(){}[0]
+        final fun component4(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Construct.component4|component4(){}[0]
+        final fun component5(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ScreenValue.Construct.component5|component5(){}[0]
+        final fun component6(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ScreenValue.Construct.component6|component6(){}[0]
+        final fun copy(kotlin/String = ..., kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin/String = ..., kotlin.collections/List<kotlin/String> = ..., kotlin.collections/List<kotlin/String> = ...): ee.schimke.composeai.discovery/ScreenValue.Construct // ee.schimke.composeai.discovery/ScreenValue.Construct.copy|copy(kotlin.String;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>;kotlin.String;kotlin.collections.List<kotlin.String>;kotlin.collections.List<kotlin.String>){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.Construct.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenValue.Construct.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Construct.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenValue.Construct> { // ee.schimke.composeai.discovery/ScreenValue.Construct.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenValue.Construct.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenValue.Construct.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenValue.Construct.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenValue.Construct // ee.schimke.composeai.discovery/ScreenValue.Construct.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenValue.Construct) // ee.schimke.composeai.discovery/ScreenValue.Construct.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenValue.Construct){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenValue.Construct.Companion|null[0]
+            final val $childSerializers // ee.schimke.composeai.discovery/ScreenValue.Construct.Companion.$childSerializers|{}$childSerializers[0]
+
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenValue.Construct> // ee.schimke.composeai.discovery/ScreenValue.Construct.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class Fractional : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.Fractional|null[0]
+        constructor <init>(kotlin/Double) // ee.schimke.composeai.discovery/ScreenValue.Fractional.<init>|<init>(kotlin.Double){}[0]
+
+        final val value // ee.schimke.composeai.discovery/ScreenValue.Fractional.value|{}value[0]
+            final fun <get-value>(): kotlin/Double // ee.schimke.composeai.discovery/ScreenValue.Fractional.value.<get-value>|<get-value>(){}[0]
+
+        final fun component1(): kotlin/Double // ee.schimke.composeai.discovery/ScreenValue.Fractional.component1|component1(){}[0]
+        final fun copy(kotlin/Double = ...): ee.schimke.composeai.discovery/ScreenValue.Fractional // ee.schimke.composeai.discovery/ScreenValue.Fractional.copy|copy(kotlin.Double){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.Fractional.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenValue.Fractional.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Fractional.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenValue.Fractional> { // ee.schimke.composeai.discovery/ScreenValue.Fractional.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenValue.Fractional.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenValue.Fractional.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenValue.Fractional.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenValue.Fractional // ee.schimke.composeai.discovery/ScreenValue.Fractional.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenValue.Fractional) // ee.schimke.composeai.discovery/ScreenValue.Fractional.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenValue.Fractional){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenValue.Fractional.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenValue.Fractional> // ee.schimke.composeai.discovery/ScreenValue.Fractional.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class Fractional32 : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.Fractional32|null[0]
+        constructor <init>(kotlin/Float) // ee.schimke.composeai.discovery/ScreenValue.Fractional32.<init>|<init>(kotlin.Float){}[0]
+
+        final val value // ee.schimke.composeai.discovery/ScreenValue.Fractional32.value|{}value[0]
+            final fun <get-value>(): kotlin/Float // ee.schimke.composeai.discovery/ScreenValue.Fractional32.value.<get-value>|<get-value>(){}[0]
+
+        final fun component1(): kotlin/Float // ee.schimke.composeai.discovery/ScreenValue.Fractional32.component1|component1(){}[0]
+        final fun copy(kotlin/Float = ...): ee.schimke.composeai.discovery/ScreenValue.Fractional32 // ee.schimke.composeai.discovery/ScreenValue.Fractional32.copy|copy(kotlin.Float){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.Fractional32.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenValue.Fractional32.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Fractional32.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenValue.Fractional32> { // ee.schimke.composeai.discovery/ScreenValue.Fractional32.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenValue.Fractional32.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenValue.Fractional32.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenValue.Fractional32.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenValue.Fractional32 // ee.schimke.composeai.discovery/ScreenValue.Fractional32.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenValue.Fractional32) // ee.schimke.composeai.discovery/ScreenValue.Fractional32.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenValue.Fractional32){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenValue.Fractional32.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenValue.Fractional32> // ee.schimke.composeai.discovery/ScreenValue.Fractional32.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class Lambda : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.Lambda|null[0]
+        constructor <init>(ee.schimke.composeai.discovery/ScreenValue) // ee.schimke.composeai.discovery/ScreenValue.Lambda.<init>|<init>(ee.schimke.composeai.discovery.ScreenValue){}[0]
+
+        final val result // ee.schimke.composeai.discovery/ScreenValue.Lambda.result|{}result[0]
+            final fun <get-result>(): ee.schimke.composeai.discovery/ScreenValue // ee.schimke.composeai.discovery/ScreenValue.Lambda.result.<get-result>|<get-result>(){}[0]
+
+        final fun component1(): ee.schimke.composeai.discovery/ScreenValue // ee.schimke.composeai.discovery/ScreenValue.Lambda.component1|component1(){}[0]
+        final fun copy(ee.schimke.composeai.discovery/ScreenValue = ...): ee.schimke.composeai.discovery/ScreenValue.Lambda // ee.schimke.composeai.discovery/ScreenValue.Lambda.copy|copy(ee.schimke.composeai.discovery.ScreenValue){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.Lambda.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenValue.Lambda.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Lambda.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenValue.Lambda> { // ee.schimke.composeai.discovery/ScreenValue.Lambda.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenValue.Lambda.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenValue.Lambda.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenValue.Lambda.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenValue.Lambda // ee.schimke.composeai.discovery/ScreenValue.Lambda.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenValue.Lambda) // ee.schimke.composeai.discovery/ScreenValue.Lambda.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenValue.Lambda){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenValue.Lambda.Companion|null[0]
+            final val $childSerializers // ee.schimke.composeai.discovery/ScreenValue.Lambda.Companion.$childSerializers|{}$childSerializers[0]
+
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenValue.Lambda> // ee.schimke.composeai.discovery/ScreenValue.Lambda.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class ParameterRead : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.ParameterRead|null[0]
+        constructor <init>(kotlin/String, kotlin/String) // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.<init>|<init>(kotlin.String;kotlin.String){}[0]
+
+        final val parameter // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.parameter|{}parameter[0]
+            final fun <get-parameter>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.parameter.<get-parameter>|<get-parameter>(){}[0]
+        final val typeFqn // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.typeFqn|{}typeFqn[0]
+            final fun <get-typeFqn>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.typeFqn.<get-typeFqn>|<get-typeFqn>(){}[0]
+
+        final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.component1|component1(){}[0]
+        final fun component2(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ...): ee.schimke.composeai.discovery/ScreenValue.ParameterRead // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.copy|copy(kotlin.String;kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenValue.ParameterRead> { // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenValue.ParameterRead // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenValue.ParameterRead) // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenValue.ParameterRead){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenValue.ParameterRead> // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class Reference : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.Reference|null[0]
+        constructor <init>(kotlin/String, kotlin.collections/List<kotlin/String> = ..., kotlin/String, kotlin.collections/List<kotlin/String> = ..., kotlin.collections/List<kotlin/String> = ...) // ee.schimke.composeai.discovery/ScreenValue.Reference.<init>|<init>(kotlin.String;kotlin.collections.List<kotlin.String>;kotlin.String;kotlin.collections.List<kotlin.String>;kotlin.collections.List<kotlin.String>){}[0]
+
+        final val androidxOptIns // ee.schimke.composeai.discovery/ScreenValue.Reference.androidxOptIns|{}androidxOptIns[0]
+            final fun <get-androidxOptIns>(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ScreenValue.Reference.androidxOptIns.<get-androidxOptIns>|<get-androidxOptIns>(){}[0]
+        final val members // ee.schimke.composeai.discovery/ScreenValue.Reference.members|{}members[0]
+            final fun <get-members>(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ScreenValue.Reference.members.<get-members>|<get-members>(){}[0]
+        final val requiredOptIns // ee.schimke.composeai.discovery/ScreenValue.Reference.requiredOptIns|{}requiredOptIns[0]
+            final fun <get-requiredOptIns>(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ScreenValue.Reference.requiredOptIns.<get-requiredOptIns>|<get-requiredOptIns>(){}[0]
+        final val rootFqn // ee.schimke.composeai.discovery/ScreenValue.Reference.rootFqn|{}rootFqn[0]
+            final fun <get-rootFqn>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Reference.rootFqn.<get-rootFqn>|<get-rootFqn>(){}[0]
+        final val typeFqn // ee.schimke.composeai.discovery/ScreenValue.Reference.typeFqn|{}typeFqn[0]
+            final fun <get-typeFqn>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Reference.typeFqn.<get-typeFqn>|<get-typeFqn>(){}[0]
+
+        final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Reference.component1|component1(){}[0]
+        final fun component2(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ScreenValue.Reference.component2|component2(){}[0]
+        final fun component3(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Reference.component3|component3(){}[0]
+        final fun component4(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ScreenValue.Reference.component4|component4(){}[0]
+        final fun component5(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ScreenValue.Reference.component5|component5(){}[0]
+        final fun copy(kotlin/String = ..., kotlin.collections/List<kotlin/String> = ..., kotlin/String = ..., kotlin.collections/List<kotlin/String> = ..., kotlin.collections/List<kotlin/String> = ...): ee.schimke.composeai.discovery/ScreenValue.Reference // ee.schimke.composeai.discovery/ScreenValue.Reference.copy|copy(kotlin.String;kotlin.collections.List<kotlin.String>;kotlin.String;kotlin.collections.List<kotlin.String>;kotlin.collections.List<kotlin.String>){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.Reference.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenValue.Reference.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Reference.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenValue.Reference> { // ee.schimke.composeai.discovery/ScreenValue.Reference.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenValue.Reference.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenValue.Reference.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenValue.Reference.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenValue.Reference // ee.schimke.composeai.discovery/ScreenValue.Reference.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenValue.Reference) // ee.schimke.composeai.discovery/ScreenValue.Reference.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenValue.Reference){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenValue.Reference.Companion|null[0]
+            final val $childSerializers // ee.schimke.composeai.discovery/ScreenValue.Reference.Companion.$childSerializers|{}$childSerializers[0]
+
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenValue.Reference> // ee.schimke.composeai.discovery/ScreenValue.Reference.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class RowRead : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.RowRead|null[0]
+        constructor <init>(kotlin/String, kotlin/String) // ee.schimke.composeai.discovery/ScreenValue.RowRead.<init>|<init>(kotlin.String;kotlin.String){}[0]
+
+        final val field // ee.schimke.composeai.discovery/ScreenValue.RowRead.field|{}field[0]
+            final fun <get-field>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.RowRead.field.<get-field>|<get-field>(){}[0]
+        final val typeFqn // ee.schimke.composeai.discovery/ScreenValue.RowRead.typeFqn|{}typeFqn[0]
+            final fun <get-typeFqn>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.RowRead.typeFqn.<get-typeFqn>|<get-typeFqn>(){}[0]
+
+        final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.RowRead.component1|component1(){}[0]
+        final fun component2(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.RowRead.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ...): ee.schimke.composeai.discovery/ScreenValue.RowRead // ee.schimke.composeai.discovery/ScreenValue.RowRead.copy|copy(kotlin.String;kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.RowRead.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenValue.RowRead.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.RowRead.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenValue.RowRead> { // ee.schimke.composeai.discovery/ScreenValue.RowRead.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenValue.RowRead.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenValue.RowRead.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenValue.RowRead.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenValue.RowRead // ee.schimke.composeai.discovery/ScreenValue.RowRead.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenValue.RowRead) // ee.schimke.composeai.discovery/ScreenValue.RowRead.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenValue.RowRead){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenValue.RowRead.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenValue.RowRead> // ee.schimke.composeai.discovery/ScreenValue.RowRead.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class StateRead : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.StateRead|null[0]
+        constructor <init>(kotlin/String, kotlin/String) // ee.schimke.composeai.discovery/ScreenValue.StateRead.<init>|<init>(kotlin.String;kotlin.String){}[0]
+
+        final val typeFqn // ee.schimke.composeai.discovery/ScreenValue.StateRead.typeFqn|{}typeFqn[0]
+            final fun <get-typeFqn>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.StateRead.typeFqn.<get-typeFqn>|<get-typeFqn>(){}[0]
+        final val variable // ee.schimke.composeai.discovery/ScreenValue.StateRead.variable|{}variable[0]
+            final fun <get-variable>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.StateRead.variable.<get-variable>|<get-variable>(){}[0]
+
+        final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.StateRead.component1|component1(){}[0]
+        final fun component2(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.StateRead.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ...): ee.schimke.composeai.discovery/ScreenValue.StateRead // ee.schimke.composeai.discovery/ScreenValue.StateRead.copy|copy(kotlin.String;kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.StateRead.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenValue.StateRead.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.StateRead.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenValue.StateRead> { // ee.schimke.composeai.discovery/ScreenValue.StateRead.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenValue.StateRead.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenValue.StateRead.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenValue.StateRead.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenValue.StateRead // ee.schimke.composeai.discovery/ScreenValue.StateRead.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenValue.StateRead) // ee.schimke.composeai.discovery/ScreenValue.StateRead.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenValue.StateRead){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenValue.StateRead.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenValue.StateRead> // ee.schimke.composeai.discovery/ScreenValue.StateRead.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class Text : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.Text|null[0]
+        constructor <init>(kotlin/String) // ee.schimke.composeai.discovery/ScreenValue.Text.<init>|<init>(kotlin.String){}[0]
+
+        final val value // ee.schimke.composeai.discovery/ScreenValue.Text.value|{}value[0]
+            final fun <get-value>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Text.value.<get-value>|<get-value>(){}[0]
+
+        final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Text.component1|component1(){}[0]
+        final fun copy(kotlin/String = ...): ee.schimke.composeai.discovery/ScreenValue.Text // ee.schimke.composeai.discovery/ScreenValue.Text.copy|copy(kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.Text.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenValue.Text.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Text.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenValue.Text> { // ee.schimke.composeai.discovery/ScreenValue.Text.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenValue.Text.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenValue.Text.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenValue.Text.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenValue.Text // ee.schimke.composeai.discovery/ScreenValue.Text.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenValue.Text) // ee.schimke.composeai.discovery/ScreenValue.Text.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenValue.Text){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenValue.Text.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenValue.Text> // ee.schimke.composeai.discovery/ScreenValue.Text.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class Whole : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.Whole|null[0]
+        constructor <init>(kotlin/Long) // ee.schimke.composeai.discovery/ScreenValue.Whole.<init>|<init>(kotlin.Long){}[0]
+
+        final val value // ee.schimke.composeai.discovery/ScreenValue.Whole.value|{}value[0]
+            final fun <get-value>(): kotlin/Long // ee.schimke.composeai.discovery/ScreenValue.Whole.value.<get-value>|<get-value>(){}[0]
+
+        final fun component1(): kotlin/Long // ee.schimke.composeai.discovery/ScreenValue.Whole.component1|component1(){}[0]
+        final fun copy(kotlin/Long = ...): ee.schimke.composeai.discovery/ScreenValue.Whole // ee.schimke.composeai.discovery/ScreenValue.Whole.copy|copy(kotlin.Long){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.Whole.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenValue.Whole.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.Whole.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenValue.Whole> { // ee.schimke.composeai.discovery/ScreenValue.Whole.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenValue.Whole.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenValue.Whole.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenValue.Whole.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenValue.Whole // ee.schimke.composeai.discovery/ScreenValue.Whole.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenValue.Whole) // ee.schimke.composeai.discovery/ScreenValue.Whole.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenValue.Whole){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenValue.Whole.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenValue.Whole> // ee.schimke.composeai.discovery/ScreenValue.Whole.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.discovery/ScreenValue.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/ScreenValue.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.discovery/ScreenValue.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+final class ee.schimke.composeai.discovery/ChainLink { // ee.schimke.composeai.discovery/ChainLink|null[0]
+    constructor <init>(kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin/Boolean = ..., kotlin/String? = ...) // ee.schimke.composeai.discovery/ChainLink.<init>|<init>(kotlin.String;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>;kotlin.Boolean;kotlin.String?){}[0]
+
+    final val callableFqn // ee.schimke.composeai.discovery/ChainLink.callableFqn|{}callableFqn[0]
+        final fun <get-callableFqn>(): kotlin/String // ee.schimke.composeai.discovery/ChainLink.callableFqn.<get-callableFqn>|<get-callableFqn>(){}[0]
+    final val named // ee.schimke.composeai.discovery/ChainLink.named|{}named[0]
+        final fun <get-named>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/ChainLink.named.<get-named>|<get-named>(){}[0]
+    final val positional // ee.schimke.composeai.discovery/ChainLink.positional|{}positional[0]
+        final fun <get-positional>(): kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/ChainLink.positional.<get-positional>|<get-positional>(){}[0]
+    final val property // ee.schimke.composeai.discovery/ChainLink.property|{}property[0]
+        final fun <get-property>(): kotlin/Boolean // ee.schimke.composeai.discovery/ChainLink.property.<get-property>|<get-property>(){}[0]
+    final val receiverScopeFqn // ee.schimke.composeai.discovery/ChainLink.receiverScopeFqn|{}receiverScopeFqn[0]
+        final fun <get-receiverScopeFqn>(): kotlin/String? // ee.schimke.composeai.discovery/ChainLink.receiverScopeFqn.<get-receiverScopeFqn>|<get-receiverScopeFqn>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ChainLink.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/ChainLink.component2|component2(){}[0]
+    final fun component3(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/ChainLink.component3|component3(){}[0]
+    final fun component4(): kotlin/Boolean // ee.schimke.composeai.discovery/ChainLink.component4|component4(){}[0]
+    final fun component5(): kotlin/String? // ee.schimke.composeai.discovery/ChainLink.component5|component5(){}[0]
+    final fun copy(kotlin/String = ..., kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin/Boolean = ..., kotlin/String? = ...): ee.schimke.composeai.discovery/ChainLink // ee.schimke.composeai.discovery/ChainLink.copy|copy(kotlin.String;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>;kotlin.Boolean;kotlin.String?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ChainLink.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ChainLink.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ChainLink.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ChainLink> { // ee.schimke.composeai.discovery/ChainLink.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.discovery/ChainLink.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ChainLink.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ChainLink.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ChainLink // ee.schimke.composeai.discovery/ChainLink.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ChainLink) // ee.schimke.composeai.discovery/ChainLink.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ChainLink){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.discovery/ChainLink.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.discovery/ChainLink.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ChainLink> // ee.schimke.composeai.discovery/ChainLink.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.discovery/ScreenDocument { // ee.schimke.composeai.discovery/ScreenDocument|null[0]
+    constructor <init>(kotlin/String, ee.schimke.composeai.discovery/ScreenNode, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenState> = ..., kotlin.collections/List<ee.schimke.composeai.discovery/ScreenFunction> = ...) // ee.schimke.composeai.discovery/ScreenDocument.<init>|<init>(kotlin.String;ee.schimke.composeai.discovery.ScreenNode;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenState>;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenFunction>){}[0]
+
+    final val functions // ee.schimke.composeai.discovery/ScreenDocument.functions|{}functions[0]
+        final fun <get-functions>(): kotlin.collections/List<ee.schimke.composeai.discovery/ScreenFunction> // ee.schimke.composeai.discovery/ScreenDocument.functions.<get-functions>|<get-functions>(){}[0]
+    final val name // ee.schimke.composeai.discovery/ScreenDocument.name|{}name[0]
+        final fun <get-name>(): kotlin/String // ee.schimke.composeai.discovery/ScreenDocument.name.<get-name>|<get-name>(){}[0]
+    final val root // ee.schimke.composeai.discovery/ScreenDocument.root|{}root[0]
+        final fun <get-root>(): ee.schimke.composeai.discovery/ScreenNode // ee.schimke.composeai.discovery/ScreenDocument.root.<get-root>|<get-root>(){}[0]
+    final val state // ee.schimke.composeai.discovery/ScreenDocument.state|{}state[0]
+        final fun <get-state>(): kotlin.collections/List<ee.schimke.composeai.discovery/ScreenState> // ee.schimke.composeai.discovery/ScreenDocument.state.<get-state>|<get-state>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenDocument.component1|component1(){}[0]
+    final fun component2(): ee.schimke.composeai.discovery/ScreenNode // ee.schimke.composeai.discovery/ScreenDocument.component2|component2(){}[0]
+    final fun component3(): kotlin.collections/List<ee.schimke.composeai.discovery/ScreenState> // ee.schimke.composeai.discovery/ScreenDocument.component3|component3(){}[0]
+    final fun component4(): kotlin.collections/List<ee.schimke.composeai.discovery/ScreenFunction> // ee.schimke.composeai.discovery/ScreenDocument.component4|component4(){}[0]
+    final fun copy(kotlin/String = ..., ee.schimke.composeai.discovery/ScreenNode = ..., kotlin.collections/List<ee.schimke.composeai.discovery/ScreenState> = ..., kotlin.collections/List<ee.schimke.composeai.discovery/ScreenFunction> = ...): ee.schimke.composeai.discovery/ScreenDocument // ee.schimke.composeai.discovery/ScreenDocument.copy|copy(kotlin.String;ee.schimke.composeai.discovery.ScreenNode;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenState>;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenFunction>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenDocument.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenDocument.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenDocument.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenDocument> { // ee.schimke.composeai.discovery/ScreenDocument.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.discovery/ScreenDocument.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenDocument.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenDocument.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenDocument // ee.schimke.composeai.discovery/ScreenDocument.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenDocument) // ee.schimke.composeai.discovery/ScreenDocument.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenDocument){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.discovery/ScreenDocument.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.discovery/ScreenDocument.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenDocument> // ee.schimke.composeai.discovery/ScreenDocument.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.discovery/ScreenFunction { // ee.schimke.composeai.discovery/ScreenFunction|null[0]
+    constructor <init>(kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenParameter>, ee.schimke.composeai.discovery/ScreenNode) // ee.schimke.composeai.discovery/ScreenFunction.<init>|<init>(kotlin.String;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenParameter>;ee.schimke.composeai.discovery.ScreenNode){}[0]
+
+    final val name // ee.schimke.composeai.discovery/ScreenFunction.name|{}name[0]
+        final fun <get-name>(): kotlin/String // ee.schimke.composeai.discovery/ScreenFunction.name.<get-name>|<get-name>(){}[0]
+    final val parameters // ee.schimke.composeai.discovery/ScreenFunction.parameters|{}parameters[0]
+        final fun <get-parameters>(): kotlin.collections/List<ee.schimke.composeai.discovery/ScreenParameter> // ee.schimke.composeai.discovery/ScreenFunction.parameters.<get-parameters>|<get-parameters>(){}[0]
+    final val root // ee.schimke.composeai.discovery/ScreenFunction.root|{}root[0]
+        final fun <get-root>(): ee.schimke.composeai.discovery/ScreenNode // ee.schimke.composeai.discovery/ScreenFunction.root.<get-root>|<get-root>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenFunction.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/List<ee.schimke.composeai.discovery/ScreenParameter> // ee.schimke.composeai.discovery/ScreenFunction.component2|component2(){}[0]
+    final fun component3(): ee.schimke.composeai.discovery/ScreenNode // ee.schimke.composeai.discovery/ScreenFunction.component3|component3(){}[0]
+    final fun copy(kotlin/String = ..., kotlin.collections/List<ee.schimke.composeai.discovery/ScreenParameter> = ..., ee.schimke.composeai.discovery/ScreenNode = ...): ee.schimke.composeai.discovery/ScreenFunction // ee.schimke.composeai.discovery/ScreenFunction.copy|copy(kotlin.String;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenParameter>;ee.schimke.composeai.discovery.ScreenNode){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenFunction.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenFunction.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenFunction.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenFunction> { // ee.schimke.composeai.discovery/ScreenFunction.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.discovery/ScreenFunction.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenFunction.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenFunction.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenFunction // ee.schimke.composeai.discovery/ScreenFunction.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenFunction) // ee.schimke.composeai.discovery/ScreenFunction.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenFunction){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.discovery/ScreenFunction.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.discovery/ScreenFunction.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenFunction> // ee.schimke.composeai.discovery/ScreenFunction.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.discovery/ScreenNode { // ee.schimke.composeai.discovery/ScreenNode|null[0]
+    constructor <init>(kotlin/String, kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenNode>> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/SlotItem> = ..., kotlin.collections/Map<kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenAction>> = ..., ee.schimke.composeai.discovery/ScreenSelection? = ..., ee.schimke.composeai.discovery/ScreenRepetition? = ..., kotlin/String? = ...) // ee.schimke.composeai.discovery/ScreenNode.<init>|<init>(kotlin.String;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,kotlin.collections.List<ee.schimke.composeai.discovery.ScreenNode>>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.SlotItem>;kotlin.collections.Map<kotlin.String,kotlin.collections.List<ee.schimke.composeai.discovery.ScreenAction>>;ee.schimke.composeai.discovery.ScreenSelection?;ee.schimke.composeai.discovery.ScreenRepetition?;kotlin.String?){}[0]
+
+    final val arguments // ee.schimke.composeai.discovery/ScreenNode.arguments|{}arguments[0]
+        final fun <get-arguments>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/ScreenNode.arguments.<get-arguments>|<get-arguments>(){}[0]
+    final val componentId // ee.schimke.composeai.discovery/ScreenNode.componentId|{}componentId[0]
+        final fun <get-componentId>(): kotlin/String // ee.schimke.composeai.discovery/ScreenNode.componentId.<get-componentId>|<get-componentId>(){}[0]
+    final val function // ee.schimke.composeai.discovery/ScreenNode.function|{}function[0]
+        final fun <get-function>(): kotlin/String? // ee.schimke.composeai.discovery/ScreenNode.function.<get-function>|<get-function>(){}[0]
+    final val handlers // ee.schimke.composeai.discovery/ScreenNode.handlers|{}handlers[0]
+        final fun <get-handlers>(): kotlin.collections/Map<kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenAction>> // ee.schimke.composeai.discovery/ScreenNode.handlers.<get-handlers>|<get-handlers>(){}[0]
+    final val repetition // ee.schimke.composeai.discovery/ScreenNode.repetition|{}repetition[0]
+        final fun <get-repetition>(): ee.schimke.composeai.discovery/ScreenRepetition? // ee.schimke.composeai.discovery/ScreenNode.repetition.<get-repetition>|<get-repetition>(){}[0]
+    final val selection // ee.schimke.composeai.discovery/ScreenNode.selection|{}selection[0]
+        final fun <get-selection>(): ee.schimke.composeai.discovery/ScreenSelection? // ee.schimke.composeai.discovery/ScreenNode.selection.<get-selection>|<get-selection>(){}[0]
+    final val slotItems // ee.schimke.composeai.discovery/ScreenNode.slotItems|{}slotItems[0]
+        final fun <get-slotItems>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/SlotItem> // ee.schimke.composeai.discovery/ScreenNode.slotItems.<get-slotItems>|<get-slotItems>(){}[0]
+    final val slots // ee.schimke.composeai.discovery/ScreenNode.slots|{}slots[0]
+        final fun <get-slots>(): kotlin.collections/Map<kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenNode>> // ee.schimke.composeai.discovery/ScreenNode.slots.<get-slots>|<get-slots>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenNode.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/ScreenNode.component2|component2(){}[0]
+    final fun component3(): kotlin.collections/Map<kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenNode>> // ee.schimke.composeai.discovery/ScreenNode.component3|component3(){}[0]
+    final fun component4(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/SlotItem> // ee.schimke.composeai.discovery/ScreenNode.component4|component4(){}[0]
+    final fun component5(): kotlin.collections/Map<kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenAction>> // ee.schimke.composeai.discovery/ScreenNode.component5|component5(){}[0]
+    final fun component6(): ee.schimke.composeai.discovery/ScreenSelection? // ee.schimke.composeai.discovery/ScreenNode.component6|component6(){}[0]
+    final fun component7(): ee.schimke.composeai.discovery/ScreenRepetition? // ee.schimke.composeai.discovery/ScreenNode.component7|component7(){}[0]
+    final fun component8(): kotlin/String? // ee.schimke.composeai.discovery/ScreenNode.component8|component8(){}[0]
+    final fun copy(kotlin/String = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenNode>> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/SlotItem> = ..., kotlin.collections/Map<kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenAction>> = ..., ee.schimke.composeai.discovery/ScreenSelection? = ..., ee.schimke.composeai.discovery/ScreenRepetition? = ..., kotlin/String? = ...): ee.schimke.composeai.discovery/ScreenNode // ee.schimke.composeai.discovery/ScreenNode.copy|copy(kotlin.String;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,kotlin.collections.List<ee.schimke.composeai.discovery.ScreenNode>>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.SlotItem>;kotlin.collections.Map<kotlin.String,kotlin.collections.List<ee.schimke.composeai.discovery.ScreenAction>>;ee.schimke.composeai.discovery.ScreenSelection?;ee.schimke.composeai.discovery.ScreenRepetition?;kotlin.String?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenNode.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenNode.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenNode.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenNode> { // ee.schimke.composeai.discovery/ScreenNode.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.discovery/ScreenNode.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenNode.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenNode.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenNode // ee.schimke.composeai.discovery/ScreenNode.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenNode) // ee.schimke.composeai.discovery/ScreenNode.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenNode){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.discovery/ScreenNode.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.discovery/ScreenNode.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenNode> // ee.schimke.composeai.discovery/ScreenNode.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.discovery/ScreenRepetition { // ee.schimke.composeai.discovery/ScreenRepetition|null[0]
+    constructor <init>(kotlin.collections/Map<kotlin/String, kotlin/String>, kotlin.collections/List<kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue>>, kotlin/String = ...) // ee.schimke.composeai.discovery/ScreenRepetition.<init>|<init>(kotlin.collections.Map<kotlin.String,kotlin.String>;kotlin.collections.List<kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>>;kotlin.String){}[0]
+
+    final val fields // ee.schimke.composeai.discovery/ScreenRepetition.fields|{}fields[0]
+        final fun <get-fields>(): kotlin.collections/Map<kotlin/String, kotlin/String> // ee.schimke.composeai.discovery/ScreenRepetition.fields.<get-fields>|<get-fields>(){}[0]
+    final val rows // ee.schimke.composeai.discovery/ScreenRepetition.rows|{}rows[0]
+        final fun <get-rows>(): kotlin.collections/List<kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue>> // ee.schimke.composeai.discovery/ScreenRepetition.rows.<get-rows>|<get-rows>(){}[0]
+    final val templateSlot // ee.schimke.composeai.discovery/ScreenRepetition.templateSlot|{}templateSlot[0]
+        final fun <get-templateSlot>(): kotlin/String // ee.schimke.composeai.discovery/ScreenRepetition.templateSlot.<get-templateSlot>|<get-templateSlot>(){}[0]
+
+    final fun component1(): kotlin.collections/Map<kotlin/String, kotlin/String> // ee.schimke.composeai.discovery/ScreenRepetition.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/List<kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue>> // ee.schimke.composeai.discovery/ScreenRepetition.component2|component2(){}[0]
+    final fun component3(): kotlin/String // ee.schimke.composeai.discovery/ScreenRepetition.component3|component3(){}[0]
+    final fun copy(kotlin.collections/Map<kotlin/String, kotlin/String> = ..., kotlin.collections/List<kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue>> = ..., kotlin/String = ...): ee.schimke.composeai.discovery/ScreenRepetition // ee.schimke.composeai.discovery/ScreenRepetition.copy|copy(kotlin.collections.Map<kotlin.String,kotlin.String>;kotlin.collections.List<kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>>;kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenRepetition.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenRepetition.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenRepetition.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenRepetition> { // ee.schimke.composeai.discovery/ScreenRepetition.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.discovery/ScreenRepetition.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenRepetition.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenRepetition.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenRepetition // ee.schimke.composeai.discovery/ScreenRepetition.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenRepetition) // ee.schimke.composeai.discovery/ScreenRepetition.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenRepetition){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.discovery/ScreenRepetition.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.discovery/ScreenRepetition.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenRepetition> // ee.schimke.composeai.discovery/ScreenRepetition.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.discovery/ScreenSelection { // ee.schimke.composeai.discovery/ScreenSelection|null[0]
+    constructor <init>(ee.schimke.composeai.discovery/ScreenValue, kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue>, kotlin/String? = ...) // ee.schimke.composeai.discovery/ScreenSelection.<init>|<init>(ee.schimke.composeai.discovery.ScreenValue;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>;kotlin.String?){}[0]
+
+    final val cases // ee.schimke.composeai.discovery/ScreenSelection.cases|{}cases[0]
+        final fun <get-cases>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/ScreenSelection.cases.<get-cases>|<get-cases>(){}[0]
+    final val elseSlot // ee.schimke.composeai.discovery/ScreenSelection.elseSlot|{}elseSlot[0]
+        final fun <get-elseSlot>(): kotlin/String? // ee.schimke.composeai.discovery/ScreenSelection.elseSlot.<get-elseSlot>|<get-elseSlot>(){}[0]
+    final val subject // ee.schimke.composeai.discovery/ScreenSelection.subject|{}subject[0]
+        final fun <get-subject>(): ee.schimke.composeai.discovery/ScreenValue // ee.schimke.composeai.discovery/ScreenSelection.subject.<get-subject>|<get-subject>(){}[0]
+
+    final fun component1(): ee.schimke.composeai.discovery/ScreenValue // ee.schimke.composeai.discovery/ScreenSelection.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/ScreenSelection.component2|component2(){}[0]
+    final fun component3(): kotlin/String? // ee.schimke.composeai.discovery/ScreenSelection.component3|component3(){}[0]
+    final fun copy(ee.schimke.composeai.discovery/ScreenValue = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin/String? = ...): ee.schimke.composeai.discovery/ScreenSelection // ee.schimke.composeai.discovery/ScreenSelection.copy|copy(ee.schimke.composeai.discovery.ScreenValue;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>;kotlin.String?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenSelection.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenSelection.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenSelection.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenSelection> { // ee.schimke.composeai.discovery/ScreenSelection.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.discovery/ScreenSelection.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenSelection.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenSelection.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenSelection // ee.schimke.composeai.discovery/ScreenSelection.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenSelection) // ee.schimke.composeai.discovery/ScreenSelection.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenSelection){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.discovery/ScreenSelection.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.discovery/ScreenSelection.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenSelection> // ee.schimke.composeai.discovery/ScreenSelection.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.discovery/ScreenState { // ee.schimke.composeai.discovery/ScreenState|null[0]
+    constructor <init>(kotlin/String, kotlin/String, ee.schimke.composeai.discovery/ScreenValue) // ee.schimke.composeai.discovery/ScreenState.<init>|<init>(kotlin.String;kotlin.String;ee.schimke.composeai.discovery.ScreenValue){}[0]
+
+    final val initial // ee.schimke.composeai.discovery/ScreenState.initial|{}initial[0]
+        final fun <get-initial>(): ee.schimke.composeai.discovery/ScreenValue // ee.schimke.composeai.discovery/ScreenState.initial.<get-initial>|<get-initial>(){}[0]
+    final val name // ee.schimke.composeai.discovery/ScreenState.name|{}name[0]
+        final fun <get-name>(): kotlin/String // ee.schimke.composeai.discovery/ScreenState.name.<get-name>|<get-name>(){}[0]
+    final val typeFqn // ee.schimke.composeai.discovery/ScreenState.typeFqn|{}typeFqn[0]
+        final fun <get-typeFqn>(): kotlin/String // ee.schimke.composeai.discovery/ScreenState.typeFqn.<get-typeFqn>|<get-typeFqn>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenState.component1|component1(){}[0]
+    final fun component2(): kotlin/String // ee.schimke.composeai.discovery/ScreenState.component2|component2(){}[0]
+    final fun component3(): ee.schimke.composeai.discovery/ScreenValue // ee.schimke.composeai.discovery/ScreenState.component3|component3(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., ee.schimke.composeai.discovery/ScreenValue = ...): ee.schimke.composeai.discovery/ScreenState // ee.schimke.composeai.discovery/ScreenState.copy|copy(kotlin.String;kotlin.String;ee.schimke.composeai.discovery.ScreenValue){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenState.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenState.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenState.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenState> { // ee.schimke.composeai.discovery/ScreenState.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.discovery/ScreenState.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenState.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenState.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenState // ee.schimke.composeai.discovery/ScreenState.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenState) // ee.schimke.composeai.discovery/ScreenState.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenState){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.discovery/ScreenState.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.discovery/ScreenState.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenState> // ee.schimke.composeai.discovery/ScreenState.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.discovery/SlotItem { // ee.schimke.composeai.discovery/SlotItem|null[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ...) // ee.schimke.composeai.discovery/SlotItem.<init>|<init>(kotlin.String;kotlin.String;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>){}[0]
+
+    final val callable // ee.schimke.composeai.discovery/SlotItem.callable|{}callable[0]
+        final fun <get-callable>(): kotlin/String // ee.schimke.composeai.discovery/SlotItem.callable.<get-callable>|<get-callable>(){}[0]
+    final val named // ee.schimke.composeai.discovery/SlotItem.named|{}named[0]
+        final fun <get-named>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/SlotItem.named.<get-named>|<get-named>(){}[0]
+    final val positional // ee.schimke.composeai.discovery/SlotItem.positional|{}positional[0]
+        final fun <get-positional>(): kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/SlotItem.positional.<get-positional>|<get-positional>(){}[0]
+    final val receiverScopeFqn // ee.schimke.composeai.discovery/SlotItem.receiverScopeFqn|{}receiverScopeFqn[0]
+        final fun <get-receiverScopeFqn>(): kotlin/String // ee.schimke.composeai.discovery/SlotItem.receiverScopeFqn.<get-receiverScopeFqn>|<get-receiverScopeFqn>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.discovery/SlotItem.component1|component1(){}[0]
+    final fun component2(): kotlin/String // ee.schimke.composeai.discovery/SlotItem.component2|component2(){}[0]
+    final fun component3(): kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/SlotItem.component3|component3(){}[0]
+    final fun component4(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/SlotItem.component4|component4(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ...): ee.schimke.composeai.discovery/SlotItem // ee.schimke.composeai.discovery/SlotItem.copy|copy(kotlin.String;kotlin.String;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/SlotItem.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/SlotItem.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.discovery/SlotItem.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/SlotItem> { // ee.schimke.composeai.discovery/SlotItem.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.discovery/SlotItem.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/SlotItem.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/SlotItem.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/SlotItem // ee.schimke.composeai.discovery/SlotItem.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/SlotItem) // ee.schimke.composeai.discovery/SlotItem.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.SlotItem){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.discovery/SlotItem.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.discovery/SlotItem.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/SlotItem> // ee.schimke.composeai.discovery/SlotItem.Companion.serializer|serializer(){}[0]
+    }
+}
