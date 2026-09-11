@@ -235,7 +235,9 @@ final enum class ee.schimke.composeai.uibuilder.protocol/ExportEncodingV1 : kotl
 final enum class ee.schimke.composeai.uibuilder.protocol/ExportFormatV1 : kotlin/Enum<ee.schimke.composeai.uibuilder.protocol/ExportFormatV1> { // ee.schimke.composeai.uibuilder.protocol/ExportFormatV1|null[0]
     enum entry BUNDLE // ee.schimke.composeai.uibuilder.protocol/ExportFormatV1.BUNDLE|null[0]
     enum entry COMPOSE // ee.schimke.composeai.uibuilder.protocol/ExportFormatV1.COMPOSE|null[0]
+    enum entry JSON // ee.schimke.composeai.uibuilder.protocol/ExportFormatV1.JSON|null[0]
     enum entry PNG // ee.schimke.composeai.uibuilder.protocol/ExportFormatV1.PNG|null[0]
+    enum entry RC // ee.schimke.composeai.uibuilder.protocol/ExportFormatV1.RC|null[0]
     enum entry SVG // ee.schimke.composeai.uibuilder.protocol/ExportFormatV1.SVG|null[0]
 
     final val entries // ee.schimke.composeai.uibuilder.protocol/ExportFormatV1.entries|#static{}entries[0]
@@ -3456,7 +3458,7 @@ final class ee.schimke.composeai.uibuilder.protocol/ExportArtifactV1 { // ee.sch
 }
 
 final class ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1 { // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1|null[0]
-    constructor <init>(kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ...) // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.<init>|<init>(kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean){}[0]
+    constructor <init>(kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ...) // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.<init>|<init>(kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean){}[0]
 
     final val bundle // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.bundle|{}bundle[0]
         final fun <get-bundle>(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.bundle.<get-bundle>|<get-bundle>(){}[0]
@@ -3464,6 +3466,10 @@ final class ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1 { // ee
         final fun <get-composeCode>(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.composeCode.<get-composeCode>|<get-composeCode>(){}[0]
     final val png // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.png|{}png[0]
         final fun <get-png>(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.png.<get-png>|<get-png>(){}[0]
+    final val remoteDocument // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.remoteDocument|{}remoteDocument[0]
+        final fun <get-remoteDocument>(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.remoteDocument.<get-remoteDocument>|<get-remoteDocument>(){}[0]
+    final val remoteJson // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.remoteJson|{}remoteJson[0]
+        final fun <get-remoteJson>(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.remoteJson.<get-remoteJson>|<get-remoteJson>(){}[0]
     final val svg // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.svg|{}svg[0]
         final fun <get-svg>(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.svg.<get-svg>|<get-svg>(){}[0]
 
@@ -3471,7 +3477,9 @@ final class ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1 { // ee
     final fun component2(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.component2|component2(){}[0]
     final fun component3(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.component3|component3(){}[0]
     final fun component4(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.component4|component4(){}[0]
-    final fun copy(kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ...): ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1 // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.copy|copy(kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean){}[0]
+    final fun component5(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.component5|component5(){}[0]
+    final fun component6(): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.component6|component6(){}[0]
+    final fun copy(kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ...): ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1 // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.copy|copy(kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1.toString|toString(){}[0]
