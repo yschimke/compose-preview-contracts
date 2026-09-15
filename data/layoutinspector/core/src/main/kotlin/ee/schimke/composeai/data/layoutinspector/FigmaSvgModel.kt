@@ -89,6 +89,18 @@ public data class FigmaSvgText(
    * text.
    */
   val lines: List<FigmaSvgTextLine>? = null,
+  /**
+   * The variable-font axis positions this run was drawn at, as a CSS `font-variation-settings`
+   * value (`'wght' 750,'ROND' 100`). Empty — the default — for a static face, which has no axes.
+   *
+   * It lives on the RUN rather than on [FigmaSvgFontFace] because a `@font-face` is selected by
+   * `(family, weight, style)`, so runs differing only in their axes collapse onto one rule, and one
+   * rule carries one tuple. That is not a corner case: `createGoogleSansFlexTypography()` leaves
+   * every role's `Font` at `W400` and carries 520 / 650 / 750 in the axes, so seven roles reach the
+   * export indistinguishable by descriptor. Naming the axes per run is what keeps a variable face
+   * rendering as the raster drew it rather than at the `fvar` defaults.
+   */
+  val variationSettings: String = "",
 )
 
 /** One laid-out line of a wrapped [FigmaSvgText], px offsets from the text layer's top-left. */
@@ -116,6 +128,8 @@ public data class FigmaSvgTextSpan(
   val fontWeight: Int? = null,
   val italic: Boolean = false,
   val color: FigmaSvgColor? = null,
+  /** Axis positions for this span, as [FigmaSvgText.variationSettings]. */
+  val variationSettings: String = "",
 )
 
 /**

@@ -3866,4 +3866,96 @@ class FigmaLayeredSvgTest {
     assertTrue("stays where it was placed:\n$svg", svg.contains("""y="225""""))
     assertFalse("must not be clamped into the viewport:\n$svg", svg.contains("""y="187""""))
   }
+
+  /**
+   * Two runs that differ ONLY in their axes. They share a family, a weight and a style, so one
+   * `@font-face` selects both and a per-face descriptor could carry one of their tuples — which is
+   * the shape `createGoogleSansFlexTypography()` produces for all seven Glimmer roles.
+   */
+  @Test
+  fun eachRunCarriesItsOwnVariationAxes() {
+    val svg = FigmaLayeredSvg.render(twoAxisRunModel(), FigmaLayeredSvg.Options())
+
+    assertTrue(
+      "the title run keeps its own axes",
+      svg.contains("""style="font-variation-settings:&apos;wght&apos; 750""""),
+    )
+    assertTrue(
+      "the body run keeps its own axes",
+      svg.contains("""style="font-variation-settings:&apos;wght&apos; 520""""),
+    )
+  }
+
+  /** A static face has no axes to name, and an empty declaration is not valid CSS. */
+  @Test
+  fun aRunWithNoAxesDeclaresNone() {
+    val svg =
+      FigmaLayeredSvg.render(
+        twoAxisRunModel(titleAxes = "", bodyAxes = ""),
+        FigmaLayeredSvg.Options(),
+      )
+
+    assertFalse("no empty declaration", svg.contains("font-variation-settings"))
+  }
+
+  /**
+   * The value reaches the emitter from a producer and lands in a `style` attribute, where a stray
+   * `;` or `}` would end the declaration and leave the rest as garbage.
+   */
+  @Test
+  fun aVariationValueThatIsNotAnAxisListIsNotEmitted() {
+    val svg =
+      FigmaLayeredSvg.render(
+        twoAxisRunModel(titleAxes = "'wght' 750;} body{display:none"),
+        FigmaLayeredSvg.Options(),
+      )
+
+    assertFalse("the declaration is not broken out of", svg.contains("display:none"))
+    assertFalse(
+      "nothing is declared for that run",
+      svg.contains("font-variation-settings:&apos;wght&apos; 750;"),
+    )
+  }
+
+  /**
+   * Two text layers in one tree, same family/weight/style, different axes — the collapse case a
+   * `@font-face` descriptor cannot express.
+   */
+  private fun twoAxisRunModel(
+    titleAxes: String = "'wght' 750",
+    bodyAxes: String = "'wght' 520",
+  ): FigmaSvgModel {
+    fun run(name: String, top: Int, content: String, axes: String) =
+      FigmaSvgLayer(
+        name = name,
+        left = 0,
+        top = top,
+        right = 200,
+        bottom = top + 40,
+        text =
+          FigmaSvgText(
+            content = content,
+            fontSizePx = 30.0,
+            fontFamily = "Google Sans Flex",
+            fontWeight = 400,
+            variationSettings = axes,
+          ),
+      )
+    return FigmaSvgModel(
+      root =
+        FigmaSvgLayer(
+          name = "root",
+          left = 0,
+          top = 0,
+          right = 200,
+          bottom = 80,
+          children = listOf(run("title", 0, "Title", titleAxes), run("body", 40, "Body", bodyAxes)),
+        ),
+      minX = 0,
+      minY = 0,
+      width = 200,
+      height = 80,
+      padding = 0,
+    )
+  }
 }
