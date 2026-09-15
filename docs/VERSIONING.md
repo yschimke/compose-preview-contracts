@@ -136,6 +136,32 @@ The cost of that choice is the one this document already names: compose-ai-tools
 keeps a cross-repo release hop for those five. For the preview-server split, their
 being published coordinates is the goal rather than the cost.
 
+## 2.19.0 ships an ABI break as a minor
+
+`FigmaSvgText` and `FigmaSvgTextSpan` each gained a constructor parameter in #70, which changes
+their primary constructors, defaults-synthetics and `copy()`. A consumer compiled against 2.18.x
+and run against 2.19.0 takes a `NoSuchMethodError`. Its `feat!:` subject would have computed
+`3.0.0`.
+
+It ships as a minor anyway, and the reason is the last paragraph of [Consumers](#consumers): both
+consumers pin a **point**, not a range. Nothing resolves a contracts version transitively today, so
+the mixed-version failure a major is there to prevent needs someone to assemble it by hand. A major
+would spend the disruption — every pin bumped, every range rewritten if any existed — to signal a
+hazard the pinning model already forecloses.
+
+That reasoning is load-bearing, not a blanket exemption. **The moment a consumer takes a range, an
+ABI break needs its major back**, because then resolution can reach a version nobody chose. The
+compatibility story that paragraph says this repository has not yet had to state is exactly the one
+that would have to be written first.
+
+Mechanically it is `release-as` in `release-please-config.json` rather than a `Release-As:` footer
+in a commit. The footer route works only as long as the squashed message keeps it at footer
+position: this repository does preserve commit bodies through a squash, so a single-commit pull
+request would carry it, but a two-commit one buries it mid-message where release-please will not
+read it — and the failure is invisible until the wrong version ships. The config key is data rather
+than a message, so no merge strategy can drop it. It is **sticky**: it must be removed once 2.19.0
+is out, or every later release proposes 2.19.0 again.
+
 ## Consumers
 
 | consumer | how it versions | how it pins |
