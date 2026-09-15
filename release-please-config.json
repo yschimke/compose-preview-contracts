@@ -4,7 +4,6 @@
   "packages": {
     ".": {
       "release-type": "simple",
-      "release-as": "2.19.0",
       "package-name": "compose-preview-contracts",
       "include-component-in-tag": false,
       "draft": true,
@@ -14,15 +13,6 @@
     }
   },
   "$comment": [
-    "release-as PINS the next release and is STICKY: release-please proposes exactly this version",
-    "on every subsequent run until the key is removed, regardless of what the commits since say. It",
-    "is here because 2.19.0 carries an ABI break (FigmaSvgText / FigmaSvgTextSpan gained a",
-    "constructor parameter, #70) that would otherwise compute 3.0.0 from its feat! subject, and the",
-    "break is being shipped as a minor deliberately - both consumers pin a point rather than a",
-    "range (docs/VERSIONING.md), so nothing resolves into it transitively.",
-    "",
-    "REMOVE THIS KEY once 2.19.0 is released, or 2.20.0 never happens.",
-    "",
     "last-release-sha is a ROOT option, not a per-package one. Nested inside packages['.'] it is",
     "silently ignored - the schema's package object accepts unknown keys, so nothing complains and",
     "release-please walks the whole inherited history anyway. Run 2 died with `other side closed`",
