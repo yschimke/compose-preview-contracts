@@ -3866,4 +3866,75 @@ class FigmaLayeredSvgTest {
     assertTrue("stays where it was placed:\n$svg", svg.contains("""y="225""""))
     assertFalse("must not be clamped into the viewport:\n$svg", svg.contains("""y="187""""))
   }
+
+  /**
+   * A variable face embedded with no axes named renders at its `fvar` defaults, so a face the
+   * raster instanced at weight 750 arrives in the browser at 400 — the right bytes, the wrong
+   * picture.
+   */
+  @Test
+  fun variableFaceDeclaresTheAxesTheRasterDrew() {
+    val svg =
+      FigmaLayeredSvg.render(
+        FigmaSvgModel.from(LayoutInspectorPayload(clockNode(fontFamily = "/fonts/GSF.ttf"))),
+        FigmaLayeredSvg.Options(defaultFontFamily = "Google Sans Flex"),
+        listOf(
+          FigmaSvgFontFace(
+            "Google Sans Flex",
+            400,
+            italic = false,
+            dataBase64 = "QUJD",
+            format = "truetype",
+            variationSettings = "'GRAD' 0,'ROND' 100,'opsz' 9,'wght' 750",
+          )
+        ),
+        mapOf("/fonts/GSF.ttf" to "Google Sans Flex"),
+      )
+
+    assertTrue(
+      "declares the axes the render instanced",
+      svg.contains("font-variation-settings:'GRAD' 0,'ROND' 100,'opsz' 9,'wght' 750;"),
+    )
+  }
+
+  /** A static instance has no axes to declare, and an empty declaration is not valid CSS. */
+  @Test
+  fun staticFaceDeclaresNoAxes() {
+    val svg =
+      FigmaLayeredSvg.render(
+        FigmaSvgModel.from(LayoutInspectorPayload(clockNode(fontFamily = "/fonts/Lato.ttf"))),
+        FigmaLayeredSvg.Options(defaultFontFamily = "Lato"),
+        listOf(FigmaSvgFontFace("Lato", 400, italic = false, dataBase64 = "QUJD")),
+        mapOf("/fonts/Lato.ttf" to "Lato"),
+      )
+
+    assertFalse("no empty declaration", svg.contains("font-variation-settings"))
+  }
+
+  /**
+   * The value reaches the emitter from a producer and lands in a `<style>` block, where a stray `;`
+   * or `}` would end the rule early and leave the rest of the stylesheet as garbage.
+   */
+  @Test
+  fun aVariationSettingsValueThatIsNotAnAxisListIsNotEmitted() {
+    val svg =
+      FigmaLayeredSvg.render(
+        FigmaSvgModel.from(LayoutInspectorPayload(clockNode(fontFamily = "/fonts/GSF.ttf"))),
+        FigmaLayeredSvg.Options(defaultFontFamily = "Google Sans Flex"),
+        listOf(
+          FigmaSvgFontFace(
+            "Google Sans Flex",
+            400,
+            italic = false,
+            dataBase64 = "QUJD",
+            format = "truetype",
+            variationSettings = "'wght' 750;} body{display:none",
+          )
+        ),
+        mapOf("/fonts/GSF.ttf" to "Google Sans Flex"),
+      )
+
+    assertFalse("the rule is not broken out of", svg.contains("display:none"))
+    assertFalse("nothing is declared at all", svg.contains("font-variation-settings"))
+  }
 }

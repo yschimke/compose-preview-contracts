@@ -124,6 +124,13 @@ public data class FigmaSvgTextSpan(
  * base64 of the face's bytes in [format]: `woff2` for the Google-Fonts fetch (smallest, and what
  * the SVG's consumers read natively), or `truetype`/`opentype` when embedding the exact font *file*
  * the render loaded (a downloaded / bundled / custom / variable face the capture recorded by path).
+ *
+ * [variationSettings] carries the axis positions the render drew with, as a CSS
+ * `font-variation-settings` value (`'wght' 750,'ROND' 100`). It matters only for a VARIABLE face,
+ * and there it is the difference between the export matching the raster and merely containing the
+ * right bytes: a browser handed a variable file with no axes named draws it at the `fvar` defaults,
+ * so a face the render instanced at weight 750 arrives at 400. Empty — the default, and always
+ * right for a static instance — emits no declaration at all.
  */
 public data class FigmaSvgFontFace(
   val family: String,
@@ -131,6 +138,7 @@ public data class FigmaSvgFontFace(
   val italic: Boolean,
   val dataBase64: String,
   val format: String = "woff2",
+  val variationSettings: String = "",
 )
 
 /** Background-free raster standing in for an opaque, un-vectorisable subtree. */

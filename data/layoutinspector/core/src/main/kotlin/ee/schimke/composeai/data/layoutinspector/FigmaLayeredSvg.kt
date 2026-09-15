@@ -1578,6 +1578,19 @@ public object FigmaLayeredSvg {
       append("@font-face{font-family:'").append(escape(cssFamily(f.family))).append("';")
       append("font-style:").append(if (f.italic) "italic" else "normal").append(';')
       append("font-weight:").append(f.weight).append(';')
+      // A variable face with no axes named renders at its `fvar` defaults, so a face the raster
+      // instanced at weight 750 would arrive in the browser at 400 — the bytes right, the picture
+      // wrong. Declaring the axes on the `@font-face` applies them to every `<text>` that resolves
+      // to it, without touching the per-run markup. Escaped like the family: `<style>` content is
+      // XML character data.
+      // Not `cssFamily`: the quotes around an axis tag are required syntax here, and escaping them
+      // the way a family name is escaped emits `\'wght\' 750`, which the CSS engine drops. The
+      // value is checked against the axis-list grammar instead — it reaches the emitter from a
+      // producer and lands in a `<style>` block, where a stray `;` or `}` would end the rule — and
+      // only XML-escaped, like every other free-form string here.
+      if (AXIS_LIST.matches(f.variationSettings)) {
+        append("font-variation-settings:").append(escape(f.variationSettings)).append(';')
+      }
       append("src:url(data:$mime;base64,")
         .append(f.dataBase64)
         .append(") format('")
@@ -1586,6 +1599,14 @@ public object FigmaLayeredSvg {
     }
     append("</style></defs>\n")
   }
+
+  /**
+   * A CSS `font-variation-settings` value: one or more `'tag' number` pairs, comma-separated. Four
+   * characters is an OpenType axis tag (`wght`, `opsz`, `GRAD`, `ROND`), and a value may be
+   * negative (`slnt`) or fractional.
+   */
+  private val AXIS_LIST =
+    Regex("""'[A-Za-z0-9 ]{1,4}' *-?\d+(\.\d+)?( *, *'[A-Za-z0-9 ]{1,4}' *-?\d+(\.\d+)?)*""")
 
   private fun cssFamily(s: String): String = s.replace("\\", "\\\\").replace("'", "\\'")
 
