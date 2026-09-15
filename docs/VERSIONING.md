@@ -154,13 +154,16 @@ ABI break needs its major back**, because then resolution can reach a version no
 compatibility story that paragraph says this repository has not yet had to state is exactly the one
 that would have to be written first.
 
-Mechanically it is `release-as` in `release-please-config.json` rather than a `Release-As:` footer
-in a commit. The footer route works only as long as the squashed message keeps it at footer
-position: this repository does preserve commit bodies through a squash, so a single-commit pull
-request would carry it, but a two-commit one buries it mid-message where release-please will not
-read it — and the failure is invisible until the wrong version ships. The config key is data rather
-than a message, so no merge strategy can drop it. It is **sticky**: it must be removed once 2.19.0
-is out, or every later release proposes 2.19.0 again.
+It was cut with `release-as` in `release-please-config.json` rather than a
+`Release-As:` footer in a commit. The footer route works only as long as the squashed message keeps
+it at footer position: this repository does preserve commit bodies through a squash, so a
+single-commit pull request would have carried one, but a two-commit pull request buries it
+mid-message where release-please will not read it — and the failure is invisible until the wrong
+version ships. A config key is data rather than a message, so no merge strategy can drop it.
+
+That key is **sticky** — it pins every later run to the same version — so it was removed as soon as
+2.19.0 was released. Anything reaching for it again should remove it in the same way, immediately
+after the release it was added for.
 
 ## Consumers
 
