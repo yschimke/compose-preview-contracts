@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.19.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.18.0...v2.19.0) (2026-09-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* carry variable-font axes per text run, not per face ([#70](https://github.com/yschimke/compose-preview-contracts/issues/70))
+
+### Features
+
+* carry variable-font axes per text run, not per face ([#70](https://github.com/yschimke/compose-preview-contracts/issues/70)) ([35ef9e8](https://github.com/yschimke/compose-preview-contracts/commit/35ef9e83e068c7f78caa9869e88055c03b66f5b6)), closes [#71](https://github.com/yschimke/compose-preview-contracts/issues/71)
+
+
+### Bug Fixes
+
+* **deps:** update kotlin to v2.4.20 ([#68](https://github.com/yschimke/compose-preview-contracts/issues/68)) ([a219704](https://github.com/yschimke/compose-preview-contracts/commit/a21970482797f7c5935826801e7502ceb9c01dd7))
+
 ## [2.18.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.17.0...v2.18.0) (2026-09-11)
 
 
