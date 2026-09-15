@@ -2602,6 +2602,35 @@ public data class FigmaSvgModel(
     private inline fun resolvedPx(captured: Double?, fallback: () -> Double?): Double? =
       captured ?: fallback()
 
+    /**
+     * The semantics payload's axis label as a CSS `font-variation-settings` value, or `""` when
+     * there is nothing usable to say.
+     *
+     * The capture already resolves the axes the render drew each text node with — the daemon reads
+     * them off the matched `Font` in the resolved `FontFamily`, so a face whose axes live on the
+     * font rather than on the `TextStyle` is captured correctly. The two sides just spell them
+     * differently: [ComposeSemanticsTypography.fontVariationSettings] is `"<axis> <value>"` pairs
+     * (`"opsz 18.0, wght 700.0"`) while CSS quotes the tag (`'opsz' 18.0`). Converting here keeps
+     * the wire format of the semantics payload untouched — it is published and consumed
+     * independently of this export — and hands the emitter a value in the grammar it checks.
+     *
+     * Anything that is not a `<tag> <number>` pair yields `""`, so the export names no axes and
+     * behaves exactly as it did before, rather than emitting a declaration a viewer cannot parse.
+     */
+    private fun cssVariationSettings(label: String?): String {
+      if (label.isNullOrBlank()) return ""
+      val pairs = label.split(',').map(String::trim).filter(String::isNotEmpty)
+      if (pairs.isEmpty()) return ""
+      val converted = pairs.map { pair ->
+        val axis = pair.substringBefore(' ').trim()
+        val value = pair.substringAfter(' ', "").trim()
+        if (axis.isEmpty() || axis.length > 4 || !axis.all(Char::isLetterOrDigit)) return ""
+        if (value.toFloatOrNull() == null) return ""
+        "'$axis' $value"
+      }
+      return converted.joinToString(",")
+    }
+
     private fun textFrom(
       node: ComposeSemanticsNode,
       content: String,
@@ -2634,6 +2663,7 @@ public data class FigmaSvgModel(
           },
         textAlign = node.typography?.textAlign,
         layoutDirection = node.typography?.layoutDirection,
+        variationSettings = cssVariationSettings(node.typography?.fontVariationSettings),
         spans =
           node.typography?.spans?.map { span ->
             FigmaSvgTextSpan(

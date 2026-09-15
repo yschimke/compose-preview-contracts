@@ -3868,6 +3868,131 @@ class FigmaLayeredSvgTest {
   }
 
   /**
+   * End to end from the capture: the axes the daemon already records per text node reach the
+   * `<text>` that node becomes.
+   *
+   * The two roles differ ONLY in their axes — same family, same weight, same style — which is the
+   * shape `createGoogleSansFlexTypography()` produces and the one a per-face `@font-face`
+   * descriptor cannot express.
+   */
+  @Test
+  fun capturedVariationAxesReachTheText() {
+    val layout =
+      layoutNode(
+        "Screen",
+        0,
+        0,
+        200,
+        100,
+        children = listOf(layoutNode("Title", 0, 0, 200, 40), layoutNode("Body", 0, 40, 200, 80)),
+      )
+    fun role(id: String, top: Int, content: String, axes: String) =
+      ComposeSemanticsNode(
+        nodeId = id,
+        boundsInRoot = "0,$top,200,${top + 40}",
+        text = content,
+        typography =
+          ComposeSemanticsTypography(
+            fontSize = "30.0sp",
+            fontFamily = "Google Sans Flex",
+            fontWeight = 400,
+            fontVariationSettings = axes,
+          ),
+      )
+    val semantics =
+      ComposeSemanticsNode(
+        nodeId = "root",
+        boundsInRoot = "0,0,200,100",
+        children =
+          listOf(
+            role("title", 0, "Title", "GRAD 0.0, ROND 100.0, opsz 9.0, wght 750.0"),
+            role("body", 40, "Body", "GRAD 0.0, ROND 100.0, opsz 9.0, wght 520.0"),
+          ),
+      )
+
+    val svg =
+      FigmaLayeredSvg.render(
+        FigmaSvgModel.from(LayoutInspectorPayload(layout), ComposeSemanticsPayload(semantics)),
+        FigmaLayeredSvg.Options(defaultFontFamily = "Google Sans Flex"),
+      )
+
+    assertTrue(
+      "the title run carries its own axes, tag-quoted for CSS",
+      svg.contains(
+        """style="font-variation-settings:&apos;GRAD&apos; 0.0,&apos;ROND&apos; 100.0,&apos;opsz&apos; 9.0,&apos;wght&apos; 750.0""""
+      ),
+    )
+    assertTrue(
+      "the body run keeps 520, not the title's 750",
+      svg.contains("&apos;wght&apos; 520.0"),
+    )
+  }
+
+  /** A face with no axes is the common case and must not gain an empty declaration. */
+  @Test
+  fun aCaptureWithNoAxesDeclaresNone() {
+    val layout =
+      layoutNode("Screen", 0, 0, 200, 100, children = listOf(layoutNode("T", 0, 0, 200, 40)))
+    val semantics =
+      ComposeSemanticsNode(
+        nodeId = "root",
+        boundsInRoot = "0,0,200,100",
+        children =
+          listOf(
+            ComposeSemanticsNode(
+              nodeId = "t",
+              boundsInRoot = "0,0,200,40",
+              text = "Hi",
+              typography = ComposeSemanticsTypography(fontSize = "16.0sp", fontFamily = "Lato"),
+            )
+          ),
+      )
+
+    val svg =
+      FigmaLayeredSvg.render(
+        FigmaSvgModel.from(LayoutInspectorPayload(layout), ComposeSemanticsPayload(semantics))
+      )
+
+    assertFalse("no empty declaration", svg.contains("font-variation-settings"))
+  }
+
+  /**
+   * A label the capture could not produce cleanly is dropped rather than converted into a
+   * declaration a viewer cannot parse — the export then names no axes, as it did before.
+   */
+  @Test
+  fun anUnparseableAxisLabelIsDropped() {
+    val layout =
+      layoutNode("Screen", 0, 0, 200, 100, children = listOf(layoutNode("T", 0, 0, 200, 40)))
+    val semantics =
+      ComposeSemanticsNode(
+        nodeId = "root",
+        boundsInRoot = "0,0,200,100",
+        children =
+          listOf(
+            ComposeSemanticsNode(
+              nodeId = "t",
+              boundsInRoot = "0,0,200,40",
+              text = "Hi",
+              typography =
+                ComposeSemanticsTypography(
+                  fontSize = "16.0sp",
+                  fontVariationSettings = "wght; } body { display:none",
+                ),
+            )
+          ),
+      )
+
+    val svg =
+      FigmaLayeredSvg.render(
+        FigmaSvgModel.from(LayoutInspectorPayload(layout), ComposeSemanticsPayload(semantics))
+      )
+
+    assertFalse("nothing is declared", svg.contains("font-variation-settings"))
+    assertFalse("and nothing escapes into the stylesheet", svg.contains("display:none"))
+  }
+
+  /**
    * Two runs that differ ONLY in their axes. They share a family, a weight and a style, so one
    * `@font-face` selects both and a per-face descriptor could carry one of their tuples — which is
    * the shape `createGoogleSansFlexTypography()` produces for all seven Glimmer roles.
