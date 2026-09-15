@@ -1234,6 +1234,7 @@ public object FigmaLayeredSvg {
       t.letterSpacingPx
         ?.takeIf { kotlin.math.abs(it) >= 0.01 }
         ?.let { """ letter-spacing="${fmt(it)}"""" } ?: ""
+    val variation = variationStyle(t.variationSettings)
     val lines = t.lines
     if (!lines.isNullOrEmpty()) {
       // Wrapped or ellipsised text: one positioned <tspan> per captured line at the exact place the
@@ -1269,7 +1270,7 @@ public object FigmaLayeredSvg {
           styled
             ?: """<tspan x="${layer.left + line.left}" y="${layer.top + line.baseline}"${lineLength(line)}>${escape(line.content)}</tspan>"""
         }
-      return """<text font-size="${fmt(size)}"$family$weight$style$letterSpacing$fill>$tspans</text>"""
+      return """<text font-size="${fmt(size)}"$family$weight$style$letterSpacing$variation$fill>$tspans</text>"""
     }
     val styled =
       styledTspans(
@@ -1287,7 +1288,7 @@ public object FigmaLayeredSvg {
     // around it. Without this a `TextAlign.Center` heading in a `fillMaxWidth()` box exported
     // hard against the left edge (issue #2885).
     val (anchorX, anchor) = singleLineAnchor(layer, t.textAlign, t.layoutDirection)
-    return """<text x="$anchorX" y="${fmt(baseline)}" font-size="${fmt(size)}"$family$weight$style$letterSpacing$anchor$fill>""" +
+    return """<text x="$anchorX" y="${fmt(baseline)}" font-size="${fmt(size)}"$family$weight$style$letterSpacing$variation$anchor$fill>""" +
       "${styled ?: escape(t.content)}</text>"
   }
 
@@ -1378,7 +1379,8 @@ public object FigmaLayeredSvg {
         val weight = span.fontWeight?.let { """ font-weight="$it"""" } ?: ""
         val style = if (span.italic) """ font-style="italic"""" else ""
         val fill = span.color?.let { """ fill="${it.hex}"${opacity("fill", it)}""" } ?: ""
-        """<tspan$position$size$family$weight$style$fill>${escape(content.substring(pieceStart, pieceEnd) + suffix)}</tspan>"""
+        val variation = variationStyle(span.variationSettings)
+        """<tspan$position$size$family$weight$style$variation$fill>${escape(content.substring(pieceStart, pieceEnd) + suffix)}</tspan>"""
       }
       .joinToString("")
   }
@@ -1583,14 +1585,6 @@ public object FigmaLayeredSvg {
       // wrong. Declaring the axes on the `@font-face` applies them to every `<text>` that resolves
       // to it, without touching the per-run markup. Escaped like the family: `<style>` content is
       // XML character data.
-      // Not `cssFamily`: the quotes around an axis tag are required syntax here, and escaping them
-      // the way a family name is escaped emits `\'wght\' 750`, which the CSS engine drops. The
-      // value is checked against the axis-list grammar instead — it reaches the emitter from a
-      // producer and lands in a `<style>` block, where a stray `;` or `}` would end the rule — and
-      // only XML-escaped, like every other free-form string here.
-      if (AXIS_LIST.matches(f.variationSettings)) {
-        append("font-variation-settings:").append(escape(f.variationSettings)).append(';')
-      }
       append("src:url(data:$mime;base64,")
         .append(f.dataBase64)
         .append(") format('")
@@ -1599,6 +1593,24 @@ public object FigmaLayeredSvg {
     }
     append("</style></defs>\n")
   }
+
+  /**
+   * ` style="font-variation-settings:…"` for a run drawn at [settings], or `""` when it names no
+   * axes.
+   *
+   * A `style` attribute rather than a presentation attribute because `font-variation-settings` is
+   * not one — SVG's presentation-attribute list does not carry it, so a viewer would ignore
+   * `font-variation-settings="…"` on the element.
+   *
+   * The value is checked against the axis-list grammar first: it reaches the emitter from a
+   * producer, and inside a `style` attribute a stray `;` or `}` would end the declaration and leave
+   * the rest as garbage. It is then attribute-escaped, but deliberately NOT escaped the way a
+   * family name is — the quotes around an axis tag are required syntax, and escaping them emits
+   * `\'wght\' 750`, which the CSS engine drops.
+   */
+  private fun variationStyle(settings: String): String =
+    if (AXIS_LIST.matches(settings)) """ style="font-variation-settings:${escapeAttr(settings)}""""
+    else ""
 
   /**
    * A CSS `font-variation-settings` value: one or more `'tag' number` pairs, comma-separated. Four

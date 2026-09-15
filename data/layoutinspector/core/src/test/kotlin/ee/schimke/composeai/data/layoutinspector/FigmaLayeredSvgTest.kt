@@ -3868,73 +3868,94 @@ class FigmaLayeredSvgTest {
   }
 
   /**
-   * A variable face embedded with no axes named renders at its `fvar` defaults, so a face the
-   * raster instanced at weight 750 arrives in the browser at 400 — the right bytes, the wrong
-   * picture.
+   * Two runs that differ ONLY in their axes. They share a family, a weight and a style, so one
+   * `@font-face` selects both and a per-face descriptor could carry one of their tuples — which is
+   * the shape `createGoogleSansFlexTypography()` produces for all seven Glimmer roles.
    */
   @Test
-  fun variableFaceDeclaresTheAxesTheRasterDrew() {
-    val svg =
-      FigmaLayeredSvg.render(
-        FigmaSvgModel.from(LayoutInspectorPayload(clockNode(fontFamily = "/fonts/GSF.ttf"))),
-        FigmaLayeredSvg.Options(defaultFontFamily = "Google Sans Flex"),
-        listOf(
-          FigmaSvgFontFace(
-            "Google Sans Flex",
-            400,
-            italic = false,
-            dataBase64 = "QUJD",
-            format = "truetype",
-            variationSettings = "'GRAD' 0,'ROND' 100,'opsz' 9,'wght' 750",
-          )
-        ),
-        mapOf("/fonts/GSF.ttf" to "Google Sans Flex"),
-      )
+  fun eachRunCarriesItsOwnVariationAxes() {
+    val svg = FigmaLayeredSvg.render(twoAxisRunModel(), FigmaLayeredSvg.Options())
 
     assertTrue(
-      "declares the axes the render instanced",
-      svg.contains("font-variation-settings:'GRAD' 0,'ROND' 100,'opsz' 9,'wght' 750;"),
+      "the title run keeps its own axes",
+      svg.contains("""style="font-variation-settings:&apos;wght&apos; 750""""),
+    )
+    assertTrue(
+      "the body run keeps its own axes",
+      svg.contains("""style="font-variation-settings:&apos;wght&apos; 520""""),
     )
   }
 
-  /** A static instance has no axes to declare, and an empty declaration is not valid CSS. */
+  /** A static face has no axes to name, and an empty declaration is not valid CSS. */
   @Test
-  fun staticFaceDeclaresNoAxes() {
+  fun aRunWithNoAxesDeclaresNone() {
     val svg =
       FigmaLayeredSvg.render(
-        FigmaSvgModel.from(LayoutInspectorPayload(clockNode(fontFamily = "/fonts/Lato.ttf"))),
-        FigmaLayeredSvg.Options(defaultFontFamily = "Lato"),
-        listOf(FigmaSvgFontFace("Lato", 400, italic = false, dataBase64 = "QUJD")),
-        mapOf("/fonts/Lato.ttf" to "Lato"),
+        twoAxisRunModel(titleAxes = "", bodyAxes = ""),
+        FigmaLayeredSvg.Options(),
       )
 
     assertFalse("no empty declaration", svg.contains("font-variation-settings"))
   }
 
   /**
-   * The value reaches the emitter from a producer and lands in a `<style>` block, where a stray `;`
-   * or `}` would end the rule early and leave the rest of the stylesheet as garbage.
+   * The value reaches the emitter from a producer and lands in a `style` attribute, where a stray
+   * `;` or `}` would end the declaration and leave the rest as garbage.
    */
   @Test
-  fun aVariationSettingsValueThatIsNotAnAxisListIsNotEmitted() {
+  fun aVariationValueThatIsNotAnAxisListIsNotEmitted() {
     val svg =
       FigmaLayeredSvg.render(
-        FigmaSvgModel.from(LayoutInspectorPayload(clockNode(fontFamily = "/fonts/GSF.ttf"))),
-        FigmaLayeredSvg.Options(defaultFontFamily = "Google Sans Flex"),
-        listOf(
-          FigmaSvgFontFace(
-            "Google Sans Flex",
-            400,
-            italic = false,
-            dataBase64 = "QUJD",
-            format = "truetype",
-            variationSettings = "'wght' 750;} body{display:none",
-          )
-        ),
-        mapOf("/fonts/GSF.ttf" to "Google Sans Flex"),
+        twoAxisRunModel(titleAxes = "'wght' 750;} body{display:none"),
+        FigmaLayeredSvg.Options(),
       )
 
-    assertFalse("the rule is not broken out of", svg.contains("display:none"))
-    assertFalse("nothing is declared at all", svg.contains("font-variation-settings"))
+    assertFalse("the declaration is not broken out of", svg.contains("display:none"))
+    assertFalse(
+      "nothing is declared for that run",
+      svg.contains("font-variation-settings:&apos;wght&apos; 750;"),
+    )
+  }
+
+  /**
+   * Two text layers in one tree, same family/weight/style, different axes — the collapse case a
+   * `@font-face` descriptor cannot express.
+   */
+  private fun twoAxisRunModel(
+    titleAxes: String = "'wght' 750",
+    bodyAxes: String = "'wght' 520",
+  ): FigmaSvgModel {
+    fun run(name: String, top: Int, content: String, axes: String) =
+      FigmaSvgLayer(
+        name = name,
+        left = 0,
+        top = top,
+        right = 200,
+        bottom = top + 40,
+        text =
+          FigmaSvgText(
+            content = content,
+            fontSizePx = 30.0,
+            fontFamily = "Google Sans Flex",
+            fontWeight = 400,
+            variationSettings = axes,
+          ),
+      )
+    return FigmaSvgModel(
+      root =
+        FigmaSvgLayer(
+          name = "root",
+          left = 0,
+          top = 0,
+          right = 200,
+          bottom = 80,
+          children = listOf(run("title", 0, "Title", titleAxes), run("body", 40, "Body", bodyAxes)),
+        ),
+      minX = 0,
+      minY = 0,
+      width = 200,
+      height = 80,
+      padding = 0,
+    )
   }
 }
