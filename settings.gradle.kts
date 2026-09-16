@@ -104,3 +104,26 @@ project(":data-preview-overrides-core").projectDir = file("data/preview-override
 include(":common-io")
 
 project(":common-io").projectDir = file("common/io")
+
+include(":bom")
+
+// Project paths whose build script applies `composeai.maven-publishing`, handed to `:bom` through a
+// system property so its constraints are derived from the build rather than kept as a second list
+// that goes stale.
+//
+// Matched with its closing quote (`composeai.maven-publishing")`) rather than as a bare substring:
+// `composeai.maven-publishing-platform` starts with the same 26 characters, so a prefix match pulls
+// `:bom` into the list of things the BOM constrains and it ends up constraining itself.
+val publishedProjectPaths = buildList {
+  fun visit(descriptor: org.gradle.api.initialization.ProjectDescriptor) {
+    if (
+      descriptor.buildFile.exists() &&
+        descriptor.buildFile.readText().contains("composeai.maven-publishing\")")
+    ) {
+      add(descriptor.path)
+    }
+    descriptor.children.forEach(::visit)
+  }
+  rootProject.children.forEach(::visit)
+}
+System.setProperty("composeai.publishedProjectPaths", publishedProjectPaths.joinToString(","))
