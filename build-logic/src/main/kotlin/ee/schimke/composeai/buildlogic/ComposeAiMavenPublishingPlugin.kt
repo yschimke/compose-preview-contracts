@@ -49,46 +49,66 @@ class ComposeAiMavenPublishingPlugin : Plugin<Project> {
     project.configureAndroidLibraryPublication()
 
     project.afterEvaluate {
-      val artifactId =
-        extension.artifactId.orNull ?: error("composeAiMavenPublishing.artifactId is required")
-      val displayName =
-        extension.displayName.orNull ?: error("composeAiMavenPublishing.displayName is required")
-      val artifactDescription =
-        extension.description.orNull ?: error("composeAiMavenPublishing.description is required")
+      project.configureComposeAiPublication(
+        artifactId =
+          extension.artifactId.orNull ?: error("composeAiMavenPublishing.artifactId is required"),
+        displayName =
+          extension.displayName.orNull
+            ?: error("composeAiMavenPublishing.displayName is required"),
+        artifactDescription =
+          extension.description.orNull
+            ?: error("composeAiMavenPublishing.description is required"),
+        inceptionYear = extension.inceptionYear,
+      )
+    }
+  }
+}
 
-      project.extensions.configure<MavenPublishBaseExtension> {
-        publishToMavenCentral(automaticRelease = true)
-        if (!project.version.toString().endsWith("SNAPSHOT")) {
-          signAllPublications()
+/**
+ * The coordinates, signing and POM metadata every artifact this repository publishes carries.
+ *
+ * Shared by [ComposeAiMavenPublishingPlugin] and [ComposeAiPlatformPublishingPlugin] rather than
+ * duplicated: the BOM describes the same release as the modules it constrains, so if the two
+ * disagreed about the group, the licence or the SCM block, the index and the things it indexes
+ * would be published under different metadata.
+ */
+internal fun Project.configureComposeAiPublication(
+  artifactId: String,
+  displayName: String,
+  artifactDescription: String,
+  inceptionYear: org.gradle.api.provider.Property<String>,
+) {
+  extensions.configure<MavenPublishBaseExtension> {
+    publishToMavenCentral(automaticRelease = true)
+    if (!version.toString().endsWith("SNAPSHOT")) {
+      signAllPublications()
+    }
+    coordinates("ee.schimke.composeai", artifactId, version.toString())
+    pom {
+      name.set(displayName)
+      description.set(artifactDescription)
+      url.set("https://github.com/yschimke/compose-ai-tools")
+      inceptionYear.set(inceptionYear)
+      licenses {
+        license {
+          name.set("The Apache License, Version 2.0")
+          url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+          distribution.set("repo")
         }
-        coordinates("ee.schimke.composeai", artifactId, project.version.toString())
-        pom {
-          name.set(displayName)
-          description.set(artifactDescription)
-          url.set("https://github.com/yschimke/compose-ai-tools")
-          inceptionYear.set(extension.inceptionYear)
-          licenses {
-            license {
-              name.set("The Apache License, Version 2.0")
-              url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
-              distribution.set("repo")
-            }
-          }
-          developers {
-            developer {
-              id.set("yschimke")
-              name.set("Yuri Schimke")
-              url.set("https://github.com/yschimke")
-            }
-          }
-          scm {
-            url.set("https://github.com/yschimke/compose-ai-tools")
-            connection.set("scm:git:https://github.com/yschimke/compose-ai-tools.git")
-            developerConnection.set(
-              "scm:git:ssh://git@github.com/yschimke/compose-ai-tools.git"
-            )
-          }
+      }
+      developers {
+        developer {
+          id.set("yschimke")
+          name.set("Yuri Schimke")
+          url.set("https://github.com/yschimke")
         }
+      }
+      scm {
+        url.set("https://github.com/yschimke/compose-ai-tools")
+        connection.set("scm:git:https://github.com/yschimke/compose-ai-tools.git")
+        developerConnection.set(
+          "scm:git:ssh://git@github.com/yschimke/compose-ai-tools.git"
+        )
       }
     }
   }
@@ -123,6 +143,17 @@ private fun Project.configureAndroidLibraryPublication() {
     }
   }
 }
+
+/**
+ * The version a *platform* publishes at.
+ *
+ * `:bom` is the index of a release, not a member of it: a consumer resolving the BOM at the tag has
+ * to find it there whether or not any given module published, so it is never skipped and never
+ * carries a recorded version.
+ */
+internal fun Project.platformPublishedVersion(): String =
+  providers.environmentVariable("PLUGIN_VERSION").orNull?.takeIf { it.isNotBlank() }
+    ?: nextPatchSnapshotVersion()
 
 private fun Project.nextPatchSnapshotVersion(): String {
   val manifest =

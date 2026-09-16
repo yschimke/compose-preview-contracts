@@ -40,5 +40,13 @@ gradlePlugin {
       id = "composeai.maven-publishing"
       implementationClass = "ee.schimke.composeai.buildlogic.ComposeAiMavenPublishingPlugin"
     }
+    register("composeAiPlatformPublishing") {
+      id = "composeai.maven-publishing-platform"
+      implementationClass = "ee.schimke.composeai.buildlogic.ComposeAiPlatformPublishingPlugin"
+    }
   }
 }
+
+dependencies { testImplementation(kotlin("test-junit5")) }
+
+tasks.test { useJUnitPlatform() }
