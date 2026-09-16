@@ -1511,15 +1511,13 @@ public final class ee/schimke/composeai/data/layoutinspector/PreviewSlots {
 
 public final class ee/schimke/composeai/data/layoutinspector/PreviewSlotsPayload {
 	public static final field Companion Lee/schimke/composeai/data/layoutinspector/PreviewSlotsPayload$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/util/List;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/util/List;
-	public final fun copy (Ljava/lang/String;Ljava/util/List;)Lee/schimke/composeai/data/layoutinspector/PreviewSlotsPayload;
-	public static synthetic fun copy$default (Lee/schimke/composeai/data/layoutinspector/PreviewSlotsPayload;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lee/schimke/composeai/data/layoutinspector/PreviewSlotsPayload;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getPreviewId ()Ljava/lang/String;
 	public final fun getSlots ()Ljava/util/List;
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/data/layoutinspector/PreviewSlotsPayload$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -1532,6 +1530,15 @@ public final synthetic class ee/schimke/composeai/data/layoutinspector/PreviewSl
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/data/layoutinspector/PreviewSlotsPayload;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/data/layoutinspector/PreviewSlotsPayload$Builder {
+	public fun <init> (Ljava/lang/String;Ljava/util/List;)V
+	public final fun build ()Lee/schimke/composeai/data/layoutinspector/PreviewSlotsPayload;
+	public final fun getPreviewId ()Ljava/lang/String;
+	public final fun getSlots ()Ljava/util/List;
+	public final fun setPreviewId (Ljava/lang/String;)V
+	public final fun setSlots (Ljava/util/List;)V
 }
 
 public final class ee/schimke/composeai/data/layoutinspector/PreviewSlotsPayload$Companion {

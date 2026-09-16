@@ -106,7 +106,32 @@ public enum class SlotScope {
  * this to lay out slot regions and size children to fill them.
  */
 @Serializable
-public data class PreviewSlotsPayload(val previewId: String, val slots: List<PreviewSlot>)
+@ConsistentCopyVisibility
+public data class PreviewSlotsPayload
+internal constructor(val previewId: String, val slots: List<PreviewSlot>) {
+  /**
+   * Builds a [PreviewSlotsPayload].
+   *
+   * The construction API: [PreviewSlotsPayload]'s constructor is `internal`, and
+   * `@ConsistentCopyVisibility` makes the generated `copy` internal with it, so neither is public
+   * ABI. That matters because this type crosses a repository boundary as a compiled artifact:
+   * adding a property to a data class REMOVES the old `<init>` and `copy$default` signatures, and a
+   * consumer compiled against the previous release dies at its own call site with
+   * `NoSuchMethodError`. Neither signature is reachable now, so neither can break.
+   *
+   * The rule that keeps that true: **a new property is always optional**, so it only ever adds a
+   * setter here and never a parameter to this constructor.
+   */
+  public class Builder(previewId: String, slots: List<PreviewSlot>) {
+    public var previewId: String = previewId
+    public var slots: List<PreviewSlot> = slots
+
+    public fun build(): PreviewSlotsPayload = PreviewSlotsPayload(previewId, slots)
+  }
+
+  /** This [PreviewSlotsPayload] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder = Builder(previewId, slots).also {}
+}
 
 /**
  * One named slot region — its author-declared [name], its [bounds] (absolute-to-root px), the

@@ -23,7 +23,9 @@ import kotlinx.serialization.json.Json
  * side of the boundary first.
  */
 @Serializable
-public data class DaemonLaunchDescriptor(
+@ConsistentCopyVisibility
+public data class DaemonLaunchDescriptor
+internal constructor(
   val schemaVersion: Int,
   val modulePath: String,
   val variant: String,
@@ -56,6 +58,82 @@ public data class DaemonLaunchDescriptor(
    */
   val hardTtlSeconds: Long? = null,
 ) {
+  /**
+   * Builds a [DaemonLaunchDescriptor].
+   *
+   * The construction API: [DaemonLaunchDescriptor]'s constructor is `internal`, and
+   * `@ConsistentCopyVisibility` makes the generated `copy` internal with it, so neither is public
+   * ABI. That matters because this type crosses a repository boundary as a compiled artifact:
+   * adding a property to a data class REMOVES the old `<init>` and `copy$default` signatures, and a
+   * consumer compiled against the previous release dies at its own call site with
+   * `NoSuchMethodError`. Neither signature is reachable now, so neither can break.
+   *
+   * The rule that keeps that true: **a new property is always optional**, so it only ever adds a
+   * setter here and never a parameter to this constructor.
+   */
+  public class Builder(
+    schemaVersion: Int,
+    modulePath: String,
+    variant: String,
+    enabled: Boolean,
+    mainClass: String,
+    classpath: List<String>,
+    jvmArgs: List<String>,
+    systemProperties: Map<String, String>,
+    workingDirectory: String,
+    manifestPath: String,
+  ) {
+    public var schemaVersion: Int = schemaVersion
+    public var modulePath: String = modulePath
+    public var variant: String = variant
+    public var enabled: Boolean = enabled
+    public var mainClass: String = mainClass
+    public var classpath: List<String> = classpath
+    public var jvmArgs: List<String> = jvmArgs
+    public var systemProperties: Map<String, String> = systemProperties
+    public var workingDirectory: String = workingDirectory
+    public var manifestPath: String = manifestPath
+    public var javaLauncher: String? = null
+    public var jailCommand: List<String> = emptyList()
+    public var hardTtlSeconds: Long? = null
+
+    public fun build(): DaemonLaunchDescriptor =
+      DaemonLaunchDescriptor(
+        schemaVersion,
+        modulePath,
+        variant,
+        enabled,
+        mainClass,
+        javaLauncher,
+        classpath,
+        jvmArgs,
+        systemProperties,
+        workingDirectory,
+        manifestPath,
+        jailCommand,
+        hardTtlSeconds,
+      )
+  }
+
+  /** This [DaemonLaunchDescriptor] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(
+        schemaVersion,
+        modulePath,
+        variant,
+        enabled,
+        mainClass,
+        classpath,
+        jvmArgs,
+        systemProperties,
+        workingDirectory,
+        manifestPath,
+      )
+      .also {
+        it.javaLauncher = javaLauncher
+        it.jailCommand = jailCommand
+        it.hardTtlSeconds = hardTtlSeconds
+      }
 
   /** Returns a copy launched behind [command] and force-killed after [hardTtlSeconds]. */
   public fun jailed(command: List<String>, hardTtlSeconds: Long?): DaemonLaunchDescriptor =
