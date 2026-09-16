@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.20.0...v3.0.0) (2026-09-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* put the cross-repo protocol types behind builders ([#76](https://github.com/yschimke/compose-preview-contracts/issues/76))
+
+### Features
+
+* put the cross-repo protocol types behind builders ([#76](https://github.com/yschimke/compose-preview-contracts/issues/76)) ([d73f639](https://github.com/yschimke/compose-preview-contracts/commit/d73f639df46566aa38ac0ad2d9267d09e2b379ab))
+
 ## [2.20.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.19.0...v2.20.0) (2026-09-15)
 
 
