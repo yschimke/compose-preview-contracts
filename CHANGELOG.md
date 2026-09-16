@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.20.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.19.0...v2.20.0) (2026-09-15)
+
+
+### Features
+
+* name the captured variable-font axes on exported SVG text ([#74](https://github.com/yschimke/compose-preview-contracts/issues/74)) ([dfcf6bf](https://github.com/yschimke/compose-preview-contracts/commit/dfcf6bf14df1a0272c62f19ec93cf5c199bacf2e)), closes [#71](https://github.com/yschimke/compose-preview-contracts/issues/71)
+
 ## [2.19.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.18.0...v2.19.0) (2026-09-15)
 
 
