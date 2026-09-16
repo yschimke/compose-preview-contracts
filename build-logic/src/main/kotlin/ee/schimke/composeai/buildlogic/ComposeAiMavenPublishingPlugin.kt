@@ -42,9 +42,7 @@ class ComposeAiMavenPublishingPlugin : Plugin<Project> {
       )
 
     project.group = "ee.schimke.composeai"
-    project.version =
-      project.providers.environmentVariable("PLUGIN_VERSION").orNull
-        ?: project.nextPatchSnapshotVersion()
+    project.version = project.publishedVersion()
 
     project.configureAndroidLibraryPublication()
 
@@ -143,6 +141,46 @@ private fun Project.configureAndroidLibraryPublication() {
     }
   }
 }
+
+/**
+ * The version this module publishes at.
+ *
+ * On a release the tag's version is not automatically this module's: a release that publishes only
+ * the modules it changed leaves the rest where they were, and their POMs — and the BOM's
+ * constraints — have to name the version that actually exists on Central. [PublishedVersions] is
+ * the one place that rule lives; this is its `project.version` caller.
+ *
+ * Absent `PLUGIN_VERSION` there is no release in progress, so the publish set and the manifest are
+ * irrelevant and every module takes the local snapshot version.
+ */
+private fun Project.publishedVersion(): String {
+  val pluginVersion =
+    providers.environmentVariable("PLUGIN_VERSION").orNull?.takeIf { it.isNotBlank() }
+      ?: return nextPatchSnapshotVersion()
+
+  return PublishedVersions.resolve(
+    artifactId = publishedArtifactId(),
+    tagVersion = pluginVersion,
+    publishSet =
+      PublishedVersions.parsePublishSet(providers.gradleProperty("composeai.publishSet").orNull),
+    manifestText = publishingManifestText(),
+  )
+}
+
+/**
+ * The artifact id this project publishes as: its path with the separators flattened.
+ *
+ * Pinned against the build files by `PublishedArtifactIdTest`, because `:bom` and the publish set
+ * both address modules this way while the modules themselves declare an id in their build script.
+ */
+internal fun Project.publishedArtifactId(): String = path.removePrefix(":").replace(':', '-')
+
+/** The committed `publishing-manifest.json`, or an empty document when there is none. */
+internal fun Project.publishingManifestText(): String =
+  generateSequence(rootDir) { it.parentFile }
+    .map { it.resolve("publishing-manifest.json") }
+    .firstOrNull(File::isFile)
+    ?.readText() ?: "{}"
 
 /**
  * The version a *platform* publishes at.

@@ -49,6 +49,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write # un-draft the release once the upload succeeds
+    outputs:
+      publish-set: ${{ steps.plan.outputs.publish-set }}
+      planned: ${{ steps.plan.outputs.planned }}
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
@@ -82,6 +85,11 @@ jobs:
         with:
           ref: ${{ env.TAG_NAME }}
           persist-credentials: false
+          # Full history, because the publish plan below compares each module against the tag IT
+          # last published at. With the default shallow clone those tags are absent, the plan takes
+          # its fail-safe path and marks every module dirty — a release that publishes everything
+          # while reporting success, which is the saving silently turning itself off.
+          fetch-depth: 0
       - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
         with:
           distribution: temurin
@@ -100,6 +108,37 @@ jobs:
             exit 1
           fi
           echo "publishing $have"
+
+      # Which modules this release actually uploads. `maven-publish-plan.sh` compares each module
+      # against the tag it last published at, propagates to dependents, and resolves every
+      # uncertainty to "publish": Central refuses a second upload of a version, so an unnecessary
+      # publish costs quota while a wrongly-skipped one is unrepairable.
+      #
+      # A `workflow_dispatch` recovery run gets no plan. Its baseline may not be trustworthy — that
+      # is usually why someone is re-running it — and publishing everything is the safe answer.
+      #
+      # An EMPTY publish set is a real answer, not a missing one: a releasable change confined to
+      # `.github/` or the docs publishes no module, only the BOM. `-Pcomposeai.publishSet=` (empty)
+      # says that, while omitting the property says "no plan ran, publish everything".
+      - name: Compute the publish plan
+        id: plan
+        run: |
+          set -euo pipefail
+          PUBLISH_SET=""
+          PUBLISH_PLANNED=false
+          if [ "${{ github.event_name }}" != "workflow_dispatch" ]; then
+            PUBLISH_SET="$(.github/scripts/maven-publish-plan.sh --head "$TAG_NAME" | paste -sd, -)"
+            PUBLISH_PLANNED=true
+          fi
+          echo "plan ran: $PUBLISH_PLANNED; publish set: ${PUBLISH_SET:-<empty>}"
+          # `PUBLISH_PLANNED` is what keeps the two empty strings apart downstream. An empty set
+          # from a plan means "publish only the BOM"; no plan at all means "publish everything",
+          # and passing `-Pcomposeai.publishSet=` on a recovery run would silently turn the
+          # second into the first.
+          echo "PUBLISH_SET=$PUBLISH_SET" >> "$GITHUB_ENV"
+          echo "PUBLISH_PLANNED=$PUBLISH_PLANNED" >> "$GITHUB_ENV"
+          echo "publish-set=$PUBLISH_SET" >> "$GITHUB_OUTPUT"
+          echo "planned=$PUBLISH_PLANNED" >> "$GITHUB_OUTPUT"
 
       # Everything the artifacts have to survive, before they are permanent: compile, test, ktfmt
       # and checkKotlinAbi for all twelve modules.
@@ -125,22 +164,28 @@ jobs:
         run: |
           set -euo pipefail
           V="${TAG_NAME#v}"
-          PLUGIN_VERSION="$V" ./gradlew --no-daemon publishToMavenLocal
-          for m in daemon-protocol daemon-devices daemon-bta agent-grant-protocol \
-                   ui-builder-protocol parity-issues-protocol screen-document \
-                   data-render-core data-layoutinspector-core data-theme-core \
-                   data-preview-overrides-core common-io; do
-            pom="$HOME/.m2/repository/ee/schimke/composeai/$m/$V/$m-$V.pom"
-            [ -f "$pom" ] || { echo "::error::$m did not produce a POM at $V"; exit 1; }
-          done
-          # A KMP root POM can exist while one target publication is missing. Verify both concrete
-          # variants the UI builder's server and browser resolve, not only its metadata coordinate.
-          for m in ui-builder-protocol-jvm ui-builder-protocol-wasm-js \
-                   screen-document-jvm screen-document-wasm-js; do
-            pom="$HOME/.m2/repository/ee/schimke/composeai/$m/$V/$m-$V.pom"
-            [ -f "$pom" ] || { echo "::error::$m did not produce a POM at $V"; exit 1; }
-          done
-          echo "all twelve modules (sixteen coordinates) produced artifacts at $V"
+          PLAN_ARGS=()
+          if [ "$PUBLISH_PLANNED" = "true" ]; then
+            PLAN_ARGS+=("-Pcomposeai.publishSet=$PUBLISH_SET")
+          fi
+          PLUGIN_VERSION="$V" ./gradlew --no-daemon publishToMavenLocal "${PLAN_ARGS[@]}"
+          # Each module is checked at the version it will actually carry, which is the tag only
+          # for the modules this release publishes; a skipped one keeps its recorded version.
+          # `expected-poms.py` says which is which, and the empty publish set is passed through as
+          # an empty `--publish-set` rather than omitted — omitting it means "no plan ran".
+          if [ "$PUBLISH_PLANNED" = "true" ]; then
+            .github/scripts/expected-poms.py --version "$V" --publish-set "$PUBLISH_SET" \
+              > /tmp/expected-poms
+          else
+            .github/scripts/expected-poms.py --version "$V" > /tmp/expected-poms
+          fi
+          count=0
+          while read -r m v; do
+            pom="$HOME/.m2/repository/ee/schimke/composeai/$m/$v/$m-$v.pom"
+            [ -f "$pom" ] || { echo "::error::$m did not produce a POM at $v"; exit 1; }
+            count=$((count + 1))
+          done < /tmp/expected-poms
+          echo "$count coordinates produced artifacts"
 
       - name: Publish to Maven Central
         env:
@@ -150,7 +195,24 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
-        run: PLUGIN_VERSION="${TAG_NAME#v}" ./gradlew --no-daemon publishToMavenCentral
+        run: |
+          set -euo pipefail
+          # Ask Gradle for the task paths rather than deriving them here: the plan enumerates
+          # modules by artifact id and Gradle addresses them by project path. A hand-kept mapping
+          # between the two is exactly the artefact that goes stale silently, and stale here means
+          # publishing a module twice or dropping one out of a release.
+          PLAN_ARGS=()
+          if [ "$PUBLISH_PLANNED" = "true" ]; then
+            PLAN_ARGS+=("-Pcomposeai.publishSet=$PUBLISH_SET")
+          fi
+          TASKS="$(./gradlew -q printPublishTasks "${PLAN_ARGS[@]}" | cut -f1 | tr '\n' ' ')"
+          echo "publishing: $TASKS"
+          # Name the tasks explicitly, and refuse an empty list. A bare `./gradlew` is not a
+          # no-op that fails loudly — there is no `defaultTasks` in this build, so it runs `help`
+          # and exits 0, and the job goes green having published nothing.
+          [ -n "$TASKS" ] || { echo "::error::no publish tasks resolved"; exit 1; }
+          # shellcheck disable=SC2086
+          PLUGIN_VERSION="${TAG_NAME#v}" ./gradlew --no-daemon $TASKS "${PLAN_ARGS[@]}"
 
       # Only now is the release real. Until the upload succeeds it stays a draft, so a failed
       # publish does not leave a release announcing artifacts that are not there.
@@ -159,3 +221,53 @@ jobs:
           set -euo pipefail
           gh release edit "$TAG_NAME" --draft=false --latest
           echo "published $TAG_NAME"
+
+  # Write back what actually published, so the next release's plan has a per-module baseline.
+  #
+  # Its own job, and `continue-on-error`, deliberately. In compose-preview-daemon this started as a
+  # step inside the publish job that pushed straight to `main`; the branch ruleset rejected the push
+  # (`GH013: changes must be made through a pull request`) and took the whole release down with it
+  # AFTER the artifacts were already on Central — unrepairable, because Central refuses a second
+  # upload of a version (its #127). Recording is bookkeeping: it must never be able to fail a
+  # release that succeeded.
+  #
+  # It opens a pull request rather than pushing. That needs `pull-requests: write`, which
+  # release-please.yml must ALSO grant on its `uses:` — a called workflow cannot elevate what its
+  # caller granted, and asking for more is not a job failure but a startup failure of the entire
+  # run, with no jobs at all. That is the daemon's #131; both halves land together here.
+  #
+  # Skipped when no plan ran (a `workflow_dispatch` recovery), where every module published at the
+  # tag and the manifest is rewritten wholesale by the next planned release anyway.
+  record-published:
+    needs: publish
+    if: ${{ !cancelled() && needs.publish.result == 'success' && needs.publish.outputs.planned == 'true' }}
+    continue-on-error: true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Record the published versions
+        run: |
+          set -euo pipefail
+          .github/scripts/record-published.py \
+            --manifest publishing-manifest.json \
+            --version "${TAG_NAME#v}" \
+            --modules "${{ needs.publish.outputs.publish-set }}"
+      - name: Open a pull request with the updated manifest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- publishing-manifest.json; then
+            echo "manifest unchanged"; exit 0
+          fi
+          BRANCH="chore/record-published-${TAG_NAME}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add publishing-manifest.json
+          git commit -m "chore: record published versions for ${TAG_NAME}"
+          git push -u origin "$BRANCH"
+          gh pr create --fill --base main --head "$BRANCH"
