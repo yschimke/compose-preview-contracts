@@ -334,7 +334,9 @@ public @Serializable data class ExtensionsListResult(val extensions: List<Extens
 public @Serializable data class ExtensionsEnableParams(val ids: List<String>)
 
 @Serializable
-public data class ExtensionsEnableResult(
+@ConsistentCopyVisibility
+public data class ExtensionsEnableResult
+internal constructor(
   val newlyEnabled: List<String> = emptyList(),
   val pulledIn: List<String> = emptyList(),
   val alreadyEnabled: List<String> = emptyList(),
@@ -343,7 +345,53 @@ public data class ExtensionsEnableResult(
   val dataProducts: List<DataProductCapability> = emptyList(),
   val dataExtensions: List<DataExtensionDescriptor> = emptyList(),
   val previewExtensions: List<PreviewExtensionDescriptor> = emptyList(),
-)
+) {
+  /**
+   * Builds a [ExtensionsEnableResult].
+   *
+   * The construction API: [ExtensionsEnableResult]'s constructor is `internal`, and
+   * `@ConsistentCopyVisibility` makes the generated `copy` internal with it, so neither is public
+   * ABI. That matters because this type crosses a repository boundary as a compiled artifact:
+   * adding a property to a data class REMOVES the old `<init>` and `copy$default` signatures, and a
+   * consumer compiled against the previous release dies at its own call site with
+   * `NoSuchMethodError`. Neither signature is reachable now, so neither can break.
+   *
+   * The rule that keeps that true: **a new property is always optional**, so it only ever adds a
+   * setter here and never a parameter to this constructor.
+   */
+  public class Builder() {
+    public var newlyEnabled: List<String> = emptyList()
+    public var pulledIn: List<String> = emptyList()
+    public var alreadyEnabled: List<String> = emptyList()
+    public var unknown: List<String> = emptyList()
+    public var dataProducts: List<DataProductCapability> = emptyList()
+    public var dataExtensions: List<DataExtensionDescriptor> = emptyList()
+    public var previewExtensions: List<PreviewExtensionDescriptor> = emptyList()
+
+    public fun build(): ExtensionsEnableResult =
+      ExtensionsEnableResult(
+        newlyEnabled,
+        pulledIn,
+        alreadyEnabled,
+        unknown,
+        dataProducts,
+        dataExtensions,
+        previewExtensions,
+      )
+  }
+
+  /** This [ExtensionsEnableResult] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder().also {
+      it.newlyEnabled = newlyEnabled
+      it.pulledIn = pulledIn
+      it.alreadyEnabled = alreadyEnabled
+      it.unknown = unknown
+      it.dataProducts = dataProducts
+      it.dataExtensions = dataExtensions
+      it.previewExtensions = previewExtensions
+    }
+}
 
 public @Serializable data class ExtensionsDisableParams(val ids: List<String>)
 
@@ -870,7 +918,9 @@ public data class KeyboardOverride(val visible: Boolean? = null, val pressedKey:
  * `ee.schimke.composeai.daemon.FocusOverlay.apply` when set.
  */
 @Serializable
-public data class FocusOverride(
+@ConsistentCopyVisibility
+public data class FocusOverride
+internal constructor(
   val tabIndex: Int? = null,
   val direction: FocusDirection? = null,
   val step: Int? = null,
@@ -890,7 +940,43 @@ public data class FocusOverride(
    * full rationale and platform context.
    */
   val pressed: Boolean = false,
-)
+) {
+  /**
+   * Builds a [FocusOverride].
+   *
+   * The construction API: [FocusOverride]'s constructor is `internal`, and
+   * `@ConsistentCopyVisibility` makes the generated `copy` internal with it, so neither is public
+   * ABI. That matters because this type crosses a repository boundary as a compiled artifact:
+   * adding a property to a data class REMOVES the old `<init>` and `copy$default` signatures, and a
+   * consumer compiled against the previous release dies at its own call site with
+   * `NoSuchMethodError`. Neither signature is reachable now, so neither can break.
+   *
+   * The rule that keeps that true: **a new property is always optional**, so it only ever adds a
+   * setter here and never a parameter to this constructor.
+   */
+  public class Builder() {
+    public var tabIndex: Int? = null
+    public var direction: FocusDirection? = null
+    public var step: Int? = null
+    public var overlay: Boolean = false
+    public var enterPlacesFocus: Boolean = false
+    public var pressed: Boolean = false
+
+    public fun build(): FocusOverride =
+      FocusOverride(tabIndex, direction, step, overlay, enterPlacesFocus, pressed)
+  }
+
+  /** This [FocusOverride] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder().also {
+      it.tabIndex = tabIndex
+      it.direction = direction
+      it.step = step
+      it.overlay = overlay
+      it.enterPlacesFocus = enterPlacesFocus
+      it.pressed = pressed
+    }
+}
 
 /**
  * Mirror of Compose's `androidx.compose.ui.focus.FocusDirection`. Duplicated here because the
@@ -1011,7 +1097,9 @@ public enum class AmbientStateOverride {
  * previewed tree (the "disabled gesture" screen). Null falls back to `true`.
  */
 @Serializable
-public data class GestureOverride(
+@ConsistentCopyVisibility
+public data class GestureOverride
+internal constructor(
   /** Mirrors `LocalOneHandedGestureEnabled`. Null falls back to `true` (recognition enabled). */
   val enabled: Boolean? = null,
   /** Force-show the gesture hints for this render (immediate mode). Null falls back to `false`. */
@@ -1023,7 +1111,38 @@ public data class GestureOverride(
   val invoke: GestureKindOverride? = null,
   /** Optional handler label to scope [invoke] to a single registered gesture. */
   val invokeLabel: String? = null,
-)
+) {
+  /**
+   * Builds a [GestureOverride].
+   *
+   * The construction API: [GestureOverride]'s constructor is `internal`, and
+   * `@ConsistentCopyVisibility` makes the generated `copy` internal with it, so neither is public
+   * ABI. That matters because this type crosses a repository boundary as a compiled artifact:
+   * adding a property to a data class REMOVES the old `<init>` and `copy$default` signatures, and a
+   * consumer compiled against the previous release dies at its own call site with
+   * `NoSuchMethodError`. Neither signature is reachable now, so neither can break.
+   *
+   * The rule that keeps that true: **a new property is always optional**, so it only ever adds a
+   * setter here and never a parameter to this constructor.
+   */
+  public class Builder() {
+    public var enabled: Boolean? = null
+    public var showHints: Boolean? = null
+    public var invoke: GestureKindOverride? = null
+    public var invokeLabel: String? = null
+
+    public fun build(): GestureOverride = GestureOverride(enabled, showHints, invoke, invokeLabel)
+  }
+
+  /** This [GestureOverride] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder().also {
+      it.enabled = enabled
+      it.showHints = showHints
+      it.invoke = invoke
+      it.invokeLabel = invokeLabel
+    }
+}
 
 /** Wire spelling for [GestureOverride.invoke] and the connector's registered-gesture kinds. */
 @Serializable
@@ -1068,7 +1187,9 @@ public enum class WallpaperPaletteStyle {
  * Android-only — the desktop backend has no Remote Compose runtime and ignores this field.
  */
 @Serializable
-public data class RemoteComposeOverride(
+@ConsistentCopyVisibility
+public data class RemoteComposeOverride
+internal constructor(
   val profile: RemoteComposeProfile? = null,
   val namedValues: Map<String, RemoteNamedValue> = emptyMap(),
   val acceptedHostActions: List<String>? = null,
@@ -1078,7 +1199,39 @@ public data class RemoteComposeOverride(
    * [RemoteComposePlayerKind] for what actually differs between the two.
    */
   val player: RemoteComposePlayerKind? = null,
-)
+) {
+  /**
+   * Builds a [RemoteComposeOverride].
+   *
+   * The construction API: [RemoteComposeOverride]'s constructor is `internal`, and
+   * `@ConsistentCopyVisibility` makes the generated `copy` internal with it, so neither is public
+   * ABI. That matters because this type crosses a repository boundary as a compiled artifact:
+   * adding a property to a data class REMOVES the old `<init>` and `copy$default` signatures, and a
+   * consumer compiled against the previous release dies at its own call site with
+   * `NoSuchMethodError`. Neither signature is reachable now, so neither can break.
+   *
+   * The rule that keeps that true: **a new property is always optional**, so it only ever adds a
+   * setter here and never a parameter to this constructor.
+   */
+  public class Builder() {
+    public var profile: RemoteComposeProfile? = null
+    public var namedValues: Map<String, RemoteNamedValue> = emptyMap()
+    public var acceptedHostActions: List<String>? = null
+    public var player: RemoteComposePlayerKind? = null
+
+    public fun build(): RemoteComposeOverride =
+      RemoteComposeOverride(profile, namedValues, acceptedHostActions, player)
+  }
+
+  /** This [RemoteComposeOverride] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder().also {
+      it.profile = profile
+      it.namedValues = namedValues
+      it.acceptedHostActions = acceptedHostActions
+      it.player = player
+    }
+}
 
 /**
  * Which Remote Compose player draws a replayed document.
