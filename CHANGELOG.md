@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.1.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.0.0...v3.1.0) (2026-09-17)
+
+
+### Features
+
+* **build:** publish a BOM for every contract this repository ships ([#78](https://github.com/yschimke/compose-preview-contracts/issues/78)) ([b55647f](https://github.com/yschimke/compose-preview-contracts/commit/b55647f8fdcecbd65eec5c4ac96349deb5256175))
+* **build:** publish only the modules a release changes ([#80](https://github.com/yschimke/compose-preview-contracts/issues/80)) ([0fe7fb2](https://github.com/yschimke/compose-preview-contracts/commit/0fe7fb27306059a9f0ee7c0cd636a8e50f8b2d76))
+
+
+### Bug Fixes
+
+* **build:** read the publish baseline from Maven Central, not from git ([#81](https://github.com/yschimke/compose-preview-contracts/issues/81)) ([1b4108d](https://github.com/yschimke/compose-preview-contracts/commit/1b4108dc585c2b9e8f8c1db9fca4cb23284bf5a6))
+
 ## [3.0.0](https://github.com/yschimke/compose-preview-contracts/compare/v2.20.0...v3.0.0) (2026-09-16)
 
 
