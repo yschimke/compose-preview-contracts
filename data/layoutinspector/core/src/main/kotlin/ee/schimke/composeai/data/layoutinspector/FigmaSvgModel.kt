@@ -1182,8 +1182,10 @@ public data class FigmaSvgModel(
         )
       }
       // An opaque component matched by name (Image/Icon/TextField/…) can't be vectorised at all —
-      // emit an <image> for the whole node and drop the subtree.
-      val opaqueByName = isOpaque(ctx.rasterComponents)
+      // emit an <image> for the whole node and drop the subtree. Unless its fill is a painter the
+      // token model already flattened into a real `<linearGradient>` or a flat colour, in which
+      // case the name is the only thing raster about it: see [paintsVectorisableFill].
+      val opaqueByName = isOpaque(ctx.rasterComponents) && !paintsVectorisableFill(ctx)
       if (opaqueByName) {
         val href = ctx.rasterHref(nodeId)
         ctx.rasterTargets.add(
@@ -2115,6 +2117,37 @@ public data class FigmaSvgModel(
       if (!painter.startsWith("ColorPainter(")) return true
       val filter = paint.properties["colorFilter"]
       return filter != null && filter != "null"
+    }
+
+    /**
+     * True when this node's *entire* fill is a painter the token resolver already flattened — a
+     * `ColorPainter` or a `BrushPainter` whose brush became a real [LayoutInspectorGradient].
+     *
+     * This is the inverse question to [hasUnvectorizablePaintFill], asked at a different place: the
+     * opaque-by-name gate rasters a node because of what it is *called*, and a component name is a
+     * poor proxy once the fill is fully expressible as SVG. `Image(painter = BrushPainter(brush))`
+     * is an `Image` — and with source info resolved its node reads `ImageKt`, which
+     * `"Image".let(::contains)` matches — but the gradient the export would have emitted is exactly
+     * the pixels the `<image>` bakes in. That is the Glimmer card header
+     * (yschimke/m3-catalog#2966).
+     *
+     * Two conditions make it safe to let the node through to the ordinary shape emission:
+     * - a [PAINT_FILL_MODIFIERS] entry carrying a `painter` of a flattenable form, with no
+     *   re-tinting `colorFilter`. A `BitmapPainter` or a component's private painter is not
+     *   flattenable, so `Image(bitmap, Modifier.background(Red))` keeps rastering even though its
+     *   `background` resolved a token; and
+     * - a fill token that actually *paints*. A `BrushPainter` wrapping a radial / sweep / shader
+     *   brush leaves both tokens unresolved, and dropping the raster there would drop the fill
+     *   entirely rather than export it.
+     */
+    private fun LayoutInspectorNode.paintsVectorisableFill(ctx: BuildContext): Boolean {
+      val paint = modifiers.firstOrNull { it.name in PAINT_FILL_MODIFIERS } ?: return false
+      val painter = paint.properties["painter"] ?: return false
+      if (!painter.startsWith("ColorPainter(") && !painter.startsWith("BrushPainter(")) return false
+      val filter = paint.properties["colorFilter"]
+      if (filter != null && filter != "null") return false
+      return tokens?.backgroundGradient.paints(ctx) ||
+        tokens?.backgroundColor?.let { argbToColor(it, ctx.colorNames) }.paints()
     }
 
     /**
