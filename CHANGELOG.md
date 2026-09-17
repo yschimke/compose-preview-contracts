@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.1](https://github.com/yschimke/compose-preview-contracts/compare/v3.1.0...v3.1.1) (2026-09-17)
+
+
+### Bug Fixes
+
+* emit a flattened painter fill as SVG instead of an opaque raster ([#82](https://github.com/yschimke/compose-preview-contracts/issues/82)) ([bb339c4](https://github.com/yschimke/compose-preview-contracts/commit/bb339c4ee6bab281b9f84a9d42bb9b4b3a2274fb))
+
 ## [3.1.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.0.0...v3.1.0) (2026-09-17)
 
 
