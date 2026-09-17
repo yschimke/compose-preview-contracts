@@ -68,11 +68,11 @@ jobs:
     uses: ./.github/workflows/release.yml
     permissions:
       contents: write
-      # For `record-published`, which opens a pull request with the manifest of what actually
-      # published. A called workflow cannot elevate what its caller granted, and asking for more
-      # is not a job failure but a startup failure of the whole run — no jobs, no release, and
-      # nothing in the run's log to say why (compose-preview-daemon#131).
-      pull-requests: write
+      # No `pull-requests: write`: `record-published` was the only job that needed it and it is
+      # gone — the publish plan reads its baseline from Maven Central and writes nothing back.
+      # Keep that true. A called workflow cannot elevate what its caller granted, and asking for
+      # more is not a job failure but a startup failure of the whole run — no jobs, no release,
+      # and nothing in the log to say why (compose-preview-daemon#131).
     with:
       tag_name: ${{ needs.release-please.outputs.tag_name }}
     secrets:

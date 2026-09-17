@@ -73,20 +73,9 @@ class PublishedVersionsTest {
     )
   }
 
-  @Test
-  fun `the committed manifest is the shape the regex reads`() {
-    // The reader is a regex because build-logic carries no JSON dependency. What keeps that honest
-    // is this: the real file, read the real way, for every module the real build publishes.
-    val repoRoot =
-      generateSequence(File(System.getProperty("user.dir")).absoluteFile) { it.parentFile }
-        .first { it.resolve("settings.gradle.kts").isFile && it.resolve("bom").isDirectory }
-    val text = repoRoot.resolve("publishing-manifest.json").readText()
-    val ids =
-      Regex("\"([a-z0-9-]+)\"\\s*:\\s*\"\\d+\\.\\d+\\.\\d+\"").findAll(text).map {
-        it.groupValues[1]
-      }
-    val found = ids.associateWith { PublishedVersions.recordedVersion(it, text) }
-    assertEquals(12, found.size, "every published module needs a recorded version")
-    assertEquals(emptyList(), found.filterValues { it == null }.keys.toList())
-  }
+  // `the committed manifest is the shape the regex reads` lived here, reading the real file to
+  // keep the regex honest. The file is not committed any more: the release plan resolves each
+  // coordinate's published version from Maven Central and writes it into the workspace, so there
+  // is nothing in git to read at test time. The shape is this repository's own — the plan script
+  // writes it and `PublishedVersions` reads it — and the cases above pin the reader against it.
 }
