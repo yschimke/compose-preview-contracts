@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.2.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.1.1...v3.2.0) (2026-09-19)
+
+
+### Features
+
+* carry a catalog's unrolled mock, and put the wasm capability behind a builder ([#84](https://github.com/yschimke/compose-preview-contracts/issues/84)) ([3f238e5](https://github.com/yschimke/compose-preview-contracts/commit/3f238e598aab989116389b1c65198c2bab6f5e32))
+* put the catalog capability types behind builders ([#86](https://github.com/yschimke/compose-preview-contracts/issues/86)) ([d5add3c](https://github.com/yschimke/compose-preview-contracts/commit/d5add3ce7a658d3725bfc8e2aef508f867d41b5d))
+
 ## [3.1.1](https://github.com/yschimke/compose-preview-contracts/compare/v3.1.0...v3.1.1) (2026-09-17)
 
 
