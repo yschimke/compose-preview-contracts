@@ -6546,8 +6546,10 @@ public final class ee/schimke/composeai/uibuilder/protocol/WasmCapabilityV1 {
 	public final fun component2 ()Lee/schimke/composeai/uibuilder/protocol/WasmAdapterStatusV1;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Lee/schimke/composeai/uibuilder/protocol/UnrolledMockV1;
+	public final fun component5 ()Ljava/lang/String;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAdapterStatus ()Lee/schimke/composeai/uibuilder/protocol/WasmAdapterStatusV1;
+	public final fun getCanvas ()Ljava/lang/String;
 	public final fun getNotes ()Ljava/lang/String;
 	public final fun getPlatformSupported ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getUnrolled ()Lee/schimke/composeai/uibuilder/protocol/UnrolledMockV1;
@@ -6571,10 +6573,12 @@ public final class ee/schimke/composeai/uibuilder/protocol/WasmCapabilityV1$Buil
 	public fun <init> (Lkotlinx/serialization/json/JsonElement;Lee/schimke/composeai/uibuilder/protocol/WasmAdapterStatusV1;)V
 	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/WasmCapabilityV1;
 	public final fun getAdapterStatus ()Lee/schimke/composeai/uibuilder/protocol/WasmAdapterStatusV1;
+	public final fun getCanvas ()Ljava/lang/String;
 	public final fun getNotes ()Ljava/lang/String;
 	public final fun getPlatformSupported ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getUnrolled ()Lee/schimke/composeai/uibuilder/protocol/UnrolledMockV1;
 	public final fun setAdapterStatus (Lee/schimke/composeai/uibuilder/protocol/WasmAdapterStatusV1;)V
+	public final fun setCanvas (Ljava/lang/String;)V
 	public final fun setNotes (Ljava/lang/String;)V
 	public final fun setPlatformSupported (Lkotlinx/serialization/json/JsonElement;)V
 	public final fun setUnrolled (Lee/schimke/composeai/uibuilder/protocol/UnrolledMockV1;)V
