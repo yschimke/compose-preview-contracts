@@ -43,7 +43,11 @@
       "role": "Scaffold",
       "traits": ["ScreenContent", "AdaptivePaneLayout"],
       "properties": [{"name": "layoutMode", "jsonType": "string", "allowedValues": ["adaptive", "expandedTwoPane"]}],
-      "wasm": {"platformSupported": "unverified", "adapterStatus": "unsupported"}
+      "wasm": {
+        "platformSupported": "unverified",
+        "adapterStatus": "unsupported",
+        "unrolled": {"layout": "panes"}
+      }
     }
   ],
   "exportCapabilities": {"composeCode": true, "svg": true, "png": true}

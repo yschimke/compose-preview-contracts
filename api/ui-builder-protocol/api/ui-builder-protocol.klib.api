@@ -6517,6 +6517,38 @@ final class ee.schimke.composeai.uibuilder.protocol/UndoCommandV1 : ee.schimke.c
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1 { // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1|null[0]
+    constructor <init>(kotlin/String, kotlinx.serialization.json/JsonElement? = ..., kotlinx.serialization.json/JsonElement? = ...) // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.<init>|<init>(kotlin.String;kotlinx.serialization.json.JsonElement?;kotlinx.serialization.json.JsonElement?){}[0]
+
+    final val cellWidthDp // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.cellWidthDp|{}cellWidthDp[0]
+        final fun <get-cellWidthDp>(): kotlinx.serialization.json/JsonElement? // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.cellWidthDp.<get-cellWidthDp>|<get-cellWidthDp>(){}[0]
+    final val layout // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.layout|{}layout[0]
+        final fun <get-layout>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.layout.<get-layout>|<get-layout>(){}[0]
+    final val spacingDp // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.spacingDp|{}spacingDp[0]
+        final fun <get-spacingDp>(): kotlinx.serialization.json/JsonElement? // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.spacingDp.<get-spacingDp>|<get-spacingDp>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.component1|component1(){}[0]
+    final fun component2(): kotlinx.serialization.json/JsonElement? // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.component2|component2(){}[0]
+    final fun component3(): kotlinx.serialization.json/JsonElement? // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.component3|component3(){}[0]
+    final fun copy(kotlin/String = ..., kotlinx.serialization.json/JsonElement? = ..., kotlinx.serialization.json/JsonElement? = ...): ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1 // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.copy|copy(kotlin.String;kotlinx.serialization.json.JsonElement?;kotlinx.serialization.json.JsonElement?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1> { // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1 // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1) // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.UnrolledMockV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1> // ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/UpdateDesignAccessRequestV1 : ee.schimke.composeai.uibuilder.protocol/UiBuilderRequestV1 { // ee.schimke.composeai.uibuilder.protocol/UpdateDesignAccessRequestV1|null[0]
     constructor <init>(kotlin/String, kotlin/Long, kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/DesignAccessMutationV1>) // ee.schimke.composeai.uibuilder.protocol/UpdateDesignAccessRequestV1.<init>|<init>(kotlin.String;kotlin.Long;kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.DesignAccessMutationV1>){}[0]
 
@@ -6635,22 +6667,42 @@ final class ee.schimke.composeai.uibuilder.protocol/UploadedAssetSourceV1 : ee.s
 }
 
 final class ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1 { // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1|null[0]
-    constructor <init>(kotlinx.serialization.json/JsonElement, ee.schimke.composeai.uibuilder.protocol/WasmAdapterStatusV1, kotlin/String? = ...) // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.<init>|<init>(kotlinx.serialization.json.JsonElement;ee.schimke.composeai.uibuilder.protocol.WasmAdapterStatusV1;kotlin.String?){}[0]
-
     final val adapterStatus // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.adapterStatus|{}adapterStatus[0]
         final fun <get-adapterStatus>(): ee.schimke.composeai.uibuilder.protocol/WasmAdapterStatusV1 // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.adapterStatus.<get-adapterStatus>|<get-adapterStatus>(){}[0]
     final val notes // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.notes|{}notes[0]
         final fun <get-notes>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.notes.<get-notes>|<get-notes>(){}[0]
     final val platformSupported // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.platformSupported|{}platformSupported[0]
         final fun <get-platformSupported>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.platformSupported.<get-platformSupported>|<get-platformSupported>(){}[0]
+    final val unrolled // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.unrolled|{}unrolled[0]
+        final fun <get-unrolled>(): ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1? // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.unrolled.<get-unrolled>|<get-unrolled>(){}[0]
 
     final fun component1(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.component1|component1(){}[0]
     final fun component2(): ee.schimke.composeai.uibuilder.protocol/WasmAdapterStatusV1 // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.component2|component2(){}[0]
     final fun component3(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.component3|component3(){}[0]
-    final fun copy(kotlinx.serialization.json/JsonElement = ..., ee.schimke.composeai.uibuilder.protocol/WasmAdapterStatusV1 = ..., kotlin/String? = ...): ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1 // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.copy|copy(kotlinx.serialization.json.JsonElement;ee.schimke.composeai.uibuilder.protocol.WasmAdapterStatusV1;kotlin.String?){}[0]
+    final fun component4(): ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1? // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.component4|component4(){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.hashCode|hashCode(){}[0]
+    final fun newBuilder(): ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.Builder // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.newBuilder|newBuilder(){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.toString|toString(){}[0]
+
+    final class Builder { // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.Builder|null[0]
+        constructor <init>(kotlinx.serialization.json/JsonElement, ee.schimke.composeai.uibuilder.protocol/WasmAdapterStatusV1) // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.Builder.<init>|<init>(kotlinx.serialization.json.JsonElement;ee.schimke.composeai.uibuilder.protocol.WasmAdapterStatusV1){}[0]
+
+        final var adapterStatus // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.Builder.adapterStatus|{}adapterStatus[0]
+            final fun <get-adapterStatus>(): ee.schimke.composeai.uibuilder.protocol/WasmAdapterStatusV1 // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.Builder.adapterStatus.<get-adapterStatus>|<get-adapterStatus>(){}[0]
+            final fun <set-adapterStatus>(ee.schimke.composeai.uibuilder.protocol/WasmAdapterStatusV1) // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.Builder.adapterStatus.<set-adapterStatus>|<set-adapterStatus>(ee.schimke.composeai.uibuilder.protocol.WasmAdapterStatusV1){}[0]
+        final var notes // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.Builder.notes|{}notes[0]
+            final fun <get-notes>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.Builder.notes.<get-notes>|<get-notes>(){}[0]
+            final fun <set-notes>(kotlin/String?) // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.Builder.notes.<set-notes>|<set-notes>(kotlin.String?){}[0]
+        final var platformSupported // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.Builder.platformSupported|{}platformSupported[0]
+            final fun <get-platformSupported>(): kotlinx.serialization.json/JsonElement // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.Builder.platformSupported.<get-platformSupported>|<get-platformSupported>(){}[0]
+            final fun <set-platformSupported>(kotlinx.serialization.json/JsonElement) // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.Builder.platformSupported.<set-platformSupported>|<set-platformSupported>(kotlinx.serialization.json.JsonElement){}[0]
+        final var unrolled // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.Builder.unrolled|{}unrolled[0]
+            final fun <get-unrolled>(): ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1? // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.Builder.unrolled.<get-unrolled>|<get-unrolled>(){}[0]
+            final fun <set-unrolled>(ee.schimke.composeai.uibuilder.protocol/UnrolledMockV1?) // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.Builder.unrolled.<set-unrolled>|<set-unrolled>(ee.schimke.composeai.uibuilder.protocol.UnrolledMockV1?){}[0]
+
+        final fun build(): ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1 // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.Builder.build|build(){}[0]
+    }
 
     final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1> { // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.$serializer|null[0]
         final val descriptor // ee.schimke.composeai.uibuilder.protocol/WasmCapabilityV1.$serializer.descriptor|{}descriptor[0]

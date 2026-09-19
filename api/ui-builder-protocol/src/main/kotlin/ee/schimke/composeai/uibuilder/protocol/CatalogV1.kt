@@ -128,11 +128,80 @@ public data class EventCapabilityV1(
 )
 
 @Serializable
-public data class WasmCapabilityV1(
+@ConsistentCopyVisibility
+public data class WasmCapabilityV1
+internal constructor(
   /** Boolean today, with the current catalog's `"unverified"` spelling retained losslessly. */
   public val platformSupported: JsonElement,
   public val adapterStatus: WasmAdapterStatusV1,
   public val notes: String? = null,
+  /**
+   * The editing canvas's mock for this component, when its catalog declares one.
+   *
+   * A scrollable container drawn as itself cannot show a child past the frame's edge — the ninth
+   * row of a lazy column, the fifth tab of a scrollable row, the pane a phone frame hides — so a
+   * catalog may say how its children should be laid out while an author is inside it. The
+   * **constrained** surfaces never see this: the preview pane, each device frame, the native lane
+   * and every export draw the component itself, which is the split the editor's canvas has always
+   * drawn between what is being edited and what a device shows.
+   *
+   * Null — the default, and every component today — keeps the component's own layout while editing.
+   * An optional declaration rather than a required one is what lets a catalog adopt this one
+   * component at a time.
+   */
+  public val unrolled: UnrolledMockV1? = null,
+) {
+  /**
+   * Builds a [WasmCapabilityV1].
+   *
+   * The construction API: [WasmCapabilityV1]'s constructor is `internal`, and
+   * `@ConsistentCopyVisibility` makes the generated `copy` internal with it, so neither is public
+   * ABI. That matters because this type crosses a repository boundary as a compiled artifact:
+   * adding a property to a data class REMOVES the old `<init>` and `copy$default` signatures, and a
+   * consumer compiled against the previous release dies at its own call site. That is not
+   * hypothetical here — adding [unrolled] did exactly that to compose-ui-builder's runtime, as
+   * `NoSuchMethodError: WasmCapabilityV1.copy$default(...)` out of
+   * `ProductionUiBuilderRuntime.remoteM3Catalog`. Neither signature is reachable now, so neither
+   * can break.
+   *
+   * The rule that keeps that true: **a new property is always optional**, so it only ever adds a
+   * setter here and never a parameter to this constructor.
+   */
+  public class Builder(platformSupported: JsonElement, adapterStatus: WasmAdapterStatusV1) {
+    public var platformSupported: JsonElement = platformSupported
+    public var adapterStatus: WasmAdapterStatusV1 = adapterStatus
+    public var notes: String? = null
+    public var unrolled: UnrolledMockV1? = null
+
+    public fun build(): WasmCapabilityV1 =
+      WasmCapabilityV1(platformSupported, adapterStatus, notes, unrolled)
+  }
+
+  /** This [WasmCapabilityV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(platformSupported, adapterStatus).also {
+      it.notes = notes
+      it.unrolled = unrolled
+    }
+}
+
+/**
+ * The layout a catalog asks the editing canvas to draw for a component while it is being edited.
+ *
+ * [layout] is the **builder's** vocabulary, not this contract's, exactly as a catalog's `canvas`
+ * adapter name is: the builder resolves the name against its own registry, and a name that build
+ * does not know is inert — the component draws as itself rather than as a broken mock. The names in
+ * use are `stack` (a `Column`), `row` (a `Row`), `wrap` (a `FlowRow`) and `panes` (every pane a
+ * pane scaffold declares). A closed enum here would make a new mock layout a release of this
+ * artifact before any catalog could name it, which is the cost `canvas` already avoids.
+ */
+@Serializable
+public data class UnrolledMockV1(
+  public val layout: String,
+  /** The width `wrap` and `row` give one cell; absent leaves it to the layout. */
+  public val cellWidthDp: JsonElement? = null,
+  /** The gap between cells; absent leaves it to the layout. */
+  public val spacingDp: JsonElement? = null,
 )
 
 @Serializable
