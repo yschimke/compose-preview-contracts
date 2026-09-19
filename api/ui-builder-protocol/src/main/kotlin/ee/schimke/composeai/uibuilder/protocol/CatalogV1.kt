@@ -24,23 +24,78 @@ public data class CatalogReferenceV1(
 
 /** Immutable catalog metadata and the component capabilities understood by an editor. */
 @Serializable
-public data class CatalogCapabilityV1(
+@ConsistentCopyVisibility
+public data class CatalogCapabilityV1
+internal constructor(
   public val schema: String,
   public val benchmark: CatalogBenchmarkV1,
   public val statusSemantics: JsonObject = JsonObject(emptyMap()),
   public val components: List<ComponentCapabilityV1>,
   public val exportCapabilities: ExportCapabilitiesV1 = ExportCapabilitiesV1(),
-)
+) {
+  /**
+   * Builds a [CatalogCapabilityV1]; see [WasmCapabilityV1.Builder] for why the constructor is
+   * internal.
+   */
+  public class Builder(
+    schema: String,
+    benchmark: CatalogBenchmarkV1,
+    components: List<ComponentCapabilityV1>,
+  ) {
+    public var schema: String = schema
+    public var benchmark: CatalogBenchmarkV1 = benchmark
+    public var statusSemantics: JsonObject = JsonObject(emptyMap())
+    public var components: List<ComponentCapabilityV1> = components
+    public var exportCapabilities: ExportCapabilitiesV1 = ExportCapabilitiesV1()
+
+    public fun build(): CatalogCapabilityV1 =
+      CatalogCapabilityV1(schema, benchmark, statusSemantics, components, exportCapabilities)
+  }
+
+  /** This [CatalogCapabilityV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(schema, benchmark, components).also {
+      it.statusSemantics = statusSemantics
+      it.exportCapabilities = exportCapabilities
+    }
+}
 
 /** Source and runtime identity carried by the current catalog capability document. */
 @Serializable
-public data class CatalogBenchmarkV1(
+@ConsistentCopyVisibility
+public data class CatalogBenchmarkV1
+internal constructor(
   public val id: String,
   public val sourceRevision: String,
   public val catalogSystemId: String,
   public val catalogRevision: String,
   public val nativeRuntimeId: String,
-)
+) {
+  /**
+   * Builds a [CatalogBenchmarkV1]; see [WasmCapabilityV1.Builder] for why the constructor is
+   * internal.
+   */
+  public class Builder(
+    id: String,
+    sourceRevision: String,
+    catalogSystemId: String,
+    catalogRevision: String,
+    nativeRuntimeId: String,
+  ) {
+    public var id: String = id
+    public var sourceRevision: String = sourceRevision
+    public var catalogSystemId: String = catalogSystemId
+    public var catalogRevision: String = catalogRevision
+    public var nativeRuntimeId: String = nativeRuntimeId
+
+    public fun build(): CatalogBenchmarkV1 =
+      CatalogBenchmarkV1(id, sourceRevision, catalogSystemId, catalogRevision, nativeRuntimeId)
+  }
+
+  /** This [CatalogBenchmarkV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(id, sourceRevision, catalogSystemId, catalogRevision, nativeRuntimeId)
+}
 
 /** What structural role a catalog component may play in a design tree. */
 @Serializable
@@ -54,7 +109,9 @@ public enum class ComponentKindV1 {
 
 /** A component's editable surface. Validation policy remains in the owning implementation. */
 @Serializable
-public data class ComponentCapabilityV1(
+@ConsistentCopyVisibility
+public data class ComponentCapabilityV1
+internal constructor(
   public val componentId: String,
   public val displayName: String,
   public val role: String,
@@ -65,20 +122,111 @@ public data class ComponentCapabilityV1(
   public val wasm: WasmCapabilityV1,
   public val code: CodeCapabilityV1? = null,
   public val svg: SvgCapabilityV1? = null,
-)
+) {
+  /**
+   * Builds a [ComponentCapabilityV1]; see [WasmCapabilityV1.Builder] for why the constructor is
+   * internal.
+   */
+  public class Builder(
+    componentId: String,
+    displayName: String,
+    role: String,
+    wasm: WasmCapabilityV1,
+  ) {
+    public var componentId: String = componentId
+    public var displayName: String = displayName
+    public var role: String = role
+    public var traits: List<String> = emptyList()
+    public var slots: List<SlotCapabilityV1> = emptyList()
+    public var properties: List<PropertyCapabilityV1> = emptyList()
+    public var modifierCapabilities: List<String> = emptyList()
+    public var wasm: WasmCapabilityV1 = wasm
+    public var code: CodeCapabilityV1? = null
+    public var svg: SvgCapabilityV1? = null
+
+    public fun build(): ComponentCapabilityV1 =
+      ComponentCapabilityV1(
+        componentId,
+        displayName,
+        role,
+        traits,
+        slots,
+        properties,
+        modifierCapabilities,
+        wasm,
+        code,
+        svg,
+      )
+  }
+
+  /** This [ComponentCapabilityV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(componentId, displayName, role, wasm).also {
+      it.traits = traits
+      it.slots = slots
+      it.properties = properties
+      it.modifierCapabilities = modifierCapabilities
+      it.code = code
+      it.svg = svg
+    }
+}
 
 /** Named child location exposed by a container or scaffold component. */
 @Serializable
-public data class SlotCapabilityV1(
+@ConsistentCopyVisibility
+public data class SlotCapabilityV1
+internal constructor(
   public val name: String,
   public val cardinality: SlotCardinalityV1,
   public val ordered: Boolean,
   public val acceptedRoles: List<String> = emptyList(),
   public val acceptedTraits: List<String> = emptyList(),
-)
+) {
+  /**
+   * Builds a [SlotCapabilityV1]; see [WasmCapabilityV1.Builder] for why the constructor is
+   * internal.
+   */
+  public class Builder(name: String, cardinality: SlotCardinalityV1, ordered: Boolean) {
+    public var name: String = name
+    public var cardinality: SlotCardinalityV1 = cardinality
+    public var ordered: Boolean = ordered
+    public var acceptedRoles: List<String> = emptyList()
+    public var acceptedTraits: List<String> = emptyList()
+
+    public fun build(): SlotCapabilityV1 =
+      SlotCapabilityV1(name, cardinality, ordered, acceptedRoles, acceptedTraits)
+  }
+
+  /** This [SlotCapabilityV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(name, cardinality, ordered).also {
+      it.acceptedRoles = acceptedRoles
+      it.acceptedTraits = acceptedTraits
+    }
+}
 
 @Serializable
-public data class SlotCardinalityV1(public val min: Int = 0, public val max: Int? = null)
+@ConsistentCopyVisibility
+public data class SlotCardinalityV1
+internal constructor(public val min: Int = 0, public val max: Int? = null) {
+  /**
+   * Builds a [SlotCardinalityV1]; see [WasmCapabilityV1.Builder] for why the constructor is
+   * internal.
+   */
+  public class Builder {
+    public var min: Int = 0
+    public var max: Int? = null
+
+    public fun build(): SlotCardinalityV1 = SlotCardinalityV1(min, max)
+  }
+
+  /** This [SlotCardinalityV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder().also {
+      it.min = min
+      it.max = max
+    }
+}
 
 /** Stable JSON value categories a property editor can offer without loading Compose code. */
 @Serializable
@@ -100,14 +248,39 @@ public enum class PropertyValueKindV1 {
 
 /** Declarative metadata for one editable Compose argument or design property. */
 @Serializable
-public data class PropertyCapabilityV1(
+@ConsistentCopyVisibility
+public data class PropertyCapabilityV1
+internal constructor(
   public val name: String,
   /** String or array JSON Schema `type`, retained without normalizing its authored spelling. */
   public val jsonType: JsonElement,
   public val required: Boolean = false,
   public val allowedValues: List<JsonElement> = emptyList(),
   public val notes: String? = null,
-)
+) {
+  /**
+   * Builds a [PropertyCapabilityV1]; see [WasmCapabilityV1.Builder] for why the constructor is
+   * internal.
+   */
+  public class Builder(name: String, jsonType: JsonElement) {
+    public var name: String = name
+    public var jsonType: JsonElement = jsonType
+    public var required: Boolean = false
+    public var allowedValues: List<JsonElement> = emptyList()
+    public var notes: String? = null
+
+    public fun build(): PropertyCapabilityV1 =
+      PropertyCapabilityV1(name, jsonType, required, allowedValues, notes)
+  }
+
+  /** This [PropertyCapabilityV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(name, jsonType).also {
+      it.required = required
+      it.allowedValues = allowedValues
+      it.notes = notes
+    }
+}
 
 @Serializable
 public enum class JsonValueTypeV1 {
@@ -196,13 +369,33 @@ internal constructor(
  * artifact before any catalog could name it, which is the cost `canvas` already avoids.
  */
 @Serializable
-public data class UnrolledMockV1(
+@ConsistentCopyVisibility
+public data class UnrolledMockV1
+internal constructor(
   public val layout: String,
   /** The width `wrap` and `row` give one cell; absent leaves it to the layout. */
   public val cellWidthDp: JsonElement? = null,
   /** The gap between cells; absent leaves it to the layout. */
   public val spacingDp: JsonElement? = null,
-)
+) {
+  /**
+   * Builds a [UnrolledMockV1]; see [WasmCapabilityV1.Builder] for why the constructor is internal.
+   */
+  public class Builder(layout: String) {
+    public var layout: String = layout
+    public var cellWidthDp: JsonElement? = null
+    public var spacingDp: JsonElement? = null
+
+    public fun build(): UnrolledMockV1 = UnrolledMockV1(layout, cellWidthDp, spacingDp)
+  }
+
+  /** This [UnrolledMockV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(layout).also {
+      it.cellWidthDp = cellWidthDp
+      it.spacingDp = spacingDp
+    }
+}
 
 @Serializable
 public enum class WasmAdapterStatusV1 {
@@ -212,18 +405,56 @@ public enum class WasmAdapterStatusV1 {
 }
 
 @Serializable
-public data class CodeCapabilityV1(
+@ConsistentCopyVisibility
+public data class CodeCapabilityV1
+internal constructor(
   public val symbol: String,
   public val imports: List<String> = emptyList(),
-)
+) {
+  /**
+   * Builds a [CodeCapabilityV1]; see [WasmCapabilityV1.Builder] for why the constructor is
+   * internal.
+   */
+  public class Builder(symbol: String) {
+    public var symbol: String = symbol
+    public var imports: List<String> = emptyList()
+
+    public fun build(): CodeCapabilityV1 = CodeCapabilityV1(symbol, imports)
+  }
+
+  /** This [CodeCapabilityV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder = Builder(symbol).also { it.imports = imports }
+}
 
 @Serializable
-public data class SvgCapabilityV1(
+@ConsistentCopyVisibility
+public data class SvgCapabilityV1
+internal constructor(
   public val status: SvgCapabilityStatusV1,
   public val fallback: SvgFallbackV1,
   public val blocksExport: Boolean,
   public val notes: String? = null,
-)
+) {
+  /**
+   * Builds a [SvgCapabilityV1]; see [WasmCapabilityV1.Builder] for why the constructor is internal.
+   */
+  public class Builder(
+    status: SvgCapabilityStatusV1,
+    fallback: SvgFallbackV1,
+    blocksExport: Boolean,
+  ) {
+    public var status: SvgCapabilityStatusV1 = status
+    public var fallback: SvgFallbackV1 = fallback
+    public var blocksExport: Boolean = blocksExport
+    public var notes: String? = null
+
+    public fun build(): SvgCapabilityV1 = SvgCapabilityV1(status, fallback, blocksExport, notes)
+  }
+
+  /** This [SvgCapabilityV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(status, fallback, blocksExport).also { it.notes = notes }
+}
 
 @Serializable
 public enum class SvgCapabilityStatusV1 {
@@ -241,7 +472,9 @@ public enum class SvgFallbackV1 {
 
 /** Export formats supported for designs using this exact catalog build. */
 @Serializable
-public data class ExportCapabilitiesV1(
+@ConsistentCopyVisibility
+public data class ExportCapabilitiesV1
+internal constructor(
   public val composeCode: Boolean = false,
   public val svg: Boolean = false,
   public val png: Boolean = false,
@@ -257,7 +490,34 @@ public data class ExportCapabilitiesV1(
   @EncodeDefault(EncodeDefault.Mode.NEVER) public val remoteJson: Boolean = false,
   /** A compatible compiler is configured to assemble binary Remote Compose documents. */
   @EncodeDefault(EncodeDefault.Mode.NEVER) public val remoteDocument: Boolean = false,
-)
+) {
+  /**
+   * Builds an [ExportCapabilitiesV1]; see [WasmCapabilityV1.Builder] for why the constructor is
+   * internal.
+   */
+  public class Builder {
+    public var composeCode: Boolean = false
+    public var svg: Boolean = false
+    public var png: Boolean = false
+    public var bundle: Boolean = false
+    public var remoteJson: Boolean = false
+    public var remoteDocument: Boolean = false
+
+    public fun build(): ExportCapabilitiesV1 =
+      ExportCapabilitiesV1(composeCode, svg, png, bundle, remoteJson, remoteDocument)
+  }
+
+  /** This [ExportCapabilitiesV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder().also {
+      it.composeCode = composeCode
+      it.svg = svg
+      it.png = png
+      it.bundle = bundle
+      it.remoteJson = remoteJson
+      it.remoteDocument = remoteDocument
+    }
+}
 
 /** Closed, language-neutral value tree used by node properties and session metadata. */
 @Serializable public sealed interface UiValueV1
