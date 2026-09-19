@@ -323,6 +323,25 @@ internal constructor(
    * component at a time.
    */
   public val unrolled: UnrolledMockV1? = null,
+  /**
+   * The canvas drawing a catalog names for this component, or null to key on the component id.
+   *
+   * The builder ships a registry of drawings — a Material 3 button, a Wear card, a round screen
+   * frame — and a catalog that names one gets it, whatever its component id is called. Before this
+   * field existed the id *was* the lookup: a Wear catalog's screen root was drawn as a round screen
+   * because the builder recognised `wear-m3/screen-scaffold`, which meant a catalog published under
+   * any other id could not ask for the same drawing, and every new one was a release of the
+   * builder. `UI_BUILDER_CATALOG_CONTRACT.md` item 17 is that coupling's removal.
+   *
+   * The name is the **builder's** vocabulary rather than this contract's, exactly as
+   * [UnrolledMockV1.layout] is: the builder resolves it against its own registry, and a name that
+   * build does not know draws the component as itself. A closed enum here would make a new drawing
+   * a release of this artifact before any catalog could name it.
+   *
+   * Null — the default, and every component today — keeps the id as the lookup, so a catalog adopts
+   * this one component at a time.
+   */
+  public val canvas: String? = null,
 ) {
   /**
    * Builds a [WasmCapabilityV1].
@@ -345,9 +364,10 @@ internal constructor(
     public var adapterStatus: WasmAdapterStatusV1 = adapterStatus
     public var notes: String? = null
     public var unrolled: UnrolledMockV1? = null
+    public var canvas: String? = null
 
     public fun build(): WasmCapabilityV1 =
-      WasmCapabilityV1(platformSupported, adapterStatus, notes, unrolled)
+      WasmCapabilityV1(platformSupported, adapterStatus, notes, unrolled, canvas)
   }
 
   /** This [WasmCapabilityV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
@@ -355,6 +375,7 @@ internal constructor(
     Builder(platformSupported, adapterStatus).also {
       it.notes = notes
       it.unrolled = unrolled
+      it.canvas = canvas
     }
 }
 
