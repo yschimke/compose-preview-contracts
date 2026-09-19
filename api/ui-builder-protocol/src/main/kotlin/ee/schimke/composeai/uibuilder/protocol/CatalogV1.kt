@@ -133,6 +133,40 @@ public data class WasmCapabilityV1(
   public val platformSupported: JsonElement,
   public val adapterStatus: WasmAdapterStatusV1,
   public val notes: String? = null,
+  /**
+   * The editing canvas's mock for this component, when its catalog declares one.
+   *
+   * A scrollable container drawn as itself cannot show a child past the frame's edge — the ninth
+   * row of a lazy column, the fifth tab of a scrollable row, the pane a phone frame hides — so a
+   * catalog may say how its children should be laid out while an author is inside it. The
+   * **constrained** surfaces never see this: the preview pane, each device frame, the native lane
+   * and every export draw the component itself, which is the split the editor's canvas has always
+   * drawn between what is being edited and what a device shows.
+   *
+   * Null — the default, and every component today — keeps the component's own layout while editing.
+   * An optional declaration rather than a required one is what lets a catalog adopt this one
+   * component at a time.
+   */
+  public val unrolled: UnrolledMockV1? = null,
+)
+
+/**
+ * The layout a catalog asks the editing canvas to draw for a component while it is being edited.
+ *
+ * [layout] is the **builder's** vocabulary, not this contract's, exactly as a catalog's `canvas`
+ * adapter name is: the builder resolves the name against its own registry, and a name that build
+ * does not know is inert — the component draws as itself rather than as a broken mock. The names in
+ * use are `stack` (a `Column`), `row` (a `Row`), `wrap` (a `FlowRow`) and `panes` (every pane a
+ * pane scaffold declares). A closed enum here would make a new mock layout a release of this
+ * artifact before any catalog could name it, which is the cost `canvas` already avoids.
+ */
+@Serializable
+public data class UnrolledMockV1(
+  public val layout: String,
+  /** The width `wrap` and `row` give one cell; absent leaves it to the layout. */
+  public val cellWidthDp: JsonElement? = null,
+  /** The gap between cells; absent leaves it to the layout. */
+  public val spacingDp: JsonElement? = null,
 )
 
 @Serializable
