@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.2.0...v3.3.0) (2026-09-19)
+
+
+### Features
+
+* carry a catalog's canvas adapter on the wasm capability ([#87](https://github.com/yschimke/compose-preview-contracts/issues/87)) ([32ec66f](https://github.com/yschimke/compose-preview-contracts/commit/32ec66feb6cac8d5715444a41ceee47f7d5940a4))
+
 ## [3.2.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.1.1...v3.2.0) (2026-09-19)
 
 
