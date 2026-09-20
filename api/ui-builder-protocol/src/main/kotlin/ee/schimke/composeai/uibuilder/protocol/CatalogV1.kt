@@ -395,6 +395,8 @@ internal constructor(
    * this one component at a time.
    */
   public val canvas: String? = null,
+  /** Property/slot normalization applied only while drawing [canvas]. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val canvasMapping: CanvasAdapterMappingV1? = null,
 ) {
   /**
    * Builds a [WasmCapabilityV1].
@@ -418,9 +420,17 @@ internal constructor(
     public var notes: String? = null
     public var unrolled: UnrolledMockV1? = null
     public var canvas: String? = null
+    public var canvasMapping: CanvasAdapterMappingV1? = null
 
     public fun build(): WasmCapabilityV1 =
-      WasmCapabilityV1(platformSupported, adapterStatus, notes, unrolled, canvas)
+      WasmCapabilityV1(
+        platformSupported,
+        adapterStatus,
+        notes,
+        unrolled,
+        canvas,
+        canvasMapping,
+      )
   }
 
   /** This [WasmCapabilityV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
@@ -429,6 +439,41 @@ internal constructor(
       it.notes = notes
       it.unrolled = unrolled
       it.canvas = canvas
+      it.canvasMapping = canvasMapping
+    }
+}
+
+/**
+ * Adapts a catalog component's authored vocabulary to the canvas drawing it names.
+ *
+ * This changes no document and reaches no export. It is a read-only projection used only by the
+ * editing canvas: [properties] maps a target property name to its source name, [slots] does the
+ * same for slots, and [defaults] supplies target values absent from the source. A Remote component
+ * can therefore name its real Wear counterpart without either catalog adopting the other's API
+ * spelling or an editor recognising the Remote component id.
+ */
+@Serializable
+@ConsistentCopyVisibility
+public data class CanvasAdapterMappingV1
+internal constructor(
+  public val properties: Map<String, String> = emptyMap(),
+  public val slots: Map<String, String> = emptyMap(),
+  public val defaults: JsonObject = JsonObject(emptyMap()),
+) {
+  public class Builder {
+    public var properties: Map<String, String> = emptyMap()
+    public var slots: Map<String, String> = emptyMap()
+    public var defaults: JsonObject = JsonObject(emptyMap())
+
+    public fun build(): CanvasAdapterMappingV1 =
+      CanvasAdapterMappingV1(properties = properties, slots = slots, defaults = defaults)
+  }
+
+  public fun newBuilder(): Builder =
+    Builder().also {
+      it.properties = properties
+      it.slots = slots
+      it.defaults = defaults
     }
 }
 

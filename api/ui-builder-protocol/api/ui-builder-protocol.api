@@ -612,6 +612,46 @@ public final class ee/schimke/composeai/uibuilder/protocol/BrowserPreviewCapabil
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class ee/schimke/composeai/uibuilder/protocol/CanvasAdapterMappingV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/CanvasAdapterMappingV1$Companion;
+	public final fun component1 ()Ljava/util/Map;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun component3 ()Lkotlinx/serialization/json/JsonObject;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDefaults ()Lkotlinx/serialization/json/JsonObject;
+	public final fun getProperties ()Ljava/util/Map;
+	public final fun getSlots ()Ljava/util/Map;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/CanvasAdapterMappingV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/CanvasAdapterMappingV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/CanvasAdapterMappingV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/CanvasAdapterMappingV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/CanvasAdapterMappingV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/CanvasAdapterMappingV1$Builder {
+	public fun <init> ()V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/CanvasAdapterMappingV1;
+	public final fun getDefaults ()Lkotlinx/serialization/json/JsonObject;
+	public final fun getProperties ()Ljava/util/Map;
+	public final fun getSlots ()Ljava/util/Map;
+	public final fun setDefaults (Lkotlinx/serialization/json/JsonObject;)V
+	public final fun setProperties (Ljava/util/Map;)V
+	public final fun setSlots (Ljava/util/Map;)V
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/CanvasAdapterMappingV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class ee/schimke/composeai/uibuilder/protocol/CatalogAssetSourceV1 : ee/schimke/composeai/uibuilder/protocol/AssetSourceV1 {
 	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/CatalogAssetSourceV1$Companion;
 	public fun <init> (Ljava/lang/String;)V
@@ -7100,9 +7140,11 @@ public final class ee/schimke/composeai/uibuilder/protocol/WasmCapabilityV1 {
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Lee/schimke/composeai/uibuilder/protocol/UnrolledMockV1;
 	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Lee/schimke/composeai/uibuilder/protocol/CanvasAdapterMappingV1;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAdapterStatus ()Lee/schimke/composeai/uibuilder/protocol/WasmAdapterStatusV1;
 	public final fun getCanvas ()Ljava/lang/String;
+	public final fun getCanvasMapping ()Lee/schimke/composeai/uibuilder/protocol/CanvasAdapterMappingV1;
 	public final fun getNotes ()Ljava/lang/String;
 	public final fun getPlatformSupported ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getUnrolled ()Lee/schimke/composeai/uibuilder/protocol/UnrolledMockV1;
@@ -7127,11 +7169,13 @@ public final class ee/schimke/composeai/uibuilder/protocol/WasmCapabilityV1$Buil
 	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/WasmCapabilityV1;
 	public final fun getAdapterStatus ()Lee/schimke/composeai/uibuilder/protocol/WasmAdapterStatusV1;
 	public final fun getCanvas ()Ljava/lang/String;
+	public final fun getCanvasMapping ()Lee/schimke/composeai/uibuilder/protocol/CanvasAdapterMappingV1;
 	public final fun getNotes ()Ljava/lang/String;
 	public final fun getPlatformSupported ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getUnrolled ()Lee/schimke/composeai/uibuilder/protocol/UnrolledMockV1;
 	public final fun setAdapterStatus (Lee/schimke/composeai/uibuilder/protocol/WasmAdapterStatusV1;)V
 	public final fun setCanvas (Ljava/lang/String;)V
+	public final fun setCanvasMapping (Lee/schimke/composeai/uibuilder/protocol/CanvasAdapterMappingV1;)V
 	public final fun setNotes (Ljava/lang/String;)V
 	public final fun setPlatformSupported (Lkotlinx/serialization/json/JsonElement;)V
 	public final fun setUnrolled (Lee/schimke/composeai/uibuilder/protocol/UnrolledMockV1;)V
