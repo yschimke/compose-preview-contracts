@@ -115,7 +115,7 @@ jobs:
       # is usually why someone is re-running it — and publishing everything is the safe answer.
       #
       # An EMPTY publish set is a real answer, not a missing one: a releasable change confined to
-      # `.github/` or the docs publishes no module, only the BOM. `-Pcomposeai.publishSet=` (empty)
+       # `.github/` or the docs publishes no Maven module. `-Pcomposeai.publishSet=` (empty)
       # says that, while omitting the property says "no plan ran, publish everything".
       - name: Compute the publish plan
         run: |
@@ -132,7 +132,7 @@ jobs:
           fi
           echo "plan ran: $PUBLISH_PLANNED; publish set: ${PUBLISH_SET:-<empty>}"
           # `PUBLISH_PLANNED` is what keeps the two empty strings apart downstream. An empty set
-          # from a plan means "publish only the BOM"; no plan at all means "publish everything",
+          # from a plan means "publish nothing"; no plan at all means "publish everything",
           # and passing `-Pcomposeai.publishSet=` on a recovery run would silently turn the
           # second into the first.
           echo "PUBLISH_SET=$PUBLISH_SET" >> "$GITHUB_ENV"
@@ -205,10 +205,9 @@ jobs:
           fi
           TASKS="$(./gradlew -q printPublishTasks "${PLAN_ARGS[@]}" | cut -f1 | tr '\n' ' ')"
           echo "publishing: $TASKS"
-          # Name the tasks explicitly, and refuse an empty list. A bare `./gradlew` is not a
-          # no-op that fails loudly — there is no `defaultTasks` in this build, so it runs `help`
-          # and exits 0, and the job goes green having published nothing.
-          [ -n "$TASKS" ] || { echo "::error::no publish tasks resolved"; exit 1; }
+          # A planned empty list means no artifact changed. It is successful; retain the failure
+          # for an unplanned/recovery release, where a bare `./gradlew` would only run `help`.
+          [ -n "$TASKS" ] || { [ "$PUBLISH_PLANNED" = "true" ] && exit 0; echo "::error::no publish tasks resolved"; exit 1; }
           # shellcheck disable=SC2086
           PLUGIN_VERSION="${TAG_NAME#v}" ./gradlew --no-daemon $TASKS "${PLAN_ARGS[@]}"
 
