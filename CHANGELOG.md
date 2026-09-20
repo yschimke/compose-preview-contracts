@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.6.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.5.0...v3.6.0) (2026-09-20)
+
+
+### Features
+
+* **ui-builder:** add renderer surface protocol v2 ([#97](https://github.com/yschimke/compose-preview-contracts/issues/97)) ([5d2fe8e](https://github.com/yschimke/compose-preview-contracts/commit/5d2fe8eff9357d2abffa8a58feb9e8c2f73fcf5d))
+
 ## [3.5.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.4.0...v3.5.0) (2026-09-20)
 
 
