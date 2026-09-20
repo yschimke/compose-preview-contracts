@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.5.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.4.0...v3.5.0) (2026-09-20)
+
+
+### Features
+
+* **ui-builder:** declare browser preview renderers ([#94](https://github.com/yschimke/compose-preview-contracts/issues/94)) ([4cfb67b](https://github.com/yschimke/compose-preview-contracts/commit/4cfb67b7e7263ae3ad976d1bacf8c4b5eae5677b))
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.android.tools.build:gradle to v9.4.1 ([#92](https://github.com/yschimke/compose-preview-contracts/issues/92)) ([12f60d1](https://github.com/yschimke/compose-preview-contracts/commit/12f60d16a8076c4f22da42f43d778c1e8366a6bc))
+
 ## [3.4.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.3.0...v3.4.0) (2026-09-20)
 
 
