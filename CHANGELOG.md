@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.4.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.3.0...v3.4.0) (2026-09-20)
+
+
+### Features
+
+* define catalog renderer runtime contracts ([#89](https://github.com/yschimke/compose-preview-contracts/issues/89)) ([56b1e14](https://github.com/yschimke/compose-preview-contracts/commit/56b1e1427e79296c7ea4ecd132600e97cd36eee0))
+
 ## [3.3.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.2.0...v3.3.0) (2026-09-19)
 
 
