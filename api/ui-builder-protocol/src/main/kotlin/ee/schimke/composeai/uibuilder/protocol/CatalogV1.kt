@@ -32,6 +32,9 @@ internal constructor(
   public val statusSemantics: JsonObject = JsonObject(emptyMap()),
   public val components: List<ComponentCapabilityV1>,
   public val exportCapabilities: ExportCapabilitiesV1 = ExportCapabilitiesV1(),
+  /** How the browser's read-only Preview renders this catalog, when it differs from the canvas. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER)
+  public val browserPreview: BrowserPreviewCapabilityV1? = null,
 ) {
   /**
    * Builds a [CatalogCapabilityV1]; see [WasmCapabilityV1.Builder] for why the constructor is
@@ -47,9 +50,17 @@ internal constructor(
     public var statusSemantics: JsonObject = JsonObject(emptyMap())
     public var components: List<ComponentCapabilityV1> = components
     public var exportCapabilities: ExportCapabilitiesV1 = ExportCapabilitiesV1()
+    public var browserPreview: BrowserPreviewCapabilityV1? = null
 
     public fun build(): CatalogCapabilityV1 =
-      CatalogCapabilityV1(schema, benchmark, statusSemantics, components, exportCapabilities)
+      CatalogCapabilityV1(
+        schema,
+        benchmark,
+        statusSemantics,
+        components,
+        exportCapabilities,
+        browserPreview,
+      )
   }
 
   /** This [CatalogCapabilityV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
@@ -57,7 +68,49 @@ internal constructor(
     Builder(schema, benchmark, components).also {
       it.statusSemantics = statusSemantics
       it.exportCapabilities = exportCapabilities
+      it.browserPreview = browserPreview
     }
+}
+
+/**
+ * The renderer a catalog asks the browser's read-only Preview to use.
+ *
+ * The editing canvas remains the component tree declared by [ComponentCapabilityV1.wasm]. A catalog
+ * whose executable result is a compiled document can instead ask Preview to export the current
+ * design and play that artifact. Keeping this on the catalog capability makes the choice a property
+ * of the catalog rather than a component-id or platform-name convention in an editor.
+ *
+ * [renderer] is an open adapter id for the same reason [WasmCapabilityV1.canvas] is: an editor
+ * resolves the names it knows and falls back to its canvas for an unknown one. [format] names the
+ * export artifact handed to that adapter; a host must also declare support in
+ * [CatalogCapabilityV1.exportCapabilities].
+ */
+@Serializable
+@ConsistentCopyVisibility
+public data class BrowserPreviewCapabilityV1
+internal constructor(
+  public val renderer: String = CANVAS_RENDERER,
+  public val format: ExportFormatV1? = null,
+) {
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(renderer: String = CANVAS_RENDERER) {
+    public var renderer: String = renderer
+    public var format: ExportFormatV1? = null
+
+    public fun build(): BrowserPreviewCapabilityV1 =
+      BrowserPreviewCapabilityV1(renderer = renderer, format = format)
+  }
+
+  /** This capability as a mutable builder, for deriving a modified catalog declaration. */
+  public fun newBuilder(): Builder = Builder(renderer).also { it.format = format }
+
+  public companion object {
+    /** Draw Preview with the same constrained component renderer as the editing canvas. */
+    public const val CANVAS_RENDERER: String = "canvas"
+
+    /** Play a compiled Remote Compose document exported from the current design. */
+    public const val REMOTE_COMPOSE_DOCUMENT_RENDERER: String = "remote-compose-document"
+  }
 }
 
 /** Source and runtime identity carried by the current catalog capability document. */

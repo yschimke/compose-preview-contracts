@@ -1222,6 +1222,53 @@ final class ee.schimke.composeai.uibuilder.protocol/BorderModifierV1 : ee.schimk
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1 { // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1|null[0]
+    final val format // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.format|{}format[0]
+        final fun <get-format>(): ee.schimke.composeai.uibuilder.protocol/ExportFormatV1? // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.format.<get-format>|<get-format>(){}[0]
+    final val renderer // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.renderer|{}renderer[0]
+        final fun <get-renderer>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.renderer.<get-renderer>|<get-renderer>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.component1|component1(){}[0]
+    final fun component2(): ee.schimke.composeai.uibuilder.protocol/ExportFormatV1? // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.component2|component2(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.hashCode|hashCode(){}[0]
+    final fun newBuilder(): ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.Builder // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.newBuilder|newBuilder(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.toString|toString(){}[0]
+
+    final class Builder { // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.Builder|null[0]
+        constructor <init>(kotlin/String = ...) // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.Builder.<init>|<init>(kotlin.String){}[0]
+
+        final var format // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.Builder.format|{}format[0]
+            final fun <get-format>(): ee.schimke.composeai.uibuilder.protocol/ExportFormatV1? // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.Builder.format.<get-format>|<get-format>(){}[0]
+            final fun <set-format>(ee.schimke.composeai.uibuilder.protocol/ExportFormatV1?) // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.Builder.format.<set-format>|<set-format>(ee.schimke.composeai.uibuilder.protocol.ExportFormatV1?){}[0]
+        final var renderer // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.Builder.renderer|{}renderer[0]
+            final fun <get-renderer>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.Builder.renderer.<get-renderer>|<get-renderer>(){}[0]
+            final fun <set-renderer>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.Builder.renderer.<set-renderer>|<set-renderer>(kotlin.String){}[0]
+
+        final fun build(): ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1 // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.Builder.build|build(){}[0]
+    }
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1> { // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1 // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1) // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.BrowserPreviewCapabilityV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.Companion|null[0]
+        final const val CANVAS_RENDERER // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.Companion.CANVAS_RENDERER|{}CANVAS_RENDERER[0]
+            final fun <get-CANVAS_RENDERER>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.Companion.CANVAS_RENDERER.<get-CANVAS_RENDERER>|<get-CANVAS_RENDERER>(){}[0]
+        final const val REMOTE_COMPOSE_DOCUMENT_RENDERER // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.Companion.REMOTE_COMPOSE_DOCUMENT_RENDERER|{}REMOTE_COMPOSE_DOCUMENT_RENDERER[0]
+            final fun <get-REMOTE_COMPOSE_DOCUMENT_RENDERER>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.Companion.REMOTE_COMPOSE_DOCUMENT_RENDERER.<get-REMOTE_COMPOSE_DOCUMENT_RENDERER>|<get-REMOTE_COMPOSE_DOCUMENT_RENDERER>(){}[0]
+
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1> // ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/CatalogAssetSourceV1 : ee.schimke.composeai.uibuilder.protocol/AssetSourceV1 { // ee.schimke.composeai.uibuilder.protocol/CatalogAssetSourceV1|null[0]
     constructor <init>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/CatalogAssetSourceV1.<init>|<init>(kotlin.String){}[0]
 
@@ -1309,6 +1356,8 @@ final class ee.schimke.composeai.uibuilder.protocol/CatalogBenchmarkV1 { // ee.s
 final class ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1 { // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1|null[0]
     final val benchmark // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.benchmark|{}benchmark[0]
         final fun <get-benchmark>(): ee.schimke.composeai.uibuilder.protocol/CatalogBenchmarkV1 // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.benchmark.<get-benchmark>|<get-benchmark>(){}[0]
+    final val browserPreview // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.browserPreview|{}browserPreview[0]
+        final fun <get-browserPreview>(): ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1? // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.browserPreview.<get-browserPreview>|<get-browserPreview>(){}[0]
     final val components // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.components|{}components[0]
         final fun <get-components>(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/ComponentCapabilityV1> // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.components.<get-components>|<get-components>(){}[0]
     final val exportCapabilities // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.exportCapabilities|{}exportCapabilities[0]
@@ -1323,6 +1372,7 @@ final class ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1 { // ee.
     final fun component3(): kotlinx.serialization.json/JsonObject // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.component3|component3(){}[0]
     final fun component4(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/ComponentCapabilityV1> // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.component4|component4(){}[0]
     final fun component5(): ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1 // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.component5|component5(){}[0]
+    final fun component6(): ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1? // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.component6|component6(){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.hashCode|hashCode(){}[0]
     final fun newBuilder(): ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.newBuilder|newBuilder(){}[0]
@@ -1334,6 +1384,9 @@ final class ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1 { // ee.
         final var benchmark // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder.benchmark|{}benchmark[0]
             final fun <get-benchmark>(): ee.schimke.composeai.uibuilder.protocol/CatalogBenchmarkV1 // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder.benchmark.<get-benchmark>|<get-benchmark>(){}[0]
             final fun <set-benchmark>(ee.schimke.composeai.uibuilder.protocol/CatalogBenchmarkV1) // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder.benchmark.<set-benchmark>|<set-benchmark>(ee.schimke.composeai.uibuilder.protocol.CatalogBenchmarkV1){}[0]
+        final var browserPreview // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder.browserPreview|{}browserPreview[0]
+            final fun <get-browserPreview>(): ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1? // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder.browserPreview.<get-browserPreview>|<get-browserPreview>(){}[0]
+            final fun <set-browserPreview>(ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1?) // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder.browserPreview.<set-browserPreview>|<set-browserPreview>(ee.schimke.composeai.uibuilder.protocol.BrowserPreviewCapabilityV1?){}[0]
         final var components // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder.components|{}components[0]
             final fun <get-components>(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/ComponentCapabilityV1> // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder.components.<get-components>|<get-components>(){}[0]
             final fun <set-components>(kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/ComponentCapabilityV1>) // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder.components.<set-components>|<set-components>(kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.ComponentCapabilityV1>){}[0]
