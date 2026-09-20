@@ -492,6 +492,22 @@ final enum class ee.schimke.composeai.uibuilder.protocol/ThemeV1 : kotlin/Enum<e
     }
 }
 
+final enum class ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2 : kotlin/Enum<ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2> { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2|null[0]
+    enum entry AUTHORING_UNROLLED // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2.AUTHORING_UNROLLED|null[0]
+    enum entry DEVICE // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2.DEVICE|null[0]
+
+    final val entries // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2> // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2 // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2> // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2.values|values#static(){}[0]
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2> // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
 final enum class ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeLifecycleV1 : kotlin/Enum<ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeLifecycleV1> { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeLifecycleV1|null[0]
     enum entry DEPRECATED // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeLifecycleV1.DEPRECATED|null[0]
     enum entry RETAINED // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeLifecycleV1.RETAINED|null[0]
@@ -6948,6 +6964,47 @@ final class ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV1 {
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2 { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2|null[0]
+    constructor <init>(kotlin/String = ..., kotlin/Int = ..., kotlin/String, kotlin/String, kotlin/String, kotlinx.serialization.json/JsonObject = ...) // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.<init>|<init>(kotlin.String;kotlin.Int;kotlin.String;kotlin.String;kotlin.String;kotlinx.serialization.json.JsonObject){}[0]
+
+    final val payload // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.payload|{}payload[0]
+        final fun <get-payload>(): kotlinx.serialization.json/JsonObject // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.payload.<get-payload>|<get-payload>(){}[0]
+    final val protocolVersion // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.protocolVersion|{}protocolVersion[0]
+        final fun <get-protocolVersion>(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.protocolVersion.<get-protocolVersion>|<get-protocolVersion>(){}[0]
+    final val requestId // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.requestId|{}requestId[0]
+        final fun <get-requestId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.requestId.<get-requestId>|<get-requestId>(){}[0]
+    final val runtimeId // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.runtimeId|{}runtimeId[0]
+        final fun <get-runtimeId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.runtimeId.<get-runtimeId>|<get-runtimeId>(){}[0]
+    final val schema // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.schema|{}schema[0]
+        final fun <get-schema>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.schema.<get-schema>|<get-schema>(){}[0]
+    final val type // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.type|{}type[0]
+        final fun <get-type>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.type.<get-type>|<get-type>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.component1|component1(){}[0]
+    final fun component2(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.component2|component2(){}[0]
+    final fun component3(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.component3|component3(){}[0]
+    final fun component4(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.component4|component4(){}[0]
+    final fun component5(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.component5|component5(){}[0]
+    final fun component6(): kotlinx.serialization.json/JsonObject // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.component6|component6(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/Int = ..., kotlin/String = ..., kotlin/String = ..., kotlin/String = ..., kotlinx.serialization.json/JsonObject = ...): ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2 // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.copy|copy(kotlin.String;kotlin.Int;kotlin.String;kotlin.String;kotlin.String;kotlinx.serialization.json.JsonObject){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2> { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2 // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2) // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.UiBuilderRendererMessageV2){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2> // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererMessageV2.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererNodeInspectionV1 { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererNodeInspectionV1|null[0]
     constructor <init>(kotlin/String, kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererPixelBoundsV1? = ..., ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererTextInspectionV1? = ..., ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSemanticsInspectionV1) // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererNodeInspectionV1.<init>|<init>(kotlin.String;kotlin.String;ee.schimke.composeai.uibuilder.protocol.UiBuilderRendererPixelBoundsV1?;ee.schimke.composeai.uibuilder.protocol.UiBuilderRendererTextInspectionV1?;ee.schimke.composeai.uibuilder.protocol.UiBuilderRendererSemanticsInspectionV1){}[0]
 
@@ -7018,6 +7075,35 @@ final class ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererPixelBounds
 
     final object Companion { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererPixelBoundsV1.Companion|null[0]
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererPixelBoundsV1> // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererPixelBoundsV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2 { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2|null[0]
+    constructor <init>(kotlinx.serialization.json/JsonObject, ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2) // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.<init>|<init>(kotlinx.serialization.json.JsonObject;ee.schimke.composeai.uibuilder.protocol.UiBuilderRendererSurfaceV2){}[0]
+
+    final val document // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.document|{}document[0]
+        final fun <get-document>(): kotlinx.serialization.json/JsonObject // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.document.<get-document>|<get-document>(){}[0]
+    final val surface // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.surface|{}surface[0]
+        final fun <get-surface>(): ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2 // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.surface.<get-surface>|<get-surface>(){}[0]
+
+    final fun component1(): kotlinx.serialization.json/JsonObject // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.component1|component1(){}[0]
+    final fun component2(): ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2 // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.component2|component2(){}[0]
+    final fun copy(kotlinx.serialization.json/JsonObject = ..., ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2 = ...): ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2 // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.copy|copy(kotlinx.serialization.json.JsonObject;ee.schimke.composeai.uibuilder.protocol.UiBuilderRendererSurfaceV2){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2> { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2 // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2) // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.UiBuilderRendererRenderDocumentV2){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2> // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererRenderDocumentV2.Companion.serializer|serializer(){}[0]
     }
 }
 
@@ -7104,6 +7190,46 @@ final class ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSlotInspect
         final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSlotInspectionV1.Companion.$childSerializers|{}$childSerializers[0]
 
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSlotInspectionV1> // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSlotInspectionV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2 { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2|null[0]
+    constructor <init>(ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2, kotlin/Float, kotlin/Float, kotlin/Float, kotlin/String) // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.UiBuilderRendererSurfaceModeV2;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.String){}[0]
+
+    final val density // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.density|{}density[0]
+        final fun <get-density>(): kotlin/Float // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.density.<get-density>|<get-density>(){}[0]
+    final val heightDp // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.heightDp|{}heightDp[0]
+        final fun <get-heightDp>(): kotlin/Float // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.heightDp.<get-heightDp>|<get-heightDp>(){}[0]
+    final val mode // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.mode|{}mode[0]
+        final fun <get-mode>(): ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2 // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.mode.<get-mode>|<get-mode>(){}[0]
+    final val surfaceId // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.surfaceId|{}surfaceId[0]
+        final fun <get-surfaceId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.surfaceId.<get-surfaceId>|<get-surfaceId>(){}[0]
+    final val widthDp // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.widthDp|{}widthDp[0]
+        final fun <get-widthDp>(): kotlin/Float // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.widthDp.<get-widthDp>|<get-widthDp>(){}[0]
+
+    final fun component1(): ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2 // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.component1|component1(){}[0]
+    final fun component2(): kotlin/Float // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.component2|component2(){}[0]
+    final fun component3(): kotlin/Float // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.component3|component3(){}[0]
+    final fun component4(): kotlin/Float // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.component4|component4(){}[0]
+    final fun component5(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.component5|component5(){}[0]
+    final fun copy(ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceModeV2 = ..., kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ..., kotlin/String = ...): ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2 // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.copy|copy(ee.schimke.composeai.uibuilder.protocol.UiBuilderRendererSurfaceModeV2;kotlin.Float;kotlin.Float;kotlin.Float;kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2> { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2 // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2) // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.UiBuilderRendererSurfaceV2){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2> // ee.schimke.composeai.uibuilder.protocol/UiBuilderRendererSurfaceV2.Companion.serializer|serializer(){}[0]
     }
 }
 
@@ -7870,8 +7996,12 @@ final const val ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RENDERER_INSP
     final fun <get-UI_BUILDER_RENDERER_INSPECTION_SCHEMA_V1>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RENDERER_INSPECTION_SCHEMA_V1.<get-UI_BUILDER_RENDERER_INSPECTION_SCHEMA_V1>|<get-UI_BUILDER_RENDERER_INSPECTION_SCHEMA_V1>(){}[0]
 final const val ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RENDERER_PROTOCOL_SCHEMA_V1 // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RENDERER_PROTOCOL_SCHEMA_V1|{}UI_BUILDER_RENDERER_PROTOCOL_SCHEMA_V1[0]
     final fun <get-UI_BUILDER_RENDERER_PROTOCOL_SCHEMA_V1>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RENDERER_PROTOCOL_SCHEMA_V1.<get-UI_BUILDER_RENDERER_PROTOCOL_SCHEMA_V1>|<get-UI_BUILDER_RENDERER_PROTOCOL_SCHEMA_V1>(){}[0]
+final const val ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RENDERER_PROTOCOL_SCHEMA_V2 // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RENDERER_PROTOCOL_SCHEMA_V2|{}UI_BUILDER_RENDERER_PROTOCOL_SCHEMA_V2[0]
+    final fun <get-UI_BUILDER_RENDERER_PROTOCOL_SCHEMA_V2>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RENDERER_PROTOCOL_SCHEMA_V2.<get-UI_BUILDER_RENDERER_PROTOCOL_SCHEMA_V2>|<get-UI_BUILDER_RENDERER_PROTOCOL_SCHEMA_V2>(){}[0]
 final const val ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RENDERER_PROTOCOL_VERSION_V1 // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RENDERER_PROTOCOL_VERSION_V1|{}UI_BUILDER_RENDERER_PROTOCOL_VERSION_V1[0]
     final fun <get-UI_BUILDER_RENDERER_PROTOCOL_VERSION_V1>(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RENDERER_PROTOCOL_VERSION_V1.<get-UI_BUILDER_RENDERER_PROTOCOL_VERSION_V1>|<get-UI_BUILDER_RENDERER_PROTOCOL_VERSION_V1>(){}[0]
+final const val ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RENDERER_PROTOCOL_VERSION_V2 // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RENDERER_PROTOCOL_VERSION_V2|{}UI_BUILDER_RENDERER_PROTOCOL_VERSION_V2[0]
+    final fun <get-UI_BUILDER_RENDERER_PROTOCOL_VERSION_V2>(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RENDERER_PROTOCOL_VERSION_V2.<get-UI_BUILDER_RENDERER_PROTOCOL_VERSION_V2>|<get-UI_BUILDER_RENDERER_PROTOCOL_VERSION_V2>(){}[0]
 final const val ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RUNTIME_ARTIFACT_PATH_V1 // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RUNTIME_ARTIFACT_PATH_V1|{}UI_BUILDER_RUNTIME_ARTIFACT_PATH_V1[0]
     final fun <get-UI_BUILDER_RUNTIME_ARTIFACT_PATH_V1>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RUNTIME_ARTIFACT_PATH_V1.<get-UI_BUILDER_RUNTIME_ARTIFACT_PATH_V1>|<get-UI_BUILDER_RUNTIME_ARTIFACT_PATH_V1>(){}[0]
 final const val ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RUNTIME_INTEGRITY_ALGORITHM_V1 // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RUNTIME_INTEGRITY_ALGORITHM_V1|{}UI_BUILDER_RUNTIME_INTEGRITY_ALGORITHM_V1[0]
