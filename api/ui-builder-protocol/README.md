@@ -22,11 +22,15 @@ client, service and MCP adapter. It owns:
 - independently revisioned ownership, actor ACL and opaque bearer-link sharing metadata, plus
   paginated actor-specific design listings;
 - request/response envelopes used over HTTP and by MCP tools.
+- catalog-owned renderer artifact, manifest, installed-descriptor, iframe-message and inspection
+  shapes, plus the canonical tree-integrity framing and its cross-language test vector.
 
 It deliberately contains no reducer, validation policy, storage, rendering, HTTP, WebSocket or MCP
 implementation. A consumer selects a concrete serializer (for example
 `UiBuilderRequestV1.serializer()`) and configures its own `Json` instance. The fixtures in
 `docs/ui-builder/protocol-fixtures/v1` lock the JSON discriminators and required fields.
+Runtime archive I/O, SHA-256 implementations, installation, leases and iframe hosting remain in
+their owning publisher, server and renderer-SDK repositories.
 
 Compatibility rules for v1:
 

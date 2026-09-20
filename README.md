@@ -15,7 +15,7 @@ Extracted from [yschimke/compose-ai-tools](https://github.com/yschimke/compose-a
 | `daemon-devices` | the device catalog and the `spec:` parser |
 | `daemon-bta` | Build Tools API shapes — `CompileErrorDetail`, `SourceChangeSet` |
 | `agent-grant-protocol` | the `--agent-grants` vocabulary; the server mints, the client asks |
-| `ui-builder-protocol` | versioned catalog, design, command, collaboration and transport-envelope shapes shared by the UI builder's browser, server and MCP clients |
+| `ui-builder-protocol` | versioned catalog, design, command, collaboration, transport-envelope and catalog-renderer runtime shapes shared by UI-builder clients, servers, publishers and renderer SDKs |
 | `screen-document` | serializable screen trees, values, actions, selections, authored rows and reusable function declarations; generation and validation stay in compose-ai-tools |
 | `parity-issues-protocol` | the versioned catalog artifact that joins GitHub issues back to components, previews and design references |
 
