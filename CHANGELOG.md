@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.7.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.6.0...v3.7.0) (2026-09-22)
+
+
+### Features
+
+* declare catalog Compose source adapters ([#101](https://github.com/yschimke/compose-preview-contracts/issues/101)) ([895a87b](https://github.com/yschimke/compose-preview-contracts/commit/895a87b038bb4921f229f1a63ff776ad8d68dbeb))
+
+
+### Bug Fixes
+
+* **release:** skip empty Maven publications ([#98](https://github.com/yschimke/compose-preview-contracts/issues/98)) ([ad6d7b5](https://github.com/yschimke/compose-preview-contracts/commit/ad6d7b536a94b083ca8356e034338df4364197ce))
+
 ## [3.6.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.5.0...v3.6.0) (2026-09-20)
 
 
