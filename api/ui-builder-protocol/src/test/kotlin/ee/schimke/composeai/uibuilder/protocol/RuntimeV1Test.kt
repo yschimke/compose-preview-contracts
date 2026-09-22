@@ -28,6 +28,13 @@ class RuntimeV1Test {
         protocolVersion = 1,
         entrypoint = "index.html",
         integritySha256 = digest,
+      )
+    val remoteManifest =
+      UiBuilderRuntimeManifestV2(
+        runtimeId = "remote-m3-p3-abcd",
+        protocolVersion = 2,
+        entrypoint = "index.html",
+        integritySha256 = digest,
         remoteComposeWriter = "4307936-ps17-cmp01",
         rcPlayer = "1.69.0",
       )
@@ -58,6 +65,7 @@ class RuntimeV1Test {
       )
 
     assertEquals(manifest, json.decodeFromString(json.encodeToString(manifest)))
+    assertEquals(remoteManifest, json.decodeFromString(json.encodeToString(remoteManifest)))
     assertEquals(artifact, json.decodeFromString(json.encodeToString(artifact)))
     assertEquals(descriptor, json.decodeFromString(json.encodeToString(descriptor)))
     assertEquals(message, json.decodeFromString(json.encodeToString(message)))
@@ -66,9 +74,32 @@ class RuntimeV1Test {
   }
 
   @Test
+  fun `manifest schema versions remain strict`() {
+    val digest = "a".repeat(64)
+    val v2 =
+      json.encodeToString(
+        UiBuilderRuntimeManifestV2(
+          runtimeId = "remote-m3-p3-abcd",
+          protocolVersion = 2,
+          entrypoint = "index.html",
+          integritySha256 = digest,
+          remoteComposeWriter = "4307936-ps17-cmp01",
+          rcPlayer = "1.69.0",
+        )
+      )
+
+    assertFailsWith<kotlinx.serialization.SerializationException> {
+      json.decodeFromString<UiBuilderRuntimeManifestV1>(v2)
+    }
+    assertFailsWith<kotlinx.serialization.SerializationException> {
+      json.decodeFromString<UiBuilderRuntimeManifestV2>(v2.dropLast(1) + ",\"futureField\":true}")
+    }
+  }
+
+  @Test
   fun `shared validation rejects unsafe identity paths and digest mismatches`() {
     val manifest =
-      UiBuilderRuntimeManifestV1(
+      UiBuilderRuntimeManifestV2(
         runtimeId = "latest",
         protocolVersion = 0,
         entrypoint = "../index.html",
