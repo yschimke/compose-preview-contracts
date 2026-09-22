@@ -9,6 +9,9 @@ public const val UI_BUILDER_RUNTIME_MANIFEST_NAME_V1: String = "runtime-manifest
 /** Strict schema declared by [UiBuilderRuntimeManifestV1]. */
 public const val UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V1: String = "compose-ui-builder-runtime/v1"
 
+/** Strict schema declared by [UiBuilderRuntimeManifestV2]. */
+public const val UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V2: String = "compose-ui-builder-runtime/v2"
+
 /** Moving path used by one catalog delivery generation. Immutable revisions preserve old bytes. */
 public const val UI_BUILDER_RUNTIME_ARTIFACT_PATH_V1: String = "ui-builder/runtime.zip"
 
@@ -28,6 +31,16 @@ public const val UI_BUILDER_RENDERER_INSPECTION_SCHEMA_V1: String =
 @Serializable
 public data class UiBuilderRuntimeManifestV1(
   public val schema: String = UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V1,
+  public val runtimeId: String,
+  public val protocolVersion: Int,
+  public val entrypoint: String,
+  public val integritySha256: String,
+)
+
+/** Runtime metadata stored inside the verified ZIP, including implementation provenance. */
+@Serializable
+public data class UiBuilderRuntimeManifestV2(
+  public val schema: String = UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V2,
   public val runtimeId: String,
   public val protocolVersion: Int,
   public val entrypoint: String,
@@ -81,20 +94,35 @@ public data class UiBuilderRuntimeValidationIssueV1(
 public fun UiBuilderRuntimeManifestV1.validateContract(
   assetPaths: Set<String>,
   actualIntegritySha256: String? = null,
+): List<UiBuilderRuntimeValidationIssueV1> =
+  validateRuntimeManifest(
+    schema = schema,
+    expectedSchema = UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V1,
+    runtimeId = runtimeId,
+    protocolVersion = protocolVersion,
+    entrypoint = entrypoint,
+    integritySha256 = integritySha256,
+    assetPaths = assetPaths,
+    actualIntegritySha256 = actualIntegritySha256,
+  )
+
+/** Validates the shared wire invariants and optional implementation provenance. */
+public fun UiBuilderRuntimeManifestV2.validateContract(
+  assetPaths: Set<String>,
+  actualIntegritySha256: String? = null,
 ): List<UiBuilderRuntimeValidationIssueV1> = buildList {
-  if (schema != UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V1) addIssue("schema", "unsupported")
-  if (!isValidUiBuilderRuntimeIdV1(runtimeId)) addIssue("runtimeId", "unsafeOrReserved")
-  if (protocolVersion <= 0) addIssue("protocolVersion", "notPositive")
-  if (normalizeUiBuilderRuntimeAssetPathV1(entrypoint) != entrypoint) {
-    addIssue("entrypoint", "unsafe")
-  } else if (entrypoint !in assetPaths) {
-    addIssue("entrypoint", "missing")
-  }
-  if (!isValidUiBuilderRuntimeSha256V1(integritySha256)) {
-    addIssue("integritySha256", "invalid")
-  } else if (actualIntegritySha256 != null && integritySha256 != actualIntegritySha256) {
-    addIssue("integritySha256", "mismatch")
-  }
+  addAll(
+    validateRuntimeManifest(
+      schema = schema,
+      expectedSchema = UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V2,
+      runtimeId = runtimeId,
+      protocolVersion = protocolVersion,
+      entrypoint = entrypoint,
+      integritySha256 = integritySha256,
+      assetPaths = assetPaths,
+      actualIntegritySha256 = actualIntegritySha256,
+    )
+  )
   if (remoteComposeWriter != null && remoteComposeWriter.isEmpty()) {
     addIssue("remoteComposeWriter", "blank")
   }
@@ -133,6 +161,31 @@ public fun normalizeUiBuilderRuntimeAssetPathV1(path: String): String? {
   val segments = path.split('/')
   if (segments.any { it.isEmpty() || it == "." || it == ".." }) return null
   return segments.joinToString("/")
+}
+
+private fun validateRuntimeManifest(
+  schema: String,
+  expectedSchema: String,
+  runtimeId: String,
+  protocolVersion: Int,
+  entrypoint: String,
+  integritySha256: String,
+  assetPaths: Set<String>,
+  actualIntegritySha256: String?,
+): List<UiBuilderRuntimeValidationIssueV1> = buildList {
+  if (schema != expectedSchema) addIssue("schema", "unsupported")
+  if (!isValidUiBuilderRuntimeIdV1(runtimeId)) addIssue("runtimeId", "unsafeOrReserved")
+  if (protocolVersion <= 0) addIssue("protocolVersion", "notPositive")
+  if (normalizeUiBuilderRuntimeAssetPathV1(entrypoint) != entrypoint) {
+    addIssue("entrypoint", "unsafe")
+  } else if (entrypoint !in assetPaths) {
+    addIssue("entrypoint", "missing")
+  }
+  if (!isValidUiBuilderRuntimeSha256V1(integritySha256)) {
+    addIssue("integritySha256", "invalid")
+  } else if (actualIntegritySha256 != null && integritySha256 != actualIntegritySha256) {
+    addIssue("integritySha256", "mismatch")
+  }
 }
 
 /**

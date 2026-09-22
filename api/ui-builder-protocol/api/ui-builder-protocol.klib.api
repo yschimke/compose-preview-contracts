@@ -7399,7 +7399,7 @@ final class ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeDescriptorV1
 }
 
 final class ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1 { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1|null[0]
-    constructor <init>(kotlin/String = ..., kotlin/String, kotlin/Int, kotlin/String, kotlin/String, kotlin/String? = ..., kotlin/String? = ...) // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.<init>|<init>(kotlin.String;kotlin.String;kotlin.Int;kotlin.String;kotlin.String;kotlin.String?;kotlin.String?){}[0]
+    constructor <init>(kotlin/String = ..., kotlin/String, kotlin/Int, kotlin/String, kotlin/String) // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.<init>|<init>(kotlin.String;kotlin.String;kotlin.Int;kotlin.String;kotlin.String){}[0]
 
     final val entrypoint // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.entrypoint|{}entrypoint[0]
         final fun <get-entrypoint>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.entrypoint.<get-entrypoint>|<get-entrypoint>(){}[0]
@@ -7407,10 +7407,6 @@ final class ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1 {
         final fun <get-integritySha256>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.integritySha256.<get-integritySha256>|<get-integritySha256>(){}[0]
     final val protocolVersion // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.protocolVersion|{}protocolVersion[0]
         final fun <get-protocolVersion>(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.protocolVersion.<get-protocolVersion>|<get-protocolVersion>(){}[0]
-    final val rcPlayer // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.rcPlayer|{}rcPlayer[0]
-        final fun <get-rcPlayer>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.rcPlayer.<get-rcPlayer>|<get-rcPlayer>(){}[0]
-    final val remoteComposeWriter // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.remoteComposeWriter|{}remoteComposeWriter[0]
-        final fun <get-remoteComposeWriter>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.remoteComposeWriter.<get-remoteComposeWriter>|<get-remoteComposeWriter>(){}[0]
     final val runtimeId // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.runtimeId|{}runtimeId[0]
         final fun <get-runtimeId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.runtimeId.<get-runtimeId>|<get-runtimeId>(){}[0]
     final val schema // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.schema|{}schema[0]
@@ -7421,9 +7417,7 @@ final class ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1 {
     final fun component3(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.component3|component3(){}[0]
     final fun component4(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.component4|component4(){}[0]
     final fun component5(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.component5|component5(){}[0]
-    final fun component6(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.component6|component6(){}[0]
-    final fun component7(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.component7|component7(){}[0]
-    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/Int = ..., kotlin/String = ..., kotlin/String = ..., kotlin/String? = ..., kotlin/String? = ...): ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1 // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.copy|copy(kotlin.String;kotlin.String;kotlin.Int;kotlin.String;kotlin.String;kotlin.String?;kotlin.String?){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/Int = ..., kotlin/String = ..., kotlin/String = ...): ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1 // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.copy|copy(kotlin.String;kotlin.String;kotlin.Int;kotlin.String;kotlin.String){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.toString|toString(){}[0]
@@ -7439,6 +7433,50 @@ final class ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1 {
 
     final object Companion { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.Companion|null[0]
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1> // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2 { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2|null[0]
+    constructor <init>(kotlin/String = ..., kotlin/String, kotlin/Int, kotlin/String, kotlin/String, kotlin/String? = ..., kotlin/String? = ...) // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.<init>|<init>(kotlin.String;kotlin.String;kotlin.Int;kotlin.String;kotlin.String;kotlin.String?;kotlin.String?){}[0]
+
+    final val entrypoint // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.entrypoint|{}entrypoint[0]
+        final fun <get-entrypoint>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.entrypoint.<get-entrypoint>|<get-entrypoint>(){}[0]
+    final val integritySha256 // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.integritySha256|{}integritySha256[0]
+        final fun <get-integritySha256>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.integritySha256.<get-integritySha256>|<get-integritySha256>(){}[0]
+    final val protocolVersion // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.protocolVersion|{}protocolVersion[0]
+        final fun <get-protocolVersion>(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.protocolVersion.<get-protocolVersion>|<get-protocolVersion>(){}[0]
+    final val rcPlayer // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.rcPlayer|{}rcPlayer[0]
+        final fun <get-rcPlayer>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.rcPlayer.<get-rcPlayer>|<get-rcPlayer>(){}[0]
+    final val remoteComposeWriter // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.remoteComposeWriter|{}remoteComposeWriter[0]
+        final fun <get-remoteComposeWriter>(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.remoteComposeWriter.<get-remoteComposeWriter>|<get-remoteComposeWriter>(){}[0]
+    final val runtimeId // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.runtimeId|{}runtimeId[0]
+        final fun <get-runtimeId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.runtimeId.<get-runtimeId>|<get-runtimeId>(){}[0]
+    final val schema // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.schema|{}schema[0]
+        final fun <get-schema>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.schema.<get-schema>|<get-schema>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.component1|component1(){}[0]
+    final fun component2(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.component2|component2(){}[0]
+    final fun component3(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.component3|component3(){}[0]
+    final fun component4(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.component4|component4(){}[0]
+    final fun component5(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.component5|component5(){}[0]
+    final fun component6(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.component6|component6(){}[0]
+    final fun component7(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.component7|component7(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/Int = ..., kotlin/String = ..., kotlin/String = ..., kotlin/String? = ..., kotlin/String? = ...): ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2 // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.copy|copy(kotlin.String;kotlin.String;kotlin.Int;kotlin.String;kotlin.String;kotlin.String?;kotlin.String?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2> { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2 // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2) // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.UiBuilderRuntimeManifestV2){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2> // ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2.Companion.serializer|serializer(){}[0]
     }
 }
 
@@ -8062,12 +8100,15 @@ final const val ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RUNTIME_MANIF
     final fun <get-UI_BUILDER_RUNTIME_MANIFEST_NAME_V1>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RUNTIME_MANIFEST_NAME_V1.<get-UI_BUILDER_RUNTIME_MANIFEST_NAME_V1>|<get-UI_BUILDER_RUNTIME_MANIFEST_NAME_V1>(){}[0]
 final const val ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V1 // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V1|{}UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V1[0]
     final fun <get-UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V1>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V1.<get-UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V1>|<get-UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V1>(){}[0]
+final const val ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V2 // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V2|{}UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V2[0]
+    final fun <get-UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V2>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V2.<get-UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V2>|<get-UI_BUILDER_RUNTIME_MANIFEST_SCHEMA_V2>(){}[0]
 final const val ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_SCHEMA_VERSION_V1 // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_SCHEMA_VERSION_V1|{}UI_BUILDER_SCHEMA_VERSION_V1[0]
     final fun <get-UI_BUILDER_SCHEMA_VERSION_V1>(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/UI_BUILDER_SCHEMA_VERSION_V1.<get-UI_BUILDER_SCHEMA_VERSION_V1>|<get-UI_BUILDER_SCHEMA_VERSION_V1>(){}[0]
 
 final fun (ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeArtifactV1).ee.schimke.composeai.uibuilder.protocol/validateContract(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeValidationIssueV1> // ee.schimke.composeai.uibuilder.protocol/validateContract|validateContract@ee.schimke.composeai.uibuilder.protocol.UiBuilderRuntimeArtifactV1(){}[0]
 final fun (ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeDescriptorV1).ee.schimke.composeai.uibuilder.protocol/validateContract(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeValidationIssueV1> // ee.schimke.composeai.uibuilder.protocol/validateContract|validateContract@ee.schimke.composeai.uibuilder.protocol.UiBuilderRuntimeDescriptorV1(){}[0]
 final fun (ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV1).ee.schimke.composeai.uibuilder.protocol/validateContract(kotlin.collections/Set<kotlin/String>, kotlin/String? = ...): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeValidationIssueV1> // ee.schimke.composeai.uibuilder.protocol/validateContract|validateContract@ee.schimke.composeai.uibuilder.protocol.UiBuilderRuntimeManifestV1(kotlin.collections.Set<kotlin.String>;kotlin.String?){}[0]
+final fun (ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeManifestV2).ee.schimke.composeai.uibuilder.protocol/validateContract(kotlin.collections/Set<kotlin/String>, kotlin/String? = ...): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/UiBuilderRuntimeValidationIssueV1> // ee.schimke.composeai.uibuilder.protocol/validateContract|validateContract@ee.schimke.composeai.uibuilder.protocol.UiBuilderRuntimeManifestV2(kotlin.collections.Set<kotlin.String>;kotlin.String?){}[0]
 final fun ee.schimke.composeai.uibuilder.protocol/frameUiBuilderRuntimeTreeIntegrityV1(kotlin.collections/Map<kotlin/String, kotlin/ByteArray>, kotlin/Function1<kotlin/ByteArray, kotlin/Unit>) // ee.schimke.composeai.uibuilder.protocol/frameUiBuilderRuntimeTreeIntegrityV1|frameUiBuilderRuntimeTreeIntegrityV1(kotlin.collections.Map<kotlin.String,kotlin.ByteArray>;kotlin.Function1<kotlin.ByteArray,kotlin.Unit>){}[0]
 final fun ee.schimke.composeai.uibuilder.protocol/isValidUiBuilderRuntimeIdV1(kotlin/String): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/isValidUiBuilderRuntimeIdV1|isValidUiBuilderRuntimeIdV1(kotlin.String){}[0]
 final fun ee.schimke.composeai.uibuilder.protocol/isValidUiBuilderRuntimeSha256V1(kotlin/String): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/isValidUiBuilderRuntimeSha256V1|isValidUiBuilderRuntimeSha256V1(kotlin.String){}[0]
