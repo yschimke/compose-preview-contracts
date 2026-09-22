@@ -42,6 +42,24 @@ class BrowserPreviewCapabilityV1Test {
     assertNull(json.decodeFromString(CatalogCapabilityV1.serializer(), encoded).browserPreview)
   }
 
+  @Test
+  fun `a catalog can declare its versioned Compose source adapter`() {
+    val catalog =
+      catalog()
+        .newBuilder()
+        .also {
+          it.composeSourceExport =
+            ComposeSourceExportCapabilityV1.Builder("compose-material3", 1).build()
+        }
+        .build()
+
+    val encoded = json.encodeToString(CatalogCapabilityV1.serializer(), catalog)
+    val decoded = json.decodeFromString(CatalogCapabilityV1.serializer(), encoded)
+
+    assertEquals("compose-material3", decoded.composeSourceExport?.adapter)
+    assertEquals(1, decoded.composeSourceExport?.version)
+  }
+
   private fun catalog(): CatalogCapabilityV1 =
     CatalogCapabilityV1.Builder(
         schema = "compose-ui-builder-capability/v1",

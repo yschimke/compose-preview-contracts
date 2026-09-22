@@ -1424,6 +1424,8 @@ final class ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1 { // ee.
         final fun <get-browserPreview>(): ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1? // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.browserPreview.<get-browserPreview>|<get-browserPreview>(){}[0]
     final val components // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.components|{}components[0]
         final fun <get-components>(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/ComponentCapabilityV1> // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.components.<get-components>|<get-components>(){}[0]
+    final val composeSourceExport // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.composeSourceExport|{}composeSourceExport[0]
+        final fun <get-composeSourceExport>(): ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1? // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.composeSourceExport.<get-composeSourceExport>|<get-composeSourceExport>(){}[0]
     final val exportCapabilities // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.exportCapabilities|{}exportCapabilities[0]
         final fun <get-exportCapabilities>(): ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1 // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.exportCapabilities.<get-exportCapabilities>|<get-exportCapabilities>(){}[0]
     final val schema // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.schema|{}schema[0]
@@ -1437,6 +1439,7 @@ final class ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1 { // ee.
     final fun component4(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/ComponentCapabilityV1> // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.component4|component4(){}[0]
     final fun component5(): ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1 // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.component5|component5(){}[0]
     final fun component6(): ee.schimke.composeai.uibuilder.protocol/BrowserPreviewCapabilityV1? // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.component6|component6(){}[0]
+    final fun component7(): ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1? // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.component7|component7(){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.hashCode|hashCode(){}[0]
     final fun newBuilder(): ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.newBuilder|newBuilder(){}[0]
@@ -1454,6 +1457,9 @@ final class ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1 { // ee.
         final var components // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder.components|{}components[0]
             final fun <get-components>(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/ComponentCapabilityV1> // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder.components.<get-components>|<get-components>(){}[0]
             final fun <set-components>(kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/ComponentCapabilityV1>) // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder.components.<set-components>|<set-components>(kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.ComponentCapabilityV1>){}[0]
+        final var composeSourceExport // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder.composeSourceExport|{}composeSourceExport[0]
+            final fun <get-composeSourceExport>(): ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1? // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder.composeSourceExport.<get-composeSourceExport>|<get-composeSourceExport>(){}[0]
+            final fun <set-composeSourceExport>(ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1?) // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder.composeSourceExport.<set-composeSourceExport>|<set-composeSourceExport>(ee.schimke.composeai.uibuilder.protocol.ComposeSourceExportCapabilityV1?){}[0]
         final var exportCapabilities // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder.exportCapabilities|{}exportCapabilities[0]
             final fun <get-exportCapabilities>(): ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1 // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder.exportCapabilities.<get-exportCapabilities>|<get-exportCapabilities>(){}[0]
             final fun <set-exportCapabilities>(ee.schimke.composeai.uibuilder.protocol/ExportCapabilitiesV1) // ee.schimke.composeai.uibuilder.protocol/CatalogCapabilityV1.Builder.exportCapabilities.<set-exportCapabilities>|<set-exportCapabilities>(ee.schimke.composeai.uibuilder.protocol.ExportCapabilitiesV1){}[0]
@@ -2019,6 +2025,46 @@ final class ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1 { // ee.sc
 
     final object Companion { // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.Companion|null[0]
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1> // ee.schimke.composeai.uibuilder.protocol/ComponentSourceV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1 { // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1|null[0]
+    final val adapter // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.adapter|{}adapter[0]
+        final fun <get-adapter>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.adapter.<get-adapter>|<get-adapter>(){}[0]
+    final val version // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.version|{}version[0]
+        final fun <get-version>(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.version.<get-version>|<get-version>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.component1|component1(){}[0]
+    final fun component2(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.component2|component2(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.hashCode|hashCode(){}[0]
+    final fun newBuilder(): ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.Builder // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.newBuilder|newBuilder(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.toString|toString(){}[0]
+
+    final class Builder { // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.Builder|null[0]
+        constructor <init>(kotlin/String, kotlin/Int) // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.Builder.<init>|<init>(kotlin.String;kotlin.Int){}[0]
+
+        final var adapter // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.Builder.adapter|{}adapter[0]
+            final fun <get-adapter>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.Builder.adapter.<get-adapter>|<get-adapter>(){}[0]
+            final fun <set-adapter>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.Builder.adapter.<set-adapter>|<set-adapter>(kotlin.String){}[0]
+        final var version // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.Builder.version|{}version[0]
+            final fun <get-version>(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.Builder.version.<get-version>|<get-version>(){}[0]
+            final fun <set-version>(kotlin/Int) // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.Builder.version.<set-version>|<set-version>(kotlin.Int){}[0]
+
+        final fun build(): ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1 // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.Builder.build|build(){}[0]
+    }
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1> { // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1 // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1) // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.ComposeSourceExportCapabilityV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1> // ee.schimke.composeai.uibuilder.protocol/ComposeSourceExportCapabilityV1.Companion.serializer|serializer(){}[0]
     }
 }
 

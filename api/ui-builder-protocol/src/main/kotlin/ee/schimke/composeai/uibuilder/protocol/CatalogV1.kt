@@ -35,6 +35,9 @@ internal constructor(
   /** How the browser's read-only Preview renders this catalog, when it differs from the canvas. */
   @EncodeDefault(EncodeDefault.Mode.NEVER)
   public val browserPreview: BrowserPreviewCapabilityV1? = null,
+  /** Declarative Compose-source adapter the catalog publishes, when it has one. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER)
+  public val composeSourceExport: ComposeSourceExportCapabilityV1? = null,
 ) {
   /**
    * Builds a [CatalogCapabilityV1]; see [WasmCapabilityV1.Builder] for why the constructor is
@@ -51,6 +54,7 @@ internal constructor(
     public var components: List<ComponentCapabilityV1> = components
     public var exportCapabilities: ExportCapabilitiesV1 = ExportCapabilitiesV1()
     public var browserPreview: BrowserPreviewCapabilityV1? = null
+    public var composeSourceExport: ComposeSourceExportCapabilityV1? = null
 
     public fun build(): CatalogCapabilityV1 =
       CatalogCapabilityV1(
@@ -60,6 +64,7 @@ internal constructor(
         components,
         exportCapabilities,
         browserPreview,
+        composeSourceExport,
       )
   }
 
@@ -69,7 +74,36 @@ internal constructor(
       it.statusSemantics = statusSemantics
       it.exportCapabilities = exportCapabilities
       it.browserPreview = browserPreview
+      it.composeSourceExport = composeSourceExport
     }
+}
+
+/**
+ * A catalog-owned declaration of the adapter that emits a design as Compose source.
+ *
+ * The adapter name is an open, versioned capability id: a host resolves an id and version it knows,
+ * and refuses source export with a diagnostic rather than guessing when it does not. The
+ * declaration deliberately carries no executable Kotlin; catalogs choose a safe, shipped adapter
+ * and the adapter interprets their published component/slot/property capabilities.
+ */
+@Serializable
+@ConsistentCopyVisibility
+public data class ComposeSourceExportCapabilityV1
+internal constructor(
+  public val adapter: String,
+  public val version: Int,
+) {
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(adapter: String, version: Int) {
+    public var adapter: String = adapter
+    public var version: Int = version
+
+    public fun build(): ComposeSourceExportCapabilityV1 =
+      ComposeSourceExportCapabilityV1(adapter, version)
+  }
+
+  /** This capability as a mutable builder, for deriving a modified catalog declaration. */
+  public fun newBuilder(): Builder = Builder(adapter, version)
 }
 
 /**
