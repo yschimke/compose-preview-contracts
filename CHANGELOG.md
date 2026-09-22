@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.8.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.7.0...v3.8.0) (2026-09-22)
+
+
+### Features
+
+* carry runtime implementation metadata ([#102](https://github.com/yschimke/compose-preview-contracts/issues/102)) ([d30def5](https://github.com/yschimke/compose-preview-contracts/commit/d30def52060190c35200db799453da9eb5ba2c77))
+
 ## [3.7.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.6.0...v3.7.0) (2026-09-22)
 
 
