@@ -32,6 +32,10 @@ public data class UiBuilderRuntimeManifestV1(
   public val protocolVersion: Int,
   public val entrypoint: String,
   public val integritySha256: String,
+  /** Immutable Remote Compose writer coordinate used to encode documents, when applicable. */
+  public val remoteComposeWriter: String? = null,
+  /** Immutable Remote Compose player version bundled into this runtime, when applicable. */
+  public val rcPlayer: String? = null,
 )
 
 /** Runtime declaration embedded in a catalog delivery manifest. */
@@ -91,6 +95,10 @@ public fun UiBuilderRuntimeManifestV1.validateContract(
   } else if (actualIntegritySha256 != null && integritySha256 != actualIntegritySha256) {
     addIssue("integritySha256", "mismatch")
   }
+  if (remoteComposeWriter != null && remoteComposeWriter.isEmpty()) {
+    addIssue("remoteComposeWriter", "blank")
+  }
+  if (rcPlayer != null && rcPlayer.isEmpty()) addIssue("rcPlayer", "blank")
 }
 
 /** Validates the descriptor emitted beside a catalog generation. */

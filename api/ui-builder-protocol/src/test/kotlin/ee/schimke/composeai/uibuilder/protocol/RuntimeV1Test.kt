@@ -28,6 +28,8 @@ class RuntimeV1Test {
         protocolVersion = 1,
         entrypoint = "index.html",
         integritySha256 = digest,
+        remoteComposeWriter = "4307936-ps17-cmp01",
+        rcPlayer = "1.69.0",
       )
     val artifact =
       UiBuilderRuntimeArtifactV1(
@@ -71,6 +73,8 @@ class RuntimeV1Test {
         protocolVersion = 0,
         entrypoint = "../index.html",
         integritySha256 = "A".repeat(64),
+        remoteComposeWriter = "",
+        rcPlayer = "",
       )
 
     assertEquals(
@@ -79,6 +83,8 @@ class RuntimeV1Test {
         UiBuilderRuntimeValidationIssueV1("protocolVersion", "notPositive"),
         UiBuilderRuntimeValidationIssueV1("entrypoint", "unsafe"),
         UiBuilderRuntimeValidationIssueV1("integritySha256", "invalid"),
+        UiBuilderRuntimeValidationIssueV1("remoteComposeWriter", "blank"),
+        UiBuilderRuntimeValidationIssueV1("rcPlayer", "blank"),
       ),
       manifest.validateContract(emptySet(), actualIntegritySha256 = "b".repeat(64)),
     )
