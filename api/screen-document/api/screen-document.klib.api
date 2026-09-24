@@ -549,10 +549,12 @@ sealed interface ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.comp
 }
 
 final class ee.schimke.composeai.discovery/ChainLink { // ee.schimke.composeai.discovery/ChainLink|null[0]
-    constructor <init>(kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin/Boolean = ..., kotlin/String? = ...) // ee.schimke.composeai.discovery/ChainLink.<init>|<init>(kotlin.String;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>;kotlin.Boolean;kotlin.String?){}[0]
+    constructor <init>(kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin/Boolean = ..., kotlin/String? = ..., kotlin/Boolean = ...) // ee.schimke.composeai.discovery/ChainLink.<init>|<init>(kotlin.String;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>;kotlin.Boolean;kotlin.String?;kotlin.Boolean){}[0]
 
     final val callableFqn // ee.schimke.composeai.discovery/ChainLink.callableFqn|{}callableFqn[0]
         final fun <get-callableFqn>(): kotlin/String // ee.schimke.composeai.discovery/ChainLink.callableFqn.<get-callableFqn>|<get-callableFqn>(){}[0]
+    final val member // ee.schimke.composeai.discovery/ChainLink.member|{}member[0]
+        final fun <get-member>(): kotlin/Boolean // ee.schimke.composeai.discovery/ChainLink.member.<get-member>|<get-member>(){}[0]
     final val named // ee.schimke.composeai.discovery/ChainLink.named|{}named[0]
         final fun <get-named>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/ChainLink.named.<get-named>|<get-named>(){}[0]
     final val positional // ee.schimke.composeai.discovery/ChainLink.positional|{}positional[0]
@@ -567,7 +569,8 @@ final class ee.schimke.composeai.discovery/ChainLink { // ee.schimke.composeai.d
     final fun component3(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/ChainLink.component3|component3(){}[0]
     final fun component4(): kotlin/Boolean // ee.schimke.composeai.discovery/ChainLink.component4|component4(){}[0]
     final fun component5(): kotlin/String? // ee.schimke.composeai.discovery/ChainLink.component5|component5(){}[0]
-    final fun copy(kotlin/String = ..., kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin/Boolean = ..., kotlin/String? = ...): ee.schimke.composeai.discovery/ChainLink // ee.schimke.composeai.discovery/ChainLink.copy|copy(kotlin.String;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>;kotlin.Boolean;kotlin.String?){}[0]
+    final fun component6(): kotlin/Boolean // ee.schimke.composeai.discovery/ChainLink.component6|component6(){}[0]
+    final fun copy(kotlin/String = ..., kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin/Boolean = ..., kotlin/String? = ..., kotlin/Boolean = ...): ee.schimke.composeai.discovery/ChainLink // ee.schimke.composeai.discovery/ChainLink.copy|copy(kotlin.String;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>;kotlin.Boolean;kotlin.String?;kotlin.Boolean){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ChainLink.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ChainLink.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ChainLink.toString|toString(){}[0]

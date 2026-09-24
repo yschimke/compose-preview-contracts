@@ -18,6 +18,28 @@ class ScreenDocumentWireTest {
   }
 
   @Test
+  fun `chain link member is additive and omitted at its default`() {
+    val legacy = """{"callableFqn":"example.padding","positional":[]}"""
+    val decoded = Json.decodeFromString<ChainLink>(legacy)
+    assertFalse(decoded.member)
+    assertEquals("""{"callableFqn":"example.padding"}""", Json.encodeToString(decoded))
+
+    val member =
+      ChainLink(
+        "example.layout.PaneScaffoldDirective.maxHorizontalPartitions",
+        property = true,
+        member = true,
+      )
+    val wire = Json.encodeToString(member)
+    assertEquals(
+      """{"callableFqn":"example.layout.PaneScaffoldDirective.maxHorizontalPartitions",""" +
+        """"property":true,"member":true}""",
+      wire,
+    )
+    assertEquals(member, Json.decodeFromString<ChainLink>(wire))
+  }
+
+  @Test
   fun `value discriminators retain the original generator package`() {
     val values =
       linkedMapOf(
