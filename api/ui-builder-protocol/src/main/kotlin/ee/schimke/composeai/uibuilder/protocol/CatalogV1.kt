@@ -781,23 +781,6 @@ public data class PaddingValueV1(
 @SerialName("adaptiveGrid")
 public data class AdaptiveGridValueV1(public val minimumCellWidthDp: JsonElement) : UiValueV1
 
-/**
- * A grid with a fixed number of columns at every width — `GridCells.Fixed(columns)` — where
- * [AdaptiveGridValueV1] is `GridCells.Adaptive`.
- *
- * A calendar's month is seven columns because a week has seven days, whatever the window, and no
- * minimum cell width says that. The builder's reducer, validator and exporter accepted
- * `{"type":"fixedGrid","columns":7}` before this type existed, and the host then refused the whole
- * document at its deserializer with a message about a sealed base class rather than the design
- * (compose-preview-server#901). Declaring it here is what lets a host carry the value at all.
- *
- * [columns] is a count, so it is an `Int` rather than a preserved JSON number: there is no spelling
- * of seven columns for a round trip to change.
- */
-@Serializable
-@SerialName("fixedGrid")
-public data class FixedGridValueV1(public val columns: Int) : UiValueV1
-
 @Serializable
 @SerialName("resource")
 public data class ResourceValueV1(

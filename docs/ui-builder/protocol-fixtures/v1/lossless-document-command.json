@@ -129,7 +129,6 @@
     {"type": "insets", "value": [0, 0, 0, 0]},
     {"type": "padding", "startDp": 1.0, "topDp": 2.0, "endDp": 3.0, "bottomDp": 4.0},
     {"type": "adaptiveGrid", "minimumCellWidthDp": 362.0},
-    {"type": "fixedGrid", "columns": 7},
     {"type": "resource", "resourceKey": "icon", "contentDigest": "sha256:icon"},
     {"type": "list", "values": [{"type": "string", "value": "one"}]},
     {"type": "object", "fields": {"one": {"type": "int", "value": 1}}},
