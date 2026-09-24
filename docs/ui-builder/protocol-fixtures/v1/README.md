@@ -12,6 +12,14 @@ Discover references, as well as all v1 mutation, outcome, conflict and rejection
 authoritative operations fixtures. Their tests lock both strict structure—including explicit zero
 padding/inset edges—and the operations fixtures' published canonical SHA-256 values.
 
+`../../builder-documents/` holds what these fixtures cannot: documents the builder itself wrote.
+The five Google-app samples there are encoded by compose-ui-builder's `UiBuilderDocument`
+serializer (`encodeDefaults = true`), not by this module, and `BuilderDocumentConformanceTest`
+decodes each one strictly as `DesignDocumentV1` and requires every node's `properties`,
+`modifiers`, `eventBindings` and `slots` to re-encode byte-for-byte. That is the evidence the
+builder's raw-JSON property model can move onto `UiValueV1` without changing a revision hash.
+Document-level fields are deliberately not compared; the test's KDoc says which differ and why.
+
 The list-design and access fixtures lock actor-specific effective actions, independently revisioned
 owner/ACL state, every atomic access mutation, and opaque bearer-link sharing. Transport actor IDs
 are authenticated requester identities; ACL mutation actor IDs identify grant targets.

@@ -178,7 +178,15 @@
           {"type":"resetBackground"},
           {"type":"setTypeface","value":"Space Grotesk"},
           {"type":"resetTypeface"}
-        ]}
+        ]},
+        {"type": "setStateVariable", "name": "query", "declaration": {"type": "text", "initialValue": "", "persistence": "preview"}},
+        {"type": "removeStateVariable", "name": "query"},
+        {"type": "setEventBinding", "nodeId": "new", "event": "click", "actions": [{"type": "toggle", "variable": "enabled"}]},
+        {"type": "setEventBinding", "nodeId": "new", "event": "click", "actions": []},
+        {"type": "setModifiers", "nodeId": "new", "modifiers": [{"type": "fillMaxWidth"}, {"type": "padding", "startDp": 16, "topDp": 8, "endDp": 16, "bottomDp": 8}]},
+        {"type": "setModifiers", "nodeId": "new", "modifiers": []},
+        {"type": "declareComponent", "componentKey": "contribution-cell", "declaration": {"name": "ContributionCell", "root": "cell-body", "description": "One day of the contribution graph."}},
+        {"type": "removeComponent", "componentKey": "contribution-cell"}
       ]
     },
     {"type": "undo", "designId": "design-lossless", "operationId": "undo-1", "actorId": "actor-a", "clientId": "mcp-a", "baseRevision": 43, "targetOperationId": "batch-1"},
