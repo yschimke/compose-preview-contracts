@@ -1,16 +1,18 @@
 public final class ee/schimke/composeai/discovery/ChainLink {
 	public static final field Companion Lee/schimke/composeai/discovery/ChainLink$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/util/Map;ZLjava/lang/String;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/util/Map;ZLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/util/Map;ZLjava/lang/String;Z)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/util/Map;ZLjava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/util/List;
 	public final fun component3 ()Ljava/util/Map;
 	public final fun component4 ()Z
 	public final fun component5 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/util/List;Ljava/util/Map;ZLjava/lang/String;)Lee/schimke/composeai/discovery/ChainLink;
-	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ChainLink;Ljava/lang/String;Ljava/util/List;Ljava/util/Map;ZLjava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ChainLink;
+	public final fun component6 ()Z
+	public final fun copy (Ljava/lang/String;Ljava/util/List;Ljava/util/Map;ZLjava/lang/String;Z)Lee/schimke/composeai/discovery/ChainLink;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ChainLink;Ljava/lang/String;Ljava/util/List;Ljava/util/Map;ZLjava/lang/String;ZILjava/lang/Object;)Lee/schimke/composeai/discovery/ChainLink;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getCallableFqn ()Ljava/lang/String;
+	public final fun getMember ()Z
 	public final fun getNamed ()Ljava/util/Map;
 	public final fun getPositional ()Ljava/util/List;
 	public final fun getProperty ()Z

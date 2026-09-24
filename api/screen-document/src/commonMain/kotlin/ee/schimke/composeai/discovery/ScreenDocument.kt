@@ -479,7 +479,8 @@ public sealed interface ScreenValue {
 /**
  * One link in a [ScreenValue.Chain].
  *
- * @property callableFqn the extension's fully-qualified name. Imported, then called by simple name.
+ * @property callableFqn the extension's fully-qualified name. Imported, then called by simple name
+ *   — unless [member] or [receiverScopeFqn] says the receiver supplies it.
  * @property property a property read (`.dp`) rather than a call (`.padding(8.dp)`). A link that is
  *   both — a property with arguments — is a refusal, not a call.
  */
@@ -507,4 +508,23 @@ public data class ChainLink(
    * all. Null for an ordinary top-level extension, which imports as before.
    */
   public val receiverScopeFqn: String? = null,
+  /**
+   * A **member of the receiver's own type** — a property read or a method call on the chain's
+   * explicit receiver — rather than an extension. `directive.maxHorizontalPartitions` and
+   * `directive.copy(horizontalPartitionSpacerSize = 12.dp)` on a `PaneScaffoldDirective` are the
+   * motivating cases: neither is an extension, so neither can be imported, and a capitalised
+   * qualifier is otherwise refused outright.
+   *
+   * [callableFqn] is then `<declaring classifier's fqn>.<name>` —
+   * `androidx.compose.material3.adaptive.layout.PaneScaffoldDirective.maxHorizontalPartitions`. The
+   * link is written as `.name` (with [property]) or `.name(args)` on the receiver and is **never
+   * imported**; the declaring classifier's package is still held to the generator's allowed
+   * expression packages, exactly as an imported callable is.
+   *
+   * Like [receiverScopeFqn] this is a claim the generator checks: a member is legal only in a
+   * [ScreenValue.Chain] whose receiver is an explicit expression (not the `Modifier` companion a
+   * modifier chain starts from), and a link cannot be both a member and a scope member extension.
+   * False — the default, and omitted on the wire — for every link written before it existed.
+   */
+  public val member: Boolean = false,
 )
