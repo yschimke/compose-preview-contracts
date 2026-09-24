@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.10.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.9.0...v3.10.0) (2026-09-24)
+
+
+### Features
+
+* let a chain link read or call a member of its receiver ([#108](https://github.com/yschimke/compose-preview-contracts/issues/108)) ([f0ae89d](https://github.com/yschimke/compose-preview-contracts/commit/f0ae89d1212aa0d7d37965525af720843216b607))
+
 ## [3.9.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.8.0...v3.9.0) (2026-09-22)
 
 
