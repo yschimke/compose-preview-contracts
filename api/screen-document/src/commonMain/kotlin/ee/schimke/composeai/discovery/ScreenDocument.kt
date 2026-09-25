@@ -120,7 +120,73 @@ public data class ScreenNode(
   public val repetition: ScreenRepetition? = null,
   /** Calls one of [ScreenDocument.functions], using [arguments] and/or [handlers]. */
   public val function: String? = null,
-)
+  /**
+   * Names the parameter a slot's lambda receives, by **slot name** → a document key.
+   *
+   * `Scaffold`'s `content` is `(PaddingValues) -> Unit`: the padding its bars occupy, which the
+   * body has to apply or it draws underneath them. Without a name for it a slot can only be a bare
+   * `{ … }` whose `it` nothing reads. A key here makes the generator write `{ name -> … }` for that
+   * slot, and [ScreenValue.SlotParameterRead] of the same key reads it anywhere inside.
+   *
+   * The key is document data, like a [ScreenRepetition] field: the generator allocates the Kotlin
+   * identifier. The slot's lambda must take exactly one parameter; a key on any other slot, or on a
+   * slot the node does not fill, is refused.
+   */
+  public val slotParameters: Map<String, String> = emptyMap(),
+) {
+  /**
+   * The constructor as it was before [slotParameters], kept for binary compatibility.
+   *
+   * A consumer compiled against an earlier release (a builder jar resolved beside newer contracts
+   * in one server) calls this exact signature — or its synthetic defaults variant, which a
+   * defaulted secondary constructor regenerates. Hidden, so source callers see only the primary.
+   */
+  @Deprecated("Binary compatibility only", level = DeprecationLevel.HIDDEN)
+  public constructor(
+    componentId: String,
+    arguments: Map<String, ScreenValue> = emptyMap(),
+    slots: Map<String, List<ScreenNode>> = emptyMap(),
+    slotItems: Map<String, SlotItem> = emptyMap(),
+    handlers: Map<String, List<ScreenAction>> = emptyMap(),
+    selection: ScreenSelection? = null,
+    repetition: ScreenRepetition? = null,
+    function: String? = null,
+  ) : this(
+    componentId,
+    arguments,
+    slots,
+    slotItems,
+    handlers,
+    selection,
+    repetition,
+    function,
+    emptyMap(),
+  )
+
+  /** `copy` as it was before [slotParameters], for the same reason as the constructor above. */
+  @Deprecated("Binary compatibility only", level = DeprecationLevel.HIDDEN)
+  public fun copy(
+    componentId: String = this.componentId,
+    arguments: Map<String, ScreenValue> = this.arguments,
+    slots: Map<String, List<ScreenNode>> = this.slots,
+    slotItems: Map<String, SlotItem> = this.slotItems,
+    handlers: Map<String, List<ScreenAction>> = this.handlers,
+    selection: ScreenSelection? = this.selection,
+    repetition: ScreenRepetition? = this.repetition,
+    function: String? = this.function,
+  ): ScreenNode =
+    ScreenNode(
+      componentId,
+      arguments,
+      slots,
+      slotItems,
+      handlers,
+      selection,
+      repetition,
+      function,
+      slotParameters,
+    )
+}
 
 /**
  * A typed row list and a template which reads its innermost row through [ScreenValue.RowRead].
@@ -458,6 +524,17 @@ public sealed interface ScreenValue {
   @Serializable
   public data class RowRead(public val field: String, public override val typeFqn: String) :
     ScreenValue
+
+  /**
+   * A checked read of the parameter a slot's lambda receives, bound by an enclosing node's
+   * [ScreenNode.slotParameters] under [key]. [typeFqn] must be that parameter's type; a key no
+   * enclosing slot binds, or a type that does not match, is refused. Never a source identifier.
+   */
+  @Serializable
+  public data class SlotParameterRead(
+    public val key: String,
+    public override val typeFqn: String,
+  ) : ScreenValue
 
   /** A checked read of a parameter of the function currently being generated. */
   @Serializable

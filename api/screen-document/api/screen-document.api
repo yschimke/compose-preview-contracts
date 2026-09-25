@@ -168,8 +168,10 @@ public final class ee/schimke/composeai/discovery/ScreenFunction$Companion {
 
 public final class ee/schimke/composeai/discovery/ScreenNode {
 	public static final field Companion Lee/schimke/composeai/discovery/ScreenNode$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lee/schimke/composeai/discovery/ScreenSelection;Lee/schimke/composeai/discovery/ScreenRepetition;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lee/schimke/composeai/discovery/ScreenSelection;Lee/schimke/composeai/discovery/ScreenRepetition;Ljava/lang/String;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lee/schimke/composeai/discovery/ScreenSelection;Lee/schimke/composeai/discovery/ScreenRepetition;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lee/schimke/composeai/discovery/ScreenSelection;Lee/schimke/composeai/discovery/ScreenRepetition;Ljava/lang/String;Ljava/util/Map;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lee/schimke/composeai/discovery/ScreenSelection;Lee/schimke/composeai/discovery/ScreenRepetition;Ljava/lang/String;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/util/Map;
 	public final fun component3 ()Ljava/util/Map;
@@ -178,8 +180,11 @@ public final class ee/schimke/composeai/discovery/ScreenNode {
 	public final fun component6 ()Lee/schimke/composeai/discovery/ScreenSelection;
 	public final fun component7 ()Lee/schimke/composeai/discovery/ScreenRepetition;
 	public final fun component8 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lee/schimke/composeai/discovery/ScreenSelection;Lee/schimke/composeai/discovery/ScreenRepetition;Ljava/lang/String;)Lee/schimke/composeai/discovery/ScreenNode;
+	public final fun component9 ()Ljava/util/Map;
+	public final synthetic fun copy (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lee/schimke/composeai/discovery/ScreenSelection;Lee/schimke/composeai/discovery/ScreenRepetition;Ljava/lang/String;)Lee/schimke/composeai/discovery/ScreenNode;
+	public final fun copy (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lee/schimke/composeai/discovery/ScreenSelection;Lee/schimke/composeai/discovery/ScreenRepetition;Ljava/lang/String;Ljava/util/Map;)Lee/schimke/composeai/discovery/ScreenNode;
 	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenNode;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lee/schimke/composeai/discovery/ScreenSelection;Lee/schimke/composeai/discovery/ScreenRepetition;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenNode;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenNode;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lee/schimke/composeai/discovery/ScreenSelection;Lee/schimke/composeai/discovery/ScreenRepetition;Ljava/lang/String;Ljava/util/Map;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenNode;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getArguments ()Ljava/util/Map;
 	public final fun getComponentId ()Ljava/lang/String;
@@ -188,6 +193,7 @@ public final class ee/schimke/composeai/discovery/ScreenNode {
 	public final fun getRepetition ()Lee/schimke/composeai/discovery/ScreenRepetition;
 	public final fun getSelection ()Lee/schimke/composeai/discovery/ScreenSelection;
 	public final fun getSlotItems ()Ljava/util/Map;
+	public final fun getSlotParameters ()Ljava/util/Map;
 	public final fun getSlots ()Ljava/util/Map;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -704,6 +710,37 @@ public final synthetic class ee/schimke/composeai/discovery/ScreenValue$RowRead$
 }
 
 public final class ee/schimke/composeai/discovery/ScreenValue$RowRead$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$SlotParameterRead : ee/schimke/composeai/discovery/ScreenValue {
+	public static final field Companion Lee/schimke/composeai/discovery/ScreenValue$SlotParameterRead$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lee/schimke/composeai/discovery/ScreenValue$SlotParameterRead;
+	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenValue$SlotParameterRead;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenValue$SlotParameterRead;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAndroidxOptIns ()Ljava/util/List;
+	public final fun getKey ()Ljava/lang/String;
+	public fun getRequiredOptIns ()Ljava/util/List;
+	public fun getTypeFqn ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/discovery/ScreenValue$SlotParameterRead$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/discovery/ScreenValue$SlotParameterRead$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/discovery/ScreenValue$SlotParameterRead;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenValue$SlotParameterRead;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$SlotParameterRead$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

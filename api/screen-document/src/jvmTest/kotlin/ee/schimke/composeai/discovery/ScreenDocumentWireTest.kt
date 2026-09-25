@@ -14,7 +14,37 @@ class ScreenDocumentWireTest {
     assertNull(document.root.selection)
     assertNull(document.root.repetition)
     assertNull(document.root.function)
+    assertEquals(emptyMap(), document.root.slotParameters)
     assertEquals(wire, Json.encodeToString(document))
+  }
+
+  @Test
+  fun `a slot parameter binding and its read round trip`() {
+    val node =
+      ScreenNode(
+        componentId = "layout/scaffold",
+        slots =
+          mapOf(
+            "content" to
+              listOf(
+                ScreenNode(
+                  "layout/column",
+                  arguments =
+                    mapOf(
+                      "padding" to
+                        ScreenValue.SlotParameterRead(
+                          "contentPadding",
+                          "androidx.compose.foundation.layout.PaddingValues",
+                        )
+                    ),
+                )
+              )
+          ),
+        slotParameters = mapOf("content" to "contentPadding"),
+      )
+    val wire = Json.encodeToString(ScreenNode.serializer(), node)
+    assertTrue("\"slotParameters\":{\"content\":\"contentPadding\"}" in wire, wire)
+    assertEquals(node, Json.decodeFromString(ScreenNode.serializer(), wire))
   }
 
   @Test
@@ -66,6 +96,11 @@ class ScreenDocumentWireTest {
         "StateRead" to ScreenValue.StateRead("page", "kotlin.Int"),
         "RowRead" to ScreenValue.RowRead("id", "kotlin.Int"),
         "ParameterRead" to ScreenValue.ParameterRead("caption", "kotlin.String"),
+        "SlotParameterRead" to
+          ScreenValue.SlotParameterRead(
+            "contentPadding",
+            "androidx.compose.foundation.layout.PaddingValues",
+          ),
       )
     for ((kind, value) in values) {
       val wire = Json.encodeToJsonElement(ScreenValue.serializer(), value)
