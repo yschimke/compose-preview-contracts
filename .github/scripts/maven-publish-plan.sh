@@ -319,7 +319,9 @@ def android_only_is_safe(cat_head, build_logic_texts):
     ceiling, ceiling_q = version_tuple(kotlin)
     for v in kgp:
         t, q = version_tuple(v)
-        if t > ceiling or (t == ceiling and q and not ceiling_q):
+        # Same numbers, different qualifier: no ordering worth trusting (2.5.0 vs 2.5.0-RC,
+        # -RC vs -RC2), so it is treated as newer.
+        if t > ceiling or (t == ceiling and q != ceiling_q):
             print(f"  AGP {agp} requires kotlin-gradle-plugin {v}, above the catalog's {kotlin}",
                   file=sys.stderr)
             return False
