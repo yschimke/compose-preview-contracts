@@ -401,6 +401,12 @@ def catalog_impact(tag):
     return impacted
 
 
+# Every changed-path listing below passes `--no-renames`. With rename detection on (git's default),
+# `git diff --name-only` names only a moved file's DESTINATION, so a source moved from `src/main` into
+# a test source set — or out of build-logic's main tree into `build-logic/src/test` — would read as
+# a test-only change and be exempted. Both sides of the move have to be seen.
+
+
 def changed_since(version, directory):
     """Did anything that ships from `directory` move between the tag for `version` and head?"""
     tag = f"v{version}"
@@ -408,7 +414,8 @@ def changed_since(version, directory):
         print(f"  {directory}: no tag {tag}; publishing", file=sys.stderr)
         return True
     prefix = directory.rstrip("/") + "/"
-    out = [f for f in git("diff", "--name-only", f"{tag}..{head}", "--", directory).split("\n") if f]
+    out = git("diff", "--no-renames", "--name-only", f"{tag}..{head}", "--", directory)
+    out = [f for f in out.split("\n") if f]
     shipped = [f for f in out if not TEST_SOURCES.match(f.removeprefix(prefix))]
     if out and not shipped:
         print(f"  {directory}: only test sources changed since {tag}", file=sys.stderr)
@@ -423,7 +430,7 @@ for version in sorted(set(recorded.values())):
         print(f"  no tag {tag}", file=sys.stderr)
         shared_changed = True
         break
-    files = [f for f in git("diff", "--name-only", f"{tag}..{head}").split("\n") if f]
+    files = [f for f in git("diff", "--no-renames", "--name-only", f"{tag}..{head}").split("\n") if f]
     shared = [f for f in files if SHARED.match(f) and not SHARED_IGNORED.match(f)]
     other = [f for f in shared if f != CATALOG]
     if other:

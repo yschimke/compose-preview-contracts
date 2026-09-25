@@ -247,6 +247,22 @@ class PlanTest(unittest.TestCase):
         self.commit("build-logic test")
         self.assertPlan([])
 
+    def test_build_logic_source_moved_into_tests_publishes_everything(self) -> None:
+        # With rename detection, `git diff --name-only` reports only the test-side destination, and
+        # the move would read as a test-only change. The source leaving the plugin classpath is not.
+        self.git(
+            "mv",
+            "build-logic/src/main/kotlin/ee/schimke/composeai/buildlogic/ComposeAiMavenPublishingPlugin.kt",
+            "build-logic/src/test/kotlin/ComposeAiMavenPublishingPlugin.kt",
+        )
+        self.commit("move into tests")
+        self.assertPlan(MODULES)
+
+    def test_module_source_moved_into_tests_publishes_the_module(self) -> None:
+        self.git("mv", "mods/a/src/main/kotlin/A.kt", "mods/a/src/test/kotlin/A.kt")
+        self.commit("move into tests")
+        self.assertPlan(["a", "b"])
+
     # ---- shared inputs other than the catalog still publish everything -------------------------
 
     def test_build_logic_source_publishes_everything(self) -> None:
