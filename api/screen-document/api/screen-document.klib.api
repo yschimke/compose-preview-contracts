@@ -461,6 +461,35 @@ sealed interface ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.comp
         }
     }
 
+    final class SlotParameterRead : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead|null[0]
+        constructor <init>(kotlin/String, kotlin/String) // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.<init>|<init>(kotlin.String;kotlin.String){}[0]
+
+        final val key // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.key|{}key[0]
+            final fun <get-key>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.key.<get-key>|<get-key>(){}[0]
+        final val typeFqn // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.typeFqn|{}typeFqn[0]
+            final fun <get-typeFqn>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.typeFqn.<get-typeFqn>|<get-typeFqn>(){}[0]
+
+        final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.component1|component1(){}[0]
+        final fun component2(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ...): ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.copy|copy(kotlin.String;kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead> { // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead) // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenValue.SlotParameterRead){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead> // ee.schimke.composeai.discovery/ScreenValue.SlotParameterRead.Companion.serializer|serializer(){}[0]
+        }
+    }
+
     final class StateRead : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.StateRead|null[0]
         constructor <init>(kotlin/String, kotlin/String) // ee.schimke.composeai.discovery/ScreenValue.StateRead.<init>|<init>(kotlin.String;kotlin.String){}[0]
 
@@ -664,6 +693,7 @@ final class ee.schimke.composeai.discovery/ScreenFunction { // ee.schimke.compos
 
 final class ee.schimke.composeai.discovery/ScreenNode { // ee.schimke.composeai.discovery/ScreenNode|null[0]
     constructor <init>(kotlin/String, kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenNode>> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/SlotItem> = ..., kotlin.collections/Map<kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenAction>> = ..., ee.schimke.composeai.discovery/ScreenSelection? = ..., ee.schimke.composeai.discovery/ScreenRepetition? = ..., kotlin/String? = ...) // ee.schimke.composeai.discovery/ScreenNode.<init>|<init>(kotlin.String;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,kotlin.collections.List<ee.schimke.composeai.discovery.ScreenNode>>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.SlotItem>;kotlin.collections.Map<kotlin.String,kotlin.collections.List<ee.schimke.composeai.discovery.ScreenAction>>;ee.schimke.composeai.discovery.ScreenSelection?;ee.schimke.composeai.discovery.ScreenRepetition?;kotlin.String?){}[0]
+    constructor <init>(kotlin/String, kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenNode>> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/SlotItem> = ..., kotlin.collections/Map<kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenAction>> = ..., ee.schimke.composeai.discovery/ScreenSelection? = ..., ee.schimke.composeai.discovery/ScreenRepetition? = ..., kotlin/String? = ..., kotlin.collections/Map<kotlin/String, kotlin/String> = ...) // ee.schimke.composeai.discovery/ScreenNode.<init>|<init>(kotlin.String;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,kotlin.collections.List<ee.schimke.composeai.discovery.ScreenNode>>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.SlotItem>;kotlin.collections.Map<kotlin.String,kotlin.collections.List<ee.schimke.composeai.discovery.ScreenAction>>;ee.schimke.composeai.discovery.ScreenSelection?;ee.schimke.composeai.discovery.ScreenRepetition?;kotlin.String?;kotlin.collections.Map<kotlin.String,kotlin.String>){}[0]
 
     final val arguments // ee.schimke.composeai.discovery/ScreenNode.arguments|{}arguments[0]
         final fun <get-arguments>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/ScreenNode.arguments.<get-arguments>|<get-arguments>(){}[0]
@@ -679,6 +709,8 @@ final class ee.schimke.composeai.discovery/ScreenNode { // ee.schimke.composeai.
         final fun <get-selection>(): ee.schimke.composeai.discovery/ScreenSelection? // ee.schimke.composeai.discovery/ScreenNode.selection.<get-selection>|<get-selection>(){}[0]
     final val slotItems // ee.schimke.composeai.discovery/ScreenNode.slotItems|{}slotItems[0]
         final fun <get-slotItems>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/SlotItem> // ee.schimke.composeai.discovery/ScreenNode.slotItems.<get-slotItems>|<get-slotItems>(){}[0]
+    final val slotParameters // ee.schimke.composeai.discovery/ScreenNode.slotParameters|{}slotParameters[0]
+        final fun <get-slotParameters>(): kotlin.collections/Map<kotlin/String, kotlin/String> // ee.schimke.composeai.discovery/ScreenNode.slotParameters.<get-slotParameters>|<get-slotParameters>(){}[0]
     final val slots // ee.schimke.composeai.discovery/ScreenNode.slots|{}slots[0]
         final fun <get-slots>(): kotlin.collections/Map<kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenNode>> // ee.schimke.composeai.discovery/ScreenNode.slots.<get-slots>|<get-slots>(){}[0]
 
@@ -690,7 +722,9 @@ final class ee.schimke.composeai.discovery/ScreenNode { // ee.schimke.composeai.
     final fun component6(): ee.schimke.composeai.discovery/ScreenSelection? // ee.schimke.composeai.discovery/ScreenNode.component6|component6(){}[0]
     final fun component7(): ee.schimke.composeai.discovery/ScreenRepetition? // ee.schimke.composeai.discovery/ScreenNode.component7|component7(){}[0]
     final fun component8(): kotlin/String? // ee.schimke.composeai.discovery/ScreenNode.component8|component8(){}[0]
+    final fun component9(): kotlin.collections/Map<kotlin/String, kotlin/String> // ee.schimke.composeai.discovery/ScreenNode.component9|component9(){}[0]
     final fun copy(kotlin/String = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenNode>> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/SlotItem> = ..., kotlin.collections/Map<kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenAction>> = ..., ee.schimke.composeai.discovery/ScreenSelection? = ..., ee.schimke.composeai.discovery/ScreenRepetition? = ..., kotlin/String? = ...): ee.schimke.composeai.discovery/ScreenNode // ee.schimke.composeai.discovery/ScreenNode.copy|copy(kotlin.String;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,kotlin.collections.List<ee.schimke.composeai.discovery.ScreenNode>>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.SlotItem>;kotlin.collections.Map<kotlin.String,kotlin.collections.List<ee.schimke.composeai.discovery.ScreenAction>>;ee.schimke.composeai.discovery.ScreenSelection?;ee.schimke.composeai.discovery.ScreenRepetition?;kotlin.String?){}[0]
+    final fun copy(kotlin/String = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenNode>> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/SlotItem> = ..., kotlin.collections/Map<kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenAction>> = ..., ee.schimke.composeai.discovery/ScreenSelection? = ..., ee.schimke.composeai.discovery/ScreenRepetition? = ..., kotlin/String? = ..., kotlin.collections/Map<kotlin/String, kotlin/String> = ...): ee.schimke.composeai.discovery/ScreenNode // ee.schimke.composeai.discovery/ScreenNode.copy|copy(kotlin.String;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,kotlin.collections.List<ee.schimke.composeai.discovery.ScreenNode>>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.SlotItem>;kotlin.collections.Map<kotlin.String,kotlin.collections.List<ee.schimke.composeai.discovery.ScreenAction>>;ee.schimke.composeai.discovery.ScreenSelection?;ee.schimke.composeai.discovery.ScreenRepetition?;kotlin.String?;kotlin.collections.Map<kotlin.String,kotlin.String>){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenNode.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenNode.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenNode.toString|toString(){}[0]
