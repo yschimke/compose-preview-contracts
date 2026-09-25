@@ -48,6 +48,20 @@ jobs:
           COMPOSE_AI_TOOLS_ROOT: ${{ github.workspace }}/compose-ai-tools
         run: ./gradlew --no-daemon check
 
+      # The release scripts decide what reaches Maven Central, where nothing can be taken back, and
+      # most of their branches never run on an ordinary release: the empty plan had not run once
+      # in seven releases. Tested here, on every PR, against throwaway git repositories and a fake
+      # Gradle launcher.
+      - name: Release script tests
+        working-directory: compose-preview-contracts
+        run: python3 -m unittest discover -s .github/scripts/tests -v
+
+      # The Gradle half of the same contract: what `printPublishTasks` returns for an absent, an
+      # empty and a one-module publish set. An empty set must list nothing — not even `:bom`.
+      - name: printPublishTasks honours the publish set
+        working-directory: compose-preview-contracts
+        run: .github/scripts/tests/print-publish-tasks-test.sh
+
       - name: Assert the cross-repo drift check actually ran
         working-directory: compose-preview-contracts
         # A skipped drift test reports the same green as a passing one. Fail loudly if the

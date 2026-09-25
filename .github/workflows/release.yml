@@ -115,7 +115,7 @@ jobs:
       # is usually why someone is re-running it — and publishing everything is the safe answer.
       #
       # An EMPTY publish set is a real answer, not a missing one: a releasable change confined to
-       # `.github/` or the docs publishes no Maven module. `-Pcomposeai.publishSet=` (empty)
+      # `.github/` or the docs publishes no Maven module. `-Pcomposeai.publishSet=` (empty)
       # says that, while omitting the property says "no plan ran, publish everything".
       - name: Compute the publish plan
         run: |
@@ -193,23 +193,10 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
-        run: |
-          set -euo pipefail
-          # Ask Gradle for the task paths rather than deriving them here: the plan enumerates
-          # modules by artifact id and Gradle addresses them by project path. A hand-kept mapping
-          # between the two is exactly the artefact that goes stale silently, and stale here means
-          # publishing a module twice or dropping one out of a release.
-          PLAN_ARGS=()
-          if [ "$PUBLISH_PLANNED" = "true" ]; then
-            PLAN_ARGS+=("-Pcomposeai.publishSet=$PUBLISH_SET")
-          fi
-          TASKS="$(./gradlew -q printPublishTasks "${PLAN_ARGS[@]}" | cut -f1 | tr '\n' ' ')"
-          echo "publishing: $TASKS"
-          # A planned empty list means no artifact changed. It is successful; retain the failure
-          # for an unplanned/recovery release, where a bare `./gradlew` would only run `help`.
-          [ -n "$TASKS" ] || { [ "$PUBLISH_PLANNED" = "true" ] && exit 0; echo "::error::no publish tasks resolved"; exit 1; }
-          # shellcheck disable=SC2086
-          PLUGIN_VERSION="${TAG_NAME#v}" ./gradlew --no-daemon $TASKS "${PLAN_ARGS[@]}"
+        # The task resolution, the empty-plan `exit 0` and the upload live in a script so their
+        # branches are tested (.github/scripts/tests/, run by ci.yml) rather than first exercised
+        # by a real release.
+        run: .github/scripts/publish-to-central.sh
 
       # Only now is the release real. Until the upload succeeds it stays a draft, so a failed
       # publish does not leave a release announcing artifacts that are not there.
