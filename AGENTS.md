@@ -95,8 +95,10 @@ even though the catalog no longer carries Robolectric.
 ## Releasing
 
 Merging the `chore(main): release X.Y.Z` pull request is the whole release: it cuts the tag,
-drafts the GitHub Release, publishes all sixteen coordinates from twelve modules to Maven Central, then
-un-drafts. Each KMP module (`ui-builder-protocol` and `screen-document`) owns metadata, JVM and Wasm coordinates.
+drafts the GitHub Release, publishes the changed subset of sixteen coordinates from twelve modules
+to Maven Central, then un-drafts. Which subset is `.github/scripts/maven-publish-plan.sh`'s call —
+rules and tests in [`docs/VERSIONING.md`](docs/VERSIONING.md#a-release-publishes-only-what-changed).
+Each KMP module (`ui-builder-protocol` and `screen-document`) owns metadata, JVM and Wasm coordinates.
 
 **A published coordinate is permanent.** Central does not accept a second upload of the same
 GAV, and `publishToMavenCentral(automaticRelease = true)` promotes without a human looking. So

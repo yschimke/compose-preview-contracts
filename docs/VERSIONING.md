@@ -165,6 +165,65 @@ That key is **sticky** — it pins every later run to the same version — so it
 2.19.0 was released. Anything reaching for it again should remove it in the same way, immediately
 after the release it was added for.
 
+## A release publishes only what changed
+
+One version line does not mean every coordinate uploads at every tag. Each coordinate-publish is
+twenty files against a Maven Central file-count limit shared by all of yschimke's publishing
+repositories, so `release.yml` asks
+[`.github/scripts/maven-publish-plan.sh`](../.github/scripts/maven-publish-plan.sh) which modules
+this release has to upload. A skipped module keeps the version it last published at, and the POMs
+and the BOM name it there (`PublishedVersions.resolve`). A module publishes when:
+
+1. **something that ships from it changed** since the tag *it* last published at — its baseline is
+   read from Maven Central, not from the previous release. A change confined to its test source
+   sets (`src/test`, `src/jvmTest`, `src/commonTest`, … — anything ending in `Test`, which
+   `src/testFixtures` does not) cannot reach its artifact and does not count;
+2. **a module it depends on publishes**, transitively, so a POM never names a sibling version that
+   was not uploaded; or
+3. **a shared build input changed**: `build-logic/` (except `build-logic/src/test/`), `gradle/`,
+   the wrapper, `settings.gradle.kts` or the root `build.gradle.kts`. These publish everything,
+   with one narrowing — the version catalog.
+
+**The version catalog is diffed entry by entry** (`gradle/libs.versions.toml` at the module's
+baseline tag against the release). Every version, library, plugin and bundle is resolved — a
+`version.ref` replaced by the version it names, a bundle by its libraries — so a changed version ref
+changes every alias that uses it. A changed alias dirties only the published modules whose build
+scripts name it (`libs.okio`, `libs.plugins.kotlin.jvm`, `libs.bundles.x`, `libs.versions.kotlin`,
+or a literal `findVersion("…")`). Everything publishes instead when:
+
+- a changed alias is named by a script that reaches every module — build-logic, the root build,
+  settings, or a build script outside a published module (the BOM's). `kotlin` is always such an
+  alias;
+- a script looks the catalog up by a name the plan cannot read (a computed `find…()`, an alias
+  enumeration); or
+- the catalog cannot be parsed, or a section other than those four changed.
+
+**AGP is the one build-logic input confined further.** Every published module applies
+`composeai.android-conventions`, but that plugin touches AGP only inside
+`withPlugin("com.android.…")`, so an AGP bump reaches only modules that apply an Android plugin —
+of which there are none today. The plan re-proves that on every run rather than trusting it: AGP's
+API may appear only in `ComposeAiAndroidConventionsPlugin.kt`, and the new AGP's POM must not ask
+for a newer `kotlin-gradle-plugin` than the catalog's `kotlin`, which Gradle would otherwise put on
+the convention classpath and so change the compiler every module is built with. Either check
+failing, or the POM being unreadable, publishes everything.
+
+Every uncertainty resolves to "publish". Central refuses a second upload of a version, so a needless
+publish costs quota while a wrongly skipped one cannot be repaired.
+
+Measured over 2026-09-20 to 09-25 (compose-ai-tools#5532, this repository's #111): seven releases
+published 54 coordinates against a full baseline of 119, and both full publishes came from rule 3 —
+v3.5.0 for an AGP bump, v3.7.0 for an edit to `printPublishTasks` in the root build script. The
+catalog narrowing turns the first into a one-module release; the second is still a full publish,
+because the root build script remains a shared input.
+
+**An empty plan is a real answer.** `-Pcomposeai.publishSet=` (empty) makes `printPublishTasks` list
+nothing, not even `:bom`, and
+[`publish-to-central.sh`](../.github/scripts/publish-to-central.sh) then uploads nothing and succeeds;
+the property's *absence* — a `workflow_dispatch` recovery run — still means "publish everything".
+Both branches, and the plan's rules above, are tested in `.github/scripts/tests/`, which `ci.yml`
+runs on every pull request, alongside a run of the real `printPublishTasks` for each shape of the
+property.
+
 ## Consumers
 
 | consumer | how it versions | how it pins |
