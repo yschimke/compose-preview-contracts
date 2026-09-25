@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.11.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.10.0...v3.11.0) (2026-09-25)
+
+
+### Features
+
+* **screen-document:** name a slot lambda's parameter and read it ([#115](https://github.com/yschimke/compose-preview-contracts/issues/115)) ([40bfa54](https://github.com/yschimke/compose-preview-contracts/commit/40bfa5403e76fb18cebf23e9fb5ce8a6ff2fd231))
+
+
+### Bug Fixes
+
+* **release:** narrow the publish plan's shared-input rule and test the empty plan ([#112](https://github.com/yschimke/compose-preview-contracts/issues/112)) ([f8bdddc](https://github.com/yschimke/compose-preview-contracts/commit/f8bdddcc5833f161a51b27e164b5056139defe18))
+* **release:** treat a same-version Kotlin plugin with a different qualifier as newer ([#114](https://github.com/yschimke/compose-preview-contracts/issues/114)) ([b1d51c2](https://github.com/yschimke/compose-preview-contracts/commit/b1d51c2a2dae61256c2c0c07045560115b9335a1))
+
 ## [3.10.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.9.0...v3.10.0) (2026-09-24)
 
 
