@@ -374,6 +374,18 @@ class PlanTest(unittest.TestCase):
         self.bump('agp = "9.4.1"', 'agp = "9.5.0"')
         self.assertIn("above the catalog", self.assertPlan(MODULES))
 
+    def test_agp_kotlin_plugin_with_a_different_qualifier_publishes_everything(self) -> None:
+        self.edit("gradle/libs.versions.toml", 'kotlin = "2.4.20"', 'kotlin = "2.4.20-RC"')
+        self.commit("kotlin rc")
+        self.git("tag", "v1.1.0")
+        self.baseline({m: "1.1.0" for m in MODULES})
+        for kgp in ("2.4.20", "2.4.20-RC2"):
+            with self.subTest(kgp=kgp):
+                self.serve_agp("9.5.0", kgp=kgp)
+                if kgp == "2.4.20":
+                    self.bump('agp = "9.4.1"', 'agp = "9.5.0"')
+                self.assertIn("above the catalog", self.assertPlan(MODULES))
+
     def test_agp_pom_unreachable_publishes_everything(self) -> None:
         self.bump('agp = "9.4.1"', 'agp = "9.5.0"')
         self.assertPlan(MODULES)
