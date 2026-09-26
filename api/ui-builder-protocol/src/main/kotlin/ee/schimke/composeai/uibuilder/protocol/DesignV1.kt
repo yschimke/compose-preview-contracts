@@ -5,6 +5,7 @@ package ee.schimke.composeai.uibuilder.protocol
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonClassDiscriminator
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonPrimitive
 
@@ -41,7 +42,29 @@ public data class DesignDocumentV1(
    * Empty in every document written before this field, which is what the default says.
    */
   public val components: Map<String, DesignComponentV1> = emptyMap(),
+  /** The design's canonical location, retained when it is opened or copied elsewhere. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val home: DesignHomeV1? = null,
 )
+
+/**
+ * The authoritative location from which a host can open a design.
+ *
+ * The discriminator is deliberately `kind`, rather than the protocol-wide `type`: this is a
+ * location reference, not one of the command or value vocabularies. Its values say whether a design
+ * belongs to a running builder server or to a repository checkout. A copy retains this reference;
+ * moving the home is an explicit operation rather than an inference from where the copy was opened.
+ */
+@Serializable
+@JsonClassDiscriminator("kind")
+public sealed class DesignHomeV1 {
+  /** A design served by a UI Builder host. */
+  @Serializable
+  @SerialName("server")
+  public data class Server(public val url: String, public val designId: String) : DesignHomeV1()
+
+  /** A design stored in a repository checkout. */
+  @Serializable @SerialName("repo") public data class Repo(public val path: String) : DesignHomeV1()
+}
 
 /**
  * One composable a design defines: what it is called and where its body starts.
