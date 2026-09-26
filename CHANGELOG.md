@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.12.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.11.0...v3.12.0) (2026-09-26)
+
+
+### Features
+
+* **ui-builder-protocol:** add design home contract ([#116](https://github.com/yschimke/compose-preview-contracts/issues/116)) ([87257eb](https://github.com/yschimke/compose-preview-contracts/commit/87257ebe8d7974f85c4196b2d76b3817b034cc29))
+
 ## [3.11.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.10.0...v3.11.0) (2026-09-25)
 
 
