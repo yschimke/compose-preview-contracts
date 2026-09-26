@@ -30,6 +30,10 @@ class UiBuilderProtocolCompatibilityTest {
     mapOf(
       fixtureSerializer("catalog.json", CatalogCapabilityV1.serializer()),
       fixtureSerializer("catalog-upgrade-delta.json", ServiceDeltaV1.serializer()),
+      // A design home is a sealed reference rather than a document field: pin both concrete wire
+      // forms independently so another implementation gets canonical bytes for each discriminator.
+      fixtureSerializer("design-home-server.json", DesignHomeV1.serializer()),
+      fixtureSerializer("design-home-repo.json", DesignHomeV1.serializer()),
       fixtureSerializer("lossless-document-command.json", LosslessProtocolFixtureV1.serializer()),
       fixtureSerializer("materialized-confetti.json", DesignDocumentV1.serializer()),
       fixtureSerializer("materialized-jetcaster.json", DesignDocumentV1.serializer()),
@@ -313,6 +317,43 @@ class UiBuilderProtocolCompatibilityTest {
 
     assertEquals(null, decoded.operations.single().outcome.documentUpdatedAtEpochMillis)
     assertEquals(original, strictJson.encodeToJsonElement(ServiceDeltaV1.serializer(), decoded))
+  }
+
+  @Test
+  fun designHomesUseKindAndLegacyDocumentsRemainHomeLess() {
+    val homes =
+      listOf<DesignHomeV1>(
+        DesignHomeV1.Server(url = "http://127.0.0.1:8787", designId = "settings"),
+        DesignHomeV1.Repo(path = "designs/settings.json"),
+      )
+    homes.forEach { home ->
+      val encoded = strictJson.encodeToJsonElement(DesignHomeV1.serializer(), home) as JsonObject
+      assertEquals(
+        JsonPrimitive(if (home is DesignHomeV1.Server) "server" else "repo"),
+        encoded["kind"],
+      )
+      assertEquals(false, "type" in encoded)
+      assertEquals(home, strictJson.decodeFromJsonElement(DesignHomeV1.serializer(), encoded))
+    }
+
+    val legacy = strictJson.parseToJsonElement(fixture("materialized-confetti.json"))
+    val document = strictJson.decodeFromJsonElement(DesignDocumentV1.serializer(), legacy)
+    assertNull(document.home)
+    assertEquals(legacy, strictJson.encodeToJsonElement(DesignDocumentV1.serializer(), document))
+    val eager = Json {
+      classDiscriminator = "type"
+      encodeDefaults = true
+      explicitNulls = true
+    }
+    val eagerLegacy =
+      eager.encodeToJsonElement(DesignDocumentV1.serializer(), document) as JsonObject
+    assertEquals(false, "home" in eagerLegacy)
+
+    val withHome = document.copy(home = homes.first())
+    val encoded =
+      strictJson.encodeToJsonElement(DesignDocumentV1.serializer(), withHome) as JsonObject
+    assertEquals(JsonPrimitive("server"), (encoded["home"] as JsonObject)["kind"])
+    assertEquals(withHome, strictJson.decodeFromJsonElement(DesignDocumentV1.serializer(), encoded))
   }
 
   @Test
