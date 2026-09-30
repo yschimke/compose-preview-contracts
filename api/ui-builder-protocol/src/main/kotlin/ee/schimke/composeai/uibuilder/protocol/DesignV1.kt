@@ -662,14 +662,33 @@ public data class AssetBindingV1(
   @EncodeDefault(EncodeDefault.Mode.NEVER) public val sizeBytes: Long? = null,
   @EncodeDefault(EncodeDefault.Mode.NEVER) public val provenance: AssetProvenanceV1? = null,
 ) {
-  /** Preserves the constructor that predates [sizeBytes] and [provenance]. */
+  /**
+   * Preserves the constructor that predates [sizeBytes] and [provenance], **including its
+   * default-argument form**. Code compiled against earlier releases calls the synthetic `(..., Int,
+   * DefaultConstructorMarker)` constructor when it leaves [widthPx] or [heightPx] out, and a
+   * primary constructor that only gained parameters has no such constructor: the call fails with
+   * `NoSuchMethodError` at runtime, in a jar nobody recompiled. Keeping this one keeps them
+   * linking, and it wins over the primary constructor at a call site that names no newer field.
+   */
   public constructor(
     mediaType: String,
     contentDigest: String,
     source: AssetSourceV1,
-    widthPx: Int?,
-    heightPx: Int?,
+    widthPx: Int? = null,
+    heightPx: Int? = null,
   ) : this(mediaType, contentDigest, source, widthPx, heightPx, null, null)
+
+  /**
+   * The `copy` of earlier releases, for the same reason; it carries [sizeBytes] and [provenance].
+   */
+  public fun copy(
+    mediaType: String = this.mediaType,
+    contentDigest: String = this.contentDigest,
+    source: AssetSourceV1 = this.source,
+    widthPx: Int? = this.widthPx,
+    heightPx: Int? = this.heightPx,
+  ): AssetBindingV1 =
+    copy(mediaType, contentDigest, source, widthPx, heightPx, this.sizeBytes, this.provenance)
 }
 
 /**
@@ -733,12 +752,25 @@ public data class DesignStateV1(
    */
   @EncodeDefault(EncodeDefault.Mode.NEVER) public val assetQuota: AssetQuotaV1? = null,
 ) {
-  /** Preserves the constructor that predates [assetQuota]. */
+  /**
+   * Preserves the constructor that predates [assetQuota], including its default-argument form: code
+   * compiled against earlier releases calls `(Int, Long, DesignDocumentV1, Int,
+   * DefaultConstructorMarker)` when it leaves [schemaVersion] out, and that descriptor only exists
+   * while a constructor with this shape and a default does. Without it such a jar fails with
+   * `NoSuchMethodError` the first time it builds a state.
+   */
   public constructor(
-    schemaVersion: Int,
+    schemaVersion: Int = UI_BUILDER_SCHEMA_VERSION_V1,
     lastSequence: Long,
     document: DesignDocumentV1,
   ) : this(schemaVersion, lastSequence, document, null)
+
+  /** The `copy` of earlier releases, for the same reason; it carries [assetQuota]. */
+  public fun copy(
+    schemaVersion: Int = this.schemaVersion,
+    lastSequence: Long = this.lastSequence,
+    document: DesignDocumentV1 = this.document,
+  ): DesignStateV1 = copy(schemaVersion, lastSequence, document, this.assetQuota)
 }
 
 /** Non-persisted collaborative cursor/selection state for one connected actor. */
