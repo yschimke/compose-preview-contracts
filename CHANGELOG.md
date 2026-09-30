@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.13.1](https://github.com/yschimke/compose-preview-contracts/compare/v3.13.0...v3.13.1) (2026-09-30)
+
+
+### Bug Fixes
+
+* **ui-builder-protocol:** restore binary compatibility broken by 3.13.0 ([#124](https://github.com/yschimke/compose-preview-contracts/issues/124)) ([feacdaa](https://github.com/yschimke/compose-preview-contracts/commit/feacdaaf1c76f798872c517b8b7b9f92eedca24f))
+
 ## [3.13.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.12.0...v3.13.0) (2026-09-30)
 
 
