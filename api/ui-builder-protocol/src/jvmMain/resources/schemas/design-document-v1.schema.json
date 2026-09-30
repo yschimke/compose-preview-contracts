@@ -1,0 +1,1969 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Design document (v1)",
+  "description": "Generated from the ee.schimke.composeai:ui-builder-protocol serializers; do not edit.",
+  "$ref": "#/$defs/DesignDocumentV1",
+  "$defs": {
+    "AccessibilityV1": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "contentDescription": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "stateDescription": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "heading": {
+          "type": "boolean"
+        },
+        "mergeDescendants": {
+          "type": "boolean"
+        },
+        "traversalIndex": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "AlignmentV1": {
+      "type": "string",
+      "enum": [
+        "topStart",
+        "topCenter",
+        "topEnd",
+        "centerStart",
+        "center",
+        "centerEnd",
+        "bottomStart",
+        "bottomCenter",
+        "bottomEnd"
+      ]
+    },
+    "AnimationStateV1": {
+      "type": "string",
+      "enum": [
+        "settled",
+        "running",
+        "disabled"
+      ]
+    },
+    "AssetBindingV1": {
+      "type": "object",
+      "properties": {
+        "mediaType": {
+          "type": "string"
+        },
+        "contentDigest": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/AssetSourceV1"
+        },
+        "widthPx": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "heightPx": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "mediaType",
+        "contentDigest",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "AssetSourceV1": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/AssetSourceV1.catalog"
+        },
+        {
+          "$ref": "#/$defs/AssetSourceV1.embedded"
+        },
+        {
+          "$ref": "#/$defs/AssetSourceV1.uploaded"
+        }
+      ]
+    },
+    "AssetSourceV1.catalog": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "catalog"
+        },
+        "assetKey": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "assetKey"
+      ],
+      "additionalProperties": false
+    },
+    "AssetSourceV1.embedded": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "embedded"
+        },
+        "base64": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "base64"
+      ],
+      "additionalProperties": false
+    },
+    "AssetSourceV1.uploaded": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "uploaded"
+        },
+        "storageKey": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "storageKey"
+      ],
+      "additionalProperties": false
+    },
+    "CatalogReferenceV1": {
+      "type": "object",
+      "properties": {
+        "systemId": {
+          "type": "string"
+        },
+        "catalogRevision": {
+          "type": "string"
+        },
+        "capabilityDigest": {
+          "type": "string"
+        },
+        "nativeRuntimeId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "systemId",
+        "catalogRevision",
+        "capabilityDigest",
+        "nativeRuntimeId"
+      ],
+      "additionalProperties": false
+    },
+    "ComponentSourceV1": {
+      "type": "object",
+      "properties": {
+        "system": {
+          "type": "string"
+        },
+        "componentId": {
+          "type": "string"
+        },
+        "digest": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "system",
+        "componentId",
+        "digest"
+      ],
+      "additionalProperties": false
+    },
+    "DesignActionV1": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/DesignActionV1.increment"
+        },
+        {
+          "$ref": "#/$defs/DesignActionV1.navigatePage"
+        },
+        {
+          "$ref": "#/$defs/DesignActionV1.select"
+        },
+        {
+          "$ref": "#/$defs/DesignActionV1.selectOrClear"
+        },
+        {
+          "$ref": "#/$defs/DesignActionV1.set"
+        },
+        {
+          "$ref": "#/$defs/DesignActionV1.setText"
+        },
+        {
+          "$ref": "#/$defs/DesignActionV1.toggle"
+        }
+      ]
+    },
+    "DesignActionV1.increment": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "increment"
+        },
+        "variable": {
+          "type": "string"
+        },
+        "amount": {}
+      },
+      "required": [
+        "type",
+        "variable"
+      ],
+      "additionalProperties": false
+    },
+    "DesignActionV1.navigatePage": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "navigatePage"
+        },
+        "pageKey": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "pageKey"
+      ],
+      "additionalProperties": false
+    },
+    "DesignActionV1.select": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "select"
+        },
+        "variable": {
+          "type": "string"
+        },
+        "value": {}
+      },
+      "required": [
+        "type",
+        "variable",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "DesignActionV1.selectOrClear": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "selectOrClear"
+        },
+        "variable": {
+          "type": "string"
+        },
+        "value": {}
+      },
+      "required": [
+        "type",
+        "variable",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "DesignActionV1.set": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "set"
+        },
+        "variable": {
+          "type": "string"
+        },
+        "value": {}
+      },
+      "required": [
+        "type",
+        "variable",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "DesignActionV1.setText": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "setText"
+        },
+        "variable": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "variable"
+      ],
+      "additionalProperties": false
+    },
+    "DesignActionV1.toggle": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "toggle"
+        },
+        "variable": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "variable"
+      ],
+      "additionalProperties": false
+    },
+    "DesignComponentInstanceV1": {
+      "type": "object",
+      "properties": {
+        "componentKey": {
+          "type": "string"
+        },
+        "arguments": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/UiValueV1"
+          }
+        }
+      },
+      "required": [
+        "componentKey"
+      ],
+      "additionalProperties": false
+    },
+    "DesignComponentV1": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "root": {
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ComponentSourceV1"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "root"
+      ],
+      "additionalProperties": false
+    },
+    "DesignDocumentV1": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "integer"
+        },
+        "catalogPin": {
+          "$ref": "#/$defs/CatalogReferenceV1"
+        },
+        "environment": {
+          "$ref": "#/$defs/DesignEnvironmentV1"
+        },
+        "stateVariables": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/StateVariableV1"
+          }
+        },
+        "roots": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "nodes": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/DesignNodeV1"
+          }
+        },
+        "assets": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/AssetBindingV1"
+          }
+        },
+        "tokenBindings": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/UiValueV1"
+          }
+        },
+        "createdAtEpochMillis": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "updatedAtEpochMillis": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "components": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/DesignComponentV1"
+          }
+        },
+        "home": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DesignHomeV1"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "id",
+        "title",
+        "revision",
+        "catalogPin",
+        "environment",
+        "roots",
+        "nodes"
+      ],
+      "additionalProperties": false
+    },
+    "DesignEnvironmentV1": {
+      "type": "object",
+      "properties": {
+        "widthDp": {
+          "type": "integer"
+        },
+        "heightDp": {
+          "type": "integer"
+        },
+        "density": {
+          "type": "number"
+        },
+        "theme": {
+          "$ref": "#/$defs/ThemeV1"
+        },
+        "dynamicColor": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "locale": {
+          "type": "string"
+        },
+        "fontScale": {
+          "type": "number"
+        },
+        "layoutDirection": {
+          "$ref": "#/$defs/LayoutDirectionV1"
+        },
+        "windowPosture": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/WindowPostureV1"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "browserZoomPercent": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fixedTime": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "animations": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AnimationStateV1"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "networkAccess": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "background": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UiValueV1"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "typeface": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "exportDevices": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "widthDp",
+        "heightDp",
+        "density",
+        "theme",
+        "locale",
+        "fontScale",
+        "layoutDirection"
+      ],
+      "additionalProperties": false
+    },
+    "DesignHomeV1": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/DesignHomeV1.repo"
+        },
+        {
+          "$ref": "#/$defs/DesignHomeV1.server"
+        }
+      ]
+    },
+    "DesignHomeV1.repo": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "repo"
+        },
+        "path": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "path"
+      ],
+      "additionalProperties": false
+    },
+    "DesignHomeV1.server": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "server"
+        },
+        "url": {
+          "type": "string"
+        },
+        "designId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "url",
+        "designId"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/DesignModifierV1.align"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.alignHorizontal"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.alignVertical"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.alpha"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.aspectRatio"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.background"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.border"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.clip"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.fillMaxHeight"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.fillMaxSize"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.fillMaxWidth"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.height"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.heightIn"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.horizontalScroll"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.matchParentSize"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.offset"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.padding"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.rotate"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.scale"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.shadow"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.size"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.testTag"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.verticalScroll"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.weight"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.width"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.widthIn"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.wrapContentSize"
+        },
+        {
+          "$ref": "#/$defs/DesignModifierV1.zIndex"
+        }
+      ]
+    },
+    "DesignModifierV1.align": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "align"
+        },
+        "alignment": {
+          "$ref": "#/$defs/AlignmentV1"
+        }
+      },
+      "required": [
+        "type",
+        "alignment"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.alignHorizontal": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "alignHorizontal"
+        },
+        "alignment": {
+          "$ref": "#/$defs/HorizontalAlignmentV1"
+        }
+      },
+      "required": [
+        "type",
+        "alignment"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.alignVertical": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "alignVertical"
+        },
+        "alignment": {
+          "$ref": "#/$defs/VerticalAlignmentV1"
+        }
+      },
+      "required": [
+        "type",
+        "alignment"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.alpha": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "alpha"
+        },
+        "alpha": {}
+      },
+      "required": [
+        "type",
+        "alpha"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.aspectRatio": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "aspectRatio"
+        },
+        "ratio": {}
+      },
+      "required": [
+        "type",
+        "ratio"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.background": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "background"
+        },
+        "color": {
+          "$ref": "#/$defs/UiValueV1"
+        },
+        "shape": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "color"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.border": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "border"
+        },
+        "widthDp": {},
+        "color": {
+          "$ref": "#/$defs/UiValueV1"
+        },
+        "shape": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "widthDp",
+        "color"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.clip": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "clip"
+        },
+        "shape": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "shape"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.fillMaxHeight": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "fillMaxHeight"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.fillMaxSize": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "fillMaxSize"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.fillMaxWidth": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "fillMaxWidth"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.height": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "height"
+        },
+        "heightDp": {}
+      },
+      "required": [
+        "type",
+        "heightDp"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.heightIn": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "heightIn"
+        },
+        "minDp": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "maxDp": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.horizontalScroll": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "horizontalScroll"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.matchParentSize": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "matchParentSize"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.offset": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "offset"
+        },
+        "xDp": {},
+        "yDp": {}
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.rotate": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "rotate"
+        },
+        "degrees": {}
+      },
+      "required": [
+        "type",
+        "degrees"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.scale": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "scale"
+        },
+        "scaleX": {},
+        "scaleY": {}
+      },
+      "required": [
+        "type",
+        "scaleX",
+        "scaleY"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.shadow": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "shadow"
+        },
+        "elevationDp": {},
+        "shape": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "clip": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "elevationDp"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.size": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "size"
+        },
+        "widthDp": {},
+        "heightDp": {}
+      },
+      "required": [
+        "type",
+        "widthDp",
+        "heightDp"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.testTag": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "testTag"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "tag"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.verticalScroll": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "verticalScroll"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.weight": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "weight"
+        },
+        "weight": {},
+        "fill": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "weight"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.width": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "width"
+        },
+        "widthDp": {}
+      },
+      "required": [
+        "type",
+        "widthDp"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.widthIn": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "widthIn"
+        },
+        "minDp": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "maxDp": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.wrapContentSize": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "wrapContentSize"
+        },
+        "alignment": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AlignmentV1"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.zIndex": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "zIndex"
+        },
+        "zIndex": {}
+      },
+      "required": [
+        "type",
+        "zIndex"
+      ],
+      "additionalProperties": false
+    },
+    "DesignNodeV1": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "componentId": {
+          "type": "string"
+        },
+        "properties": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/UiValueV1"
+          }
+        },
+        "modifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DesignModifierV1"
+          }
+        },
+        "slots": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "eventBindings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/DesignActionV1"
+            }
+          }
+        },
+        "predicate": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DesignPredicateV1"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "accessibility": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AccessibilityV1"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "assetBindings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "tokenBindings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "component": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DesignComponentInstanceV1"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "componentId"
+      ],
+      "additionalProperties": false
+    },
+    "DesignPredicateV1": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/DesignPredicateV1.all"
+        },
+        {
+          "$ref": "#/$defs/DesignPredicateV1.any"
+        },
+        {
+          "$ref": "#/$defs/DesignPredicateV1.not"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.stateEquals"
+        },
+        {
+          "$ref": "#/$defs/DesignPredicateV1.stateTruthy"
+        }
+      ]
+    },
+    "DesignPredicateV1.all": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "all"
+        },
+        "predicates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DesignPredicateV1"
+          }
+        }
+      },
+      "required": [
+        "type",
+        "predicates"
+      ],
+      "additionalProperties": false
+    },
+    "DesignPredicateV1.any": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "any"
+        },
+        "predicates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DesignPredicateV1"
+          }
+        }
+      },
+      "required": [
+        "type",
+        "predicates"
+      ],
+      "additionalProperties": false
+    },
+    "DesignPredicateV1.not": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "not"
+        },
+        "predicate": {
+          "$ref": "#/$defs/DesignPredicateV1"
+        }
+      },
+      "required": [
+        "type",
+        "predicate"
+      ],
+      "additionalProperties": false
+    },
+    "DesignPredicateV1.stateTruthy": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "stateTruthy"
+        },
+        "variable": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "variable"
+      ],
+      "additionalProperties": false
+    },
+    "DimensionUnitV1": {
+      "type": "string",
+      "enum": [
+        "dp",
+        "sp",
+        "px",
+        "percent"
+      ]
+    },
+    "HorizontalAlignmentV1": {
+      "type": "string",
+      "enum": [
+        "start",
+        "centerHorizontally",
+        "end"
+      ]
+    },
+    "LayoutDirectionV1": {
+      "type": "string",
+      "enum": [
+        "ltr",
+        "rtl"
+      ]
+    },
+    "StatePersistenceV1": {
+      "type": "string",
+      "enum": [
+        "design",
+        "preview",
+        "session"
+      ]
+    },
+    "StateValueTypeV1": {
+      "type": "string",
+      "enum": [
+        "string",
+        "bool",
+        "int",
+        "float"
+      ]
+    },
+    "StateVariableTypeV1": {
+      "type": "string",
+      "enum": [
+        "text",
+        "selection",
+        "value"
+      ]
+    },
+    "StateVariableV1": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/StateVariableTypeV1"
+        },
+        "valueType": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/StateValueTypeV1"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "nullable": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "initialValue": {},
+        "persistence": {
+          "$ref": "#/$defs/StatePersistenceV1"
+        }
+      },
+      "required": [
+        "type",
+        "initialValue",
+        "persistence"
+      ],
+      "additionalProperties": false
+    },
+    "ThemeV1": {
+      "type": "string",
+      "enum": [
+        "light",
+        "dark",
+        "system"
+      ]
+    },
+    "UiValueV1": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/UiValueV1.adaptiveGrid"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.assetKey"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.binding"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.bool"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.color"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.colorToken"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.dimension"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.enum"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.float"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.insets"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.int"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.list"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.null"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.object"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.padding"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.resource"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.shapeToken"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.state"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.stateEquals"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.string"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.typographyToken"
+        }
+      ]
+    },
+    "UiValueV1.adaptiveGrid": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "adaptiveGrid"
+        },
+        "minimumCellWidthDp": {}
+      },
+      "required": [
+        "type",
+        "minimumCellWidthDp"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.assetKey": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "assetKey"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.binding": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "binding"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.bool": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "bool"
+        },
+        "value": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.color": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "color"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.colorToken": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "colorToken"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.dimension": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "dimension"
+        },
+        "value": {},
+        "unit": {
+          "$ref": "#/$defs/DimensionUnitV1"
+        }
+      },
+      "required": [
+        "type",
+        "value",
+        "unit"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.enum": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "enum"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.float": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "float"
+        },
+        "value": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.insets": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "insets"
+        },
+        "value": {
+          "type": "array",
+          "items": {}
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.int": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "int"
+        },
+        "value": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.list": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "list"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/UiValueV1"
+          }
+        }
+      },
+      "required": [
+        "type",
+        "values"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.null": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "null"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.object": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "object"
+        },
+        "fields": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/UiValueV1"
+          }
+        }
+      },
+      "required": [
+        "type",
+        "fields"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.padding": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "padding"
+        },
+        "startDp": {},
+        "topDp": {},
+        "endDp": {},
+        "bottomDp": {}
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.resource": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "resource"
+        },
+        "resourceKey": {
+          "type": "string"
+        },
+        "contentDigest": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "resourceKey"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.shapeToken": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "shapeToken"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.state": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "state"
+        },
+        "variable": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "variable"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.stateEquals": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "stateEquals"
+        },
+        "variable": {
+          "type": "string"
+        },
+        "value": {}
+      },
+      "required": [
+        "type",
+        "variable",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.string": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.typographyToken": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "typographyToken"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "VerticalAlignmentV1": {
+      "type": "string",
+      "enum": [
+        "top",
+        "centerVertically",
+        "bottom"
+      ]
+    },
+    "WindowPostureV1": {
+      "type": "string",
+      "enum": [
+        "flat",
+        "book",
+        "tabletop"
+      ]
+    }
+  }
+}

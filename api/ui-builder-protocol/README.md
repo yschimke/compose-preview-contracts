@@ -65,3 +65,24 @@ Compatibility rules for v1:
   both upgrade and rollback appear as ordinary accepted operations in the durable delta.
 - Readers that need forward-compatible minor evolution should use `ignoreUnknownKeys = true`.
   Strict fixture tests intentionally use `false` to catch accidental schema drift here.
+
+## JSON Schemas
+
+`schemas/design-document-v1.schema.json`, `schemas/design-mutation-v1.schema.json` and
+`schemas/design-submission-v1.schema.json` (JSON Schema draft 2020-12) ship in the JVM jar, and are
+committed under `src/jvmMain/resources/schemas/` for anything that reads them from source.
+
+- **Generated, never hand-written.** `ProtocolJsonSchemaTest` derives them from the serializers'
+  descriptors and fails on any difference from the committed files, so a field or a mutation added
+  in Kotlin shows up as a schema diff. Regenerate deliberately with
+  `UPDATE_SCHEMAS=1 ./gradlew :ui-builder-protocol:jvmTest`.
+- **Checked against the fixtures.** The materialized documents and the lossless submission fixture
+  are validated against the committed schemas, so a schema that is right about types but wrong about
+  real documents fails too.
+- **Strict on purpose.** Objects are closed (`additionalProperties: false`), matching the
+  `ignoreUnknownKeys = false` configuration hosts and the fixture tests decode with. A document with a
+  field this version does not know is invalid *against this version's schema*; readers that want
+  forward-compatible evolution still use `ignoreUnknownKeys = true` as above.
+- **Describes the protocol document.** These cover `DesignDocumentV1` and the mutation/submission
+  vocabulary, not the builder's own `.uid` file format (`UiBuilderDocument`), which differs in a
+  few container fields (see `BuilderDocumentConformanceTest`).
