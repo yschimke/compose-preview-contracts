@@ -569,6 +569,15 @@ public data class CommandConflictV1(
   public val overwrittenRevision: Long,
   /** Exactly one of [nodeId] and [environmentField] must be set. */
   public val environmentField: EnvironmentFieldV1? = null,
+  /**
+   * Why this write was compensated, in words a person can read: who else changed the same thing,
+   * and what the result was. The [code] and [overwrittenRevision] say *what* happened to a client
+   * that can interpret them; this is for the one that shows the reason as it stands.
+   *
+   * Presentation only, and free text: nothing may branch on it, and it is not localized. Hosts that
+   * have nothing to add leave it absent.
+   */
+  public val explanation: String? = null,
 ) {
   /** Preserves the v1 JVM constructor used by existing node-conflict consumers. */
   public constructor(
@@ -576,7 +585,16 @@ public data class CommandConflictV1(
     nodeId: String,
     field: String?,
     overwrittenRevision: Long,
-  ) : this(code, nodeId, field, overwrittenRevision, null)
+  ) : this(code, nodeId, field, overwrittenRevision, null, null)
+
+  /** Preserves the constructor that carried an environment field but no explanation. */
+  public constructor(
+    code: ConflictCodeV1,
+    nodeId: String?,
+    field: String?,
+    overwrittenRevision: Long,
+    environmentField: EnvironmentFieldV1?,
+  ) : this(code, nodeId, field, overwrittenRevision, environmentField, null)
 }
 
 @Serializable
@@ -607,4 +625,6 @@ public enum class RejectionCodeV1 {
   @SerialName("unsupportedCompensation") UNSUPPORTED_COMPENSATION,
   @SerialName("unknownOperation") UNKNOWN_OPERATION,
   @SerialName("replayDivergence") REPLAY_DIVERGENCE,
+  /** An asset mutation would take the design past its [AssetQuotaV1]. */
+  @SerialName("assetQuotaExceeded") ASSET_QUOTA_EXCEEDED,
 }

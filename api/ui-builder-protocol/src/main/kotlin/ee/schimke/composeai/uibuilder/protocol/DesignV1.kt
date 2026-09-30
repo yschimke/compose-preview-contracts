@@ -640,6 +640,18 @@ public data class AccessibilityV1(
   public val traversalIndex: Double? = null,
 )
 
+/**
+ * One asset a design refers to.
+ *
+ * [sizeBytes] and [provenance] are host-supplied and both absent from every binding written before
+ * they existed. Neither is ever encoded when absent, even by an encoder asking for defaults: the
+ * cross-language document hash is taken over this shape, and a binding without them must
+ * canonicalize to exactly what it did before these fields existed.
+ *
+ * @property sizeBytes the stored size of the asset, so a client can show what a design spends
+ *   against its [AssetQuotaV1] without fetching the bytes.
+ * @property provenance who added the asset, and when; see [AssetProvenanceV1].
+ */
 @Serializable
 public data class AssetBindingV1(
   public val mediaType: String,
@@ -647,6 +659,52 @@ public data class AssetBindingV1(
   public val source: AssetSourceV1,
   public val widthPx: Int? = null,
   public val heightPx: Int? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val sizeBytes: Long? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val provenance: AssetProvenanceV1? = null,
+) {
+  /** Preserves the constructor that predates [sizeBytes] and [provenance]. */
+  public constructor(
+    mediaType: String,
+    contentDigest: String,
+    source: AssetSourceV1,
+    widthPx: Int?,
+    heightPx: Int?,
+  ) : this(mediaType, contentDigest, source, widthPx, heightPx, null, null)
+}
+
+/**
+ * Who added an asset to a design, for display and audit.
+ *
+ * A host records what it knows; every field but [actorId] may be absent. It says nothing about
+ * rights to the content, and nothing reads it to decide access.
+ *
+ * @property actorId the actor that added the asset, in the same form as any other actor id.
+ * @property addedAtEpochMillis when the host accepted it.
+ * @property originalName the file name the author supplied, when a host retains it. Display only:
+ *   it is not an identity, and the content is addressed by [AssetBindingV1.contentDigest].
+ */
+@Serializable
+public data class AssetProvenanceV1(
+  public val actorId: String,
+  public val addedAtEpochMillis: Long? = null,
+  public val originalName: String? = null,
+)
+
+/**
+ * How much of a design's asset budget is spent, so a client can say so before an upload is refused.
+ *
+ * The limits are the host's policy and are reported, never negotiated: a mutation that would exceed
+ * them is rejected with [RejectionCodeV1.ASSET_QUOTA_EXCEEDED].
+ *
+ * @property usedBytes the total stored size of the design's assets.
+ * @property limitBytes the most a design may store in total.
+ * @property maxAssetBytes the most one asset may be, when the host limits that separately.
+ */
+@Serializable
+public data class AssetQuotaV1(
+  public val usedBytes: Long,
+  public val limitBytes: Long,
+  public val maxAssetBytes: Long? = null,
 )
 
 @Serializable public sealed interface AssetSourceV1
@@ -669,7 +727,19 @@ public data class DesignStateV1(
   @EncodeDefault public val schemaVersion: Int = UI_BUILDER_SCHEMA_VERSION_V1,
   public val lastSequence: Long,
   public val document: DesignDocumentV1,
-)
+  /**
+   * How much of the design's asset budget is spent, when the host enforces one. Absent means the
+   * host reports no limit, not that there is none.
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val assetQuota: AssetQuotaV1? = null,
+) {
+  /** Preserves the constructor that predates [assetQuota]. */
+  public constructor(
+    schemaVersion: Int,
+    lastSequence: Long,
+    document: DesignDocumentV1,
+  ) : this(schemaVersion, lastSequence, document, null)
+}
 
 /** Non-persisted collaborative cursor/selection state for one connected actor. */
 @Serializable

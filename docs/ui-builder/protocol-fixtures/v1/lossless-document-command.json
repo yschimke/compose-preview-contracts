@@ -223,5 +223,5 @@
   "stateValueTypes": ["string", "bool", "int", "float"],
   "statePersistences": ["design", "preview", "session"],
   "conflictCodes": ["stalePropertyWrite", "staleMove", "staleEnvironmentWrite"],
-  "rejectionCodes": ["designMismatch", "invalidCommand", "revisionMismatch", "operationIdReused", "unknownNode", "deletedNode", "missingPropertyValidator", "malformedProperty", "invalidProperty", "invalidDocument", "revisionNotRetained", "invalidLocation", "cycle", "actorMismatch", "alreadyCompensated", "unsafeCompensation", "unsupportedCompensation", "unknownOperation", "replayDivergence"]
+  "rejectionCodes": ["designMismatch", "invalidCommand", "revisionMismatch", "operationIdReused", "unknownNode", "deletedNode", "missingPropertyValidator", "malformedProperty", "invalidProperty", "invalidDocument", "revisionNotRetained", "invalidLocation", "cycle", "actorMismatch", "alreadyCompensated", "unsafeCompensation", "unsupportedCompensation", "unknownOperation", "replayDivergence", "assetQuotaExceeded"]
 }

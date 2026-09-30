@@ -836,6 +836,72 @@ class UiBuilderProtocolCompatibilityTest {
     assertEquals("Checkout · empty state", (encoded["title"] as JsonPrimitive).content)
     assertEquals(rename, strictJson.decodeFromJsonElement(DesignMutationV1.serializer(), encoded))
   }
+
+  @Test
+  fun `asset size and provenance are never encoded when absent`() {
+    val plain =
+      AssetBindingV1("image/png", "sha256:abc", UploadedAssetSourceV1("assets/a.png"), 8, 8)
+    val encoded = strictJson.encodeToJsonElement(AssetBindingV1.serializer(), plain) as JsonObject
+    // The cross-language document hash is over this shape, so a binding written before these
+    // fields existed has to canonicalize to exactly what it did then, even for an encoder that
+    // asks for defaults.
+    val withDefaults =
+      Json {
+          encodeDefaults = true
+          explicitNulls = false
+        }
+        .encodeToJsonElement(AssetBindingV1.serializer(), plain) as JsonObject
+    assertEquals(encoded.keys, withDefaults.keys)
+    assertNull(encoded["sizeBytes"])
+    assertNull(encoded["provenance"])
+
+    val described =
+      plain.copy(
+        sizeBytes = 2048,
+        provenance = AssetProvenanceV1("github:alice", 1_700_000_000_000, "logo.png"),
+      )
+    val roundTrip =
+      strictJson.decodeFromJsonElement(
+        AssetBindingV1.serializer(),
+        strictJson.encodeToJsonElement(AssetBindingV1.serializer(), described),
+      )
+    assertEquals(described, roundTrip)
+  }
+
+  @Test
+  fun `an asset quota rides on the design state and its rejection code is named`() {
+    val quota = AssetQuotaV1(usedBytes = 900, limitBytes = 1_000, maxAssetBytes = 500)
+    val encoded = strictJson.encodeToJsonElement(AssetQuotaV1.serializer(), quota) as JsonObject
+    assertEquals(
+      setOf("usedBytes", "limitBytes", "maxAssetBytes"),
+      encoded.keys,
+    )
+    assertEquals(
+      "assetQuotaExceeded",
+      (strictJson.encodeToJsonElement(
+          RejectionCodeV1.serializer(),
+          RejectionCodeV1.ASSET_QUOTA_EXCEEDED,
+        ) as JsonPrimitive)
+        .content,
+    )
+  }
+
+  @Test
+  fun `a conflict explanation is optional and round trips`() {
+    val bare = CommandConflictV1(ConflictCodeV1.STALE_PROPERTY_WRITE, "card", "text", 4)
+    val bareJson =
+      strictJson.encodeToJsonElement(CommandConflictV1.serializer(), bare) as JsonObject
+    assertNull(bareJson["explanation"])
+
+    val explained =
+      bare.copy(explanation = "bob changed this text at revision 5; that edit was kept")
+    val roundTrip =
+      strictJson.decodeFromJsonElement(
+        CommandConflictV1.serializer(),
+        strictJson.encodeToJsonElement(CommandConflictV1.serializer(), explained),
+      )
+    assertEquals(explained, roundTrip)
+  }
 }
 
 @Serializable
