@@ -6144,6 +6144,32 @@ final class ee.schimke.composeai.uibuilder.protocol/SetThemeEnvironmentChangeV1 
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1 : ee.schimke.composeai.uibuilder.protocol/DesignMutationV1 { // ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1|null[0]
+    constructor <init>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1.<init>|<init>(kotlin.String){}[0]
+
+    final val title // ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1.title|{}title[0]
+        final fun <get-title>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1.title.<get-title>|<get-title>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1.component1|component1(){}[0]
+    final fun copy(kotlin/String = ...): ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1 // ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1.copy|copy(kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1> { // ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1 // ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1) // ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetTitleMutationV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1> // ee.schimke.composeai.uibuilder.protocol/SetTitleMutationV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1|null[0]
     constructor <init>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/SetTypefaceEnvironmentChangeV1.<init>|<init>(kotlin.String){}[0]
 
