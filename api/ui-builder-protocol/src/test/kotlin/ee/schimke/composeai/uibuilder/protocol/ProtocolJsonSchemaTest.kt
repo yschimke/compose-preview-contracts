@@ -101,12 +101,12 @@ class ProtocolJsonSchemaTest {
   }
 
   @Test
-  fun everyMutationTypeIsAnAlternativeInTheMutationSchema() {
+  fun theMutationSchemaListsTheMutationVocabulary() {
     val schema =
       Json.parseToJsonElement(File(schemaDir(), "design-mutation-v1.schema.json").readText())
         .jsonObject
     val defs = schema["\$defs"] as JsonObject
-    assertTrue("setTitle missing", defs.keys.any { it.endsWith("setTitle") })
+    assertTrue("insertNode missing", defs.keys.any { it.endsWith("insertNode") })
   }
 
   private fun validator(file: String) =

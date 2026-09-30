@@ -929,9 +929,6 @@
           "$ref": "#/$defs/DesignMutationV1.setStateVariable"
         },
         {
-          "$ref": "#/$defs/DesignMutationV1.setTitle"
-        },
-        {
           "$ref": "#/$defs/DesignMutationV1.updateEnvironment"
         },
         {
@@ -1184,22 +1181,6 @@
         "type",
         "name",
         "declaration"
-      ],
-      "additionalProperties": false
-    },
-    "DesignMutationV1.setTitle": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "const": "setTitle"
-        },
-        "title": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "type",
-        "title"
       ],
       "additionalProperties": false
     },

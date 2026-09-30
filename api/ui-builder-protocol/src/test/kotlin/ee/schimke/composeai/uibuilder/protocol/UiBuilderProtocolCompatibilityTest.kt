@@ -827,17 +827,6 @@ class UiBuilderProtocolCompatibilityTest {
   }
 
   @Test
-  fun `a title change survives as a design mutation and names its discriminator`() {
-    val rename: DesignMutationV1 = SetTitleMutationV1("Checkout · empty state")
-    val encoded =
-      strictJson.encodeToJsonElement(DesignMutationV1.serializer(), rename) as JsonObject
-
-    assertEquals("setTitle", (encoded["type"] as JsonPrimitive).content)
-    assertEquals("Checkout · empty state", (encoded["title"] as JsonPrimitive).content)
-    assertEquals(rename, strictJson.decodeFromJsonElement(DesignMutationV1.serializer(), encoded))
-  }
-
-  @Test
   fun `asset size and provenance are never encoded when absent`() {
     val plain =
       AssetBindingV1("image/png", "sha256:abc", UploadedAssetSourceV1("assets/a.png"), 8, 8)

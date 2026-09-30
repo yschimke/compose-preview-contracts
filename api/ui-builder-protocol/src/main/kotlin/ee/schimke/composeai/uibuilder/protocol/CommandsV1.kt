@@ -248,27 +248,6 @@ public data class SetModifiersMutationV1(
 ) : DesignMutationV1
 
 /**
- * Replace the document's display title.
- *
- * [DesignDocumentV1.title] is the human-readable name every surface leads with, and it is distinct
- * from [DesignDocumentV1.id], which is the immutable, path-safe identity behind URLs, links and
- * history. Until this mutation the title could only be chosen by whoever wrote the first revision -
- * templates supplied a generic one - and nothing could change it afterwards, so two blank designs
- * were told apart only by their generated ids.
- *
- * A rename changes [DesignDocumentV1.title] and nothing else: the id, the revision lineage and
- * every reference to the design are untouched. Like any other mutation it takes part in
- * collaboration, undo and redo, and conflicts on a stale base revision.
- *
- * Reducers reject a blank [title], and one longer than they are prepared to persist, as an invalid
- * command rather than committing a nameless design. Whitespace at either end is a client concern:
- * trim before sending, because the value is stored exactly as given.
- */
-@Serializable
-@SerialName("setTitle")
-public data class SetTitleMutationV1(public val title: String) : DesignMutationV1
-
-/**
  * Field-granular environment update. Reducers reject duplicate [EnvironmentChangeV1.field] values
  * in one batch, validate every value before committing, and retain before/after values for history
  * and compensation. Stale writes conflict independently per field.
