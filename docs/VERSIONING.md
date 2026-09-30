@@ -165,6 +165,56 @@ That key is **sticky** — it pins every later run to the same version — so it
 2.19.0 was released. Anything reaching for it again should remove it in the same way, immediately
 after the release it was added for.
 
+## Binary compatibility is the rule
+
+The [2.19.0 section](#2190-ships-an-abi-break-as-a-minor) argued that an ABI break could ship as a
+minor because every consumer pins a **point** and "nothing resolves a contracts version
+transitively". **That stopped being true, and 3.13.0 is how it showed.**
+
+contracts 3.13.0 added fields to `AssetBindingV1`, `DesignStateV1` and `CommandConflictV1` by adding
+primary-constructor parameters. That removed nine signatures the 3.12.0 jars call: the
+default-argument synthetic constructors (`<init>(…, Int, DefaultConstructorMarker)`) and the old
+`copy`/`copy$default`. compose-preview-server pins contracts and **also** resolves the released
+ui-builder runtime, which was compiled against an older contracts. So the server ran a jar built
+against 3.12.0 on a 3.13.0 classpath, which is exactly the mixed-version resolution the 2.19.0 note
+said needs someone to assemble by hand. CI assembled it: 86 `:server:test` failures and HTTP 500s
+from `DesignStateV1.<init>(int, long, DesignDocumentV1, int, DefaultConstructorMarker)`. 3.13.0 was
+already on Central, which takes nothing back, so the fix was 3.13.1 and everyone skips 3.13.0.
+
+What it reads differently now:
+
+1. **Binary compatibility with the previous release is the default, not an exemption.** Any consumer
+   can meet an older contracts through a jar it did not compile.
+2. **Add a field through a Builder.** Not a constructor parameter, not a `copy` parameter: see the
+   rule in [AGENTS.md](../AGENTS.md). A type not yet on the pattern gains a `Builder` when it first
+   gains a field, keeps its old constructors and `copy`, and goes `internal` at the next major.
+3. **It is enforced.** `.github/scripts/check-abi-superset.py` (CI step "ABI is a superset of the
+   last release") fails a pull request that removes a line from any committed `.api` dump relative to
+   the last release tag. Run against the 3.13.0 code with 3.12.0 as baseline it reports exactly the
+   nine lines above. `checkKotlinAbi` cannot do this: it compares the code with the dump committed
+   beside it, so a change and its regenerated dump always agree.
+4. **A deliberate break is a major.** Title the pull request `feat!:`; CI then allows the removal and
+   release-please computes the major.
+
+### Where the types stand
+
+Counted by script over the production sources (data classes only; an estimate, not a contract):
+
+| Module | Builder or `internal` constructor | Public constructor |
+| --- | ---: | ---: |
+| `ui-builder-protocol` | 14 (+3 with a Builder beside public constructors) | about 190 |
+| `daemon/protocol` | 5 | about 110 |
+| `data/layoutinspector` | 1 | about 55 |
+| `screen-document` | 0 | about 26 |
+| `data/render` | 0 | about 28 |
+| the remaining modules | 0 | about 12 |
+
+About 430 public data classes are still on public constructors, about 200 of them with defaulted
+parameters. They are not converted wholesale: most are stable values that will never gain a field, and
+converting one is itself a source and binary break that has to wait for a major. The policy above
+converts them as they need a field, and the superset check stops the ones that have not been
+converted from breaking anyone in the meantime.
+
 ## A release publishes only what changed
 
 One version line does not mean every coordinate uploads at every tag. Each coordinate-publish is

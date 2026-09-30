@@ -679,6 +679,34 @@ public data class AssetBindingV1(
   ) : this(mediaType, contentDigest, source, widthPx, heightPx, null, null)
 
   /**
+   * Builds an [AssetBindingV1]. Prefer this to a constructor: a field added later is a new property
+   * here, and never replaces a signature a released consumer has already linked against. The
+   * constructors stay public until the next major release, when they become `internal` as the other
+   * evolving wire types' are.
+   */
+  public class Builder(mediaType: String, contentDigest: String, source: AssetSourceV1) {
+    public var mediaType: String = mediaType
+    public var contentDigest: String = contentDigest
+    public var source: AssetSourceV1 = source
+    public var widthPx: Int? = null
+    public var heightPx: Int? = null
+    public var sizeBytes: Long? = null
+    public var provenance: AssetProvenanceV1? = null
+
+    public fun build(): AssetBindingV1 =
+      AssetBindingV1(mediaType, contentDigest, source, widthPx, heightPx, sizeBytes, provenance)
+  }
+
+  /** This binding as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(mediaType, contentDigest, source).also {
+      it.widthPx = widthPx
+      it.heightPx = heightPx
+      it.sizeBytes = sizeBytes
+      it.provenance = provenance
+    }
+
+  /**
    * The `copy` of earlier releases, for the same reason; it carries [sizeBytes] and [provenance].
    */
   public fun copy(
@@ -764,6 +792,28 @@ public data class DesignStateV1(
     lastSequence: Long,
     document: DesignDocumentV1,
   ) : this(schemaVersion, lastSequence, document, null)
+
+  /**
+   * Builds a [DesignStateV1]. Prefer this to a constructor: a field added later is a new property
+   * here, and never replaces a signature a released consumer has already linked against. The
+   * constructors stay public until the next major release, when they become `internal`.
+   */
+  public class Builder(lastSequence: Long, document: DesignDocumentV1) {
+    public var schemaVersion: Int = UI_BUILDER_SCHEMA_VERSION_V1
+    public var lastSequence: Long = lastSequence
+    public var document: DesignDocumentV1 = document
+    public var assetQuota: AssetQuotaV1? = null
+
+    public fun build(): DesignStateV1 =
+      DesignStateV1(schemaVersion, lastSequence, document, assetQuota)
+  }
+
+  /** This state as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(lastSequence, document).also {
+      it.schemaVersion = schemaVersion
+      it.assetQuota = assetQuota
+    }
 
   /** The `copy` of earlier releases, for the same reason; it carries [assetQuota]. */
   public fun copy(
