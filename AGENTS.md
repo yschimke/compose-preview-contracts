@@ -12,6 +12,27 @@ and an unrecorded ABI change is a break for a consumer in another repository tha
 out until it bumps. If `checkKotlinAbi` fails, either the change was not intended to be public
 or the dump needs updating *deliberately* — `./gradlew updateKotlinAbi`.
 
+**A release is binary-compatible with the last one, and a field is added through a Builder, never
+a constructor.** A Kotlin data class that gains a primary-constructor parameter loses its old
+constructor, its default-argument synthetic constructor and its `copy`/`copy$default`. Nothing in
+this repository notices, and every jar compiled against the old release that builds the type dies
+with `NoSuchMethodError` at runtime. Contracts 3.13.0 shipped that (#122, fixed by #124 in 3.13.1):
+the server runs ui-builder jars compiled against an older contracts, and got HTTP 500s. So:
+
+- **A type that can gain a field uses the Builder pattern** (as `CatalogCapabilityV1` does since
+  3.0.0, #910): an `internal` constructor, `@ConsistentCopyVisibility`, a public `Builder` with one
+  `var` per optional field, and `newBuilder()` in place of `copy`. A new field is a new `var`; no
+  signature changes. Write new wire types this way.
+- **A type still on a public constructor** gets a `Builder` and `newBuilder()` the first time it gains
+  a field, keeps its old constructors and `copy` (with the default-argument form) so released jars
+  still link, and moves to `internal` at the next major release. `AssetBindingV1`, `DesignStateV1` and
+  `CommandConflictV1` are there now.
+- **`checkKotlinAbi` is not the guard; `.github/scripts/check-abi-superset.py` is.** It fails a pull
+  request that removes any line from a committed `.api` dump relative to the last release, synthetic
+  lines included. Never read a removed `synthetic` line in a dump diff as noise. A deliberate break is a
+  major release: title the PR `feat!:`. Why the older "consumers pin a point, so a minor is fine"
+  reasoning no longer holds: [`docs/VERSIONING.md`](docs/VERSIONING.md#binary-compatibility-is-the-rule).
+
 **Shape, never behaviour.** If a type reads a file, opens a socket or computes a result, it
 does not belong here; it belongs in `:daemon:core` upstream. This is the whole basis of the
 split, and the reason `render-session-api` is not here (README).

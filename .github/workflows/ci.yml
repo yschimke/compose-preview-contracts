@@ -48,6 +48,24 @@ jobs:
           COMPOSE_AI_TOOLS_ROOT: ${{ github.workspace }}/compose-ai-tools
         run: ./gradlew --no-daemon check
 
+      # A pull request may not remove a signature the last release exposed, synthetic ones included:
+      # `checkKotlinAbi` only compares the code with the dump committed beside it, so it cannot see
+      # this. Contracts 3.13.0 shipped exactly that break (#122) and the server took a
+      # `NoSuchMethodError`. A deliberate break is a major: title the PR `feat!:`. The release PR
+      # moves the manifest to a tag that does not exist yet, and only bumps versions, so it is skipped.
+      - name: ABI is a superset of the last release
+        if: github.event_name == 'pull_request'
+        working-directory: compose-preview-contracts
+        env:
+          ABI_BREAK_OK: ${{ contains(github.event.pull_request.title, '!:') && '1' || '0' }}
+        run: |
+          tag="v$(python3 -c 'import json; print(json.load(open(".release-please-manifest.json"))["."])')"
+          if ! git fetch --depth=1 origin "refs/tags/${tag}:refs/tags/${tag}"; then
+            echo "no ${tag} tag yet: a release PR, which only bumps versions"
+            exit 0
+          fi
+          python3 .github/scripts/check-abi-superset.py
+
       # The release scripts decide what reaches Maven Central, where nothing can be taken back, and
       # most of their branches never run on an ordinary release: the empty plan had not run once
       # in seven releases. Tested here, on every PR, against throwaway git repositories and a fake
