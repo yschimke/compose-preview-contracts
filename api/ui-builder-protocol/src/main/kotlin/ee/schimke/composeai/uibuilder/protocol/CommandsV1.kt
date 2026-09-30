@@ -566,14 +566,30 @@ public data class CommandConflictV1(
     overwrittenRevision: Long,
   ) : this(code, nodeId, field, overwrittenRevision, null, null)
 
-  /** Preserves the constructor that carried an environment field but no explanation. */
+  /**
+   * Preserves the constructor that carried an environment field but no explanation, including its
+   * default-argument form: code compiled against earlier releases calls the synthetic `(..., Int,
+   * DefaultConstructorMarker)` constructor when it leaves [field] or [environmentField] out, and a
+   * primary constructor that only gained a parameter has no such constructor (a `NoSuchMethodError`
+   * at runtime, in a jar nobody recompiled).
+   */
   public constructor(
     code: ConflictCodeV1,
     nodeId: String?,
-    field: String?,
+    field: String? = null,
     overwrittenRevision: Long,
-    environmentField: EnvironmentFieldV1?,
+    environmentField: EnvironmentFieldV1? = null,
   ) : this(code, nodeId, field, overwrittenRevision, environmentField, null)
+
+  /** The `copy` of earlier releases, for the same reason; it carries [explanation]. */
+  public fun copy(
+    code: ConflictCodeV1 = this.code,
+    nodeId: String? = this.nodeId,
+    field: String? = this.field,
+    overwrittenRevision: Long = this.overwrittenRevision,
+    environmentField: EnvironmentFieldV1? = this.environmentField,
+  ): CommandConflictV1 =
+    copy(code, nodeId, field, overwrittenRevision, environmentField, this.explanation)
 }
 
 @Serializable

@@ -1057,8 +1057,8 @@ final class ee.schimke.composeai.uibuilder.protocol/AspectRatioModifierV1 : ee.s
 }
 
 final class ee.schimke.composeai.uibuilder.protocol/AssetBindingV1 { // ee.schimke.composeai.uibuilder.protocol/AssetBindingV1|null[0]
+    constructor <init>(kotlin/String, kotlin/String, ee.schimke.composeai.uibuilder.protocol/AssetSourceV1, kotlin/Int? = ..., kotlin/Int? = ...) // ee.schimke.composeai.uibuilder.protocol/AssetBindingV1.<init>|<init>(kotlin.String;kotlin.String;ee.schimke.composeai.uibuilder.protocol.AssetSourceV1;kotlin.Int?;kotlin.Int?){}[0]
     constructor <init>(kotlin/String, kotlin/String, ee.schimke.composeai.uibuilder.protocol/AssetSourceV1, kotlin/Int? = ..., kotlin/Int? = ..., kotlin/Long? = ..., ee.schimke.composeai.uibuilder.protocol/AssetProvenanceV1? = ...) // ee.schimke.composeai.uibuilder.protocol/AssetBindingV1.<init>|<init>(kotlin.String;kotlin.String;ee.schimke.composeai.uibuilder.protocol.AssetSourceV1;kotlin.Int?;kotlin.Int?;kotlin.Long?;ee.schimke.composeai.uibuilder.protocol.AssetProvenanceV1?){}[0]
-    constructor <init>(kotlin/String, kotlin/String, ee.schimke.composeai.uibuilder.protocol/AssetSourceV1, kotlin/Int?, kotlin/Int?) // ee.schimke.composeai.uibuilder.protocol/AssetBindingV1.<init>|<init>(kotlin.String;kotlin.String;ee.schimke.composeai.uibuilder.protocol.AssetSourceV1;kotlin.Int?;kotlin.Int?){}[0]
 
     final val contentDigest // ee.schimke.composeai.uibuilder.protocol/AssetBindingV1.contentDigest|{}contentDigest[0]
         final fun <get-contentDigest>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/AssetBindingV1.contentDigest.<get-contentDigest>|<get-contentDigest>(){}[0]
@@ -1082,6 +1082,7 @@ final class ee.schimke.composeai.uibuilder.protocol/AssetBindingV1 { // ee.schim
     final fun component5(): kotlin/Int? // ee.schimke.composeai.uibuilder.protocol/AssetBindingV1.component5|component5(){}[0]
     final fun component6(): kotlin/Long? // ee.schimke.composeai.uibuilder.protocol/AssetBindingV1.component6|component6(){}[0]
     final fun component7(): ee.schimke.composeai.uibuilder.protocol/AssetProvenanceV1? // ee.schimke.composeai.uibuilder.protocol/AssetBindingV1.component7|component7(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., ee.schimke.composeai.uibuilder.protocol/AssetSourceV1 = ..., kotlin/Int? = ..., kotlin/Int? = ...): ee.schimke.composeai.uibuilder.protocol/AssetBindingV1 // ee.schimke.composeai.uibuilder.protocol/AssetBindingV1.copy|copy(kotlin.String;kotlin.String;ee.schimke.composeai.uibuilder.protocol.AssetSourceV1;kotlin.Int?;kotlin.Int?){}[0]
     final fun copy(kotlin/String = ..., kotlin/String = ..., ee.schimke.composeai.uibuilder.protocol/AssetSourceV1 = ..., kotlin/Int? = ..., kotlin/Int? = ..., kotlin/Long? = ..., ee.schimke.composeai.uibuilder.protocol/AssetProvenanceV1? = ...): ee.schimke.composeai.uibuilder.protocol/AssetBindingV1 // ee.schimke.composeai.uibuilder.protocol/AssetBindingV1.copy|copy(kotlin.String;kotlin.String;ee.schimke.composeai.uibuilder.protocol.AssetSourceV1;kotlin.Int?;kotlin.Int?;kotlin.Long?;ee.schimke.composeai.uibuilder.protocol.AssetProvenanceV1?){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/AssetBindingV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/AssetBindingV1.hashCode|hashCode(){}[0]
@@ -1908,8 +1909,8 @@ final class ee.schimke.composeai.uibuilder.protocol/ColorValueV1 : ee.schimke.co
 
 final class ee.schimke.composeai.uibuilder.protocol/CommandConflictV1 { // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1|null[0]
     constructor <init>(ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1, kotlin/String, kotlin/String?, kotlin/Long) // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.ConflictCodeV1;kotlin.String;kotlin.String?;kotlin.Long){}[0]
+    constructor <init>(ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1, kotlin/String?, kotlin/String? = ..., kotlin/Long, ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1? = ...) // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.ConflictCodeV1;kotlin.String?;kotlin.String?;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.EnvironmentFieldV1?){}[0]
     constructor <init>(ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1, kotlin/String?, kotlin/String? = ..., kotlin/Long, ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1? = ..., kotlin/String? = ...) // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.ConflictCodeV1;kotlin.String?;kotlin.String?;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.EnvironmentFieldV1?;kotlin.String?){}[0]
-    constructor <init>(ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1, kotlin/String?, kotlin/String?, kotlin/Long, ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1?) // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.ConflictCodeV1;kotlin.String?;kotlin.String?;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.EnvironmentFieldV1?){}[0]
 
     final val code // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.code|{}code[0]
         final fun <get-code>(): ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1 // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.code.<get-code>|<get-code>(){}[0]
@@ -1930,6 +1931,7 @@ final class ee.schimke.composeai.uibuilder.protocol/CommandConflictV1 { // ee.sc
     final fun component4(): kotlin/Long // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.component4|component4(){}[0]
     final fun component5(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1? // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.component5|component5(){}[0]
     final fun component6(): kotlin/String? // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.component6|component6(){}[0]
+    final fun copy(ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1 = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/Long = ..., ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1? = ...): ee.schimke.composeai.uibuilder.protocol/CommandConflictV1 // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.copy|copy(ee.schimke.composeai.uibuilder.protocol.ConflictCodeV1;kotlin.String?;kotlin.String?;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.EnvironmentFieldV1?){}[0]
     final fun copy(ee.schimke.composeai.uibuilder.protocol/ConflictCodeV1 = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/Long = ..., ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1? = ..., kotlin/String? = ...): ee.schimke.composeai.uibuilder.protocol/CommandConflictV1 // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.copy|copy(ee.schimke.composeai.uibuilder.protocol.ConflictCodeV1;kotlin.String?;kotlin.String?;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.EnvironmentFieldV1?;kotlin.String?){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/CommandConflictV1.hashCode|hashCode(){}[0]
@@ -3520,8 +3522,8 @@ final class ee.schimke.composeai.uibuilder.protocol/DesignShareLinkV1 { // ee.sc
 }
 
 final class ee.schimke.composeai.uibuilder.protocol/DesignStateV1 { // ee.schimke.composeai.uibuilder.protocol/DesignStateV1|null[0]
+    constructor <init>(kotlin/Int = ..., kotlin/Long, ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1) // ee.schimke.composeai.uibuilder.protocol/DesignStateV1.<init>|<init>(kotlin.Int;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.DesignDocumentV1){}[0]
     constructor <init>(kotlin/Int = ..., kotlin/Long, ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1, ee.schimke.composeai.uibuilder.protocol/AssetQuotaV1? = ...) // ee.schimke.composeai.uibuilder.protocol/DesignStateV1.<init>|<init>(kotlin.Int;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.DesignDocumentV1;ee.schimke.composeai.uibuilder.protocol.AssetQuotaV1?){}[0]
-    constructor <init>(kotlin/Int, kotlin/Long, ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1) // ee.schimke.composeai.uibuilder.protocol/DesignStateV1.<init>|<init>(kotlin.Int;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.DesignDocumentV1){}[0]
 
     final val assetQuota // ee.schimke.composeai.uibuilder.protocol/DesignStateV1.assetQuota|{}assetQuota[0]
         final fun <get-assetQuota>(): ee.schimke.composeai.uibuilder.protocol/AssetQuotaV1? // ee.schimke.composeai.uibuilder.protocol/DesignStateV1.assetQuota.<get-assetQuota>|<get-assetQuota>(){}[0]
@@ -3536,6 +3538,7 @@ final class ee.schimke.composeai.uibuilder.protocol/DesignStateV1 { // ee.schimk
     final fun component2(): kotlin/Long // ee.schimke.composeai.uibuilder.protocol/DesignStateV1.component2|component2(){}[0]
     final fun component3(): ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1 // ee.schimke.composeai.uibuilder.protocol/DesignStateV1.component3|component3(){}[0]
     final fun component4(): ee.schimke.composeai.uibuilder.protocol/AssetQuotaV1? // ee.schimke.composeai.uibuilder.protocol/DesignStateV1.component4|component4(){}[0]
+    final fun copy(kotlin/Int = ..., kotlin/Long = ..., ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1 = ...): ee.schimke.composeai.uibuilder.protocol/DesignStateV1 // ee.schimke.composeai.uibuilder.protocol/DesignStateV1.copy|copy(kotlin.Int;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.DesignDocumentV1){}[0]
     final fun copy(kotlin/Int = ..., kotlin/Long = ..., ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1 = ..., ee.schimke.composeai.uibuilder.protocol/AssetQuotaV1? = ...): ee.schimke.composeai.uibuilder.protocol/DesignStateV1 // ee.schimke.composeai.uibuilder.protocol/DesignStateV1.copy|copy(kotlin.Int;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.DesignDocumentV1;ee.schimke.composeai.uibuilder.protocol.AssetQuotaV1?){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/DesignStateV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/DesignStateV1.hashCode|hashCode(){}[0]

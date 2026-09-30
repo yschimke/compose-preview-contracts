@@ -891,6 +891,54 @@ class UiBuilderProtocolCompatibilityTest {
       )
     assertEquals(explained, roundTrip)
   }
+
+  /**
+   * A jar compiled against an earlier release calls the synthetic `(..., Int,
+   * DefaultConstructorMarker)` constructor whenever it leaves a defaulted argument out. A primary
+   * constructor that only gains a parameter has no such constructor, so those jars fail with
+   * `NoSuchMethodError` at runtime, the first time they build the type: contracts 3.13.0 shipped
+   * that break, and compose-preview-server's tests found it (86 failures). These are the
+   * descriptors 3.12.0 exposed, and they must keep existing.
+   */
+  @Test
+  fun `constructors that earlier releases call keep their default-argument form`() {
+    val marker = Class.forName("kotlin.jvm.internal.DefaultConstructorMarker")
+    fun hasDefaultsConstructor(type: Class<*>, vararg leading: Class<*>) {
+      val parameters = leading.toList() + Int::class.javaPrimitiveType!! + marker
+      type.getDeclaredConstructor(*parameters.toTypedArray())
+    }
+    hasDefaultsConstructor(
+      DesignStateV1::class.java,
+      Int::class.javaPrimitiveType!!,
+      Long::class.javaPrimitiveType!!,
+      DesignDocumentV1::class.java,
+    )
+    hasDefaultsConstructor(
+      AssetBindingV1::class.java,
+      String::class.java,
+      String::class.java,
+      AssetSourceV1::class.java,
+      Int::class.javaObjectType,
+      Int::class.javaObjectType,
+    )
+    hasDefaultsConstructor(
+      CommandConflictV1::class.java,
+      ConflictCodeV1::class.java,
+      String::class.java,
+      String::class.java,
+      Long::class.javaPrimitiveType!!,
+      EnvironmentFieldV1::class.java,
+    )
+    // And the copy() of earlier releases, which Kotlin callers reach through copy$default.
+    DesignStateV1::class
+      .java
+      .getDeclaredMethod(
+        "copy",
+        Int::class.javaPrimitiveType!!,
+        Long::class.javaPrimitiveType!!,
+        DesignDocumentV1::class.java,
+      )
+  }
 }
 
 @Serializable
