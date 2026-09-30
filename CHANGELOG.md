@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.13.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.12.0...v3.13.0) (2026-09-30)
+
+
+### Features
+
+* **ui-builder-protocol:** add a setTitle mutation ([#119](https://github.com/yschimke/compose-preview-contracts/issues/119)) ([b4ecec7](https://github.com/yschimke/compose-preview-contracts/commit/b4ecec7b1ef0777b679599bd25d6a27a8e0abbc7))
+* **ui-builder-protocol:** asset provenance and quota, and a conflict explanation ([#122](https://github.com/yschimke/compose-preview-contracts/issues/122)) ([aaf5736](https://github.com/yschimke/compose-preview-contracts/commit/aaf5736be4ef5100a37bca48e1c5cbaca298288a))
+* **ui-builder-protocol:** publish JSON Schemas for the design document and mutations ([#121](https://github.com/yschimke/compose-preview-contracts/issues/121)) ([f2dc903](https://github.com/yschimke/compose-preview-contracts/commit/f2dc9032b2829b3b15fa5241a6b7231fc4ffa89a))
+
+
+### Reverts
+
+* **ui-builder-protocol:** remove the setTitle mutation ([#123](https://github.com/yschimke/compose-preview-contracts/issues/123)) ([201610d](https://github.com/yschimke/compose-preview-contracts/commit/201610d1830eb2db3c7224a86da90a7faef8e12a))
+
 ## [3.12.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.11.0...v3.12.0) (2026-09-26)
 
 
