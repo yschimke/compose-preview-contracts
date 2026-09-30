@@ -939,6 +939,47 @@ class UiBuilderProtocolCompatibilityTest {
         DesignDocumentV1::class.java,
       )
   }
+
+  @Test
+  fun `builders construct and derive the types that keep gaining fields`() {
+    val binding =
+      AssetBindingV1.Builder("image/png", "sha256:abc", UploadedAssetSourceV1("assets/a.png"))
+        .also {
+          it.widthPx = 8
+          it.sizeBytes = 2048
+          it.provenance = AssetProvenanceV1("github:alice")
+        }
+        .build()
+    assertEquals(2048L, binding.sizeBytes)
+    assertEquals(binding, binding.newBuilder().build())
+    val wider = binding.newBuilder().also { it.widthPx = 16 }.build()
+    assertEquals(16, wider.widthPx)
+    // A derived value keeps everything but what was changed.
+    assertEquals(binding.provenance, wider.provenance)
+
+    val conflict =
+      CommandConflictV1.Builder(ConflictCodeV1.STALE_PROPERTY_WRITE, 4)
+        .also {
+          it.nodeId = "card"
+          it.field = "text"
+          it.explanation = "bob changed this text first"
+        }
+        .build()
+    assertEquals("bob changed this text first", conflict.explanation)
+    assertEquals(conflict, conflict.newBuilder().build())
+
+    val document =
+      strictJson.decodeFromString(
+        DesignDocumentV1.serializer(),
+        fixture("materialized-components.json"),
+      )
+    val state =
+      DesignStateV1.Builder(7, document)
+        .also { it.assetQuota = AssetQuotaV1(usedBytes = 1, limitBytes = 10) }
+        .build()
+    assertEquals(state, state.newBuilder().build())
+    assertEquals(10L, state.assetQuota?.limitBytes)
+  }
 }
 
 @Serializable

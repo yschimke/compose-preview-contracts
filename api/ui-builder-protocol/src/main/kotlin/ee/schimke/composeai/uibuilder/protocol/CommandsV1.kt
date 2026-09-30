@@ -581,6 +581,32 @@ public data class CommandConflictV1(
     environmentField: EnvironmentFieldV1? = null,
   ) : this(code, nodeId, field, overwrittenRevision, environmentField, null)
 
+  /**
+   * Builds a [CommandConflictV1]. Prefer this to a constructor: a field added later is a new
+   * property here, and never replaces a signature a released consumer has already linked against.
+   * The constructors stay public until the next major release, when they become `internal`.
+   */
+  public class Builder(code: ConflictCodeV1, overwrittenRevision: Long) {
+    public var code: ConflictCodeV1 = code
+    public var overwrittenRevision: Long = overwrittenRevision
+    public var nodeId: String? = null
+    public var field: String? = null
+    public var environmentField: EnvironmentFieldV1? = null
+    public var explanation: String? = null
+
+    public fun build(): CommandConflictV1 =
+      CommandConflictV1(code, nodeId, field, overwrittenRevision, environmentField, explanation)
+  }
+
+  /** This conflict as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(code, overwrittenRevision).also {
+      it.nodeId = nodeId
+      it.field = field
+      it.environmentField = environmentField
+      it.explanation = explanation
+    }
+
   /** The `copy` of earlier releases, for the same reason; it carries [explanation]. */
   public fun copy(
     code: ConflictCodeV1 = this.code,
