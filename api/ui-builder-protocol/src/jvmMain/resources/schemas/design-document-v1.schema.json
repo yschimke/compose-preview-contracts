@@ -119,12 +119,64 @@
               "type": "null"
             }
           ]
+        },
+        "sizeBytes": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "provenance": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AssetProvenanceV1"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
         "mediaType",
         "contentDigest",
         "source"
+      ],
+      "additionalProperties": false
+    },
+    "AssetProvenanceV1": {
+      "type": "object",
+      "properties": {
+        "actorId": {
+          "type": "string"
+        },
+        "addedAtEpochMillis": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "originalName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "actorId"
       ],
       "additionalProperties": false
     },
