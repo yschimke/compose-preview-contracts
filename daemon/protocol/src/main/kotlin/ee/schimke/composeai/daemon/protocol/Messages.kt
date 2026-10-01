@@ -1693,7 +1693,109 @@ public data class RenderFinishedParams(
    * Additive per PROTOCOL.md § 7; older clients ignore the field and keep painting unconditionally.
    */
   val unchanged: Boolean? = null,
-)
+  /**
+   * What the daemon did to produce this frame — see [RenderWorkTrace]. Additive per PROTOCOL.md §
+   * 7: absent from every daemon that predates it, and never encoded when absent.
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) val workTrace: RenderWorkTrace? = null,
+) {
+  /**
+   * Preserves the constructor that predates [workTrace], **including its default-argument form**.
+   * Code compiled against earlier releases calls the synthetic `(..., Int,
+   * DefaultConstructorMarker)` constructor when it leaves an optional field out, and a primary
+   * constructor that only gained a parameter has no such constructor: the call fails with
+   * `NoSuchMethodError` at runtime, in a jar nobody recompiled.
+   */
+  public constructor(
+    id: String,
+    pngPath: String,
+    tookMs: Long,
+    metrics: RenderMetrics? = null,
+    dataProducts: List<DataProductAttachment>? = null,
+    unchanged: Boolean? = null,
+  ) : this(id, pngPath, tookMs, metrics, dataProducts, unchanged, null)
+
+  /**
+   * Builds a [RenderFinishedParams]. Prefer this to a constructor: a field added later is a new
+   * property here, and never replaces a signature a released consumer has already linked against.
+   * The constructors stay public until the next major release.
+   */
+  public class Builder(id: String, pngPath: String, tookMs: Long) {
+    public var id: String = id
+    public var pngPath: String = pngPath
+    public var tookMs: Long = tookMs
+    public var metrics: RenderMetrics? = null
+    public var dataProducts: List<DataProductAttachment>? = null
+    public var unchanged: Boolean? = null
+    public var workTrace: RenderWorkTrace? = null
+
+    public fun build(): RenderFinishedParams =
+      RenderFinishedParams(id, pngPath, tookMs, metrics, dataProducts, unchanged, workTrace)
+  }
+
+  /** These params as a [Builder], for deriving modified ones. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(id, pngPath, tookMs).also {
+      it.metrics = metrics
+      it.dataProducts = dataProducts
+      it.unchanged = unchanged
+      it.workTrace = workTrace
+    }
+
+  /** The `copy` of earlier releases, for the same reason; it carries [workTrace]. */
+  public fun copy(
+    id: String = this.id,
+    pngPath: String = this.pngPath,
+    tookMs: Long = this.tookMs,
+    metrics: RenderMetrics? = this.metrics,
+    dataProducts: List<DataProductAttachment>? = this.dataProducts,
+    unchanged: Boolean? = this.unchanged,
+  ): RenderFinishedParams =
+    copy(id, pngPath, tookMs, metrics, dataProducts, unchanged, this.workTrace)
+}
+
+/**
+ * The work one render did, reported on `renderFinished` so a client can see — and a test can assert
+ * — that a render ran only what was asked of it (compose-preview-server#1181: an unrequested
+ * `compose/figma-svg` export was most of every warm render's time).
+ *
+ * Every list is in the order the work ran, and absent when the daemon did not record that kind of
+ * work. An empty list means "recorded, and none ran".
+ *
+ * @property processors the post-capture processors that ran on the captured frame, by id.
+ * @property dataKinds the data-product kinds computed for this render, whether or not they ride on
+ *   [RenderFinishedParams.dataProducts] (a kind can be computed for a cache and not attached).
+ * @property stepMs wall time per processor id or data kind, in milliseconds, for the steps that
+ *   were timed.
+ */
+@Serializable
+@ConsistentCopyVisibility
+public data class RenderWorkTrace
+internal constructor(
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val processors: List<String>? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val dataKinds: List<String>? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val stepMs: Map<String, Long>? = null,
+) {
+  /**
+   * Builds a [RenderWorkTrace]. The constructor is internal so a field added later is a new
+   * property here and never a changed signature.
+   */
+  public class Builder {
+    public var processors: List<String>? = null
+    public var dataKinds: List<String>? = null
+    public var stepMs: Map<String, Long>? = null
+
+    public fun build(): RenderWorkTrace = RenderWorkTrace(processors, dataKinds, stepMs)
+  }
+
+  /** This trace as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder().also {
+      it.processors = processors
+      it.dataKinds = dataKinds
+      it.stepMs = stepMs
+    }
+}
 
 /**
  * One data-product attachment riding on a `renderFinished`. `payload` is per-kind JSON when the
