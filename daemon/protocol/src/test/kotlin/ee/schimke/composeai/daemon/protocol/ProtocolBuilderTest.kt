@@ -100,4 +100,41 @@ class ProtocolBuilderTest {
     assertEquals("/usr/bin/java", descriptor.javaLauncher)
     assertEquals(30L, descriptor.hardTtlSeconds)
   }
+
+  @Test
+  fun `renderFinished keeps its released constructor and copy and omits an absent trace`() {
+    // The six-argument constructor and copy are what jars compiled before `workTrace` link
+    // against; both must still build an equal value, with no trace.
+    val released = RenderFinishedParams("p", "/tmp/p.png", 5L, unchanged = true)
+    assertEquals(null, released.workTrace)
+    assertEquals(released, released.copy(tookMs = 5L))
+    // An absent trace is never on the wire, even for an encoder that writes defaults, so a
+    // trace-less renderFinished is byte-identical to one from a daemon that predates the field.
+    val encoded =
+      kotlinx.serialization.json
+        .Json { encodeDefaults = true }
+        .encodeToString(RenderFinishedParams.serializer(), released)
+    assertEquals(false, "workTrace" in encoded, encoded)
+
+    val trace =
+      RenderWorkTrace.Builder()
+        .also {
+          it.processors = listOf("capture")
+          it.dataKinds = listOf("compose/semantics")
+          it.stepMs = mapOf("capture" to 12L)
+        }
+        .build()
+    assertEquals(trace, trace.newBuilder().build())
+    val traced =
+      RenderFinishedParams.Builder("p", "/tmp/p.png", 5L)
+        .also {
+          it.unchanged = true
+          it.workTrace = trace
+        }
+        .build()
+    assertEquals(traced, traced.newBuilder().build())
+    // The released copy carries the trace rather than dropping it.
+    assertEquals(trace, traced.copy(tookMs = 6L).workTrace)
+    assertNotEquals(released, traced)
+  }
 }

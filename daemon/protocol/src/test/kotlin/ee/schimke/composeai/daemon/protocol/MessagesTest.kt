@@ -113,6 +113,11 @@ class MessagesTest {
   fun roundTripRenderFinishedParamsWithRecomposition() =
     roundTrip<RenderFinishedParams>("daemon-renderFinished-withRecomposition.json")
 
+  // compose-preview-server#1181 — the per-render work trace.
+  @Test
+  fun roundTripRenderFinishedParamsWithWorkTrace() =
+    roundTrip<RenderFinishedParams>("daemon-renderFinished-withWorkTrace.json")
+
   @Test fun roundTripJsonRpcRequest() = roundTrip<JsonRpcRequest>("envelope-request.json")
 
   @Test fun roundTripJsonRpcResponse() = roundTrip<JsonRpcResponse>("envelope-response.json")
@@ -169,6 +174,7 @@ class MessagesTest {
         "daemon-dataSubscribeResult.json",
         "daemon-renderFinished-withDataProducts.json",
         "daemon-renderFinished-withRecomposition.json",
+        "daemon-renderFinished-withWorkTrace.json",
       )
     val missing = expected - present
     assertEquals("missing protocol fixtures: $missing", emptySet<String>(), missing)

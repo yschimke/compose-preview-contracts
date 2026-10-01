@@ -23,5 +23,6 @@ D1 (data products — see [../DATA-PRODUCTS.md](../DATA-PRODUCTS.md)):
 - `daemon-renderFinished-withDataProducts.json` — `renderFinished` carrying a populated `dataProducts` field; the existing `daemon-renderFinished.json` continues to cover the "no attachments" case.
 - `client-dataSubscribe-withParams.json` — `data/subscribe` carrying a per-kind `params` bag (e.g. `compose/recomposition`'s `{frameStreamId, mode}`).
 - `daemon-renderFinished-withRecomposition.json` — `renderFinished` carrying a `compose/recomposition` delta payload (D5). Pairs with the click-driven flush path in `RecompositionDataProductRegistry`.
+- `daemon-renderFinished-withWorkTrace.json` — `renderFinished` carrying a `workTrace`: the post-capture processors and data kinds the render ran, with per-step milliseconds (compose-preview-server#1181). Absent from older daemons and never encoded when absent.
 
 Stream C (TypeScript) loads the same files in C1.1.
