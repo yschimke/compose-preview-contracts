@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.14.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.13.1...v3.14.0) (2026-10-01)
+
+
+### Features
+
+* **daemon-protocol:** add renderFinished.workTrace, the work one render did ([#128](https://github.com/yschimke/compose-preview-contracts/issues/128)) ([e41ec85](https://github.com/yschimke/compose-preview-contracts/commit/e41ec856625781aa8e1bcc0178d2e58e18edd818))
+* **ui-builder-protocol:** builders for evolving types and an ABI-superset CI guard ([#126](https://github.com/yschimke/compose-preview-contracts/issues/126)) ([94531b0](https://github.com/yschimke/compose-preview-contracts/commit/94531b0f778120f3607f9328e6611f7ad1fe0f81))
+
 ## [3.13.1](https://github.com/yschimke/compose-preview-contracts/compare/v3.13.0...v3.13.1) (2026-09-30)
 
 
