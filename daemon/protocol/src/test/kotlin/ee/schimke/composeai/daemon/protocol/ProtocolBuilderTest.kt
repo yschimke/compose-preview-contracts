@@ -64,6 +64,29 @@ class ProtocolBuilderTest {
   }
 
   @Test
+  fun `a remote compose player id rides beside the enum and round-trips`() {
+    val json = kotlinx.serialization.json.Json { ignoreUnknownKeys = true }
+    val override =
+      RemoteComposeOverride.Builder()
+        .also {
+          it.player = RemoteComposePlayerKind.VIEW
+          it.playerId = "rcplayer-jvm"
+        }
+        .build()
+    assertEquals(override, override.newBuilder().build())
+
+    val encoded = json.encodeToString(RemoteComposeOverride.serializer(), override)
+    assertEquals(true, encoded.contains("\"playerId\":\"rcplayer-jvm\""), encoded)
+    assertEquals(override, json.decodeFromString(RemoteComposeOverride.serializer(), encoded))
+
+    // A message from a sender that predates the field still decodes, with no id.
+    val legacy =
+      json.decodeFromString(RemoteComposeOverride.serializer(), """{"player":"embedded"}""")
+    assertEquals(RemoteComposePlayerKind.EMBEDDED, legacy.player)
+    assertEquals(null, legacy.playerId)
+  }
+
+  @Test
   fun `newBuilder derives a modified value without touching the original`() {
     val original = GestureOverride.Builder().also { it.enabled = true }.build()
     val derived = original.newBuilder().also { it.invokeLabel = "Swipe" }.build()
