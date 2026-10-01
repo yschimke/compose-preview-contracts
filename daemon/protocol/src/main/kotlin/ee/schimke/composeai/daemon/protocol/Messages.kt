@@ -1194,11 +1194,25 @@ internal constructor(
   val namedValues: Map<String, RemoteNamedValue> = emptyMap(),
   val acceptedHostActions: List<String>? = null,
   /**
-   * Which player renders a bundle's captured `ir/<id>.rc` document on replay. Null keeps the
-   * default ([RemoteComposePlayerKind.VIEW]), so existing renders stay byte-identical. See
-   * [RemoteComposePlayerKind] for what actually differs between the two.
+   * Which built-in player renders a bundle's captured `ir/<id>.rc` document on replay. Null leaves
+   * the choice to the daemon's build-wide default. See [RemoteComposePlayerKind] for what actually
+   * differs between the two. [playerId] outranks this when both are set.
    */
   val player: RemoteComposePlayerKind? = null,
+  /**
+   * The player to render with, **by name** — any player the daemon can draw with, not only the two
+   * [RemoteComposePlayerKind] names. A player beyond the built-ins registers itself with the
+   * connector under a canonical id (and any aliases), and this is how a request reaches it.
+   *
+   * Names are case- and whitespace-insensitive. The built-ins answer to their canonical ids,
+   * `androidx-embedded` and `androidx-view`, and to every historical spelling (`cmp-android`,
+   * `java`, …), so a sender may put an unvalidated `?rcPlayer=` value here and let the daemon
+   * resolve it. A name nothing answers to is reported by the daemon, not silently swapped for
+   * another player.
+   *
+   * Outranks [player] when both are set; a sender that knows only the enum keeps sending [player].
+   */
+  val playerId: String? = null,
 ) {
   /**
    * Builds a [RemoteComposeOverride].
@@ -1218,9 +1232,10 @@ internal constructor(
     public var namedValues: Map<String, RemoteNamedValue> = emptyMap()
     public var acceptedHostActions: List<String>? = null
     public var player: RemoteComposePlayerKind? = null
+    public var playerId: String? = null
 
     public fun build(): RemoteComposeOverride =
-      RemoteComposeOverride(profile, namedValues, acceptedHostActions, player)
+      RemoteComposeOverride(profile, namedValues, acceptedHostActions, player, playerId)
   }
 
   /** This [RemoteComposeOverride] as a [Builder], for deriving a modified one. Replaces `copy`. */
@@ -1230,27 +1245,27 @@ internal constructor(
       it.namedValues = namedValues
       it.acceptedHostActions = acceptedHostActions
       it.player = player
+      it.playerId = playerId
     }
 }
 
 /**
- * Which Remote Compose player draws a replayed document.
+ * Which of the two built-in Remote Compose players draws a replayed document. To name any other
+ * player — one registered with the connector beyond these two — send
+ * [RemoteComposeOverride.playerId] instead.
  *
  * The two are genuinely different renderers, not two skins over one engine, which is why a preview
  * can look different under each:
  *
- * * [VIEW] — `androidx.compose.remote.player.compose.RemoteDocumentPlayer`, backed by
- *   `remote-player-view`'s `RemoteComposePlayer`. That is an Android `View` painting into a
- *   framework `Canvas`, bridged into the composition with `AndroidView`. This is the long-standing
- *   default and what ships on device today.
- * * [EMBEDDED] — the vendored AndroidX `RcPlayer` (`:third-party-rc-embedded-player`), which
- *   interprets the document's operation tree into Compose layout and draw nodes directly. No
- *   `View`, no framework `Canvas` hand-off. This is what a host embedding Remote Compose content
- *   *inside* a Compose tree gets, and it is the lane `rc-compare` diffs as a third column.
+ * * [VIEW] (`androidx-view`) — `androidx.compose.remote.player.compose.RemoteDocumentPlayer`,
+ *   backed by `remote-player-view`'s `RemoteComposePlayer`. That is an Android `View` painting into
+ *   a framework `Canvas`, bridged into the composition with `AndroidView`.
+ * * [EMBEDDED] (`androidx-embedded`) — the vendored AndroidX `RcPlayer`
+ *   (`:third-party-rc-embedded-player`), which interprets the document's operation tree into
+ *   Compose layout and draw nodes directly. No `View`, no framework `Canvas` hand-off. The daemon's
+ *   default.
  *
- * Selecting [EMBEDDED] on a backend that has no embedded player on its classpath falls back to
- * [VIEW] rather than failing the render — the connector gates on classloader availability the same
- * way `:daemon:android` gates the whole Remote Compose extension.
+ * A player the consumer's classpath cannot run is refused by name, never replaced with the other.
  */
 @Serializable
 public enum class RemoteComposePlayerKind {
