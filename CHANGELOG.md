@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.15.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.14.0...v3.15.0) (2026-10-01)
+
+
+### Features
+
+* **daemon-protocol:** name a Remote Compose player by id ([#129](https://github.com/yschimke/compose-preview-contracts/issues/129)) ([e254776](https://github.com/yschimke/compose-preview-contracts/commit/e254776e8e4fd884a827bf4a161ef38bba869064))
+
 ## [3.14.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.13.1...v3.14.0) (2026-10-01)
 
 
