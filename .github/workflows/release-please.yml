@@ -97,9 +97,75 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+    outputs:
+      pr: ${{ steps.rp.outputs.pr }}
+      in_flight: ${{ steps.preflight.outputs.in_flight }}
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # An ordinary push and a release-PR merge hold separate concurrency slots, so on an
+      # ordinary push this pass can run while another run's release is still a draft.
+      # release-please cannot see drafts: it would baseline on the release before and rewrite
+      # the release PR with history that is already released, until the next push (#43, #96).
+      # The guard skips the pass while a release is in flight (the release run's own pass, after
+      # `release`, writes the PR), and closes a duplicate a mid-run merge still produced. See
+      # `.github/scripts/release-pr-race-guard.sh`.
+      - name: Check whether a release is in flight
+        id: preflight
+        if: ${{ needs.release-please.outputs.release_created != 'true' }}
+        env:
+          MODE: check
+        run: ./.github/scripts/release-pr-race-guard.sh
+
       - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+        id: rp
+        if: ${{ steps.preflight.outputs.in_flight != 'true' }}
+        # The failure this tolerates is the race's own: updating a release PR that merged out
+        # from under it. The last step re-raises anything else.
+        continue-on-error: true
         with:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
           skip-github-release: true
+
+      - name: Discard a release PR the race produced
+        id: repair
+        if: ${{ always() && needs.release-please.outputs.release_created != 'true' && steps.preflight.outputs.in_flight != 'true' }}
+        env:
+          MODE: repair
+          RP_PR: ${{ steps.rp.outputs.pr }}
+        run: ./.github/scripts/release-pr-race-guard.sh
+
+      - name: Re-raise a release-please failure the race does not explain
+        if: ${{ always() && steps.rp.outcome == 'failure' && steps.repair.outputs.raced != 'true' }}
+        run: |
+          echo "::error::release-please failed and no release was in flight — see the step above."
+          exit 1
+
+  # Which Maven coordinates merging the release PR would publish, as one comment on that PR. The
+  # publish plan only runs inside the release, so the answer was visible only after the
+  # irreversible upload. Same script, same Maven Central baseline, run against the release PR's
+  # head; see `.github/scripts/release-pr-publish-plan.sh` (shared with compose-preview-daemon, compose-ai-tools, rc-players and compose-ui-builder). It follows
+  # `update-release-pr` and annotates the PR that pass just wrote; it skips while another run's
+  # release is in flight, because that PR is about to be rewritten. Informational: it never fails.
+  release-pr-publish-plan:
+    needs: update-release-pr
+    if: ${{ !cancelled() && needs.update-release-pr.result == 'success' && needs.update-release-pr.outputs.in_flight != 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write # create/edit the comment on the release PR
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Comment the publish plan on the release PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RP_PR: ${{ needs.update-release-pr.outputs.pr }}
+        run: ./.github/scripts/release-pr-publish-plan.sh
