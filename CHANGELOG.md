@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.17.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.16.0...v3.17.0) (2026-10-02)
+
+
+### Features
+
+* **ui-builder-protocol:** setComponentArguments mutation ([#133](https://github.com/yschimke/compose-preview-contracts/issues/133)) ([7fe1c19](https://github.com/yschimke/compose-preview-contracts/commit/7fe1c199444246c2431c4fcc761e905d23fdb515))
+
 ## [3.16.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.15.0...v3.16.0) (2026-10-02)
 
 
