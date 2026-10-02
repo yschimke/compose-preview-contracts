@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.16.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.15.0...v3.16.0) (2026-10-02)
+
+
+### Features
+
+* **ui-builder-protocol:** DesignCommandV1 carries the revision its author saw ([#131](https://github.com/yschimke/compose-preview-contracts/issues/131)) ([ebef86c](https://github.com/yschimke/compose-preview-contracts/commit/ebef86c8645c4f13a6099312acd161b6f064c52c))
+
 ## [3.15.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.14.0...v3.15.0) (2026-10-01)
 
 
