@@ -186,6 +186,8 @@
         {"type": "setModifiers", "nodeId": "new", "modifiers": [{"type": "fillMaxWidth"}, {"type": "padding", "startDp": 16, "topDp": 8, "endDp": 16, "bottomDp": 8}]},
         {"type": "setModifiers", "nodeId": "new", "modifiers": []},
         {"type": "declareComponent", "componentKey": "contribution-cell", "declaration": {"name": "ContributionCell", "root": "cell-body", "description": "One day of the contribution graph."}},
+        {"type": "setComponentArguments", "nodeId": "new", "arguments": {"label": {"type": "string", "value": "Mon"}}},
+        {"type": "setComponentArguments", "nodeId": "new", "arguments": {}},
         {"type": "removeComponent", "componentKey": "contribution-cell"}
       ]
     },

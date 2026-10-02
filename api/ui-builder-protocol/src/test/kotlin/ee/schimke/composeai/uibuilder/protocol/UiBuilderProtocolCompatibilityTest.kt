@@ -218,6 +218,27 @@ class UiBuilderProtocolCompatibilityTest {
       strictJson.decodeFromJsonElement(DesignMutationV1.serializer(), removeJson),
     )
 
+    // Editing what one placement passes keeps the placement: the node id is the address every
+    // comment, selection and review holds, so changing an argument must not mint a new one.
+    val arguments: DesignMutationV1 =
+      SetComponentArgumentsMutationV1.Builder(
+          nodeId = "cell-3",
+          arguments = mapOf("label" to StringValueV1("Mon")),
+        )
+        .build()
+    val argumentsJson =
+      strictJson.encodeToJsonElement(DesignMutationV1.serializer(), arguments) as JsonObject
+    assertEquals(JsonPrimitive("setComponentArguments"), argumentsJson["type"])
+    assertEquals(
+      arguments,
+      strictJson.decodeFromJsonElement(DesignMutationV1.serializer(), argumentsJson),
+    )
+    // Passing nothing is a value, not an absence: it stays on the wire under strict encoding.
+    val none: DesignMutationV1 =
+      SetComponentArgumentsMutationV1.Builder("cell-3", emptyMap()).build()
+    val noneJson = strictJson.encodeToJsonElement(DesignMutationV1.serializer(), none) as JsonObject
+    assertEquals(JsonObject(emptyMap()), noneJson["arguments"])
+
     // A batch is atomic, which is why an import needs no operation of its own: the body's inserts
     // and the declaration that names it land together or not at all.
     val batch =
