@@ -275,6 +275,48 @@ public data class DeclareComponentMutationV1(
 public data class RemoveComponentMutationV1(public val componentKey: String) : DesignMutationV1
 
 /**
+ * Replace the arguments one component instance passes to its component's body.
+ *
+ * An instance is a node whose [DesignNodeV1.component] names a declared component; its arguments
+ * are what that one placement says — the sender on this row, the subject on that one. Without this
+ * mutation the only way to change one was to replace the instance node, so editing a placement's
+ * text gave it a new id, and every comment, selection, branch and review that named the old id lost
+ * it. This keeps the node and changes the dictionary.
+ *
+ * Whole-map rather than per-argument, for the reason [SetEventBindingMutationV1] is whole-list: the
+ * arguments of one placement are one value an author edits, renaming a component parameter rewrites
+ * a key in every placement at once, and per-key addressing would need a removal mutation of its own
+ * to say "this argument is no longer passed". An empty [arguments] map passes nothing, which is why
+ * the field is required and has **no default**: strict readers run with `encodeDefaults = false`,
+ * and a defaulted empty map would reach the reducer as an absent field.
+ *
+ * Reducers reject the batch when [nodeId] is not an instance, and validate each value the way they
+ * validate a property bound to the same type. Which keys a body reads is the body's business — an
+ * argument nothing reads is passed and ignored, as a Kotlin call cannot pass one, so an exporter
+ * drops it.
+ */
+@Serializable
+@SerialName("setComponentArguments")
+@ConsistentCopyVisibility
+public data class SetComponentArgumentsMutationV1
+internal constructor(
+  public val nodeId: String,
+  public val arguments: Map<String, UiValueV1>,
+) : DesignMutationV1 {
+  /** Additive construction API; a field added later does not replace a public constructor. */
+  public class Builder(nodeId: String, arguments: Map<String, UiValueV1>) {
+    public var nodeId: String = nodeId
+    public var arguments: Map<String, UiValueV1> = arguments
+
+    public fun build(): SetComponentArgumentsMutationV1 =
+      SetComponentArgumentsMutationV1(nodeId, arguments)
+  }
+
+  /** This mutation as a mutable builder, for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder = Builder(nodeId, arguments)
+}
+
+/**
  * Replace the actions bound to one event on one node.
  *
  * Whole-list rather than per-action, because the actions on an event run in order and as a unit:

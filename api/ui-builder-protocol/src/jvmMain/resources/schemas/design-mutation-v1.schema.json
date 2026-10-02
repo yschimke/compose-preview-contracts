@@ -917,6 +917,9 @@
           "$ref": "#/$defs/DesignMutationV1.restoreNode"
         },
         {
+          "$ref": "#/$defs/DesignMutationV1.setComponentArguments"
+        },
+        {
           "$ref": "#/$defs/DesignMutationV1.setEventBinding"
         },
         {
@@ -1087,6 +1090,29 @@
       "required": [
         "type",
         "nodeId"
+      ],
+      "additionalProperties": false
+    },
+    "DesignMutationV1.setComponentArguments": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "setComponentArguments"
+        },
+        "nodeId": {
+          "type": "string"
+        },
+        "arguments": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/UiValueV1"
+          }
+        }
+      },
+      "required": [
+        "type",
+        "nodeId",
+        "arguments"
       ],
       "additionalProperties": false
     },

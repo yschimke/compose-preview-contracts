@@ -5882,6 +5882,48 @@ final class ee.schimke.composeai.uibuilder.protocol/SetBrowserZoomPercentEnviron
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1 : ee.schimke.composeai.uibuilder.protocol/DesignMutationV1 { // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1|null[0]
+    final val arguments // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.arguments|{}arguments[0]
+        final fun <get-arguments>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiValueV1> // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.arguments.<get-arguments>|<get-arguments>(){}[0]
+    final val nodeId // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.nodeId|{}nodeId[0]
+        final fun <get-nodeId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.nodeId.<get-nodeId>|<get-nodeId>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiValueV1> // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.component2|component2(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.hashCode|hashCode(){}[0]
+    final fun newBuilder(): ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.Builder // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.newBuilder|newBuilder(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.toString|toString(){}[0]
+
+    final class Builder { // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.Builder|null[0]
+        constructor <init>(kotlin/String, kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiValueV1>) // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.Builder.<init>|<init>(kotlin.String;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.UiValueV1>){}[0]
+
+        final var arguments // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.Builder.arguments|{}arguments[0]
+            final fun <get-arguments>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiValueV1> // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.Builder.arguments.<get-arguments>|<get-arguments>(){}[0]
+            final fun <set-arguments>(kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiValueV1>) // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.Builder.arguments.<set-arguments>|<set-arguments>(kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.UiValueV1>){}[0]
+        final var nodeId // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.Builder.nodeId|{}nodeId[0]
+            final fun <get-nodeId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.Builder.nodeId.<get-nodeId>|<get-nodeId>(){}[0]
+            final fun <set-nodeId>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.Builder.nodeId.<set-nodeId>|<set-nodeId>(kotlin.String){}[0]
+
+        final fun build(): ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1 // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.Builder.build|build(){}[0]
+    }
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1> { // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1 // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1) // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetComponentArgumentsMutationV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1> // ee.schimke.composeai.uibuilder.protocol/SetComponentArgumentsMutationV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1|null[0]
     constructor <init>(kotlin/Double) // ee.schimke.composeai.uibuilder.protocol/SetDensityEnvironmentChangeV1.<init>|<init>(kotlin.Double){}[0]
 
