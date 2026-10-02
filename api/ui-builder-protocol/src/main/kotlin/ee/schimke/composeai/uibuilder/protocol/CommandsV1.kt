@@ -16,7 +16,91 @@ public data class DesignCommandV1(
   public val clientId: String,
   public val baseRevision: Long,
   public val operations: List<DesignMutationV1>,
-) : DesignSubmissionV1
+  /**
+   * The newest revision the author had seen when these edits were made, when that is older than
+   * [baseRevision]. Absent means [baseRevision].
+   *
+   * A client replaying an offline run sends it as a sequence of commands, and each one's
+   * [baseRevision] follows its predecessor in the replay, so positions resolve against the document
+   * the run has built so far. That chain says nothing about what the author saw: every command in
+   * the run was written against the revision the run started from. The service reads staleness
+   * (`STALE_*` conflicts) from this revision instead, so a later command in the run that overwrites
+   * a concurrent edit made since the run started is reported like the first one is, while writes
+   * made by the run's own earlier commands are not. Positions still resolve against [baseRevision].
+   *
+   * Never newer than [baseRevision]. A service that does not know the field ignores it and reads
+   * staleness from [baseRevision], which is the behaviour before it existed.
+   */
+  public val stalenessBaseRevision: Long? = null,
+) : DesignSubmissionV1 {
+  /** Preserves the v1 JVM constructor that released consumers link against. */
+  public constructor(
+    designId: String,
+    operationId: String,
+    actorId: String,
+    clientId: String,
+    baseRevision: Long,
+    operations: List<DesignMutationV1>,
+  ) : this(designId, operationId, actorId, clientId, baseRevision, operations, null)
+
+  /**
+   * Builds a [DesignCommandV1]. Prefer this to a constructor: a field added later is a new property
+   * here, and never replaces a signature a released consumer has already linked against. The
+   * constructors stay public until the next major release, when they become `internal`.
+   */
+  public class Builder(
+    designId: String,
+    operationId: String,
+    actorId: String,
+    clientId: String,
+    baseRevision: Long,
+    operations: List<DesignMutationV1>,
+  ) {
+    public var designId: String = designId
+    public var operationId: String = operationId
+    public var actorId: String = actorId
+    public var clientId: String = clientId
+    public var baseRevision: Long = baseRevision
+    public var operations: List<DesignMutationV1> = operations
+    public var stalenessBaseRevision: Long? = null
+
+    public fun build(): DesignCommandV1 =
+      DesignCommandV1(
+        designId,
+        operationId,
+        actorId,
+        clientId,
+        baseRevision,
+        operations,
+        stalenessBaseRevision,
+      )
+  }
+
+  /** This command as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(designId, operationId, actorId, clientId, baseRevision, operations).also {
+      it.stalenessBaseRevision = stalenessBaseRevision
+    }
+
+  /** The `copy` of earlier releases, for the same reason; it carries [stalenessBaseRevision]. */
+  public fun copy(
+    designId: String = this.designId,
+    operationId: String = this.operationId,
+    actorId: String = this.actorId,
+    clientId: String = this.clientId,
+    baseRevision: Long = this.baseRevision,
+    operations: List<DesignMutationV1> = this.operations,
+  ): DesignCommandV1 =
+    copy(
+      designId,
+      operationId,
+      actorId,
+      clientId,
+      baseRevision,
+      operations,
+      this.stalenessBaseRevision,
+    )
+}
 
 /** Requests a compensating operation for one actor-owned accepted batch. */
 @Serializable
