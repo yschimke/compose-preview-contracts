@@ -2536,6 +2536,7 @@ final class ee.schimke.composeai.uibuilder.protocol/DesignActorGrantV1 { // ee.s
 
 final class ee.schimke.composeai.uibuilder.protocol/DesignCommandV1 : ee.schimke.composeai.uibuilder.protocol/DesignSubmissionV1 { // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1|null[0]
     constructor <init>(kotlin/String, kotlin/String, kotlin/String, kotlin/String, kotlin/Long, kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/DesignMutationV1>) // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.<init>|<init>(kotlin.String;kotlin.String;kotlin.String;kotlin.String;kotlin.Long;kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.DesignMutationV1>){}[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlin/String, kotlin/String, kotlin/Long, kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/DesignMutationV1>, kotlin/Long? = ...) // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.<init>|<init>(kotlin.String;kotlin.String;kotlin.String;kotlin.String;kotlin.Long;kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.DesignMutationV1>;kotlin.Long?){}[0]
 
     final val actorId // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.actorId|{}actorId[0]
         final fun <get-actorId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.actorId.<get-actorId>|<get-actorId>(){}[0]
@@ -2549,6 +2550,8 @@ final class ee.schimke.composeai.uibuilder.protocol/DesignCommandV1 : ee.schimke
         final fun <get-operationId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.operationId.<get-operationId>|<get-operationId>(){}[0]
     final val operations // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.operations|{}operations[0]
         final fun <get-operations>(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/DesignMutationV1> // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.operations.<get-operations>|<get-operations>(){}[0]
+    final val stalenessBaseRevision // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.stalenessBaseRevision|{}stalenessBaseRevision[0]
+        final fun <get-stalenessBaseRevision>(): kotlin/Long? // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.stalenessBaseRevision.<get-stalenessBaseRevision>|<get-stalenessBaseRevision>(){}[0]
 
     final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.component1|component1(){}[0]
     final fun component2(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.component2|component2(){}[0]
@@ -2556,10 +2559,41 @@ final class ee.schimke.composeai.uibuilder.protocol/DesignCommandV1 : ee.schimke
     final fun component4(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.component4|component4(){}[0]
     final fun component5(): kotlin/Long // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.component5|component5(){}[0]
     final fun component6(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/DesignMutationV1> // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.component6|component6(){}[0]
+    final fun component7(): kotlin/Long? // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.component7|component7(){}[0]
     final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String = ..., kotlin/String = ..., kotlin/Long = ..., kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/DesignMutationV1> = ...): ee.schimke.composeai.uibuilder.protocol/DesignCommandV1 // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.copy|copy(kotlin.String;kotlin.String;kotlin.String;kotlin.String;kotlin.Long;kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.DesignMutationV1>){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String = ..., kotlin/String = ..., kotlin/Long = ..., kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/DesignMutationV1> = ..., kotlin/Long? = ...): ee.schimke.composeai.uibuilder.protocol/DesignCommandV1 // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.copy|copy(kotlin.String;kotlin.String;kotlin.String;kotlin.String;kotlin.Long;kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.DesignMutationV1>;kotlin.Long?){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.hashCode|hashCode(){}[0]
+    final fun newBuilder(): ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.newBuilder|newBuilder(){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.toString|toString(){}[0]
+
+    final class Builder { // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder|null[0]
+        constructor <init>(kotlin/String, kotlin/String, kotlin/String, kotlin/String, kotlin/Long, kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/DesignMutationV1>) // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.<init>|<init>(kotlin.String;kotlin.String;kotlin.String;kotlin.String;kotlin.Long;kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.DesignMutationV1>){}[0]
+
+        final var actorId // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.actorId|{}actorId[0]
+            final fun <get-actorId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.actorId.<get-actorId>|<get-actorId>(){}[0]
+            final fun <set-actorId>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.actorId.<set-actorId>|<set-actorId>(kotlin.String){}[0]
+        final var baseRevision // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.baseRevision|{}baseRevision[0]
+            final fun <get-baseRevision>(): kotlin/Long // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.baseRevision.<get-baseRevision>|<get-baseRevision>(){}[0]
+            final fun <set-baseRevision>(kotlin/Long) // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.baseRevision.<set-baseRevision>|<set-baseRevision>(kotlin.Long){}[0]
+        final var clientId // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.clientId|{}clientId[0]
+            final fun <get-clientId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.clientId.<get-clientId>|<get-clientId>(){}[0]
+            final fun <set-clientId>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.clientId.<set-clientId>|<set-clientId>(kotlin.String){}[0]
+        final var designId // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.designId|{}designId[0]
+            final fun <get-designId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.designId.<get-designId>|<get-designId>(){}[0]
+            final fun <set-designId>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.designId.<set-designId>|<set-designId>(kotlin.String){}[0]
+        final var operationId // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.operationId|{}operationId[0]
+            final fun <get-operationId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.operationId.<get-operationId>|<get-operationId>(){}[0]
+            final fun <set-operationId>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.operationId.<set-operationId>|<set-operationId>(kotlin.String){}[0]
+        final var operations // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.operations|{}operations[0]
+            final fun <get-operations>(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/DesignMutationV1> // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.operations.<get-operations>|<get-operations>(){}[0]
+            final fun <set-operations>(kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/DesignMutationV1>) // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.operations.<set-operations>|<set-operations>(kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.DesignMutationV1>){}[0]
+        final var stalenessBaseRevision // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.stalenessBaseRevision|{}stalenessBaseRevision[0]
+            final fun <get-stalenessBaseRevision>(): kotlin/Long? // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.stalenessBaseRevision.<get-stalenessBaseRevision>|<get-stalenessBaseRevision>(){}[0]
+            final fun <set-stalenessBaseRevision>(kotlin/Long?) // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.stalenessBaseRevision.<set-stalenessBaseRevision>|<set-stalenessBaseRevision>(kotlin.Long?){}[0]
+
+        final fun build(): ee.schimke.composeai.uibuilder.protocol/DesignCommandV1 // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.Builder.build|build(){}[0]
+    }
 
     final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/DesignCommandV1> { // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.$serializer|null[0]
         final val descriptor // ee.schimke.composeai.uibuilder.protocol/DesignCommandV1.$serializer.descriptor|{}descriptor[0]

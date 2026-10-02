@@ -980,6 +980,40 @@ class UiBuilderProtocolCompatibilityTest {
     assertEquals(state, state.newBuilder().build())
     assertEquals(10L, state.assetQuota?.limitBytes)
   }
+
+  @Test
+  fun aBatchCarriesTheRevisionItsAuthorSawOnlyWhenItDiffers() {
+    val ops =
+      listOf<DesignMutationV1>(
+        InsertNodeMutationV1(
+          node = DesignNodeV1(id = "cell", componentId = "m3/card"),
+          location = NodeLocationV1(),
+        )
+      )
+    val live = DesignCommandV1.Builder("d", "o1", "a", "c", 9, ops).build()
+    assertNull(live.stalenessBaseRevision)
+    // Absent on the wire, so a service that predates the field reads exactly what it always did.
+    val liveJson = strictJson.encodeToJsonElement(DesignCommandV1.serializer(), live) as JsonObject
+    assertEquals(false, "stalenessBaseRevision" in liveJson)
+    assertEquals(live, DesignCommandV1("d", "o1", "a", "c", 9, ops))
+
+    val replayed =
+      DesignCommandV1.Builder("d", "o2", "a", "c", 12, ops)
+        .apply { stalenessBaseRevision = 4 }
+        .build()
+    val replayedJson =
+      strictJson.encodeToJsonElement(DesignCommandV1.serializer(), replayed) as JsonObject
+    assertEquals(JsonPrimitive(4L), replayedJson["stalenessBaseRevision"])
+    assertEquals(
+      replayed,
+      strictJson.decodeFromJsonElement(DesignCommandV1.serializer(), replayedJson),
+    )
+
+    // newBuilder and the released copy both keep the field.
+    assertEquals(replayed, replayed.newBuilder().build())
+    assertEquals(4L, replayed.copy(baseRevision = 13).stalenessBaseRevision)
+    assertEquals(13L, replayed.newBuilder().apply { baseRevision = 13 }.build().baseRevision)
+  }
 }
 
 @Serializable
