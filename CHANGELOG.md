@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.19.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.18.0...v3.19.0) (2026-10-05)
+
+
+### Features
+
+* **protocol:** declare nullable reads and keyed component lists ([#139](https://github.com/yschimke/compose-preview-contracts/issues/139)) ([1e9ee4f](https://github.com/yschimke/compose-preview-contracts/commit/1e9ee4f12bcd5f86881c63b94de4716106e4b161))
+
 ## [3.18.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.17.0...v3.18.0) (2026-10-05)
 
 
