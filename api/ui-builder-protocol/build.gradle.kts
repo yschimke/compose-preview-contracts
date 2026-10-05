@@ -20,6 +20,8 @@ composeAiMavenPublishing {
 
 kotlin {
   explicitApi()
+  // This wire contract is consumed by the Java 17 build generator as well as the editor.
+  jvmToolchain(17)
 
   @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class) abiValidation()
 

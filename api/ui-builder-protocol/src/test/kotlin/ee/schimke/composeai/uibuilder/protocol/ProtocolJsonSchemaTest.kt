@@ -23,6 +23,9 @@ import org.junit.Test
 class ProtocolJsonSchemaTest {
   private val schemas: Map<String, Pair<String, KSerializer<*>>> =
     mapOf(
+      "production-uid-v1.schema.json" to
+        ("Production UID (v1)" to
+          ee.schimke.composeai.uibuilder.protocol.production.ProductionUidFileV1.serializer()),
       "design-document-v1.schema.json" to ("Design document (v1)" to DesignDocumentV1.serializer()),
       "design-mutation-v1.schema.json" to ("Design mutation (v1)" to DesignMutationV1.serializer()),
       "design-submission-v1.schema.json" to
