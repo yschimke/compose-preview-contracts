@@ -7813,3 +7813,552 @@ public final class ee/schimke/composeai/uibuilder/protocol/ZIndexModifierV1$Comp
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class ee/schimke/composeai/uibuilder/protocol/production/EntryPointKindV1 : java/lang/Enum {
+	public static final field COMPONENT Lee/schimke/composeai/uibuilder/protocol/production/EntryPointKindV1;
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/production/EntryPointKindV1$Companion;
+	public static final field SCREEN Lee/schimke/composeai/uibuilder/protocol/production/EntryPointKindV1;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lee/schimke/composeai/uibuilder/protocol/production/EntryPointKindV1;
+	public static fun values ()[Lee/schimke/composeai/uibuilder/protocol/production/EntryPointKindV1;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/EntryPointKindV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ModelOwnershipV1 : java/lang/Enum {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/production/ModelOwnershipV1$Companion;
+	public static final field EXTERNAL Lee/schimke/composeai/uibuilder/protocol/production/ModelOwnershipV1;
+	public static final field GENERATED Lee/schimke/composeai/uibuilder/protocol/production/ModelOwnershipV1;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lee/schimke/composeai/uibuilder/protocol/production/ModelOwnershipV1;
+	public static fun values ()[Lee/schimke/composeai/uibuilder/protocol/production/ModelOwnershipV1;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ModelOwnershipV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionBindingV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/production/ProductionBindingV1$Companion;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExpectedType ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;
+	public final fun getNodeId ()Ljava/lang/String;
+	public final fun getPath ()Ljava/util/List;
+	public final fun getProperty ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionBindingV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/production/ProductionBindingV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/production/ProductionBindingV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/production/ProductionBindingV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/production/ProductionBindingV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionBindingV1$Builder {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionBindingV1;
+	public final fun getExpectedType ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;
+	public final fun getNodeId ()Ljava/lang/String;
+	public final fun getPath ()Ljava/util/List;
+	public final fun getProperty ()Ljava/lang/String;
+	public final fun setExpectedType (Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;)V
+	public final fun setNodeId (Ljava/lang/String;)V
+	public final fun setPath (Ljava/util/List;)V
+	public final fun setProperty (Ljava/lang/String;)V
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionBindingV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionComponentUseV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/production/ProductionComponentUseV1$Companion;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/util/Map;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getComponentId ()Ljava/lang/String;
+	public final fun getDataPath ()Ljava/util/List;
+	public final fun getEvents ()Ljava/util/Map;
+	public final fun getNodeId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionComponentUseV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/production/ProductionComponentUseV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/production/ProductionComponentUseV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/production/ProductionComponentUseV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/production/ProductionComponentUseV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionComponentUseV1$Builder {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionComponentUseV1;
+	public final fun getComponentId ()Ljava/lang/String;
+	public final fun getDataPath ()Ljava/util/List;
+	public final fun getEvents ()Ljava/util/Map;
+	public final fun getNodeId ()Ljava/lang/String;
+	public final fun setComponentId (Ljava/lang/String;)V
+	public final fun setDataPath (Ljava/util/List;)V
+	public final fun setEvents (Ljava/util/Map;)V
+	public final fun setNodeId (Ljava/lang/String;)V
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionComponentUseV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionEntryPointV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/production/ProductionEntryPointV1$Companion;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component10 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lee/schimke/composeai/uibuilder/protocol/production/EntryPointKindV1;
+	public final fun component4 ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionVisibilityV1;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/util/List;
+	public final fun component8 ()Ljava/util/List;
+	public final fun component9 ()Ljava/util/List;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBindings ()Ljava/util/List;
+	public final fun getComponents ()Ljava/util/List;
+	public final fun getEventBindings ()Ljava/util/List;
+	public final fun getEvents ()Ljava/util/List;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getInputModel ()Ljava/lang/String;
+	public final fun getKind ()Lee/schimke/composeai/uibuilder/protocol/production/EntryPointKindV1;
+	public final fun getKotlinFunction ()Ljava/lang/String;
+	public final fun getRoot ()Ljava/lang/String;
+	public final fun getVisibility ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionVisibilityV1;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionEntryPointV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/production/ProductionEntryPointV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/production/ProductionEntryPointV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/production/ProductionEntryPointV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/production/ProductionEntryPointV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionEntryPointV1$Builder {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/uibuilder/protocol/production/EntryPointKindV1;Lee/schimke/composeai/uibuilder/protocol/production/ProductionVisibilityV1;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionEntryPointV1;
+	public final fun getBindings ()Ljava/util/List;
+	public final fun getComponents ()Ljava/util/List;
+	public final fun getEventBindings ()Ljava/util/List;
+	public final fun getEvents ()Ljava/util/List;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getInputModel ()Ljava/lang/String;
+	public final fun getKind ()Lee/schimke/composeai/uibuilder/protocol/production/EntryPointKindV1;
+	public final fun getKotlinFunction ()Ljava/lang/String;
+	public final fun getRoot ()Ljava/lang/String;
+	public final fun getVisibility ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionVisibilityV1;
+	public final fun setBindings (Ljava/util/List;)V
+	public final fun setComponents (Ljava/util/List;)V
+	public final fun setEventBindings (Ljava/util/List;)V
+	public final fun setEvents (Ljava/util/List;)V
+	public final fun setId (Ljava/lang/String;)V
+	public final fun setInputModel (Ljava/lang/String;)V
+	public final fun setKind (Lee/schimke/composeai/uibuilder/protocol/production/EntryPointKindV1;)V
+	public final fun setKotlinFunction (Ljava/lang/String;)V
+	public final fun setRoot (Ljava/lang/String;)V
+	public final fun setVisibility (Lee/schimke/composeai/uibuilder/protocol/production/ProductionVisibilityV1;)V
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionEntryPointV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionEventBindingV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/production/ProductionEventBindingV1$Companion;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/util/List;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEvent ()Ljava/lang/String;
+	public final fun getNodeId ()Ljava/lang/String;
+	public final fun getPayloadPath ()Ljava/util/List;
+	public final fun getProperty ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionEventBindingV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/production/ProductionEventBindingV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/production/ProductionEventBindingV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/production/ProductionEventBindingV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/production/ProductionEventBindingV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionEventBindingV1$Builder {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionEventBindingV1;
+	public final fun getEvent ()Ljava/lang/String;
+	public final fun getNodeId ()Ljava/lang/String;
+	public final fun getPayloadPath ()Ljava/util/List;
+	public final fun getProperty ()Ljava/lang/String;
+	public final fun setEvent (Ljava/lang/String;)V
+	public final fun setNodeId (Ljava/lang/String;)V
+	public final fun setPayloadPath (Ljava/util/List;)V
+	public final fun setProperty (Ljava/lang/String;)V
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionEventBindingV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionEventV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/production/ProductionEventV1$Companion;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getName ()Ljava/lang/String;
+	public final fun getPayload ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionEventV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/production/ProductionEventV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/production/ProductionEventV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/production/ProductionEventV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/production/ProductionEventV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionEventV1$Builder {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionEventV1;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getPayload ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;
+	public final fun setName (Ljava/lang/String;)V
+	public final fun setPayload (Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;)V
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionEventV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionFieldV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/production/ProductionFieldV1$Companion;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;
+	public final fun component3 ()Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getName ()Ljava/lang/String;
+	public final fun getProperty ()Ljava/lang/String;
+	public final fun getType ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionFieldV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/production/ProductionFieldV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/production/ProductionFieldV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/production/ProductionFieldV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/production/ProductionFieldV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionFieldV1$Builder {
+	public fun <init> (Ljava/lang/String;Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionFieldV1;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getProperty ()Ljava/lang/String;
+	public final fun getType ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;
+	public final fun setName (Ljava/lang/String;)V
+	public final fun setProperty (Ljava/lang/String;)V
+	public final fun setType (Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;)V
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionFieldV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionModelV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/production/ProductionModelV1$Companion;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lee/schimke/composeai/uibuilder/protocol/production/ModelOwnershipV1;
+	public final fun component4 ()Ljava/util/List;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFields ()Ljava/util/List;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getKotlinType ()Ljava/lang/String;
+	public final fun getOwnership ()Lee/schimke/composeai/uibuilder/protocol/production/ModelOwnershipV1;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionModelV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/production/ProductionModelV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/production/ProductionModelV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/production/ProductionModelV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/production/ProductionModelV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionModelV1$Builder {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lee/schimke/composeai/uibuilder/protocol/production/ModelOwnershipV1;Ljava/util/List;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionModelV1;
+	public final fun getFields ()Ljava/util/List;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getKotlinType ()Ljava/lang/String;
+	public final fun getOwnership ()Lee/schimke/composeai/uibuilder/protocol/production/ModelOwnershipV1;
+	public final fun setFields (Ljava/util/List;)V
+	public final fun setId (Ljava/lang/String;)V
+	public final fun setKotlinType (Ljava/lang/String;)V
+	public final fun setOwnership (Lee/schimke/composeai/uibuilder/protocol/production/ModelOwnershipV1;)V
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionModelV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class ee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Companion;
+	public abstract fun getNullable ()Z
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$ListType : ee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$ListType$Companion;
+	public final fun component1 ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;
+	public final fun component2 ()Z
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getElement ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;
+	public fun getNullable ()Z
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$ListType$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$ListType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$ListType$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$ListType;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$ListType;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$ListType$Builder {
+	public fun <init> (Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$ListType;
+	public final fun getElement ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;
+	public final fun getNullable ()Z
+	public final fun setElement (Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1;)V
+	public final fun setNullable (Z)V
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$ListType$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Model : ee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Model$Companion;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Z
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getModelId ()Ljava/lang/String;
+	public fun getNullable ()Z
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Model$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Model$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Model$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Model;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Model;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Model$Builder {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Model;
+	public final fun getModelId ()Ljava/lang/String;
+	public final fun getNullable ()Z
+	public final fun setModelId (Ljava/lang/String;)V
+	public final fun setNullable (Z)V
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Model$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Scalar : ee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Scalar$Companion;
+	public final fun component1 ()Lee/schimke/composeai/uibuilder/protocol/production/ScalarTypeV1;
+	public final fun component2 ()Z
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getNullable ()Z
+	public final fun getScalar ()Lee/schimke/composeai/uibuilder/protocol/production/ScalarTypeV1;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Scalar$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Scalar$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Scalar$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Scalar;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Scalar;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Scalar$Builder {
+	public fun <init> (Lee/schimke/composeai/uibuilder/protocol/production/ScalarTypeV1;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Scalar;
+	public final fun getNullable ()Z
+	public final fun getScalar ()Lee/schimke/composeai/uibuilder/protocol/production/ScalarTypeV1;
+	public final fun setNullable (Z)V
+	public final fun setScalar (Lee/schimke/composeai/uibuilder/protocol/production/ScalarTypeV1;)V
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionTypeV1$Scalar$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionUidFileV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/production/ProductionUidFileV1$Companion;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionEntryPointV1;
+	public final fun component6 ()Lee/schimke/composeai/uibuilder/protocol/DesignDocumentV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCatalogDigest ()Ljava/lang/String;
+	public final fun getDesign ()Lee/schimke/composeai/uibuilder/protocol/DesignDocumentV1;
+	public final fun getEntryPoint ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionEntryPointV1;
+	public final fun getImports ()Ljava/util/List;
+	public final fun getModels ()Ljava/util/List;
+	public final fun getSchema ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionUidFileV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/production/ProductionUidFileV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/production/ProductionUidFileV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/production/ProductionUidFileV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/production/ProductionUidFileV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionUidFileV1$Builder {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionUidFileV1;
+	public final fun getCatalogDigest ()Ljava/lang/String;
+	public final fun getDesign ()Lee/schimke/composeai/uibuilder/protocol/DesignDocumentV1;
+	public final fun getEntryPoint ()Lee/schimke/composeai/uibuilder/protocol/production/ProductionEntryPointV1;
+	public final fun getImports ()Ljava/util/List;
+	public final fun getModels ()Ljava/util/List;
+	public final fun getSchema ()Ljava/lang/String;
+	public final fun setCatalogDigest (Ljava/lang/String;)V
+	public final fun setDesign (Lee/schimke/composeai/uibuilder/protocol/DesignDocumentV1;)V
+	public final fun setEntryPoint (Lee/schimke/composeai/uibuilder/protocol/production/ProductionEntryPointV1;)V
+	public final fun setImports (Ljava/util/List;)V
+	public final fun setModels (Ljava/util/List;)V
+	public final fun setSchema (Ljava/lang/String;)V
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionUidFileV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionV1Kt {
+	public static final field PRODUCTION_UID_SCHEMA_V1 Ljava/lang/String;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionVisibilityV1 : java/lang/Enum {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/production/ProductionVisibilityV1$Companion;
+	public static final field INTERNAL Lee/schimke/composeai/uibuilder/protocol/production/ProductionVisibilityV1;
+	public static final field PUBLIC Lee/schimke/composeai/uibuilder/protocol/production/ProductionVisibilityV1;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lee/schimke/composeai/uibuilder/protocol/production/ProductionVisibilityV1;
+	public static fun values ()[Lee/schimke/composeai/uibuilder/protocol/production/ProductionVisibilityV1;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ProductionVisibilityV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ScalarTypeV1 : java/lang/Enum {
+	public static final field BOOLEAN Lee/schimke/composeai/uibuilder/protocol/production/ScalarTypeV1;
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/production/ScalarTypeV1$Companion;
+	public static final field DOUBLE Lee/schimke/composeai/uibuilder/protocol/production/ScalarTypeV1;
+	public static final field FLOAT Lee/schimke/composeai/uibuilder/protocol/production/ScalarTypeV1;
+	public static final field INT Lee/schimke/composeai/uibuilder/protocol/production/ScalarTypeV1;
+	public static final field LONG Lee/schimke/composeai/uibuilder/protocol/production/ScalarTypeV1;
+	public static final field STRING Lee/schimke/composeai/uibuilder/protocol/production/ScalarTypeV1;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lee/schimke/composeai/uibuilder/protocol/production/ScalarTypeV1;
+	public static fun values ()[Lee/schimke/composeai/uibuilder/protocol/production/ScalarTypeV1;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/production/ScalarTypeV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+

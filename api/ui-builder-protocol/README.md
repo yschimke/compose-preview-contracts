@@ -86,3 +86,28 @@ committed under `src/jvmMain/resources/schemas/` for anything that reads them fr
 - **Describes the protocol document.** These cover `DesignDocumentV1` and the mutation/submission
   vocabulary, not the builder's own `.uid` file format (`UiBuilderDocument`), which differs in a
   few container fields (see `BuilderDocumentConformanceTest`).
+
+## Production project files
+
+`production.ProductionUidFileV1` is the explicit build-generation wrapper, identified by
+`compose-ui-builder-production/v1`. It is **not** a `DesignDocumentV1` with optional extra fields:
+older design-only tools must refuse it rather than discard an application's declared API. Readers
+must check the schema before adapting a file and use strict unknown-field handling for this
+contract. Production types retain the `kind` discriminator of the experimental builder format;
+embedded design values retain `type`.
+
+The wrapper declares project-relative imports, a pinned catalog digest, models and an optional
+entry point plus design. A model-only file has neither entry point nor fabricated visual root.
+Ordered model fields fix constructor order; ownership distinguishes generated models from mapped
+external project data classes. Nested model references, nullable types and lists are explicit.
+Entry points declare stable Kotlin names, visibility, input models, property bindings, component
+uses, required application events and event bindings. Event payload paths are field-name lists;
+null means no payload and an empty list means the entire input model. Component events forward
+through explicit child-to-parent event-name mappings. None of these declarations are inferred
+from the current visual tree.
+
+All new extensible shapes use builders to keep future optional additions binary compatible.
+The generated `schemas/production-uid-v1.schema.json` and fixtures under
+`docs/ui-builder/protocol-fixtures/production-v1` pin the wire vocabulary. Filesystem eligibility,
+model/path validation, editor persistence, and source generation remain in the builder repository.
+The protocol module retains the Java 17 consumer floor and publishes JVM and Wasm variants.

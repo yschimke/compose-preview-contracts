@@ -99,3 +99,7 @@ Until cutover the version here is bookkeeping. Nothing consumes it.
 ./gradlew publishToMavenLocal
 COMPOSE_AI_TOOLS_ROOT=../compose-ai-tools ./gradlew check   # includes the cross-repo drift check
 ```
+
+The UI-builder protocol also owns the explicit production project-file declarations for durable
+Compose generation. They travel in a separately versioned wrapper, so ordinary design readers
+cannot silently discard their application API. See the [protocol module](api/ui-builder-protocol/README.md#production-project-files).
