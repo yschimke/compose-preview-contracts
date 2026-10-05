@@ -44,6 +44,13 @@
             "kind": "scalar",
             "scalar": "string"
           }
+        },
+        {
+          "name": "id",
+          "type": {
+            "kind": "scalar",
+            "scalar": "string"
+          }
         }
       ]
     }
