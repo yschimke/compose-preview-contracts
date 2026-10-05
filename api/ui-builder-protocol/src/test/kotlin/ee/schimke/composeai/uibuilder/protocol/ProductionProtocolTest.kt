@@ -25,7 +25,15 @@ class ProductionProtocolTest {
 
   @Test
   fun productionFilesRetainTheirDeclaredApi() {
-    for (name in listOf("Library.uid", "Queue.uid", "EpisodeCard.uid", "LibraryModels.uid")) {
+    for (name in
+      listOf(
+        "Library.uid",
+        "Queue.uid",
+        "EpisodeCard.uid",
+        "LibraryModels.uid",
+        "DynamicLibrary.uid",
+        "DynamicModels.uid",
+      )) {
       val file =
         json.decodeFromString(ProductionUidFileV1.serializer(), File(fixtures(), name).readText())
       assertEquals(PRODUCTION_UID_SCHEMA_V1, file.schema)

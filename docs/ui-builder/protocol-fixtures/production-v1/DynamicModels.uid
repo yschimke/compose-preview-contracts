@@ -1,0 +1,57 @@
+{
+  "schema": "compose-ui-builder-production/v1",
+  "imports": [
+    "src/main/ui/models/LibraryModels.uid"
+  ],
+  "models": [
+    {
+      "id": "dynamic-library",
+      "kotlinType": "example.ui.DynamicLibraryData",
+      "ownership": "generated",
+      "fields": [
+        {
+          "name": "selection",
+          "type": {
+            "kind": "model",
+            "modelId": "selection",
+            "nullable": true
+          }
+        },
+        {
+          "name": "episodes",
+          "type": {
+            "kind": "list",
+            "element": {
+              "kind": "model",
+              "modelId": "external"
+            },
+            "nullable": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "selection",
+      "kotlinType": "example.ui.SelectionData",
+      "ownership": "generated",
+      "fields": [
+        {
+          "name": "title",
+          "type": {
+            "kind": "scalar",
+            "scalar": "string",
+            "nullable": true
+          }
+        },
+        {
+          "name": "featured",
+          "type": {
+            "kind": "model",
+            "modelId": "external",
+            "nullable": true
+          }
+        }
+      ]
+    }
+  ]
+}
