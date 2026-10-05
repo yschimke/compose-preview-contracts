@@ -6,6 +6,7 @@ import ee.schimke.composeai.uibuilder.protocol.DesignDocumentV1
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonClassDiscriminator
+import kotlinx.serialization.json.JsonPrimitive
 
 /** Explicit project-file opt-in; ordinary DesignDocumentV1 readers must refuse this wrapper. */
 public const val PRODUCTION_UID_SCHEMA_V1: String = "compose-ui-builder-production/v1"
@@ -270,8 +271,11 @@ internal constructor(
   public val property: String,
   public val path: List<String>,
   public val expectedType: ProductionTypeV1,
+  /** Non-null scalar literal used when any segment of the read is null. */
+  public val fallback: JsonPrimitive? = null,
 ) {
-  public fun newBuilder(): Builder = Builder(nodeId, property, path, expectedType)
+  public fun newBuilder(): Builder =
+    Builder(nodeId, property, path, expectedType).also { it.fallback = fallback }
 
   public class Builder(
     public var nodeId: String,
@@ -279,8 +283,10 @@ internal constructor(
     public var path: List<String>,
     public var expectedType: ProductionTypeV1,
   ) {
+    public var fallback: JsonPrimitive? = null
+
     public fun build(): ProductionBindingV1 =
-      ProductionBindingV1(nodeId, property, path, expectedType)
+      ProductionBindingV1(nodeId, property, path, expectedType, fallback)
   }
 }
 
@@ -292,9 +298,17 @@ internal constructor(
   public val componentId: String,
   public val dataPath: List<String>,
   public val events: Map<String, String> = emptyMap(),
+  /** Null means a required non-null input; SKIP explicitly omits a null component/list. */
+  public val onNull: ProductionNullPolicyV1? = null,
+  /** Non-null selects list iteration; the non-empty key path is relative to each item model. */
+  public val keyPath: List<String>? = null,
 ) {
   public fun newBuilder(): Builder =
-    Builder(nodeId, componentId, dataPath).also { builder -> builder.events = events }
+    Builder(nodeId, componentId, dataPath).also { builder ->
+      builder.events = events
+      builder.onNull = onNull
+      builder.keyPath = keyPath
+    }
 
   public class Builder(
     public var nodeId: String,
@@ -303,7 +317,16 @@ internal constructor(
   ) {
     public var events: Map<String, String> = emptyMap()
 
+    public var onNull: ProductionNullPolicyV1? = null
+    public var keyPath: List<String>? = null
+
     public fun build(): ProductionComponentUseV1 =
-      ProductionComponentUseV1(nodeId, componentId, dataPath, events)
+      ProductionComponentUseV1(nodeId, componentId, dataPath, events, onNull, keyPath)
   }
+}
+
+/** Explicit absent-content branch, never an inferred placeholder. */
+@Serializable
+public enum class ProductionNullPolicyV1 {
+  @SerialName("skip") SKIP
 }

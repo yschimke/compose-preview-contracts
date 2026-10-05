@@ -38,6 +38,21 @@ final enum class ee.schimke.composeai.uibuilder.protocol.production/ModelOwnersh
     }
 }
 
+final enum class ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1 : kotlin/Enum<ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1> { // ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1|null[0]
+    enum entry SKIP // ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1.SKIP|null[0]
+
+    final val entries // ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1> // ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1 // ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1> // ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1.values|values#static(){}[0]
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1> // ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
 final enum class ee.schimke.composeai.uibuilder.protocol.production/ProductionVisibilityV1 : kotlin/Enum<ee.schimke.composeai.uibuilder.protocol.production/ProductionVisibilityV1> { // ee.schimke.composeai.uibuilder.protocol.production/ProductionVisibilityV1|null[0]
     enum entry INTERNAL // ee.schimke.composeai.uibuilder.protocol.production/ProductionVisibilityV1.INTERNAL|null[0]
     enum entry PUBLIC // ee.schimke.composeai.uibuilder.protocol.production/ProductionVisibilityV1.PUBLIC|null[0]
@@ -896,6 +911,8 @@ sealed interface ee.schimke.composeai.uibuilder.protocol/UiValueV1 { // ee.schim
 final class ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1 { // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1|null[0]
     final val expectedType // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.expectedType|{}expectedType[0]
         final fun <get-expectedType>(): ee.schimke.composeai.uibuilder.protocol.production/ProductionTypeV1 // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.expectedType.<get-expectedType>|<get-expectedType>(){}[0]
+    final val fallback // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.fallback|{}fallback[0]
+        final fun <get-fallback>(): kotlinx.serialization.json/JsonPrimitive? // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.fallback.<get-fallback>|<get-fallback>(){}[0]
     final val nodeId // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.nodeId|{}nodeId[0]
         final fun <get-nodeId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.nodeId.<get-nodeId>|<get-nodeId>(){}[0]
     final val path // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.path|{}path[0]
@@ -907,6 +924,7 @@ final class ee.schimke.composeai.uibuilder.protocol.production/ProductionBinding
     final fun component2(): kotlin/String // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.component2|component2(){}[0]
     final fun component3(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.component3|component3(){}[0]
     final fun component4(): ee.schimke.composeai.uibuilder.protocol.production/ProductionTypeV1 // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.component4|component4(){}[0]
+    final fun component5(): kotlinx.serialization.json/JsonPrimitive? // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.component5|component5(){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.hashCode|hashCode(){}[0]
     final fun newBuilder(): ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.Builder // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.newBuilder|newBuilder(){}[0]
@@ -918,6 +936,9 @@ final class ee.schimke.composeai.uibuilder.protocol.production/ProductionBinding
         final var expectedType // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.Builder.expectedType|{}expectedType[0]
             final fun <get-expectedType>(): ee.schimke.composeai.uibuilder.protocol.production/ProductionTypeV1 // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.Builder.expectedType.<get-expectedType>|<get-expectedType>(){}[0]
             final fun <set-expectedType>(ee.schimke.composeai.uibuilder.protocol.production/ProductionTypeV1) // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.Builder.expectedType.<set-expectedType>|<set-expectedType>(ee.schimke.composeai.uibuilder.protocol.production.ProductionTypeV1){}[0]
+        final var fallback // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.Builder.fallback|{}fallback[0]
+            final fun <get-fallback>(): kotlinx.serialization.json/JsonPrimitive? // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.Builder.fallback.<get-fallback>|<get-fallback>(){}[0]
+            final fun <set-fallback>(kotlinx.serialization.json/JsonPrimitive?) // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.Builder.fallback.<set-fallback>|<set-fallback>(kotlinx.serialization.json.JsonPrimitive?){}[0]
         final var nodeId // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.Builder.nodeId|{}nodeId[0]
             final fun <get-nodeId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.Builder.nodeId.<get-nodeId>|<get-nodeId>(){}[0]
             final fun <set-nodeId>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol.production/ProductionBindingV1.Builder.nodeId.<set-nodeId>|<set-nodeId>(kotlin.String){}[0]
@@ -954,13 +975,19 @@ final class ee.schimke.composeai.uibuilder.protocol.production/ProductionCompone
         final fun <get-dataPath>(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.dataPath.<get-dataPath>|<get-dataPath>(){}[0]
     final val events // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.events|{}events[0]
         final fun <get-events>(): kotlin.collections/Map<kotlin/String, kotlin/String> // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.events.<get-events>|<get-events>(){}[0]
+    final val keyPath // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.keyPath|{}keyPath[0]
+        final fun <get-keyPath>(): kotlin.collections/List<kotlin/String>? // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.keyPath.<get-keyPath>|<get-keyPath>(){}[0]
     final val nodeId // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.nodeId|{}nodeId[0]
         final fun <get-nodeId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.nodeId.<get-nodeId>|<get-nodeId>(){}[0]
+    final val onNull // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.onNull|{}onNull[0]
+        final fun <get-onNull>(): ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1? // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.onNull.<get-onNull>|<get-onNull>(){}[0]
 
     final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.component1|component1(){}[0]
     final fun component2(): kotlin/String // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.component2|component2(){}[0]
     final fun component3(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.component3|component3(){}[0]
     final fun component4(): kotlin.collections/Map<kotlin/String, kotlin/String> // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.component4|component4(){}[0]
+    final fun component5(): ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1? // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.component5|component5(){}[0]
+    final fun component6(): kotlin.collections/List<kotlin/String>? // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.component6|component6(){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.hashCode|hashCode(){}[0]
     final fun newBuilder(): ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.Builder // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.newBuilder|newBuilder(){}[0]
@@ -978,9 +1005,15 @@ final class ee.schimke.composeai.uibuilder.protocol.production/ProductionCompone
         final var events // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.Builder.events|{}events[0]
             final fun <get-events>(): kotlin.collections/Map<kotlin/String, kotlin/String> // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.Builder.events.<get-events>|<get-events>(){}[0]
             final fun <set-events>(kotlin.collections/Map<kotlin/String, kotlin/String>) // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.Builder.events.<set-events>|<set-events>(kotlin.collections.Map<kotlin.String,kotlin.String>){}[0]
+        final var keyPath // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.Builder.keyPath|{}keyPath[0]
+            final fun <get-keyPath>(): kotlin.collections/List<kotlin/String>? // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.Builder.keyPath.<get-keyPath>|<get-keyPath>(){}[0]
+            final fun <set-keyPath>(kotlin.collections/List<kotlin/String>?) // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.Builder.keyPath.<set-keyPath>|<set-keyPath>(kotlin.collections.List<kotlin.String>?){}[0]
         final var nodeId // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.Builder.nodeId|{}nodeId[0]
             final fun <get-nodeId>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.Builder.nodeId.<get-nodeId>|<get-nodeId>(){}[0]
             final fun <set-nodeId>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.Builder.nodeId.<set-nodeId>|<set-nodeId>(kotlin.String){}[0]
+        final var onNull // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.Builder.onNull|{}onNull[0]
+            final fun <get-onNull>(): ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1? // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.Builder.onNull.<get-onNull>|<get-onNull>(){}[0]
+            final fun <set-onNull>(ee.schimke.composeai.uibuilder.protocol.production/ProductionNullPolicyV1?) // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.Builder.onNull.<set-onNull>|<set-onNull>(ee.schimke.composeai.uibuilder.protocol.production.ProductionNullPolicyV1?){}[0]
 
         final fun build(): ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1 // ee.schimke.composeai.uibuilder.protocol.production/ProductionComponentUseV1.Builder.build|build(){}[0]
     }

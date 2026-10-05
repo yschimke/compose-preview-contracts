@@ -111,3 +111,14 @@ The generated `schemas/production-uid-v1.schema.json` and fixtures under
 `docs/ui-builder/protocol-fixtures/production-v1` pin the wire vocabulary. Filesystem eligibility,
 model/path validation, editor persistence, and source generation remain in the builder repository.
 The protocol module retains the Java 17 consumer floor and publishes JVM and Wasm variants.
+
+### Nullable production reads and keyed component placements
+
+`ProductionBindingV1.Builder.fallback` is an optional scalar JSON literal for null-safe reads.
+`ProductionComponentUseV1.Builder.onNull` explicitly selects `skip` for absent component/list
+content; `keyPath` selects repetition and names a stable item key relative to the child input model.
+The generator owns type/path validation, literal range checks and runtime key uniqueness checks.
+Missing policies are never inferred. Item keys must be non-null String, Int or Long fields, and
+items must be non-null models. The DynamicLibrary/DynamicModels fixtures exercise these fields.
+Existing builders keep their signatures, and strict older production readers reject these new
+fields rather than silently dropping control flow. No service-document schema is changed.

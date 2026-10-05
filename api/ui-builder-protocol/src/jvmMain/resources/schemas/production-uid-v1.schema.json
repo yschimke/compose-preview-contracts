@@ -1543,6 +1543,21 @@
         },
         "expectedType": {
           "$ref": "#/$defs/ProductionTypeV1"
+        },
+        "fallback": {
+          "anyOf": [
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
@@ -1573,6 +1588,29 @@
           "additionalProperties": {
             "type": "string"
           }
+        },
+        "onNull": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ProductionNullPolicyV1"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "keyPath": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
@@ -1745,6 +1783,12 @@
         "fields"
       ],
       "additionalProperties": false
+    },
+    "ProductionNullPolicyV1": {
+      "type": "string",
+      "enum": [
+        "skip"
+      ]
     },
     "ProductionTypeV1": {
       "oneOf": [
