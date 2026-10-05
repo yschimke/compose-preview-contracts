@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.18.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.17.0...v3.18.0) (2026-10-05)
+
+
+### Features
+
+* **protocol:** define versioned production UID contracts ([#137](https://github.com/yschimke/compose-preview-contracts/issues/137)) ([59d8745](https://github.com/yschimke/compose-preview-contracts/commit/59d87459016d4e5ab38ff7b439bbac43175c85fd))
+
 ## [3.17.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.16.0...v3.17.0) (2026-10-02)
 
 
