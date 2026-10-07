@@ -797,3 +797,21 @@ public data class ListValueV1(public val values: List<UiValueV1>) : UiValueV1
 public data class ObjectValueV1(public val fields: Map<String, UiValueV1>) : UiValueV1
 
 @Serializable @SerialName("null") public data object NullValueV1 : UiValueV1
+
+/**
+ * A value the player computes: [op] applied to [args], each itself a value — a literal, a state
+ * read, a [SystemValueV1] or another expression. The vocabulary of `op` and the kinds each accepts
+ * are the builder's (`UiExpressions`); the contract carries the tree, so documents holding one
+ * save, commit and diff like any other value.
+ */
+@Serializable
+@SerialName("expr")
+public data class ExpressionValueV1(
+  public val op: String,
+  public val args: List<UiValueV1> = emptyList(),
+) : UiValueV1
+
+/** A value the player supplies, such as `time.secondOfHour`, read where it is used. */
+@Serializable
+@SerialName("system")
+public data class SystemValueV1(public val value: String) : UiValueV1

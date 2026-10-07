@@ -2271,6 +2271,9 @@
           "$ref": "#/$defs/UiValueV1.enum"
         },
         {
+          "$ref": "#/$defs/UiValueV1.expr"
+        },
+        {
           "$ref": "#/$defs/UiValueV1.float"
         },
         {
@@ -2305,6 +2308,9 @@
         },
         {
           "$ref": "#/$defs/UiValueV1.string"
+        },
+        {
+          "$ref": "#/$defs/UiValueV1.system"
         },
         {
           "$ref": "#/$defs/UiValueV1.typographyToken"
@@ -2436,6 +2442,28 @@
       "required": [
         "type",
         "value"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.expr": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "expr"
+        },
+        "op": {
+          "type": "string"
+        },
+        "args": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/UiValueV1"
+          }
+        }
+      },
+      "required": [
+        "type",
+        "op"
       ],
       "additionalProperties": false
     },
@@ -2635,6 +2663,22 @@
       "properties": {
         "type": {
           "const": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "UiValueV1.system": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "system"
         },
         "value": {
           "type": "string"
