@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.20.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.19.0...v3.20.0) (2026-10-07)
+
+
+### Features
+
+* **ui-builder:** computed values and Remote modifier calls on the wire ([#141](https://github.com/yschimke/compose-preview-contracts/issues/141)) ([a25d9cb](https://github.com/yschimke/compose-preview-contracts/commit/a25d9cb77f44d0ab298f3c99b17d81cb4f40a53b))
+
 ## [3.19.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.18.0...v3.19.0) (2026-10-05)
 
 
