@@ -4776,6 +4776,48 @@ final class ee.schimke.composeai.uibuilder.protocol/ExportResponseV1 : ee.schimk
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1 : ee.schimke.composeai.uibuilder.protocol/UiValueV1 { // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1|null[0]
+    final val args // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.args|{}args[0]
+        final fun <get-args>(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/UiValueV1> // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.args.<get-args>|<get-args>(){}[0]
+    final val op // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.op|{}op[0]
+        final fun <get-op>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.op.<get-op>|<get-op>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/UiValueV1> // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.component2|component2(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.hashCode|hashCode(){}[0]
+    final fun newBuilder(): ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.Builder // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.newBuilder|newBuilder(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.toString|toString(){}[0]
+
+    final class Builder { // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.Builder|null[0]
+        constructor <init>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.Builder.<init>|<init>(kotlin.String){}[0]
+
+        final var args // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.Builder.args|{}args[0]
+            final fun <get-args>(): kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/UiValueV1> // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.Builder.args.<get-args>|<get-args>(){}[0]
+            final fun <set-args>(kotlin.collections/List<ee.schimke.composeai.uibuilder.protocol/UiValueV1>) // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.Builder.args.<set-args>|<set-args>(kotlin.collections.List<ee.schimke.composeai.uibuilder.protocol.UiValueV1>){}[0]
+        final var op // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.Builder.op|{}op[0]
+            final fun <get-op>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.Builder.op.<get-op>|<get-op>(){}[0]
+            final fun <set-op>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.Builder.op.<set-op>|<set-op>(kotlin.String){}[0]
+
+        final fun build(): ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1 // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.Builder.build|build(){}[0]
+    }
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1> { // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1 // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1) // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.ExpressionValueV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1> // ee.schimke.composeai.uibuilder.protocol/ExpressionValueV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/GetDeltaRequestV1 : ee.schimke.composeai.uibuilder.protocol/UiBuilderRequestV1 { // ee.schimke.composeai.uibuilder.protocol/GetDeltaRequestV1|null[0]
     constructor <init>(kotlin/String, kotlin/Long, kotlin/Int = ...) // ee.schimke.composeai.uibuilder.protocol/GetDeltaRequestV1.<init>|<init>(kotlin.String;kotlin.Long;kotlin.Int){}[0]
 
@@ -5983,6 +6025,48 @@ final class ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1 : ee.schim
         final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.Companion.$childSerializers|{}$childSerializers[0]
 
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1> // ee.schimke.composeai.uibuilder.protocol/RejectedOutcomeV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1 : ee.schimke.composeai.uibuilder.protocol/DesignModifierV1 { // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1|null[0]
+    final val args // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.args|{}args[0]
+        final fun <get-args>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiValueV1> // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.args.<get-args>|<get-args>(){}[0]
+    final val name // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.name|{}name[0]
+        final fun <get-name>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.name.<get-name>|<get-name>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiValueV1> // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.component2|component2(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.hashCode|hashCode(){}[0]
+    final fun newBuilder(): ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.Builder // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.newBuilder|newBuilder(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.toString|toString(){}[0]
+
+    final class Builder { // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.Builder|null[0]
+        constructor <init>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.Builder.<init>|<init>(kotlin.String){}[0]
+
+        final var args // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.Builder.args|{}args[0]
+            final fun <get-args>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiValueV1> // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.Builder.args.<get-args>|<get-args>(){}[0]
+            final fun <set-args>(kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiValueV1>) // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.Builder.args.<set-args>|<set-args>(kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.UiValueV1>){}[0]
+        final var name // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.Builder.name|{}name[0]
+            final fun <get-name>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.Builder.name.<get-name>|<get-name>(){}[0]
+            final fun <set-name>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.Builder.name.<set-name>|<set-name>(kotlin.String){}[0]
+
+        final fun build(): ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1 // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.Builder.build|build(){}[0]
+    }
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1> { // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1 // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1) // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.RemoteCallModifierV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1> // ee.schimke.composeai.uibuilder.protocol/RemoteCallModifierV1.Companion.serializer|serializer(){}[0]
     }
 }
 
@@ -7660,6 +7744,32 @@ final class ee.schimke.composeai.uibuilder.protocol/SvgCapabilityV1 { // ee.schi
         final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SvgCapabilityV1.Companion.$childSerializers|{}$childSerializers[0]
 
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SvgCapabilityV1> // ee.schimke.composeai.uibuilder.protocol/SvgCapabilityV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/SystemValueV1 : ee.schimke.composeai.uibuilder.protocol/UiValueV1 { // ee.schimke.composeai.uibuilder.protocol/SystemValueV1|null[0]
+    constructor <init>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/SystemValueV1.<init>|<init>(kotlin.String){}[0]
+
+    final val value // ee.schimke.composeai.uibuilder.protocol/SystemValueV1.value|{}value[0]
+        final fun <get-value>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SystemValueV1.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SystemValueV1.component1|component1(){}[0]
+    final fun copy(kotlin/String = ...): ee.schimke.composeai.uibuilder.protocol/SystemValueV1 // ee.schimke.composeai.uibuilder.protocol/SystemValueV1.copy|copy(kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SystemValueV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SystemValueV1.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SystemValueV1.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SystemValueV1> { // ee.schimke.composeai.uibuilder.protocol/SystemValueV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SystemValueV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SystemValueV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SystemValueV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SystemValueV1 // ee.schimke.composeai.uibuilder.protocol/SystemValueV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SystemValueV1) // ee.schimke.composeai.uibuilder.protocol/SystemValueV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SystemValueV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SystemValueV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SystemValueV1> // ee.schimke.composeai.uibuilder.protocol/SystemValueV1.Companion.serializer|serializer(){}[0]
     }
 }
 
