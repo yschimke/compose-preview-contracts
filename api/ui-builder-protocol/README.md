@@ -9,11 +9,16 @@ client, service and MCP adapter. It owns:
 - pinned catalog identity plus roles, traits, slot cardinalities, JSON property schemas, modifier,
   Wasm, Compose-code and SVG capabilities;
 - persisted multiple-root design documents with a typed render environment, state declarations,
-  ordered modifiers and named ordered slots. The modifier vocabulary is closed and declarative —
-  sizing and constraints, the three fills, alignment (one modifier per scope, because a row aligns
-  vertically and a column horizontally), offset and z-index, background, border, alpha, shadow,
-  rotate, scale, the two scrolls, and a test tag. What is deliberately absent, and why, is on
-  `DesignModifierV1`;
+  ordered modifiers and named ordered slots. The typed modifier vocabulary is closed and
+  declarative — sizing and constraints, the three fills, alignment (one modifier per scope, because
+  a row aligns vertically and a column horizontally), offset and z-index, background, border,
+  alpha, shadow, rotate, scale, the two scrolls, and a test tag. What is deliberately absent, and
+  why, is on `DesignModifierV1`. One variant is open by name: `remoteCall`
+  (`RemoteCallModifierV1`) carries any other `RemoteModifier` call, its arguments as values, for
+  documents a Remote Compose catalog renders. Handling of the sealed type is therefore not
+  exhaustive by modifier name: a consumer that renders or exports `remoteCall` validates its name
+  and arguments against the catalog's vocabulary (generated from the released Remote Compose API)
+  and refuses a call that catalog does not declare;
 - atomic, client-identified edit batches using stable neighbour anchors, plus undo and redo; stable
   position keys remain reducer/server internals and are never client supplied;
 - explicit catalog-pin upgrade previews with deterministic validation, structural diffs and
