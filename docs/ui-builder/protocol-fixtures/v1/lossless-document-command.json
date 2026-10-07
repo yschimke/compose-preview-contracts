@@ -61,6 +61,7 @@
           {"type": "background", "color": {"type": "colorToken", "value": "surfaceContainerHigh"}, "shape": "medium"},
           {"type": "border", "widthDp": 1.0, "color": {"type": "color", "value": "#FF335577"}, "shape": "small"},
           {"type": "alpha", "alpha": 0.8},
+          {"type": "remoteCall", "name": "graphicsLayer", "args": {"rotationZ": {"type": "expr", "op": "mul", "args": [{"type": "expr", "op": "mod", "args": [{"type": "system", "value": "time.secondOfHour"}, {"type": "int", "value": 60}]}, {"type": "int", "value": 6}]}}},
           {"type": "shadow", "elevationDp": 6.0, "shape": "large", "clip": true},
           {"type": "rotate", "degrees": 90.0},
           {"type": "scale", "scaleX": 1.25, "scaleY": 0.75},

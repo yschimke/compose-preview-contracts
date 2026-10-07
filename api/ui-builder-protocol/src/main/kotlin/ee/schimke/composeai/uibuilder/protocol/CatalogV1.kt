@@ -801,15 +801,30 @@ public data class ObjectValueV1(public val fields: Map<String, UiValueV1>) : UiV
 /**
  * A value the player computes: [op] applied to [args], each itself a value — a literal, a state
  * read, a [SystemValueV1] or another expression. The vocabulary of `op` and the kinds each accepts
- * are the builder's (`UiExpressions`); the contract carries the tree, so documents holding one
- * save, commit and diff like any other value.
+ * are the builder's (`UiExpressions`); the contract carries the tree, so a document holding one
+ * saves, commits and diffs like any other value. Built through [Builder], so a later field is a new
+ * `var` rather than a broken constructor.
  */
 @Serializable
 @SerialName("expr")
-public data class ExpressionValueV1(
-  public val op: String,
-  public val args: List<UiValueV1> = emptyList(),
-) : UiValueV1
+@ConsistentCopyVisibility
+public data class ExpressionValueV1
+internal constructor(public val op: String, public val args: List<UiValueV1> = emptyList()) :
+  UiValueV1 {
+  /**
+   * Builds an [ExpressionValueV1]; see [WasmCapabilityV1.Builder] for why the constructor is
+   * internal.
+   */
+  public class Builder(op: String) {
+    public var op: String = op
+    public var args: List<UiValueV1> = emptyList()
+
+    public fun build(): ExpressionValueV1 = ExpressionValueV1(op, args)
+  }
+
+  /** This [ExpressionValueV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder = Builder(op).also { it.args = args }
+}
 
 /** A value the player supplies, such as `time.secondOfHour`, read where it is used. */
 @Serializable

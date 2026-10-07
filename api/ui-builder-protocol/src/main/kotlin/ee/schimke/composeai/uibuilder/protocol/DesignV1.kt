@@ -565,6 +565,40 @@ public enum class VerticalAlignmentV1 {
 }
 
 /** Declarative event actions; arbitrary lambdas and Kotlin expressions are intentionally absent. */
+/**
+ * A `RemoteModifier` call the typed modifiers above do not name, for documents a Remote Compose
+ * catalog renders: [name] is the function (`graphicsLayer`, `border`, `visibility`, …) and [args]
+ * its arguments by parameter name, each a value — so a literal, a state read or a computed value.
+ *
+ * Open by name on purpose. The released Remote Compose API is authoritative for which calls exist
+ * and what they take; a catalog generates that vocabulary from it and validates a document against
+ * it, as it already does for component ids and event names. A wire type per call would make every
+ * new alpha a contracts release. Still declarative — no lambda, no `then` — and still ordered with
+ * the rest of the chain. Interaction stays out, as above: behaviour is event bindings.
+ */
+@Serializable
+@SerialName("remoteCall")
+@ConsistentCopyVisibility
+public data class RemoteCallModifierV1
+internal constructor(
+  public val name: String,
+  public val args: Map<String, UiValueV1> = emptyMap(),
+) : DesignModifierV1 {
+  /**
+   * Builds a [RemoteCallModifierV1]; see [WasmCapabilityV1.Builder] for why the constructor is
+   * internal.
+   */
+  public class Builder(name: String) {
+    public var name: String = name
+    public var args: Map<String, UiValueV1> = emptyMap()
+
+    public fun build(): RemoteCallModifierV1 = RemoteCallModifierV1(name, args)
+  }
+
+  /** This [RemoteCallModifierV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder = Builder(name).also { it.args = args }
+}
+
 @Serializable public sealed interface DesignActionV1
 
 @Serializable

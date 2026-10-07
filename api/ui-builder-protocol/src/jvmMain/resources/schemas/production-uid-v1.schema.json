@@ -805,6 +805,9 @@
           "$ref": "#/$defs/UiValueV1.padding"
         },
         {
+          "$ref": "#/$defs/DesignModifierV1.remoteCall"
+        },
+        {
           "$ref": "#/$defs/DesignModifierV1.rotate"
         },
         {
@@ -1098,6 +1101,28 @@
       },
       "required": [
         "type"
+      ],
+      "additionalProperties": false
+    },
+    "DesignModifierV1.remoteCall": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "remoteCall"
+        },
+        "name": {
+          "type": "string"
+        },
+        "args": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/UiValueV1"
+          }
+        }
+      },
+      "required": [
+        "type",
+        "name"
       ],
       "additionalProperties": false
     },
