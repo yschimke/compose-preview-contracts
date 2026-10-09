@@ -1,0 +1,281 @@
+{
+ "schema": "compose-ui-builder/guidelines-result/v1",
+ "designId": "golden-tiles-timer-1",
+ "revision": 54,
+ "model": "typesafe/jev-router",
+ "rulesVersion": 4,
+ "asked": [
+  "wear.layout.time-text-clear",
+  "wear.layout.time-text-shown",
+  "wear.layout.no-clipping",
+  "wear.layout.responsive-width",
+  "wear.layout.column-never-scrolls",
+  "wear.dialog.dedicated-task",
+  "wear.touch-target-48dp",
+  "wear.color.role-pairs",
+  "wear.empty-state-has-action",
+  "wear.gestures.no-hidden-actions",
+  "wear.widgets.background-on-container",
+  "wear.widgets.content-fills-container",
+  "wear.widgets.focused",
+  "wear.widgets.containers-have-actions",
+  "wear.edge-button.in-slot",
+  "wear.edge-button.content-fits-size",
+  "wear.button.emphasis",
+  "wear.button.child-not-primary",
+  "wear.type.titles-not-in-controls",
+  "wear.type.numerals-digits-only",
+  "wear.type.theme-styles",
+  "wear.scroll-indicator-matches",
+  "wear.time-text.not-on-transient",
+  "wear.actions-labelled",
+  "wear.color.container-not-for-content",
+  "wear.card.text-budget",
+  "wear.dialog.alert-is-a-decision",
+  "wear.slider.segment-limit",
+  "wear.list-header.short",
+  "wear.widgets.no-edge-button",
+  "wear.widgets.streamlined",
+  "wear.widgets.predictable-actions",
+  "wear.widgets.small-single-row"
+ ],
+ "verdicts": [
+  {
+   "ruleId": "wear.layout.time-text-clear",
+   "verdict": "not_applicable",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "Widgets do not display TimeText."
+  },
+  {
+   "ruleId": "wear.layout.time-text-shown",
+   "verdict": "not_applicable",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "Widgets are not built on ScreenScaffold."
+  },
+  {
+   "ruleId": "wear.layout.no-clipping",
+   "verdict": "pass",
+   "confidence": 0.95,
+   "nodeIds": [],
+   "reason": "Content is fully visible within the widget bounds on both shapes."
+  },
+  {
+   "ruleId": "wear.layout.responsive-width",
+   "verdict": "not_applicable",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "Responsive width rule does not apply to widgets."
+  },
+  {
+   "ruleId": "wear.layout.column-never-scrolls",
+   "verdict": "not_applicable",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "Widget is not a ScreenScaffold screen."
+  },
+  {
+   "ruleId": "wear.dialog.dedicated-task",
+   "verdict": "not_applicable",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "Widget is not a dialog."
+  },
+  {
+   "ruleId": "wear.touch-target-48dp",
+   "verdict": "pass",
+   "confidence": 0.95,
+   "nodeIds": [],
+   "reason": "All interactive elements meet or exceed 48dp in width and height."
+  },
+  {
+   "ruleId": "wear.color.role-pairs",
+   "verdict": "pass",
+   "confidence": 0.95,
+   "nodeIds": [],
+   "reason": "Containers and text maintain sufficient contrast."
+  },
+  {
+   "ruleId": "wear.empty-state-has-action",
+   "verdict": "not_applicable",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "Widget does not display an empty state."
+  },
+  {
+   "ruleId": "wear.gestures.no-hidden-actions",
+   "verdict": "pass",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "No gesture-only actions are used."
+  },
+  {
+   "ruleId": "wear.widgets.background-on-container",
+   "verdict": "pass",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "Background brush is applied directly to the widget container."
+  },
+  {
+   "ruleId": "wear.widgets.content-fills-container",
+   "verdict": "pass",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "Root content row uses fillMaxSize."
+  },
+  {
+   "ruleId": "wear.widgets.focused",
+   "verdict": "pass",
+   "confidence": 0.95,
+   "nodeIds": [],
+   "reason": "Widget focuses on quick timer selection and addition."
+  },
+  {
+   "ruleId": "wear.widgets.containers-have-actions",
+   "verdict": "fail",
+   "confidence": 0.95,
+   "nodeIds": [
+    "preset-5-s4",
+    "preset-10-s4",
+    "preset-15-s4"
+   ],
+   "reason": "Add click actions to the timer preset containers so they behave as buttons."
+  },
+  {
+   "ruleId": "wear.edge-button.in-slot",
+   "verdict": "not_applicable",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "No edge button is used."
+  },
+  {
+   "ruleId": "wear.edge-button.content-fits-size",
+   "verdict": "not_applicable",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "No edge button is used."
+  },
+  {
+   "ruleId": "wear.button.emphasis",
+   "verdict": "not_applicable",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "Rule does not apply to widgets with remote buttons."
+  },
+  {
+   "ruleId": "wear.button.child-not-primary",
+   "verdict": "not_applicable",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "No child button is used."
+  },
+  {
+   "ruleId": "wear.type.titles-not-in-controls",
+   "verdict": "pass",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "Title styles are not used inside controls."
+  },
+  {
+   "ruleId": "wear.type.numerals-digits-only",
+   "verdict": "pass",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "Numeral styles contain only digits."
+  },
+  {
+   "ruleId": "wear.type.theme-styles",
+   "verdict": "pass",
+   "confidence": 0.95,
+   "nodeIds": [],
+   "reason": "Text styles are set using Material theme typography."
+  },
+  {
+   "ruleId": "wear.scroll-indicator-matches",
+   "verdict": "not_applicable",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "Widget does not have a scroll indicator."
+  },
+  {
+   "ruleId": "wear.time-text.not-on-transient",
+   "verdict": "not_applicable",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "Widget is not a transient dialog or picker."
+  },
+  {
+   "ruleId": "wear.actions-labelled",
+   "verdict": "pass",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "The icon-only button uses the universally recognisable add icon."
+  },
+  {
+   "ruleId": "wear.color.container-not-for-content",
+   "verdict": "not_applicable",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "No container color roles are referenced."
+  },
+  {
+   "ruleId": "wear.card.text-budget",
+   "verdict": "not_applicable",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "No title cards are used."
+  },
+  {
+   "ruleId": "wear.dialog.alert-is-a-decision",
+   "verdict": "not_applicable",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "Widget is not an alert dialog."
+  },
+  {
+   "ruleId": "wear.slider.segment-limit",
+   "verdict": "not_applicable",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "No slider is used."
+  },
+  {
+   "ruleId": "wear.list-header.short",
+   "verdict": "not_applicable",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "No list headers are used."
+  },
+  {
+   "ruleId": "wear.widgets.no-edge-button",
+   "verdict": "pass",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "No remote edge button is used."
+  },
+  {
+   "ruleId": "wear.widgets.streamlined",
+   "verdict": "pass",
+   "confidence": 0.95,
+   "nodeIds": [],
+   "reason": "Layout is streamlined to a single row of timer presets."
+  },
+  {
+   "ruleId": "wear.widgets.predictable-actions",
+   "verdict": "pass",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "No clickable containers wrap conflicting buttons."
+  },
+  {
+   "ruleId": "wear.widgets.small-single-row",
+   "verdict": "pass",
+   "confidence": 1.0,
+   "nodeIds": [],
+   "reason": "Small widget uses a single horizontal row without stacked titles or multiple rows."
+  }
+ ],
+ "ranBy": "agent:d4e3035c73d4",
+ "recordedAtEpochMillis": 1791447390602
+}
