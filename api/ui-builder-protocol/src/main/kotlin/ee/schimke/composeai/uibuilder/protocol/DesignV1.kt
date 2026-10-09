@@ -234,7 +234,160 @@ public data class DesignEnvironmentV1(
    * Appended last, like [typeface] and for the same reason: the constructor is published ABI.
    */
   public val exportDevices: List<String> = emptyList(),
-)
+  /**
+   * The Remote Compose profile this design's document is written for, or null for the consumer's
+   * default for the document's kind: a Wear widget is [RemoteProfileTargetV1.WEAR_WIDGETS], a
+   * launcher widget [RemoteProfileTargetV1.LAUNCHER_WIDGETS_V6], and any other Remote Compose
+   * document [RemoteProfileTargetV1.ANDROIDX]. Meaningless for a design that is not exported as a
+   * Remote Compose document.
+   *
+   * Appended last for the reason [exportDevices] was, and never encoded while null, so a document
+   * that names no profile serialises exactly as it did before this field existed.
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val remoteProfile: RemoteProfileV1? = null,
+) {
+  /**
+   * Preserves the constructor that predates [remoteProfile], **including its default-argument
+   * form**. Code compiled against earlier releases calls the synthetic `(..., Int,
+   * DefaultConstructorMarker)` constructor when it leaves an optional field out, and a primary
+   * constructor that only gained a parameter has no such constructor: the call fails with
+   * `NoSuchMethodError` at runtime, in a jar nobody recompiled.
+   */
+  public constructor(
+    widthDp: Int,
+    heightDp: Int,
+    density: Double,
+    theme: ThemeV1,
+    dynamicColor: Boolean? = null,
+    locale: String,
+    fontScale: Double,
+    layoutDirection: LayoutDirectionV1,
+    windowPosture: WindowPostureV1? = null,
+    browserZoomPercent: Int? = null,
+    fixedTime: String? = null,
+    animations: AnimationStateV1? = null,
+    networkAccess: Boolean? = null,
+    background: UiValueV1? = null,
+    typeface: String? = null,
+    exportDevices: List<String> = emptyList(),
+  ) : this(
+    widthDp,
+    heightDp,
+    density,
+    theme,
+    dynamicColor,
+    locale,
+    fontScale,
+    layoutDirection,
+    windowPosture,
+    browserZoomPercent,
+    fixedTime,
+    animations,
+    networkAccess,
+    background,
+    typeface,
+    exportDevices,
+    null,
+  )
+
+  /** The `copy` of earlier releases, for the same reason; it carries [remoteProfile]. */
+  public fun copy(
+    widthDp: Int = this.widthDp,
+    heightDp: Int = this.heightDp,
+    density: Double = this.density,
+    theme: ThemeV1 = this.theme,
+    dynamicColor: Boolean? = this.dynamicColor,
+    locale: String = this.locale,
+    fontScale: Double = this.fontScale,
+    layoutDirection: LayoutDirectionV1 = this.layoutDirection,
+    windowPosture: WindowPostureV1? = this.windowPosture,
+    browserZoomPercent: Int? = this.browserZoomPercent,
+    fixedTime: String? = this.fixedTime,
+    animations: AnimationStateV1? = this.animations,
+    networkAccess: Boolean? = this.networkAccess,
+    background: UiValueV1? = this.background,
+    typeface: String? = this.typeface,
+    exportDevices: List<String> = this.exportDevices,
+  ): DesignEnvironmentV1 =
+    copy(
+      widthDp,
+      heightDp,
+      density,
+      theme,
+      dynamicColor,
+      locale,
+      fontScale,
+      layoutDirection,
+      windowPosture,
+      browserZoomPercent,
+      fixedTime,
+      animations,
+      networkAccess,
+      background,
+      typeface,
+      exportDevices,
+      this.remoteProfile,
+    )
+}
+
+/**
+ * The Remote Compose profile a design's document targets: which player, at which document API
+ * level, with which operations. Shape only: this names the target, and the consumer decides what a
+ * target permits (androidx `RcPlatformProfiles` is the reference for each).
+ */
+@Serializable
+@ConsistentCopyVisibility
+public data class RemoteProfileV1
+internal constructor(
+  public val target: RemoteProfileTargetV1,
+  /**
+   * Adds androidx `RcProfiles.PROFILE_EXPERIMENTAL` (`0x1`) to [target]'s profile: "the supported
+   * set of additional operations … is not strongly defined", and may include features only some
+   * players support.
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val experimental: Boolean = false,
+) {
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(target: RemoteProfileTargetV1) {
+    public var target: RemoteProfileTargetV1 = target
+    public var experimental: Boolean = false
+
+    public fun build(): RemoteProfileV1 = RemoteProfileV1(target, experimental)
+  }
+
+  /** This profile as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder = Builder(target).also { it.experimental = experimental }
+}
+
+/** The players a Remote Compose document can be written for, named as androidx names them. */
+@Serializable
+public enum class RemoteProfileTargetV1 {
+  /**
+   * Wear OS widgets: androidx `RcPlatformProfiles.WEAR_WIDGETS`, at
+   * `CoreDocument.DOCUMENT_API_LEVEL` with `RcProfiles.PROFILE_WEAR_WIDGETS` (`0x800`), a
+   * restricted set of operations within the baseline.
+   */
+  @SerialName("wear-widgets") WEAR_WIDGETS,
+
+  /**
+   * Launcher widgets on the Android 16 ("Baklava") platform player: androidx
+   * `RcPlatformProfiles.WIDGETS_V6`, document API level 6 on the baseline profile (`0`).
+   */
+  @SerialName("launcher-widgets-v6") LAUNCHER_WIDGETS_V6,
+
+  /**
+   * Launcher widgets on the Android 17 ("Cinnamon Bun") platform player: androidx
+   * `RcPlatformProfiles.WIDGETS_V7`, document API level 7 with `RcProfiles.PROFILE_WIDGETS`
+   * (`0x100`).
+   */
+  @SerialName("launcher-widgets-v7") LAUNCHER_WIDGETS_V7,
+
+  /**
+   * The embedded AndroidX player: androidx `RcPlatformProfiles.ANDROIDX`, at
+   * `CoreDocument.DOCUMENT_API_LEVEL` with `RcProfiles.PROFILE_ANDROIDX` (`0x200`).
+   */
+  @SerialName("androidx") ANDROIDX,
+}
 
 @Serializable
 public enum class ThemeV1 {

@@ -756,6 +756,121 @@ class UiBuilderProtocolCompatibilityTest {
   }
 
   @Test
+  fun `a Remote profile round-trips under its serial names and is absent when unset`() {
+    assertEquals(
+      listOf("wear-widgets", "launcher-widgets-v6", "launcher-widgets-v7", "androidx"),
+      RemoteProfileTargetV1.entries.map {
+        strictJson.encodeToJsonElement(RemoteProfileTargetV1.serializer(), it).let { wire ->
+          (wire as JsonPrimitive).content
+        }
+      },
+    )
+    val profile =
+      RemoteProfileV1.Builder(RemoteProfileTargetV1.LAUNCHER_WIDGETS_V7)
+        .apply { experimental = true }
+        .build()
+    val environment =
+      DesignEnvironmentV1(
+        widthDp = 200,
+        heightDp = 100,
+        density = 2.0,
+        theme = ThemeV1.DARK,
+        locale = "en",
+        fontScale = 1.0,
+        layoutDirection = LayoutDirectionV1.LTR,
+        remoteProfile = profile,
+      )
+    val wire =
+      strictJson.encodeToJsonElement(DesignEnvironmentV1.serializer(), environment) as JsonObject
+    assertEquals(
+      JsonPrimitive("launcher-widgets-v7"),
+      (wire["remoteProfile"] as JsonObject)["target"],
+    )
+    assertEquals(JsonPrimitive(true), (wire["remoteProfile"] as JsonObject)["experimental"])
+    assertEquals(
+      environment,
+      strictJson.decodeFromJsonElement(DesignEnvironmentV1.serializer(), wire),
+    )
+    assertEquals(
+      profile,
+      RemoteProfileV1.Builder(RemoteProfileTargetV1.LAUNCHER_WIDGETS_V7)
+        .apply { experimental = true }
+        .build(),
+    )
+    assertEquals(profile, profile.newBuilder().build())
+
+    // Unset, it is not on the wire at all, even for an encoder that asks for defaults, so a
+    // document written before the field existed canonicalises as it did.
+    val plain = environment.copy(remoteProfile = null)
+    val eager = Json {
+      encodeDefaults = true
+      classDiscriminator = "type"
+    }
+    val plainWire = eager.encodeToJsonElement(DesignEnvironmentV1.serializer(), plain) as JsonObject
+    assertEquals(false, "remoteProfile" in plainWire)
+    val old = JsonObject(wire - "remoteProfile")
+    assertEquals(
+      null,
+      strictJson.decodeFromJsonElement(DesignEnvironmentV1.serializer(), old).remoteProfile,
+    )
+  }
+
+  @Test
+  fun `the environment keeps the constructor and copy it had before remoteProfile`() {
+    // The positional shape released consumers compiled against: sixteen parameters, no profile.
+    val environment =
+      DesignEnvironmentV1(
+        200,
+        100,
+        2.0,
+        ThemeV1.DARK,
+        null,
+        "en",
+        1.0,
+        LayoutDirectionV1.LTR,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        emptyList(),
+      )
+    assertEquals(null, environment.remoteProfile)
+    val profiled =
+      environment.copy(
+        remoteProfile = RemoteProfileV1.Builder(RemoteProfileTargetV1.WEAR_WIDGETS).build()
+      )
+    // The old copy keeps the profile it does not name.
+    val resized = profiled.copy(200, 120, 2.0, ThemeV1.DARK, null, "en", 1.0, LayoutDirectionV1.LTR)
+    assertEquals(profiled.remoteProfile, resized.remoteProfile)
+    assertEquals(120, resized.heightDp)
+  }
+
+  @Test
+  fun `setting and resetting a Remote profile round-trip under their discriminators`() {
+    val set: EnvironmentChangeV1 =
+      SetRemoteProfileEnvironmentChangeV1(
+        RemoteProfileV1.Builder(RemoteProfileTargetV1.LAUNCHER_WIDGETS_V6).build()
+      )
+    val reset: EnvironmentChangeV1 = ResetRemoteProfileEnvironmentChangeV1
+    val setWire =
+      strictJson.encodeToJsonElement(EnvironmentChangeV1.serializer(), set) as JsonObject
+    assertEquals(JsonPrimitive("setRemoteProfile"), setWire["type"])
+    assertEquals(set, strictJson.decodeFromJsonElement(EnvironmentChangeV1.serializer(), setWire))
+    val resetWire =
+      strictJson.encodeToJsonElement(EnvironmentChangeV1.serializer(), reset) as JsonObject
+    assertEquals(JsonPrimitive("resetRemoteProfile"), resetWire["type"])
+    assertEquals(
+      reset,
+      strictJson.decodeFromJsonElement(EnvironmentChangeV1.serializer(), resetWire),
+    )
+    assertEquals(EnvironmentFieldV1.REMOTE_PROFILE, set.field)
+    assertEquals(EnvironmentFieldV1.REMOTE_PROFILE, reset.field)
+  }
+
+  @Test
   fun everyModifierTypeIsCarriedByTheLosslessFixture() {
     // The vocabulary and the fixture are two halves of one promise: the fixture is what proves a
     // type survives a strict round trip, and a modifier that is not in it is a type nothing has
@@ -842,6 +957,10 @@ class UiBuilderProtocolCompatibilityTest {
         SetBackgroundEnvironmentChangeV1(StringValueV1("x")).field,
         SetTypefaceEnvironmentChangeV1("Inter").field,
         SetExportDevicesEnvironmentChangeV1(listOf("id:pixel_6")).field,
+        SetRemoteProfileEnvironmentChangeV1(
+            RemoteProfileV1.Builder(RemoteProfileTargetV1.ANDROIDX).build()
+          )
+          .field,
       )
 
     assertEquals(EnvironmentFieldV1.entries.toSet(), named)

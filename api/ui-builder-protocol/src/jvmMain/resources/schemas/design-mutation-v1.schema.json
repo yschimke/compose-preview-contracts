@@ -1506,6 +1506,9 @@
           "$ref": "#/$defs/EnvironmentChangeV1.resetNetworkAccess"
         },
         {
+          "$ref": "#/$defs/EnvironmentChangeV1.resetRemoteProfile"
+        },
+        {
           "$ref": "#/$defs/EnvironmentChangeV1.resetTypeface"
         },
         {
@@ -1546,6 +1549,9 @@
         },
         {
           "$ref": "#/$defs/EnvironmentChangeV1.setNetworkAccess"
+        },
+        {
+          "$ref": "#/$defs/EnvironmentChangeV1.setRemoteProfile"
         },
         {
           "$ref": "#/$defs/EnvironmentChangeV1.setTheme"
@@ -1638,6 +1644,18 @@
       "properties": {
         "type": {
           "const": "resetNetworkAccess"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "EnvironmentChangeV1.resetRemoteProfile": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "resetRemoteProfile"
         }
       },
       "required": [
@@ -1900,6 +1918,25 @@
       ],
       "additionalProperties": false
     },
+    "EnvironmentChangeV1.setRemoteProfile": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "setRemoteProfile"
+        },
+        "value": {
+          "$ref": "#/$defs/RemoteProfileV1"
+        },
+        "field": {
+          "$ref": "#/$defs/EnvironmentFieldV1"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
     "EnvironmentChangeV1.setTheme": {
       "type": "object",
       "properties": {
@@ -1994,7 +2031,8 @@
         "networkAccess",
         "background",
         "typeface",
-        "exportDevices"
+        "exportDevices",
+        "remoteProfile"
       ]
     },
     "HorizontalAlignmentV1": {
@@ -2061,6 +2099,30 @@
       "required": [
         "nodeId",
         "slot"
+      ],
+      "additionalProperties": false
+    },
+    "RemoteProfileTargetV1": {
+      "type": "string",
+      "enum": [
+        "wear-widgets",
+        "launcher-widgets-v6",
+        "launcher-widgets-v7",
+        "androidx"
+      ]
+    },
+    "RemoteProfileV1": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "$ref": "#/$defs/RemoteProfileTargetV1"
+        },
+        "experimental": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "target"
       ],
       "additionalProperties": false
     },
