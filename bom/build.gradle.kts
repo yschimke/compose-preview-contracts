@@ -18,13 +18,13 @@ plugins {
 //
 // The constraints are derived, not listed. `settings.gradle.kts` collects every project path whose
 // build script applies `composeai.maven-publishing` and hands them over as a system property; the
-// artifact id is the path with its separators flattened. That convention holds for all twelve
+// artifact id is the path with its separators flattened. That convention holds for all thirteen
 // modules here, verified rather than assumed, and `PublishedArtifactIdTest` in build-logic pins it
 // so a module that breaks it fails the build rather than going missing from the BOM.
 //
-// The two Kotlin Multiplatform modules (`ui-builder-protocol`, `screen-document`) are constrained
-// at their base coordinate, which is the one a consumer names; Gradle module metadata resolves the
-// `-jvm` / `-wasm-js` variants from it.
+// The three Kotlin Multiplatform modules (`ui-builder-protocol`, `screen-document`,
+// `design-guidelines-protocol`) are constrained at their base coordinate, which is the one a
+// consumer names; Gradle module metadata resolves the `-jvm` / `-wasm-js` variants from it.
 //
 // Each constraint takes that module's EFFECTIVE version, via the same `PublishedVersions.resolve`
 // that sets `project.version`, so the versions the BOM promises and the versions the POMs name

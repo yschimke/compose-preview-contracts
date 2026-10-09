@@ -55,6 +55,14 @@ include(":ui-builder-protocol")
 
 project(":ui-builder-protocol").projectDir = file("api/ui-builder-protocol")
 
+// The design-guideline vocabulary: a catalog's rules and pictures, the request a guidelines model
+// is sent and the recorded result. The UI builder, the CLI, VS Code previews, the preview server
+// and the preview-diff workflow all check guidelines, so the shapes live here rather than in any
+// one of them.
+include(":design-guidelines-protocol")
+
+project(":design-guidelines-protocol").projectDir = file("api/design-guidelines-protocol")
+
 // The catalog-published GitHub issue index. Catalog workflows produce it and preview servers
 // consume it, so its versioned JSON shape lives here rather than in either implementation.
 include(":parity-issues-protocol")

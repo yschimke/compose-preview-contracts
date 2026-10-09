@@ -1,0 +1,351 @@
+{
+ "schema": "compose-ui-builder/guidelines-prompt/v1",
+ "designId": "golden-tiles-timer-1",
+ "revision": 60,
+ "platform": "wear",
+ "rules": {
+  "version": 5,
+  "source": "https://github.com/yschimke/compose-ui-builder/blob/main/docs/guidelines/android-design-guidelines.json",
+  "forPlatform": 18,
+  "asked": [
+   {
+    "id": "wear.layout.no-clipping",
+    "platforms": [
+     "wear"
+    ],
+    "kind": "visual",
+    "severity": "warning",
+    "guidance": "Margins should be defined in percentages to avoid clipping and provide proportional scaling of elements.",
+    "check": "For a screen, judge round-edge clipping on the device picture (the first frame, as the wearer first sees it), and clipping inside components on the unrolled picture when one is attached; content that continues below the bottom of the device picture in a scrolling list is not clipped. For a widget, judge it on both container pictures: nothing may be cut by the Samsung container's fully rounded ends or the Pixel Watch container's corners. Is every piece of text, icon and control fully visible, with nothing cut off by the edge or by its own container?",
+    "source": "https://developer.android.com/design/ui/wear/guides/foundations/adaptive-design",
+    "surfaces": [
+     "screen",
+     "widget"
+    ]
+   },
+   {
+    "id": "wear.touch-target-48dp",
+    "platforms": [
+     "wear"
+    ],
+    "kind": "structure",
+    "severity": "warning",
+    "guidance": "Reserves at least 48.dp in size to disambiguate touch interactions if the element would measure smaller. Smaller visual sizes, such as compact and extra-small buttons, are padded out to a 48dp touch target.",
+    "check": "Is the tap area of every tappable control at least 48dp in each direction? Count the padding Wear adds to compact and extra-small buttons and icon buttons (their tap area is 48dp even when they draw smaller); flag only controls given a fixed size or height that leaves the tap area under 48dp.",
+    "source": "https://developer.android.com/reference/kotlin/androidx/wear/compose/material3/package-summary",
+    "surfaces": [
+     "screen",
+     "widget"
+    ]
+   },
+   {
+    "id": "wear.color.role-pairs",
+    "platforms": [
+     "wear"
+    ],
+    "kind": "structure",
+    "severity": "warning",
+    "guidance": "Color roles come in pairs (container and on-container) that provide a minimum of 3:1 color contrast. Custom colors should keep that contrast.",
+    "check": "Where the design overrides colors, does it pair each container color with its matching content (on-) role, or with colors that are clearly high contrast?",
+    "source": "https://developer.android.com/design/ui/wear/guides/styles/color/roles-tokens",
+    "surfaces": [
+     "screen",
+     "widget"
+    ]
+   },
+   {
+    "id": "wear.empty-state-has-action",
+    "platforms": [
+     "wear"
+    ],
+    "kind": "structure",
+    "severity": "info",
+    "guidance": "All empty states should have a clear call-to-action so the user knows what to do to fix a potential issue, or find out more information.",
+    "check": "If this design shows an empty, error or signed-out state, does it offer a clear action? Answer not_applicable when it does not show such a state.",
+    "source": "https://developer.android.com/design/ui/wear/guides/surfaces/tiles/states",
+    "surfaces": [
+     "screen",
+     "widget"
+    ]
+   },
+   {
+    "id": "wear.gestures.no-hidden-actions",
+    "platforms": [
+     "wear"
+    ],
+    "kind": "structure",
+    "severity": "warning",
+    "guidance": "Never hide a gesture-only action. A visible element that performs the same task must be present.",
+    "check": "Does every action bound to a gesture (long press, swipe, double tap) also have a visible control that performs it?",
+    "source": "https://developer.android.com/design/ui/wear/guides/patterns/gestures",
+    "surfaces": [
+     "screen",
+     "widget"
+    ]
+   },
+   {
+    "id": "wear.widgets.background-on-container",
+    "platforms": [
+     "wear"
+    ],
+    "kind": "structure",
+    "severity": "warning",
+    "guidance": "Always supply your widget's background brush directly to WearWidgetDocument so the host system can paint and mask the background to the native OEM container shape. Setting a transparent or black canvas and drawing a custom rounded container inside the layout can cause floating box and letterboxing defects on some devices.",
+    "check": "If this design is a widget (its root is a widget-container), is its background set on the widget container's background property rather than drawn by a coloured or rounded box inside the content? Answer not_applicable when it is not a widget.",
+    "source": "https://developer.android.com/training/wearables/widgets/get_started",
+    "surfaces": [
+     "widget"
+    ]
+   },
+   {
+    "id": "wear.widgets.content-fills-container",
+    "platforms": [
+     "wear"
+    ],
+    "kind": "structure",
+    "severity": "warning",
+    "guidance": "Ensure your root container composable uses RemoteModifier.fillMaxSize(). Because container DP dimensions and safe insets vary across watch models, hardcoding fixed dimensions or outer padding can cause clipping or misaligned layouts.",
+    "check": "If this design is a widget, does the content directly inside the widget container fill it (fillMaxSize), with no fixed width, height or outer padding? Answer not_applicable when it is not a widget.",
+    "source": "https://developer.android.com/training/wearables/widgets/get_started",
+    "surfaces": [
+     "widget"
+    ]
+   },
+   {
+    "id": "wear.widgets.focused",
+    "platforms": [
+     "wear"
+    ],
+    "kind": "structure",
+    "severity": "info",
+    "guidance": "Tiles should feel focused, concise, and purpose-driven. Avoid providing a superfluous amount of functionality, and refrain from using more than one interactive component to trigger a specific action. (Tiles guidance; widgets replace Tiles.)",
+    "check": "If this design is a widget, does it focus on one task, with no two controls doing the same thing? Answer not_applicable when it is not a widget.",
+    "source": "https://developer.android.com/design/ui/wear/guides/surfaces/tiles/bestpractices",
+    "surfaces": [
+     "widget"
+    ]
+   },
+   {
+    "id": "wear.widgets.containers-have-actions",
+    "platforms": [
+     "wear"
+    ],
+    "kind": "structure",
+    "severity": "info",
+    "guidance": "We don't recommend using containers for decorative or structural purposes, to avoid taps that don't do anything.",
+    "check": "If this design is a widget, does every container that looks like a button (filled, rounded and button-shaped) have an action or click binding? Treat an empty or placeholder click handler as an action. Answer not_applicable for app screens, where non-interactive cards are fine.",
+    "source": "https://developer.android.com/design/ui/wear/guides/surfaces/tiles/bestpractices",
+    "surfaces": [
+     "widget"
+    ]
+   },
+   {
+    "id": "wear.type.titles-not-in-controls",
+    "platforms": [
+     "wear"
+    ],
+    "kind": "structure",
+    "severity": "info",
+    "guidance": "Title styles are not recommended for interactive components, rather page headings or sub headings. Label styles are applied to interactive components.",
+    "check": "Does text inside buttons and cards use label or body styles, with title styles kept for headings outside controls? Answer not_applicable when no text style is set inside a control.",
+    "source": "https://developer.android.com/design/ui/wear/guides/styles/typography/apply",
+    "surfaces": [
+     "screen",
+     "widget"
+    ]
+   },
+   {
+    "id": "wear.type.numerals-digits-only",
+    "platforms": [
+     "wear"
+    ],
+    "kind": "structure",
+    "severity": "info",
+    "guidance": "Numeral text styles are used for numerical digits, usually limited to a few characters, where no localization is required.",
+    "check": "Is every text with a numeral style purely digits, a time or a short number (no words)? Answer not_applicable when no numeral styles are used.",
+    "source": "https://developer.android.com/design/ui/wear/guides/styles/typography/apply",
+    "surfaces": [
+     "screen",
+     "widget"
+    ]
+   },
+   {
+    "id": "wear.type.theme-styles",
+    "platforms": [
+     "wear"
+    ],
+    "kind": "structure",
+    "severity": "warning",
+    "guidance": "Do NOT hard-code text sizes, use typography from MaterialTheme. Do NOT hard-code colors, use colorScheme.",
+    "check": "Do text nodes set a style rather than fontSizeSp, lineHeightSp or letterSpacingSp, and do colours come from the theme's colour roles rather than hex values on individual components? Theme-level overrides on the screen-scaffold (theme*Color, theme*Typeface) are fine.",
+    "source": "kb://android/agents/skills/wear/wear-compose-m3/skill",
+    "surfaces": [
+     "screen",
+     "widget"
+    ]
+   },
+   {
+    "id": "wear.actions-labelled",
+    "platforms": [
+     "wear"
+    ],
+    "kind": "structure",
+    "severity": "info",
+    "guidance": "Use both icons and labels when possible. Don't rely solely on icons to prompt the user to take action.",
+    "check": "Are icon-only controls (icon-button, icon-only edge-button) kept to universally recognisable actions (add, close, play, settings), with other actions labelled? Answer not_applicable when there are no icon-only controls.",
+    "source": "https://developer.android.com/design/ui/wear/guides/surfaces/apps/best-practices",
+    "surfaces": [
+     "screen",
+     "widget"
+    ]
+   },
+   {
+    "id": "wear.color.container-not-for-content",
+    "platforms": [
+     "wear"
+    ],
+    "kind": "structure",
+    "severity": "warning",
+    "guidance": "Container roles are used as a fill color for foreground elements like buttons. They shouldn't be used for text or icons.",
+    "check": "Is no *Container colour role (primaryContainer, secondaryContainer, tertiaryContainer, errorContainer) used as a text colour, icon tint or contentColor? Answer not_applicable when the design names no colour roles.",
+    "source": "https://developer.android.com/design/ui/wear/guides/styles/color/roles-tokens",
+    "surfaces": [
+     "screen",
+     "widget"
+    ]
+   },
+   {
+    "id": "wear.widgets.no-edge-button",
+    "platforms": [
+     "wear"
+    ],
+    "kind": "structure",
+    "severity": "warning",
+    "guidance": "Because partial-height widgets integrate directly into a vertically scrolling surface, this fixed bottomSlot paradigm no longer exists, and migrating requires a deliberate UI redesign rather than a direct component swap.",
+    "check": "If this design is a widget, does it avoid remote-m3/remote-edge-button, using an inline button or a whole-container tap instead? Answer not_applicable when it is not a widget.",
+    "source": "https://developer.android.com/training/wearables/widgets/migration",
+    "surfaces": [
+     "widget"
+    ]
+   },
+   {
+    "id": "wear.widgets.streamlined",
+    "platforms": [
+     "wear"
+    ],
+    "kind": "visual",
+    "severity": "info",
+    "guidance": "Rather than porting a dense, full-screen Tile layout one-to-one, streamline your design to emphasize primary information within the main content area.",
+    "check": "If this design is a widget, does it lead with one primary piece of information rather than a dense grid of equal items? Answer not_applicable when it is not a widget.",
+    "source": "https://developer.android.com/training/wearables/widgets/migration",
+    "surfaces": [
+     "widget"
+    ]
+   },
+   {
+    "id": "wear.widgets.predictable-actions",
+    "platforms": [
+     "wear"
+    ],
+    "kind": "structure",
+    "severity": "warning",
+    "guidance": "The actions in this Tile are unclear: where does the container with the album art take the user, and is that different from the Play button?",
+    "check": "If this design is a widget, is no clickable card or container wrapping a button that does something different? Answer not_applicable when it is not a widget.",
+    "source": "https://developer.android.com/design/ui/wear/guides/surfaces/tiles/bestpractices",
+    "surfaces": [
+     "widget"
+    ]
+   },
+   {
+    "id": "wear.widgets.small-single-row",
+    "platforms": [
+     "wear"
+    ],
+    "kind": "structure",
+    "severity": "warning",
+    "guidance": "If you do not hide the app title on small screen, and have two rows, the height of the components will not adhere to our accessibility standards.",
+    "check": "If this design is a small widget (remote-m3/widget-container-small, 76dp tall), does it avoid stacking a title above a row of tap targets, or two rows of tap targets? Answer not_applicable for other designs.",
+    "source": "https://developer.android.com/design/ui/wear/guides/surfaces/tiles/bestpractices",
+    "surfaces": [
+     "widget"
+    ]
+   }
+  ],
+  "visualSkipped": 0
+ },
+ "pictures": [
+  {
+   "kind": "widget-samsung",
+   "description": "Picture 1 (Samsung widget picture): the widget in the container Samsung's Wear launcher gives it, 230×76dp with fully rounded ends, so content near the left and right edges is cut by the curve.",
+   "widthDp": 230,
+   "heightDp": 76,
+   "dataUrl": "data:image/png;base64,iVBORw0KGgo="
+  },
+  {
+   "kind": "widget-pixel-watch",
+   "description": "Picture 2 (Pixel Watch widget picture): the widget in the container the Pixel Watch launcher gives it, 216×76dp with rounded corners.",
+   "widthDp": 216,
+   "heightDp": 76,
+   "dataUrl": "data:image/png;base64,iVBORw0KGgo="
+  }
+ ],
+ "sourceAttached": true,
+ "systemPrompt": "You review UI designs against Android design guidelines. For every rule you are given, answer the rule's yes/no `check` for this design: verdict `pass` when the answer is yes, `fail` when it is no, `not_applicable` when the rule does not apply to this design or the evidence cannot decide it. Judge only from what is provided: the design tree, and when given the generated Jetpack Compose source (the code this design exports to; use it for questions about code) and a rendered picture. Do not assume content that is not there. Answer `fail` only when the design clearly breaks the rule. `confidence` is your probability (0 to 1) that the verdict is right. `nodeIds` names the design-tree node ids a `fail` is about (empty otherwise). `reason` is one short sentence a designer can act on. Reply with JSON only: {\"verdicts\":[{\"ruleId\":…,\"verdict\":…,\"confidence\":…,\"nodeIds\":[…],\"reason\":…}]}, one entry per rule.",
+ "userText": "Platform: wear\nDesign: Golden Tiles · Timer · 1, 216×76dp, dark theme\nAttached pictures, in order:\n- Picture 1 (Samsung widget picture): the widget in the container Samsung's Wear launcher gives it, 230×76dp with fully rounded ends, so content near the left and right edges is cut by the curve.\n- Picture 2 (Pixel Watch widget picture): the widget in the container the Pixel Watch launcher gives it, 216×76dp with rounded corners.\n\nDesign tree (node id, component, properties, modifiers; children by slot):\n- widget: remote-m3/widget-container-small {background=#FF272430}\n  content:\n    - timer-row-s4: layout/row {verticalAlignment=center} modifiers[fillMaxSize]\n      children:\n        - preset-5-s4: layout/box {contentAlignment=center} modifiers[weight(weight=1.0), fillMaxHeight, background(shape=22)]\n          children:\n            - preset-5-col-s4: layout/column {verticalSpacingDp=0.0, horizontalAlignment=center} modifiers[fillMaxWidth, align(alignment=center)]\n              children:\n                - preset-5-value-s4: remote-m3/remote-text {text=\"5\", maxLines=1, style=numeralExtraSmall, textAlign=center, overflow=\"ellipsis\"}\n        - gap-24-s4: layout/box modifiers[width(widthDp=4)]\n        - preset-10-s4: layout/box {contentAlignment=center} modifiers[weight(weight=1.0), fillMaxHeight, background(shape=22)]\n          children:\n            - preset-10-col-s4: layout/column {verticalSpacingDp=0.0, horizontalAlignment=center} modifiers[fillMaxWidth, align(alignment=center)]\n              children:\n                - preset-10-value-s4: remote-m3/remote-text {text=\"10\", maxLines=1, style=numeralExtraSmall, textAlign=center, overflow=\"ellipsis\"}\n        - gap-25-s4: layout/box modifiers[width(widthDp=4)]\n        - preset-15-s4: layout/box {contentAlignment=center} modifiers[weight(weight=1.0), fillMaxHeight, background(shape=22)]\n          children:\n            - preset-15-col-s4: layout/column {verticalSpacingDp=0.0, horizontalAlignment=center} modifiers[fillMaxWidth, align(alignment=center)]\n              children:\n                - preset-15-value-s4: remote-m3/remote-text {text=\"15\", maxLines=1, style=numeralExtraSmall, textAlign=center, overflow=\"ellipsis\"}\n        - gap-26-s4: layout/box modifiers[width(widthDp=4)]\n        - timer-add-s4: remote-m3/remote-button modifiers[width(widthDp=48), fillMaxHeight]\n          content:\n            - icon-4-s4: asset/image {assetKey=\"add-icon\", contentDescription=\"Add timer\", contentScale=\"fit\"} modifiers[size(widthDp=22, heightDp=22)]\n\nGenerated Jetpack Compose source (what this design exports to):\n```kotlin\n// Generated by compose-preview serve from a UI-builder design.\n// Design golden-tiles-timer-1 revision 60\n// Document SHA-256: a5b27a24bd72de1c76220945c6177ec60eb62bca509b393fdce45f3290110369\n// Catalog remote-m3@sha256:cf359a6adc8a7f6cdf62083e8fc2f33b; capability candidate\n\n// Generated from a Compose UI builder design. Do not edit by hand.\n@file:Suppress(\"RestrictedApi\")\n\npackage generated.uibuilder\n\nimport android.content.Context\nimport androidx.compose.remote.creation.compose.action.lambdaAction\nimport androidx.compose.remote.creation.compose.layout.RemoteAlignment\nimport androidx.compose.remote.creation.compose.layout.RemoteBox\nimport androidx.compose.remote.creation.compose.layout.RemoteColumn\nimport androidx.compose.remote.creation.compose.layout.RemoteComposable\nimport androidx.compose.remote.creation.compose.layout.RemoteImage\nimport androidx.compose.remote.creation.compose.layout.RemoteRow\nimport androidx.compose.remote.creation.compose.modifier.RemoteModifier\nimport androidx.compose.remote.creation.compose.modifier.background\nimport androidx.compose.remote.creation.compose.modifier.clip\nimport androidx.compose.remote.creation.compose.modifier.fillMaxHeight\nimport androidx.compose.remote.creation.compose.modifier.fillMaxSize\nimport androidx.compose.remote.creation.compose.modifier.fillMaxWidth\nimport androidx.compose.remote.creation.compose.modifier.size\nimport androidx.compose.remote.creation.compose.modifier.width\nimport androidx.compose.remote.creation.compose.shapes.RemoteRoundedCornerShape\nimport androidx.compose.remote.creation.compose.state.RemoteImageBitmap\nimport androidx.compose.remote.creation.compose.state.rb\nimport androidx.compose.remote.creation.compose.state.rc\nimport androidx.compose.remote.creation.compose.state.rdp\nimport androidx.compose.remote.creation.compose.state.rf\nimport androidx.compose.remote.creation.compose.state.rs\nimport androidx.compose.runtime.Composable\nimport androidx.compose.ui.graphics.Color\nimport androidx.compose.ui.graphics.ImageBitmap\nimport androidx.compose.ui.layout.ContentScale\nimport androidx.compose.ui.text.style.TextAlign\nimport androidx.compose.ui.tooling.preview.Preview\nimport androidx.glance.wear.GlanceWearWidget\nimport androidx.glance.wear.WearWidgetBrush\nimport androidx.glance.wear.WearWidgetData\nimport androidx.glance.wear.WearWidgetDocument\nimport androidx.glance.wear.color\nimport androidx.glance.wear.core.WearWidgetParams\nimport androidx.glance.wear.tooling.preview.RectangularSmallWidgetPreviewParams\nimport androidx.glance.wear.tooling.preview.RoundSmallWidgetPreviewParams\nimport androidx.glance.wear.tooling.preview.SquircleSmallWidgetPreviewParams\nimport androidx.glance.wear.tooling.preview.WearWidgetPreview\nimport androidx.wear.compose.remote.material3.RemoteButton\nimport androidx.wear.compose.remote.material3.RemoteMaterialTheme\nimport androidx.wear.compose.remote.material3.RemoteText\n\n@RemoteComposable\n@Composable\nfun GoldenTilesWidgetContent(addIcon: RemoteImageBitmap) {\n    RemoteMaterialTheme {\n        RemoteRow(\n            modifier = RemoteModifier.fillMaxSize(),\n            verticalAlignment = RemoteAlignment.CenterVertically,\n        ) {\n            RemoteBox(\n                modifier = RemoteModifier.weight(1.rf)\n                    .fillMaxHeight()\n                    .clip(RemoteRoundedCornerShape(22.rdp))\n                    .background(Color(0xFF332E3C).rc),\n                contentAlignment = RemoteAlignment.Center,\n            ) {\n                RemoteColumn(\n                    modifier = RemoteModifier.fillMaxWidth(),\n                    horizontalAlignment = RemoteAlignment.CenterHorizontally,\n                ) {\n                    RemoteText(\n                        text = \"5\".rs,\n                        style = RemoteMaterialTheme.typography.numeralExtraSmall,\n                        textAlign = TextAlign.Center,\n                        maxLines = 1,\n                    )\n                }\n            }\n            RemoteBox(modifier = RemoteModifier.width(4.rdp))\n            RemoteBox(\n                modifier = RemoteModifier.weight(1.rf)\n                    .fillMaxHeight()\n                    .clip(RemoteRoundedCornerShape(22.rdp))\n                    .background(Color(0xFF332E3C).rc),\n                contentAlignment = RemoteAlignment.Center,\n            ) {\n                RemoteColumn(\n                    modifier = RemoteModifier.fillMaxWidth(),\n                    horizontalAlignment = RemoteAlignment.CenterHorizontally,\n                ) {\n                    RemoteText(\n                        text = \"10\".rs,\n                        style = RemoteMaterialTheme.typography.numeralExtraSmall,\n                        textAlign = TextAlign.Center,\n                        maxLines = 1,\n                    )\n                }\n            }\n            RemoteBox(modifier = RemoteModifier.width(4.rdp))\n            RemoteBox(\n                modifier = RemoteModifier.weight(1.rf)\n                    .fillMaxHeight()\n                    .clip(RemoteRoundedCornerShape(22.rdp))\n                    .background(Color(0xFF332E3C).rc),\n                contentAlignment = RemoteAlignment.Center,\n            ) {\n                RemoteColumn(\n                    modifier = RemoteModifier.fillMaxWidth(),\n                    horizontalAlignment = RemoteAlignment.CenterHorizontally,\n                ) {\n                    RemoteText(\n                        text = \"15\".rs,\n                        style = RemoteMaterialTheme.typography.numeralExtraSmall,\n                        textAlign = TextAlign.Center,\n                        maxLines = 1,\n                    )\n                }\n            }\n            RemoteBox(modifier = RemoteModifier.width(4.rdp))\n            RemoteButton(\n                onClick = lambdaAction {},\n                modifier = RemoteModifier.width(48.rdp).fillMaxHeight(),\n            ) {\n                RemoteImage(\n                    remoteBitmap = addIcon,\n                    contentDescription = \"Add timer\".rs,\n                    modifier = RemoteModifier.size(22.rdp, 22.rdp),\n                    contentScale = ContentScale.Fit,\n                )\n            }\n        }\n    }\n}\n\nclass GoldenTilesWidget(\n    // The design's `add-icon` asset.\n    private val addIcon: RemoteImageBitmap = ImageBitmap(1, 1).rb,\n) : GlanceWearWidget() {\n    override suspend fun provideWidgetData(\n        context: Context,\n        params: WearWidgetParams,\n    ): WearWidgetData {\n        return WearWidgetDocument(background = WearWidgetBrush.color(Color(0xFF272430).rc)) {\n            GoldenTilesWidgetContent(addIcon = addIcon)\n        }\n    }\n}\n\n@Preview(name = \"Rectangular Preview\")\n@Composable\nfun GoldenTilesWidgetRectangularPreview() =\n    WearWidgetPreview(\n        GoldenTilesWidget(),\n        RectangularSmallWidgetPreviewParams().values.maxBy { it.widthDp },\n    )\n\n@Preview(name = \"Squircle Preview\")\n@Composable\nfun GoldenTilesWidgetSquirclePreview() =\n    WearWidgetPreview(\n        GoldenTilesWidget(),\n        SquircleSmallWidgetPreviewParams().values.maxBy { it.widthDp },\n    )\n\n@Preview(name = \"Round Preview\")\n@Composable\nfun GoldenTilesWidgetRoundPreview() =\n    WearWidgetPreview(\n        GoldenTilesWidget(),\n        RoundSmallWidgetPreviewParams().values.maxBy { it.widthDp },\n    )\n```\n\nRules:\n- ruleId: wear.layout.no-clipping\n  guidance: Margins should be defined in percentages to avoid clipping and provide proportional scaling of elements.\n  check: For a screen, judge round-edge clipping on the device picture (the first frame, as the wearer first sees it), and clipping inside components on the unrolled picture when one is attached; content that continues below the bottom of the device picture in a scrolling list is not clipped. For a widget, judge it on both container pictures: nothing may be cut by the Samsung container's fully rounded ends or the Pixel Watch container's corners. Is every piece of text, icon and control fully visible, with nothing cut off by the edge or by its own container?\n- ruleId: wear.touch-target-48dp\n  guidance: Reserves at least 48.dp in size to disambiguate touch interactions if the element would measure smaller. Smaller visual sizes, such as compact and extra-small buttons, are padded out to a 48dp touch target.\n  check: Is the tap area of every tappable control at least 48dp in each direction? Count the padding Wear adds to compact and extra-small buttons and icon buttons (their tap area is 48dp even when they draw smaller); flag only controls given a fixed size or height that leaves the tap area under 48dp.\n- ruleId: wear.color.role-pairs\n  guidance: Color roles come in pairs (container and on-container) that provide a minimum of 3:1 color contrast. Custom colors should keep that contrast.\n  check: Where the design overrides colors, does it pair each container color with its matching content (on-) role, or with colors that are clearly high contrast?\n- ruleId: wear.empty-state-has-action\n  guidance: All empty states should have a clear call-to-action so the user knows what to do to fix a potential issue, or find out more information.\n  check: If this design shows an empty, error or signed-out state, does it offer a clear action? Answer not_applicable when it does not show such a state.\n- ruleId: wear.gestures.no-hidden-actions\n  guidance: Never hide a gesture-only action. A visible element that performs the same task must be present.\n  check: Does every action bound to a gesture (long press, swipe, double tap) also have a visible control that performs it?\n- ruleId: wear.widgets.background-on-container\n  guidance: Always supply your widget's background brush directly to WearWidgetDocument so the host system can paint and mask the background to the native OEM container shape. Setting a transparent or black canvas and drawing a custom rounded container inside the layout can cause floating box and letterboxing defects on some devices.\n  check: If this design is a widget (its root is a widget-container), is its background set on the widget container's background property rather than drawn by a coloured or rounded box inside the content? Answer not_applicable when it is not a widget.\n- ruleId: wear.widgets.content-fills-container\n  guidance: Ensure your root container composable uses RemoteModifier.fillMaxSize(). Because container DP dimensions and safe insets vary across watch models, hardcoding fixed dimensions or outer padding can cause clipping or misaligned layouts.\n  check: If this design is a widget, does the content directly inside the widget container fill it (fillMaxSize), with no fixed width, height or outer padding? Answer not_applicable when it is not a widget.\n- ruleId: wear.widgets.focused\n  guidance: Tiles should feel focused, concise, and purpose-driven. Avoid providing a superfluous amount of functionality, and refrain from using more than one interactive component to trigger a specific action. (Tiles guidance; widgets replace Tiles.)\n  check: If this design is a widget, does it focus on one task, with no two controls doing the same thing? Answer not_applicable when it is not a widget.\n- ruleId: wear.widgets.containers-have-actions\n  guidance: We don't recommend using containers for decorative or structural purposes, to avoid taps that don't do anything.\n  check: If this design is a widget, does every container that looks like a button (filled, rounded and button-shaped) have an action or click binding? Treat an empty or placeholder click handler as an action. Answer not_applicable for app screens, where non-interactive cards are fine.\n- ruleId: wear.type.titles-not-in-controls\n  guidance: Title styles are not recommended for interactive components, rather page headings or sub headings. Label styles are applied to interactive components.\n  check: Does text inside buttons and cards use label or body styles, with title styles kept for headings outside controls? Answer not_applicable when no text style is set inside a control.\n- ruleId: wear.type.numerals-digits-only\n  guidance: Numeral text styles are used for numerical digits, usually limited to a few characters, where no localization is required.\n  check: Is every text with a numeral style purely digits, a time or a short number (no words)? Answer not_applicable when no numeral styles are used.\n- ruleId: wear.type.theme-styles\n  guidance: Do NOT hard-code text sizes, use typography from MaterialTheme. Do NOT hard-code colors, use colorScheme.\n  check: Do text nodes set a style rather than fontSizeSp, lineHeightSp or letterSpacingSp, and do colours come from the theme's colour roles rather than hex values on individual components? Theme-level overrides on the screen-scaffold (theme*Color, theme*Typeface) are fine.\n- ruleId: wear.actions-labelled\n  guidance: Use both icons and labels when possible. Don't rely solely on icons to prompt the user to take action.\n  check: Are icon-only controls (icon-button, icon-only edge-button) kept to universally recognisable actions (add, close, play, settings), with other actions labelled? Answer not_applicable when there are no icon-only controls.\n- ruleId: wear.color.container-not-for-content\n  guidance: Container roles are used as a fill color for foreground elements like buttons. They shouldn't be used for text or icons.\n  check: Is no *Container colour role (primaryContainer, secondaryContainer, tertiaryContainer, errorContainer) used as a text colour, icon tint or contentColor? Answer not_applicable when the design names no colour roles.\n- ruleId: wear.widgets.no-edge-button\n  guidance: Because partial-height widgets integrate directly into a vertically scrolling surface, this fixed bottomSlot paradigm no longer exists, and migrating requires a deliberate UI redesign rather than a direct component swap.\n  check: If this design is a widget, does it avoid remote-m3/remote-edge-button, using an inline button or a whole-container tap instead? Answer not_applicable when it is not a widget.\n- ruleId: wear.widgets.streamlined\n  guidance: Rather than porting a dense, full-screen Tile layout one-to-one, streamline your design to emphasize primary information within the main content area.\n  check: If this design is a widget, does it lead with one primary piece of information rather than a dense grid of equal items? Answer not_applicable when it is not a widget.\n- ruleId: wear.widgets.predictable-actions\n  guidance: The actions in this Tile are unclear: where does the container with the album art take the user, and is that different from the Play button?\n  check: If this design is a widget, is no clickable card or container wrapping a button that does something different? Answer not_applicable when it is not a widget.\n- ruleId: wear.widgets.small-single-row\n  guidance: If you do not hide the app title on small screen, and have two rows, the height of the components will not adhere to our accessibility standards.\n  check: If this design is a small widget (remote-m3/widget-container-small, 76dp tall), does it avoid stacking a title above a row of tap targets, or two rows of tap targets? Answer not_applicable for other designs.\n",
+ "responseSchema": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "verdicts"
+  ],
+  "properties": {
+   "verdicts": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "ruleId",
+      "verdict",
+      "confidence",
+      "nodeIds",
+      "reason"
+     ],
+     "properties": {
+      "ruleId": {
+       "type": "string"
+      },
+      "verdict": {
+       "type": "string",
+       "enum": [
+        "pass",
+        "fail",
+        "not_applicable"
+       ]
+      },
+      "confidence": {
+       "type": "number"
+      },
+      "nodeIds": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "reason": {
+       "type": "string"
+      }
+     }
+    }
+   }
+  }
+ },
+ "provenance": [
+  "The rules are compose-ui-builder's design-guideline set (version 5): 18 for this platform and kind of design, 18 asked here. Each quotes the Android design guidance it comes from (developer.android.com design guides: Wear OS, adaptive and large-screen layouts, Jetpack Compose Glimmer) and links its source.",
+  "The system prompt is fixed: it tells the model to answer each rule's yes/no question from the evidence given, and to reply as JSON held to the response schema.",
+  "The design tree is generated from this revision of the design: each node's id, component, properties, modifiers and slots, without asset bytes.",
+  "The Jetpack Compose source is what this design exports to, from the same generator as Export.",
+  "The Samsung picture renders the widget in the stadium-shaped container Samsung's launcher gives it (230×76dp).",
+  "The Pixel Watch picture renders the widget in the rounded-rectangle container the Pixel Watch launcher gives it (216×76dp)."
+ ]
+}
