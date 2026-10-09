@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.23.1](https://github.com/yschimke/compose-preview-contracts/compare/v3.23.0...v3.23.1) (2026-10-09)
+
+
+### Bug Fixes
+
+* **ci:** tag the released commit, not the pushing commit ([#154](https://github.com/yschimke/compose-preview-contracts/issues/154)) ([66c0746](https://github.com/yschimke/compose-preview-contracts/commit/66c0746d585de918dc0afd3af4c32666271b1616))
+* **release:** check every published module's POM, with or without a publish plan ([#155](https://github.com/yschimke/compose-preview-contracts/issues/155)) ([6256a99](https://github.com/yschimke/compose-preview-contracts/commit/6256a99e072e24c7f582d70604d2937b9ce8345e))
+
 ## [3.23.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.22.0...v3.23.0) (2026-10-09)
 
 
