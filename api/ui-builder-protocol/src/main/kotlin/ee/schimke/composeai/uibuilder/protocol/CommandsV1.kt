@@ -407,6 +407,7 @@ public enum class EnvironmentFieldV1 {
   @SerialName("background") BACKGROUND,
   @SerialName("typeface") TYPEFACE,
   @SerialName("exportDevices") EXPORT_DEVICES,
+  @SerialName("remoteProfile") REMOTE_PROFILE,
 }
 
 @Serializable
@@ -581,6 +582,24 @@ public data class SetExportDevicesEnvironmentChangeV1(public val value: List<Str
 @SerialName("resetExportDevices")
 public data object ResetExportDevicesEnvironmentChangeV1 : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.EXPORT_DEVICES
+}
+
+/**
+ * Names the Remote Compose profile the design's document targets; see
+ * [DesignEnvironmentV1.remoteProfile].
+ */
+@Serializable
+@SerialName("setRemoteProfile")
+public data class SetRemoteProfileEnvironmentChangeV1(public val value: RemoteProfileV1) :
+  EnvironmentChangeV1 {
+  override val field: EnvironmentFieldV1 = EnvironmentFieldV1.REMOTE_PROFILE
+}
+
+/** Returns the design to its consumer's default profile for the document's kind. */
+@Serializable
+@SerialName("resetRemoteProfile")
+public data object ResetRemoteProfileEnvironmentChangeV1 : EnvironmentChangeV1 {
+  override val field: EnvironmentFieldV1 = EnvironmentFieldV1.REMOTE_PROFILE
 }
 
 /**

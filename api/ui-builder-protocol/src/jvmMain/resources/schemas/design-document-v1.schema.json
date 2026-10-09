@@ -692,6 +692,16 @@
           "items": {
             "type": "string"
           }
+        },
+        "remoteProfile": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RemoteProfileV1"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
@@ -1536,6 +1546,30 @@
         "ltr",
         "rtl"
       ]
+    },
+    "RemoteProfileTargetV1": {
+      "type": "string",
+      "enum": [
+        "wear-widgets",
+        "launcher-widgets-v6",
+        "launcher-widgets-v7",
+        "androidx"
+      ]
+    },
+    "RemoteProfileV1": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "$ref": "#/$defs/RemoteProfileTargetV1"
+        },
+        "experimental": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "target"
+      ],
+      "additionalProperties": false
     },
     "StatePersistenceV1": {
       "type": "string",
