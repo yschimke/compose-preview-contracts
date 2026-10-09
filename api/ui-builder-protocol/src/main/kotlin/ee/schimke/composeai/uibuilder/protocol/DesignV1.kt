@@ -328,6 +328,69 @@ public data class DesignEnvironmentV1(
       exportDevices,
       this.remoteProfile,
     )
+
+  /**
+   * Builds a [DesignEnvironmentV1]. Prefer this to a constructor: a field added later is a new
+   * property here, so code written against this builder keeps compiling and linking, where each new
+   * field otherwise costs another compatibility overload. The constructors stay public until the
+   * next major release, when they become `internal` as the other evolving types' are.
+   */
+  public class Builder(
+    public var widthDp: Int,
+    public var heightDp: Int,
+    public var density: Double,
+    public var theme: ThemeV1,
+    public var locale: String,
+    public var fontScale: Double,
+    public var layoutDirection: LayoutDirectionV1,
+  ) {
+    public var dynamicColor: Boolean? = null
+    public var windowPosture: WindowPostureV1? = null
+    public var browserZoomPercent: Int? = null
+    public var fixedTime: String? = null
+    public var animations: AnimationStateV1? = null
+    public var networkAccess: Boolean? = null
+    public var background: UiValueV1? = null
+    public var typeface: String? = null
+    public var exportDevices: List<String> = emptyList()
+    public var remoteProfile: RemoteProfileV1? = null
+
+    public fun build(): DesignEnvironmentV1 =
+      DesignEnvironmentV1(
+        widthDp,
+        heightDp,
+        density,
+        theme,
+        dynamicColor,
+        locale,
+        fontScale,
+        layoutDirection,
+        windowPosture,
+        browserZoomPercent,
+        fixedTime,
+        animations,
+        networkAccess,
+        background,
+        typeface,
+        exportDevices,
+        remoteProfile,
+      )
+  }
+
+  /** This environment as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(widthDp, heightDp, density, theme, locale, fontScale, layoutDirection).also {
+      it.dynamicColor = dynamicColor
+      it.windowPosture = windowPosture
+      it.browserZoomPercent = browserZoomPercent
+      it.fixedTime = fixedTime
+      it.animations = animations
+      it.networkAccess = networkAccess
+      it.background = background
+      it.typeface = typeface
+      it.exportDevices = exportDevices
+      it.remoteProfile = remoteProfile
+    }
 }
 
 /**

@@ -178,7 +178,9 @@
           {"type":"setBackground","value":{"type":"color","value":"#FF112233"}},
           {"type":"resetBackground"},
           {"type":"setTypeface","value":"Space Grotesk"},
-          {"type":"resetTypeface"}
+          {"type":"resetTypeface"},
+          {"type":"setRemoteProfile","value":{"target":"launcher-widgets-v7","experimental":true}},
+          {"type":"resetRemoteProfile"}
         ]},
         {"type": "setStateVariable", "name": "query", "declaration": {"type": "text", "initialValue": "", "persistence": "preview"}},
         {"type": "removeStateVariable", "name": "query"},
