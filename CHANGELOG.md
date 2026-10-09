@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.22.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.21.0...v3.22.0) (2026-10-09)
+
+
+### Features
+
+* **ui-builder-protocol:** a design can name the Remote Compose profile it targets ([#147](https://github.com/yschimke/compose-preview-contracts/issues/147)) ([6057b39](https://github.com/yschimke/compose-preview-contracts/commit/6057b39de3c8cd4769c124941313bc7975b7a83a))
+
 ## [3.21.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.20.0...v3.21.0) (2026-10-09)
 
 
