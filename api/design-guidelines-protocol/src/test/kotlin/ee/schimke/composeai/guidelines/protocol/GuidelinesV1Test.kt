@@ -7,6 +7,8 @@ import kotlin.test.assertNull
 import kotlin.test.assertTrue
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.jsonObject
@@ -178,5 +180,263 @@ class GuidelinesV1Test {
     assertEquals(picture, picture.newBuilder().build())
     val verdict = GuidelineVerdictV1.Builder("id", GuidelineVerdictV1.FAIL).build()
     assertEquals(verdict, verdict.newBuilder().build())
+  }
+
+  @Test
+  fun `the published fixtures re-encode to the same JSON, with no batch field added`() {
+    listOf(
+        CatalogGuidelinesV1.serializer() to "catalog-guidelines-wear-m3.json",
+        GuidelineRequestV1.serializer() to "guidelines-request-server.json",
+        GuidelineRecordV1.serializer() to "guidelines-record-server.json",
+      )
+      .forEach { (serializer, name) ->
+        @Suppress("UNCHECKED_CAST") val typed = serializer as KSerializer<Any>
+        val text = resource(name)
+        val decoded = strict.decodeFromString(typed, text)
+        // Every key the re-encoding writes is one the published file already had: none of the
+        // batch or evidence fields appears at its default. (The server's file also spells out a
+        // few defaults, `visualSkipped: 0`, which the compact encoding leaves out; that is not a
+        // difference in what the document says.)
+        assertNoNewKeys(
+          builderJson.parseToJsonElement(text),
+          builderJson.encodeToJsonElement(typed, decoded),
+          name,
+        )
+        assertEquals(
+          decoded,
+          strict.decodeFromString(typed, builderJson.encodeToString(typed, decoded)),
+        )
+      }
+  }
+
+  private fun assertNoNewKeys(published: JsonElement, encoded: JsonElement, path: String) {
+    when (encoded) {
+      is JsonObject -> {
+        val original = published as JsonObject
+        encoded.forEach { (key, value) ->
+          assertTrue(key in original, "$path.$key is new")
+          assertNoNewKeys(original.getValue(key), value, "$path.$key")
+        }
+      }
+      is JsonArray ->
+        encoded.forEachIndexed { index, value ->
+          assertNoNewKeys((published as JsonArray)[index], value, "$path[$index]")
+        }
+      else -> assertEquals(published, encoded, path)
+    }
+  }
+
+  @Test
+  fun `one request judges three previews, and its record keeps a verdict per subject`() {
+    val subjects =
+      listOf("Home", "Settings", "Detail").mapIndexed { index, name ->
+        GuidelineSubjectV1.Builder("com.example.${name}Preview", GuidelineSubjectV1.KIND_PREVIEW)
+          .also {
+            it.renderHash = "sha256:$index"
+            it.label = name
+          }
+          .build()
+      }
+    val perSubject =
+      GuidelineRuleV1.Builder(
+          "wear.touch-target-48dp",
+          GuidelineRuleV1.KIND_VISUAL,
+          GuidelineRuleV1.SEVERITY_WARNING,
+          "g",
+          "ok?",
+          "https://developer.android.com/x",
+        )
+        .build()
+    val acrossTheSet =
+      perSubject
+        .newBuilder()
+        .also {
+          it.id = "wear.button.one-primary-across-samples"
+          it.scope = GuidelineRuleV1.SCOPE_SET
+        }
+        .build()
+    val request =
+      GuidelineRequestV1.Builder(
+          revision = 0,
+          rules =
+            GuidelineRequestRulesV1.Builder(1, "s", 2, listOf(perSubject, acrossTheSet)).build(),
+          systemPrompt = "sys",
+          userText = "user",
+          responseSchema = buildJsonObject { put("type", "object") },
+        )
+        .also { builder ->
+          builder.subjects = subjects
+          builder.pictures = subjects.map { subject ->
+            GuidelinePictureV1.Builder(GuidelinePictureV1.KIND_DEVICE, subject.label!!, 192, 192)
+              .also { it.subjectId = subject.id }
+              .build()
+          }
+        }
+        .build()
+    val requestText = builderJson.encodeToString(GuidelineRequestV1.serializer(), request)
+    assertEquals(request, roundTrip(GuidelineRequestV1.serializer(), requestText))
+    assertEquals(subjects.map { it.id }, request.pictures.map { it.subjectId })
+
+    val verdicts =
+      subjects.map { subject ->
+        GuidelineVerdictV1.Builder(perSubject.id, GuidelineVerdictV1.PASS)
+          .also { it.subjectId = subject.id }
+          .build()
+      } + GuidelineVerdictV1.Builder(acrossTheSet.id, GuidelineVerdictV1.FAIL).build()
+    val record =
+      GuidelineRecordV1.Builder(
+          revision = 0,
+          model = "m",
+          rulesVersion = 1,
+          asked = listOf(perSubject.id, acrossTheSet.id),
+          verdicts = verdicts,
+        )
+        .also { it.subjects = subjects }
+        .build()
+    val recordText = builderJson.encodeToString(GuidelineRecordV1.serializer(), record)
+    val decoded = roundTrip(GuidelineRecordV1.serializer(), recordText)
+    assertEquals(record, decoded)
+    assertEquals(3, decoded.verdicts.count { it.subjectId != null })
+    assertNull(decoded.verdicts.single { it.ruleId == acrossTheSet.id }.subjectId)
+    assertEquals(GuidelineRuleV1.SCOPE_SET, request.rules.asked[1].scope)
+  }
+
+  @Test
+  fun `batch fields are never written at their defaults`() {
+    val withDefaults = Json { encodeDefaults = true }
+    val rule = GuidelineRuleV1.Builder("r", "structure", "info", "g", "ok?", "https://x").build()
+    val ruleJson = withDefaults.encodeToJsonElement(GuidelineRuleV1.serializer(), rule).jsonObject
+    assertFalse("scope" in ruleJson, ruleJson.toString())
+    val verdict = GuidelineVerdictV1.Builder("r", GuidelineVerdictV1.PASS).build()
+    assertFalse(
+      "subjectId" in
+        withDefaults.encodeToJsonElement(GuidelineVerdictV1.serializer(), verdict).jsonObject
+    )
+    val picture = GuidelinePictureV1.Builder("device", "d", 1, 1).build()
+    assertFalse(
+      "subjectId" in
+        withDefaults.encodeToJsonElement(GuidelinePictureV1.serializer(), picture).jsonObject
+    )
+    val record =
+      GuidelineRecordV1.Builder(0, "m", 1, emptyList(), emptyList())
+        .also { it.designId = "d" }
+        .build()
+    assertFalse(
+      "subjects" in
+        withDefaults.encodeToJsonElement(GuidelineRecordV1.serializer(), record).jsonObject
+    )
+    val subject = GuidelineSubjectV1.Builder("p", GuidelineSubjectV1.KIND_PREVIEW).build()
+    assertEquals(subject, subject.newBuilder().build())
+  }
+
+  @Test
+  fun `a follow-up round carries the evidence a verdict asked for`() {
+    val subject = "com.example.HomePreview"
+    val asked =
+      GuidelineVerdictV1.Builder("wear.actions-labelled", GuidelineVerdictV1.NEEDS_EVIDENCE)
+        .also { verdict ->
+          verdict.subjectId = subject
+          verdict.needs =
+            listOf(
+              GuidelineEvidenceNeedV1.Builder(GuidelineEvidenceNeedV1.KIND_A11Y_HIERARCHY)
+                .also { it.reason = "whether the icon-only button has a content description" }
+                .build(),
+              GuidelineEvidenceNeedV1.Builder(GuidelineEvidenceNeedV1.KIND_RENDER)
+                .also {
+                  it.theme = "dark"
+                  it.reason = "the contrast of the icon on the dark surface"
+                }
+                .build(),
+            )
+        }
+        .build()
+    val verdictText = builderJson.encodeToString(GuidelineVerdictV1.serializer(), asked)
+    val decodedVerdict = roundTrip(GuidelineVerdictV1.serializer(), verdictText)
+    assertEquals(asked, decodedVerdict)
+    assertEquals(
+      listOf(GuidelineEvidenceNeedV1.KIND_A11Y_HIERARCHY, GuidelineEvidenceNeedV1.KIND_RENDER),
+      decodedVerdict.needs.map { it.kind },
+    )
+    assertEquals("dark", decodedVerdict.needs[1].theme)
+
+    val followUp =
+      GuidelineRequestV1.Builder(
+          revision = 0,
+          rules = GuidelineRequestRulesV1.Builder(1, "s", 1, emptyList()).build(),
+          systemPrompt = "sys",
+          userText = "user",
+          responseSchema = buildJsonObject { put("type", "object") },
+        )
+        .also { request ->
+          request.round = 1
+          request.evidenceAvailable =
+            listOf(GuidelineEvidenceNeedV1.KIND_A11Y_HIERARCHY, GuidelineEvidenceNeedV1.KIND_RENDER)
+          request.subjects =
+            listOf(GuidelineSubjectV1.Builder(subject, GuidelineSubjectV1.KIND_PREVIEW).build())
+          request.evidence =
+            listOf(
+              GuidelineEvidenceV1.Builder(
+                  GuidelineEvidenceNeedV1.KIND_A11Y_HIERARCHY,
+                  "application/json",
+                  """{"role":"button","contentDescription":null}""",
+                )
+                .also { it.subjectId = subject }
+                .build()
+            )
+          request.pictures =
+            listOf(
+              GuidelinePictureV1.Builder(GuidelinePictureV1.KIND_DEVICE, "dark", 192, 192)
+                .also {
+                  it.subjectId = subject
+                  it.theme = "dark"
+                  it.fontScale = 1.5
+                }
+                .build()
+            )
+        }
+        .build()
+    val text = builderJson.encodeToString(GuidelineRequestV1.serializer(), followUp)
+    val decoded = roundTrip(GuidelineRequestV1.serializer(), text)
+    assertEquals(followUp, decoded)
+    assertEquals(1, decoded.round)
+    assertEquals(subject, decoded.evidence.single().subjectId)
+    assertEquals(1.5, decoded.pictures.single().fontScale)
+  }
+
+  @Test
+  fun `evidence fields are never written at their defaults`() {
+    val withDefaults = Json { encodeDefaults = true }
+    val request =
+      GuidelineRequestV1.Builder(
+          revision = 0,
+          rules = GuidelineRequestRulesV1.Builder(1, "s", 0, emptyList()).build(),
+          systemPrompt = "sys",
+          userText = "user",
+          responseSchema = JsonObject(emptyMap()),
+        )
+        .build()
+    val json = withDefaults.encodeToJsonElement(GuidelineRequestV1.serializer(), request).jsonObject
+    listOf("evidence", "evidenceAvailable", "round", "subjects").forEach {
+      assertFalse(it in json, "$it in $json")
+    }
+    val picture = GuidelinePictureV1.Builder("device", "d", 1, 1).build()
+    val pictureJson =
+      withDefaults.encodeToJsonElement(GuidelinePictureV1.serializer(), picture).jsonObject
+    listOf("theme", "fontScale", "device", "locale", "layoutDirection", "scroll").forEach {
+      assertFalse(it in pictureJson, "$it in $pictureJson")
+    }
+    val rule = GuidelineRuleV1.Builder("r", "structure", "info", "g", "ok?", "https://x").build()
+    assertFalse(
+      "evidence" in withDefaults.encodeToJsonElement(GuidelineRuleV1.serializer(), rule).jsonObject
+    )
+    val verdict = GuidelineVerdictV1.Builder("r", GuidelineVerdictV1.PASS).build()
+    assertFalse(
+      "needs" in
+        withDefaults.encodeToJsonElement(GuidelineVerdictV1.serializer(), verdict).jsonObject
+    )
+    val evidence = GuidelineEvidenceV1.Builder("source", "text/plain", "x").build()
+    assertEquals(evidence, evidence.newBuilder().build())
+    val need = GuidelineEvidenceNeedV1.Builder("render").also { it.scroll = "end" }.build()
+    assertEquals(need, need.newBuilder().build())
   }
 }
