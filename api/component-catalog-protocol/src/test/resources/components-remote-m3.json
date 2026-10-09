@@ -1,0 +1,971 @@
+{
+  "schemaVersion": 2,
+  "module": "remote-catalog",
+  "variant": "debug",
+  "components": [
+    {
+      "canonicalId": "remote-catalog/androidx.wear.compose.remote.material3.RemoteAppCardKt.RemoteAppCard",
+      "componentIds": [
+        "AppCard"
+      ],
+      "symbol": {
+        "jvmOwner": "androidx.wear.compose.remote.material3.RemoteAppCardKt",
+        "callable": "androidx.wear.compose.remote.material3.RemoteAppCard",
+        "name": "RemoteAppCard",
+        "origin": "LIBRARY",
+        "jvmName": "RemoteAppCard",
+        "descriptor": "(Landroidx/compose/remote/creation/compose/action/Action;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Landroidx/compose/remote/creation/compose/modifier/RemoteModifier;Landroidx/compose/remote/creation/compose/state/RemoteBoolean;Landroidx/compose/remote/creation/compose/shapes/RemoteShape;Landroidx/wear/compose/remote/material3/RemoteCardColors;Landroidx/wear/compose/remote/material3/RemoteBorderStroke;Landroidx/compose/remote/creation/compose/layout/RemotePaddingValues;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;III)V",
+        "sourceFile": null,
+        "docs": "unavailable",
+        "receiver": null
+      },
+      "parameters": [
+        {
+          "name": "onClick",
+          "type": "Action",
+          "typeFqn": "androidx.compose.remote.creation.compose.action.Action",
+          "hasDefault": false,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "appName",
+          "type": "() -> Unit",
+          "typeFqn": "kotlin.Function0",
+          "hasDefault": false,
+          "composableSlot": true,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": "kotlin.Unit"
+        },
+        {
+          "name": "title",
+          "type": "() -> Unit",
+          "typeFqn": "kotlin.Function0",
+          "hasDefault": false,
+          "composableSlot": true,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": "kotlin.Unit"
+        },
+        {
+          "name": "modifier",
+          "type": "RemoteModifier",
+          "typeFqn": "androidx.compose.remote.creation.compose.modifier.RemoteModifier",
+          "hasDefault": true,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "enabled",
+          "type": "RemoteBoolean",
+          "typeFqn": "androidx.compose.remote.creation.compose.state.RemoteBoolean",
+          "hasDefault": true,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "shape",
+          "type": "RemoteShape",
+          "typeFqn": "androidx.compose.remote.creation.compose.shapes.RemoteShape",
+          "hasDefault": true,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "colors",
+          "type": "RemoteCardColors",
+          "typeFqn": "androidx.wear.compose.remote.material3.RemoteCardColors",
+          "hasDefault": true,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "border",
+          "type": "RemoteBorderStroke?",
+          "typeFqn": "androidx.wear.compose.remote.material3.RemoteBorderStroke",
+          "hasDefault": true,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": true,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "contentPadding",
+          "type": "RemotePaddingValues",
+          "typeFqn": "androidx.compose.remote.creation.compose.layout.RemotePaddingValues",
+          "hasDefault": true,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "appImage",
+          "type": "(() -> Unit)?",
+          "typeFqn": "kotlin.Function0",
+          "hasDefault": true,
+          "composableSlot": true,
+          "composableSlotReceiver": null,
+          "nullable": true,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": "kotlin.Unit"
+        },
+        {
+          "name": "time",
+          "type": "(() -> Unit)?",
+          "typeFqn": "kotlin.Function0",
+          "hasDefault": true,
+          "composableSlot": true,
+          "composableSlotReceiver": null,
+          "nullable": true,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": "kotlin.Unit"
+        },
+        {
+          "name": "content",
+          "type": "() -> Unit",
+          "typeFqn": "kotlin.Function0",
+          "hasDefault": false,
+          "composableSlot": true,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": "kotlin.Unit"
+        }
+      ],
+      "slots": [
+        {
+          "name": "appName",
+          "required": true,
+          "receiverScope": null
+        },
+        {
+          "name": "title",
+          "required": true,
+          "receiverScope": null
+        },
+        {
+          "name": "appImage",
+          "required": false,
+          "receiverScope": null
+        },
+        {
+          "name": "time",
+          "required": false,
+          "receiverScope": null
+        },
+        {
+          "name": "content",
+          "required": true,
+          "receiverScope": null
+        }
+      ],
+      "bindings": [
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.AppCardRemote_width=227dp,height=200dp,dpi=320",
+          "componentId": "AppCard",
+          "group": "Containment"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.AppCardRemote_width=227dp,height=200dp,dpi=320_VARIANT_content-image",
+          "componentId": "AppCard",
+          "group": "Containment"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.AppCardRemote_width=227dp,height=200dp,dpi=320_VARIANT_gallery-1",
+          "componentId": "AppCard",
+          "group": "Containment"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.AppCardRemote_width=227dp,height=200dp,dpi=320_VARIANT_gallery-2",
+          "componentId": "AppCard",
+          "group": "Containment"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.AppCardRemote_width=227dp,height=200dp,dpi=320_VARIANT_icon",
+          "componentId": "AppCard",
+          "group": "Containment"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.AppCardRemote_width=227dp,height=200dp,dpi=320_VARIANT_icon-content-image",
+          "componentId": "AppCard",
+          "group": "Containment"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.AppCardRemote_width=227dp,height=200dp,dpi=320_VARIANT_icon-gallery-1",
+          "componentId": "AppCard",
+          "group": "Containment"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.AppCardRemote_width=227dp,height=200dp,dpi=320_VARIANT_icon-gallery-2",
+          "componentId": "AppCard",
+          "group": "Containment"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.AppCardRemote_width=227dp,height=200dp,dpi=320_VARIANT_icon-outlined",
+          "componentId": "AppCard",
+          "group": "Containment"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.AppCardRemote_width=227dp,height=200dp,dpi=320_VARIANT_icon-outlined-content-image",
+          "componentId": "AppCard",
+          "group": "Containment"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.AppCardRemote_width=227dp,height=200dp,dpi=320_VARIANT_icon-outlined-gallery-1",
+          "componentId": "AppCard",
+          "group": "Containment"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.AppCardRemote_width=227dp,height=200dp,dpi=320_VARIANT_icon-outlined-gallery-2",
+          "componentId": "AppCard",
+          "group": "Containment"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.AppCardRemote_width=227dp,height=200dp,dpi=320_VARIANT_no-app-image",
+          "componentId": "AppCard",
+          "group": "Containment"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.AppCardRemote_width=227dp,height=200dp,dpi=320_VARIANT_outlined",
+          "componentId": "AppCard",
+          "group": "Containment"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.AppCardRemote_width=227dp,height=200dp,dpi=320_VARIANT_outlined-content-image",
+          "componentId": "AppCard",
+          "group": "Containment"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.AppCardRemote_width=227dp,height=200dp,dpi=320_VARIANT_outlined-gallery-1",
+          "componentId": "AppCard",
+          "group": "Containment"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.AppCardRemote_width=227dp,height=200dp,dpi=320_VARIANT_outlined-gallery-2",
+          "componentId": "AppCard",
+          "group": "Containment"
+        }
+      ],
+      "code": {
+        "call": null,
+        "imports": [],
+        "refusedReason": "no placeholder can be written for required parameter `onClick: Action`",
+        "requiredOptIns": [],
+        "androidxOptIns": []
+      },
+      "signatureKnown": true,
+      "callableFromAnotherFile": true,
+      "hasTypeParameters": false,
+      "hasContextReceivers": false,
+      "overloadsCollided": false,
+      "builder": null,
+      "requiredOptIns": [],
+      "androidxOptIns": []
+    },
+    {
+      "canonicalId": "remote-catalog/androidx.wear.compose.remote.material3.RemoteButtonGroupKt.RemoteButtonGroup",
+      "componentIds": [
+        "ButtonGroup"
+      ],
+      "symbol": {
+        "jvmOwner": "androidx.wear.compose.remote.material3.RemoteButtonGroupKt",
+        "callable": "androidx.wear.compose.remote.material3.RemoteButtonGroup",
+        "name": "RemoteButtonGroup",
+        "origin": "LIBRARY",
+        "jvmName": "RemoteButtonGroup",
+        "descriptor": "(Landroidx/compose/remote/creation/compose/modifier/RemoteModifier;Landroidx/compose/remote/creation/compose/state/RemoteDp;Landroidx/compose/remote/creation/compose/layout/RemotePaddingValues;Landroidx/compose/remote/creation/compose/layout/RemoteAlignment$Vertical;Lkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;II)V",
+        "sourceFile": null,
+        "docs": "unavailable",
+        "receiver": null
+      },
+      "parameters": [
+        {
+          "name": "modifier",
+          "type": "RemoteModifier",
+          "typeFqn": "androidx.compose.remote.creation.compose.modifier.RemoteModifier",
+          "hasDefault": true,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "spacing",
+          "type": "RemoteDp",
+          "typeFqn": "androidx.compose.remote.creation.compose.state.RemoteDp",
+          "hasDefault": true,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "contentPadding",
+          "type": "RemotePaddingValues",
+          "typeFqn": "androidx.compose.remote.creation.compose.layout.RemotePaddingValues",
+          "hasDefault": true,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "verticalAlignment",
+          "type": "Vertical",
+          "typeFqn": "androidx.compose.remote.creation.compose.layout.RemoteAlignment.Vertical",
+          "hasDefault": true,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "content",
+          "type": "RemoteRowScope.() -> Unit",
+          "typeFqn": "kotlin.Function1",
+          "hasDefault": false,
+          "composableSlot": true,
+          "composableSlotReceiver": "androidx.compose.remote.creation.compose.layout.RemoteRowScope",
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": "kotlin.Unit"
+        }
+      ],
+      "slots": [
+        {
+          "name": "content",
+          "required": true,
+          "receiverScope": "androidx.compose.remote.creation.compose.layout.RemoteRowScope"
+        }
+      ],
+      "bindings": [
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.ButtonGroupRemote_width=227dp,height=200dp,dpi=320",
+          "componentId": "ButtonGroup",
+          "group": "Buttons"
+        }
+      ],
+      "code": {
+        "call": "RemoteButtonGroup(content = {})",
+        "imports": [
+          "androidx.wear.compose.remote.material3.RemoteButtonGroup"
+        ],
+        "refusedReason": null,
+        "requiredOptIns": [],
+        "androidxOptIns": []
+      },
+      "signatureKnown": true,
+      "callableFromAnotherFile": true,
+      "hasTypeParameters": false,
+      "hasContextReceivers": false,
+      "overloadsCollided": false,
+      "builder": null,
+      "requiredOptIns": [],
+      "androidxOptIns": []
+    },
+    {
+      "canonicalId": "remote-catalog/androidx.wear.compose.remote.material3.RemoteButtonKt.RemoteButton",
+      "componentIds": [
+        "Button/Child",
+        "Button/CustomShape",
+        "Button/Filled",
+        "Button/FilledVariant",
+        "Button/ImageBackground",
+        "Button/Loading",
+        "Button/NamedLabel",
+        "Button/Outlined",
+        "Button/Tonal",
+        "ButtonGroup"
+      ],
+      "symbol": {
+        "jvmOwner": "androidx.wear.compose.remote.material3.RemoteButtonKt",
+        "callable": "androidx.wear.compose.remote.material3.RemoteButton",
+        "name": "RemoteButton",
+        "origin": "LIBRARY",
+        "jvmName": "RemoteButton",
+        "descriptor": "(Landroidx/compose/remote/creation/compose/action/Action;Landroidx/compose/remote/creation/compose/modifier/RemoteModifier;Landroidx/compose/remote/creation/compose/state/RemoteBoolean;Landroidx/wear/compose/remote/material3/RemoteButtonColors;Landroidx/compose/remote/creation/compose/shapes/RemoteShape;Landroidx/compose/remote/creation/compose/layout/RemotePaddingValues;Landroidx/compose/remote/creation/compose/state/RemoteDp;Landroidx/compose/remote/creation/compose/state/RemoteColor;Lkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;II)V",
+        "sourceFile": null,
+        "docs": "unavailable",
+        "receiver": null
+      },
+      "parameters": [
+        {
+          "name": "onClick",
+          "type": "Action",
+          "typeFqn": "androidx.compose.remote.creation.compose.action.Action",
+          "hasDefault": false,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "modifier",
+          "type": "RemoteModifier",
+          "typeFqn": "androidx.compose.remote.creation.compose.modifier.RemoteModifier",
+          "hasDefault": true,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "enabled",
+          "type": "RemoteBoolean",
+          "typeFqn": "androidx.compose.remote.creation.compose.state.RemoteBoolean",
+          "hasDefault": true,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "colors",
+          "type": "RemoteButtonColors",
+          "typeFqn": "androidx.wear.compose.remote.material3.RemoteButtonColors",
+          "hasDefault": true,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "shape",
+          "type": "RemoteShape",
+          "typeFqn": "androidx.compose.remote.creation.compose.shapes.RemoteShape",
+          "hasDefault": true,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "contentPadding",
+          "type": "RemotePaddingValues",
+          "typeFqn": "androidx.compose.remote.creation.compose.layout.RemotePaddingValues",
+          "hasDefault": true,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "border",
+          "type": "RemoteDp?",
+          "typeFqn": "androidx.compose.remote.creation.compose.state.RemoteDp",
+          "hasDefault": true,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": true,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "borderColor",
+          "type": "RemoteColor?",
+          "typeFqn": "androidx.compose.remote.creation.compose.state.RemoteColor",
+          "hasDefault": true,
+          "composableSlot": false,
+          "composableSlotReceiver": null,
+          "nullable": true,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": null
+        },
+        {
+          "name": "content",
+          "type": "RemoteRowScope.() -> Unit",
+          "typeFqn": "kotlin.Function1",
+          "hasDefault": false,
+          "composableSlot": true,
+          "composableSlotReceiver": "androidx.compose.remote.creation.compose.layout.RemoteRowScope",
+          "nullable": false,
+          "noArgConstructible": false,
+          "noArgFactory": null,
+          "scopeDslReceiver": null,
+          "lambdaReturnTypeFqn": "kotlin.Unit"
+        }
+      ],
+      "slots": [
+        {
+          "name": "content",
+          "required": true,
+          "receiverScope": "androidx.compose.remote.creation.compose.layout.RemoteRowScope"
+        }
+      ],
+      "bindings": [
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.ButtonGroupRemote_width=227dp,height=200dp,dpi=320",
+          "componentId": "ButtonGroup",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.CustomShapeRemoteButton_width=227dp,height=100dp,dpi=320",
+          "componentId": "Button/CustomShape",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.FilledRemoteButton_width=227dp,height=100dp,dpi=320",
+          "componentId": "Button/Filled",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.FilledRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_disabled",
+          "componentId": "Button/Filled",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.FilledRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon",
+          "componentId": "Button/Filled",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.FilledRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-disabled",
+          "componentId": "Button/Filled",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.FilledRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-extra-large",
+          "componentId": "Button/Filled",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.FilledRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-extra-large-disabled",
+          "componentId": "Button/Filled",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.FilledRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-large",
+          "componentId": "Button/Filled",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.FilledRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-large-disabled",
+          "componentId": "Button/Filled",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.FilledRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_left",
+          "componentId": "Button/Filled",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.FilledRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_left-disabled",
+          "componentId": "Button/Filled",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.NamedLabelRemoteButton_width=227dp,height=100dp,dpi=320",
+          "componentId": "Button/NamedLabel",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.OutlinedRemoteButton_width=227dp,height=100dp,dpi=320",
+          "componentId": "Button/Outlined",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.OutlinedRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_disabled",
+          "componentId": "Button/Outlined",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.OutlinedRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon",
+          "componentId": "Button/Outlined",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.OutlinedRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-disabled",
+          "componentId": "Button/Outlined",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.OutlinedRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-extra-large",
+          "componentId": "Button/Outlined",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.OutlinedRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-extra-large-disabled",
+          "componentId": "Button/Outlined",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.OutlinedRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-large",
+          "componentId": "Button/Outlined",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.OutlinedRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-large-disabled",
+          "componentId": "Button/Outlined",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.OutlinedRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_left",
+          "componentId": "Button/Outlined",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.CatalogPreviewsKt.OutlinedRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_left-disabled",
+          "componentId": "Button/Outlined",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.ChildRemoteButton_width=227dp,height=100dp,dpi=320",
+          "componentId": "Button/Child",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.ChildRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_disabled",
+          "componentId": "Button/Child",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.ChildRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon",
+          "componentId": "Button/Child",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.ChildRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-disabled",
+          "componentId": "Button/Child",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.ChildRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-extra-large",
+          "componentId": "Button/Child",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.ChildRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-extra-large-disabled",
+          "componentId": "Button/Child",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.ChildRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-large",
+          "componentId": "Button/Child",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.ChildRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-large-disabled",
+          "componentId": "Button/Child",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.ChildRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_left",
+          "componentId": "Button/Child",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.ChildRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_left-disabled",
+          "componentId": "Button/Child",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.FilledVariantRemoteButton_width=227dp,height=100dp,dpi=320",
+          "componentId": "Button/FilledVariant",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.FilledVariantRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_disabled",
+          "componentId": "Button/FilledVariant",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.FilledVariantRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon",
+          "componentId": "Button/FilledVariant",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.FilledVariantRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-disabled",
+          "componentId": "Button/FilledVariant",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.FilledVariantRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-extra-large",
+          "componentId": "Button/FilledVariant",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.FilledVariantRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-extra-large-disabled",
+          "componentId": "Button/FilledVariant",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.FilledVariantRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-large",
+          "componentId": "Button/FilledVariant",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.FilledVariantRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-large-disabled",
+          "componentId": "Button/FilledVariant",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.FilledVariantRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_left",
+          "componentId": "Button/FilledVariant",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.FilledVariantRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_left-disabled",
+          "componentId": "Button/FilledVariant",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.ImageBackgroundRemoteButton_width=227dp,height=100dp,dpi=320",
+          "componentId": "Button/ImageBackground",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.ImageBackgroundRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_disabled",
+          "componentId": "Button/ImageBackground",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.ImageBackgroundRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_secondary-label",
+          "componentId": "Button/ImageBackground",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.ImageBackgroundRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_secondary-label-disabled",
+          "componentId": "Button/ImageBackground",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.TonalRemoteButton_width=227dp,height=100dp,dpi=320",
+          "componentId": "Button/Tonal",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.TonalRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_disabled",
+          "componentId": "Button/Tonal",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.TonalRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon",
+          "componentId": "Button/Tonal",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.TonalRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-disabled",
+          "componentId": "Button/Tonal",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.TonalRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-extra-large",
+          "componentId": "Button/Tonal",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.TonalRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-extra-large-disabled",
+          "componentId": "Button/Tonal",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.TonalRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-large",
+          "componentId": "Button/Tonal",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.TonalRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-large-disabled",
+          "componentId": "Button/Tonal",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.TonalRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_left",
+          "componentId": "Button/Tonal",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.ComponentVariantPreviewsKt.TonalRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_left-disabled",
+          "componentId": "Button/Tonal",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.LoadingButtonPreviewsKt.LoadingRemoteButton_width=227dp,height=100dp,dpi=320",
+          "componentId": "Button/Loading",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.LoadingButtonPreviewsKt.LoadingRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_child",
+          "componentId": "Button/Loading",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.LoadingButtonPreviewsKt.LoadingRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_child-disabled",
+          "componentId": "Button/Loading",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.LoadingButtonPreviewsKt.LoadingRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_child-icon-extra-large",
+          "componentId": "Button/Loading",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.LoadingButtonPreviewsKt.LoadingRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_child-icon-extra-large-disabled",
+          "componentId": "Button/Loading",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.LoadingButtonPreviewsKt.LoadingRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_child-icon-large",
+          "componentId": "Button/Loading",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.LoadingButtonPreviewsKt.LoadingRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_child-icon-large-disabled",
+          "componentId": "Button/Loading",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.LoadingButtonPreviewsKt.LoadingRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_disabled",
+          "componentId": "Button/Loading",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.LoadingButtonPreviewsKt.LoadingRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-extra-large",
+          "componentId": "Button/Loading",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.LoadingButtonPreviewsKt.LoadingRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-extra-large-disabled",
+          "componentId": "Button/Loading",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.LoadingButtonPreviewsKt.LoadingRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-large",
+          "componentId": "Button/Loading",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.LoadingButtonPreviewsKt.LoadingRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_icon-large-disabled",
+          "componentId": "Button/Loading",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.LoadingButtonPreviewsKt.LoadingRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_outlined",
+          "componentId": "Button/Loading",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.LoadingButtonPreviewsKt.LoadingRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_outlined-disabled",
+          "componentId": "Button/Loading",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.LoadingButtonPreviewsKt.LoadingRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_outlined-icon-extra-large",
+          "componentId": "Button/Loading",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.LoadingButtonPreviewsKt.LoadingRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_outlined-icon-extra-large-disabled",
+          "componentId": "Button/Loading",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.LoadingButtonPreviewsKt.LoadingRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_outlined-icon-large",
+          "componentId": "Button/Loading",
+          "group": "Buttons"
+        },
+        {
+          "previewId": "ee.schimke.wearm3catalog.remote.LoadingButtonPreviewsKt.LoadingRemoteButton_width=227dp,height=100dp,dpi=320_VARIANT_outlined-icon-large-disabled",
+          "componentId": "Button/Loading",
+          "group": "Buttons"
+        }
+      ],
+      "code": {
+        "call": null,
+        "imports": [],
+        "refusedReason": "no placeholder can be written for required parameter `onClick: Action`",
+        "requiredOptIns": [],
+        "androidxOptIns": []
+      },
+      "signatureKnown": true,
+      "callableFromAnotherFile": true,
+      "hasTypeParameters": false,
+      "hasContextReceivers": false,
+      "overloadsCollided": false,
+      "builder": null,
+      "requiredOptIns": [],
+      "androidxOptIns": []
+    }
+  ],
+  "builderOrphans": []
+}

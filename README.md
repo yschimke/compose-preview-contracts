@@ -18,6 +18,7 @@ Extracted from [yschimke/compose-ai-tools](https://github.com/yschimke/compose-a
 | `ui-builder-protocol` | versioned catalog, design, command, collaboration, transport-envelope and catalog-renderer runtime shapes shared by UI-builder clients, servers, publishers and renderer SDKs |
 | `screen-document` | serializable screen trees, values, actions, selections, authored rows and reusable function declarations; generation and validation stay in compose-ai-tools |
 | `design-guidelines-protocol` | the design-guideline vocabulary: a catalog's rules and picture frames, the request a guidelines model is sent and the recorded result, for every host that checks guidelines |
+| `component-catalog-protocol` | the catalog wire files: the component record discovery writes (`components.json`), the UI-builder policy a catalog authors, and the generated `ui-builder.json`; deriving and generating stay in compose-ai-tools |
 | `parity-issues-protocol` | the versioned catalog artifact that joins GitHub issues back to components, previews and design references |
 
 `daemon-protocol` depends on **no other `ee.schimke.composeai` module**: the payload schemas that
