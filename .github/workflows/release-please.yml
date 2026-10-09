@@ -44,13 +44,19 @@ jobs:
       # A draft release does not create its tag — GitHub writes the ref only on publish — and
       # `release.yml` checks out `ref: <tag>`. Idempotent, and `!cancelled()` so a late failure in
       # the action cannot leave the manifest naming a version with no tag.
+      #
+      # The tag goes on the commit release-please RELEASED (`outputs.sha`), never `github.sha`. Two
+      # pushes close together race: the run for the earlier push can be the one that sees the
+      # release PR merged, and tagging its own commit puts the tag before the manifest bump. The
+      # publish then fails "tag matches the manifest", and the release commit's run skips because
+      # the release already exists (v3.23.0).
       - name: Ensure the release tag exists for the draft
         if: ${{ !cancelled() && steps.rp.outputs.release_created == 'true' }}
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
           TAG: ${{ steps.rp.outputs.tag_name }}
-          SHA: ${{ github.sha }}
+          SHA: ${{ steps.rp.outputs.sha }}
         run: |
           set -euo pipefail
           if gh api "repos/{owner}/{repo}/git/ref/tags/${TAG}" >/dev/null 2>&1; then
