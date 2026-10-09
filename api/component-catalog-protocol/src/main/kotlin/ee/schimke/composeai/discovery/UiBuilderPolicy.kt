@@ -249,6 +249,12 @@ internal constructor(
    * call-site argument text for the export.
    */
   public val insertContent: JsonElement? = null,
+  /**
+   * What this component IS on the shelf — `Scaffold`, `Container` or `Leaf` — when the catalog says
+   * rather than leaving it derived from whether it has slots, which cannot tell a scaffold from a
+   * container. The builtin field ([UiBuilderBuiltin.shelfRole]) on a record component.
+   */
+  public val shelfRole: String? = null,
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder {
@@ -265,6 +271,7 @@ internal constructor(
     public var slotCapabilities: List<JsonElement>? = null
     public var modifierCapabilities: List<String>? = null
     public var insertContent: JsonElement? = null
+    public var shelfRole: String? = null
 
     public fun build(): UiBuilderAuthoredComponent =
       UiBuilderAuthoredComponent(
@@ -281,6 +288,7 @@ internal constructor(
         slotCapabilities,
         modifierCapabilities,
         insertContent,
+        shelfRole,
       )
   }
 
@@ -300,6 +308,7 @@ internal constructor(
       it.slotCapabilities = slotCapabilities
       it.modifierCapabilities = modifierCapabilities
       it.insertContent = insertContent
+      it.shelfRole = shelfRole
     }
 }
 
