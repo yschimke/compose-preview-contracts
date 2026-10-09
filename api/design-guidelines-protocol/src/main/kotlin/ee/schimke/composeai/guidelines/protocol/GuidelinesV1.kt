@@ -30,6 +30,17 @@ internal constructor(
   public val source: String,
   public val surfaces: List<String> = emptyList(),
   public val profiles: List<String> = emptyList(),
+  /**
+   * [SCOPE_SUBJECT] (the default): judged for each subject of a request. [SCOPE_SET]: judged once
+   * across every subject of a batch, for guidance about consistency (one filled primary action
+   * across the samples); its verdict names no subject.
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val scope: String = SCOPE_SUBJECT,
+  /**
+   * The [GuidelineEvidenceNeedV1] kinds this rule benefits from, which a host may attach in the
+   * first pass where they are already cheap.
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val evidence: List<String> = emptyList(),
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder(
@@ -43,9 +54,23 @@ internal constructor(
     public var platforms: List<String> = emptyList()
     public var surfaces: List<String> = emptyList()
     public var profiles: List<String> = emptyList()
+    public var scope: String = SCOPE_SUBJECT
+    public var evidence: List<String> = emptyList()
 
     public fun build(): GuidelineRuleV1 =
-      GuidelineRuleV1(id, platforms, kind, severity, guidance, check, source, surfaces, profiles)
+      GuidelineRuleV1(
+        id,
+        platforms,
+        kind,
+        severity,
+        guidance,
+        check,
+        source,
+        surfaces,
+        profiles,
+        scope,
+        evidence,
+      )
   }
 
   /** This rule as a [Builder], for deriving a modified one. Replaces `copy`. */
@@ -54,6 +79,8 @@ internal constructor(
       it.platforms = platforms
       it.surfaces = surfaces
       it.profiles = profiles
+      it.scope = scope
+      it.evidence = evidence
     }
 
   public companion object {
@@ -63,6 +90,8 @@ internal constructor(
     public const val SEVERITY_INFO: String = "info"
     public const val SURFACE_SCREEN: String = "screen"
     public const val SURFACE_WIDGET: String = "widget"
+    public const val SCOPE_SUBJECT: String = "subject"
+    public const val SCOPE_SET: String = "set"
   }
 }
 
@@ -228,6 +257,20 @@ internal constructor(
   public val widthDp: Int,
   public val heightDp: Int,
   public val dataUrl: String? = null,
+  /** The [GuidelineSubjectV1.id] this picture shows, in a request about several subjects. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val subjectId: String? = null,
+  /** The theme it was rendered in (`light`, `dark`), where the host varied it. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val theme: String? = null,
+  /** The font scale it was rendered at, where the host varied it. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val fontScale: Double? = null,
+  /** The device it was rendered on (a device id), where the host varied it. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val device: String? = null,
+  /** The locale it was rendered in, where the host varied it. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val locale: String? = null,
+  /** `ltr` or `rtl`, where the host varied it. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val layoutDirection: String? = null,
+  /** Where a scrolling subject was scrolled to (`end`), where the host scrolled it. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val scroll: String? = null,
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder(
@@ -237,14 +280,43 @@ internal constructor(
     public var heightDp: Int,
   ) {
     public var dataUrl: String? = null
+    public var subjectId: String? = null
+    public var theme: String? = null
+    public var fontScale: Double? = null
+    public var device: String? = null
+    public var locale: String? = null
+    public var layoutDirection: String? = null
+    public var scroll: String? = null
 
     public fun build(): GuidelinePictureV1 =
-      GuidelinePictureV1(kind, description, widthDp, heightDp, dataUrl)
+      GuidelinePictureV1(
+        kind,
+        description,
+        widthDp,
+        heightDp,
+        dataUrl,
+        subjectId,
+        theme,
+        fontScale,
+        device,
+        locale,
+        layoutDirection,
+        scroll,
+      )
   }
 
   /** This picture as a [Builder]. Replaces `copy`. */
   public fun newBuilder(): Builder =
-    Builder(kind, description, widthDp, heightDp).also { it.dataUrl = dataUrl }
+    Builder(kind, description, widthDp, heightDp).also {
+      it.dataUrl = dataUrl
+      it.subjectId = subjectId
+      it.theme = theme
+      it.fontScale = fontScale
+      it.device = device
+      it.locale = locale
+      it.layoutDirection = layoutDirection
+      it.scroll = scroll
+    }
 
   public companion object {
     public const val KIND_DEVICE: String = "device"
@@ -252,6 +324,157 @@ internal constructor(
     public const val KIND_WIDGET_SAMSUNG: String = "widget-samsung"
     public const val KIND_WIDGET_PIXEL_WATCH: String = "widget-pixel-watch"
   }
+}
+
+/**
+ * One thing a batched [GuidelineRequestV1] judges: a rendered `@Preview` ([KIND_PREVIEW]) or a
+ * UI-builder design ([KIND_DESIGN]) named by [id]. [revision] is the design revision it was taken
+ * at; [renderHash] is the content hash of the render it was judged on, which is what a host caches
+ * a result under, so an unchanged render is never asked about twice. [label] is how the prompt
+ * names it.
+ */
+@Serializable
+@ConsistentCopyVisibility
+public data class GuidelineSubjectV1
+internal constructor(
+  public val id: String,
+  public val kind: String,
+  public val revision: Long? = null,
+  public val renderHash: String? = null,
+  public val label: String? = null,
+) {
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(public var id: String, public var kind: String) {
+    public var revision: Long? = null
+    public var renderHash: String? = null
+    public var label: String? = null
+
+    public fun build(): GuidelineSubjectV1 =
+      GuidelineSubjectV1(id, kind, revision, renderHash, label)
+  }
+
+  /** This subject as a [Builder]. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(id, kind).also {
+      it.revision = revision
+      it.renderHash = renderHash
+      it.label = label
+    }
+
+  public companion object {
+    public const val KIND_PREVIEW: String = "preview"
+    public const val KIND_DESIGN: String = "design"
+  }
+}
+
+/**
+ * Evidence a model asks for when a rule cannot be decided from what it was given: the host may
+ * supply it in a later round ([GuidelineRequestV1.round]). The host only fulfils kinds it listed in
+ * [GuidelineRequestV1.evidenceAvailable].
+ *
+ * [kind] is [KIND_A11Y_HIERARCHY], [KIND_SEMANTICS], [KIND_SOURCE] or [KIND_RENDER]. For a render,
+ * the optional settings say which one would decide it (a dark-theme picture, the list scrolled to
+ * its `end`, a 2x font scale). [reason] is why it would.
+ */
+@Serializable
+@ConsistentCopyVisibility
+public data class GuidelineEvidenceNeedV1
+internal constructor(
+  public val kind: String,
+  public val theme: String? = null,
+  public val fontScale: Double? = null,
+  public val device: String? = null,
+  public val widthDp: Int? = null,
+  public val heightDp: Int? = null,
+  public val locale: String? = null,
+  public val layoutDirection: String? = null,
+  public val scroll: String? = null,
+  public val reason: String = "",
+) {
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(public var kind: String) {
+    public var theme: String? = null
+    public var fontScale: Double? = null
+    public var device: String? = null
+    public var widthDp: Int? = null
+    public var heightDp: Int? = null
+    public var locale: String? = null
+    public var layoutDirection: String? = null
+    public var scroll: String? = null
+    public var reason: String = ""
+
+    public fun build(): GuidelineEvidenceNeedV1 =
+      GuidelineEvidenceNeedV1(
+        kind,
+        theme,
+        fontScale,
+        device,
+        widthDp,
+        heightDp,
+        locale,
+        layoutDirection,
+        scroll,
+        reason,
+      )
+  }
+
+  /** This need as a [Builder]. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(kind).also {
+      it.theme = theme
+      it.fontScale = fontScale
+      it.device = device
+      it.widthDp = widthDp
+      it.heightDp = heightDp
+      it.locale = locale
+      it.layoutDirection = layoutDirection
+      it.scroll = scroll
+      it.reason = reason
+    }
+
+  public companion object {
+    public const val KIND_A11Y_HIERARCHY: String = "a11y-hierarchy"
+    public const val KIND_SEMANTICS: String = "semantics"
+    public const val KIND_SOURCE: String = "source"
+    public const val KIND_RENDER: String = "render"
+  }
+}
+
+/**
+ * Non-picture evidence about a subject, attached to a [GuidelineRequestV1]: an accessibility
+ * hierarchy, a semantics tree, source code. [kind] uses [GuidelineEvidenceNeedV1]'s constants;
+ * [mediaType] says how to read [content] (`application/json`, `text/plain`). [subjectId] names the
+ * subject in a batch; null for a single-subject request.
+ */
+@Serializable
+@ConsistentCopyVisibility
+public data class GuidelineEvidenceV1
+internal constructor(
+  public val subjectId: String? = null,
+  public val kind: String,
+  public val mediaType: String,
+  public val content: String,
+  public val description: String? = null,
+) {
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(
+    public var kind: String,
+    public var mediaType: String,
+    public var content: String,
+  ) {
+    public var subjectId: String? = null
+    public var description: String? = null
+
+    public fun build(): GuidelineEvidenceV1 =
+      GuidelineEvidenceV1(subjectId, kind, mediaType, content, description)
+  }
+
+  /** This evidence as a [Builder]. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(kind, mediaType, content).also {
+      it.subjectId = subjectId
+      it.description = description
+    }
 }
 
 /**
@@ -313,6 +536,29 @@ internal constructor(
   public val userText: String,
   public val responseSchema: JsonObject,
   public val provenance: List<String> = emptyList(),
+  /**
+   * The subjects of a batch. Empty: a single-subject request, identified by [designId] or
+   * [previewId]. Otherwise the request judges every subject: the [userText] introduces each one's
+   * [pictures] (tagged with [GuidelinePictureV1.subjectId]) under its id, and every verdict names
+   * the subject it is about, except one for a [GuidelineRuleV1.SCOPE_SET] rule, which covers them
+   * all.
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER)
+  public val subjects: List<GuidelineSubjectV1> = emptyList(),
+  /** Non-picture evidence attached to this request, by subject. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER)
+  public val evidence: List<GuidelineEvidenceV1> = emptyList(),
+  /**
+   * The [GuidelineEvidenceNeedV1] kinds this host can supply if a verdict asks for them; a model
+   * should only ask for these.
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val evidenceAvailable: List<String> = emptyList(),
+  /**
+   * 0 for the first pass; n for the nth follow-up, which carries only the subjects and rules a
+   * previous round answered [GuidelineVerdictV1.NEEDS_EVIDENCE] for, with the evidence they asked
+   * for.
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val round: Int = 0,
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder(
@@ -329,6 +575,10 @@ internal constructor(
     public var pictures: List<GuidelinePictureV1> = emptyList()
     public var sourceAttached: Boolean = false
     public var provenance: List<String> = emptyList()
+    public var subjects: List<GuidelineSubjectV1> = emptyList()
+    public var evidence: List<GuidelineEvidenceV1> = emptyList()
+    public var evidenceAvailable: List<String> = emptyList()
+    public var round: Int = 0
 
     public fun build(): GuidelineRequestV1 =
       GuidelineRequestV1(
@@ -344,6 +594,10 @@ internal constructor(
         userText,
         responseSchema,
         provenance,
+        subjects,
+        evidence,
+        evidenceAvailable,
+        round,
       )
   }
 
@@ -357,6 +611,10 @@ internal constructor(
       it.pictures = pictures
       it.sourceAttached = sourceAttached
       it.provenance = provenance
+      it.subjects = subjects
+      it.evidence = evidence
+      it.evidenceAvailable = evidenceAvailable
+      it.round = round
     }
 
   public companion object {
@@ -365,8 +623,9 @@ internal constructor(
 }
 
 /**
- * A model's answer for one rule: [verdict] is `pass`, `fail` or `not_applicable`, [confidence] its
- * probability (0 to 1) that the verdict is right, and [nodeIds] the design nodes it is about.
+ * A model's answer for one rule: [verdict] is `pass`, `fail`, `not_applicable` or `needs_evidence`
+ * (with [needs]), [confidence] its probability (0 to 1) that the verdict is right, and [nodeIds]
+ * the design nodes it is about.
  */
 @Serializable
 @ConsistentCopyVisibility
@@ -377,15 +636,25 @@ internal constructor(
   public val confidence: Double = 0.0,
   public val nodeIds: List<String> = emptyList(),
   public val reason: String = "",
+  /**
+   * The [GuidelineSubjectV1.id] this verdict is about, in a batch. Null in a single-subject
+   * request, and for a [GuidelineRuleV1.SCOPE_SET] rule, whose verdict covers the whole batch.
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val subjectId: String? = null,
+  /** When [verdict] is [NEEDS_EVIDENCE]: what would decide it. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER)
+  public val needs: List<GuidelineEvidenceNeedV1> = emptyList(),
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder(public var ruleId: String, public var verdict: String) {
     public var confidence: Double = 0.0
     public var nodeIds: List<String> = emptyList()
     public var reason: String = ""
+    public var subjectId: String? = null
+    public var needs: List<GuidelineEvidenceNeedV1> = emptyList()
 
     public fun build(): GuidelineVerdictV1 =
-      GuidelineVerdictV1(ruleId, verdict, confidence, nodeIds, reason)
+      GuidelineVerdictV1(ruleId, verdict, confidence, nodeIds, reason, subjectId, needs)
   }
 
   /** This verdict as a [Builder]. Replaces `copy`. */
@@ -394,12 +663,17 @@ internal constructor(
       it.confidence = confidence
       it.nodeIds = nodeIds
       it.reason = reason
+      it.subjectId = subjectId
+      it.needs = needs
     }
 
   public companion object {
     public const val PASS: String = "pass"
     public const val FAIL: String = "fail"
     public const val NOT_APPLICABLE: String = "not_applicable"
+
+    /** The model cannot decide from what it was given; [needs] says what would decide it. */
+    public const val NEEDS_EVIDENCE: String = "needs_evidence"
   }
 }
 
@@ -424,6 +698,9 @@ internal constructor(
   public val verdicts: List<GuidelineVerdictV1>,
   public val ranBy: String? = null,
   public val recordedAtEpochMillis: Long? = null,
+  /** The subjects this record covers, for a batch; empty for a single subject. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER)
+  public val subjects: List<GuidelineSubjectV1> = emptyList(),
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder(
@@ -438,6 +715,7 @@ internal constructor(
     public var previewId: String? = null
     public var ranBy: String? = null
     public var recordedAtEpochMillis: Long? = null
+    public var subjects: List<GuidelineSubjectV1> = emptyList()
 
     public fun build(): GuidelineRecordV1 =
       GuidelineRecordV1(
@@ -451,6 +729,7 @@ internal constructor(
         verdicts,
         ranBy,
         recordedAtEpochMillis,
+        subjects,
       )
   }
 
@@ -462,6 +741,7 @@ internal constructor(
       it.previewId = previewId
       it.ranBy = ranBy
       it.recordedAtEpochMillis = recordedAtEpochMillis
+      it.subjects = subjects
     }
 
   public companion object {
