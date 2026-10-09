@@ -439,4 +439,50 @@ class GuidelinesV1Test {
     val need = GuidelineEvidenceNeedV1.Builder("render").also { it.scroll = "end" }.build()
     assertEquals(need, need.newBuilder().build())
   }
+
+  @Test
+  fun `a record names the model that answered and how a router chose it`() {
+    val record =
+      GuidelineRecordV1.Builder(
+          revision = 60,
+          model = "typesafe/jev-router",
+          rulesVersion = 6,
+          asked = listOf("r"),
+          verdicts = listOf(GuidelineVerdictV1.Builder("r", GuidelineVerdictV1.PASS).build()),
+        )
+        .also { builder ->
+          builder.designId = "golden-tiles-timer-1"
+          builder.servedModel = "deepseek/deepseek-v4.1-flash"
+          builder.provider = "DeepSeek"
+          builder.costUsd = 0.0074
+          builder.generationId = "gen-123"
+          builder.routing =
+            GuidelineRoutingV1.Builder("typesafe/jev-router")
+              .also {
+                it.version = "1"
+                it.reason = "initial"
+                it.probability = 0.82
+                it.scores = mapOf("big_model_gain" to 0.1, "visual_quality" to 0.4)
+              }
+              .build()
+        }
+        .build()
+    val text = builderJson.encodeToString(GuidelineRecordV1.serializer(), record)
+    val decoded = roundTrip(GuidelineRecordV1.serializer(), text)
+    assertEquals(record, decoded)
+    assertEquals("typesafe/jev-router", decoded.model)
+    assertEquals("deepseek/deepseek-v4.1-flash", decoded.servedModel)
+    assertEquals(0.4, decoded.routing!!.scores["visual_quality"])
+    assertEquals(record.routing, record.routing!!.newBuilder().build())
+
+    val plain = GuidelineRecordV1.Builder(0, "m", 1, emptyList(), emptyList()).build()
+    val json = Json {
+      encodeDefaults = true
+    }
+      .encodeToJsonElement(GuidelineRecordV1.serializer(), plain)
+      .jsonObject
+    listOf("servedModel", "provider", "costUsd", "generationId", "routing").forEach {
+      assertFalse(it in json, "$it in $json")
+    }
+  }
 }

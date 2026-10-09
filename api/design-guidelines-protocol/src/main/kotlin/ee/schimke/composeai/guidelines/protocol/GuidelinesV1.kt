@@ -678,6 +678,46 @@ internal constructor(
 }
 
 /**
+ * How a router chose the model that answered, for a [GuidelineRecordV1] whose asked model was a
+ * router. OpenRouter returns this under `openrouter_metadata.pipeline[name == "jev-router"].data`
+ * when the request sends `X-OpenRouter-Metadata: enabled`.
+ *
+ * [router] is the router asked (`typesafe/jev-router`), [version] its version, [reason] why it
+ * chose (`initial`, `continuation`), [probability] the served model's selection probability, and
+ * [scores] the router's own scores (`big_model_gain`, `visual_quality`).
+ */
+@Serializable
+@ConsistentCopyVisibility
+public data class GuidelineRoutingV1
+internal constructor(
+  public val router: String,
+  public val version: String? = null,
+  public val reason: String? = null,
+  public val probability: Double? = null,
+  public val scores: Map<String, Double> = emptyMap(),
+) {
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(public var router: String) {
+    public var version: String? = null
+    public var reason: String? = null
+    public var probability: Double? = null
+    public var scores: Map<String, Double> = emptyMap()
+
+    public fun build(): GuidelineRoutingV1 =
+      GuidelineRoutingV1(router, version, reason, probability, scores)
+  }
+
+  /** This routing as a [Builder]. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(router).also {
+      it.version = version
+      it.reason = reason
+      it.probability = probability
+      it.scores = scores
+    }
+}
+
+/**
  * A subject's latest guidelines result as a host keeps it: the [verdicts] and the rule ids they
  * answered ([asked]), not the findings, so every reader derives findings from the rules the same
  * way. The host fills [ranBy] and [recordedAtEpochMillis] from the credential, never from the body.
@@ -701,6 +741,19 @@ internal constructor(
   /** The subjects this record covers, for a batch; empty for a single subject. */
   @EncodeDefault(EncodeDefault.Mode.NEVER)
   public val subjects: List<GuidelineSubjectV1> = emptyList(),
+  /**
+   * The model that actually answered: the response body's `model`. [model] stays the model the host
+   * asked for, which may be a router; this is the one that wrote the [verdicts].
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val servedModel: String? = null,
+  /** The provider that served [servedModel]. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val provider: String? = null,
+  /** What the call cost, in US dollars: the response's `usage.cost`. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val costUsd: Double? = null,
+  /** The response `id`, for looking the generation up later. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val generationId: String? = null,
+  /** How [servedModel] was chosen, when [model] was a router. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val routing: GuidelineRoutingV1? = null,
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder(
@@ -716,6 +769,11 @@ internal constructor(
     public var ranBy: String? = null
     public var recordedAtEpochMillis: Long? = null
     public var subjects: List<GuidelineSubjectV1> = emptyList()
+    public var servedModel: String? = null
+    public var provider: String? = null
+    public var costUsd: Double? = null
+    public var generationId: String? = null
+    public var routing: GuidelineRoutingV1? = null
 
     public fun build(): GuidelineRecordV1 =
       GuidelineRecordV1(
@@ -730,6 +788,11 @@ internal constructor(
         ranBy,
         recordedAtEpochMillis,
         subjects,
+        servedModel,
+        provider,
+        costUsd,
+        generationId,
+        routing,
       )
   }
 
@@ -742,6 +805,11 @@ internal constructor(
       it.ranBy = ranBy
       it.recordedAtEpochMillis = recordedAtEpochMillis
       it.subjects = subjects
+      it.servedModel = servedModel
+      it.provider = provider
+      it.costUsd = costUsd
+      it.generationId = generationId
+      it.routing = routing
     }
 
   public companion object {
