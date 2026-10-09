@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.23.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.22.0...v3.23.0) (2026-10-09)
+
+
+### Features
+
+* **design-guidelines-protocol:** one request can judge many previews ([#151](https://github.com/yschimke/compose-preview-contracts/issues/151)) ([ed4d634](https://github.com/yschimke/compose-preview-contracts/commit/ed4d63422c902b85128852df801f0c5356d1e53f))
+* **design-guidelines-protocol:** record the model that answered and how a router chose it ([#152](https://github.com/yschimke/compose-preview-contracts/issues/152)) ([7a87c1e](https://github.com/yschimke/compose-preview-contracts/commit/7a87c1e1614c8ae9d62248daa62b35bdb8d39b29))
+* **design-guidelines-protocol:** the design guideline shapes, for every host that checks guidelines ([#149](https://github.com/yschimke/compose-preview-contracts/issues/149)) ([395f722](https://github.com/yschimke/compose-preview-contracts/commit/395f722768e970f8d9e453a1ee1799069601301c))
+
 ## [3.22.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.21.0...v3.22.0) (2026-10-09)
 
 
