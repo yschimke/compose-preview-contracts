@@ -625,7 +625,12 @@ internal constructor(
 /**
  * A model's answer for one rule: [verdict] is `pass`, `fail`, `not_applicable` or `needs_evidence`
  * (with [needs]), [confidence] its probability (0 to 1) that the verdict is right, and [nodeIds]
- * the design nodes it is about.
+ * the nodes it is about.
+ *
+ * [nodeIds] are ids the request supplied: for a design, design node ids; for a `@Preview`, the ids
+ * of nodes in the request's evidence (an `a11y-hierarchy` or `semantics` item), which a host maps
+ * to their bounds to draw the finding over the render. [regions] are the fallback for a problem
+ * that is no single node, such as a gap, a misalignment or content cut by a container edge.
  */
 @Serializable
 @ConsistentCopyVisibility
@@ -644,6 +649,9 @@ internal constructor(
   /** When [verdict] is [NEEDS_EVIDENCE]: what would decide it. */
   @EncodeDefault(EncodeDefault.Mode.NEVER)
   public val needs: List<GuidelineEvidenceNeedV1> = emptyList(),
+  /** Areas of a picture the verdict is about, when no node in [nodeIds] covers the problem. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER)
+  public val regions: List<GuidelineRegionV1> = emptyList(),
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder(public var ruleId: String, public var verdict: String) {
@@ -652,9 +660,10 @@ internal constructor(
     public var reason: String = ""
     public var subjectId: String? = null
     public var needs: List<GuidelineEvidenceNeedV1> = emptyList()
+    public var regions: List<GuidelineRegionV1> = emptyList()
 
     public fun build(): GuidelineVerdictV1 =
-      GuidelineVerdictV1(ruleId, verdict, confidence, nodeIds, reason, subjectId, needs)
+      GuidelineVerdictV1(ruleId, verdict, confidence, nodeIds, reason, subjectId, needs, regions)
   }
 
   /** This verdict as a [Builder]. Replaces `copy`. */
@@ -665,6 +674,7 @@ internal constructor(
       it.reason = reason
       it.subjectId = subjectId
       it.needs = needs
+      it.regions = regions
     }
 
   public companion object {
@@ -675,6 +685,52 @@ internal constructor(
     /** The model cannot decide from what it was given; [needs] says what would decide it. */
     public const val NEEDS_EVIDENCE: String = "needs_evidence"
   }
+}
+
+/**
+ * An area of a picture a [GuidelineVerdictV1] is about, for a host drawing the finding over a
+ * render: [x], [y], [width] and [height] are fractions (0 to 1) of the picture named by
+ * [pictureKind] (`device`, `unrolled`, `widget-samsung`, `tablet`, …; null for the subject's first
+ * picture), with the origin at its top left. [subjectId] names the subject in a batch; [label] is
+ * an optional short caption.
+ *
+ * A model's estimate, imprecise by nature: a host draws it as a soft highlight, never as an exact
+ * outline, and prefers [GuidelineVerdictV1.nodeIds] when a verdict gives both.
+ */
+@Serializable
+@ConsistentCopyVisibility
+public data class GuidelineRegionV1
+internal constructor(
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val subjectId: String? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val pictureKind: String? = null,
+  public val x: Double,
+  public val y: Double,
+  public val width: Double,
+  public val height: Double,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val label: String? = null,
+) {
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(
+    public var x: Double,
+    public var y: Double,
+    public var width: Double,
+    public var height: Double,
+  ) {
+    public var subjectId: String? = null
+    public var pictureKind: String? = null
+    public var label: String? = null
+
+    public fun build(): GuidelineRegionV1 =
+      GuidelineRegionV1(subjectId, pictureKind, x, y, width, height, label)
+  }
+
+  /** This region as a [Builder]. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(x, y, width, height).also {
+      it.subjectId = subjectId
+      it.pictureKind = pictureKind
+      it.label = label
+    }
 }
 
 /**

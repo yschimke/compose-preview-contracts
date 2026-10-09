@@ -485,4 +485,53 @@ class GuidelinesV1Test {
       assertFalse(it in json, "$it in $json")
     }
   }
+
+  @Test
+  fun `a verdict can point at nodes and at a region of a picture`() {
+    val region =
+      GuidelineRegionV1.Builder(x = 0.1, y = 0.2, width = 0.3, height = 0.25)
+        .apply {
+          subjectId = "ButtonPreview"
+          pictureKind = "device"
+          label = "cut by the edge"
+        }
+        .build()
+    val verdict =
+      GuidelineVerdictV1.Builder("wear.layout.no-clipping", GuidelineVerdictV1.FAIL)
+        .apply {
+          confidence = 0.8
+          nodeIds = listOf("a11y-3")
+          subjectId = "ButtonPreview"
+          regions = listOf(region)
+        }
+        .build()
+    val text = builderJson.encodeToString(GuidelineVerdictV1.serializer(), verdict)
+    assertEquals(verdict, roundTrip(GuidelineVerdictV1.serializer(), text))
+    assertEquals(verdict, verdict.newBuilder().build())
+    assertEquals(region, region.newBuilder().build())
+
+    val firstPicture = GuidelineRegionV1.Builder(0.0, 0.5, 1.0, 0.5).build()
+    val firstText = builderJson.encodeToString(GuidelineRegionV1.serializer(), firstPicture)
+    assertNull(roundTrip(GuidelineRegionV1.serializer(), firstText).pictureKind)
+    val firstJson = Json {
+      encodeDefaults = true
+    }
+      .encodeToJsonElement(GuidelineRegionV1.serializer(), firstPicture)
+      .jsonObject
+    listOf("subjectId", "pictureKind", "label").forEach {
+      assertFalse(it in firstJson, "$it in $firstJson")
+    }
+  }
+
+  @Test
+  fun `a verdict with no regions writes none`() {
+    val verdict =
+      GuidelineVerdictV1.Builder("wear.touch-target-48dp", GuidelineVerdictV1.PASS).build()
+    val json = Json {
+      encodeDefaults = true
+    }
+      .encodeToJsonElement(GuidelineVerdictV1.serializer(), verdict)
+      .jsonObject
+    assertFalse("regions" in json, json.toString())
+  }
 }
