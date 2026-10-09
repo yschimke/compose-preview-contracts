@@ -1213,6 +1213,20 @@ internal constructor(
    * Outranks [player] when both are set; a sender that knows only the enum keeps sending [player].
    */
   val playerId: String? = null,
+  /**
+   * A Remote Compose document to play **instead of** the preview's own — the raw `.rc` bytes,
+   * base64-encoded (standard alphabet, padded), because the wire is JSON.
+   *
+   * Null replays what the preview always replays: the bundle's captured `ir/<id>.rc`, or a fresh
+   * capture. Non-null replays exactly these bytes with the player [playerId] / [player] selects,
+   * whatever the preview would have drawn. The preview id still names the render — its device,
+   * density and default size, all of which the request's own size overrides adjust as usual — so a
+   * host can show a document it never captured (one a person uploaded, say) in any player a daemon
+   * it already runs can draw, without launching a daemon for the document.
+   *
+   * A document the daemon cannot decode fails that render, like any other replay that fails.
+   */
+  val documentBase64: String? = null,
 ) {
   /**
    * Builds a [RemoteComposeOverride].
@@ -1233,9 +1247,17 @@ internal constructor(
     public var acceptedHostActions: List<String>? = null
     public var player: RemoteComposePlayerKind? = null
     public var playerId: String? = null
+    public var documentBase64: String? = null
 
     public fun build(): RemoteComposeOverride =
-      RemoteComposeOverride(profile, namedValues, acceptedHostActions, player, playerId)
+      RemoteComposeOverride(
+        profile,
+        namedValues,
+        acceptedHostActions,
+        player,
+        playerId,
+        documentBase64,
+      )
   }
 
   /** This [RemoteComposeOverride] as a [Builder], for deriving a modified one. Replaces `copy`. */
@@ -1246,6 +1268,7 @@ internal constructor(
       it.acceptedHostActions = acceptedHostActions
       it.player = player
       it.playerId = playerId
+      it.documentBase64 = documentBase64
     }
 }
 

@@ -3996,8 +3996,10 @@ public final class ee/schimke/composeai/daemon/protocol/RemoteComposeOverride {
 	public final fun component3 ()Ljava/util/List;
 	public final fun component4 ()Lee/schimke/composeai/daemon/protocol/RemoteComposePlayerKind;
 	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAcceptedHostActions ()Ljava/util/List;
+	public final fun getDocumentBase64 ()Ljava/lang/String;
 	public final fun getNamedValues ()Ljava/util/Map;
 	public final fun getPlayer ()Lee/schimke/composeai/daemon/protocol/RemoteComposePlayerKind;
 	public final fun getPlayerId ()Ljava/lang/String;
@@ -4022,11 +4024,13 @@ public final class ee/schimke/composeai/daemon/protocol/RemoteComposeOverride$Bu
 	public fun <init> ()V
 	public final fun build ()Lee/schimke/composeai/daemon/protocol/RemoteComposeOverride;
 	public final fun getAcceptedHostActions ()Ljava/util/List;
+	public final fun getDocumentBase64 ()Ljava/lang/String;
 	public final fun getNamedValues ()Ljava/util/Map;
 	public final fun getPlayer ()Lee/schimke/composeai/daemon/protocol/RemoteComposePlayerKind;
 	public final fun getPlayerId ()Ljava/lang/String;
 	public final fun getProfile ()Lee/schimke/composeai/daemon/protocol/RemoteComposeProfile;
 	public final fun setAcceptedHostActions (Ljava/util/List;)V
+	public final fun setDocumentBase64 (Ljava/lang/String;)V
 	public final fun setNamedValues (Ljava/util/Map;)V
 	public final fun setPlayer (Lee/schimke/composeai/daemon/protocol/RemoteComposePlayerKind;)V
 	public final fun setPlayerId (Ljava/lang/String;)V
