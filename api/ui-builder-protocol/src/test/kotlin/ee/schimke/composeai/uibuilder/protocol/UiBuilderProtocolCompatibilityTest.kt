@@ -1081,6 +1081,47 @@ class UiBuilderProtocolCompatibilityTest {
   }
 
   @Test
+  fun `the design environment has a builder that carries every field`() {
+    val profile =
+      RemoteProfileV1.Builder(RemoteProfileTargetV1.WEAR_WIDGETS)
+        .also { it.experimental = true }
+        .build()
+    val built =
+      DesignEnvironmentV1.Builder(
+          widthDp = 192,
+          heightDp = 192,
+          density = 2.0,
+          theme = ThemeV1.DARK,
+          locale = "en-US",
+          fontScale = 1.0,
+          layoutDirection = LayoutDirectionV1.LTR,
+        )
+        .also {
+          it.typeface = "Roboto Flex"
+          it.exportDevices = listOf("wearos_small_round")
+          it.remoteProfile = profile
+        }
+        .build()
+    assertEquals(
+      DesignEnvironmentV1(
+        widthDp = 192,
+        heightDp = 192,
+        density = 2.0,
+        theme = ThemeV1.DARK,
+        locale = "en-US",
+        fontScale = 1.0,
+        layoutDirection = LayoutDirectionV1.LTR,
+        typeface = "Roboto Flex",
+        exportDevices = listOf("wearos_small_round"),
+        remoteProfile = profile,
+      ),
+      built,
+    )
+    assertEquals(built, built.newBuilder().build())
+    assertEquals(null, built.newBuilder().also { it.remoteProfile = null }.build().remoteProfile)
+  }
+
+  @Test
   fun `builders construct and derive the types that keep gaining fields`() {
     val binding =
       AssetBindingV1.Builder("image/png", "sha256:abc", UploadedAssetSourceV1("assets/a.png"))

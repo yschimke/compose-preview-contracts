@@ -534,4 +534,70 @@ class GuidelinesV1Test {
       .jsonObject
     assertFalse("regions" in json, json.toString())
   }
+
+  @Test
+  fun `the batch and evidence types write no default under encodeDefaults`() {
+    val withDefaults = Json { encodeDefaults = true }
+    fun keys(element: JsonElement) = (element as JsonObject).keys
+    assertEquals(
+      setOf("id", "kind"),
+      keys(
+        withDefaults.encodeToJsonElement(
+          GuidelineSubjectV1.serializer(),
+          GuidelineSubjectV1.Builder("p1", GuidelineSubjectV1.KIND_PREVIEW).build(),
+        )
+      ),
+    )
+    assertEquals(
+      setOf("kind"),
+      keys(
+        withDefaults.encodeToJsonElement(
+          GuidelineEvidenceNeedV1.serializer(),
+          GuidelineEvidenceNeedV1.Builder("render").build(),
+        )
+      ),
+    )
+    assertEquals(
+      setOf("kind", "mediaType", "content"),
+      keys(
+        withDefaults.encodeToJsonElement(
+          GuidelineEvidenceV1.serializer(),
+          GuidelineEvidenceV1.Builder("source", "text/x-kotlin", "fun A() {}").build(),
+        )
+      ),
+    )
+    assertEquals(
+      setOf("router"),
+      keys(
+        withDefaults.encodeToJsonElement(
+          GuidelineRoutingV1.serializer(),
+          GuidelineRoutingV1.Builder("typesafe/jev-router").build(),
+        )
+      ),
+    )
+  }
+
+  @Test
+  fun `a region can name its picture by position`() {
+    val region =
+      GuidelineRegionV1.Builder(0.1, 0.2, 0.3, 0.4)
+        .apply {
+          pictureKind = "device"
+          pictureIndex = 2
+        }
+        .build()
+    val text = builderJson.encodeToString(GuidelineRegionV1.serializer(), region)
+    val back = roundTrip(GuidelineRegionV1.serializer(), text)
+    assertEquals(2, back.pictureIndex)
+    assertEquals(region, back.newBuilder().build())
+    val unnamed = Json {
+      encodeDefaults = true
+    }
+      .encodeToJsonElement(
+        GuidelineRegionV1.serializer(),
+        GuidelineRegionV1.Builder(0.0, 0.0, 1.0, 1.0).build(),
+      )
+      .jsonObject
+    assertFalse("pictureIndex" in unnamed, unnamed.toString())
+  }
 }

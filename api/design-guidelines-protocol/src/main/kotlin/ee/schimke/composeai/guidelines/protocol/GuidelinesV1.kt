@@ -339,9 +339,9 @@ public data class GuidelineSubjectV1
 internal constructor(
   public val id: String,
   public val kind: String,
-  public val revision: Long? = null,
-  public val renderHash: String? = null,
-  public val label: String? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val revision: Long? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val renderHash: String? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val label: String? = null,
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder(public var id: String, public var kind: String) {
@@ -381,15 +381,15 @@ internal constructor(
 public data class GuidelineEvidenceNeedV1
 internal constructor(
   public val kind: String,
-  public val theme: String? = null,
-  public val fontScale: Double? = null,
-  public val device: String? = null,
-  public val widthDp: Int? = null,
-  public val heightDp: Int? = null,
-  public val locale: String? = null,
-  public val layoutDirection: String? = null,
-  public val scroll: String? = null,
-  public val reason: String = "",
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val theme: String? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val fontScale: Double? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val device: String? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val widthDp: Int? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val heightDp: Int? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val locale: String? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val layoutDirection: String? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val scroll: String? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val reason: String = "",
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder(public var kind: String) {
@@ -450,11 +450,11 @@ internal constructor(
 @ConsistentCopyVisibility
 public data class GuidelineEvidenceV1
 internal constructor(
-  public val subjectId: String? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val subjectId: String? = null,
   public val kind: String,
   public val mediaType: String,
   public val content: String,
-  public val description: String? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val description: String? = null,
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder(
@@ -694,6 +694,11 @@ internal constructor(
  * picture), with the origin at its top left. [subjectId] names the subject in a batch; [label] is
  * an optional short caption.
  *
+ * [pictureIndex] names the picture exactly: its 1-based position in the request's
+ * [GuidelineRequestV1.pictures]. A kind alone is ambiguous when a subject has several pictures of
+ * it — light and dark renders, or ones that differ by `fontScale`, `locale` or `scroll` — so when
+ * both are set, the index wins and the kind is only a hint.
+ *
  * A model's estimate, imprecise by nature: a host draws it as a soft highlight, never as an exact
  * outline, and prefers [GuidelineVerdictV1.nodeIds] when a verdict gives both.
  */
@@ -708,6 +713,7 @@ internal constructor(
   public val width: Double,
   public val height: Double,
   @EncodeDefault(EncodeDefault.Mode.NEVER) public val label: String? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val pictureIndex: Int? = null,
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder(
@@ -719,9 +725,10 @@ internal constructor(
     public var subjectId: String? = null
     public var pictureKind: String? = null
     public var label: String? = null
+    public var pictureIndex: Int? = null
 
     public fun build(): GuidelineRegionV1 =
-      GuidelineRegionV1(subjectId, pictureKind, x, y, width, height, label)
+      GuidelineRegionV1(subjectId, pictureKind, x, y, width, height, label, pictureIndex)
   }
 
   /** This region as a [Builder]. Replaces `copy`. */
@@ -730,6 +737,7 @@ internal constructor(
       it.subjectId = subjectId
       it.pictureKind = pictureKind
       it.label = label
+      it.pictureIndex = pictureIndex
     }
 }
 
@@ -747,10 +755,10 @@ internal constructor(
 public data class GuidelineRoutingV1
 internal constructor(
   public val router: String,
-  public val version: String? = null,
-  public val reason: String? = null,
-  public val probability: Double? = null,
-  public val scores: Map<String, Double> = emptyMap(),
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val version: String? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val reason: String? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val probability: Double? = null,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val scores: Map<String, Double> = emptyMap(),
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder(public var router: String) {
