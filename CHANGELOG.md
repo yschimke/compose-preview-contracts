@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.24.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.23.1...v3.24.0) (2026-10-09)
+
+
+### Features
+
+* **design-guidelines-protocol:** a verdict can point at a region of a picture, for overlays ([#157](https://github.com/yschimke/compose-preview-contracts/issues/157)) ([eaded32](https://github.com/yschimke/compose-preview-contracts/commit/eaded32539a75f61c79233c910157c4a24ceb9e4))
+
 ## [3.23.1](https://github.com/yschimke/compose-preview-contracts/compare/v3.23.0...v3.23.1) (2026-10-09)
 
 
