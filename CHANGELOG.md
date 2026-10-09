@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.21.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.20.0...v3.21.0) (2026-10-09)
+
+
+### Features
+
+* **protocol:** let a RemoteComposeOverride carry the document to replay ([#145](https://github.com/yschimke/compose-preview-contracts/issues/145)) ([090e24b](https://github.com/yschimke/compose-preview-contracts/commit/090e24bf4a964916bf6643bcd12699fcc368fc29))
+
 ## [3.20.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.19.0...v3.20.0) (2026-10-07)
 
 
