@@ -87,6 +87,28 @@ class ProtocolBuilderTest {
   }
 
   @Test
+  fun `a remote compose document to replay rides as base64 and round-trips`() {
+    val json = kotlinx.serialization.json.Json { ignoreUnknownKeys = true }
+    val override =
+      RemoteComposeOverride.Builder()
+        .also {
+          it.playerId = "androidx-view"
+          it.documentBase64 = "AASMAAEAAAA="
+        }
+        .build()
+    assertEquals(override, override.newBuilder().build())
+
+    val encoded = json.encodeToString(RemoteComposeOverride.serializer(), override)
+    assertEquals(true, encoded.contains("\"documentBase64\":\"AASMAAEAAAA=\""), encoded)
+    assertEquals(override, json.decodeFromString(RemoteComposeOverride.serializer(), encoded))
+
+    // A sender that predates the field replays the preview's own document.
+    val legacy =
+      json.decodeFromString(RemoteComposeOverride.serializer(), """{"playerId":"androidx-view"}""")
+    assertEquals(null, legacy.documentBase64)
+  }
+
+  @Test
   fun `newBuilder derives a modified value without touching the original`() {
     val original = GestureOverride.Builder().also { it.enabled = true }.build()
     val derived = original.newBuilder().also { it.invokeLabel = "Swipe" }.build()
