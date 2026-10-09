@@ -48,6 +48,6 @@ class PublishedArtifactIdTest {
 
     assertEquals(emptyList(), mismatches, "artifact id no longer follows the project path")
     // A guard on the guard: if the walk stops finding modules, the check above passes vacuously.
-    assertEquals(13, published, "published module count changed; check the BOM still covers them")
+    assertEquals(14, published, "published module count changed; check the BOM still covers them")
   }
 }

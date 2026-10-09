@@ -1,0 +1,634 @@
+{
+  "schema": "compose-ui-builder-catalog/v1",
+  "catalog": {
+    "id": "remote-m3",
+    "title": "Remote Compose Material 3",
+    "platform": "remote-compose",
+    "platformLabel": "RemoteCompose",
+    "module": "remote-catalog",
+    "variant": "debug"
+  },
+  "record": {
+    "file": "components.json",
+    "schemaVersion": 2,
+    "components": 17
+  },
+  "statusSemantics": {
+    "platform": "remote-compose",
+    "platformLabel": "RemoteCompose",
+    "componentIdPrefix": "remote-m3/",
+    "previewSurfaces": {
+      "wasm": {
+        "fidelity": "approximate",
+        "reason": "The selectable Visual Editor draws Wear Compose CMP stand-ins. The read-only Browser Preview is a separate DEVICE surface: CMP Remote M3 records a real .rc document in Wasm and the pinned CMP RcComposePlayer plays it in each selected host frame. Approximate describes authoring only, never the Browser Preview."
+      },
+      "native": {
+        "fidelity": "authoritative",
+        "backend": "android",
+        "reason": "The generated creation-DSL Kotlin compiled against this module's own alpha Remote Compose trio and rasterised by the real player \u2014 the same lane that produces every sticker in this catalog."
+      }
+    },
+    "browserPreview": null,
+    "componentMenu": {
+      "groupOrder": [
+        "Widget Container",
+        "Scaffold templates",
+        "Containment",
+        "Buttons",
+        "Selection buttons",
+        "Edge-hugging buttons",
+        "Sliders",
+        "Steppers",
+        "Text",
+        "Iconography",
+        "Communication",
+        "Position indicators",
+        "Shapes",
+        "Shaders",
+        "Typeface",
+        "Theme",
+        "Wear M3",
+        "Confetti"
+      ],
+      "components": {
+        "remote-m3/remote-app-card": {
+          "group": "Containment"
+        },
+        "remote-m3/remote-button-group": {
+          "group": "Buttons"
+        },
+        "remote-m3/remote-button": {
+          "group": "Buttons"
+        },
+        "remote-m3/remote-compact-button": {
+          "group": "Buttons"
+        },
+        "remote-m3/remote-card": {
+          "group": "Containment"
+        },
+        "remote-m3/remote-outlined-card": {
+          "group": "Containment"
+        }
+      }
+    },
+    "frame": {
+      "$comment_adapter": "Not a screen. A Remote Compose widget is drawn into a host container of a fixed size, so the frame is the host, not a watch face: `frame/widget-host` rather than the sibling catalog's `frame/round-screen`. This is the second reason `remote-m3` is a catalog of its own rather than a mode of the Wear one.",
+      "adapter": "frame/widget-host",
+      "geometry": {
+        "$comment": "The two host sizes are DECLARED BY THE PREVIEW CONTRACT, not measured after the fact: remote-catalog/src/main/kotlin/ee/schimke/wearm3catalog/remote/WidgetContainerPreviews.kt pins @Preview(widthDp = 216, heightDp = 76) and (216, 124), being 200x60dp and 200x108dp of content plus 8dp of padding on every edge. Every widget sticker in this catalog renders at one of them, so they are the sizes a builder must offer. Recorded here rather than transcribed into the server, which carried both numbers as constants.",
+        "sizesDp": [
+          {
+            "widthDp": 216,
+            "heightDp": 76,
+            "label": "Small container"
+          },
+          {
+            "widthDp": 216,
+            "heightDp": 124,
+            "label": "Large container"
+          }
+        ]
+      }
+    },
+    "code": null,
+    "composeSourceExport": {
+      "adapter": "remote-compose",
+      "version": 1
+    },
+    "templates": [
+      "ui-builder/designs/wear-widget-small.json",
+      "ui-builder/designs/wear-widget-large.json",
+      "ui-builder/designs/hello-widget.json",
+      "ui-builder/designs/weather-widget.json"
+    ],
+    "colorTokens": {
+      "$comment": "The theme roles a colour property may name. Same Material 3 vocabulary as the sibling :catalog, and stated here for the same reason: a Remote design names roles, and a role the canvas cannot resolve is a literal. Every sticker in this catalog is a RemoteDocument carrying explicit dark-first Material colours, so the values behind these names are the document's rather than a theme's \u2014 but the names are what a design writes.",
+      "roles": [
+        "background",
+        "surface",
+        "surfaceContainer",
+        "surfaceContainerLow",
+        "surfaceContainerHigh",
+        "surfaceContainerHighest",
+        "primary",
+        "onPrimary",
+        "tertiary",
+        "onTertiary",
+        "onSurface",
+        "onSurfaceVariant",
+        "outlineVariant",
+        "transparent"
+      ]
+    },
+    "assetRegistry": null,
+    "supersedes": null,
+    "builtins": {
+      "remote-m3/widget-container-small": {
+        "role": "screen-root",
+        "displayName": "Wear widget \u00b7 Small (216\u00d776dp)",
+        "group": "Widget Container",
+        "canvas": "widget-container",
+        "unrolled": null,
+        "traits": [
+          "ScreenContent",
+          "WearWidgetHost",
+          "RemoteContentHost"
+        ],
+        "slots": {
+          "background": {
+            "acceptedRoles": [
+              "Leaf"
+            ],
+            "acceptedTraits": [
+              "DrawLayer",
+              "ImageContent"
+            ]
+          },
+          "content": {
+            "acceptedRoles": [
+              "Scaffold",
+              "Container",
+              "Leaf"
+            ],
+            "acceptedTraits": [
+              "AnyContent"
+            ],
+            "max": 1
+          }
+        },
+        "properties": [
+          {
+            "name": "background",
+            "jsonType": "string",
+            "required": false,
+            "notes": "The widget's own background, painted by the host inside the frame it draws. Defaults to #FF272430, the colour WearWidgetContainer applies to a widget that declares none. Padding and corner radius are not properties: WearWidgetParams hands them to the widget per host shape (0 rectangular, 26 squircle, 999 round), so the outermost box never authors a radius."
+          },
+          {
+            "name": "themeDisplayTypeface",
+            "jsonType": "string",
+            "required": false,
+            "notes": "The font family for the display roles (displayLarge, displayMedium, displaySmall, numeralExtraLarge, numeralLarge, numeralMedium, numeralSmall, numeralExtraSmall) of everything this theme host contains. A family name: one of the editor's vendored faces or any Google Fonts family (\"Space Grotesk\", \"Michroma\"); a `google:` prefix is accepted. Generated code sets it as a `GoogleFont` family on the theme's typography. Unset keeps the platform's own face for these roles."
+          },
+          {
+            "name": "themeTitleTypeface",
+            "jsonType": "string",
+            "required": false,
+            "notes": "The font family for the title roles (titleLarge, titleMedium, titleSmall) of everything this theme host contains. A family name: one of the editor's vendored faces or any Google Fonts family (\"Space Grotesk\", \"Michroma\"); a `google:` prefix is accepted. Generated code sets it as a `GoogleFont` family on the theme's typography. Unset keeps the platform's own face for these roles."
+          },
+          {
+            "name": "themeBodyTypeface",
+            "jsonType": "string",
+            "required": false,
+            "notes": "The font family for the body roles (bodyLarge, bodyMedium, bodySmall, bodyExtraSmall) of everything this theme host contains. A family name: one of the editor's vendored faces or any Google Fonts family (\"Space Grotesk\", \"Michroma\"); a `google:` prefix is accepted. Generated code sets it as a `GoogleFont` family on the theme's typography. Unset keeps the platform's own face for these roles."
+          },
+          {
+            "name": "themeLabelTypeface",
+            "jsonType": "string",
+            "required": false,
+            "notes": "The font family for the label roles (labelLarge, labelMedium, labelSmall) of everything this theme host contains. A family name: one of the editor's vendored faces or any Google Fonts family (\"Space Grotesk\", \"Michroma\"); a `google:` prefix is accepted. Generated code sets it as a `GoogleFont` family on the theme's typography. Unset keeps the platform's own face for these roles."
+          },
+          {
+            "name": "themeTextStyle",
+            "jsonType": "string",
+            "required": false,
+            "allowedValues": [
+              "displayLarge",
+              "displayMedium",
+              "displaySmall",
+              "titleLarge",
+              "titleMedium",
+              "titleSmall",
+              "labelLarge",
+              "labelMedium",
+              "labelSmall",
+              "bodyLarge",
+              "bodyMedium",
+              "bodySmall",
+              "bodyExtraSmall",
+              "numeralExtraLarge",
+              "numeralLarge",
+              "numeralMedium",
+              "numeralSmall",
+              "numeralExtraSmall"
+            ],
+            "notes": "The type role a text with no `style` of its own is set in, for everything this theme host contains \u2014 and with it that role's size and typeface. Both themes default to `bodyLarge`; choose `labelMedium` for a design whose plain text is mostly labels, or a display role for one that is mostly figures. Generated code provides it as `ProvideTextStyle(MaterialTheme.typography.<role>)` inside the theme."
+          }
+        ],
+        "modifierCapabilities": [],
+        "implementation": null,
+        "shelfRole": null,
+        "wasm": null,
+        "code": null,
+        "svg": null,
+        "insertContent": null
+      },
+      "remote-m3/widget-container-large": {
+        "role": "screen-root",
+        "displayName": "Wear widget \u00b7 Large (216\u00d7124dp)",
+        "group": "Widget Container",
+        "canvas": "widget-container",
+        "unrolled": null,
+        "traits": [
+          "ScreenContent",
+          "WearWidgetHost",
+          "RemoteContentHost"
+        ],
+        "slots": {
+          "background": {
+            "acceptedRoles": [
+              "Leaf"
+            ],
+            "acceptedTraits": [
+              "DrawLayer",
+              "ImageContent"
+            ]
+          },
+          "content": {
+            "acceptedRoles": [
+              "Scaffold",
+              "Container",
+              "Leaf"
+            ],
+            "acceptedTraits": [
+              "AnyContent"
+            ],
+            "max": 1
+          }
+        },
+        "properties": [
+          {
+            "name": "background",
+            "jsonType": "string",
+            "required": false,
+            "notes": "The widget's own background, painted by the host inside the frame it draws. Defaults to #FF272430, the colour WearWidgetContainer applies to a widget that declares none. Padding and corner radius are not properties: WearWidgetParams hands them to the widget per host shape (0 rectangular, 26 squircle, 999 round), so the outermost box never authors a radius."
+          },
+          {
+            "name": "themeDisplayTypeface",
+            "jsonType": "string",
+            "required": false,
+            "notes": "The font family for the display roles (displayLarge, displayMedium, displaySmall, numeralExtraLarge, numeralLarge, numeralMedium, numeralSmall, numeralExtraSmall) of everything this theme host contains. A family name: one of the editor's vendored faces or any Google Fonts family (\"Space Grotesk\", \"Michroma\"); a `google:` prefix is accepted. Generated code sets it as a `GoogleFont` family on the theme's typography. Unset keeps the platform's own face for these roles."
+          },
+          {
+            "name": "themeTitleTypeface",
+            "jsonType": "string",
+            "required": false,
+            "notes": "The font family for the title roles (titleLarge, titleMedium, titleSmall) of everything this theme host contains. A family name: one of the editor's vendored faces or any Google Fonts family (\"Space Grotesk\", \"Michroma\"); a `google:` prefix is accepted. Generated code sets it as a `GoogleFont` family on the theme's typography. Unset keeps the platform's own face for these roles."
+          },
+          {
+            "name": "themeBodyTypeface",
+            "jsonType": "string",
+            "required": false,
+            "notes": "The font family for the body roles (bodyLarge, bodyMedium, bodySmall, bodyExtraSmall) of everything this theme host contains. A family name: one of the editor's vendored faces or any Google Fonts family (\"Space Grotesk\", \"Michroma\"); a `google:` prefix is accepted. Generated code sets it as a `GoogleFont` family on the theme's typography. Unset keeps the platform's own face for these roles."
+          },
+          {
+            "name": "themeLabelTypeface",
+            "jsonType": "string",
+            "required": false,
+            "notes": "The font family for the label roles (labelLarge, labelMedium, labelSmall) of everything this theme host contains. A family name: one of the editor's vendored faces or any Google Fonts family (\"Space Grotesk\", \"Michroma\"); a `google:` prefix is accepted. Generated code sets it as a `GoogleFont` family on the theme's typography. Unset keeps the platform's own face for these roles."
+          },
+          {
+            "name": "themeTextStyle",
+            "jsonType": "string",
+            "required": false,
+            "allowedValues": [
+              "displayLarge",
+              "displayMedium",
+              "displaySmall",
+              "titleLarge",
+              "titleMedium",
+              "titleSmall",
+              "labelLarge",
+              "labelMedium",
+              "labelSmall",
+              "bodyLarge",
+              "bodyMedium",
+              "bodySmall",
+              "bodyExtraSmall",
+              "numeralExtraLarge",
+              "numeralLarge",
+              "numeralMedium",
+              "numeralSmall",
+              "numeralExtraSmall"
+            ],
+            "notes": "The type role a text with no `style` of its own is set in, for everything this theme host contains \u2014 and with it that role's size and typeface. Both themes default to `bodyLarge`; choose `labelMedium` for a design whose plain text is mostly labels, or a display role for one that is mostly figures. Generated code provides it as `ProvideTextStyle(MaterialTheme.typography.<role>)` inside the theme."
+          }
+        ],
+        "modifierCapabilities": [],
+        "implementation": null,
+        "shelfRole": null,
+        "wasm": null,
+        "code": null,
+        "svg": null,
+        "insertContent": null
+      },
+      "remote-m3/widget-container-adaptive": {
+        "role": "screen-root",
+        "displayName": "Wear widget \u00b7 Adaptive (experimental)",
+        "group": "Widget Container",
+        "canvas": "widget-container",
+        "unrolled": null,
+        "traits": [
+          "ScreenContent",
+          "WearWidgetHost",
+          "RemoteContentHost"
+        ],
+        "slots": {
+          "background": {
+            "acceptedRoles": [
+              "Leaf"
+            ],
+            "acceptedTraits": [
+              "DrawLayer",
+              "ImageContent"
+            ]
+          },
+          "headline": {
+            "acceptedRoles": [
+              "Scaffold",
+              "Container",
+              "Leaf"
+            ],
+            "acceptedTraits": [
+              "AnyContent"
+            ]
+          },
+          "supporting": {
+            "acceptedRoles": [
+              "Scaffold",
+              "Container",
+              "Leaf"
+            ],
+            "acceptedTraits": [
+              "AnyContent"
+            ]
+          },
+          "action": {
+            "acceptedRoles": [
+              "Scaffold",
+              "Container",
+              "Leaf"
+            ],
+            "acceptedTraits": [
+              "AnyContent"
+            ]
+          }
+        },
+        "properties": [
+          {
+            "name": "background",
+            "jsonType": "string",
+            "required": false,
+            "notes": "The widget's own background, painted by the host inside the frame it draws. Defaults to #FF272430, the colour WearWidgetContainer applies to a widget that declares none. Padding and corner radius are not properties: WearWidgetParams hands them to the widget per host shape (0 rectangular, 26 squircle, 999 round), so the outermost box never authors a radius."
+          },
+          {
+            "name": "themeDisplayTypeface",
+            "jsonType": "string",
+            "required": false,
+            "notes": "The font family for the display roles (displayLarge, displayMedium, displaySmall, numeralExtraLarge, numeralLarge, numeralMedium, numeralSmall, numeralExtraSmall) of everything this theme host contains. A family name: one of the editor's vendored faces or any Google Fonts family (\"Space Grotesk\", \"Michroma\"); a `google:` prefix is accepted. Generated code sets it as a `GoogleFont` family on the theme's typography. Unset keeps the platform's own face for these roles."
+          },
+          {
+            "name": "themeTitleTypeface",
+            "jsonType": "string",
+            "required": false,
+            "notes": "The font family for the title roles (titleLarge, titleMedium, titleSmall) of everything this theme host contains. A family name: one of the editor's vendored faces or any Google Fonts family (\"Space Grotesk\", \"Michroma\"); a `google:` prefix is accepted. Generated code sets it as a `GoogleFont` family on the theme's typography. Unset keeps the platform's own face for these roles."
+          },
+          {
+            "name": "themeBodyTypeface",
+            "jsonType": "string",
+            "required": false,
+            "notes": "The font family for the body roles (bodyLarge, bodyMedium, bodySmall, bodyExtraSmall) of everything this theme host contains. A family name: one of the editor's vendored faces or any Google Fonts family (\"Space Grotesk\", \"Michroma\"); a `google:` prefix is accepted. Generated code sets it as a `GoogleFont` family on the theme's typography. Unset keeps the platform's own face for these roles."
+          },
+          {
+            "name": "themeLabelTypeface",
+            "jsonType": "string",
+            "required": false,
+            "notes": "The font family for the label roles (labelLarge, labelMedium, labelSmall) of everything this theme host contains. A family name: one of the editor's vendored faces or any Google Fonts family (\"Space Grotesk\", \"Michroma\"); a `google:` prefix is accepted. Generated code sets it as a `GoogleFont` family on the theme's typography. Unset keeps the platform's own face for these roles."
+          },
+          {
+            "name": "themeTextStyle",
+            "jsonType": "string",
+            "required": false,
+            "allowedValues": [
+              "displayLarge",
+              "displayMedium",
+              "displaySmall",
+              "titleLarge",
+              "titleMedium",
+              "titleSmall",
+              "labelLarge",
+              "labelMedium",
+              "labelSmall",
+              "bodyLarge",
+              "bodyMedium",
+              "bodySmall",
+              "bodyExtraSmall",
+              "numeralExtraLarge",
+              "numeralLarge",
+              "numeralMedium",
+              "numeralSmall",
+              "numeralExtraSmall"
+            ],
+            "notes": "The type role a text with no `style` of its own is set in, for everything this theme host contains \u2014 and with it that role's size and typeface. Both themes default to `bodyLarge`; choose `labelMedium` for a design whose plain text is mostly labels, or a display role for one that is mostly figures. Generated code provides it as `ProvideTextStyle(MaterialTheme.typography.<role>)` inside the theme."
+          }
+        ],
+        "modifierCapabilities": [],
+        "implementation": null,
+        "shelfRole": null,
+        "wasm": null,
+        "code": null,
+        "svg": null,
+        "insertContent": null
+      }
+    },
+    "components": {
+      "remote-m3/remote-app-card": {
+        "record": "remote-catalog/androidx.wear.compose.remote.material3.RemoteAppCardKt.RemoteAppCard",
+        "catalogId": null,
+        "displayName": null,
+        "canvas": "wear-m3/card",
+        "canvasMapping": {
+          "slots": {
+            "content": "title"
+          },
+          "defaults": {
+            "variant": {
+              "type": "enum",
+              "value": "app"
+            }
+          }
+        },
+        "unrolled": null,
+        "nativeOnly": false,
+        "traits": [],
+        "slots": {},
+        "stateCallbacks": {},
+        "starter": {},
+        "variantProperty": null,
+        "variants": {},
+        "excluded": null,
+        "propertyCapabilities": null,
+        "slotCapabilities": null,
+        "modifierCapabilities": null,
+        "insertContent": null
+      },
+      "remote-m3/remote-button-group": {
+        "record": "remote-catalog/androidx.wear.compose.remote.material3.RemoteButtonGroupKt.RemoteButtonGroup",
+        "catalogId": null,
+        "displayName": null,
+        "canvas": "wear-m3/button-group",
+        "canvasMapping": {
+          "slots": {
+            "children": "content"
+          }
+        },
+        "unrolled": null,
+        "nativeOnly": false,
+        "traits": [],
+        "slots": {},
+        "stateCallbacks": {},
+        "starter": {},
+        "variantProperty": null,
+        "variants": {},
+        "excluded": null,
+        "propertyCapabilities": null,
+        "slotCapabilities": null,
+        "modifierCapabilities": null,
+        "insertContent": null
+      },
+      "remote-m3/remote-button": {
+        "record": "remote-catalog/androidx.wear.compose.remote.material3.RemoteButtonKt.RemoteButton",
+        "catalogId": null,
+        "displayName": null,
+        "canvas": "wear-m3/button",
+        "canvasMapping": {
+          "defaults": {
+            "variant": {
+              "type": "enum",
+              "value": "filled"
+            }
+          }
+        },
+        "unrolled": null,
+        "nativeOnly": false,
+        "traits": [],
+        "slots": {},
+        "stateCallbacks": {},
+        "starter": {},
+        "variantProperty": null,
+        "variants": {},
+        "excluded": null,
+        "propertyCapabilities": null,
+        "slotCapabilities": null,
+        "modifierCapabilities": null,
+        "insertContent": null
+      },
+      "remote-m3/remote-compact-button": {
+        "record": "remote-catalog/androidx.wear.compose.remote.material3.RemoteButtonKt.RemoteCompactButton",
+        "catalogId": null,
+        "displayName": null,
+        "canvas": "wear-m3/button",
+        "canvasMapping": {
+          "slots": {
+            "content": "label"
+          },
+          "defaults": {
+            "variant": {
+              "type": "enum",
+              "value": "filled"
+            }
+          }
+        },
+        "unrolled": null,
+        "nativeOnly": false,
+        "traits": [],
+        "slots": {},
+        "stateCallbacks": {},
+        "starter": {},
+        "variantProperty": null,
+        "variants": {},
+        "excluded": null,
+        "propertyCapabilities": null,
+        "slotCapabilities": null,
+        "modifierCapabilities": null,
+        "insertContent": null
+      },
+      "remote-m3/remote-card": {
+        "record": "remote-catalog/androidx.wear.compose.remote.material3.RemoteCardKt.RemoteCard",
+        "catalogId": null,
+        "displayName": null,
+        "canvas": "wear-m3/card",
+        "canvasMapping": {
+          "defaults": {
+            "variant": {
+              "type": "enum",
+              "value": "filled"
+            }
+          }
+        },
+        "unrolled": null,
+        "nativeOnly": false,
+        "traits": [],
+        "slots": {},
+        "stateCallbacks": {},
+        "starter": {},
+        "variantProperty": null,
+        "variants": {},
+        "excluded": null,
+        "propertyCapabilities": null,
+        "slotCapabilities": null,
+        "modifierCapabilities": null,
+        "insertContent": null
+      },
+      "remote-m3/remote-outlined-card": {
+        "record": "remote-catalog/androidx.wear.compose.remote.material3.RemoteCardKt.RemoteOutlinedCard",
+        "catalogId": null,
+        "displayName": null,
+        "canvas": "wear-m3/card",
+        "canvasMapping": {
+          "defaults": {
+            "variant": {
+              "type": "enum",
+              "value": "outlined"
+            }
+          }
+        },
+        "unrolled": null,
+        "nativeOnly": false,
+        "traits": [],
+        "slots": {},
+        "stateCallbacks": {},
+        "starter": {},
+        "variantProperty": null,
+        "variants": {},
+        "excluded": null,
+        "propertyCapabilities": null,
+        "slotCapabilities": null,
+        "modifierCapabilities": null,
+        "insertContent": null
+      }
+    },
+    "newDesign": null
+  },
+  "diagnostics": [
+    {
+      "code": "component.excluded",
+      "subject": "remote-m3/remote-sticker",
+      "message": "kept off the builder's shelf: the catalog's own preview frame, not a Remote Compose component: every sticker is drawn inside one and nobody places one in a design."
+    },
+    {
+      "code": "component.canvas.unclaimed",
+      "subject": "remote-m3/theme-specimen",
+      "message": "no canvas adapter claimed, so it draws as a placeholder. That is the honest default and needs no fixing; it is reported so a shelf drawn entirely in placeholders is visible rather than mysterious."
+    },
+    {
+      "code": "component.policy.orphaned",
+      "subject": "remote-m3/remote-linear-progress-indicator",
+      "message": "ui-builder.policy.json states a policy for \"remote-m3/remote-linear-progress-indicator\", which joins no component in this record, so every field in it does nothing. Check its `record` canonicalId or its builder id against components.json."
+    },
+    {
+      "code": "component.policy.orphaned",
+      "subject": "remote-m3/remote-checkbox-button",
+      "message": "ui-builder.policy.json states a policy for \"remote-m3/remote-checkbox-button\", which joins no component in this record, so every field in it does nothing. Check its `record` canonicalId or its builder id against components.json."
+    }
+  ]
+}

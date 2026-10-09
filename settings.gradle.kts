@@ -63,6 +63,13 @@ include(":design-guidelines-protocol")
 
 project(":design-guidelines-protocol").projectDir = file("api/design-guidelines-protocol")
 
+// The catalog wire types: the component record discovery writes (`components.json`), the
+// UI-builder policy a catalog authors and the builder catalog generated from both. compose-ai-tools
+// writes them and the UI builder and preview server read them, so the shapes live here.
+include(":component-catalog-protocol")
+
+project(":component-catalog-protocol").projectDir = file("api/component-catalog-protocol")
+
 // The catalog-published GitHub issue index. Catalog workflows produce it and preview servers
 // consume it, so its versioned JSON shape lives here rather than in either implementation.
 include(":parity-issues-protocol")
