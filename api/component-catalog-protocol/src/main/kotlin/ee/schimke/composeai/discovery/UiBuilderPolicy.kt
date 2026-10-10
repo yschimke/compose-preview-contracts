@@ -111,6 +111,14 @@ internal constructor(
    * policy naming nothing is a rename that got away.
    */
   public val components: Map<String, UiBuilderAuthoredComponent> = emptyMap(),
+  /**
+   * The design-system values a design may re-skin, and every property each writes, carried verbatim
+   * for the UI builder's Theme panel (`DesignTokens.from`, which reads
+   * `statusSemantics.designTokens`). Shaped `{ "tokens":
+   * [ { id, label, kind, default, minimum, maximum, integer, notes, theme, components } ] }`;
+   * design-parity's policy validator checks it.
+   */
+  public val designTokens: JsonElement? = null,
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder(
@@ -135,6 +143,7 @@ internal constructor(
     public var assetRegistry: JsonElement? = null
     public var supersedes: JsonElement? = null
     public var components: Map<String, UiBuilderAuthoredComponent> = emptyMap()
+    public var designTokens: JsonElement? = null
 
     public fun build(): UiBuilderPolicyFile =
       UiBuilderPolicyFile(
@@ -158,6 +167,7 @@ internal constructor(
         assetRegistry,
         supersedes,
         components,
+        designTokens,
       )
   }
 
@@ -182,6 +192,7 @@ internal constructor(
       it.assetRegistry = assetRegistry
       it.supersedes = supersedes
       it.components = components
+      it.designTokens = designTokens
     }
 }
 
