@@ -469,7 +469,8 @@
         "propertyCapabilities": null,
         "slotCapabilities": null,
         "modifierCapabilities": null,
-        "insertContent": null
+        "insertContent": null,
+        "shelfRole": null
       },
       "remote-m3/remote-button-group": {
         "record": "remote-catalog/androidx.wear.compose.remote.material3.RemoteButtonGroupKt.RemoteButtonGroup",
@@ -493,7 +494,8 @@
         "propertyCapabilities": null,
         "slotCapabilities": null,
         "modifierCapabilities": null,
-        "insertContent": null
+        "insertContent": null,
+        "shelfRole": null
       },
       "remote-m3/remote-button": {
         "record": "remote-catalog/androidx.wear.compose.remote.material3.RemoteButtonKt.RemoteButton",
@@ -520,7 +522,8 @@
         "propertyCapabilities": null,
         "slotCapabilities": null,
         "modifierCapabilities": null,
-        "insertContent": null
+        "insertContent": null,
+        "shelfRole": null
       },
       "remote-m3/remote-compact-button": {
         "record": "remote-catalog/androidx.wear.compose.remote.material3.RemoteButtonKt.RemoteCompactButton",
@@ -550,7 +553,8 @@
         "propertyCapabilities": null,
         "slotCapabilities": null,
         "modifierCapabilities": null,
-        "insertContent": null
+        "insertContent": null,
+        "shelfRole": null
       },
       "remote-m3/remote-card": {
         "record": "remote-catalog/androidx.wear.compose.remote.material3.RemoteCardKt.RemoteCard",
@@ -577,7 +581,8 @@
         "propertyCapabilities": null,
         "slotCapabilities": null,
         "modifierCapabilities": null,
-        "insertContent": null
+        "insertContent": null,
+        "shelfRole": null
       },
       "remote-m3/remote-outlined-card": {
         "record": "remote-catalog/androidx.wear.compose.remote.material3.RemoteCardKt.RemoteOutlinedCard",
@@ -604,7 +609,8 @@
         "propertyCapabilities": null,
         "slotCapabilities": null,
         "modifierCapabilities": null,
-        "insertContent": null
+        "insertContent": null,
+        "shelfRole": null
       }
     },
     "newDesign": null

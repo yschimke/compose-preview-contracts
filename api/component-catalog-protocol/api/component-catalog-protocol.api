@@ -602,6 +602,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderAuthoredComponent {
 	public final fun component11 ()Ljava/util/List;
 	public final fun component12 ()Ljava/util/List;
 	public final fun component13 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun component14 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
@@ -621,6 +622,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderAuthoredComponent {
 	public final fun getNativeOnly ()Ljava/lang/Boolean;
 	public final fun getPropertyCapabilities ()Ljava/util/List;
 	public final fun getRecord ()Ljava/lang/String;
+	public final fun getShelfRole ()Ljava/lang/String;
 	public final fun getSlotCapabilities ()Ljava/util/List;
 	public final fun getTraits ()Ljava/util/List;
 	public final fun getUnrolled ()Lee/schimke/composeai/discovery/UiBuilderUnrolledMock;
@@ -653,6 +655,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderAuthoredComponent$Bui
 	public final fun getNativeOnly ()Ljava/lang/Boolean;
 	public final fun getPropertyCapabilities ()Ljava/util/List;
 	public final fun getRecord ()Ljava/lang/String;
+	public final fun getShelfRole ()Ljava/lang/String;
 	public final fun getSlotCapabilities ()Ljava/util/List;
 	public final fun getTraits ()Ljava/util/List;
 	public final fun getUnrolled ()Lee/schimke/composeai/discovery/UiBuilderUnrolledMock;
@@ -666,6 +669,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderAuthoredComponent$Bui
 	public final fun setNativeOnly (Ljava/lang/Boolean;)V
 	public final fun setPropertyCapabilities (Ljava/util/List;)V
 	public final fun setRecord (Ljava/lang/String;)V
+	public final fun setShelfRole (Ljava/lang/String;)V
 	public final fun setSlotCapabilities (Ljava/util/List;)V
 	public final fun setTraits (Ljava/util/List;)V
 	public final fun setUnrolled (Lee/schimke/composeai/discovery/UiBuilderUnrolledMock;)V
@@ -1075,6 +1079,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderComponentPolicy {
 	public final fun component16 ()Ljava/util/List;
 	public final fun component17 ()Ljava/util/List;
 	public final fun component18 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun component19 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
@@ -1094,6 +1099,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderComponentPolicy {
 	public final fun getNativeOnly ()Z
 	public final fun getPropertyCapabilities ()Ljava/util/List;
 	public final fun getRecord ()Ljava/lang/String;
+	public final fun getShelfRole ()Ljava/lang/String;
 	public final fun getSlotCapabilities ()Ljava/util/List;
 	public final fun getSlots ()Ljava/util/Map;
 	public final fun getStarter ()Ljava/util/Map;
@@ -1131,6 +1137,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderComponentPolicy$Build
 	public final fun getNativeOnly ()Z
 	public final fun getPropertyCapabilities ()Ljava/util/List;
 	public final fun getRecord ()Ljava/lang/String;
+	public final fun getShelfRole ()Ljava/lang/String;
 	public final fun getSlotCapabilities ()Ljava/util/List;
 	public final fun getSlots ()Ljava/util/Map;
 	public final fun getStarter ()Ljava/util/Map;
@@ -1149,6 +1156,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderComponentPolicy$Build
 	public final fun setNativeOnly (Z)V
 	public final fun setPropertyCapabilities (Ljava/util/List;)V
 	public final fun setRecord (Ljava/lang/String;)V
+	public final fun setShelfRole (Ljava/lang/String;)V
 	public final fun setSlotCapabilities (Ljava/util/List;)V
 	public final fun setSlots (Ljava/util/Map;)V
 	public final fun setStarter (Ljava/util/Map;)V

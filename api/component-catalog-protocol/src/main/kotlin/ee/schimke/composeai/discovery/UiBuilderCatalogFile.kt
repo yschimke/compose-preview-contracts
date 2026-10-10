@@ -328,6 +328,8 @@ internal constructor(
   public val modifierCapabilities: List<String>? = null,
   /** See `UiBuilderAuthoredComponent.insertContent`; only ever authored, never derived. */
   public val insertContent: JsonElement? = null,
+  /** See `UiBuilderAuthoredComponent.shelfRole`; only ever authored, never derived. */
+  public val shelfRole: String? = null,
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder(public var record: String) {
@@ -348,6 +350,7 @@ internal constructor(
     public var slotCapabilities: List<JsonElement>? = null
     public var modifierCapabilities: List<String>? = null
     public var insertContent: JsonElement? = null
+    public var shelfRole: String? = null
 
     public fun build(): UiBuilderComponentPolicy =
       UiBuilderComponentPolicy(
@@ -369,6 +372,7 @@ internal constructor(
         slotCapabilities,
         modifierCapabilities,
         insertContent,
+        shelfRole,
       )
   }
 
@@ -392,6 +396,7 @@ internal constructor(
       it.slotCapabilities = slotCapabilities
       it.modifierCapabilities = modifierCapabilities
       it.insertContent = insertContent
+      it.shelfRole = shelfRole
     }
 }
 
