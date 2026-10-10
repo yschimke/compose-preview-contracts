@@ -183,6 +183,34 @@ class GuidelinesV1Test {
   }
 
   @Test
+  fun `a catalog can include a pinned rule pack, and a flat file writes no includes`() {
+    val text =
+      """
+      {"schema":"compose-ui-builder/catalog-guidelines/v1","catalog":"m3-catalog",
+       "platform":"mobile","version":3,"rules":[],
+       "includes":[{"url":"https://raw.githubusercontent.com/o/r/v1/general.guidelines.json",
+                    "sha256":"${"ab".repeat(32)}","exclude":["general.forms.label"]}]}
+      """
+        .trimIndent()
+    val guidelines = roundTrip(CatalogGuidelinesV1.serializer(), text)
+    val include = guidelines.includes.single()
+    assertEquals("ab".repeat(32), include.sha256)
+    assertEquals(listOf("general.forms.label"), include.exclude)
+    assertTrue(include.profiles.isEmpty())
+    assertEquals(include, include.newBuilder().build())
+    assertEquals(guidelines, guidelines.newBuilder().build())
+    // Neither an empty include list nor an include's empty narrowing lists are written.
+    val encoded = builderJson.encodeToJsonElement(CatalogGuidelinesV1.serializer(), guidelines)
+    val written = encoded.jsonObject.getValue("includes") as JsonArray
+    assertEquals(setOf("url", "sha256", "exclude"), written.single().jsonObject.keys)
+    val flat = guidelines.newBuilder().also { it.includes = emptyList() }.build()
+    assertFalse(
+      "includes" in
+        builderJson.encodeToJsonElement(CatalogGuidelinesV1.serializer(), flat).jsonObject
+    )
+  }
+
+  @Test
   fun `the published fixtures re-encode to the same JSON, with no batch field added`() {
     listOf(
         CatalogGuidelinesV1.serializer() to "catalog-guidelines-wear-m3.json",
