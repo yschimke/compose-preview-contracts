@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.26.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.25.0...v3.26.0) (2026-10-10)
+
+
+### Features
+
+* **design-guidelines-protocol:** catalog guidelines can include a pinned rule pack ([#162](https://github.com/yschimke/compose-preview-contracts/issues/162)) ([304f686](https://github.com/yschimke/compose-preview-contracts/commit/304f686f825bdbb3348e48fd11037f79a2e6e750))
+
 ## [3.25.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.24.0...v3.25.0) (2026-10-10)
 
 
