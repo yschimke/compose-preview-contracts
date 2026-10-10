@@ -6,6 +6,12 @@ first — it says what is here, what is deliberately not, and why.
 
 ## The rules that matter here
 
+- **Merge only when explicitly requested.** Only merge a PR or enable auto-merge
+  when the user specifically asks. If the request or intended PRs are unclear,
+  ask for clarification before merging. A request to implement, fix, review,
+  or open a PR does not by itself authorize merging. Honor required checks,
+  reviews, and branch protections.
+
 **Every module is a published contract.** `explicitApi()` is on, and `checkKotlinAbi` is wired
 into `check` for every module. An implicitly-public declaration is an API decision nobody made,
 and an unrecorded ABI change is a break for a consumer in another repository that will not find
