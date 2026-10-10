@@ -1458,6 +1458,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderPolicyFile {
 	public final fun component19 ()Lkotlinx/serialization/json/JsonElement;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component20 ()Ljava/util/Map;
+	public final fun component21 ()Lkotlinx/serialization/json/JsonElement;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ljava/lang/String;
@@ -1476,6 +1477,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderPolicyFile {
 	public final fun getComponentIdPrefix ()Ljava/lang/String;
 	public final fun getComponents ()Ljava/util/Map;
 	public final fun getComposeSourceExport ()Lee/schimke/composeai/discovery/UiBuilderComposeSourceExport;
+	public final fun getDesignTokens ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getFrame ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getJsonSchema ()Ljava/lang/String;
 	public final fun getMenu ()Lee/schimke/composeai/discovery/UiBuilderMenu;
@@ -1515,6 +1517,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderPolicyFile$Builder {
 	public final fun getComponentIdPrefix ()Ljava/lang/String;
 	public final fun getComponents ()Ljava/util/Map;
 	public final fun getComposeSourceExport ()Lee/schimke/composeai/discovery/UiBuilderComposeSourceExport;
+	public final fun getDesignTokens ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getFrame ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getJsonSchema ()Ljava/lang/String;
 	public final fun getMenu ()Lee/schimke/composeai/discovery/UiBuilderMenu;
@@ -1535,6 +1538,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderPolicyFile$Builder {
 	public final fun setComponentIdPrefix (Ljava/lang/String;)V
 	public final fun setComponents (Ljava/util/Map;)V
 	public final fun setComposeSourceExport (Lee/schimke/composeai/discovery/UiBuilderComposeSourceExport;)V
+	public final fun setDesignTokens (Lkotlinx/serialization/json/JsonElement;)V
 	public final fun setFrame (Lkotlinx/serialization/json/JsonElement;)V
 	public final fun setJsonSchema (Ljava/lang/String;)V
 	public final fun setMenu (Lee/schimke/composeai/discovery/UiBuilderMenu;)V
@@ -1601,6 +1605,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderStatusSemantics {
 	public final fun component14 ()Lkotlinx/serialization/json/JsonElement;
 	public final fun component15 ()Ljava/util/Map;
 	public final fun component16 ()Ljava/util/Map;
+	public final fun component17 ()Lkotlinx/serialization/json/JsonElement;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Lkotlinx/serialization/json/JsonElement;
@@ -1619,6 +1624,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderStatusSemantics {
 	public final fun getComponentMenu ()Lee/schimke/composeai/discovery/UiBuilderComponentMenu;
 	public final fun getComponents ()Ljava/util/Map;
 	public final fun getComposeSourceExport ()Lee/schimke/composeai/discovery/UiBuilderComposeSourceExport;
+	public final fun getDesignTokens ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getFrame ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getNewDesign ()Lee/schimke/composeai/discovery/UiBuilderNewDesignSemantics;
 	public final fun getPlatform ()Ljava/lang/String;
@@ -1654,6 +1660,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderStatusSemantics$Build
 	public final fun getComponentMenu ()Lee/schimke/composeai/discovery/UiBuilderComponentMenu;
 	public final fun getComponents ()Ljava/util/Map;
 	public final fun getComposeSourceExport ()Lee/schimke/composeai/discovery/UiBuilderComposeSourceExport;
+	public final fun getDesignTokens ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getFrame ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getNewDesign ()Lee/schimke/composeai/discovery/UiBuilderNewDesignSemantics;
 	public final fun getPlatform ()Ljava/lang/String;
@@ -1670,6 +1677,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderStatusSemantics$Build
 	public final fun setComponentMenu (Lee/schimke/composeai/discovery/UiBuilderComponentMenu;)V
 	public final fun setComponents (Ljava/util/Map;)V
 	public final fun setComposeSourceExport (Lee/schimke/composeai/discovery/UiBuilderComposeSourceExport;)V
+	public final fun setDesignTokens (Lkotlinx/serialization/json/JsonElement;)V
 	public final fun setFrame (Lkotlinx/serialization/json/JsonElement;)V
 	public final fun setNewDesign (Lee/schimke/composeai/discovery/UiBuilderNewDesignSemantics;)V
 	public final fun setPlatform (Ljava/lang/String;)V

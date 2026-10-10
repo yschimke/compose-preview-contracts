@@ -184,6 +184,14 @@ internal constructor(
   public val builtins: Map<String, UiBuilderBuiltin> = emptyMap(),
   /** Per-component policy, keyed by builder id. The record beside this file is the inventory. */
   public val components: Map<String, UiBuilderComponentPolicy> = emptyMap(),
+  /**
+   * The design-system values a design may re-skin, and every property each writes, carried verbatim
+   * for the UI builder's Theme panel (`DesignTokens.from`, which reads
+   * `statusSemantics.designTokens`). Shaped `{ "tokens":
+   * [ { id, label, kind, default, minimum, maximum, integer, notes, theme, components } ] }`;
+   * design-parity's policy validator checks it.
+   */
+  public val designTokens: JsonElement? = null,
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder(
@@ -204,6 +212,7 @@ internal constructor(
     public var supersedes: JsonElement? = null
     public var builtins: Map<String, UiBuilderBuiltin> = emptyMap()
     public var components: Map<String, UiBuilderComponentPolicy> = emptyMap()
+    public var designTokens: JsonElement? = null
 
     public fun build(): UiBuilderStatusSemantics =
       UiBuilderStatusSemantics(
@@ -223,6 +232,7 @@ internal constructor(
         supersedes,
         builtins,
         components,
+        designTokens,
       )
   }
 
@@ -241,6 +251,7 @@ internal constructor(
       it.supersedes = supersedes
       it.builtins = builtins
       it.components = components
+      it.designTokens = designTokens
     }
 }
 

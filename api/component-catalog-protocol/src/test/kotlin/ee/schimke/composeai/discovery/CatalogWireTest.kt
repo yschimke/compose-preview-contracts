@@ -124,6 +124,34 @@ class CatalogWireTest {
   }
 
   @Test
+  fun designTokensTravelVerbatimOnThePolicyAndTheSemantics() {
+    val tokens =
+      """{"tokens":[{"id":"color.primary","label":"Primary","kind":"color","default":null,""" +
+        """"theme":[{"component":"wear-m3/screen-scaffold","property":"themePrimaryColor"}]}]}"""
+    val policy =
+      authored.decodeFromString(
+        UiBuilderPolicyFile.serializer(),
+        """{"schema":"$UI_BUILDER_POLICY_SCHEMA","platform":"wear","designTokens":$tokens}""",
+      )
+    assertEquals(authored.parseToJsonElement(tokens), policy.designTokens)
+    assertEquals(policy, policy.newBuilder().build())
+    val reencoded =
+      authored.parseToJsonElement(authored.encodeToString(UiBuilderPolicyFile.serializer(), policy))
+    assertEquals(authored.parseToJsonElement(tokens), (reencoded as JsonObject)["designTokens"])
+
+    val semantics =
+      UiBuilderStatusSemantics.Builder(
+          "wear",
+          "Wear",
+          "wear-m3/",
+          UiBuilderComponentMenu.Builder().build(),
+        )
+        .also { it.designTokens = policy.designTokens }
+        .build()
+    assertEquals(policy.designTokens, semantics.newBuilder().build().designTokens)
+  }
+
+  @Test
   fun templateEntryIsAPathOrAnObject() {
     val text =
       """
