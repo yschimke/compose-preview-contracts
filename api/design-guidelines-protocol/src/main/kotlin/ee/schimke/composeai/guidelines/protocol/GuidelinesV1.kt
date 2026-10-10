@@ -15,7 +15,9 @@ import kotlinx.serialization.json.JsonObject
  * when the model needs a picture. [surfaces] narrows it to [SURFACE_SCREEN] or [SURFACE_WIDGET]
  * designs and [profiles] to the Remote Compose profiles it is about (`launcher-widgets-v7`, with an
  * optional `+experimental`); empty means every one. [platforms] is empty in a catalog's own file,
- * whose [CatalogGuidelinesV1.platform] covers every rule in it.
+ * whose [CatalogGuidelinesV1.platform] covers every rule in it. In a shared rule pack a catalog
+ * [includes][CatalogGuidelinesV1.includes], [platforms] names the catalog platforms (`mobile`,
+ * `wear`, …) the rule is carried into; empty there means every platform.
  */
 @Serializable
 @ConsistentCopyVisibility
@@ -209,6 +211,14 @@ internal constructor(
   public val about: String = "",
   public val frames: List<GuidelineFrameV1> = emptyList(),
   public val rules: List<GuidelineRuleV1> = emptyList(),
+  /**
+   * Shared rule packs these guidelines take in, each pinned by [GuidelinesIncludeV1.sha256]. A
+   * reader that resolves them merges each pack's rules and frames into these; one that does not
+   * sees only this file's own. A published file is flattened (resolved, with no [includes] left) so
+   * that the hosts reading it need not fetch anything.
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER)
+  public val includes: List<GuidelinesIncludeV1> = emptyList(),
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder(
@@ -220,9 +230,10 @@ internal constructor(
     public var about: String = ""
     public var frames: List<GuidelineFrameV1> = emptyList()
     public var rules: List<GuidelineRuleV1> = emptyList()
+    public var includes: List<GuidelinesIncludeV1> = emptyList()
 
     public fun build(): CatalogGuidelinesV1 =
-      CatalogGuidelinesV1(schema, catalog, platform, version, about, frames, rules)
+      CatalogGuidelinesV1(schema, catalog, platform, version, about, frames, rules, includes)
   }
 
   /** These guidelines as a [Builder]. Replaces `copy`. */
@@ -232,6 +243,7 @@ internal constructor(
       it.about = about
       it.frames = frames
       it.rules = rules
+      it.includes = includes
     }
 
   public companion object {
@@ -240,6 +252,43 @@ internal constructor(
     /** The file name a catalog publishes its guidelines under, beside `ui-builder.json`. */
     public const val FILE_NAME: String = "ui-builder.guidelines.json"
   }
+}
+
+/**
+ * A shared rule pack a [CatalogGuidelinesV1] includes: another `catalog-guidelines/v1` file at
+ * [url] (`https` only), whose bytes must hash to [sha256] (lowercase hex), so an include names one
+ * exact pack and a moved or edited one is refused rather than silently read.
+ *
+ * Resolving one merges the pack's rules into the including file's: a pack rule naming
+ * [GuidelineRuleV1.platforms] is carried only into a catalog whose platform it lists, a rule whose
+ * id is in [exclude] is left out, and a rule of the including file's own with the same id replaces
+ * the pack's. [profiles], when set, narrows every carried rule that names no profiles of its own to
+ * designs targeting those Remote Compose profiles. A pack's frames are added where the including
+ * file does not already ask for the same one. A pack is not itself allowed includes.
+ */
+@Serializable
+@ConsistentCopyVisibility
+public data class GuidelinesIncludeV1
+internal constructor(
+  public val url: String,
+  public val sha256: String,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val profiles: List<String> = emptyList(),
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val exclude: List<String> = emptyList(),
+) {
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(public var url: String, public var sha256: String) {
+    public var profiles: List<String> = emptyList()
+    public var exclude: List<String> = emptyList()
+
+    public fun build(): GuidelinesIncludeV1 = GuidelinesIncludeV1(url, sha256, profiles, exclude)
+  }
+
+  /** This include as a [Builder]. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(url, sha256).also {
+      it.profiles = profiles
+      it.exclude = exclude
+    }
 }
 
 /**
