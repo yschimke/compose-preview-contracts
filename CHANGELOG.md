@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.25.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.24.0...v3.25.0) (2026-10-10)
+
+
+### Features
+
+* **component-catalog-protocol:** a record component's policy can state its shelf role ([#161](https://github.com/yschimke/compose-preview-contracts/issues/161)) ([f62a8b3](https://github.com/yschimke/compose-preview-contracts/commit/f62a8b3ebb6020332442566666cafb941e1e8c8a))
+
+
+### Bug Fixes
+
+* review findings on the ui-builder and design-guidelines contracts ([#159](https://github.com/yschimke/compose-preview-contracts/issues/159)) ([aa68e87](https://github.com/yschimke/compose-preview-contracts/commit/aa68e87fe4f697af2539bd656adba1578dd1b627))
+
 ## [3.24.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.23.1...v3.24.0) (2026-10-09)
 
 
