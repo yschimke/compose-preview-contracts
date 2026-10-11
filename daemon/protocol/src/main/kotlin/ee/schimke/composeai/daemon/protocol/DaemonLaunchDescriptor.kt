@@ -4,23 +4,30 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
 /**
- * Trimmed parse of `build/compose-previews/daemon-launch.json` — how a client starts a preview
- * daemon JVM. Mirrors the field set written by
- * [`DaemonClasspathDescriptor`][ee.schimke.composeai.plugin.daemon.DaemonClasspathDescriptor] in
- * the gradle plugin; the schema is re-declared rather than depended on so a consumer's runtime
- * classpath stays free of the plugin's AGP/Gradle deps.
+ * The wire shape of `build/compose-previews/daemon-launch.json` — how a client starts a preview
+ * daemon JVM. Both sides of the file: the Gradle plugin's `daemon-launch-builder` (and its
+ * non-Gradle equivalents for Bazel and Amper) constructs and encodes it, and `:daemon-client`'s
+ * supervisor, `:render-session-subprocess` and `compose-preview serve` [parse] it.
  *
- * Lives in `:daemon:core` — the published `daemon-core` contract — rather than in `:mcp`, where it
- * used to sit. Everything that launches a daemon needs it (`:mcp`'s supervisor,
- * `:render-session-subprocess`, `compose-preview serve`'s bundle daemon), and reading it out of the
- * MCP server module made every one of those a consumer of the MCP server. That is the coupling
- * issue #3824 has to remove before `serve` can be extracted: the preview server is a protocol
- * client, and its dependency floor is `daemon-core` + the payload schemas, not an MCP server.
+ * Through 3.27.x this was only the reader: the writer declared its own `DaemonClasspathDescriptor`
+ * in compose-ai-tools, and the two drifted (the writer's [btaCompile] was invisible here, and the
+ * reader's [jailCommand] / [hardTtlSeconds] there). [btaCompile] closes the last gap, so the writer
+ * can construct this type and the shape is declared once (#3824, preparation item 2). What stays
+ * upstream is behaviour — resolving a classpath, choosing JVM args, and the canonical
+ * pretty-printed encoder the plugin writes through.
  *
- * Still two representations of one schema — this and the gradle plugin's published
- * `daemon-launch-builder` writer, which have drifted. Consolidating them into a single published
- * contract is the next step (#3824, preparation item 2); this move puts the reader on the right
- * side of the boundary first.
+ * Lives in `:daemon-protocol` rather than an MCP or plugin module because everything that launches
+ * a daemon needs it, and a consumer's runtime classpath must stay free of the plugin's AGP/Gradle
+ * dependencies.
+ *
+ * **Schema versioning.** [schemaVersion] is [SCHEMA_VERSION] for every descriptor a current writer
+ * produces. Bump it whenever the field shape changes in a way an older reader could misread; the VS
+ * Code extension refuses a descriptor whose version it does not know.
+ *
+ * **Stable field ordering.** Collection fields are `List` (never `Set`): classpath order is
+ * load-bearing for the Robolectric sandbox, and JVM arg order matters for some `--add-opens` / `-D`
+ * precedence cases. kotlinx-serialization encodes [systemProperties] in the map's iteration order,
+ * so a writer that wants a stable file hands the [Builder] a `LinkedHashMap`.
  */
 @Serializable
 @ConsistentCopyVisibility
@@ -57,6 +64,18 @@ internal constructor(
    * its owner keeps it.
    */
   val hardTtlSeconds: Long? = null,
+  /**
+   * Stage-2 in-process compile config, written by the Gradle plugin when the variant wiring
+   * resolved the Build Tools API inputs. `null` means the consumer has not opted in, and the
+   * daemon's `compileSources` answers `result=fallback` for every call. The daemon itself consumes
+   * this through flattened `composeai.daemon.bta*` system properties; the block is here for clients
+   * (the VS Code extension reads it to decide whether `compileSources` is worth a round-trip) and
+   * so the writer and the readers declare one shape.
+   *
+   * Schema version 2 is the version that introduced it. Declared last so the existing `componentN`
+   * accessors keep their signatures.
+   */
+  val btaCompile: BtaCompileConfig? = null,
 ) {
   /**
    * Builds a [DaemonLaunchDescriptor].
@@ -96,6 +115,7 @@ internal constructor(
     public var javaLauncher: String? = null
     public var jailCommand: List<String> = emptyList()
     public var hardTtlSeconds: Long? = null
+    public var btaCompile: BtaCompileConfig? = null
 
     public fun build(): DaemonLaunchDescriptor =
       DaemonLaunchDescriptor(
@@ -112,6 +132,7 @@ internal constructor(
         manifestPath,
         jailCommand,
         hardTtlSeconds,
+        btaCompile,
       )
   }
 
@@ -133,6 +154,7 @@ internal constructor(
         it.javaLauncher = javaLauncher
         it.jailCommand = jailCommand
         it.hardTtlSeconds = hardTtlSeconds
+        it.btaCompile = btaCompile
       }
 
   /** Returns a copy launched behind [command] and force-killed after [hardTtlSeconds]. */
@@ -164,6 +186,17 @@ internal constructor(
      * `checkDaemonLaunchSchema`.
      */
     public const val SANDBOX_COUNT_PROP: String = "composeai.daemon.sandboxCount"
+
+    /**
+     * The [schemaVersion] a current writer stamps. Declared with the shape it versions, so a writer
+     * reads it rather than re-declaring the number.
+     *
+     * Version history:
+     * - **1** — initial schema.
+     * - **2** — added the optional [btaCompile] block. The v1 VS Code reader failed on any unknown
+     *   field, so even a null-defaulted addition was breaking for it.
+     */
+    public const val SCHEMA_VERSION: Int = 2
 
     private val json = Json { ignoreUnknownKeys = true }
 
