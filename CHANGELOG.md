@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.28.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.27.0...v3.28.0) (2026-10-11)
+
+
+### Features
+
+* **daemon-protocol:** declare daemon-launch.json's btaCompile block and schema version ([#167](https://github.com/yschimke/compose-preview-contracts/issues/167)) ([36343ee](https://github.com/yschimke/compose-preview-contracts/commit/36343ee074c09ea053662bf075e14be1d6e204c6))
+
 ## [3.27.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.26.0...v3.27.0) (2026-10-10)
 
 
