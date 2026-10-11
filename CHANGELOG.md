@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.29.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.28.0...v3.29.0) (2026-10-11)
+
+
+### Features
+
+* **catalog:** carry a component's export projection on the authored and published policy ([#170](https://github.com/yschimke/compose-preview-contracts/issues/170)) ([3051b71](https://github.com/yschimke/compose-preview-contracts/commit/3051b71c070ecb9492d00cf8e5ebb10ee5e103f9))
+
 ## [3.28.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.27.0...v3.28.0) (2026-10-11)
 
 
