@@ -70,6 +70,32 @@ class ScreenDocumentWireTest {
   }
 
   @Test
+  fun `a slot item's body scope is additive and omitted while unattested`() {
+    val legacy = """{"callable":"item","receiverScopeFqn":"$LIST_SCOPE"}"""
+    val decoded = Json.decodeFromString<SlotItem>(legacy)
+    assertNull(decoded.bodyScopeFqn)
+    assertEquals(legacy, Json.encodeToString(decoded))
+
+    val attested = decoded.newBuilder().also { it.bodyScopeFqn = ITEM_SCOPE }.build()
+    val wire = Json.encodeToString(attested)
+    assertTrue("\"bodyScopeFqn\":\"$ITEM_SCOPE\"" in wire, wire)
+    assertEquals(attested, Json.decodeFromString<SlotItem>(wire))
+  }
+
+  @Test
+  fun `the constructor and copy that predate the body scope still link and keep it`() {
+    // The four-argument forms a released consumer compiled against; they must not drop the field.
+    val item = SlotItem("item", LIST_SCOPE)
+    assertNull(item.bodyScopeFqn)
+    val attested =
+      SlotItem.Builder("item", LIST_SCOPE).also { it.bodyScopeFqn = ITEM_SCOPE }.build()
+    val keyed = attested.copy(named = mapOf("key" to ScreenValue.Text("a")))
+    assertEquals(ITEM_SCOPE, keyed.bodyScopeFqn)
+    assertEquals(mapOf("key" to ScreenValue.Text("a")), keyed.named)
+    assertEquals(attested, attested.newBuilder().build())
+  }
+
+  @Test
   fun `value discriminators retain the original generator package`() {
     val values =
       linkedMapOf(
@@ -101,6 +127,9 @@ class ScreenDocumentWireTest {
             "contentPadding",
             "androidx.compose.foundation.layout.PaddingValues",
           ),
+        "ScopeRead" to ScreenValue.ScopeRead(ITEM_SCOPE),
+        "LocalRead" to
+          ScreenValue.LocalRead("spec", "androidx.wear.compose.material3.lazy.TransformationSpec"),
       )
     for ((kind, value) in values) {
       val wire = Json.encodeToJsonElement(ScreenValue.serializer(), value)
@@ -179,5 +208,10 @@ class ScreenDocumentWireTest {
     assertEquals(document, Json.decodeFromString<ScreenDocument>(wire))
     assertTrue("ee.schimke.composeai.discovery.ScreenParameter.Callback" in wire)
     assertTrue("ee.schimke.composeai.discovery.ScreenAction.Set" in wire)
+  }
+
+  private companion object {
+    const val LIST_SCOPE = "androidx.wear.compose.foundation.lazy.TransformingLazyColumnScope"
+    const val ITEM_SCOPE = "androidx.wear.compose.foundation.lazy.TransformingLazyColumnItemScope"
   }
 }

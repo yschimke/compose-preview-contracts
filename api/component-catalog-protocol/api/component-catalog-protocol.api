@@ -1037,9 +1037,13 @@ public final class ee/schimke/composeai/discovery/UiBuilderCode {
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/util/List;
 	public final fun component4 ()Ljava/util/Map;
+	public final fun component5 ()Ljava/util/Map;
+	public final fun component6 ()Ljava/util/Map;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getImports ()Ljava/util/List;
 	public final fun getLanguage ()Ljava/lang/String;
+	public final fun getLocals ()Ljava/util/Map;
+	public final fun getScopes ()Ljava/util/Map;
 	public final fun getStrategy ()Ljava/lang/String;
 	public final fun getTemplates ()Ljava/util/Map;
 	public fun hashCode ()I
@@ -1063,10 +1067,14 @@ public final class ee/schimke/composeai/discovery/UiBuilderCode$Builder {
 	public final fun build ()Lee/schimke/composeai/discovery/UiBuilderCode;
 	public final fun getImports ()Ljava/util/List;
 	public final fun getLanguage ()Ljava/lang/String;
+	public final fun getLocals ()Ljava/util/Map;
+	public final fun getScopes ()Ljava/util/Map;
 	public final fun getStrategy ()Ljava/lang/String;
 	public final fun getTemplates ()Ljava/util/Map;
 	public final fun setImports (Ljava/util/List;)V
 	public final fun setLanguage (Ljava/lang/String;)V
+	public final fun setLocals (Ljava/util/Map;)V
+	public final fun setScopes (Ljava/util/Map;)V
 	public final fun setStrategy (Ljava/lang/String;)V
 	public final fun setTemplates (Ljava/util/Map;)V
 }

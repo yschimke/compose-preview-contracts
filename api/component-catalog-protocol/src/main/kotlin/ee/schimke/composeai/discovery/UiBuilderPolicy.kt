@@ -651,6 +651,20 @@ internal constructor(
   public val imports: List<String> = emptyList(),
   /** Structural Kotlin with named holes, keyed by role. A hole-filler, not a language. */
   public val templates: Map<String, String> = emptyMap(),
+  /**
+   * Names [templates] define and the code they wrap may read, each with its type: Wear's `spec`
+   * (`…TransformationSpec`) and `listState` (`…TransformingLazyColumnState`), hoisted by its screen
+   * template. A `ScreenValue.LocalRead` must name one of these at this type, so a projection can
+   * never print an identifier no template defines.
+   */
+  public val locals: Map<String, String> = emptyMap(),
+  /**
+   * The receiver each template role's lambda opens around the code it wraps, keyed by role: Wear's
+   * `list-item` is `item { … }` in a `TransformingLazyColumn`, which composes its body under a
+   * `…TransformingLazyColumnItemScope`. This is the attestation `SlotItem.bodyScopeFqn` is filled
+   * from, and so what makes a `ScreenValue.ScopeRead` of that scope legal in that role.
+   */
+  public val scopes: Map<String, String> = emptyMap(),
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder {
@@ -658,8 +672,11 @@ internal constructor(
     public var language: String? = null
     public var imports: List<String> = emptyList()
     public var templates: Map<String, String> = emptyMap()
+    public var locals: Map<String, String> = emptyMap()
+    public var scopes: Map<String, String> = emptyMap()
 
-    public fun build(): UiBuilderCode = UiBuilderCode(strategy, language, imports, templates)
+    public fun build(): UiBuilderCode =
+      UiBuilderCode(strategy, language, imports, templates, locals, scopes)
   }
 
   /** This value as a [Builder], for deriving a modified one. Replaces `copy`. */
@@ -669,6 +686,8 @@ internal constructor(
       it.language = language
       it.imports = imports
       it.templates = templates
+      it.locals = locals
+      it.scopes = scopes
     }
 }
 
