@@ -363,6 +363,35 @@ sealed interface ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.comp
         }
     }
 
+    final class LocalRead : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.LocalRead|null[0]
+        constructor <init>(kotlin/String, kotlin/String) // ee.schimke.composeai.discovery/ScreenValue.LocalRead.<init>|<init>(kotlin.String;kotlin.String){}[0]
+
+        final val name // ee.schimke.composeai.discovery/ScreenValue.LocalRead.name|{}name[0]
+            final fun <get-name>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.LocalRead.name.<get-name>|<get-name>(){}[0]
+        final val typeFqn // ee.schimke.composeai.discovery/ScreenValue.LocalRead.typeFqn|{}typeFqn[0]
+            final fun <get-typeFqn>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.LocalRead.typeFqn.<get-typeFqn>|<get-typeFqn>(){}[0]
+
+        final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.LocalRead.component1|component1(){}[0]
+        final fun component2(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.LocalRead.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ...): ee.schimke.composeai.discovery/ScreenValue.LocalRead // ee.schimke.composeai.discovery/ScreenValue.LocalRead.copy|copy(kotlin.String;kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.LocalRead.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenValue.LocalRead.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.LocalRead.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenValue.LocalRead> { // ee.schimke.composeai.discovery/ScreenValue.LocalRead.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenValue.LocalRead.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenValue.LocalRead.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenValue.LocalRead.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenValue.LocalRead // ee.schimke.composeai.discovery/ScreenValue.LocalRead.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenValue.LocalRead) // ee.schimke.composeai.discovery/ScreenValue.LocalRead.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenValue.LocalRead){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenValue.LocalRead.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenValue.LocalRead> // ee.schimke.composeai.discovery/ScreenValue.LocalRead.Companion.serializer|serializer(){}[0]
+        }
+    }
+
     final class ParameterRead : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.ParameterRead|null[0]
         constructor <init>(kotlin/String, kotlin/String) // ee.schimke.composeai.discovery/ScreenValue.ParameterRead.<init>|<init>(kotlin.String;kotlin.String){}[0]
 
@@ -458,6 +487,32 @@ sealed interface ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.comp
 
         final object Companion { // ee.schimke.composeai.discovery/ScreenValue.RowRead.Companion|null[0]
             final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenValue.RowRead> // ee.schimke.composeai.discovery/ScreenValue.RowRead.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class ScopeRead : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.ScopeRead|null[0]
+        constructor <init>(kotlin/String) // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.<init>|<init>(kotlin.String){}[0]
+
+        final val typeFqn // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.typeFqn|{}typeFqn[0]
+            final fun <get-typeFqn>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.typeFqn.<get-typeFqn>|<get-typeFqn>(){}[0]
+
+        final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.component1|component1(){}[0]
+        final fun copy(kotlin/String = ...): ee.schimke.composeai.discovery/ScreenValue.ScopeRead // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.copy|copy(kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenValue.ScopeRead> { // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.$serializer|null[0]
+            final val descriptor // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ScreenValue.ScopeRead // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ScreenValue.ScopeRead) // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ScreenValue.ScopeRead){}[0]
+        }
+
+        final object Companion { // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ScreenValue.ScopeRead> // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.Companion.serializer|serializer(){}[0]
         }
     }
 
@@ -849,7 +904,10 @@ final class ee.schimke.composeai.discovery/ScreenState { // ee.schimke.composeai
 
 final class ee.schimke.composeai.discovery/SlotItem { // ee.schimke.composeai.discovery/SlotItem|null[0]
     constructor <init>(kotlin/String, kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ...) // ee.schimke.composeai.discovery/SlotItem.<init>|<init>(kotlin.String;kotlin.String;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>){}[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin/String? = ...) // ee.schimke.composeai.discovery/SlotItem.<init>|<init>(kotlin.String;kotlin.String;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>;kotlin.String?){}[0]
 
+    final val bodyScopeFqn // ee.schimke.composeai.discovery/SlotItem.bodyScopeFqn|{}bodyScopeFqn[0]
+        final fun <get-bodyScopeFqn>(): kotlin/String? // ee.schimke.composeai.discovery/SlotItem.bodyScopeFqn.<get-bodyScopeFqn>|<get-bodyScopeFqn>(){}[0]
     final val callable // ee.schimke.composeai.discovery/SlotItem.callable|{}callable[0]
         final fun <get-callable>(): kotlin/String // ee.schimke.composeai.discovery/SlotItem.callable.<get-callable>|<get-callable>(){}[0]
     final val named // ee.schimke.composeai.discovery/SlotItem.named|{}named[0]
@@ -863,10 +921,35 @@ final class ee.schimke.composeai.discovery/SlotItem { // ee.schimke.composeai.di
     final fun component2(): kotlin/String // ee.schimke.composeai.discovery/SlotItem.component2|component2(){}[0]
     final fun component3(): kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/SlotItem.component3|component3(){}[0]
     final fun component4(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/SlotItem.component4|component4(){}[0]
+    final fun component5(): kotlin/String? // ee.schimke.composeai.discovery/SlotItem.component5|component5(){}[0]
     final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ...): ee.schimke.composeai.discovery/SlotItem // ee.schimke.composeai.discovery/SlotItem.copy|copy(kotlin.String;kotlin.String;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> = ..., kotlin/String? = ...): ee.schimke.composeai.discovery/SlotItem // ee.schimke.composeai.discovery/SlotItem.copy|copy(kotlin.String;kotlin.String;kotlin.collections.List<ee.schimke.composeai.discovery.ScreenValue>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>;kotlin.String?){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/SlotItem.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/SlotItem.hashCode|hashCode(){}[0]
+    final fun newBuilder(): ee.schimke.composeai.discovery/SlotItem.Builder // ee.schimke.composeai.discovery/SlotItem.newBuilder|newBuilder(){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.discovery/SlotItem.toString|toString(){}[0]
+
+    final class Builder { // ee.schimke.composeai.discovery/SlotItem.Builder|null[0]
+        constructor <init>(kotlin/String, kotlin/String) // ee.schimke.composeai.discovery/SlotItem.Builder.<init>|<init>(kotlin.String;kotlin.String){}[0]
+
+        final var bodyScopeFqn // ee.schimke.composeai.discovery/SlotItem.Builder.bodyScopeFqn|{}bodyScopeFqn[0]
+            final fun <get-bodyScopeFqn>(): kotlin/String? // ee.schimke.composeai.discovery/SlotItem.Builder.bodyScopeFqn.<get-bodyScopeFqn>|<get-bodyScopeFqn>(){}[0]
+            final fun <set-bodyScopeFqn>(kotlin/String?) // ee.schimke.composeai.discovery/SlotItem.Builder.bodyScopeFqn.<set-bodyScopeFqn>|<set-bodyScopeFqn>(kotlin.String?){}[0]
+        final var callable // ee.schimke.composeai.discovery/SlotItem.Builder.callable|{}callable[0]
+            final fun <get-callable>(): kotlin/String // ee.schimke.composeai.discovery/SlotItem.Builder.callable.<get-callable>|<get-callable>(){}[0]
+            final fun <set-callable>(kotlin/String) // ee.schimke.composeai.discovery/SlotItem.Builder.callable.<set-callable>|<set-callable>(kotlin.String){}[0]
+        final var named // ee.schimke.composeai.discovery/SlotItem.Builder.named|{}named[0]
+            final fun <get-named>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/SlotItem.Builder.named.<get-named>|<get-named>(){}[0]
+            final fun <set-named>(kotlin.collections/Map<kotlin/String, ee.schimke.composeai.discovery/ScreenValue>) // ee.schimke.composeai.discovery/SlotItem.Builder.named.<set-named>|<set-named>(kotlin.collections.Map<kotlin.String,ee.schimke.composeai.discovery.ScreenValue>){}[0]
+        final var positional // ee.schimke.composeai.discovery/SlotItem.Builder.positional|{}positional[0]
+            final fun <get-positional>(): kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue> // ee.schimke.composeai.discovery/SlotItem.Builder.positional.<get-positional>|<get-positional>(){}[0]
+            final fun <set-positional>(kotlin.collections/List<ee.schimke.composeai.discovery/ScreenValue>) // ee.schimke.composeai.discovery/SlotItem.Builder.positional.<set-positional>|<set-positional>(kotlin.collections.List<ee.schimke.composeai.discovery.ScreenValue>){}[0]
+        final var receiverScopeFqn // ee.schimke.composeai.discovery/SlotItem.Builder.receiverScopeFqn|{}receiverScopeFqn[0]
+            final fun <get-receiverScopeFqn>(): kotlin/String // ee.schimke.composeai.discovery/SlotItem.Builder.receiverScopeFqn.<get-receiverScopeFqn>|<get-receiverScopeFqn>(){}[0]
+            final fun <set-receiverScopeFqn>(kotlin/String) // ee.schimke.composeai.discovery/SlotItem.Builder.receiverScopeFqn.<set-receiverScopeFqn>|<set-receiverScopeFqn>(kotlin.String){}[0]
+
+        final fun build(): ee.schimke.composeai.discovery/SlotItem // ee.schimke.composeai.discovery/SlotItem.Builder.build|build(){}[0]
+    }
 
     final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/SlotItem> { // ee.schimke.composeai.discovery/SlotItem.$serializer|null[0]
         final val descriptor // ee.schimke.composeai.discovery/SlotItem.$serializer.descriptor|{}descriptor[0]

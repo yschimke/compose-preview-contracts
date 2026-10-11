@@ -210,6 +210,33 @@ class CatalogWireTest {
   }
 
   @Test
+  fun templateLocalsAndScopesAreAdditiveAndRoundTrip() {
+    val legacy = """{"strategy":"templates","templates":{"list-item":"item${'$'}{key} {}"}}"""
+    val bare = authored.decodeFromString(UiBuilderCode.serializer(), legacy)
+    assertEquals(emptyMap(), bare.locals)
+    assertEquals(emptyMap(), bare.scopes)
+    assertEquals(
+      Json.parseToJsonElement(legacy),
+      authored.encodeToJsonElement(UiBuilderCode.serializer(), bare),
+    )
+
+    val wear =
+      bare
+        .newBuilder()
+        .also {
+          it.locals = mapOf("spec" to "androidx.wear.compose.material3.lazy.TransformationSpec")
+          it.scopes =
+            mapOf(
+              "list-item" to "androidx.wear.compose.foundation.lazy.TransformingLazyColumnItemScope"
+            )
+        }
+        .build()
+    val encoded = authored.encodeToString(UiBuilderCode.serializer(), wear)
+    assertEquals(wear, authored.decodeFromString(UiBuilderCode.serializer(), encoded))
+    assertEquals(wear, wear.newBuilder().build())
+  }
+
+  @Test
   fun newBuilderReproducesTheValue() {
     val file =
       generated.decodeFromString(
