@@ -75,11 +75,6 @@ to do so rather than quietly dropped:
   and the TypeScript suite in
   [compose-preview-vscode](https://github.com/yschimke/compose-preview-vscode) parse the same
   files; that shared parse is the drift check. This repo is now their canonical home.
-- **`DeviceDimensionsCatalogDriftTest`** — `DeviceDimensions` is duplicated in
-  `gradle-plugin/preview-discovery` upstream, and the catalog and `spec:` grammar have drifted
-  before. The test looks for a checkout via `COMPOSE_AI_TOOLS_ROOT`, then a sibling
-  `../compose-ai-tools`, and **skips** rather than fails when it finds neither — "you have not
-  checked out the other repo" is not a drift signal. CI sets it, so the check still gates.
 
 ## Versioning
 
@@ -99,7 +94,6 @@ Until cutover the version here is bookkeeping. Nothing consumes it.
 ```sh
 ./gradlew check              # compile, test, ktfmt, checkKotlinAbi
 ./gradlew publishToMavenLocal
-COMPOSE_AI_TOOLS_ROOT=../compose-ai-tools ./gradlew check   # includes the cross-repo drift check
 ```
 
 The UI-builder protocol also owns the explicit production project-file declarations for durable

@@ -9,9 +9,8 @@
 // It is not in `:daemon-protocol` on purpose. That module holds shapes — what crosses the wire —
 // and `DeviceDimensions.resolve` computes a result from a table. The precedent here is
 // `:data-pseudolocale-core`: a pure table with no renderer behind it, where the alternative is
-// each side keeping its own copy and drifting. That drift is not hypothetical — the catalog is
-// duplicated in `:gradle-plugin`'s discovery pass, and `DeviceDimensionsCatalogDriftTest` exists
-// because the two copies did drift once.
+// each side keeping its own copy and drifting. compose-ai-tools' Gradle plugin used to keep such a
+// copy, and it drifted; the plugin now consumes this module instead.
 //
 // **Published to Maven Central** as `ee.schimke.composeai:daemon-devices`. The package is
 // unchanged (`ee.schimke.composeai.daemon.devices`) and `:daemon:core` exposes this module as

@@ -3,29 +3,11 @@ package ee.schimke.composeai.daemon.devices
 /**
  * Per-`@Preview(device = ...)` geometry catalog and parser.
  *
- * **Duplicated from `:gradle-plugin`'s
- * [DeviceDimensions][ee.schimke.composeai.plugin.DeviceDimensions].** Per
- * [DESIGN.md § 7](../../../../../../docs/daemon/DESIGN.md#7-sharing-strategy--what-crosses-the-boundary)
- * the catalog lives in two places — the standalone Gradle plugin (which uses it during discovery to
- * populate `PreviewParams.widthDp/heightDp/density`) and the daemon (which uses it at the override
- * layer to resolve `renderNow.overrides.device` to dimensions). The two builds are separate
- * (`includeBuild("gradle-plugin")`) so there's no clean way to share without a publish-and-consume
- * cycle on every catalog change.
- *
- * **Drift policy.** The KNOWN_DEVICES map is the load-bearing data. When you add a device here, add
- * it to the gradle-plugin copy too (and vice versa). The `spec:parent=…,width=…,height=…,dpi=…`
- * parser is also duplicated; the rules are intentionally identical so a single payload string
- * drives both code paths, and `DeviceDimensionsCatalogDriftTest` compares both the catalog and the
- * set of `spec:` terms each copy reads so a term learned on one side can't go missing on the other.
- *
- * **Daemon-only constants.** Unlike the gradle-plugin counterpart, this object only ships the
- * `resolve(device, widthDp?, heightDp?)` entrypoint — `resolveForRender` (which makes the
- * fixed-vs-wrap decision per axis) is plugin-only because it consumes `showSystemUi`, an annotation
- * field that doesn't appear in the daemon's override surface. Callers who already have
- * widthPx/heightPx/density (e.g. the `PreviewManifestRouter` after merging an inbound override) can
- * skip [resolve] entirely.
- *
- * @see ee.schimke.composeai.plugin.DeviceDimensions
+ * The single copy of the catalog and the `spec:parent=…,width=…,height=…,dpi=…` grammar: the daemon
+ * resolves `renderNow.overrides.device` through it, and compose-ai-tools' Gradle plugin uses it
+ * during discovery to populate `PreviewParams.widthDp/heightDp/density`. The plugin's fixed-vs-wrap
+ * sizing (`resolveForRender`, which reads `showSystemUi`) stays in the plugin. Callers that already
+ * have widthPx/heightPx/density can skip [resolve] entirely.
  */
 public object DeviceDimensions {
   /**
@@ -51,7 +33,7 @@ public object DeviceDimensions {
   // Source-of-truth for the dp values and densities below: sergio-sastre/ComposablePreviewScanner
   // (Phone.kt / Tablet.kt / Wear.kt / GenericDevices.kt / Desktop.kt / Television.kt /
   // Automotive.kt / XR.kt under android/.../device/types/), with dp = px / (densityDpi / 160)
-  // and density = densityDpi / 160. KEEP IN SYNC with `:gradle-plugin`'s `DeviceDimensions`.
+  // and density = densityDpi / 160.
   private val KNOWN_DEVICES =
     mapOf(
       // --- Pixel phones ---

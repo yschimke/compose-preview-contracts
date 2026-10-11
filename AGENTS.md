@@ -170,12 +170,8 @@ compose-preview-vscode#5, which happened on that repository's first release.
 
 ## Cross-repo checks
 
-`DeviceDimensionsCatalogDriftTest` compares a catalog duplicated in the upstream Gradle plugin.
-It **skips** without a checkout. If you are changing `DeviceDimensions`, run it for real:
-
-```sh
-COMPOSE_AI_TOOLS_ROOT=../compose-ai-tools ./gradlew :daemon-devices:test
-```
+`DeviceDimensions` is the single copy: compose-ai-tools' Gradle plugin consumes `daemon-devices`
+rather than keeping its own, so a catalog change here reaches it through a release and pin bump.
 
 `docs/daemon/protocol-fixtures/` are the cross-language wire goldens, parsed here and by
 compose-preview-vscode's TypeScript suite. Adding a protocol message means adding a fixture;
