@@ -603,6 +603,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderAuthoredComponent {
 	public final fun component12 ()Ljava/util/List;
 	public final fun component13 ()Lkotlinx/serialization/json/JsonElement;
 	public final fun component14 ()Ljava/lang/String;
+	public final fun component15 ()Lkotlinx/serialization/json/JsonElement;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
@@ -616,6 +617,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderAuthoredComponent {
 	public final fun getCanvasMapping ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getDisplayName ()Ljava/lang/String;
 	public final fun getExcluded ()Ljava/lang/String;
+	public final fun getExportProjection ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getGroup ()Ljava/lang/String;
 	public final fun getInsertContent ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getModifierCapabilities ()Ljava/util/List;
@@ -649,6 +651,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderAuthoredComponent$Bui
 	public final fun getCanvasMapping ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getDisplayName ()Ljava/lang/String;
 	public final fun getExcluded ()Ljava/lang/String;
+	public final fun getExportProjection ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getGroup ()Ljava/lang/String;
 	public final fun getInsertContent ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getModifierCapabilities ()Ljava/util/List;
@@ -663,6 +666,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderAuthoredComponent$Bui
 	public final fun setCanvasMapping (Lkotlinx/serialization/json/JsonElement;)V
 	public final fun setDisplayName (Ljava/lang/String;)V
 	public final fun setExcluded (Ljava/lang/String;)V
+	public final fun setExportProjection (Lkotlinx/serialization/json/JsonElement;)V
 	public final fun setGroup (Ljava/lang/String;)V
 	public final fun setInsertContent (Lkotlinx/serialization/json/JsonElement;)V
 	public final fun setModifierCapabilities (Ljava/util/List;)V
@@ -1081,6 +1085,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderComponentPolicy {
 	public final fun component18 ()Lkotlinx/serialization/json/JsonElement;
 	public final fun component19 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
+	public final fun component20 ()Lkotlinx/serialization/json/JsonElement;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Lkotlinx/serialization/json/JsonElement;
@@ -1094,6 +1099,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderComponentPolicy {
 	public final fun getCatalogId ()Ljava/lang/String;
 	public final fun getDisplayName ()Ljava/lang/String;
 	public final fun getExcluded ()Ljava/lang/String;
+	public final fun getExportProjection ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getInsertContent ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getModifierCapabilities ()Ljava/util/List;
 	public final fun getNativeOnly ()Z
@@ -1132,6 +1138,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderComponentPolicy$Build
 	public final fun getCatalogId ()Ljava/lang/String;
 	public final fun getDisplayName ()Ljava/lang/String;
 	public final fun getExcluded ()Ljava/lang/String;
+	public final fun getExportProjection ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getInsertContent ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getModifierCapabilities ()Ljava/util/List;
 	public final fun getNativeOnly ()Z
@@ -1151,6 +1158,7 @@ public final class ee/schimke/composeai/discovery/UiBuilderComponentPolicy$Build
 	public final fun setCatalogId (Ljava/lang/String;)V
 	public final fun setDisplayName (Ljava/lang/String;)V
 	public final fun setExcluded (Ljava/lang/String;)V
+	public final fun setExportProjection (Lkotlinx/serialization/json/JsonElement;)V
 	public final fun setInsertContent (Lkotlinx/serialization/json/JsonElement;)V
 	public final fun setModifierCapabilities (Ljava/util/List;)V
 	public final fun setNativeOnly (Z)V

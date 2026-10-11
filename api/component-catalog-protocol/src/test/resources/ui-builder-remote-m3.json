@@ -471,7 +471,8 @@
         "slotCapabilities": null,
         "modifierCapabilities": null,
         "insertContent": null,
-        "shelfRole": null
+        "shelfRole": null,
+        "exportProjection": null
       },
       "remote-m3/remote-button-group": {
         "record": "remote-catalog/androidx.wear.compose.remote.material3.RemoteButtonGroupKt.RemoteButtonGroup",
@@ -496,7 +497,8 @@
         "slotCapabilities": null,
         "modifierCapabilities": null,
         "insertContent": null,
-        "shelfRole": null
+        "shelfRole": null,
+        "exportProjection": null
       },
       "remote-m3/remote-button": {
         "record": "remote-catalog/androidx.wear.compose.remote.material3.RemoteButtonKt.RemoteButton",
@@ -524,7 +526,8 @@
         "slotCapabilities": null,
         "modifierCapabilities": null,
         "insertContent": null,
-        "shelfRole": null
+        "shelfRole": null,
+        "exportProjection": null
       },
       "remote-m3/remote-compact-button": {
         "record": "remote-catalog/androidx.wear.compose.remote.material3.RemoteButtonKt.RemoteCompactButton",
@@ -555,7 +558,8 @@
         "slotCapabilities": null,
         "modifierCapabilities": null,
         "insertContent": null,
-        "shelfRole": null
+        "shelfRole": null,
+        "exportProjection": null
       },
       "remote-m3/remote-card": {
         "record": "remote-catalog/androidx.wear.compose.remote.material3.RemoteCardKt.RemoteCard",
@@ -583,7 +587,8 @@
         "slotCapabilities": null,
         "modifierCapabilities": null,
         "insertContent": null,
-        "shelfRole": null
+        "shelfRole": null,
+        "exportProjection": null
       },
       "remote-m3/remote-outlined-card": {
         "record": "remote-catalog/androidx.wear.compose.remote.material3.RemoteCardKt.RemoteOutlinedCard",
@@ -611,7 +616,8 @@
         "slotCapabilities": null,
         "modifierCapabilities": null,
         "insertContent": null,
-        "shelfRole": null
+        "shelfRole": null,
+        "exportProjection": null
       }
     },
     "newDesign": null

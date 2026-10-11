@@ -246,4 +246,29 @@ class CatalogWireTest {
       authored.encodeToJsonElement(UiBuilderTemplateEntry.serializer(), entry)
     assertEquals(JsonPrimitive("ui-builder/designs/a.json"), encoded)
   }
+
+  @Test
+  fun anExportProjectionIsCarriedVerbatimAndLeftOutWhenAbsent() {
+    val projection =
+      Json.parseToJsonElement(
+        """{"variantProperty":"variant","targets":[{"record":"app/a.ButtonKt.Button","parameters":{}}]}"""
+      )
+    val authoredComponent =
+      UiBuilderAuthoredComponent.Builder().apply { exportProjection = projection }.build()
+    val encoded =
+      authored.encodeToJsonElement(UiBuilderAuthoredComponent.serializer(), authoredComponent)
+    assertEquals(projection, (encoded as JsonObject)["exportProjection"])
+    assertEquals(
+      authoredComponent,
+      authored.decodeFromJsonElement(UiBuilderAuthoredComponent.serializer(), encoded),
+    )
+    val published =
+      UiBuilderComponentPolicy.Builder("app/a.ButtonKt.Button")
+        .apply { exportProjection = projection }
+        .build()
+    assertEquals(projection, published.newBuilder().build().exportProjection)
+    val unstated = UiBuilderAuthoredComponent.Builder().build()
+    val bare = authored.encodeToJsonElement(UiBuilderAuthoredComponent.serializer(), unstated)
+    assertEquals(null, (bare as JsonObject)["exportProjection"])
+  }
 }
