@@ -305,7 +305,8 @@
       "overloadsCollided": false,
       "builder": null,
       "requiredOptIns": [],
-      "androidxOptIns": []
+      "androidxOptIns": [],
+      "overloads": []
     },
     {
       "canonicalId": "remote-catalog/androidx.wear.compose.remote.material3.RemoteButtonGroupKt.RemoteButtonGroup",
@@ -420,7 +421,8 @@
       "overloadsCollided": false,
       "builder": null,
       "requiredOptIns": [],
-      "androidxOptIns": []
+      "androidxOptIns": [],
+      "overloads": []
     },
     {
       "canonicalId": "remote-catalog/androidx.wear.compose.remote.material3.RemoteButtonKt.RemoteButton",
@@ -964,7 +966,8 @@
       "overloadsCollided": false,
       "builder": null,
       "requiredOptIns": [],
-      "androidxOptIns": []
+      "androidxOptIns": [],
+      "overloads": []
     }
   ],
   "builderOrphans": []

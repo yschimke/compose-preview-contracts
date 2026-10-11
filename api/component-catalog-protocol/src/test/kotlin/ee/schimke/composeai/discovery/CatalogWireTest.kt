@@ -248,6 +248,46 @@ class CatalogWireTest {
   }
 
   @Test
+  fun aRecordCarriesEveryOverloadAndRoundTrips() {
+    val text = TargetParameter.Builder("text", "String").build()
+    val slot = TargetParameter.Builder("content", "@Composable () -> Unit").build()
+    val record =
+      ComponentRecord.Builder(
+          "app/a.ButtonKt.Button",
+          ComponentSymbol.Builder("a.ButtonKt", "a.Button", "Button", ComponentOrigin.LIBRARY)
+            .build(),
+        )
+        .apply {
+          parameters = listOf(text)
+          overloads =
+            listOf(
+              ComponentOverload.Builder()
+                .apply {
+                  descriptor = "(Ljava/lang/String;)V"
+                  parameters = listOf(text)
+                }
+                .build(),
+              ComponentOverload.Builder().apply { parameters = listOf(slot) }.build(),
+            )
+        }
+        .build()
+    val encoded = generated.encodeToJsonElement(ComponentRecord.serializer(), record)
+    assertEquals(record, generated.decodeFromJsonElement(ComponentRecord.serializer(), encoded))
+    assertEquals(record, record.newBuilder().build())
+    record.overloads.forEach { assertEquals(it, it.newBuilder().build()) }
+    // A record written before the field existed reads as "not recorded".
+    val legacy =
+      authored.decodeFromString(
+        ComponentRecord.serializer(),
+        authored.encodeToString(
+          ComponentRecord.serializer(),
+          record.newBuilder().apply { overloads = emptyList() }.build(),
+        ),
+      )
+    assertTrue(legacy.overloads.isEmpty())
+  }
+
+  @Test
   fun anExportProjectionIsCarriedVerbatimAndLeftOutWhenAbsent() {
     val projection =
       Json.parseToJsonElement(
