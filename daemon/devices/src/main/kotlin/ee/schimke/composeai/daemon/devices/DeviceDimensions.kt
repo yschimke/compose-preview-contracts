@@ -33,7 +33,7 @@ public object DeviceDimensions {
   // Source-of-truth for the dp values and densities below: sergio-sastre/ComposablePreviewScanner
   // (Phone.kt / Tablet.kt / Wear.kt / GenericDevices.kt / Desktop.kt / Television.kt /
   // Automotive.kt / XR.kt under android/.../device/types/), with dp = px / (densityDpi / 160)
-  // and density = densityDpi / 160. KEEP IN SYNC with `:gradle-plugin`'s `DeviceDimensions`.
+  // and density = densityDpi / 160.
   private val KNOWN_DEVICES =
     mapOf(
       // --- Pixel phones ---
