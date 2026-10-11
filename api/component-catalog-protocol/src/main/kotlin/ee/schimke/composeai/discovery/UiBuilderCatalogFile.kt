@@ -341,6 +341,14 @@ internal constructor(
   public val insertContent: JsonElement? = null,
   /** See `UiBuilderAuthoredComponent.shelfRole`; only ever authored, never derived. */
   public val shelfRole: String? = null,
+  /**
+   * How this component's wire properties lower onto calls to its real records when a design is
+   * exported: a variant-selected target record and, per parameter, a codec over one property or a
+   * nested factory call. Raw JSON, carried rather than modelled: the shape and its interpreter are
+   * compose-ai-tools' `ExportProjection` (`screen-model`), which validates and lowers it. Absent
+   * keeps the consumer's own export for this component.
+   */
+  public val exportProjection: JsonElement? = null,
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder(public var record: String) {
@@ -362,6 +370,7 @@ internal constructor(
     public var modifierCapabilities: List<String>? = null
     public var insertContent: JsonElement? = null
     public var shelfRole: String? = null
+    public var exportProjection: JsonElement? = null
 
     public fun build(): UiBuilderComponentPolicy =
       UiBuilderComponentPolicy(
@@ -384,6 +393,7 @@ internal constructor(
         modifierCapabilities,
         insertContent,
         shelfRole,
+        exportProjection,
       )
   }
 
@@ -408,6 +418,7 @@ internal constructor(
       it.modifierCapabilities = modifierCapabilities
       it.insertContent = insertContent
       it.shelfRole = shelfRole
+      it.exportProjection = exportProjection
     }
 }
 
