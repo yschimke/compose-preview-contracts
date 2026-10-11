@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.30.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.29.0...v3.30.0) (2026-10-11)
+
+
+### Features
+
+* **catalog:** a component record carries every overload of its callable ([#172](https://github.com/yschimke/compose-preview-contracts/issues/172)) ([3cbe90f](https://github.com/yschimke/compose-preview-contracts/commit/3cbe90f70b81c4dc58846ef8ce9e592ac424cf0b))
+* **screen:** attest a list item's scope, and read it and template locals from a screen value ([#174](https://github.com/yschimke/compose-preview-contracts/issues/174)) ([b69ccb1](https://github.com/yschimke/compose-preview-contracts/commit/b69ccb15f7bcff021b69db804b8d9317c69643a9))
+
+
+### Bug Fixes
+
+* **screen:** build the new scope and local reads, so a later field is not an ABI break ([#175](https://github.com/yschimke/compose-preview-contracts/issues/175)) ([057abf8](https://github.com/yschimke/compose-preview-contracts/commit/057abf842dab7a1b07ed3cdaf0362820d0a593ba))
+
 ## [3.29.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.28.0...v3.29.0) (2026-10-11)
 
 
