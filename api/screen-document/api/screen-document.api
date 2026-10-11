@@ -617,17 +617,15 @@ public final class ee/schimke/composeai/discovery/ScreenValue$Lambda$Companion {
 
 public final class ee/schimke/composeai/discovery/ScreenValue$LocalRead : ee/schimke/composeai/discovery/ScreenValue {
 	public static final field Companion Lee/schimke/composeai/discovery/ScreenValue$LocalRead$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lee/schimke/composeai/discovery/ScreenValue$LocalRead;
-	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenValue$LocalRead;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenValue$LocalRead;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAndroidxOptIns ()Ljava/util/List;
 	public final fun getName ()Ljava/lang/String;
 	public fun getRequiredOptIns ()Ljava/util/List;
 	public fun getTypeFqn ()Ljava/lang/String;
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/discovery/ScreenValue$LocalRead$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -640,6 +638,15 @@ public final synthetic class ee/schimke/composeai/discovery/ScreenValue$LocalRea
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenValue$LocalRead;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$LocalRead$Builder {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/discovery/ScreenValue$LocalRead;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getTypeFqn ()Ljava/lang/String;
+	public final fun setName (Ljava/lang/String;)V
+	public final fun setTypeFqn (Ljava/lang/String;)V
 }
 
 public final class ee/schimke/composeai/discovery/ScreenValue$LocalRead$Companion {
@@ -746,15 +753,13 @@ public final class ee/schimke/composeai/discovery/ScreenValue$RowRead$Companion 
 
 public final class ee/schimke/composeai/discovery/ScreenValue$ScopeRead : ee/schimke/composeai/discovery/ScreenValue {
 	public static final field Companion Lee/schimke/composeai/discovery/ScreenValue$ScopeRead$Companion;
-	public fun <init> (Ljava/lang/String;)V
 	public final fun component1 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;)Lee/schimke/composeai/discovery/ScreenValue$ScopeRead;
-	public static synthetic fun copy$default (Lee/schimke/composeai/discovery/ScreenValue$ScopeRead;Ljava/lang/String;ILjava/lang/Object;)Lee/schimke/composeai/discovery/ScreenValue$ScopeRead;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAndroidxOptIns ()Ljava/util/List;
 	public fun getRequiredOptIns ()Ljava/util/List;
 	public fun getTypeFqn ()Ljava/lang/String;
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/discovery/ScreenValue$ScopeRead$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -767,6 +772,13 @@ public final synthetic class ee/schimke/composeai/discovery/ScreenValue$ScopeRea
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/discovery/ScreenValue$ScopeRead;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/discovery/ScreenValue$ScopeRead$Builder {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/discovery/ScreenValue$ScopeRead;
+	public final fun getTypeFqn ()Ljava/lang/String;
+	public final fun setTypeFqn (Ljava/lang/String;)V
 }
 
 public final class ee/schimke/composeai/discovery/ScreenValue$ScopeRead$Companion {

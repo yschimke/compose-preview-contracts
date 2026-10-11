@@ -96,6 +96,16 @@ class ScreenDocumentWireTest {
   }
 
   @Test
+  fun `the scope and local reads are built, and rebuild to themselves`() {
+    val scope = ScreenValue.ScopeRead.Builder(ITEM_SCOPE).build()
+    assertEquals(scope, scope.newBuilder().build())
+    val local = ScreenValue.LocalRead.Builder("spec", "example.Spec").build()
+    val renamed = local.newBuilder().also { it.name = "listSpec" }.build()
+    assertEquals("listSpec", renamed.name)
+    assertEquals("example.Spec", renamed.typeFqn)
+  }
+
+  @Test
   fun `value discriminators retain the original generator package`() {
     val values =
       linkedMapOf(
@@ -127,9 +137,13 @@ class ScreenDocumentWireTest {
             "contentPadding",
             "androidx.compose.foundation.layout.PaddingValues",
           ),
-        "ScopeRead" to ScreenValue.ScopeRead(ITEM_SCOPE),
+        "ScopeRead" to ScreenValue.ScopeRead.Builder(ITEM_SCOPE).build(),
         "LocalRead" to
-          ScreenValue.LocalRead("spec", "androidx.wear.compose.material3.lazy.TransformationSpec"),
+          ScreenValue.LocalRead.Builder(
+              "spec",
+              "androidx.wear.compose.material3.lazy.TransformationSpec",
+            )
+            .build(),
       )
     for ((kind, value) in values) {
       val wire = Json.encodeToJsonElement(ScreenValue.serializer(), value)
