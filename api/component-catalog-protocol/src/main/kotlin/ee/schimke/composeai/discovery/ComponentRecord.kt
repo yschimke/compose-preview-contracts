@@ -180,6 +180,20 @@ internal constructor(
    * the one point that can see it — the annotation's own meta-annotations.
    */
   public val androidxOptIns: List<String> = emptyList(),
+  /**
+   * Every overload of this record's callable that discovery read, the one [parameters] describes
+   * among them, each with its own parameters.
+   *
+   * [parameters] is one overload: the one `OverloadSelection` chose against the names a builder
+   * policy authors. A consumer choosing an overload itself needs all of them. A typed export
+   * projection resolves Wear's `Button(…, label)` and `Button(…, content)` from the slots it fills,
+   * as Kotlin resolves named arguments, so this list gives it the set to resolve against.
+   *
+   * Empty when not recorded, which is every record written before this field existed and one whose
+   * overloads discovery could not read. It never means "this callable has no overloads": a callable
+   * with one overload lists that one.
+   */
+  public val overloads: List<ComponentOverload> = emptyList(),
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder(
@@ -199,6 +213,7 @@ internal constructor(
     public var builder: BuilderPolicy? = null
     public var requiredOptIns: List<String> = emptyList()
     public var androidxOptIns: List<String> = emptyList()
+    public var overloads: List<ComponentOverload> = emptyList()
 
     public fun build(): ComponentRecord =
       ComponentRecord(
@@ -217,6 +232,7 @@ internal constructor(
         builder,
         requiredOptIns,
         androidxOptIns,
+        overloads,
       )
   }
 
@@ -236,6 +252,34 @@ internal constructor(
       it.builder = builder
       it.requiredOptIns = requiredOptIns
       it.androidxOptIns = androidxOptIns
+      it.overloads = overloads
+    }
+}
+
+/**
+ * One overload of a [ComponentRecord]'s callable: its JVM [descriptor], which tells overloads apart
+ * where the source name cannot, and its source [parameters].
+ */
+@Serializable
+@ConsistentCopyVisibility
+public data class ComponentOverload
+internal constructor(
+  public val descriptor: String? = null,
+  public val parameters: List<TargetParameter> = emptyList(),
+) {
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder {
+    public var descriptor: String? = null
+    public var parameters: List<TargetParameter> = emptyList()
+
+    public fun build(): ComponentOverload = ComponentOverload(descriptor, parameters)
+  }
+
+  /** This value as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder().also {
+      it.descriptor = descriptor
+      it.parameters = parameters
     }
 }
 

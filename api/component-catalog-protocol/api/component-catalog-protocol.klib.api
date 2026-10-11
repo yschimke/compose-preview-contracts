@@ -354,6 +354,48 @@ final class ee.schimke.composeai.discovery/ComponentCode { // ee.schimke.compose
     }
 }
 
+final class ee.schimke.composeai.discovery/ComponentOverload { // ee.schimke.composeai.discovery/ComponentOverload|null[0]
+    final val descriptor // ee.schimke.composeai.discovery/ComponentOverload.descriptor|{}descriptor[0]
+        final fun <get-descriptor>(): kotlin/String? // ee.schimke.composeai.discovery/ComponentOverload.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+    final val parameters // ee.schimke.composeai.discovery/ComponentOverload.parameters|{}parameters[0]
+        final fun <get-parameters>(): kotlin.collections/List<ee.schimke.composeai.discovery/TargetParameter> // ee.schimke.composeai.discovery/ComponentOverload.parameters.<get-parameters>|<get-parameters>(){}[0]
+
+    final fun component1(): kotlin/String? // ee.schimke.composeai.discovery/ComponentOverload.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/List<ee.schimke.composeai.discovery/TargetParameter> // ee.schimke.composeai.discovery/ComponentOverload.component2|component2(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ComponentOverload.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ComponentOverload.hashCode|hashCode(){}[0]
+    final fun newBuilder(): ee.schimke.composeai.discovery/ComponentOverload.Builder // ee.schimke.composeai.discovery/ComponentOverload.newBuilder|newBuilder(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ComponentOverload.toString|toString(){}[0]
+
+    final class Builder { // ee.schimke.composeai.discovery/ComponentOverload.Builder|null[0]
+        constructor <init>() // ee.schimke.composeai.discovery/ComponentOverload.Builder.<init>|<init>(){}[0]
+
+        final var descriptor // ee.schimke.composeai.discovery/ComponentOverload.Builder.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlin/String? // ee.schimke.composeai.discovery/ComponentOverload.Builder.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+            final fun <set-descriptor>(kotlin/String?) // ee.schimke.composeai.discovery/ComponentOverload.Builder.descriptor.<set-descriptor>|<set-descriptor>(kotlin.String?){}[0]
+        final var parameters // ee.schimke.composeai.discovery/ComponentOverload.Builder.parameters|{}parameters[0]
+            final fun <get-parameters>(): kotlin.collections/List<ee.schimke.composeai.discovery/TargetParameter> // ee.schimke.composeai.discovery/ComponentOverload.Builder.parameters.<get-parameters>|<get-parameters>(){}[0]
+            final fun <set-parameters>(kotlin.collections/List<ee.schimke.composeai.discovery/TargetParameter>) // ee.schimke.composeai.discovery/ComponentOverload.Builder.parameters.<set-parameters>|<set-parameters>(kotlin.collections.List<ee.schimke.composeai.discovery.TargetParameter>){}[0]
+
+        final fun build(): ee.schimke.composeai.discovery/ComponentOverload // ee.schimke.composeai.discovery/ComponentOverload.Builder.build|build(){}[0]
+    }
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ComponentOverload> { // ee.schimke.composeai.discovery/ComponentOverload.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.discovery/ComponentOverload.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.discovery/ComponentOverload.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.discovery/ComponentOverload.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.discovery/ComponentOverload // ee.schimke.composeai.discovery/ComponentOverload.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.discovery/ComponentOverload) // ee.schimke.composeai.discovery/ComponentOverload.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.discovery.ComponentOverload){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.discovery/ComponentOverload.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.discovery/ComponentOverload.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.discovery/ComponentOverload> // ee.schimke.composeai.discovery/ComponentOverload.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.discovery/ComponentRecord { // ee.schimke.composeai.discovery/ComponentRecord|null[0]
     final val androidxOptIns // ee.schimke.composeai.discovery/ComponentRecord.androidxOptIns|{}androidxOptIns[0]
         final fun <get-androidxOptIns>(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ComponentRecord.androidxOptIns.<get-androidxOptIns>|<get-androidxOptIns>(){}[0]
@@ -373,6 +415,8 @@ final class ee.schimke.composeai.discovery/ComponentRecord { // ee.schimke.compo
         final fun <get-hasContextReceivers>(): kotlin/Boolean // ee.schimke.composeai.discovery/ComponentRecord.hasContextReceivers.<get-hasContextReceivers>|<get-hasContextReceivers>(){}[0]
     final val hasTypeParameters // ee.schimke.composeai.discovery/ComponentRecord.hasTypeParameters|{}hasTypeParameters[0]
         final fun <get-hasTypeParameters>(): kotlin/Boolean // ee.schimke.composeai.discovery/ComponentRecord.hasTypeParameters.<get-hasTypeParameters>|<get-hasTypeParameters>(){}[0]
+    final val overloads // ee.schimke.composeai.discovery/ComponentRecord.overloads|{}overloads[0]
+        final fun <get-overloads>(): kotlin.collections/List<ee.schimke.composeai.discovery/ComponentOverload> // ee.schimke.composeai.discovery/ComponentRecord.overloads.<get-overloads>|<get-overloads>(){}[0]
     final val overloadsCollided // ee.schimke.composeai.discovery/ComponentRecord.overloadsCollided|{}overloadsCollided[0]
         final fun <get-overloadsCollided>(): kotlin/Boolean // ee.schimke.composeai.discovery/ComponentRecord.overloadsCollided.<get-overloadsCollided>|<get-overloadsCollided>(){}[0]
     final val parameters // ee.schimke.composeai.discovery/ComponentRecord.parameters|{}parameters[0]
@@ -393,6 +437,7 @@ final class ee.schimke.composeai.discovery/ComponentRecord { // ee.schimke.compo
     final fun component13(): ee.schimke.composeai.discovery/BuilderPolicy? // ee.schimke.composeai.discovery/ComponentRecord.component13|component13(){}[0]
     final fun component14(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ComponentRecord.component14|component14(){}[0]
     final fun component15(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ComponentRecord.component15|component15(){}[0]
+    final fun component16(): kotlin.collections/List<ee.schimke.composeai.discovery/ComponentOverload> // ee.schimke.composeai.discovery/ComponentRecord.component16|component16(){}[0]
     final fun component2(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.discovery/ComponentRecord.component2|component2(){}[0]
     final fun component3(): ee.schimke.composeai.discovery/ComponentSymbol // ee.schimke.composeai.discovery/ComponentRecord.component3|component3(){}[0]
     final fun component4(): kotlin.collections/List<ee.schimke.composeai.discovery/TargetParameter> // ee.schimke.composeai.discovery/ComponentRecord.component4|component4(){}[0]
@@ -436,6 +481,9 @@ final class ee.schimke.composeai.discovery/ComponentRecord { // ee.schimke.compo
         final var hasTypeParameters // ee.schimke.composeai.discovery/ComponentRecord.Builder.hasTypeParameters|{}hasTypeParameters[0]
             final fun <get-hasTypeParameters>(): kotlin/Boolean // ee.schimke.composeai.discovery/ComponentRecord.Builder.hasTypeParameters.<get-hasTypeParameters>|<get-hasTypeParameters>(){}[0]
             final fun <set-hasTypeParameters>(kotlin/Boolean) // ee.schimke.composeai.discovery/ComponentRecord.Builder.hasTypeParameters.<set-hasTypeParameters>|<set-hasTypeParameters>(kotlin.Boolean){}[0]
+        final var overloads // ee.schimke.composeai.discovery/ComponentRecord.Builder.overloads|{}overloads[0]
+            final fun <get-overloads>(): kotlin.collections/List<ee.schimke.composeai.discovery/ComponentOverload> // ee.schimke.composeai.discovery/ComponentRecord.Builder.overloads.<get-overloads>|<get-overloads>(){}[0]
+            final fun <set-overloads>(kotlin.collections/List<ee.schimke.composeai.discovery/ComponentOverload>) // ee.schimke.composeai.discovery/ComponentRecord.Builder.overloads.<set-overloads>|<set-overloads>(kotlin.collections.List<ee.schimke.composeai.discovery.ComponentOverload>){}[0]
         final var overloadsCollided // ee.schimke.composeai.discovery/ComponentRecord.Builder.overloadsCollided|{}overloadsCollided[0]
             final fun <get-overloadsCollided>(): kotlin/Boolean // ee.schimke.composeai.discovery/ComponentRecord.Builder.overloadsCollided.<get-overloadsCollided>|<get-overloadsCollided>(){}[0]
             final fun <set-overloadsCollided>(kotlin/Boolean) // ee.schimke.composeai.discovery/ComponentRecord.Builder.overloadsCollided.<set-overloadsCollided>|<set-overloadsCollided>(kotlin.Boolean){}[0]
