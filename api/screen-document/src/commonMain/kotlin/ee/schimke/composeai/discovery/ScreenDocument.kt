@@ -597,7 +597,18 @@ public sealed interface ScreenValue {
    * `TargetParameter.composableSlotReceiver`, or a [SlotItem.bodyScopeFqn] its catalog attested —
    * and refuses any other, including a read under no receiver at all.
    */
-  @Serializable public data class ScopeRead(public override val typeFqn: String) : ScreenValue
+  @Serializable
+  @ConsistentCopyVisibility
+  public data class ScopeRead internal constructor(public override val typeFqn: String) :
+    ScreenValue {
+    /** Additive construction API; a field added later is a new property here. */
+    public class Builder(public var typeFqn: String) {
+      public fun build(): ScopeRead = ScopeRead(typeFqn)
+    }
+
+    /** This value as a [Builder], for deriving a modified one. Replaces `copy`. */
+    public fun newBuilder(): Builder = Builder(typeFqn)
+  }
 
   /**
    * A checked read of a name the catalog's structural templates declare and define (Wear's `spec`,
@@ -606,8 +617,17 @@ public sealed interface ScreenValue {
    * value can never print an identifier no template defines.
    */
   @Serializable
-  public data class LocalRead(public val name: String, public override val typeFqn: String) :
-    ScreenValue
+  @ConsistentCopyVisibility
+  public data class LocalRead
+  internal constructor(public val name: String, public override val typeFqn: String) : ScreenValue {
+    /** Additive construction API; a field added later is a new property here. */
+    public class Builder(public var name: String, public var typeFqn: String) {
+      public fun build(): LocalRead = LocalRead(name, typeFqn)
+    }
+
+    /** This value as a [Builder], for deriving a modified one. Replaces `copy`. */
+    public fun newBuilder(): Builder = Builder(name, typeFqn)
+  }
 
   /** A checked read of a parameter of the function currently being generated. */
   @Serializable

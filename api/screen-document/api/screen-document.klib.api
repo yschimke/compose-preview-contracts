@@ -364,8 +364,6 @@ sealed interface ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.comp
     }
 
     final class LocalRead : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.LocalRead|null[0]
-        constructor <init>(kotlin/String, kotlin/String) // ee.schimke.composeai.discovery/ScreenValue.LocalRead.<init>|<init>(kotlin.String;kotlin.String){}[0]
-
         final val name // ee.schimke.composeai.discovery/ScreenValue.LocalRead.name|{}name[0]
             final fun <get-name>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.LocalRead.name.<get-name>|<get-name>(){}[0]
         final val typeFqn // ee.schimke.composeai.discovery/ScreenValue.LocalRead.typeFqn|{}typeFqn[0]
@@ -373,10 +371,23 @@ sealed interface ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.comp
 
         final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.LocalRead.component1|component1(){}[0]
         final fun component2(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.LocalRead.component2|component2(){}[0]
-        final fun copy(kotlin/String = ..., kotlin/String = ...): ee.schimke.composeai.discovery/ScreenValue.LocalRead // ee.schimke.composeai.discovery/ScreenValue.LocalRead.copy|copy(kotlin.String;kotlin.String){}[0]
         final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.LocalRead.equals|equals(kotlin.Any?){}[0]
         final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenValue.LocalRead.hashCode|hashCode(){}[0]
+        final fun newBuilder(): ee.schimke.composeai.discovery/ScreenValue.LocalRead.Builder // ee.schimke.composeai.discovery/ScreenValue.LocalRead.newBuilder|newBuilder(){}[0]
         final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.LocalRead.toString|toString(){}[0]
+
+        final class Builder { // ee.schimke.composeai.discovery/ScreenValue.LocalRead.Builder|null[0]
+            constructor <init>(kotlin/String, kotlin/String) // ee.schimke.composeai.discovery/ScreenValue.LocalRead.Builder.<init>|<init>(kotlin.String;kotlin.String){}[0]
+
+            final var name // ee.schimke.composeai.discovery/ScreenValue.LocalRead.Builder.name|{}name[0]
+                final fun <get-name>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.LocalRead.Builder.name.<get-name>|<get-name>(){}[0]
+                final fun <set-name>(kotlin/String) // ee.schimke.composeai.discovery/ScreenValue.LocalRead.Builder.name.<set-name>|<set-name>(kotlin.String){}[0]
+            final var typeFqn // ee.schimke.composeai.discovery/ScreenValue.LocalRead.Builder.typeFqn|{}typeFqn[0]
+                final fun <get-typeFqn>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.LocalRead.Builder.typeFqn.<get-typeFqn>|<get-typeFqn>(){}[0]
+                final fun <set-typeFqn>(kotlin/String) // ee.schimke.composeai.discovery/ScreenValue.LocalRead.Builder.typeFqn.<set-typeFqn>|<set-typeFqn>(kotlin.String){}[0]
+
+            final fun build(): ee.schimke.composeai.discovery/ScreenValue.LocalRead // ee.schimke.composeai.discovery/ScreenValue.LocalRead.Builder.build|build(){}[0]
+        }
 
         final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenValue.LocalRead> { // ee.schimke.composeai.discovery/ScreenValue.LocalRead.$serializer|null[0]
             final val descriptor // ee.schimke.composeai.discovery/ScreenValue.LocalRead.$serializer.descriptor|{}descriptor[0]
@@ -491,16 +502,24 @@ sealed interface ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.comp
     }
 
     final class ScopeRead : ee.schimke.composeai.discovery/ScreenValue { // ee.schimke.composeai.discovery/ScreenValue.ScopeRead|null[0]
-        constructor <init>(kotlin/String) // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.<init>|<init>(kotlin.String){}[0]
-
         final val typeFqn // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.typeFqn|{}typeFqn[0]
             final fun <get-typeFqn>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.typeFqn.<get-typeFqn>|<get-typeFqn>(){}[0]
 
         final fun component1(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.component1|component1(){}[0]
-        final fun copy(kotlin/String = ...): ee.schimke.composeai.discovery/ScreenValue.ScopeRead // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.copy|copy(kotlin.String){}[0]
         final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.equals|equals(kotlin.Any?){}[0]
         final fun hashCode(): kotlin/Int // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.hashCode|hashCode(){}[0]
+        final fun newBuilder(): ee.schimke.composeai.discovery/ScreenValue.ScopeRead.Builder // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.newBuilder|newBuilder(){}[0]
         final fun toString(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.toString|toString(){}[0]
+
+        final class Builder { // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.Builder|null[0]
+            constructor <init>(kotlin/String) // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.Builder.<init>|<init>(kotlin.String){}[0]
+
+            final var typeFqn // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.Builder.typeFqn|{}typeFqn[0]
+                final fun <get-typeFqn>(): kotlin/String // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.Builder.typeFqn.<get-typeFqn>|<get-typeFqn>(){}[0]
+                final fun <set-typeFqn>(kotlin/String) // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.Builder.typeFqn.<set-typeFqn>|<set-typeFqn>(kotlin.String){}[0]
+
+            final fun build(): ee.schimke.composeai.discovery/ScreenValue.ScopeRead // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.Builder.build|build(){}[0]
+        }
 
         final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.discovery/ScreenValue.ScopeRead> { // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.$serializer|null[0]
             final val descriptor // ee.schimke.composeai.discovery/ScreenValue.ScopeRead.$serializer.descriptor|{}descriptor[0]
