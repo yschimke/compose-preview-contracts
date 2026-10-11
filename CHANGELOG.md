@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.27.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.26.0...v3.27.0) (2026-10-10)
+
+
+### Features
+
+* **component-catalog-protocol:** carry a catalog's designTokens on the policy and the published semantics ([#165](https://github.com/yschimke/compose-preview-contracts/issues/165)) ([1ef69a2](https://github.com/yschimke/compose-preview-contracts/commit/1ef69a20dbed16407da74bc5fbd13b711b19d0a4))
+
 ## [3.26.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.25.0...v3.26.0) (2026-10-10)
 
 
