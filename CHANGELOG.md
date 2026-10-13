@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.31.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.30.0...v3.31.0) (2026-10-13)
+
+
+### Features
+
+* **ui-builder-protocol:** carry a catalog's new-design description and primary flag ([#180](https://github.com/yschimke/compose-preview-contracts/issues/180)) ([c7e7580](https://github.com/yschimke/compose-preview-contracts/commit/c7e758001c68c171823c7bd5cf4ad082adfa5fc1))
+
+
+### Bug Fixes
+
+* **deps:** update kotlin to v2.4.21 ([#177](https://github.com/yschimke/compose-preview-contracts/issues/177)) ([4868cb0](https://github.com/yschimke/compose-preview-contracts/commit/4868cb0b194ce4746500094d1e52775e10f1a771))
+
 ## [3.30.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.29.0...v3.30.0) (2026-10-11)
 
 
