@@ -803,20 +803,28 @@ internal object UiBuilderTemplateEntrySerializer : KSerializer<UiBuilderTemplate
   }
 }
 
-/** How a catalog appears in the New design chooser as a whole: its chip's label and position. */
+/**
+ * How a catalog appears in the New design chooser as a whole: its chip's label and position, the
+ * second line on its type card ([description]), and whether that card is a primary design type or
+ * sits under "Other design types" ([primary]; `null` leaves the choice to the chooser).
+ */
 @Serializable
 @ConsistentCopyVisibility
 public data class UiBuilderNewDesign
 internal constructor(
   public val label: String? = null,
   public val order: Int? = null,
+  public val description: String? = null,
+  public val primary: Boolean? = null,
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder {
     public var label: String? = null
     public var order: Int? = null
+    public var description: String? = null
+    public var primary: Boolean? = null
 
-    public fun build(): UiBuilderNewDesign = UiBuilderNewDesign(label, order)
+    public fun build(): UiBuilderNewDesign = UiBuilderNewDesign(label, order, description, primary)
   }
 
   /** This value as a [Builder], for deriving a modified one. Replaces `copy`. */
@@ -824,11 +832,14 @@ internal constructor(
     Builder().also {
       it.label = label
       it.order = order
+      it.description = description
+      it.primary = primary
     }
 }
 
 /**
- * What a published catalog tells the New design chooser: its own chip, and the copy for each
+ * What a published catalog tells the New design chooser: its own chip, its type card's
+ * [description] and [primary] placement (carried from [UiBuilderNewDesign]), and the copy for each
  * template it offers. Published only when the policy authored any of it, so a catalog that names
  * bare paths and no chip publishes exactly what it did before.
  */
@@ -839,15 +850,19 @@ internal constructor(
   public val label: String? = null,
   public val order: Int? = null,
   public val templates: List<UiBuilderNewDesignTemplateSemantics> = emptyList(),
+  public val description: String? = null,
+  public val primary: Boolean? = null,
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder {
     public var label: String? = null
     public var order: Int? = null
     public var templates: List<UiBuilderNewDesignTemplateSemantics> = emptyList()
+    public var description: String? = null
+    public var primary: Boolean? = null
 
     public fun build(): UiBuilderNewDesignSemantics =
-      UiBuilderNewDesignSemantics(label, order, templates)
+      UiBuilderNewDesignSemantics(label, order, templates, description, primary)
   }
 
   /** This value as a [Builder], for deriving a modified one. Replaces `copy`. */
@@ -856,6 +871,8 @@ internal constructor(
       it.label = label
       it.order = order
       it.templates = templates
+      it.description = description
+      it.primary = primary
     }
 }
 

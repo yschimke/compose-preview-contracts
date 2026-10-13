@@ -210,6 +210,50 @@ class CatalogWireTest {
   }
 
   @Test
+  fun newDesignDescriptionAndPrimaryRoundTripAndAreLeftOutWhenAbsent() {
+    val policyNewDesign =
+      """{"label":"Wear OS","order":2,"description":"Round screens","primary":true}"""
+    val policy = authored.decodeFromString(UiBuilderNewDesign.serializer(), policyNewDesign)
+    assertEquals("Round screens", policy.description)
+    assertEquals(true, policy.primary)
+    assertEquals(policy, policy.newBuilder().build())
+    assertEquals(
+      Json.parseToJsonElement(policyNewDesign),
+      authored.encodeToJsonElement(UiBuilderNewDesign.serializer(), policy),
+    )
+
+    val semanticsNewDesign =
+      """{"label":"Wear OS","order":2,"description":"Round screens","primary":false}"""
+    val semantics =
+      authored.decodeFromString(UiBuilderNewDesignSemantics.serializer(), semanticsNewDesign)
+    assertEquals("Round screens", semantics.description)
+    assertEquals(false, semantics.primary)
+    assertEquals(semantics, semantics.newBuilder().build())
+    assertEquals(
+      Json.parseToJsonElement(semanticsNewDesign),
+      authored.encodeToJsonElement(UiBuilderNewDesignSemantics.serializer(), semantics),
+    )
+
+    // A block written before the fields existed still decodes, and re-encodes without them.
+    val legacy = """{"label":"Wear OS","order":2}"""
+    val legacyPolicy = authored.decodeFromString(UiBuilderNewDesign.serializer(), legacy)
+    assertEquals(null, legacyPolicy.description)
+    assertEquals(null, legacyPolicy.primary)
+    assertEquals(
+      Json.parseToJsonElement(legacy),
+      authored.encodeToJsonElement(UiBuilderNewDesign.serializer(), legacyPolicy),
+    )
+    val legacySemantics =
+      authored.decodeFromString(UiBuilderNewDesignSemantics.serializer(), legacy)
+    assertEquals(null, legacySemantics.description)
+    assertEquals(null, legacySemantics.primary)
+    assertEquals(
+      Json.parseToJsonElement(legacy),
+      authored.encodeToJsonElement(UiBuilderNewDesignSemantics.serializer(), legacySemantics),
+    )
+  }
+
+  @Test
   fun templateLocalsAndScopesAreAdditiveAndRoundTrip() {
     val legacy = """{"strategy":"templates","templates":{"list-item":"item${'$'}{key} {}"}}"""
     val bare = authored.decodeFromString(UiBuilderCode.serializer(), legacy)
