@@ -76,6 +76,12 @@ include(":parity-issues-protocol")
 
 project(":parity-issues-protocol").projectDir = file("api/parity-issues-protocol")
 
+// The artifacts file a non-Gradle build integration (a Bazel aspect, a wrapper) writes for one
+// configured target. compose-preview-bazel writes it and the compose-ai-tools CLI reads it.
+include(":build-artifacts-protocol")
+
+project(":build-artifacts-protocol").projectDir = file("api/build-artifacts-protocol")
+
 // The serializable input to the offline Compose source generator.
 include(":screen-document")
 
