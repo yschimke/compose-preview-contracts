@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.32.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.31.0...v3.32.0) (2026-10-14)
+
+
+### Features
+
+* add build-artifacts-protocol for non-Gradle build integrations ([#181](https://github.com/yschimke/compose-preview-contracts/issues/181)) ([5a99fed](https://github.com/yschimke/compose-preview-contracts/commit/5a99fed872edcb1d00425d29a96c7c8644f6956d))
+
 ## [3.31.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.30.0...v3.31.0) (2026-10-13)
 
 
