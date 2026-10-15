@@ -35,6 +35,15 @@ internal constructor(
   public val dataFiles: List<String> = emptyList(),
   /** Android resources; present only for an Android target. */
   @EncodeDefault(EncodeDefault.Mode.NEVER) public val android: AndroidBuildArtifacts? = null,
+  /**
+   * The build target that produced each [runtimeJars] entry, keyed by that entry's path: in Bazel,
+   * the label of the `File.owner` that generated the jar. Lets a reader identify a jar whose name
+   * and path hide its Maven coordinate, and rebuild exact bytes inside the same workspace. Labels
+   * expose repository layout, so a reader must never carry them out of the workspace. Partial or
+   * empty when the producer doesn't know an owner.
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER)
+  public val runtimeJarOwners: Map<String, String> = emptyMap(),
 ) {
   /**
    * Additive construction API; see `CatalogCapabilityV1.Builder` for why the constructor is
@@ -53,6 +62,7 @@ internal constructor(
     public var sourceFiles: List<String> = emptyList()
     public var dataFiles: List<String> = emptyList()
     public var android: AndroidBuildArtifacts? = null
+    public var runtimeJarOwners: Map<String, String> = emptyMap()
 
     /** [schemaVersion] follows from whether [android] is set. */
     public fun build(): BuildArtifacts =
@@ -65,6 +75,7 @@ internal constructor(
         sourceFiles,
         dataFiles,
         android,
+        runtimeJarOwners,
       )
   }
 
@@ -74,6 +85,7 @@ internal constructor(
       it.sourceFiles = sourceFiles
       it.dataFiles = dataFiles
       it.android = android
+      it.runtimeJarOwners = runtimeJarOwners
     }
 
   public companion object {

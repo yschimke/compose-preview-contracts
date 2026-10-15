@@ -154,11 +154,13 @@ public final class ee/schimke/composeai/buildartifacts/protocol/BuildArtifacts {
 	public final fun component6 ()Ljava/util/List;
 	public final fun component7 ()Ljava/util/List;
 	public final fun component8 ()Lee/schimke/composeai/buildartifacts/protocol/AndroidBuildArtifacts;
+	public final fun component9 ()Ljava/util/Map;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAndroid ()Lee/schimke/composeai/buildartifacts/protocol/AndroidBuildArtifacts;
 	public final fun getConfiguration ()Ljava/lang/String;
 	public final fun getDataFiles ()Ljava/util/List;
 	public final fun getProjectJars ()Ljava/util/List;
+	public final fun getRuntimeJarOwners ()Ljava/util/Map;
 	public final fun getRuntimeJars ()Ljava/util/List;
 	public final fun getSchemaVersion ()I
 	public final fun getSourceFiles ()Ljava/util/List;
@@ -186,6 +188,7 @@ public final class ee/schimke/composeai/buildartifacts/protocol/BuildArtifacts$B
 	public final fun getConfiguration ()Ljava/lang/String;
 	public final fun getDataFiles ()Ljava/util/List;
 	public final fun getProjectJars ()Ljava/util/List;
+	public final fun getRuntimeJarOwners ()Ljava/util/Map;
 	public final fun getRuntimeJars ()Ljava/util/List;
 	public final fun getSourceFiles ()Ljava/util/List;
 	public final fun getTarget ()Ljava/lang/String;
@@ -193,6 +196,7 @@ public final class ee/schimke/composeai/buildartifacts/protocol/BuildArtifacts$B
 	public final fun setConfiguration (Ljava/lang/String;)V
 	public final fun setDataFiles (Ljava/util/List;)V
 	public final fun setProjectJars (Ljava/util/List;)V
+	public final fun setRuntimeJarOwners (Ljava/util/Map;)V
 	public final fun setRuntimeJars (Ljava/util/List;)V
 	public final fun setSourceFiles (Ljava/util/List;)V
 	public final fun setTarget (Ljava/lang/String;)V
