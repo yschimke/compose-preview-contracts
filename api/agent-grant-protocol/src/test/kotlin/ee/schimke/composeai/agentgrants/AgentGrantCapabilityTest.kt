@@ -21,10 +21,28 @@ class AgentGrantCapabilityTest {
       AgentGrantCapability.parseAll("images, ui-builder-write ui-builder-export"),
     )
     assertEquals(
-      listOf("images", "ui-builder-read", "ui-builder-write", "ui-builder-export"),
+      listOf(
+        "images",
+        "ui-builder-read",
+        "ui-builder-write",
+        "ui-builder-export",
+        "ui-builder-destructive",
+      ),
       AgentGrantCapability.wireNames(AgentGrantCapability.entries.toSet()),
     )
     assertNull(AgentGrantCapability.parse("ui-builder"))
+  }
+
+  @Test
+  fun `destructive is its own capability, never implied by write`() {
+    assertEquals(
+      AgentGrantCapability.UI_BUILDER_DESTRUCTIVE,
+      AgentGrantCapability.parse("ui-builder-destructive"),
+    )
+    assertFalse(
+      AgentGrantCapability.UI_BUILDER_DESTRUCTIVE in
+        AgentGrantCapability.parseAll("ui-builder-read, ui-builder-write, ui-builder-export")
+    )
   }
 
   @Test
@@ -34,6 +52,7 @@ class AgentGrantCapabilityTest {
         AgentGrantCapability.UI_BUILDER_READ,
         AgentGrantCapability.UI_BUILDER_WRITE,
         AgentGrantCapability.UI_BUILDER_EXPORT,
+        AgentGrantCapability.UI_BUILDER_DESTRUCTIVE,
       )
     AgentGrantScope.entries.forEach { scope ->
       uiBuilderCapabilities.forEach { capability ->

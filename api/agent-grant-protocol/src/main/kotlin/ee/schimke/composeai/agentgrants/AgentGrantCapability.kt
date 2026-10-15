@@ -59,6 +59,20 @@ public enum class AgentGrantCapability(
   UI_BUILDER_EXPORT(
     "ui-builder-export",
     "Export revision-pinned UI builder designs as Compose, SVG or PNG",
+  ),
+
+  /**
+   * Delete persistent designs the grant's principal owns, on that principal's behalf.
+   *
+   * Without it an agent acting for a human deletes only the designs it created itself under the
+   * same grant. A delete moves the design to the trash, where its owner can restore it until the
+   * trash retention runs out, but it still removes the design from every listing and closes every
+   * stream on it, so it is a separate box rather than part of [UI_BUILDER_WRITE]. Sharing and
+   * ownership transfer stay with the owner's own credential either way.
+   */
+  UI_BUILDER_DESTRUCTIVE(
+    "ui-builder-destructive",
+    "Delete UI builder designs you own (they stay restorable from the trash for a day)",
   );
 
   public companion object {
