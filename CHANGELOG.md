@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.33.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.32.0...v3.33.0) (2026-10-15)
+
+
+### Features
+
+* **build-artifacts:** record the inputs an Android resource APK was linked from ([#185](https://github.com/yschimke/compose-preview-contracts/issues/185)) ([0b16cdc](https://github.com/yschimke/compose-preview-contracts/commit/0b16cdca00c628dad131811b54dc3bdc55678182))
+
 ## [3.32.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.31.0...v3.32.0) (2026-10-14)
 
 
