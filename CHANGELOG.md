@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.34.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.33.0...v3.34.0) (2026-10-15)
+
+
+### Features
+
+* add the ui-builder-destructive agent-grant capability ([#187](https://github.com/yschimke/compose-preview-contracts/issues/187)) ([6523597](https://github.com/yschimke/compose-preview-contracts/commit/6523597c2ee8e769951b1a15660aff0ed13c1d93))
+
 ## [3.33.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.32.0...v3.33.0) (2026-10-15)
 
 
