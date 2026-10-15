@@ -116,4 +116,32 @@ class BuildArtifactsTest {
     assertNull(android.link)
     assertFalse("link" in Json.encodeToString(AndroidBuildArtifacts.serializer(), android))
   }
+
+  @Test
+  fun `runtime jar owners round-trip and are omitted when empty`() {
+    val plain = BuildArtifacts.Builder("//app:ui", "cfg", listOf("a.jar"), listOf("a.jar")).build()
+    assertFalse("runtimeJarOwners" in json.encodeToString(BuildArtifacts.serializer(), plain))
+    val owned =
+      plain
+        .newBuilder()
+        .apply { runtimeJarOwners = mapOf("external/maven/ui.jar" to "@maven//:ui") }
+        .build()
+    val decoded =
+      json.decodeFromString(
+        BuildArtifacts.serializer(),
+        json.encodeToString(BuildArtifacts.serializer(), owned),
+      )
+    assertEquals(owned, decoded)
+    assertEquals(owned, owned.newBuilder().build())
+    // An older producer's JSON, without the field, still reads.
+    assertEquals(
+      emptyMap(),
+      json
+        .decodeFromString(
+          BuildArtifacts.serializer(),
+          """{"schemaVersion":1,"target":"//t","configuration":"c","projectJars":[],"runtimeJars":[]}""",
+        )
+        .runtimeJarOwners,
+    )
+  }
 }
