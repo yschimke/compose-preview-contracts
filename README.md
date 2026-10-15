@@ -38,8 +38,9 @@ must resolve them by coordinate — see
 describe catalog capabilities, persisted designs, typed edit commands, collaboration snapshots and
 deltas, actor-specific listings, independently revisioned owner/ACL/share-link access control, and
 HTTP/MCP envelopes. It contains no reducer, store, renderer or transport implementation. Agent
-grants expose UI builder read, write and export as three independent capabilities; none is implied
-by the preview/live/playground scope ladder.
+grants expose UI builder read, write, export and destructive (deleting designs the grant's principal
+owns) as four independent capabilities; none is implied by another or by the preview/live/playground
+scope ladder.
 
 `screen-document` owns the serializable input to the offline screen generator, including its
 structured tree, values, state actions, selections, repetitions and reusable functions. It retains
