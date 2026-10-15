@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.35.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.34.0...v3.35.0) (2026-10-15)
+
+
+### Features
+
+* build artifacts name the build target that produced each runtime jar ([#189](https://github.com/yschimke/compose-preview-contracts/issues/189)) ([1672676](https://github.com/yschimke/compose-preview-contracts/commit/16726761c400245584d7604045c7bba51d123664))
+
 ## [3.34.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.33.0...v3.34.0) (2026-10-15)
 
 
