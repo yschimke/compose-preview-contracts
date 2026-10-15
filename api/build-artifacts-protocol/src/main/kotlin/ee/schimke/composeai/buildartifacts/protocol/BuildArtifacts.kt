@@ -92,6 +92,7 @@ internal constructor(
  * Resource IDs in [rJar] must be the final IDs assigned when [resourceApk] was linked; a library's
  * own non-final R classes do not match a linked APK.
  */
+@OptIn(ExperimentalSerializationApi::class)
 @Serializable
 @ConsistentCopyVisibility
 public data class AndroidBuildArtifacts
@@ -108,6 +109,11 @@ internal constructor(
    * The compile SDK level, used to choose Robolectric's runtime; null selects the renderer default.
    */
   public val compileSdk: Int? = null,
+  /**
+   * What [resourceApk] was linked from, so a reader can link several targets into one APK; null
+   * from a producer that does not report it, which keeps each such target on its own APK.
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val link: AndroidLinkInputs? = null,
 ) {
   /** Additive construction API, as [BuildArtifacts.Builder]. */
   public class Builder(packageName: String, resourceApk: String, manifest: String) {
@@ -116,9 +122,10 @@ internal constructor(
     public var manifest: String = manifest
     public var rJar: String? = null
     public var compileSdk: Int? = null
+    public var link: AndroidLinkInputs? = null
 
     public fun build(): AndroidBuildArtifacts =
-      AndroidBuildArtifacts(packageName, resourceApk, manifest, rJar, compileSdk)
+      AndroidBuildArtifacts(packageName, resourceApk, manifest, rJar, compileSdk, link)
   }
 
   /** This block as a [Builder]. Replaces `copy`. */
@@ -126,5 +133,85 @@ internal constructor(
     Builder(packageName, resourceApk, manifest).also {
       it.rJar = rJar
       it.compileSdk = compileSdk
+      it.link = link
     }
+}
+
+/**
+ * The inputs and tools an Android target's resource APK was linked with.
+ *
+ * A reader merging several targets runs [script] once over the union of their inputs: the
+ * [compiledResources] lists merged so each keeps its order, every target's [packages], and the
+ * [assets] in order. Run with the arguments `aapt2 javaHome outApk outRJar manifest androidJar
+ * extraPackages assetsList archive...`, it writes one APK and R classes carrying its final IDs in
+ * every package. Paths are execution-root relative unless absolute, as in [BuildArtifacts].
+ */
+@OptIn(ExperimentalSerializationApi::class)
+@Serializable
+@ConsistentCopyVisibility
+public data class AndroidLinkInputs
+internal constructor(
+  /** The link script the producer itself ran (rules_compose_preview's `link.sh`). */
+  public val script: String,
+  /** The SDK's `aapt2` executable. */
+  public val aapt2: String,
+  /** A JDK home whose `bin/javac` and `bin/jar` compile and package the R classes. */
+  public val javaHome: String,
+  /** The SDK platform's `android.jar` the resources link against. */
+  public val androidJar: String,
+  /** Every R package the APK's classes are generated for, the target's own first. */
+  public val packages: List<String>,
+  /** Compiled resource archives in overlay order: every dependency before its dependents. */
+  public val compiledResources: List<String>,
+  /** Files packed under `assets/`, in order; a later entry at the same path replaces an earlier. */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val assets: List<AndroidLinkAsset> = emptyList(),
+) {
+  /** Additive construction API, as [BuildArtifacts.Builder]. */
+  public class Builder(
+    script: String,
+    aapt2: String,
+    javaHome: String,
+    androidJar: String,
+    packages: List<String>,
+    compiledResources: List<String>,
+  ) {
+    public var script: String = script
+    public var aapt2: String = aapt2
+    public var javaHome: String = javaHome
+    public var androidJar: String = androidJar
+    public var packages: List<String> = packages
+    public var compiledResources: List<String> = compiledResources
+    public var assets: List<AndroidLinkAsset> = emptyList()
+
+    public fun build(): AndroidLinkInputs =
+      AndroidLinkInputs(script, aapt2, javaHome, androidJar, packages, compiledResources, assets)
+  }
+
+  /** These inputs as a [Builder]. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(script, aapt2, javaHome, androidJar, packages, compiledResources).also {
+      it.assets = assets
+    }
+}
+
+/** One file packed into a linked APK, at [path] under `assets/`. */
+@Serializable
+@ConsistentCopyVisibility
+public data class AndroidLinkAsset
+internal constructor(
+  /** Where it goes under `assets/`; empty when [file] is a directory standing for all of them. */
+  public val path: String,
+  /** The file or directory to pack. */
+  public val file: String,
+) {
+  /** Additive construction API, as [BuildArtifacts.Builder]. */
+  public class Builder(path: String, file: String) {
+    public var path: String = path
+    public var file: String = file
+
+    public fun build(): AndroidLinkAsset = AndroidLinkAsset(path, file)
+  }
+
+  /** This asset as a [Builder]. Replaces `copy`. */
+  public fun newBuilder(): Builder = Builder(path, file)
 }
