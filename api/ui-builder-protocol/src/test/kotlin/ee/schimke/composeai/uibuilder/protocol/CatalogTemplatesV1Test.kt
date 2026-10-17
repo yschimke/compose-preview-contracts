@@ -12,10 +12,17 @@ class CatalogTemplatesV1Test {
   private val pin = CatalogReferenceV1("custom-kit", "revision-7", "digest-7", "runtime-7")
 
   @Test
+  fun `the version marker is emitted even with default encoding disabled`() {
+    val encoded = Json.encodeToString(CatalogTemplateDocumentsV1.Builder(pin).build())
+    assertTrue("\"schemaVersion\":1" in encoded, encoded)
+  }
+
+  @Test
   fun `empty publications retain all four pin fields through JSON and builders`() {
     val publication = CatalogTemplateDocumentsV1.Builder(pin).build()
     val decoded =
       json.decodeFromString<CatalogTemplateDocumentsV1>(json.encodeToString(publication))
+    assertEquals(1, decoded.schemaVersion)
     assertEquals(pin, decoded.catalogPin)
     assertTrue(decoded.templates.isEmpty())
     assertEquals(decoded, decoded.newBuilder().build())
