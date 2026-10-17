@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.36.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.35.0...v3.36.0) (2026-10-17)
+
+
+### Features
+
+* **ui-builder:** share published template document envelopes ([#191](https://github.com/yschimke/compose-preview-contracts/issues/191)) ([40e77f1](https://github.com/yschimke/compose-preview-contracts/commit/40e77f13f72e335fc56b1b72c36c7ab60026f52b))
+
 ## [3.35.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.34.0...v3.35.0) (2026-10-15)
 
 
