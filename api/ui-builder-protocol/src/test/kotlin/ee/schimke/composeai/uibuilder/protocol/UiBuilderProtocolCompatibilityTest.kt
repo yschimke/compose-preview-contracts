@@ -29,6 +29,7 @@ class UiBuilderProtocolCompatibilityTest {
   private val fixtures: Map<String, KSerializer<Any>> =
     mapOf(
       fixtureSerializer("catalog.json", CatalogCapabilityV1.serializer()),
+      fixtureSerializer("catalog-templates.json", CatalogTemplateDocumentsV1.serializer()),
       fixtureSerializer("catalog-upgrade-delta.json", ServiceDeltaV1.serializer()),
       // A design home is a sealed reference rather than a document field: pin both concrete wire
       // forms independently so another implementation gets canonical bytes for each discriminator.

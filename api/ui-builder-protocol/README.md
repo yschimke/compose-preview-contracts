@@ -26,7 +26,9 @@ client, service and MCP adapter. It owns:
 - revisioned snapshots, ordered event deltas and presence updates;
 - independently revisioned ownership, actor ACL and opaque bearer-link sharing metadata, plus
   paginated actor-specific design listings;
-- request/response envelopes used over HTTP and by MCP tools.
+- request/response envelopes used over HTTP and by MCP tools;
+- published template-document sets paired with their complete `CatalogReferenceV1`, for clients to
+  validate and cache before offline creation (`CatalogTemplateDocumentsV1`).
 - catalog-owned renderer artifact, manifest, installed-descriptor, iframe-message and inspection
   shapes, plus the canonical tree-integrity framing and its cross-language test vector.
 
