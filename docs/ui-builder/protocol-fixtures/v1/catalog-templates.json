@@ -1,0 +1,44 @@
+{
+  "catalogPin": {
+    "systemId": "custom-kit",
+    "catalogRevision": "revision-7",
+    "capabilityDigest": "digest-7",
+    "nativeRuntimeId": "runtime-7"
+  },
+  "templates": {
+    "published-card": {
+      "schema": "compose-ui-builder-document/v1-candidate",
+      "id": "source-document",
+      "title": "Published card",
+      "revision": 19,
+      "catalogPin": {
+        "systemId": "custom-kit",
+        "catalogRevision": "candidate",
+        "capabilityDigest": "candidate",
+        "nativeRuntimeId": "candidate"
+      },
+      "environment": {
+        "widthDp": 411,
+        "heightDp": 914,
+        "density": 1.0,
+        "theme": "light",
+        "locale": "en-US",
+        "fontScale": 1.0,
+        "layoutDirection": "ltr"
+      },
+      "roots": [
+        "root"
+      ],
+      "nodes": {
+        "root": {
+          "id": "root",
+          "componentId": "layout/column",
+          "properties": {},
+          "modifiers": [],
+          "slots": {},
+          "eventBindings": {}
+        }
+      }
+    }
+  }
+}
