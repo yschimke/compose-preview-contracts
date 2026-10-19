@@ -82,7 +82,58 @@ public data class InitializeParams(
   val options: Options? = null,
 )
 
-public @Serializable data class ClientCapabilities(val visibility: Boolean, val metrics: Boolean)
+/**
+ * What the client can handle, sent on `initialize`.
+ *
+ * @property bootProgress the client accepts an `initialize` answered **before** the host can
+ *   render, and the `bootProgress` notifications that follow it (PROTOCOL.md § 3, "Answering before
+ *   the host is ready"). A daemon that honours it sets [InitializeResult.booting] when it answers
+ *   early, then sends [BootProgressParams] until a terminal [BootPhase.READY] or
+ *   [BootPhase.FAILED]; requests sent in between are queued, not refused. Absent or `false` keeps
+ *   the original contract — `initialize` answers once the host can render — and a daemon that
+ *   predates the field ignores it, so a client must key its wait off [InitializeResult.booting],
+ *   never off having asked. Never encoded when `false`, so a client that does not opt in sends
+ *   exactly the shape it always did.
+ */
+@OptIn(ExperimentalSerializationApi::class)
+@Serializable
+public data class ClientCapabilities(
+  val visibility: Boolean,
+  val metrics: Boolean,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) val bootProgress: Boolean = false,
+) {
+  /**
+   * The constructor that predates [bootProgress]. Code compiled against earlier releases links
+   * against `<init>(ZZ)`, which a primary constructor that only gained a parameter no longer has;
+   * keeping it keeps those jars running, and it wins over the primary constructor at a call site
+   * that names no newer field.
+   */
+  public constructor(visibility: Boolean, metrics: Boolean) : this(visibility, metrics, false)
+
+  /**
+   * Builds a [ClientCapabilities]. Prefer this to a constructor: a field added later is a new
+   * property here, and never replaces a signature a released consumer has already linked against.
+   * The constructors stay public until the next major release, when they become `internal` as the
+   * other evolving wire types' are.
+   */
+  public class Builder(visibility: Boolean, metrics: Boolean) {
+    public var visibility: Boolean = visibility
+    public var metrics: Boolean = metrics
+    public var bootProgress: Boolean = false
+
+    public fun build(): ClientCapabilities = ClientCapabilities(visibility, metrics, bootProgress)
+  }
+
+  /** These capabilities as a [Builder], for deriving modified ones. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(visibility, metrics).also { it.bootProgress = bootProgress }
+
+  /** The `copy` of earlier releases, for the same reason; it carries [bootProgress]. */
+  public fun copy(
+    visibility: Boolean = this.visibility,
+    metrics: Boolean = this.metrics,
+  ): ClientCapabilities = copy(visibility, metrics, this.bootProgress)
+}
 
 @Serializable
 public data class Options(
@@ -125,6 +176,18 @@ public enum class DetectLeaks {
   @SerialName("heavy") HEAVY,
 }
 
+/**
+ * The `initialize` answer.
+ *
+ * @property booting `true` when the daemon answered before its host can render, because the client
+ *   set [ClientCapabilities.bootProgress] and the host was still booting. `bootProgress`
+ *   notifications ([BootProgressParams]) follow until one carries [BootPhase.READY] (render service
+ *   is up; anything queued meanwhile is now dispatched) or [BootPhase.FAILED] (the host could not
+ *   start and the daemon is exiting). `false` — and absent, from a daemon that predates the field
+ *   or a client that did not opt in — means the host could already render when this was sent, which
+ *   is the original contract. Never encoded when `false`.
+ */
+@OptIn(ExperimentalSerializationApi::class)
 @Serializable
 public data class InitializeResult(
   val protocolVersion: Int,
@@ -133,7 +196,89 @@ public data class InitializeResult(
   val capabilities: ServerCapabilities,
   val classpathFingerprint: String,
   val manifest: Manifest,
-)
+  @EncodeDefault(EncodeDefault.Mode.NEVER) val booting: Boolean = false,
+) {
+  /**
+   * The constructor that predates [booting]. Code compiled against earlier releases links against
+   * the six-argument `<init>`, which a primary constructor that only gained a parameter no longer
+   * has; keeping it keeps those jars running, and it wins over the primary constructor at a call
+   * site that names no newer field.
+   */
+  public constructor(
+    protocolVersion: Int,
+    daemonVersion: String,
+    pid: Long,
+    capabilities: ServerCapabilities,
+    classpathFingerprint: String,
+    manifest: Manifest,
+  ) : this(
+    protocolVersion,
+    daemonVersion,
+    pid,
+    capabilities,
+    classpathFingerprint,
+    manifest,
+    false,
+  )
+
+  /**
+   * Builds an [InitializeResult]. Prefer this to a constructor: a field added later is a new
+   * property here, and never replaces a signature a released consumer has already linked against.
+   * The constructors stay public until the next major release, when they become `internal` as the
+   * other evolving wire types' are.
+   */
+  public class Builder(
+    protocolVersion: Int,
+    daemonVersion: String,
+    pid: Long,
+    capabilities: ServerCapabilities,
+    classpathFingerprint: String,
+    manifest: Manifest,
+  ) {
+    public var protocolVersion: Int = protocolVersion
+    public var daemonVersion: String = daemonVersion
+    public var pid: Long = pid
+    public var capabilities: ServerCapabilities = capabilities
+    public var classpathFingerprint: String = classpathFingerprint
+    public var manifest: Manifest = manifest
+    public var booting: Boolean = false
+
+    public fun build(): InitializeResult =
+      InitializeResult(
+        protocolVersion,
+        daemonVersion,
+        pid,
+        capabilities,
+        classpathFingerprint,
+        manifest,
+        booting,
+      )
+  }
+
+  /** This result as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(protocolVersion, daemonVersion, pid, capabilities, classpathFingerprint, manifest)
+      .also { it.booting = booting }
+
+  /** The `copy` of earlier releases, for the same reason; it carries [booting]. */
+  public fun copy(
+    protocolVersion: Int = this.protocolVersion,
+    daemonVersion: String = this.daemonVersion,
+    pid: Long = this.pid,
+    capabilities: ServerCapabilities = this.capabilities,
+    classpathFingerprint: String = this.classpathFingerprint,
+    manifest: Manifest = this.manifest,
+  ): InitializeResult =
+    copy(
+      protocolVersion,
+      daemonVersion,
+      pid,
+      capabilities,
+      classpathFingerprint,
+      manifest,
+      this.booting,
+    )
+}
 
 @Serializable
 public data class ServerCapabilities(
@@ -2058,6 +2203,97 @@ public enum class SandboxRecycleReason {
   @SerialName("renderCount") RENDER_COUNT,
   @SerialName("leakSuspected") LEAK_SUSPECTED,
   @SerialName("manual") MANUAL,
+}
+
+/**
+ * `bootProgress` — the daemon's host is booting behind an `initialize` it answered early
+ * ([InitializeResult.booting]). Sent only to a client that set [ClientCapabilities.bootProgress],
+ * and only after an early answer; a daemon whose host was already up answers `booting = false` and
+ * sends none.
+ *
+ * The sequence is one [BootPhase.STARTING], then per sandbox slot a [BootPhase.SANDBOX_BOOTING] and
+ * a [BootPhase.SANDBOX_READY], ending in exactly one terminal [BootPhase.READY] or
+ * [BootPhase.FAILED]. A host that boots as one unit (the desktop backend) reports no slots — just
+ * [BootPhase.STARTING] then the terminal phase. A pool that boots its remaining slots in the
+ * background (`composeai.daemon.backgroundSandboxBoot`) reaches [BootPhase.READY] once its first
+ * slot is up and may keep reporting [BootPhase.SANDBOX_READY] for the others after it. A client
+ * waiting for render service waits for the terminal phase; everything else is for display and for
+ * telling a slow boot from a hung one.
+ *
+ * Phases are strings, not an enum, so a daemon that reports a finer-grained phase later does not
+ * break a client that cannot name it: a client treats any phase it does not know as non-terminal
+ * progress. [BootPhase] lists the ones defined today.
+ *
+ * @property phase what just happened; one of [BootPhase].
+ * @property slot the sandbox slot the phase is about, for the per-slot phases; `null` otherwise.
+ * @property readySlots how many sandbox slots can render now.
+ * @property totalSlots how many slots the host boots in all; `0` when it does not boot in slots.
+ * @property elapsedMs milliseconds since the daemon JVM started — the same clock as its startup
+ *   timeline on stderr.
+ * @property message a human-readable detail; on [BootPhase.FAILED], why.
+ */
+@Serializable
+@ConsistentCopyVisibility
+public data class BootProgressParams
+internal constructor(
+  val phase: String,
+  val slot: Int? = null,
+  val readySlots: Int = 0,
+  val totalSlots: Int = 0,
+  val elapsedMs: Long = 0,
+  val message: String? = null,
+) {
+  /** Whether this is the last `bootProgress` before render service ([BootPhase.READY]) or exit. */
+  public val terminal: Boolean
+    get() = phase == BootPhase.READY || phase == BootPhase.FAILED
+
+  /**
+   * Builds a [BootProgressParams]. Its constructor is `internal`, and `@ConsistentCopyVisibility`
+   * makes `copy` internal with it, so a field added later is a new property here and never a
+   * changed signature a released consumer has linked against.
+   */
+  public class Builder(phase: String) {
+    public var phase: String = phase
+    public var slot: Int? = null
+    public var readySlots: Int = 0
+    public var totalSlots: Int = 0
+    public var elapsedMs: Long = 0
+    public var message: String? = null
+
+    public fun build(): BootProgressParams =
+      BootProgressParams(phase, slot, readySlots, totalSlots, elapsedMs, message)
+  }
+
+  /** This notification as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(phase).also {
+      it.slot = slot
+      it.readySlots = readySlots
+      it.totalSlots = totalSlots
+      it.elapsedMs = elapsedMs
+      it.message = message
+    }
+}
+
+/** The [BootProgressParams.phase] values defined today. */
+public object BootPhase {
+  /** The JSON-RPC method that carries [BootProgressParams]. */
+  public const val METHOD: String = "bootProgress"
+
+  /** The host has begun to start. Sent once, first. */
+  public const val STARTING: String = "starting"
+
+  /** Sandbox [BootProgressParams.slot] has begun to boot. */
+  public const val SANDBOX_BOOTING: String = "sandboxBooting"
+
+  /** Sandbox [BootProgressParams.slot] can render. */
+  public const val SANDBOX_READY: String = "sandboxReady"
+
+  /** Terminal: the host can render, and requests queued while it booted are dispatched now. */
+  public const val READY: String = "ready"
+
+  /** Terminal: the host could not start; the daemon exits after sending it. */
+  public const val FAILED: String = "failed"
 }
 
 public @Serializable data class DaemonWarmingParams(val etaMs: Long)

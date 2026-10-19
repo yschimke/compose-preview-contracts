@@ -32,6 +32,67 @@ class MessagesTest {
   @Test
   fun roundTripInitializeResult() = roundTrip<InitializeResult>("daemon-initializeResult.json")
 
+  // compose-ai-tools#6114 — an `initialize` answered before the host is ready.
+  @Test
+  fun roundTripInitializeParamsWithBootProgress() =
+    roundTrip<InitializeParams>("client-initialize-bootProgress.json")
+
+  @Test
+  fun roundTripInitializeResultBooting() =
+    roundTrip<InitializeResult>("daemon-initializeResult-booting.json")
+
+  @Test fun roundTripBootProgress() = roundTrip<BootProgressParams>("daemon-bootProgress.json")
+
+  @Test
+  fun roundTripBootProgressReady() = roundTrip<BootProgressParams>("daemon-bootProgress-ready.json")
+
+  @Test
+  fun roundTripBootProgressFailed() =
+    roundTrip<BootProgressParams>("daemon-bootProgress-failed.json")
+
+  @Test
+  fun bootProgressOptInIsAbsentFromTheWireUnlessSet() {
+    // A client that does not opt in must send exactly the pre-#6114 shape, and a daemon that is
+    // already up must answer with exactly the pre-#6114 shape, even under an encoder that writes
+    // defaults.
+    val loud = Json { encodeDefaults = true }
+    val caps = loud.encodeToString(ClientCapabilities.serializer(), ClientCapabilities(true, false))
+    assertEquals("""{"visibility":true,"metrics":false}""", caps)
+    val result =
+      json.decodeFromString(InitializeResult.serializer(), fixture("daemon-initializeResult.json"))
+    assertEquals(false, result.booting)
+    assertEquals(
+      false,
+      loud.encodeToString(InitializeResult.serializer(), result).contains("booting"),
+    )
+  }
+
+  @Test
+  fun bootProgressTerminalPhases() {
+    assertEquals(true, BootProgressParams.Builder(BootPhase.READY).build().terminal)
+    assertEquals(true, BootProgressParams.Builder(BootPhase.FAILED).build().terminal)
+    assertEquals(false, BootProgressParams.Builder(BootPhase.SANDBOX_READY).build().terminal)
+    // An unknown phase from a newer daemon decodes, and is progress rather than an end.
+    val future =
+      json.decodeFromString(
+        BootProgressParams.serializer(),
+        """{"phase":"downloadingAndroidAll"}""",
+      )
+    assertEquals(false, future.terminal)
+  }
+
+  @Test
+  fun preBootProgressConstructorsAndCopyStillLink() {
+    val caps = ClientCapabilities(visibility = true, metrics = true)
+    assertEquals(false, caps.bootProgress)
+    val opted = caps.newBuilder().also { it.bootProgress = true }.build()
+    assertEquals(true, opted.copy(metrics = false).bootProgress)
+    val result =
+      json.decodeFromString(InitializeResult.serializer(), fixture("daemon-initializeResult.json"))
+    val booting = result.newBuilder().also { it.booting = true }.build()
+    assertEquals(true, booting.copy(pid = 1).booting)
+  }
+
   @Test fun roundTripSetVisibleParams() = roundTrip<SetVisibleParams>("client-setVisible.json")
 
   @Test fun roundTripSetFocusParams() = roundTrip<SetFocusParams>("client-setFocus.json")
@@ -162,6 +223,12 @@ class MessagesTest {
         "daemon-daemonWarming.json",
         "daemon-daemonReady.json",
         "daemon-log.json",
+        // compose-ai-tools#6114 — early `initialize` and boot progress.
+        "client-initialize-bootProgress.json",
+        "daemon-initializeResult-booting.json",
+        "daemon-bootProgress.json",
+        "daemon-bootProgress-ready.json",
+        "daemon-bootProgress-failed.json",
         "envelope-request.json",
         "envelope-response.json",
         "envelope-notification.json",
