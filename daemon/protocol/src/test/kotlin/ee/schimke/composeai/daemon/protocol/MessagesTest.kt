@@ -68,17 +68,15 @@ class MessagesTest {
   }
 
   @Test
-  fun bootProgressTerminalPhases() {
-    assertEquals(true, BootProgressParams.Builder(BootPhase.READY).build().terminal)
-    assertEquals(true, BootProgressParams.Builder(BootPhase.FAILED).build().terminal)
-    assertEquals(false, BootProgressParams.Builder(BootPhase.SANDBOX_READY).build().terminal)
-    // An unknown phase from a newer daemon decodes, and is progress rather than an end.
+  fun bootProgressDecodesAPhaseNoReleaseNames() {
+    // An unknown phase from a newer daemon decodes rather than failing the notification.
     val future =
       json.decodeFromString(
         BootProgressParams.serializer(),
         """{"phase":"downloadingAndroidAll"}""",
       )
-    assertEquals(false, future.terminal)
+    assertEquals("downloadingAndroidAll", future.phase)
+    assertEquals(null, future.slot)
   }
 
   @Test

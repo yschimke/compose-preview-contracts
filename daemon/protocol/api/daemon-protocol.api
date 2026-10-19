@@ -226,7 +226,6 @@ public final class ee/schimke/composeai/daemon/protocol/BootProgressParams {
 	public final fun getPhase ()Ljava/lang/String;
 	public final fun getReadySlots ()I
 	public final fun getSlot ()Ljava/lang/Integer;
-	public final fun getTerminal ()Z
 	public final fun getTotalSlots ()I
 	public fun hashCode ()I
 	public final fun newBuilder ()Lee/schimke/composeai/daemon/protocol/BootProgressParams$Builder;

@@ -2243,10 +2243,6 @@ internal constructor(
   val elapsedMs: Long = 0,
   val message: String? = null,
 ) {
-  /** Whether this is the last `bootProgress` before render service ([BootPhase.READY]) or exit. */
-  public val terminal: Boolean
-    get() = phase == BootPhase.READY || phase == BootPhase.FAILED
-
   /**
    * Builds a [BootProgressParams]. Its constructor is `internal`, and `@ConsistentCopyVisibility`
    * makes `copy` internal with it, so a field added later is a new property here and never a
