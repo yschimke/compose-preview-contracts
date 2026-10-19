@@ -19,6 +19,8 @@ composeAiMavenPublishing {
 }
 
 kotlin {
+  // Included builds use their caller's Gradle JVM; our daemon criteria do not protect that case.
+  jvmToolchain(17)
   explicitApi()
 
   @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class) abiValidation()
