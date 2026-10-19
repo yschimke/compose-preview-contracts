@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.37.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.36.0...v3.37.0) (2026-10-19)
+
+
+### Features
+
+* **daemon-protocol:** early initialize and bootProgress notifications ([#195](https://github.com/yschimke/compose-preview-contracts/issues/195)) ([90f9217](https://github.com/yschimke/compose-preview-contracts/commit/90f9217c1799cb08ef5ff1f8719162b2921a3eb8))
+
+
+### Bug Fixes
+
+* **screen-document:** keep composite builds compatible with Java 17 ([#193](https://github.com/yschimke/compose-preview-contracts/issues/193)) ([b06790e](https://github.com/yschimke/compose-preview-contracts/commit/b06790e3b26515011b9aa91ff823211181c3e748))
+
 ## [3.36.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.35.0...v3.36.0) (2026-10-17)
 
 
