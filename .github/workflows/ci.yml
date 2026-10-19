@@ -35,6 +35,25 @@ jobs:
         working-directory: compose-preview-contracts
         run: ./gradlew --no-daemon check
 
+      - name: Verify screen-document JVM floor in a Java 21 composite
+        working-directory: compose-preview-contracts
+        env:
+          CONTRACTS_CHECKOUT: ${{ github.workspace }}/compose-preview-contracts
+        run: |
+          fixture="$RUNNER_TEMP/screen-document-java21-composite"
+          mkdir -p "$fixture"
+          cat > "$fixture/settings.gradle.kts" <<'EOF'
+          rootProject.name = "screen-document-java21-composite"
+          includeBuild(requireNotNull(System.getenv("CONTRACTS_CHECKOUT")))
+          EOF
+          cat > "$fixture/build.gradle.kts" <<'EOF'
+          check(JavaVersion.current() == JavaVersion.VERSION_21)
+          tasks.register("verifyJvmFloor") {
+            dependsOn(gradle.includedBuild("compose-preview-contracts").task(":screen-document:jvmTest"))
+          }
+          EOF
+          ./gradlew --project-dir "$fixture" verifyJvmFloor
+
       # A pull request may not remove a signature the last release exposed, synthetic ones included:
       # `checkKotlinAbi` only compares the code with the dump committed beside it, so it cannot see
       # this. Contracts 3.13.0 shipped exactly that break (#122) and the server took a
