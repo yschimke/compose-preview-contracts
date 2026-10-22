@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.38.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.37.0...v3.38.0) (2026-10-22)
+
+
+### Features
+
+* describe a module's source dirs in the daemon launch descriptor ([#200](https://github.com/yschimke/compose-preview-contracts/issues/200)) ([ab1ecab](https://github.com/yschimke/compose-preview-contracts/commit/ab1ecab046f5fe15c27f6b269575fe24f91d2a78))
+
+
+### Bug Fixes
+
+* **deps:** update dependency org.jetbrains.kotlinx:kotlinx-serialization-json to v1.12.0 ([#197](https://github.com/yschimke/compose-preview-contracts/issues/197)) ([3420a43](https://github.com/yschimke/compose-preview-contracts/commit/3420a4351266e10eeb66d6d361738fe879496302))
+
 ## [3.37.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.36.0...v3.37.0) (2026-10-19)
 
 
