@@ -119,9 +119,14 @@ class DaemonLaunchDescriptorTest {
         .jsonObject
 
     // Every key a released reader knows is still there, unchanged. The only additions are the two
-    // sandbox fields serve already writes, at their defaults — which every reader tolerates.
+    // sandbox fields serve already writes and the optional `sourceWatch`, at their defaults — which
+    // every reader tolerates (the VS Code reader is a plain `JSON.parse` that checks only
+    // `schemaVersion`).
     for ((key, value) in written) assertEquals(value, reencoded[key], key)
-    assertEquals(written.keys + setOf("jailCommand", "hardTtlSeconds"), reencoded.keys)
+    assertEquals(
+      written.keys + setOf("jailCommand", "hardTtlSeconds", "sourceWatch"),
+      reencoded.keys,
+    )
     assertEquals(
       expected(),
       DaemonLaunchDescriptor.parse(
@@ -155,5 +160,40 @@ class DaemonLaunchDescriptorTest {
     assertEquals(descriptor, descriptor.newBuilder().build())
     assertEquals("KSP is applied", descriptor.btaCompile?.ineligibilityReason)
     assertEquals(bta, descriptor.withSandboxCount(4).btaCompile)
+  }
+
+  @Test
+  fun `parses a sourceWatch block, and a descriptor without one parses to null`() {
+    assertNull(DaemonLaunchDescriptor.parse(pluginWrittenV2).sourceWatch)
+
+    val withWatch =
+      pluginWrittenV2.removeSuffix("}") +
+        """
+        ,"sourceWatch": {
+          "sourceDirs": ["/w/samples/android/src/main/kotlin"],
+          "buildFiles": ["/w/samples/android/build.gradle.kts"]
+        }}
+        """
+          .trimIndent()
+    val watch = DaemonLaunchDescriptor.parse(withWatch).sourceWatch
+    assertEquals(listOf("/w/samples/android/src/main/kotlin"), watch?.sourceDirs)
+    // A field the writer left out is empty, not an error.
+    assertEquals(emptyList(), watch?.resourceDirs)
+    assertEquals(listOf("/w/samples/android/build.gradle.kts"), watch?.buildFiles)
+  }
+
+  @Test
+  fun `newBuilder carries sourceWatch`() {
+    val watch =
+      SourceWatch.Builder()
+        .also {
+          it.sourceDirs = listOf("/m/src/main/kotlin")
+          it.resourceDirs = listOf("/m/src/main/res")
+        }
+        .build()
+    assertEquals(watch, watch.newBuilder().build())
+    val descriptor = expected().newBuilder().also { it.sourceWatch = watch }.build()
+    assertEquals(descriptor, descriptor.newBuilder().build())
+    assertEquals(watch, descriptor.withSandboxCount(4).sourceWatch)
   }
 }

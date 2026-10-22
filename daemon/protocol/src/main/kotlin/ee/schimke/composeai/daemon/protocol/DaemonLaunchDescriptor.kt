@@ -76,6 +76,12 @@ internal constructor(
    * accessors keep their signatures.
    */
   val btaCompile: BtaCompileConfig? = null,
+  /**
+   * Where the module's sources, resources and build files are, as its build declares them; see
+   * [SourceWatch]. `null` when the writer doesn't know, and a reader falls back to its own
+   * conventions. Optional and ignored by older readers, so it needs no [SCHEMA_VERSION] bump.
+   */
+  val sourceWatch: SourceWatch? = null,
 ) {
   /**
    * Builds a [DaemonLaunchDescriptor].
@@ -116,6 +122,7 @@ internal constructor(
     public var jailCommand: List<String> = emptyList()
     public var hardTtlSeconds: Long? = null
     public var btaCompile: BtaCompileConfig? = null
+    public var sourceWatch: SourceWatch? = null
 
     public fun build(): DaemonLaunchDescriptor =
       DaemonLaunchDescriptor(
@@ -133,6 +140,7 @@ internal constructor(
         jailCommand,
         hardTtlSeconds,
         btaCompile,
+        sourceWatch,
       )
   }
 
@@ -155,6 +163,7 @@ internal constructor(
         it.jailCommand = jailCommand
         it.hardTtlSeconds = hardTtlSeconds
         it.btaCompile = btaCompile
+        it.sourceWatch = sourceWatch
       }
 
   /** Returns a copy launched behind [command] and force-killed after [hardTtlSeconds]. */
