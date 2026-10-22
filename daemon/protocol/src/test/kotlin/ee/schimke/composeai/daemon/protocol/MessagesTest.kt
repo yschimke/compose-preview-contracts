@@ -51,6 +51,26 @@ class MessagesTest {
     roundTrip<BootProgressParams>("daemon-bootProgress-failed.json")
 
   @Test
+  fun roundTripCompileWarmUpResult() =
+    roundTrip<CompileWarmUpResult>("daemon-compileWarmUpResult.json")
+
+  @Test
+  fun roundTripCompileWarmUpResultUnavailable() =
+    roundTrip<CompileWarmUpResult>("daemon-compileWarmUpResult-unavailable.json")
+
+  @Test
+  fun compileWarmUpResultBuildsAndDecodesFromReadyAlone() {
+    val built =
+      CompileWarmUpResult.Builder(ready = false).also { it.message = "not configured" }.build()
+    assertEquals(built, built.newBuilder().build())
+    val bare = json.decodeFromString(CompileWarmUpResult.serializer(), """{"ready":true}""")
+    assertEquals(true, bare.ready)
+    assertEquals(0L, bare.durationMs)
+    assertEquals(null, bare.message)
+    assertEquals("compileWarmUp", CompileWarmUpResult.METHOD)
+  }
+
+  @Test
   fun bootProgressOptInIsAbsentFromTheWireUnlessSet() {
     // A client that does not opt in must send exactly the pre-#6114 shape, and a daemon that is
     // already up must answer with exactly the pre-#6114 shape, even under an encoder that writes
@@ -227,6 +247,8 @@ class MessagesTest {
         "daemon-bootProgress.json",
         "daemon-bootProgress-ready.json",
         "daemon-bootProgress-failed.json",
+        "daemon-compileWarmUpResult.json",
+        "daemon-compileWarmUpResult-unavailable.json",
         "envelope-request.json",
         "envelope-response.json",
         "envelope-notification.json",
