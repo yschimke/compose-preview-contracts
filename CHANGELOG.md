@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.39.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.38.0...v3.39.0) (2026-10-23)
+
+
+### Features
+
+* **daemon-protocol:** add the compileWarmUp request ([#202](https://github.com/yschimke/compose-preview-contracts/issues/202)) ([7765fc6](https://github.com/yschimke/compose-preview-contracts/commit/7765fc6ab04fe509affc9c927c36f1862f532a3b))
+
 ## [3.38.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.37.0...v3.38.0) (2026-10-22)
 
 
