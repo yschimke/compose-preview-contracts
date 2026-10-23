@@ -647,6 +647,88 @@ public data class CompileErrorDetail(
   val message: String,
 )
 
+/**
+ * The answer to `compileWarmUp` ([METHOD]), a client → daemon request, with optional
+ * [CompileWarmUpParams], from a client that will send `compileSources`: "get the in-process
+ * compiler ready". The first `compileSources` of a daemon JVM otherwise pays for loading the
+ * compiler, building its class-path state and a cold JIT — seconds against the warm compile's few
+ * hundred milliseconds.
+ *
+ * The daemon warms without writing the module's class directory, so the client may keep compiling
+ * through Gradle meanwhile, and answers once it is done. Until then a `compileSources` still works,
+ * and waits for the warm-up rather than starting a second, cold one. A daemon that predates the
+ * request answers with a JSON-RPC method-not-found error; a client takes that as "no warm-up here"
+ * and goes on as before.
+ *
+ * @property ready `true` when the in-process compiler is warm. `false` when nothing could be warmed
+ *   — no warm compiler for this module's Kotlin version, in-process compile not configured, or the
+ *   warm-up failed — in which case `compileSources` behaves as without the request, and [message]
+ *   says why.
+ * @property durationMs wall-clock milliseconds the warm-up took.
+ * @property message a human-readable detail; when not [ready], why.
+ */
+@Serializable
+@ConsistentCopyVisibility
+public data class CompileWarmUpResult
+internal constructor(
+  val ready: Boolean,
+  val durationMs: Long = 0,
+  val message: String? = null,
+) {
+  /**
+   * Builds a [CompileWarmUpResult]. Its constructor is `internal`, and `@ConsistentCopyVisibility`
+   * makes `copy` internal with it, so a field added later is a new property here and never a
+   * changed signature a released consumer has linked against.
+   */
+  public class Builder(ready: Boolean) {
+    public var ready: Boolean = ready
+    public var durationMs: Long = 0
+    public var message: String? = null
+
+    public fun build(): CompileWarmUpResult = CompileWarmUpResult(ready, durationMs, message)
+  }
+
+  /** This result as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(ready).also {
+      it.durationMs = durationMs
+      it.message = message
+    }
+
+  public companion object {
+    /** The JSON-RPC request answered with a [CompileWarmUpResult]. */
+    public const val METHOD: String = "compileWarmUp"
+  }
+}
+
+/**
+ * The optional params of `compileWarmUp` ([CompileWarmUpResult.METHOD]). Params may be absent
+ * altogether, which is the same as an empty [sources]: the daemon then warms with code of its own.
+ *
+ * @property sources absolute paths of the module's own source files the client expects to send to
+ *   `compileSources` (the files with previews in them, say). The daemon warms by compiling them
+ *   into a scratch directory, so the first edit of one finds its library symbols already loaded,
+ *   and installs nothing; a path that is missing or does not compile is skipped. Same shape as
+ *   [CompileSourcesParams.sources].
+ */
+@Serializable
+@ConsistentCopyVisibility
+public data class CompileWarmUpParams
+internal constructor(val sources: List<String> = emptyList()) {
+  /**
+   * Builds a [CompileWarmUpParams]. Its constructor is `internal`, so a field added later is a new
+   * property here and never a changed signature a released consumer has linked against.
+   */
+  public class Builder {
+    public var sources: List<String> = emptyList()
+
+    public fun build(): CompileWarmUpParams = CompileWarmUpParams(sources)
+  }
+
+  /** These params as a [Builder], for deriving modified ones. Replaces `copy`. */
+  public fun newBuilder(): Builder = Builder().also { it.sources = sources }
+}
+
 // =====================================================================
 // 4. Client → daemon requests (PROTOCOL.md § 5)
 // =====================================================================

@@ -16,6 +16,8 @@ Fixture inventory (added in B1.2):
 - `client-previewRows.json`, `daemon-previewRowsResult.json` — `preview/rows` request and response (§ 5), the `@PreviewParameter` row enumeration surface (issue #3749). The result fixture carries both row spellings on purpose: a derived label (`Crimson`) and the positional `PARAM_<idx>` fallback.
 - `client-initialize-bootProgress.json`, `daemon-initializeResult-booting.json` — `initialize` from a client that opted in to an early answer (`capabilities.bootProgress`), and the early answer (`booting: true`) from a daemon whose host is still booting (§ 3, compose-ai-tools#6114).
 - `daemon-bootProgress.json`, `daemon-bootProgress-ready.json`, `daemon-bootProgress-failed.json` — `bootProgress` notifications after an early `initialize`: a per-slot phase, and the two terminal phases (§ 6).
+- `client-compileWarmUp.json` — the optional params of `compileWarmUp`, a request from a client that will send `compileSources`: module source files the daemon may warm the compiler with.
+- `daemon-compileWarmUpResult.json`, `daemon-compileWarmUpResult-unavailable.json` — the answer to `compileWarmUp`: the in-process compiler is warm, or nothing could be warmed and why.
 - `envelope-request.json`, `envelope-response.json`, `envelope-notification.json`, `envelope-errorResponse.json` — JSON-RPC envelope shapes (§ 2).
 
 D1 (data products — see [../DATA-PRODUCTS.md](../DATA-PRODUCTS.md)):
