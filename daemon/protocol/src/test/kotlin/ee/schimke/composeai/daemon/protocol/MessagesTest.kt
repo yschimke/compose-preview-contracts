@@ -59,6 +59,19 @@ class MessagesTest {
     roundTrip<CompileWarmUpResult>("daemon-compileWarmUpResult-unavailable.json")
 
   @Test
+  fun roundTripCompileWarmUpParams() = roundTrip<CompileWarmUpParams>("client-compileWarmUp.json")
+
+  @Test
+  fun compileWarmUpParamsBuildsAndDecodesFromEmpty() {
+    val built = CompileWarmUpParams.Builder().also { it.sources = listOf("/m/A.kt") }.build()
+    assertEquals(built, built.newBuilder().build())
+    assertEquals(
+      emptyList<String>(),
+      json.decodeFromString(CompileWarmUpParams.serializer(), "{}").sources,
+    )
+  }
+
+  @Test
   fun compileWarmUpResultBuildsAndDecodesFromReadyAlone() {
     val built =
       CompileWarmUpResult.Builder(ready = false).also { it.message = "not configured" }.build()
@@ -247,6 +260,7 @@ class MessagesTest {
         "daemon-bootProgress.json",
         "daemon-bootProgress-ready.json",
         "daemon-bootProgress-failed.json",
+        "client-compileWarmUp.json",
         "daemon-compileWarmUpResult.json",
         "daemon-compileWarmUpResult-unavailable.json",
         "envelope-request.json",
