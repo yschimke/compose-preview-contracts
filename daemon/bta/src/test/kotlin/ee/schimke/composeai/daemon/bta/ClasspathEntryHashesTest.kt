@@ -31,6 +31,28 @@ class ClasspathEntryHashesTest {
   }
 
   @Test
+  fun `a path through a symlink is stamped as the file the filesystem resolves`() {
+    val deps = tmp.newFolder("deps").toPath()
+    val nested = deps.resolve("nested").createDirectories()
+    val realJar = deps.resolve("lib.jar").also { it.writeText("real") }
+    val workspace = tmp.newFolder("workspace").toPath()
+    // A decoy where lexical normalization of `link/../lib.jar` would point.
+    workspace.resolve("lib.jar").writeText("decoy")
+    Files.createSymbolicLink(workspace.resolve("link"), nested)
+    val throughLink = workspace.resolve("link/../lib.jar")
+    val hashes = ClasspathEntryHashes()
+
+    val first = hashes.sha256(throughLink)
+    assertEquals(ClasspathEntryHashes().sha256(realJar), first)
+
+    // Rewriting the real file re-hashes, though the decoy beside the link did not move.
+    realJar.writeText("real v2")
+    bumpMtime(realJar)
+    assertNotEquals(first, hashes.sha256(throughLink))
+    assertEquals(2, hashes.contentHashesComputed)
+  }
+
+  @Test
   fun `the memoized hash is the content hash the snapshot cache always used`() {
     val bytes = "some jar content".toByteArray()
     val jar = tmp.newFile("dep.jar").toPath().also { it.writeBytes(bytes) }

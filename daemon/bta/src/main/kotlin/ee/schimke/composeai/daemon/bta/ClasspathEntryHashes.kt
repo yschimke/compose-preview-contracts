@@ -25,8 +25,8 @@ import java.util.concurrent.atomic.AtomicInteger
  *   file moves the stamp, so a changed classes directory never reuses a stale hash. The directory's
  *   own mtime is deliberately not used: it does not change when a file in a subdirectory does.
  *
- * Entries are keyed by absolute normalized path, holding only the latest stamp for each, so the map
- * is bounded by the number of distinct classpath entries a session has seen. Thread-safe.
+ * Entries are keyed by real path (symlinks resolved), holding only the latest stamp for each, so
+ * the map is bounded by the number of distinct classpath entries a session has seen. Thread-safe.
  */
 internal class ClasspathEntryHashes {
 
@@ -41,7 +41,9 @@ internal class ClasspathEntryHashes {
     get() = computed.get()
 
   fun sha256(path: Path): String {
-    val key = path.toAbsolutePath().normalize()
+    // The real path, not a lexical normalization: `link/../lib.jar` through a symlinked `link`
+    // names the file the filesystem resolves, which is the one read and stamped below.
+    val key = path.toRealPath()
     // Stamp before reading: if the entry moves while it is being hashed, the stored stamp is the
     // pre-read one, so the next call sees a mismatch and re-hashes rather than trusting a torn
     // read.
