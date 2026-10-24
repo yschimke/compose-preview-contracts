@@ -139,7 +139,7 @@ jobs:
           echo "PUBLISH_PLANNED=$PUBLISH_PLANNED" >> "$GITHUB_ENV"
 
       # Everything the artifacts have to survive, before they are permanent: compile, test, ktfmt
-      # and checkKotlinAbi for all twelve modules.
+      # and checkKotlinAbi for every published module.
       - name: Check
         env:
           PLUGIN_VERSION: ${{ inputs.tag_name }}

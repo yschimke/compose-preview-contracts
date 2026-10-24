@@ -45,12 +45,6 @@ include(":daemon-devices")
 
 project(":daemon-devices").projectDir = file("daemon/devices")
 
-// Build Tools API shapes — `CompileErrorDetail`, `SourceChangeSet` — that cross the wire when a
-// client reports or consumes a compile result.
-include(":daemon-bta")
-
-project(":daemon-bta").projectDir = file("daemon/bta")
-
 // The agent-grant vocabulary. Both ends of `--agent-grants` speak it: the server mints, the
 // client asks.
 include(":agent-grant-protocol")
@@ -129,8 +123,7 @@ include(":data-preview-overrides-core")
 
 project(":data-preview-overrides-core").projectDir = file("data/preview-overrides/core")
 
-// Okio path/IO helpers. `:data-render-core` takes it as `implementation`; `:daemon-bta` no longer
-// does (it used one alias for `FileSystem.SYSTEM` and now names okio directly).
+// Okio path/IO helpers. `:data-render-core` takes it as `implementation`.
 include(":common-io")
 
 project(":common-io").projectDir = file("common/io")
