@@ -132,7 +132,9 @@ public class DefaultBtaCompileService(
             // propagates → outer maps to `Outcome.Fallback` (unrecoverable internal error).
             val collector = DiagnosticCollector()
             try {
-              session.compileIncremental(
+              // The internal entry point: the public `compileIncremental` walks the output dir to
+              // return its class files, and this backend has no use for that list.
+              session.compileIncrementalInternal(
                 sources = sources,
                 compileClasspath = compileClasspath,
                 outputDir = outputDir,

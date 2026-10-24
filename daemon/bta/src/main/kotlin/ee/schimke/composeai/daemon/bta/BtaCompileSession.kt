@@ -3,9 +3,7 @@
 package ee.schimke.composeai.daemon.bta
 
 import java.net.URLClassLoader
-import java.nio.file.Files
 import java.nio.file.Path
-import java.security.MessageDigest
 import kotlin.io.path.exists
 import org.jetbrains.kotlin.buildtools.api.CompilationResult
 import org.jetbrains.kotlin.buildtools.api.ExperimentalBuildToolsApi
@@ -60,6 +58,9 @@ public class BtaCompileSession(
   private val moduleName: String,
   private val logger: KotlinLogger = StderrLogger,
 ) {
+
+  /** Memoized class-path entry hashes, shared by every [compileIncremental] on this session. */
+  internal val classpathHashes: ClasspathEntryHashes = ClasspathEntryHashes()
 
   private val toolchains: KotlinToolchains by lazy {
     val loader =
@@ -125,18 +126,51 @@ public class BtaCompileSession(
     /** Override for callers that share one loaded toolchain across isolated editing sessions. */
     workingDir: Path = icWorkingDir,
   ): List<Path> {
+    compileIncrementalInternal(
+      sources = sources,
+      compileClasspath = compileClasspath,
+      outputDir = outputDir,
+      compilerPlugins = compilerPlugins,
+      sourcesChanges = sourcesChanges,
+      diagnosticListener = diagnosticListener,
+      workingDir = workingDir,
+    )
+    return collectClassFiles(outputDir)
+  }
+
+  /**
+   * [compileIncremental] without the trailing walk of [outputDir]. The public method returns every
+   * `.class` file under the output directory — a full tree walk after each compile — and
+   * [DefaultBtaCompileService.forSession], the production save loop, discards that list. It calls
+   * this instead.
+   */
+  internal fun compileIncrementalInternal(
+    sources: List<Path>,
+    compileClasspath: List<Path>,
+    outputDir: Path,
+    compilerPlugins: List<CompilerPlugin>,
+    sourcesChanges: SourcesChanges,
+    diagnosticListener: KotlinLogger?,
+    workingDir: Path = icWorkingDir,
+  ) {
     outputDir.toFile().mkdirs()
     workingDir.toFile().mkdirs()
     val cpSnapshotsDir = workingDir.resolve("cp-snapshots").also { it.toFile().mkdirs() }
     val icDir = workingDir.resolve("ic").also { it.toFile().mkdirs() }
 
     val jvm = toolchains.getToolchain<JvmPlatformToolchain>()
+    // One BuildSession per compile, deliberately. A BTA build session is scoped to one build:
+    // `close()` is what clears the compiler's JAR caches (`clearJarCaches()` in the 2.4 impl) and
+    // shuts its executor down. Holding one open across saves would let a JAR rebuilt in place —
+    // the case the content-hashed snapshots below exist for — be read through a stale cached
+    // handle, and nothing in the API promises otherwise.
     toolchains.createBuildSession().use { session ->
       val snapshotFiles = compileClasspath.map { jar ->
         // Content-hash the JAR rather than path-hashing — production needs to survive in-place
         // AAR rebuilds where the JAR's path stays stable but its contents move. Reuses the
-        // existing snapshot when the SHA-256 matches.
-        val sha = sha256OfPath(jar)
+        // existing snapshot when the SHA-256 matches. The hash is memoized on the entry's
+        // size/mtime stamp (see [ClasspathEntryHashes]), so an unchanged JAR is not re-read.
+        val sha = classpathHashes.sha256(jar)
         val cached = cpSnapshotsDir.resolve("$sha.bin")
         if (!cached.exists()) {
           val snapshotOp = jvm.classpathSnapshottingOperationBuilder(jar).build()
@@ -159,7 +193,6 @@ public class BtaCompileSession(
       configureCompilerArgs(builder.compilerArguments, compileClasspath, compilerPlugins)
       executeOrThrow(session, builder.build(), diagnosticListener ?: logger)
     }
-    return collectClassFiles(outputDir)
   }
 
   private fun configureCompilerArgs(
@@ -192,36 +225,6 @@ public class BtaCompileSession(
       .filter { it.isFile && it.extension == "class" }
       .map { it.toPath() }
       .toList()
-
-  private fun sha256OfPath(path: Path): String {
-    // BTA snapshots both JARs and classes directories. Hash directory entries in stable relative
-    // path order so an extracted catalog `classes/` directory gets the same content-addressed
-    // cache semantics as a JAR rebuilt in place.
-    val md = MessageDigest.getInstance("SHA-256")
-    val buf = ByteArray(8 * 1024)
-    fun hashFile(file: Path, relative: String) {
-      md.update(relative.toByteArray(Charsets.UTF_8))
-      md.update(0)
-      Files.newInputStream(file).use { stream ->
-        while (true) {
-          val n = stream.read(buf)
-          if (n <= 0) break
-          md.update(buf, 0, n)
-        }
-      }
-    }
-    if (Files.isDirectory(path)) {
-      Files.walk(path).use { paths ->
-        paths
-          .filter { Files.isRegularFile(it) }
-          .sorted(compareBy { path.relativize(it).toString() })
-          .forEach { hashFile(it, path.relativize(it).toString()) }
-      }
-    } else {
-      hashFile(path, path.fileName.toString())
-    }
-    return md.digest().joinToString("") { "%02x".format(it) }
-  }
 }
 
 /**
