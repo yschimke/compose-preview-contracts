@@ -115,8 +115,9 @@ four `data-*-core` modules take `:daemon-protocol` as `api`.
 `common-io` was a different story, and the earlier version of this document had it
 wrong: it was never `api`-re-exported. It was `implementation` in two places, used
 by two files importing one symbol — `SystemFileSystem`, which is
-`okio.FileSystem.SYSTEM` behind an alias. `:daemon-bta`'s call site now uses okio
-directly; `:data-render-core` still takes it.
+`okio.FileSystem.SYSTEM` behind an alias. `:daemon-bta`'s call site switched to okio
+directly (that module has since moved to compose-preview-daemon as `daemon-compile`);
+`:data-render-core` still takes it.
 
 ### The five stay published, and that is the point
 

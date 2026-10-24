@@ -1,7 +1,7 @@
 # compose-preview-contracts
 
-The wire contracts a Compose Preview client speaks — the daemon's JSON-RPC shapes, the
-device catalog, the Build Tools API result shapes and the agent-grant vocabulary — published
+The wire contracts a Compose Preview client speaks — the daemon's JSON-RPC shapes (compile results
+among them), the device catalog and the agent-grant vocabulary — published
 to Maven Central under `ee.schimke.composeai`, without the daemon implementation behind them.
 
 Extracted from [yschimke/compose-ai-tools](https://github.com/yschimke/compose-ai-tools)
@@ -13,7 +13,6 @@ Extracted from [yschimke/compose-ai-tools](https://github.com/yschimke/compose-a
 | --- | --- |
 | `daemon-protocol` | the `@Serializable` request / response / notification shapes, the stream frame header and the reason enums |
 | `daemon-devices` | the device catalog and the `spec:` parser |
-| `daemon-bta` | Build Tools API shapes — `CompileErrorDetail`, `SourceChangeSet` |
 | `agent-grant-protocol` | the `--agent-grants` vocabulary; the server mints, the client asks |
 | `ui-builder-protocol` | versioned catalog, design, command, collaboration, transport-envelope and catalog-renderer runtime shapes shared by UI-builder clients, servers, publishers and renderer SDKs |
 | `screen-document` | serializable screen trees, values, actions, selections, authored rows and reusable function declarations; generation and validation stay in compose-ai-tools |
@@ -33,6 +32,14 @@ Also published, and not wire contracts: `data-render-core`, `data-layoutinspecto
 shapes) and `common-io`. They are here because `compose-preview serve` depends on all five and
 must resolve them by coordinate — see
 [`docs/VERSIONING.md`](docs/VERSIONING.md#the-five-stay-published-and-that-is-the-point).
+
+`daemon-bta` is no longer published here. It was the in-process Kotlin compile over the Build Tools
+API — behaviour, not a wire shape — and its compile-result shapes (`CompileErrorDetail`,
+`SourceChangeSet`) were always `daemon-protocol`'s. It moved to
+[compose-preview-daemon](https://github.com/yschimke/compose-preview-daemon) as
+`ee.schimke.composeai:daemon-compile` (compose-preview-daemon#388, first released in 3.25.0), under a
+new coordinate and package so it cannot lose a version race against this line. The last
+`daemon-bta` release, 3.39.0, stays on Maven Central.
 
 `ui-builder-protocol` is deliberately independent of Compose and the preview server. Its v1 DTOs
 describe catalog capabilities, persisted designs, typed edit commands, collaboration snapshots and
