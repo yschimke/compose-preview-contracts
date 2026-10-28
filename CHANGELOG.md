@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.39.1](https://github.com/yschimke/compose-preview-contracts/compare/v3.39.0...v3.39.1) (2026-10-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.android.tools.build:gradle to v9.5.0 ([#208](https://github.com/yschimke/compose-preview-contracts/issues/208)) ([79612d0](https://github.com/yschimke/compose-preview-contracts/commit/79612d057f60c2bb19afb7987b398e7d1e08adc8))
+
 ## [3.39.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.38.0...v3.39.0) (2026-10-23)
 
 
