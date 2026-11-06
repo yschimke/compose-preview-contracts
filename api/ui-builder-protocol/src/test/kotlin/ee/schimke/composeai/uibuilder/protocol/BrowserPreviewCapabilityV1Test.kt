@@ -18,7 +18,7 @@ class BrowserPreviewCapabilityV1Test {
         .also {
           it.browserPreview =
             BrowserPreviewCapabilityV1.Builder(
-                BrowserPreviewCapabilityV1.REMOTE_COMPOSE_DOCUMENT_RENDERER
+                BrowserPreviewCapabilityV1.REMOTE_COMPOSE_DOCUMENT_RENDERER,
               )
               .also { preview -> preview.format = ExportFormatV1.RC }
               .build()

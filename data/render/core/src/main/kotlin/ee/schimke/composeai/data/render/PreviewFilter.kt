@@ -99,7 +99,7 @@ public object PreviewFilter {
       readFile(path)
         ?: throw IllegalStateException(
           "$fileProperty names '$path', which is not a readable file. Refusing to fall back to " +
-            "an empty exclusion list, which would render every preview and look like success."
+            "an empty exclusion list, which would render every preview and look like success.",
         )
     return lines.map(String::trim).filter(String::isNotEmpty)
   }
@@ -237,7 +237,7 @@ public object PreviewFilter {
     if (kept.isNotEmpty() || !failOnNoMatch) return kept
     throw IllegalStateException(
       "composePreviewRender --exclude-preview-id excluded every one of the ${items.size} " +
-        "preview(s) for ${cleaned.joinToString(", ") { "'$it'" }} — nothing would render."
+        "preview(s) for ${cleaned.joinToString(", ") { "'$it'" }} — nothing would render.",
     )
   }
 
@@ -262,7 +262,7 @@ public object PreviewFilter {
           val more = available.size - MAX_SUGGESTED
           if (more > 0) append("\n  … and ").also { append(more) }.also { append(" more.") }
         }
-      }
+      },
     )
 
   private fun matchOne(pattern: String, simpleName: String, fqName: String): Boolean =

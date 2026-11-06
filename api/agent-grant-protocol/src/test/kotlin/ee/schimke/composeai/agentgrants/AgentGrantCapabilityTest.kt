@@ -41,7 +41,7 @@ class AgentGrantCapabilityTest {
     )
     assertFalse(
       AgentGrantCapability.UI_BUILDER_DESTRUCTIVE in
-        AgentGrantCapability.parseAll("ui-builder-read, ui-builder-write, ui-builder-export")
+        AgentGrantCapability.parseAll("ui-builder-read, ui-builder-write, ui-builder-export"),
     )
   }
 

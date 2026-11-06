@@ -94,7 +94,7 @@ public object FigmaLayeredSvg {
       """<svg xmlns="http://www.w3.org/2000/svg" $xlinkNs""" +
         """width="${model.width}" height="${model.height}" """ +
         """viewBox="0 0 ${model.width} ${model.height}" text-rendering="geometricPrecision" """ +
-        """font-family="${escapeAttr(rootFamily)}">"""
+        """font-family="${escapeAttr(rootFamily)}">""",
     )
     sb.append('\n')
     if (fontFaces.isNotEmpty()) sb.append(fontFaceDefs(fontFaces))
@@ -116,13 +116,13 @@ public object FigmaLayeredSvg {
       sb.append(
         """<clipPath id="deviceRound"><rect x="${capsule.x}" y="${capsule.y}" """ +
           """width="${capsule.width}" height="${capsule.height}" """ +
-          """rx="${capsule.rx}" ry="${capsule.rx}"/></clipPath>"""
+          """rx="${capsule.rx}" ry="${capsule.rx}"/></clipPath>""",
       )
       sb.append('\n')
     } else if (clip != null) {
       sb.append(
         """<clipPath id="deviceRound"><circle cx="${clip.cx}" cy="${clip.cy}" """ +
-          """r="${clip.r}"/></clipPath>"""
+          """r="${clip.r}"/></clipPath>""",
       )
       sb.append('\n')
     }
@@ -276,7 +276,7 @@ public object FigmaLayeredSvg {
     // outer→inner order precede the clip (`background(color).clip(circle)` keeps a square
     // background). The node's own shape is drawn at its box with its own corners regardless.
     sb.append(
-      """$indent<g id="${escapeAttr(layer.name)}"$dataToken$filterAttr${opacityAttr(namedGroupOpacity)}>"""
+      """$indent<g id="${escapeAttr(layer.name)}"$dataToken$filterAttr${opacityAttr(namedGroupOpacity)}>""",
     )
     sb.append('\n')
     if (options.annotateTokens && tokenName != null) {
@@ -698,11 +698,11 @@ public object FigmaLayeredSvg {
       val dy = fmt(e * 0.5)
       val blur = fmt(e * 0.6)
       sb.append(
-        """  <filter id="${shadowFilterId(e.toDouble())}" x="-50%" y="-50%" width="200%" height="200%">"""
+        """  <filter id="${shadowFilterId(e.toDouble())}" x="-50%" y="-50%" width="200%" height="200%">""",
       )
       sb.append('\n')
       sb.append(
-        """    <feDropShadow dx="0" dy="$dy" stdDeviation="$blur" flood-color="#000000" flood-opacity="0.26"/>"""
+        """    <feDropShadow dx="0" dy="$dy" stdDeviation="$blur" flood-color="#000000" flood-opacity="0.26"/>""",
       )
       sb.append('\n')
       sb.append("  </filter>\n")
@@ -838,12 +838,12 @@ public object FigmaLayeredSvg {
           if (iconRef.autoMirrored) """ data-material-icon-auto-mirrored="true"""" else ""
     sb
       .append(
-        """$indent<g id="${escapeAttr(layer.name)}"$iconAttrs${opacityAttr(inheritedOpacity * layer.opacity)}>"""
+        """$indent<g id="${escapeAttr(layer.name)}"$iconAttrs${opacityAttr(inheritedOpacity * layer.opacity)}>""",
       )
       .append('\n')
     sb
       .append(
-        """$indent  <g transform="${rotateTransform(layer)}translate(${fmt(translateX)} ${fmt(translateY)}) scale(${fmt(emittedScaleX)} ${fmt(emittedScaleY)})"${opacityAttr(layer.contentOpacity)}>"""
+        """$indent  <g transform="${rotateTransform(layer)}translate(${fmt(translateX)} ${fmt(translateY)}) scale(${fmt(emittedScaleX)} ${fmt(emittedScaleY)})"${opacityAttr(layer.contentOpacity)}>""",
       )
       .append('\n')
     if (iconId != null) {

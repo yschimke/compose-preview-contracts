@@ -53,7 +53,7 @@ public object PreviewPipelineValidator {
               "Step '${step.id}' requires ${missing.joinToString()} but the pipeline does not " +
                 "provide ${if (missing.size == 1) "it" else "them"}.",
             steps = listOf(step.id),
-          )
+          ),
         )
       }
 
@@ -67,7 +67,7 @@ public object PreviewPipelineValidator {
             message =
               "Step '${step.id}' conflicts with ${conflictingSteps.joinToString { it.id }}.",
             steps = listOf(step.id) + conflictingSteps.map { it.id },
-          )
+          ),
         )
       }
 
@@ -79,7 +79,7 @@ public object PreviewPipelineValidator {
               code = "ExtractionRequiresImage",
               message = "Extractor '${step.id}' requires an image artifact.",
               steps = listOf(step.id),
-            )
+            ),
           )
         }
         if (extraction.requiresSemantics && PipelineCapability.SemanticsSnapshot !in provided) {
@@ -88,7 +88,7 @@ public object PreviewPipelineValidator {
               code = "ExtractionRequiresSemantics",
               message = "Extractor '${step.id}' requires a semantics snapshot.",
               steps = listOf(step.id),
-            )
+            ),
           )
         }
         if (
@@ -102,7 +102,7 @@ public object PreviewPipelineValidator {
               code = "EachFrameExtractionRequiresFrames",
               message = "Extractor '${step.id}' samples each frame but the pipeline has no frames.",
               steps = listOf(step.id),
-            )
+            ),
           )
         }
       }
@@ -124,7 +124,7 @@ public object PreviewPipelineValidator {
           code = code,
           message = "Pipeline has multiple $label steps: ${matches.joinToString { it.id }}.",
           steps = matches.map { it.id },
-        )
+        ),
       )
     }
   }

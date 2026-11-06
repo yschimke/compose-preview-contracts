@@ -121,7 +121,7 @@ public fun UiBuilderRuntimeManifestV2.validateContract(
       integritySha256 = integritySha256,
       assetPaths = assetPaths,
       actualIntegritySha256 = actualIntegritySha256,
-    )
+    ),
   )
   if (remoteComposeWriter != null && remoteComposeWriter.isEmpty()) {
     addIssue("remoteComposeWriter", "blank")
@@ -206,7 +206,7 @@ public fun frameUiBuilderRuntimeTreeIntegrityV1(
     .forEach { (entry, pathBytes) ->
       require(
         normalizeUiBuilderRuntimeAssetPathV1(entry.key) == entry.key &&
-          entry.key != UI_BUILDER_RUNTIME_MANIFEST_NAME_V1
+          entry.key != UI_BUILDER_RUNTIME_MANIFEST_NAME_V1,
       ) {
         "Unsafe runtime asset path '${entry.key}'"
       }

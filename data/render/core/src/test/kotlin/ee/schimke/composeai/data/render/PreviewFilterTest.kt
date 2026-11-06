@@ -58,7 +58,7 @@ class PreviewFilterTest {
   @Test
   fun plainPatternMatchesFullyQualifiedName() {
     assertTrue(
-      PreviewFilter.matches(listOf("com.example.FooPreview"), "FooPreview", "com.example.FooKt")
+      PreviewFilter.matches(listOf("com.example.FooPreview"), "FooPreview", "com.example.FooKt"),
     )
   }
 
@@ -78,7 +78,7 @@ class PreviewFilterTest {
     assertTrue(PreviewFilter.matches(listOf("Fo?Preview"), "FooPreview", "com.example.FooKt"))
     // The '.' in the pattern is literal, so it can't match an arbitrary char.
     assertFalse(
-      PreviewFilter.matches(listOf("comXexample.FooPreview"), "FooPreview", "com.example.FooKt")
+      PreviewFilter.matches(listOf("comXexample.FooPreview"), "FooPreview", "com.example.FooKt"),
     )
   }
 
@@ -308,7 +308,7 @@ class PreviewFilterTest {
       )
     val shattered =
       PreviewFilter.idExcludesFrom(
-        read = props(PreviewFilter.ID_EXCLUDE_PROPERTY to ids.joinToString(","))
+        read = props(PreviewFilter.ID_EXCLUDE_PROPERTY to ids.joinToString(",")),
       )
     assertTrue(shattered.contains("dpi=320"))
     assertFailsWith<IllegalStateException> {

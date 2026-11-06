@@ -84,7 +84,7 @@ public enum class AgentGrantScope(
         .map { name ->
           parse(name)
             ?: throw IllegalArgumentException(
-              "unknown agent grant scope '$name' — expected one of ${entries.joinToString(", ") { it.wire }}"
+              "unknown agent grant scope '$name' — expected one of ${entries.joinToString(", ") { it.wire }}",
             )
         }
         .max()

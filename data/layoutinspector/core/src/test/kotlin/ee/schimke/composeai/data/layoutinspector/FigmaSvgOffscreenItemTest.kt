@@ -110,7 +110,7 @@ class FigmaSvgOffscreenItemTest {
               component = "Image",
               bounds = bounds(600, 900, 720, 1020),
               size = LayoutInspectorSize(120, 120),
-            )
+            ),
           ),
       )
     val m =

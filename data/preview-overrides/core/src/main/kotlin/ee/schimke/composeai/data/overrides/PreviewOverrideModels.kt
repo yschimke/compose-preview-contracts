@@ -126,5 +126,5 @@ public data class PreviewOverrideDeclaration(
  */
 @Serializable
 public data class PreviewOverridesPayload(
-  val declarations: List<PreviewOverrideDeclaration> = emptyList()
+  val declarations: List<PreviewOverrideDeclaration> = emptyList(),
 )

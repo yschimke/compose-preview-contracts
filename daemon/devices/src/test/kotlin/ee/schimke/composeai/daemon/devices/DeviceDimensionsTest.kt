@@ -84,7 +84,7 @@ class DeviceDimensionsTest {
     assertEquals(
       DeviceDimensions.DeviceSpec(227, 227, 2.0f, isRound = true),
       DeviceDimensions.resolve(
-        "spec:width=227dp,height=227dp,dpi=320,isRound=true,orientation=portrait"
+        "spec:width=227dp,height=227dp,dpi=320,isRound=true,orientation=portrait",
       ),
     )
     assertEquals(

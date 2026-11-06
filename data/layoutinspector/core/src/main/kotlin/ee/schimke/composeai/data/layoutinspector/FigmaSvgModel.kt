@@ -1089,7 +1089,7 @@ public data class FigmaSvgModel(
         val region = drawnOverlayRegion(bounds, clipBounds)
         val href = ctx.rasterHref(nodeId)
         ctx.rasterTargets.add(
-          FigmaSvgRasterTarget(nodeId, href, region.left, region.top, region.right, region.bottom)
+          FigmaSvgRasterTarget(nodeId, href, region.left, region.top, region.right, region.bottom),
         )
         return FigmaSvgLayer(
           name = layerName(),
@@ -1168,7 +1168,7 @@ public data class FigmaSvgModel(
         val region = drawnOverlayRegion(bounds, ownAndAncestorClip)
         val href = ctx.rasterHref(nodeId)
         ctx.rasterTargets.add(
-          FigmaSvgRasterTarget(nodeId, href, region.left, region.top, region.right, region.bottom)
+          FigmaSvgRasterTarget(nodeId, href, region.left, region.top, region.right, region.bottom),
         )
         return FigmaSvgLayer(
           name = layerName(),
@@ -1189,7 +1189,7 @@ public data class FigmaSvgModel(
       if (opaqueByName) {
         val href = ctx.rasterHref(nodeId)
         ctx.rasterTargets.add(
-          FigmaSvgRasterTarget(nodeId, href, bounds.left, bounds.top, bounds.right, bounds.bottom)
+          FigmaSvgRasterTarget(nodeId, href, bounds.left, bounds.top, bounds.right, bounds.bottom),
         )
         return FigmaSvgLayer(
           name = layerName(),
@@ -1219,7 +1219,7 @@ public data class FigmaSvgModel(
         val region = paintFillRegion()
         val href = ctx.rasterHref(nodeId)
         ctx.rasterTargets.add(
-          FigmaSvgRasterTarget(nodeId, href, region.left, region.top, region.right, region.bottom)
+          FigmaSvgRasterTarget(nodeId, href, region.left, region.top, region.right, region.bottom),
         )
         return FigmaSvgLayer(
           name = layerName(),
@@ -1276,7 +1276,14 @@ public data class FigmaSvgModel(
           val href = ctx.rasterHref(nodeId)
           val region = drawnRegion()
           ctx.rasterTargets.add(
-            FigmaSvgRasterTarget(nodeId, href, region.left, region.top, region.right, region.bottom)
+            FigmaSvgRasterTarget(
+              nodeId,
+              href,
+              region.left,
+              region.top,
+              region.right,
+              region.bottom,
+            ),
           )
           FigmaSvgBackgroundRaster(href, region.left, region.top, region.right, region.bottom)
         } else
@@ -1311,7 +1318,7 @@ public data class FigmaSvgModel(
                   right = captured.right,
                   bottom = captured.bottom,
                   pngBase64 = captured.pngBase64,
-                )
+                ),
               )
               FigmaSvgBackgroundRaster(
                 href = href,
@@ -1541,7 +1548,7 @@ public data class FigmaSvgModel(
           if (stroke != null || strokeGradient != null) {
             val dp = tokens.borderWidth?.removeSuffix("dp")?.toDoubleOrNull()
             ((dp?.let { it * ctx.density } ?: ctx.density.toDouble()) * scaleMean).coerceAtLeast(
-              1.0
+              1.0,
             )
           } else 1.0,
         cornerRadiiPx = corners,
@@ -1893,7 +1900,7 @@ public data class FigmaSvgModel(
     }
 
     private fun LayoutInspectorNode.recoverBounds(
-      parentBounds: LayoutInspectorBounds?
+      parentBounds: LayoutInspectorBounds?,
     ): LayoutInspectorBounds {
       if (bounds.left != 0 || bounds.top != 0 || bounds.right != 0 || bounds.bottom != 0)
         return bounds
@@ -2177,7 +2184,7 @@ public data class FigmaSvgModel(
      * not a fit.
      */
     private fun LayoutInspectorNode.paintedVectorRegion(
-      nodeBounds: LayoutInspectorBounds
+      nodeBounds: LayoutInspectorBounds,
     ): LayoutInspectorBounds? {
       val painted =
         modifiers.lastOrNull { it.name in PAINT_FILL_MODIFIERS && it.bounds != null }?.bounds
@@ -2524,7 +2531,7 @@ public data class FigmaSvgModel(
               ?.takeIf { it !== b }
               ?.let { c ->
                 candidates.add(
-                  Triple(n.nodeId, intArrayOf(c.left, c.top, c.right, c.bottom), depth)
+                  Triple(n.nodeId, intArrayOf(c.left, c.top, c.right, c.bottom), depth),
                 )
               }
           }

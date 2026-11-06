@@ -139,7 +139,7 @@ public object PerfettoTraceDataProducer {
         } catch (_: Throwable) {}
       }
       openSections.addLast(
-        OpenSection(name = name, category = category, startNs = System.nanoTime())
+        OpenSection(name = name, category = category, startNs = System.nanoTime()),
       )
       depth += 1
     }
@@ -294,7 +294,8 @@ public object PerfettoTraceDataProducer {
 internal object ComposeRuntimeTracingAvailability {
   fun isAvailable(
     classLoader: ClassLoader =
-      Thread.currentThread().contextClassLoader ?: PerfettoTraceDataProducer::class.java.classLoader
+      Thread.currentThread().contextClassLoader
+        ?: PerfettoTraceDataProducer::class.java.classLoader,
   ): Boolean = runCatching {
     Class.forName("androidx.compose.runtime.tracing.ComposeRuntimeTracing", false, classLoader)
   }

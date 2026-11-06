@@ -27,7 +27,7 @@ class FigmaSvgMaterialIconRefTest {
           LayoutInspectorVectorPath(
             pathData = "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z",
             fillArgb = fill,
-          )
+          ),
         ),
       vectorName = vectorName,
     )
@@ -74,7 +74,7 @@ class FigmaSvgMaterialIconRefTest {
     assertTrue(
       "points at the exact drawing on Google's icon CDN",
       svg.contains(
-        """data-material-icon-url="https://fonts.gstatic.com/s/i/materialicons/menu/v1/24px.svg""""
+        """data-material-icon-url="https://fonts.gstatic.com/s/i/materialicons/menu/v1/24px.svg"""",
       ),
     )
   }
@@ -118,7 +118,7 @@ class FigmaSvgMaterialIconRefTest {
           iconNode(menu("Filled.Menu"), id = "a", left = 0),
           iconNode(menu("Filled.Menu"), id = "b", left = 32),
           iconNode(menu("Filled.Menu"), id = "c", left = 64),
-        )
+        ),
       )
     assertEquals(
       "three placements collapse to one def",
@@ -136,7 +136,7 @@ class FigmaSvgMaterialIconRefTest {
         row(
           iconNode(menu("Filled.Menu", fill = "#FF112233"), id = "a", left = 0),
           iconNode(menu("Filled.Menu", fill = "#FFAABBCC"), id = "b", left = 32),
-        )
+        ),
       )
     assertTrue(svg.contains("""<g id="material-icon-materialicons-menu">"""))
     assertTrue(svg.contains("""<g id="material-icon-materialicons-menu-2">"""))
@@ -151,7 +151,9 @@ class FigmaSvgMaterialIconRefTest {
     assertTrue(svg.contains("""data-material-icon-style="Outlined""""))
     assertTrue(svg.contains("""data-material-icon-auto-mirrored="true""""))
     assertTrue(
-      svg.contains("""https://fonts.gstatic.com/s/i/materialiconsoutlined/arrow_back/v1/24px.svg""")
+      svg.contains(
+        """https://fonts.gstatic.com/s/i/materialiconsoutlined/arrow_back/v1/24px.svg""",
+      ),
     )
   }
 
@@ -162,7 +164,7 @@ class FigmaSvgMaterialIconRefTest {
     assertFalse(svg.contains("data-material-icon"))
     assertFalse(svg.contains("<use "))
     assertTrue(
-      svg.contains("""<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="#112233"/>""")
+      svg.contains("""<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="#112233"/>"""),
     )
   }
 

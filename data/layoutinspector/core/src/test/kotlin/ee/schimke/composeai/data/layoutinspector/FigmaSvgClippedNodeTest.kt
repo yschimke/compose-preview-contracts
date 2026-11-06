@@ -32,7 +32,7 @@ class FigmaSvgClippedNodeTest {
             // Unclipped: the row starts 20px above the viewport's top edge.
             bounds = bounds(10, -20, 190, 40),
             size = LayoutInspectorSize(180, 60),
-          )
+          ),
         ),
     )
 
@@ -47,9 +47,9 @@ class FigmaSvgClippedNodeTest {
             children =
               listOf(
                 // What Compose reports: clipped to the viewport, so the top 20px are gone.
-                ComposeSemanticsNode(nodeId = "t", boundsInRoot = "10,0,190,40", text = "Visible")
+                ComposeSemanticsNode(nodeId = "t", boundsInRoot = "10,0,190,40", text = "Visible"),
               ),
-          )
+          ),
       )
     val svg =
       FigmaLayeredSvg.render(
@@ -57,7 +57,7 @@ class FigmaSvgClippedNodeTest {
           layout = LayoutInspectorPayload(straddlingRow()),
           semantics = semantics,
           density = 1f,
-        )
+        ),
       )
     assertTrue("the straddling row must keep its text:\n$svg", svg.contains(">Visible</text>"))
   }
@@ -86,7 +86,7 @@ class FigmaSvgClippedNodeTest {
                     name = "graphicsLayer",
                     properties = mapOf("clip" to "true"),
                     bounds = bounds(0, 0, 200, 100),
-                  )
+                  ),
                 ),
               tokens = ComposeSemanticsTokens(clipsContent = true),
               children =
@@ -97,9 +97,9 @@ class FigmaSvgClippedNodeTest {
                     component = "Text",
                     bounds = bounds(10, 80, 190, 140),
                     size = LayoutInspectorSize(180, 60),
-                  )
+                  ),
                 ),
-            )
+            ),
           ),
       )
     val semantics =
@@ -111,9 +111,9 @@ class FigmaSvgClippedNodeTest {
             children =
               listOf(
                 // Compose clips it to the viewport the surface actually rendered at.
-                ComposeSemanticsNode(nodeId = "t", boundsInRoot = "10,80,190,100", text = "Edge")
+                ComposeSemanticsNode(nodeId = "t", boundsInRoot = "10,80,190,100", text = "Edge"),
               ),
-          )
+          ),
       )
     val svg =
       FigmaLayeredSvg.render(
@@ -121,7 +121,7 @@ class FigmaSvgClippedNodeTest {
           layout = LayoutInspectorPayload(layout),
           semantics = semantics,
           density = 1f,
-        )
+        ),
       )
     assertTrue("the edge row must keep its text:\n$svg", svg.contains(">Edge</text>"))
   }
@@ -159,7 +159,7 @@ class FigmaSvgClippedNodeTest {
                   ),
                 ),
               tokens = ComposeSemanticsTokens(backgroundColor = "#FFFFFFFF", clipsContent = true),
-            )
+            ),
           ),
       )
     val model = FigmaSvgModel.from(layout = LayoutInspectorPayload(scrollSurface), density = 1f)
@@ -220,14 +220,14 @@ class FigmaSvgClippedNodeTest {
                     bounds = bounds(25, 10, 95, 160),
                     size = LayoutInspectorSize(70, 150),
                     tokens = ComposeSemanticsTokens(backgroundColor = "#FF0000FF"),
-                  )
+                  ),
                 ),
-            )
+            ),
           ),
       )
     val svg =
       FigmaLayeredSvg.render(
-        FigmaSvgModel.from(layout = LayoutInspectorPayload(overflowing), density = 1f)
+        FigmaSvgModel.from(layout = LayoutInspectorPayload(overflowing), density = 1f),
       )
     assertTrue(
       "the fill must be the painted 50×100 box — clipped in height, never widened to the clip:" +

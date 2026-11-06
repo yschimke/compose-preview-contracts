@@ -81,7 +81,7 @@ class CatalogWireTest {
         JsonObject(
           element
             .filterKeys { !it.startsWith("${'$'}comment") }
-            .mapValues { withoutComments(it.value) }
+            .mapValues { withoutComments(it.value) },
         )
       is JsonArray -> JsonArray(element.map(::withoutComments))
       else -> element
@@ -193,7 +193,7 @@ class CatalogWireTest {
     assertEquals(
       Json.parseToJsonElement(
         """{"path":"ui-builder/designs/hello.json","id":"hello","label":"Hello",""" +
-          """"supportingText":"A first screen","group":"Starters","default":true,"order":1}"""
+          """"supportingText":"A first screen","group":"Starters","default":true,"order":1}""",
       ),
       templates[1],
     )
@@ -271,7 +271,8 @@ class CatalogWireTest {
           it.locals = mapOf("spec" to "androidx.wear.compose.material3.lazy.TransformationSpec")
           it.scopes =
             mapOf(
-              "list-item" to "androidx.wear.compose.foundation.lazy.TransformingLazyColumnItemScope"
+              "list-item" to
+                "androidx.wear.compose.foundation.lazy.TransformingLazyColumnItemScope",
             )
         }
         .build()
@@ -362,7 +363,7 @@ class CatalogWireTest {
   fun anExportProjectionIsCarriedVerbatimAndLeftOutWhenAbsent() {
     val projection =
       Json.parseToJsonElement(
-        """{"variantProperty":"variant","targets":[{"record":"app/a.ButtonKt.Button","parameters":{}}]}"""
+        """{"variantProperty":"variant","targets":[{"record":"app/a.ButtonKt.Button","parameters":{}}]}""",
       )
     val authoredComponent =
       UiBuilderAuthoredComponent.Builder().apply { exportProjection = projection }.build()

@@ -81,7 +81,7 @@ class FigmaLayeredSvgTest {
                   strokeArgb = "#FF6750A4",
                   strokeWidth = 8f,
                   strokeCap = "round",
-                )
+                ),
               ),
           ),
       )
@@ -106,7 +106,7 @@ class FigmaLayeredSvgTest {
                 LayoutInspectorVectorPath(
                   pathData = "M0,0 L24,0 L24,24 L0,24 Z",
                   fillArgb = "#FF000000",
-                )
+                ),
               ),
           ),
       )
@@ -178,7 +178,7 @@ class FigmaLayeredSvgTest {
               LayoutInspectorGradient(
                 colors = listOf("#FFFF0000", "#8000FF00"),
                 stops = listOf(0f, 0.75f),
-              )
+              ),
           ),
       )
 
@@ -285,7 +285,7 @@ class FigmaLayeredSvgTest {
         40,
         tokens =
           ComposeSemanticsTokens(
-            backgroundGradient = LayoutInspectorGradient(colors = listOf(first, second))
+            backgroundGradient = LayoutInspectorGradient(colors = listOf(first, second)),
           ),
       )
     val node =
@@ -361,7 +361,7 @@ class FigmaLayeredSvgTest {
                 LayoutInspectorVectorPath(
                   pathData = "M0,0 L24,0 L24,24 L0,24 Z",
                   fillArgb = "#FF000000",
-                )
+                ),
               ),
           ),
       )
@@ -393,7 +393,7 @@ class FigmaLayeredSvgTest {
                 LayoutInspectorVectorPath(
                   pathData = "M0,0 L42,0 L42,918 L0,918 Z",
                   fillArgb = "#FF6750A4",
-                )
+                ),
               ),
           ),
       )
@@ -431,7 +431,7 @@ class FigmaLayeredSvgTest {
                 LayoutInspectorVectorPath(
                   pathData = "M0,0 L24,0 L24,24 L0,24 Z",
                   fillArgb = "#FF000000",
-                )
+                ),
               ),
           ),
       )
@@ -466,7 +466,7 @@ class FigmaLayeredSvgTest {
                 LayoutInspectorVectorPath(
                   pathData = "M0,0 L20,0 L20,20 L0,20 Z",
                   fillArgb = "#FF000000",
-                )
+                ),
               ),
           ),
       )
@@ -495,7 +495,7 @@ class FigmaLayeredSvgTest {
                 LayoutInspectorVectorPath(
                   pathData = "M0,0 L24,0 L24,24 L0,24 Z",
                   fillArgb = "#FF000000",
-                )
+                ),
               ),
           ),
       )
@@ -531,7 +531,7 @@ class FigmaLayeredSvgTest {
                 LayoutInspectorVectorPath(
                   pathData = "M0,0 L24,0 L24,24 L0,24 Z",
                   fillArgb = "#FF000000",
-                )
+                ),
               ),
           ),
       )
@@ -568,7 +568,7 @@ class FigmaLayeredSvgTest {
                 LayoutInspectorVectorPath(
                   pathData = "M0,0 L24,0 L24,24 L0,24 Z",
                   fillArgb = "#FF000000",
-                )
+                ),
               ),
           ),
       )
@@ -592,7 +592,7 @@ class FigmaLayeredSvgTest {
             LayoutInspectorModifier(
               name = "paint",
               properties = mapOf("contentScale" to "ContentScale.FillBounds"),
-            )
+            ),
           ),
         vectorGraphic =
           LayoutInspectorVectorGraphic(
@@ -603,7 +603,7 @@ class FigmaLayeredSvgTest {
                 LayoutInspectorVectorPath(
                   pathData = "M0,0 L24,0 L24,24 L0,24 Z",
                   fillArgb = "#FF000000",
-                )
+                ),
               ),
           ),
       )
@@ -625,7 +625,7 @@ class FigmaLayeredSvgTest {
           800,
           children =
             listOf(layoutNode("Header", 0, 0, 400, 100), layoutNode("Body", 0, 100, 400, 800)),
-        )
+        ),
       )
     assertTrue(svg.contains("""<g id="Screen""""))
     assertTrue(svg.contains("""<g id="Header""""))
@@ -652,7 +652,7 @@ class FigmaLayeredSvgTest {
               layoutNode("BoxMeasurePolicy", 0, 0, 100, 50),
               layoutNode("OutlinedTextFieldMeasurePolicy", 0, 50, 200, 100),
             ),
-        )
+        ),
       )
     assertTrue(svg, svg.contains("""<g id="Root""""))
     assertTrue(svg, svg.contains("""<g id="Box""""))
@@ -698,13 +698,13 @@ class FigmaLayeredSvgTest {
                             100,
                             40,
                             tokens = ComposeSemanticsTokens(backgroundColor = "#FF000000"),
-                          )
+                          ),
                         ),
-                    )
+                    ),
                   ),
-              )
+              ),
             ),
-        )
+        ),
       )
     // The two empty wrappers are gone; the painting Button and the root frame survive.
     assertFalse(svg, svg.contains("WrapperA"))
@@ -739,7 +739,7 @@ class FigmaLayeredSvgTest {
                   listOf(layoutNode("Left", 0, 0, 100, 40), layoutNode("Right", 100, 0, 200, 40)),
               ),
             ),
-        )
+        ),
       )
     assertTrue(svg, svg.contains("""<g id="Left""""))
     assertTrue(svg, svg.contains("""<g id="Right""""))
@@ -758,7 +758,7 @@ class FigmaLayeredSvgTest {
           bounds = LayoutInspectorBounds(0, 0, 100, 60),
           size = LayoutInspectorSize(100, 60),
           tokens = ComposeSemanticsTokens(backgroundColor = "#FF000000"),
-        )
+        ),
       )
     assertTrue(svg, svg.contains("""<g id="Card""""))
     assertFalse(svg, svg.contains("""id="Box"""))
@@ -788,7 +788,7 @@ class FigmaLayeredSvgTest {
         size = LayoutInspectorSize(24, 24),
         vectorGraphic = vector,
         modifiers = modifiers,
-      )
+      ),
     )
 
   /**
@@ -836,9 +836,9 @@ class FigmaLayeredSvgTest {
                     size = LayoutInspectorSize(24, 24),
                     vectorGraphic = plusVector(fromDrawCapture = false),
                     modifiers = listOf(tintModifier()),
-                  )
+                  ),
                 ),
-            )
+            ),
           ),
         captureCanvasDraws = true,
       )
@@ -932,9 +932,9 @@ class FigmaLayeredSvgTest {
                           tokens = ComposeSemanticsTokens(backgroundColor = "#22000000"),
                         ),
                       ),
-                  )
+                  ),
                 ),
-            )
+            ),
           ),
         rasterComponents = setOf("Icon"),
       )
@@ -968,9 +968,9 @@ class FigmaLayeredSvgTest {
                     displayName = "Column",
                     bounds = LayoutInspectorBounds(0, 0, 300, 56),
                     size = LayoutInspectorSize(300, 56),
-                  )
+                  ),
                 ),
-            )
+            ),
           ),
         rasterComponents = setOf("TextField"),
       )
@@ -1001,7 +1001,14 @@ class FigmaLayeredSvgTest {
   fun nestingIsPreservedAsNestedGroups() {
     val svg =
       render(
-        layoutNode("Card", 0, 0, 200, 200, children = listOf(layoutNode("Inner", 10, 10, 190, 190)))
+        layoutNode(
+          "Card",
+          0,
+          0,
+          200,
+          200,
+          children = listOf(layoutNode("Inner", 10, 10, 190, 190)),
+        ),
       )
     val cardIdx = svg.indexOf("""<g id="Card"""")
     val innerIdx = svg.indexOf("""<g id="Inner"""")
@@ -1024,7 +1031,7 @@ class FigmaLayeredSvgTest {
           100,
           100,
           tokens = ComposeSemanticsTokens(backgroundColor = "#FF6750A4"),
-        )
+        ),
       )
     assertTrue(svg.contains("<rect"))
     assertTrue(svg.contains("""fill="#6750A4""""))
@@ -1041,7 +1048,7 @@ class FigmaLayeredSvgTest {
           10,
           10,
           tokens = ComposeSemanticsTokens(backgroundColor = "#FF112233"),
-        )
+        ),
       )
     assertFalse(opaque.contains("fill-opacity"))
     val translucent =
@@ -1053,7 +1060,7 @@ class FigmaLayeredSvgTest {
           10,
           10,
           tokens = ComposeSemanticsTokens(backgroundColor = "#80112233"),
-        )
+        ),
       )
     assertTrue(translucent.contains("fill-opacity"))
   }
@@ -1069,7 +1076,7 @@ class FigmaLayeredSvgTest {
           100,
           100,
           tokens = ComposeSemanticsTokens(borderColor = "#FF000000"),
-        )
+        ),
       )
     assertTrue(svg.contains("""stroke="#000000""""))
   }
@@ -1085,7 +1092,7 @@ class FigmaLayeredSvgTest {
           100,
           100,
           tokens = ComposeSemanticsTokens(backgroundColor = "#FFFFFFFF", cornerRadius = "12.0dp"),
-        )
+        ),
       )
     assertTrue(svg.contains("""rx="12""""))
     assertTrue(svg.contains("""ry="12""""))
@@ -1268,7 +1275,7 @@ class FigmaLayeredSvgTest {
               364,
               520,
               tokens = ComposeSemanticsTokens(backgroundColor = "#FF2E2E38"),
-            )
+            ),
           ),
       )
     val model = FigmaSvgModel.from(LayoutInspectorPayload(root), roundClip = true)
@@ -1314,7 +1321,7 @@ class FigmaLayeredSvgTest {
               364,
               560,
               tokens = ComposeSemanticsTokens(backgroundColor = "#FF2E2E38"),
-            )
+            ),
           ),
       )
     val model = FigmaSvgModel.from(LayoutInspectorPayload(root), capsuleClip = true)
@@ -1414,7 +1421,7 @@ class FigmaLayeredSvgTest {
               fontSizePx = 30.0,
               fontWeight = 600,
               colorArgb = "#FFC6C6C7",
-            )
+            ),
           ),
       )
     val svg = FigmaLayeredSvg.render(FigmaSvgModel.from(LayoutInspectorPayload(node)))
@@ -1460,7 +1467,7 @@ class FigmaLayeredSvgTest {
   fun curvedTextWithNoEmbeddedFaceCarriesAGenericFallback() {
     val svg =
       FigmaLayeredSvg.render(
-        FigmaSvgModel.from(LayoutInspectorPayload(clockNode(fontFamily = "Roboto Flex")))
+        FigmaSvgModel.from(LayoutInspectorPayload(clockNode(fontFamily = "Roboto Flex"))),
       )
 
     // The multi-word face is CSS-quoted so the family list parses, and those quotes are then XML
@@ -1507,7 +1514,7 @@ class FigmaLayeredSvgTest {
             fontWeight = 600,
             colorArgb = "#FFC6C6C7",
             fontFamily = fontFamily,
-          )
+          ),
         ),
     )
 
@@ -1533,7 +1540,7 @@ class FigmaLayeredSvgTest {
               sweepRadians = 0.4944,
               clockwise = true,
               fontSizePx = 30.0,
-            )
+            ),
           ),
       )
     val root =
@@ -1590,16 +1597,16 @@ class FigmaLayeredSvgTest {
               name = "paint",
               properties = mapOf("painter" to "SwitchButtonKt\$SwitchButton\$colorPainter\$1@1"),
               bounds = bounds(16, 16, 203, 120),
-            )
+            ),
           ),
         children =
           listOf(
-            layoutNode("Label", 44, 50, 99, 86, tokens = null)
+            layoutNode("Label", 44, 50, 99, 86, tokens = null),
           ), // a child that must be dropped
       )
     val svg =
       FigmaLayeredSvg.render(
-        FigmaSvgModel.from(LayoutInspectorPayload(node), captureCanvasDraws = true)
+        FigmaSvgModel.from(LayoutInspectorPayload(node), captureCanvasDraws = true),
       )
     assertTrue("unresolved paint fill must raster as an <image>", svg.contains("<image "))
     // Cropped to the paint modifier's drawn region (the full pill), not the inner content bounds.
@@ -1624,7 +1631,7 @@ class FigmaLayeredSvgTest {
               name = "BackgroundElement",
               properties = mapOf("brush" to "LinearGradient(colors=[red, blue])"),
               bounds = bounds(12, 20, 212, 68),
-            )
+            ),
           ),
         children =
           listOf(
@@ -1635,13 +1642,13 @@ class FigmaLayeredSvgTest {
               160,
               58,
               tokens = ComposeSemanticsTokens(backgroundColor = "#FFFFFFFF"),
-            )
+            ),
           ),
       )
 
     val svg =
       FigmaLayeredSvg.render(
-        FigmaSvgModel.from(LayoutInspectorPayload(node), captureCanvasDraws = true)
+        FigmaSvgModel.from(LayoutInspectorPayload(node), captureCanvasDraws = true),
       )
 
     assertTrue("the gradient layer must survive as rendered pixels", svg.contains("<image "))
@@ -1677,12 +1684,12 @@ class FigmaLayeredSvgTest {
                   "contentScale" to "androidx.compose.ui.layout.ContentScale\$Companion\$Fit\$1@1",
                 ),
               bounds = bounds(223, 280, 853, 910),
-            )
+            ),
           ),
       )
     val svg =
       FigmaLayeredSvg.render(
-        FigmaSvgModel.from(LayoutInspectorPayload(node), captureCanvasDraws = true)
+        FigmaSvgModel.from(LayoutInspectorPayload(node), captureCanvasDraws = true),
       )
     assertTrue("a Coil content painter must raster as an <image>", svg.contains("<image "))
     assertTrue(
@@ -1708,12 +1715,12 @@ class FigmaLayeredSvgTest {
               name = "ContentPainterModifier",
               properties = emptyMap(),
               bounds = bounds(0, 0, 96, 96),
-            )
+            ),
           ),
       )
     val svg =
       FigmaLayeredSvg.render(
-        FigmaSvgModel.from(LayoutInspectorPayload(node), captureCanvasDraws = true)
+        FigmaSvgModel.from(LayoutInspectorPayload(node), captureCanvasDraws = true),
       )
     assertTrue("a Coil 2 content painter must raster as an <image>", svg.contains("<image "))
   }
@@ -1735,7 +1742,7 @@ class FigmaLayeredSvgTest {
               name = "content",
               properties = emptyMap(),
               bounds = bounds(0, 0, 240, 240),
-            )
+            ),
           ),
       )
     val svg = FigmaLayeredSvg.render(FigmaSvgModel.from(LayoutInspectorPayload(node)))
@@ -1764,12 +1771,12 @@ class FigmaLayeredSvgTest {
                   "colorFilter" to "ColorFilter(...)",
                 ),
               bounds = bounds(0, 0, 100, 100),
-            )
+            ),
           ),
       )
     val svg =
       FigmaLayeredSvg.render(
-        FigmaSvgModel.from(LayoutInspectorPayload(node), captureCanvasDraws = true)
+        FigmaSvgModel.from(LayoutInspectorPayload(node), captureCanvasDraws = true),
       )
     assertTrue(
       "a colour-filtered ColorPainter fill must raster from the frame",
@@ -1794,15 +1801,15 @@ class FigmaLayeredSvgTest {
               name = "paint",
               properties =
                 mapOf(
-                  "painter" to "ColorPainter(color=Color(0.0, 0.0, 0.0, 0.0, sRGB IEC61966-2.1))"
+                  "painter" to "ColorPainter(color=Color(0.0, 0.0, 0.0, 0.0, sRGB IEC61966-2.1))",
                 ),
               bounds = bounds(0, 0, 100, 100),
-            )
+            ),
           ),
       )
     val svg =
       FigmaLayeredSvg.render(
-        FigmaSvgModel.from(LayoutInspectorPayload(node), captureCanvasDraws = true)
+        FigmaSvgModel.from(LayoutInspectorPayload(node), captureCanvasDraws = true),
       )
     assertFalse("a transparent unfiltered ColorPainter must not raster", svg.contains("<image "))
   }
@@ -1822,7 +1829,7 @@ class FigmaLayeredSvgTest {
       )
     val svg =
       FigmaLayeredSvg.render(
-        FigmaSvgModel.from(LayoutInspectorPayload(node), captureCanvasDraws = true)
+        FigmaSvgModel.from(LayoutInspectorPayload(node), captureCanvasDraws = true),
       )
     assertTrue("a solid fill stays a vector rect", svg.contains("""fill="#332E3C""""))
     assertFalse("a resolvable fill must not raster", svg.contains("<image "))
@@ -1845,7 +1852,7 @@ class FigmaLayeredSvgTest {
               name = "paint",
               properties = mapOf("painter" to "some.pkg.BackgroundPainter@2"),
               bounds = bounds(16, 16, 203, 120),
-            )
+            ),
           ),
       )
     val svg = FigmaLayeredSvg.render(FigmaSvgModel.from(LayoutInspectorPayload(node)))
@@ -1986,7 +1993,7 @@ class FigmaLayeredSvgTest {
           100,
           100,
           tokens = ComposeSemanticsTokens(backgroundColor = "#FF6750A4"),
-        )
+        ),
       )
     assertTrue("no shadow filter without elevation", !svg.contains("feDropShadow"))
     assertTrue(!svg.contains("filter=\"url(#shadow"))
@@ -2012,9 +2019,9 @@ class FigmaLayeredSvgTest {
                 90,
                 30,
                 tokens = ComposeSemanticsTokens(backgroundColor = "#FFFFFFFF"),
-              )
+              ),
             ),
-        )
+        ),
       )
 
     assertTrue(
@@ -2051,9 +2058,9 @@ class FigmaLayeredSvgTest {
                 90,
                 30,
                 tokens = ComposeSemanticsTokens(backgroundColor = "#FFFFFFFF"),
-              )
+              ),
             ),
-        )
+        ),
       )
 
     val shapeIndex = svg.indexOf("""fill="#6750A4"""")
@@ -2129,7 +2136,7 @@ class FigmaLayeredSvgTest {
               backgroundColor = "#FFFFFFFF",
               cornerRadiusPx = "20.0px,20.0px,0.0px,0.0px",
             ),
-        )
+        ),
       )
     assertTrue(svg.contains("<path"))
     assertTrue(svg.contains(" A")) // arc commands for the rounded corners
@@ -2175,7 +2182,7 @@ class FigmaLayeredSvgTest {
               backgroundColor = "#FFFFFFFF",
               cornerRadius = "12.0dp,12.0dp,0.0dp,0.0dp",
             ),
-        )
+        ),
       )
     assertTrue(svg.contains("<path"))
     assertTrue(svg.contains(" A")) // arc commands for the rounded corners
@@ -2192,7 +2199,7 @@ class FigmaLayeredSvgTest {
           48,
           48,
           tokens = ComposeSemanticsTokens(backgroundColor = "#FFCCCCCC", shape = "circle"),
-        )
+        ),
       )
     assertTrue(svg.contains("""rx="24""""))
   }
@@ -2216,7 +2223,7 @@ class FigmaLayeredSvgTest {
               cornerRadius = "12.0dp",
               shape = "cut",
             ),
-        )
+        ),
       )
     assertTrue(svg.contains("<path"))
     assertTrue("chamfers are straight line segments", svg.contains(" L"))
@@ -2272,7 +2279,7 @@ class FigmaLayeredSvgTest {
                   fontStyle = "normal",
                 ),
               textColor = ComposeSemanticsTextColor(foreground = "#FF202020"),
-            )
+            ),
           ),
       )
     val svg = render(layout, semantics = semantics)
@@ -2298,7 +2305,7 @@ class FigmaLayeredSvgTest {
               text = "Accessibility copy",
               layoutText = "Visible copy",
               typography = ComposeSemanticsTypography(fontSize = "16.0sp"),
-            )
+            ),
           ),
       )
 
@@ -2331,9 +2338,9 @@ class FigmaLayeredSvgTest {
                     name = "text",
                     properties =
                       mapOf("layoutText" to "Visible modifier", "layoutTextFontSizePx" to "16"),
-                  )
+                  ),
                 ),
-            )
+            ),
           ),
       )
     val semantics =
@@ -2346,7 +2353,7 @@ class FigmaLayeredSvgTest {
               nodeId = "t",
               boundsInRoot = "8,8,192,40",
               text = "Accessibility copy",
-            )
+            ),
           ),
       )
 
@@ -2386,11 +2393,11 @@ class FigmaLayeredSvgTest {
                         LayoutInspectorModifier(
                           name = "text",
                           properties = mapOf("layoutText" to "17", "layoutTextFontSizePx" to "24"),
-                        )
+                        ),
                       ),
-                  )
+                  ),
                 ),
-            )
+            ),
           ),
       )
     val semantics =
@@ -2404,7 +2411,7 @@ class FigmaLayeredSvgTest {
               boundsInRoot = "20,20,80,80",
               text = "Start date, Thursday, August 17, 2023",
               mergeMode = "clearAndSet",
-            )
+            ),
           ),
       )
 
@@ -2436,7 +2443,7 @@ class FigmaLayeredSvgTest {
               boundsInRoot = "20,8,180,40",
               text = "Wellness",
               typography = ComposeSemanticsTypography(fontSize = "16.0sp", textAlign = "center"),
-            )
+            ),
           ),
       )
     val svg = render(layout, semantics = semantics)
@@ -2462,7 +2469,7 @@ class FigmaLayeredSvgTest {
               boundsInRoot = "20,8,180,40",
               text = "42",
               typography = ComposeSemanticsTypography(fontSize = "16.0sp", textAlign = "end"),
-            )
+            ),
           ),
       )
     val svg = render(layout, semantics = semantics)
@@ -2496,7 +2503,7 @@ class FigmaLayeredSvgTest {
                     textAlign = align,
                     layoutDirection = direction,
                   ),
-              )
+              ),
             ),
         )
       return render(layout, semantics = semantics)
@@ -2544,7 +2551,7 @@ class FigmaLayeredSvgTest {
               boundsInRoot = "20,8,180,40",
               text = "Left",
               typography = ComposeSemanticsTypography(fontSize = "16.0sp"),
-            )
+            ),
           ),
       )
     val svg = render(layout, semantics = semantics)
@@ -2575,7 +2582,7 @@ class FigmaLayeredSvgTest {
               90,
               50,
               tokens = ComposeSemanticsTokens(backgroundColor = "#FF6750A4"),
-            )
+            ),
           ),
       )
     val model =
@@ -2617,7 +2624,7 @@ class FigmaLayeredSvgTest {
               263,
               14,
               tokens = ComposeSemanticsTokens(backgroundColor = "#1FFFFFFF"),
-            )
+            ),
           ),
       )
     val model =
@@ -2668,7 +2675,7 @@ class FigmaLayeredSvgTest {
               90,
               50,
               tokens = ComposeSemanticsTokens(backgroundColor = "#FF6750A4"),
-            )
+            ),
           ),
       )
     val model =
@@ -2713,7 +2720,7 @@ class FigmaLayeredSvgTest {
               120,
               40,
               tokens = ComposeSemanticsTokens(backgroundColor = "#FF6750A4"),
-            )
+            ),
           ),
       )
     val model =
@@ -2764,7 +2771,7 @@ class FigmaLayeredSvgTest {
               258,
               158,
               tokens = ComposeSemanticsTokens(backgroundColor = "#FF6750A4"),
-            )
+            ),
           ),
       )
     val model =
@@ -2807,7 +2814,7 @@ class FigmaLayeredSvgTest {
               258,
               158,
               tokens = ComposeSemanticsTokens(backgroundColor = "#FF6750A4"),
-            )
+            ),
           ),
       )
     val model = FigmaSvgModel.from(layout = LayoutInspectorPayload(layout))
@@ -2859,7 +2866,7 @@ class FigmaLayeredSvgTest {
               text = "Hello",
               // 0.5sp at density 2 → 1.0px.
               typography = ComposeSemanticsTypography(fontSize = "16.0sp", letterSpacing = "0.5sp"),
-            )
+            ),
           ),
       )
     val svg = render(layout, semantics = semantics, density = 2f)
@@ -2881,7 +2888,7 @@ class FigmaLayeredSvgTest {
               boundsInRoot = "8,8,192,40",
               text = "Hello",
               typography = ComposeSemanticsTypography(fontSize = "16.0sp", letterSpacing = "0.0sp"),
-            )
+            ),
           ),
       )
     assertFalse(render(layout, semantics = semantics, density = 2f).contains("letter-spacing"))
@@ -2920,7 +2927,7 @@ class FigmaLayeredSvgTest {
               boundsInRoot = "8,8,192,40",
               text = "Hello",
               typography = ComposeSemanticsTypography(fontSize = "16.0sp", lineHeight = lineHeight),
-            )
+            ),
           ),
       )
     return render(layout, semantics = semantics)
@@ -3032,7 +3039,7 @@ class FigmaLayeredSvgTest {
               text = "Hi",
               typography =
                 ComposeSemanticsTypography(fontSize = "16.0sp", fontFamily = "Roboto-Regular"),
-            )
+            ),
           ),
       )
     val svg = render(layout, semantics = semantics)
@@ -3087,7 +3094,7 @@ class FigmaLayeredSvgTest {
                       ComposeSemanticsTextLine("code", 0, 44, start = 5, end = 9),
                     ),
                 ),
-            )
+            ),
           ),
       )
 
@@ -3155,7 +3162,7 @@ class FigmaLayeredSvgTest {
                       ComposeSemanticsTextLine("code", 0, 44, start = 5, end = 9),
                     ),
                 ),
-            )
+            ),
           ),
       )
 
@@ -3214,7 +3221,7 @@ class FigmaLayeredSvgTest {
                       ComposeSemanticsTextLine("trunc…", 0, 44, start = 5, end = 10),
                     ),
                 ),
-            )
+            ),
           ),
       )
 
@@ -3248,7 +3255,7 @@ class FigmaLayeredSvgTest {
                       ComposeSemanticsTextLine(text = "card", left = 0, baseline = 44),
                     ),
                 ),
-            )
+            ),
           ),
       )
     val svg = render(layout, semantics = semantics)
@@ -3274,7 +3281,7 @@ class FigmaLayeredSvgTest {
               boundsInRoot = "8,8,192,40",
               text = "Hi",
               typography = ComposeSemanticsTypography(fontSize = "16.0sp"),
-            )
+            ),
           ),
       )
     val svg = render(layout, semantics = semantics)
@@ -3311,18 +3318,18 @@ class FigmaLayeredSvgTest {
                         start = 0,
                         end = 6,
                         width = 120,
-                      )
+                      ),
                     ),
                 ),
-            )
+            ),
           ),
       )
 
     val svg = render(layout, semantics = semantics)
     assertTrue(
       svg.contains(
-        """<tspan x="8" y="32" textLength="120" lengthAdjust="spacing">Effect…</tspan>"""
-      )
+        """<tspan x="8" y="32" textLength="120" lengthAdjust="spacing">Effect…</tspan>""",
+      ),
     )
     assertFalse(
       "full source string must not overflow its measured slot",
@@ -3361,7 +3368,7 @@ class FigmaLayeredSvgTest {
               boundsInRoot = "8,8,192,40",
               text = "Hi",
               typography = ComposeSemanticsTypography(fontSize = "16.0sp"), // generic family
-            )
+            ),
           ),
       )
     val model =
@@ -3453,7 +3460,7 @@ class FigmaLayeredSvgTest {
                     fontSizePx = 20.0,
                     fontWeight = 600,
                     colorArgb = "#FFC6C6C7",
-                  )
+                  ),
                 ),
             ),
             layoutNode("Text", 8, 80, 192, 120),
@@ -3470,7 +3477,7 @@ class FigmaLayeredSvgTest {
               boundsInRoot = "8,80,192,120",
               text = hostile,
               typography = ComposeSemanticsTypography(fontSize = "16.0sp"),
-            )
+            ),
           ),
       )
     val model =
@@ -3509,7 +3516,7 @@ class FigmaLayeredSvgTest {
               boundsInRoot = "8,8,192,40", // skewed by 1px on two edges vs the layout node
               text = "Hello",
               typography = ComposeSemanticsTypography(fontSize = "16.0sp"),
-            )
+            ),
           ),
       )
     val svg = render(layout, semantics = semantics)
@@ -3542,7 +3549,7 @@ class FigmaLayeredSvgTest {
               boundsInRoot = "0,0,42,42",
               text = "😀",
               typography = ComposeSemanticsTypography(fontSize = "18.0sp"),
-            )
+            ),
           ),
       )
 
@@ -3562,7 +3569,11 @@ class FigmaLayeredSvgTest {
         boundsInRoot = "0,0,200,100",
         children =
           listOf(
-            ComposeSemanticsNode(nodeId = "t", boundsInRoot = "500,500,600,540", text = "Elsewhere")
+            ComposeSemanticsNode(
+              nodeId = "t",
+              boundsInRoot = "500,500,600,540",
+              text = "Elsewhere",
+            ),
           ),
       )
     val svg = render(layout, semantics = semantics)
@@ -3624,7 +3635,7 @@ class FigmaLayeredSvgTest {
           100,
           100,
           tokens = ComposeSemanticsTokens(backgroundColor = "#FFFFFFFF", cornerRadius = "12px"),
-        )
+        ),
       )
     assertFalse(svg.contains("rx="))
     assertFalse(svg.contains("<path"))
@@ -3651,9 +3662,9 @@ class FigmaLayeredSvgTest {
                 110,
                 220,
                 tokens = ComposeSemanticsTokens(backgroundColor = "#FF000000"),
-              )
+              ),
             ),
-        )
+        ),
       )
     // extent x:[10..110] y:[20..220]; +16 padding each side → 132 x 232
     assertTrue(svg, svg.contains("""viewBox="0 0 132 232""""))
@@ -3699,7 +3710,7 @@ class FigmaLayeredSvgTest {
           200,
           tokens = ComposeSemanticsTokens(backgroundColor = "#FFFFFBFE"),
           children = listOf(layoutNode("Image", 20, 20, 180, 120)),
-        )
+        ),
       )
     val model =
       FigmaSvgModel.from(layout, rasterComponents = FigmaSvgModel.DEFAULT_RASTER_COMPONENTS)
@@ -3737,13 +3748,13 @@ class FigmaLayeredSvgTest {
                 40,
                 40,
                 children = listOf(layoutNode("InnerVector", 8, 8, 40, 40)),
-              )
+              ),
             ),
-        )
+        ),
       )
     val svg =
       FigmaLayeredSvg.render(
-        FigmaSvgModel.from(layout, rasterComponents = FigmaSvgModel.DEFAULT_RASTER_COMPONENTS)
+        FigmaSvgModel.from(layout, rasterComponents = FigmaSvgModel.DEFAULT_RASTER_COMPONENTS),
       )
     assertTrue(svg.contains("<image "))
     assertFalse("opaque subtree must not emit its inner nodes", svg.contains("InnerVector"))
@@ -3919,7 +3930,7 @@ class FigmaLayeredSvgTest {
     assertTrue(
       "the title run carries its own axes, tag-quoted for CSS",
       svg.contains(
-        """style="font-variation-settings:&apos;GRAD&apos; 0.0,&apos;ROND&apos; 100.0,&apos;opsz&apos; 9.0,&apos;wght&apos; 750.0""""
+        """style="font-variation-settings:&apos;GRAD&apos; 0.0,&apos;ROND&apos; 100.0,&apos;opsz&apos; 9.0,&apos;wght&apos; 750.0"""",
       ),
     )
     assertTrue(
@@ -3944,13 +3955,13 @@ class FigmaLayeredSvgTest {
               boundsInRoot = "0,0,200,40",
               text = "Hi",
               typography = ComposeSemanticsTypography(fontSize = "16.0sp", fontFamily = "Lato"),
-            )
+            ),
           ),
       )
 
     val svg =
       FigmaLayeredSvg.render(
-        FigmaSvgModel.from(LayoutInspectorPayload(layout), ComposeSemanticsPayload(semantics))
+        FigmaSvgModel.from(LayoutInspectorPayload(layout), ComposeSemanticsPayload(semantics)),
       )
 
     assertFalse("no empty declaration", svg.contains("font-variation-settings"))
@@ -3979,13 +3990,13 @@ class FigmaLayeredSvgTest {
                   fontSize = "16.0sp",
                   fontVariationSettings = "wght; } body { display:none",
                 ),
-            )
+            ),
           ),
       )
 
     val svg =
       FigmaLayeredSvg.render(
-        FigmaSvgModel.from(LayoutInspectorPayload(layout), ComposeSemanticsPayload(semantics))
+        FigmaSvgModel.from(LayoutInspectorPayload(layout), ComposeSemanticsPayload(semantics)),
       )
 
     assertFalse("nothing is declared", svg.contains("font-variation-settings"))

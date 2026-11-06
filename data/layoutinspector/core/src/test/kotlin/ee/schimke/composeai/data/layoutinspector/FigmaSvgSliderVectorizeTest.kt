@@ -30,7 +30,7 @@ class FigmaSvgSliderVectorizeTest {
             pathData =
               "M2 0L198 0A2 2 0 0 1 200 2A2 2 0 0 1 198 4L2 4A2 2 0 0 1 0 2A2 2 0 0 1 2 0Z",
             fillArgb = "#FF6750A4",
-          )
+          ),
         ),
     )
 
@@ -52,7 +52,7 @@ class FigmaSvgSliderVectorizeTest {
             bounds = bounds(0, 22, 200, 26),
             size = LayoutInspectorSize(200, 4),
             vectorGraphic = track,
-          )
+          ),
         ),
     )
 

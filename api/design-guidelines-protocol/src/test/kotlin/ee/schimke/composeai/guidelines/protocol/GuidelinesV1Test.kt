@@ -98,7 +98,8 @@ class GuidelinesV1Test {
     val json = withDefaults.encodeToJsonElement(GuidelineRecordV1.serializer(), record).jsonObject
     assertFalse("previewId" in json, json.toString())
     assertTrue(
-      "schema" in builderJson.encodeToJsonElement(GuidelineRecordV1.serializer(), record).jsonObject
+      "schema" in
+        builderJson.encodeToJsonElement(GuidelineRecordV1.serializer(), record).jsonObject,
     )
 
     val request =
@@ -206,7 +207,7 @@ class GuidelinesV1Test {
     val flat = guidelines.newBuilder().also { it.includes = emptyList() }.build()
     assertFalse(
       "includes" in
-        builderJson.encodeToJsonElement(CatalogGuidelinesV1.serializer(), flat).jsonObject
+        builderJson.encodeToJsonElement(CatalogGuidelinesV1.serializer(), flat).jsonObject,
     )
   }
 
@@ -338,12 +339,12 @@ class GuidelinesV1Test {
     val verdict = GuidelineVerdictV1.Builder("r", GuidelineVerdictV1.PASS).build()
     assertFalse(
       "subjectId" in
-        withDefaults.encodeToJsonElement(GuidelineVerdictV1.serializer(), verdict).jsonObject
+        withDefaults.encodeToJsonElement(GuidelineVerdictV1.serializer(), verdict).jsonObject,
     )
     val picture = GuidelinePictureV1.Builder("device", "d", 1, 1).build()
     assertFalse(
       "subjectId" in
-        withDefaults.encodeToJsonElement(GuidelinePictureV1.serializer(), picture).jsonObject
+        withDefaults.encodeToJsonElement(GuidelinePictureV1.serializer(), picture).jsonObject,
     )
     val record =
       GuidelineRecordV1.Builder(0, "m", 1, emptyList(), emptyList())
@@ -351,7 +352,7 @@ class GuidelinesV1Test {
         .build()
     assertFalse(
       "subjects" in
-        withDefaults.encodeToJsonElement(GuidelineRecordV1.serializer(), record).jsonObject
+        withDefaults.encodeToJsonElement(GuidelineRecordV1.serializer(), record).jsonObject,
     )
     val subject = GuidelineSubjectV1.Builder("p", GuidelineSubjectV1.KIND_PREVIEW).build()
     assertEquals(subject, subject.newBuilder().build())
@@ -409,7 +410,7 @@ class GuidelinesV1Test {
                   """{"role":"button","contentDescription":null}""",
                 )
                 .also { it.subjectId = subject }
-                .build()
+                .build(),
             )
           request.pictures =
             listOf(
@@ -419,7 +420,7 @@ class GuidelinesV1Test {
                   it.theme = "dark"
                   it.fontScale = 1.5
                 }
-                .build()
+                .build(),
             )
         }
         .build()
@@ -455,12 +456,12 @@ class GuidelinesV1Test {
     }
     val rule = GuidelineRuleV1.Builder("r", "structure", "info", "g", "ok?", "https://x").build()
     assertFalse(
-      "evidence" in withDefaults.encodeToJsonElement(GuidelineRuleV1.serializer(), rule).jsonObject
+      "evidence" in withDefaults.encodeToJsonElement(GuidelineRuleV1.serializer(), rule).jsonObject,
     )
     val verdict = GuidelineVerdictV1.Builder("r", GuidelineVerdictV1.PASS).build()
     assertFalse(
       "needs" in
-        withDefaults.encodeToJsonElement(GuidelineVerdictV1.serializer(), verdict).jsonObject
+        withDefaults.encodeToJsonElement(GuidelineVerdictV1.serializer(), verdict).jsonObject,
     )
     val evidence = GuidelineEvidenceV1.Builder("source", "text/plain", "x").build()
     assertEquals(evidence, evidence.newBuilder().build())
@@ -573,7 +574,7 @@ class GuidelinesV1Test {
         withDefaults.encodeToJsonElement(
           GuidelineSubjectV1.serializer(),
           GuidelineSubjectV1.Builder("p1", GuidelineSubjectV1.KIND_PREVIEW).build(),
-        )
+        ),
       ),
     )
     assertEquals(
@@ -582,7 +583,7 @@ class GuidelinesV1Test {
         withDefaults.encodeToJsonElement(
           GuidelineEvidenceNeedV1.serializer(),
           GuidelineEvidenceNeedV1.Builder("render").build(),
-        )
+        ),
       ),
     )
     assertEquals(
@@ -591,7 +592,7 @@ class GuidelinesV1Test {
         withDefaults.encodeToJsonElement(
           GuidelineEvidenceV1.serializer(),
           GuidelineEvidenceV1.Builder("source", "text/x-kotlin", "fun A() {}").build(),
-        )
+        ),
       ),
     )
     assertEquals(
@@ -600,7 +601,7 @@ class GuidelinesV1Test {
         withDefaults.encodeToJsonElement(
           GuidelineRoutingV1.serializer(),
           GuidelineRoutingV1.Builder("typesafe/jev-router").build(),
-        )
+        ),
       ),
     )
   }

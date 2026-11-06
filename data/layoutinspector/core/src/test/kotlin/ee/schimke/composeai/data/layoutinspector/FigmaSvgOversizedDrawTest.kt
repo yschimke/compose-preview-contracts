@@ -48,7 +48,7 @@ class FigmaSvgOversizedDrawTest {
             component = "EmptyMeasurePolicy",
             bounds = label,
             size = LayoutInspectorSize(69, 36),
-          )
+          ),
         ),
     )
 

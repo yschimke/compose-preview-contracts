@@ -35,10 +35,10 @@ class ScreenDocumentWireTest {
                         ScreenValue.SlotParameterRead(
                           "contentPadding",
                           "androidx.compose.foundation.layout.PaddingValues",
-                        )
+                        ),
                     ),
-                )
-              )
+                ),
+              ),
           ),
         slotParameters = mapOf("content" to "contentPadding"),
       )
@@ -183,10 +183,10 @@ class ScreenDocumentWireTest {
                             listOf(
                               ScreenAction.Set("page", ScreenValue.RowRead("id", "kotlin.Int")),
                               ScreenAction.Set("page", ScreenValue.Whole(10)),
-                            )
+                            ),
                         ),
-                    )
-                  )
+                    ),
+                  ),
               ),
           ),
         functions =
@@ -209,13 +209,13 @@ class ScreenDocumentWireTest {
                           "button",
                           arguments =
                             mapOf(
-                              "onClick" to ScreenValue.ParameterRead("select", "kotlin.Function0")
+                              "onClick" to ScreenValue.ParameterRead("select", "kotlin.Function0"),
                             ),
-                        )
-                      )
+                        ),
+                      ),
                   ),
               ),
-            )
+            ),
           ),
       )
     val wire = Json.encodeToString(document)

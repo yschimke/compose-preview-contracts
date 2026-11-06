@@ -69,7 +69,7 @@ class SemanticsTargetsTest {
               placed = false,
               children = listOf(node(bounds = "0,0,40,40", testTag = "submit")),
             ),
-          )
+          ),
       )
 
     val res = SemanticsTargets.resolve(root, SemanticsTarget.Tag("submit"))
@@ -108,7 +108,7 @@ class SemanticsTargetsTest {
     val root =
       node(
         children =
-          listOf(node(role = "Button", text = "Save"), node(role = "Button", text = "Cancel"))
+          listOf(node(role = "Button", text = "Save"), node(role = "Button", text = "Cancel")),
       )
     val res =
       SemanticsTargets.resolve(root, SemanticsTarget.RoleText(role = "Button", text = "cancel"))
@@ -132,7 +132,7 @@ class SemanticsTargetsTest {
             node(testTag = "submit", role = "Button", text = "Submit"),
             node(role = "Button", text = "Cancel"),
             node(), // bare container — no testTag/role/text/label, not clickable
-          )
+          ),
       )
     val candidates = SemanticsTargets.targetableNodes(root)
     // The bare container drops out; the two buttons stay, each carrying an assigned ref.
@@ -181,7 +181,7 @@ class SemanticsTargetsTest {
               bounds = "0,0,200,100",
               testTag = "card",
               children = listOf(node(bounds = "10,10,40,40", testTag = "icon")),
-            )
+            ),
           ),
       )
     assertEquals(SemanticsTarget.Tag("icon"), SemanticsTargets.nodeAt(root, 25, 25))

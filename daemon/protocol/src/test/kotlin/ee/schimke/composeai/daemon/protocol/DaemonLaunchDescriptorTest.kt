@@ -114,7 +114,7 @@ class DaemonLaunchDescriptorTest {
     val reencoded =
       writerJson
         .parseToJsonElement(
-          writerJson.encodeToString(DaemonLaunchDescriptor.serializer(), expected())
+          writerJson.encodeToString(DaemonLaunchDescriptor.serializer(), expected()),
         )
         .jsonObject
 
@@ -130,7 +130,7 @@ class DaemonLaunchDescriptorTest {
     assertEquals(
       expected(),
       DaemonLaunchDescriptor.parse(
-        writerJson.encodeToString(DaemonLaunchDescriptor.serializer(), expected())
+        writerJson.encodeToString(DaemonLaunchDescriptor.serializer(), expected()),
       ),
     )
   }

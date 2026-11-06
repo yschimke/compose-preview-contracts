@@ -139,7 +139,7 @@ public object LinkBufferComposer {
             "'true' to require the rewritten Compose SlotTable " +
             "(ComposeRuntimeFlags.$FLAG_FIELD) and fail a render whose runtime lacks it, '$AUTO' " +
             "to use it wherever the runtime has it, or 'false'/unset for the runtime's own " +
-            "default."
+            "default.",
         )
     }
   }
@@ -246,7 +246,7 @@ public object LinkBufferComposer {
   @JvmStatic
   public fun applyAndDescribe(
     classLoader: ClassLoader =
-      Thread.currentThread().contextClassLoader ?: LinkBufferComposer::class.java.classLoader
+      Thread.currentThread().contextClassLoader ?: LinkBufferComposer::class.java.classLoader,
   ): String? =
     when (applyIfRequested(classLoader)) {
       Outcome.NotRequested -> null

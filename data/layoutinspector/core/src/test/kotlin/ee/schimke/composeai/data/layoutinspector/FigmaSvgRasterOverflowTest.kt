@@ -50,7 +50,7 @@ class FigmaSvgRasterOverflowTest {
             vectorGraphic = glyph,
             modifiers =
               listOf(LayoutInspectorModifier(name = "drawWithContent", bounds = drawBounds)),
-          )
+          ),
         ),
     )
 

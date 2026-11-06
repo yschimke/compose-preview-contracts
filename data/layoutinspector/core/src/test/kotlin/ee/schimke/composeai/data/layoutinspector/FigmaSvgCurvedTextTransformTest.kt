@@ -65,7 +65,7 @@ class FigmaSvgCurvedTextTransformTest {
         timeText(
           bounds = LayoutInspectorBounds(96, -48, 288, 144),
           transform = LayoutInspectorTransform(scaleX = 0.5f, scaleY = 0.5f),
-        )
+        ),
       )
     assertEquals(192.0, run.centerXPx, 0.01)
     assertEquals(48.0, run.centerYPx, 0.01)
@@ -93,7 +93,7 @@ class FigmaSvgCurvedTextTransformTest {
         timeText(
           bounds = LayoutInspectorBounds(0, 0, 384, 384),
           transform = LayoutInspectorTransform(scaleX = 1f, scaleY = 1f),
-        )
+        ),
       )
     assertEquals(clock, run)
   }

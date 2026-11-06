@@ -1078,7 +1078,7 @@ public data class LottieOverride(
    * runtime. Null leaves the composable's authored `progress` untouched — so an override carrying
    * no progress is a no-op, mirroring the other "all fields null does nothing" override shapes.
    */
-  val progress: Float? = null
+  val progress: Float? = null,
 )
 
 /**
@@ -1095,7 +1095,7 @@ public data class LottieOverride(
 @Serializable
 public data class PermissionsOverride(
   /** Permission name -> grant state. Keys are `Manifest.permission.*` constant strings. */
-  val grants: Map<String, PermissionGrantStateOverride> = emptyMap()
+  val grants: Map<String, PermissionGrantStateOverride> = emptyMap(),
 )
 
 /** Wire spelling for [PermissionsOverride.grants] values. */
@@ -2155,7 +2155,7 @@ public data class RenderMetrics(
           nativeHeapMb = native!!,
           sandboxAgeRenders = ageRenders!!,
           sandboxAgeMs = ageMs!!,
-        )
+        ),
       )
     }
   }

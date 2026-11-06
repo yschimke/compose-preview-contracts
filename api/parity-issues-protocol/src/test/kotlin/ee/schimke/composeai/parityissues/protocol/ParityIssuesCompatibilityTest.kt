@@ -11,7 +11,7 @@ class ParityIssuesCompatibilityTest {
   fun `an older row without scope remains component wide`() {
     val issue =
       Json.decodeFromString<ParityIssue>(
-        """{"repository":"o/r","number":1,"title":"x","url":"https://github.com/o/r/issues/1","state":"open"}"""
+        """{"repository":"o/r","number":1,"title":"x","url":"https://github.com/o/r/issues/1","state":"open"}""",
       )
 
     assertEquals(ParityIssue.COMPONENT_SCOPE, issue.scope)

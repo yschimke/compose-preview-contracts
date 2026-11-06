@@ -64,7 +64,7 @@ class PreviewPipelineValidatorTest {
             requires = setOf(PipelineCapability.MultipleFrames, PipelineCapability.ImageArtifact),
             provides = setOf(PipelineCapability.AnimatedArtifact),
           ),
-        )
+        ),
       )
 
     assertTrue(PreviewPipelineValidator.validate(plan).isEmpty())
@@ -84,8 +84,8 @@ class PreviewPipelineValidatorTest {
               id = "scripted-touch",
               traits = setOf(PipelineStepTrait.InteractiveDriver),
             ),
-          )
-        )
+          ),
+        ),
       )
 
     assertEquals(listOf("MultipleInteractiveDrivers"), errors.map { it.code })
@@ -99,8 +99,8 @@ class PreviewPipelineValidatorTest {
           listOf(
             PreviewPipelineStep(id = "scroll", traits = setOf(PipelineStepTrait.ScenarioDriver)),
             PreviewPipelineStep(id = "animation", traits = setOf(PipelineStepTrait.ScenarioDriver)),
-          )
-        )
+          ),
+        ),
       )
 
     assertEquals(listOf("MultipleScenarioDrivers"), errors.map { it.code })
@@ -117,9 +117,9 @@ class PreviewPipelineValidatorTest {
               traits = setOf(PipelineStepTrait.FrameProcessor),
               requires =
                 setOf(PipelineCapability.AccessibilityFindings, PipelineCapability.DeviceGeometry),
-            )
-          )
-        )
+            ),
+          ),
+        ),
       )
 
     assertEquals(listOf("MissingCapability"), errors.map { it.code })
@@ -141,8 +141,8 @@ class PreviewPipelineValidatorTest {
               traits = setOf(PipelineStepTrait.DataExtractor),
               provides = setOf(PipelineCapability.AccessibilityFindings),
             ),
-          )
-        )
+          ),
+        ),
       )
 
     assertEquals(listOf("MissingCapability"), errors.map { it.code })
@@ -164,10 +164,10 @@ class PreviewPipelineValidatorTest {
                     sampling = SamplingPolicy.EachFrame,
                     requiresImage = true,
                   ),
-              )
+              ),
             ),
           initialCapabilities = setOf(PipelineCapability.ImageArtifact),
-        )
+        ),
       )
 
     assertEquals(listOf("EachFrameExtractionRequiresFrames"), errors.map { it.code })

@@ -85,7 +85,7 @@ class RuntimeV1Test {
           integritySha256 = digest,
           remoteComposeWriter = "4307936-ps17-cmp01",
           rcPlayer = "1.69.0",
-        )
+        ),
       )
 
     assertFailsWith<kotlinx.serialization.SerializationException> {
@@ -122,7 +122,7 @@ class RuntimeV1Test {
     assertTrue(
       UiBuilderRuntimeArtifactV1("other.zip", "valid", 1, "b".repeat(64))
         .validateContract()
-        .contains(UiBuilderRuntimeValidationIssueV1("path", "unsupported"))
+        .contains(UiBuilderRuntimeValidationIssueV1("path", "unsupported")),
     )
     assertEquals(null, normalizeUiBuilderRuntimeAssetPathV1("a/../b"))
   }

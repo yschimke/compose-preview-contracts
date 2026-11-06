@@ -44,7 +44,7 @@ class FigmaSvgPaintInsetTest {
                 padding = paintInset,
                 paintInset = paintInset,
               ),
-          )
+          ),
         ),
     )
 
@@ -113,9 +113,9 @@ class FigmaSvgPaintInsetTest {
                     padding = paintInset,
                     paintInset = paintInset,
                   ),
-              )
+              ),
             ),
-        )
+        ),
       )
     val root = FigmaSvgModel.from(layout = payload, density = 1f).root
     return firstGradient(root) ?: error("gradient layer not found")

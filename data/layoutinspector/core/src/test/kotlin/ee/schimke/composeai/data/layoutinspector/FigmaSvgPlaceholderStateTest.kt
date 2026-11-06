@@ -52,7 +52,7 @@ class FigmaSvgPlaceholderStateTest {
       semantics =
         text?.let {
           ComposeSemanticsPayload(
-            ComposeSemanticsNode(nodeId = "sem", boundsInRoot = "0,0,200,50", text = it)
+            ComposeSemanticsNode(nodeId = "sem", boundsInRoot = "0,0,200,50", text = it),
           )
         },
       // Hybrid mode — a frame PNG exists to crop from, the only mode in which the canvas-draw
