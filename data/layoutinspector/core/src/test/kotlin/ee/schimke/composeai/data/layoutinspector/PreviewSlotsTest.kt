@@ -38,8 +38,8 @@ class PreviewSlotsTest {
                   children = listOf(node(tag = "dp-slot:leadingIcon", bounds = "0,0,32,32")),
                 ),
               ),
-          )
-        )
+          ),
+        ),
       )
 
     assertEquals(listOf("leadingIcon"), slots.map { it.name })
@@ -59,8 +59,8 @@ class PreviewSlotsTest {
                 children = listOf(node(tag = "dp-slot:headline", bounds = "48,44,192,64")),
               ),
               node(tag = "dp-slot:supporting", bounds = "48,68,192,88"),
-            )
-        )
+            ),
+        ),
       )
 
     val slots = PreviewSlots.extractSlots(tree)
@@ -82,8 +82,8 @@ class PreviewSlotsTest {
               node(tag = "dp-slot:content;scope=column;scroll=1", bounds = "0,40,200,400"),
               node(tag = "dp-slot:list;scope=lazy;scroll=true", bounds = "0,40,200,400"),
               node(tag = "dp-slot:plain", bounds = "0,0,10,10"), // no attributes
-            )
-        )
+            ),
+        ),
       )
 
     val slots = PreviewSlots.extractSlots(tree).associateBy { it.name }
@@ -103,8 +103,8 @@ class PreviewSlotsTest {
       ComposeSemanticsPayload(
         node(
           children =
-            listOf(node(tag = "dp-slot:x;scope=carousel;future=1;scroll=1", bounds = "0,0,10,10"))
-        )
+            listOf(node(tag = "dp-slot:x;scope=carousel;future=1;scroll=1", bounds = "0,0,10,10")),
+        ),
       )
     val slot = PreviewSlots.extractSlots(tree).single()
     assertEquals("x", slot.name)
@@ -132,8 +132,8 @@ class PreviewSlotsTest {
               node(tag = "dp-slot:", bounds = "0,0,10,10"), // blank name → skipped
               node(tag = "dp-slot:bad", bounds = "0,0,oops"), // malformed bounds → skipped
               node(tag = "dp-slot:ok", bounds = "1,2,3,4"),
-            )
-        )
+            ),
+        ),
       )
     assertEquals(listOf("ok"), PreviewSlots.extractSlots(tree).map { it.name })
   }

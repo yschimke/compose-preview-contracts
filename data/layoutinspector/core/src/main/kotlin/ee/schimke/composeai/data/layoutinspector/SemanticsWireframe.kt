@@ -44,12 +44,12 @@ public object SemanticsWireframeSvg {
     val sb = StringBuilder()
     sb.append(
       """<svg xmlns="http://www.w3.org/2000/svg" width="${model.width}" height="${model.height}" """ +
-        """viewBox="0 0 ${model.width} ${model.height}" font-family="sans-serif">"""
+        """viewBox="0 0 ${model.width} ${model.height}" font-family="sans-serif">""",
     )
     sb.append("\n")
     sb.append(
       """<rect x="0" y="0" width="${model.width}" height="${model.height}" """ +
-        """fill="${WireframeStyle.hex(WireframeStyle.ground)}"/>"""
+        """fill="${WireframeStyle.hex(WireframeStyle.ground)}"/>""",
     )
     sb.append("\n")
 
@@ -66,7 +66,7 @@ public object SemanticsWireframeSvg {
         else """ fill="none""""
       sb.append(
         """<rect x="$x" y="$y" width="${box.width}" height="${box.height}"$fill stroke="$stroke" """ +
-          """stroke-width="$strokeWidth"$dash/>"""
+          """stroke-width="$strokeWidth"$dash/>""",
       )
       sb.append("\n")
 
@@ -78,7 +78,7 @@ public object SemanticsWireframeSvg {
             val baseline = y + options.fontSize + 1
             sb.append(
               """<text x="${x + 2}" y="$baseline" font-size="${options.fontSize}" """ +
-                """fill="$stroke">${escape(text)}</text>"""
+                """fill="$stroke">${escape(text)}</text>""",
             )
             sb.append("\n")
           }

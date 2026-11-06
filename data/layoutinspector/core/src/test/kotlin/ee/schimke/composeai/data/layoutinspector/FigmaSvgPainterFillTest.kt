@@ -51,7 +51,7 @@ class FigmaSvgPainterFillTest {
                   put("colorFilter", colorFilter ?: "null")
                 },
               bounds = LayoutInspectorBounds(0, 0, 396, 120),
-            )
+            ),
           ),
       tokens = tokens,
     )
@@ -72,7 +72,7 @@ class FigmaSvgPainterFillTest {
           startY = 0f,
           endX = 1f,
           endY = 1f,
-        )
+        ),
     )
 
   @Test
@@ -96,7 +96,7 @@ class FigmaSvgPainterFillTest {
         imageNode(
           "ColorPainter(color=Color(0.188, 0.188, 0.188, 1.0, sRGB IEC61966-2.1))",
           ComposeSemanticsTokens(backgroundColor = "#FF303030"),
-        )
+        ),
       )
 
     assertNull(m.root.raster)
@@ -114,7 +114,7 @@ class FigmaSvgPainterFillTest {
         imageNode(
           "BitmapPainter(image=android.graphics.Bitmap@1f2e3d)",
           ComposeSemanticsTokens(backgroundColor = "#FFFF0000"),
-        )
+        ),
       )
 
     assertNotNull("a bitmap-backed Image still rasters", m.root.raster)
@@ -142,7 +142,7 @@ class FigmaSvgPainterFillTest {
           "ColorPainter(color=Color(0.188, 0.188, 0.188, 1.0, sRGB IEC61966-2.1))",
           ComposeSemanticsTokens(backgroundColor = "#FF303030"),
           colorFilter = "ColorFilter(color=Color(1.0, 1.0, 1.0, 1.0), mode=SrcIn)",
-        )
+        ),
       )
 
     assertNotNull("a re-tinted painter still rasters", m.root.raster)
@@ -159,7 +159,7 @@ class FigmaSvgPainterFillTest {
           painter = null,
           tokens = ComposeSemanticsTokens(backgroundColor = "#FFFF0000"),
           paintModifier = false,
-        )
+        ),
       )
 
     assertNotNull("no painter to flatten ⇒ still rasters", m.root.raster)

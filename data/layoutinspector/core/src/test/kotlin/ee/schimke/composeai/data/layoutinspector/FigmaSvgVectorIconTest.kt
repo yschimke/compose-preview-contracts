@@ -34,7 +34,7 @@ class FigmaSvgVectorIconTest {
           LayoutInspectorVectorPath(
             pathData = "M12 0L15 9L24 9L17 14L20 24L12 18L4 24L7 14L0 9L9 9Z",
             fillArgb = "#FF112233",
-          )
+          ),
         ),
     )
 
@@ -81,7 +81,7 @@ class FigmaSvgVectorIconTest {
       "the group transform lands on the <path>, inside the placement group:\n$svg",
       svg.contains(
         """<path d="M12 0L15 9L24 9L17 14L20 24L12 18L4 24L7 14L0 9L9 9Z" """ +
-          """transform="translate(2 2) scale(1.2 1.2)""""
+          """transform="translate(2 2) scale(1.2 1.2)"""",
       ),
     )
   }

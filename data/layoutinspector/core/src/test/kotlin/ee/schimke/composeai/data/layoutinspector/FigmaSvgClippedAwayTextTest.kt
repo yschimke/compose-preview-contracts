@@ -83,7 +83,7 @@ class FigmaSvgClippedAwayTextTest {
                   component = "EmptyMeasurePolicy",
                   bounds = LayoutInspectorBounds(0, 0, 0, 0),
                   size = LayoutInspectorSize(69, 36),
-                )
+                ),
               ),
           ),
         ),
@@ -110,7 +110,7 @@ class FigmaSvgClippedAwayTextTest {
               layoutText = "Start",
             ),
           ),
-      )
+      ),
     )
 
   private fun model() =

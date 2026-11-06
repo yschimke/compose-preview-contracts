@@ -59,9 +59,9 @@ class FigmaSvgRotatedLayerTest {
                   bounds = bounds(207, 227, 319, 339),
                   size = LayoutInspectorSize(56, 56),
                   tokens = ComposeSemanticsTokens(backgroundColor = "#FF210F48"),
-                )
+                ),
               ),
-          )
+          ),
         ),
     )
 
@@ -116,7 +116,7 @@ class FigmaSvgRotatedLayerTest {
         FigmaSvgModel.from(
           layout = LayoutInspectorPayload(turnedButton(-45f)),
           density = 2f,
-        )
+        ),
       )
     assertTrue(
       "the turned container must be a 126x108 rect, not a 166px square:\n$svg",
@@ -136,7 +136,7 @@ class FigmaSvgRotatedLayerTest {
   fun `an un-turned export emits no rotation at all`() {
     val svg =
       FigmaLayeredSvg.render(
-        FigmaSvgModel.from(layout = LayoutInspectorPayload(turnedButton(0f)), density = 2f)
+        FigmaSvgModel.from(layout = LayoutInspectorPayload(turnedButton(0f)), density = 2f),
       )
     assertFalse("no layer is turned, so nothing may carry a rotate:\n$svg", svg.contains("rotate("))
   }

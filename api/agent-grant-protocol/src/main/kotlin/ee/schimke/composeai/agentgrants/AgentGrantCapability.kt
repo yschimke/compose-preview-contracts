@@ -103,7 +103,7 @@ public enum class AgentGrantCapability(
         .map {
           parse(it)
             ?: throw IllegalArgumentException(
-              "unknown agent-grant capability '$it' (known: ${entries.joinToString(", ") { c -> c.wire }})"
+              "unknown agent-grant capability '$it' (known: ${entries.joinToString(", ") { c -> c.wire }})",
             )
         }
         .toSet()

@@ -70,7 +70,7 @@ class RenderMetricsFromFlatMapTest {
   fun missing_multiple_keys_returns_PartialMap_with_all_missing_keys_listed() {
     val map: Map<String, Long> =
       mapOf(
-        RenderMetrics.KEY_HEAP_AFTER_GC_MB to 1L
+        RenderMetrics.KEY_HEAP_AFTER_GC_MB to 1L,
         // Three keys missing.
       )
     val result = RenderMetrics.fromFlatMap(map)
@@ -128,8 +128,8 @@ class RenderMetricsFromFlatMapTest {
           RenderMetrics.KEY_NATIVE_HEAP_MB,
           RenderMetrics.KEY_SANDBOX_AGE_RENDERS,
           RenderMetrics.KEY_SANDBOX_AGE_MS,
-        )
-      )
+        ),
+      ),
     )
   }
 }

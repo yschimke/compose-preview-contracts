@@ -271,7 +271,7 @@ public object RecordingScriptDataExtensions {
             displayName = "Probe marker",
             summary = "Records a named point in the recording timeline.",
             supported = true,
-          )
+          ),
         ),
     )
 
@@ -388,7 +388,7 @@ public object RecordingScriptDataExtensions {
               "Runs ATF against the held scene and fails the recording when findings exceed the " +
                 "threshold (inputText: errors | warnings).",
             supported = true,
-          )
+          ),
         ),
     )
 
@@ -543,7 +543,7 @@ public object DataExtensionPlanner {
   }
 
   private fun duplicateIdErrors(
-    extensions: List<PlannedDataExtension>
+    extensions: List<PlannedDataExtension>,
   ): List<DataExtensionPlanningError> =
     extensions
       .groupBy { it.id }
@@ -557,7 +557,7 @@ public object DataExtensionPlanner {
       }
 
   private fun duplicateOutputErrors(
-    extensions: List<PlannedDataExtension>
+    extensions: List<PlannedDataExtension>,
   ): List<DataExtensionPlanningError> =
     extensions
       .flatMap { extension -> extension.outputs.map { output -> output to extension.id } }
@@ -705,7 +705,7 @@ public object DataExtensionPlanner {
             plannedProviders
               .filter { (_, provider) -> provider != extension.id }
               .map { (capability, _) -> capability }
-              .toSet()
+              .toSet(),
         )
       if (conflicts.isNotEmpty()) {
         add(
@@ -719,7 +719,7 @@ public object DataExtensionPlanner {
                 plannedProviders
                   .filter { (capability, _) -> capability in conflicts }
                   .map { it.second },
-          )
+          ),
         )
       }
 
@@ -736,7 +736,7 @@ public object DataExtensionPlanner {
                 plannedProviders
                   .filter { (capability, _) -> capability in missing }
                   .map { it.second },
-          )
+          ),
         )
       }
 
@@ -759,7 +759,7 @@ public object DataExtensionPlanner {
               "Data extension '${extension.id}' requires data products that are not " +
                 "available yet: ${missing.joinToString()}.",
             extensions = listOf(extension.id),
-          )
+          ),
         )
       }
       provided += extension.outputs

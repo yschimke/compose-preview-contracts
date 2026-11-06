@@ -55,7 +55,7 @@ class FigmaSvgPaddedIconTest {
                 LayoutInspectorModifier(name = "padding", bounds = bounds(0, 0, 105, 105)),
                 LayoutInspectorModifier(name = "paint", bounds = paintBounds),
               ),
-          )
+          ),
         ),
     )
 
@@ -90,7 +90,7 @@ class FigmaSvgPaddedIconTest {
         FigmaSvgModel.from(
           layout = LayoutInspectorPayload(iconInButton(bounds(21, 21, 84, 84))),
           density = 1f,
-        )
+        ),
       )
     // 63px drawn / 24 viewport units = 2.62, uniform; and it lands on the drawn rect's origin.
     assertTrue(

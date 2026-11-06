@@ -296,7 +296,7 @@ class UiBuilderProtocolCompatibilityTest {
             system = "m3-catalog",
             componentId = "contribution-cell",
             digest = "sha256:abc123",
-          )
+          ),
       )
     val encoded = strictJson.encodeToJsonElement(DesignComponentV1.serializer(), imported)
     assertEquals(
@@ -705,7 +705,7 @@ class UiBuilderProtocolCompatibilityTest {
     // …and it does not reappear on the way out, or every stored document would gain a field.
     assertNull(
       (strictJson.encodeToJsonElement(DesignEnvironmentV1.serializer(), decoded) as JsonObject)[
-        "typeface"]
+        "typeface"],
     )
   }
 
@@ -727,7 +727,7 @@ class UiBuilderProtocolCompatibilityTest {
     assertEquals("Space Grotesk", environment.typeface)
     assertEquals(
       strictJson.parseToJsonElement(
-        """{"widthDp":412,"heightDp":892,"density":2.625,"theme":"light","locale":"en-US","fontScale":1.0,"layoutDirection":"ltr","typeface":"Space Grotesk"}"""
+        """{"widthDp":412,"heightDp":892,"density":2.625,"theme":"light","locale":"en-US","fontScale":1.0,"layoutDirection":"ltr","typeface":"Space Grotesk"}""",
       ),
       strictJson.encodeToJsonElement(DesignEnvironmentV1.serializer(), environment),
     )
@@ -841,7 +841,7 @@ class UiBuilderProtocolCompatibilityTest {
     assertEquals(null, environment.remoteProfile)
     val profiled =
       environment.copy(
-        remoteProfile = RemoteProfileV1.Builder(RemoteProfileTargetV1.WEAR_WIDGETS).build()
+        remoteProfile = RemoteProfileV1.Builder(RemoteProfileTargetV1.WEAR_WIDGETS).build(),
       )
     // The old copy keeps the profile it does not name.
     val resized = profiled.copy(200, 120, 2.0, ThemeV1.DARK, null, "en", 1.0, LayoutDirectionV1.LTR)
@@ -853,7 +853,7 @@ class UiBuilderProtocolCompatibilityTest {
   fun `setting and resetting a Remote profile round-trip under their discriminators`() {
     val set: EnvironmentChangeV1 =
       SetRemoteProfileEnvironmentChangeV1(
-        RemoteProfileV1.Builder(RemoteProfileTargetV1.LAUNCHER_WIDGETS_V6).build()
+        RemoteProfileV1.Builder(RemoteProfileTargetV1.LAUNCHER_WIDGETS_V6).build(),
       )
     val reset: EnvironmentChangeV1 = ResetRemoteProfileEnvironmentChangeV1
     val setWire =
@@ -959,7 +959,7 @@ class UiBuilderProtocolCompatibilityTest {
         SetTypefaceEnvironmentChangeV1("Inter").field,
         SetExportDevicesEnvironmentChangeV1(listOf("id:pixel_6")).field,
         SetRemoteProfileEnvironmentChangeV1(
-            RemoteProfileV1.Builder(RemoteProfileTargetV1.ANDROIDX).build()
+            RemoteProfileV1.Builder(RemoteProfileTargetV1.ANDROIDX).build(),
           )
           .field,
       )
@@ -1170,7 +1170,7 @@ class UiBuilderProtocolCompatibilityTest {
         InsertNodeMutationV1(
           node = DesignNodeV1(id = "cell", componentId = "m3/card"),
           location = NodeLocationV1(),
-        )
+        ),
       )
     val live = DesignCommandV1.Builder("d", "o1", "a", "c", 9, ops).build()
     assertNull(live.stalenessBaseRevision)

@@ -797,8 +797,8 @@ internal object UiBuilderTemplateEntrySerializer : KSerializer<UiBuilderTemplate
           value.group,
           value.default,
           value.order,
-        )
-      )
+        ),
+      ),
     )
   }
 }

@@ -41,7 +41,7 @@ class SemanticsWireframeSvgTest {
             "root",
             "0,0,400,800",
             children = listOf(node("a", "0,0,400,100"), node("b", "0,100,400,200")),
-          )
+          ),
       )
     val svg = SemanticsWireframeSvg.render(payload)
     // 3 node rects + 1 white ground rect.
@@ -60,7 +60,7 @@ class SemanticsWireframeSvgTest {
             "root",
             "0,0,0,0",
             children = listOf(node("a", "10,20,110,220"), node("b", "60,120,260,320")),
-          )
+          ),
       )
     val svg = SemanticsWireframeSvg.render(payload, SemanticsWireframeSvg.Options(padding = 16))
     // union x:[0..260] (root box counts: 0..0, child b right=260) y:[0..320]
@@ -107,7 +107,7 @@ class SemanticsWireframeSvgTest {
                   children = listOf(node("ghost", "0,0,160,40", label = "Title")),
                 ),
               ),
-          )
+          ),
       )
 
     val svg = SemanticsWireframeSvg.render(payload)
@@ -128,7 +128,7 @@ class SemanticsWireframeSvgTest {
     val payload =
       ComposeSemanticsPayload(
         root =
-          node("root", "0,0,400,400", children = listOf(node("r", "0,0,400,80", role = "Button")))
+          node("root", "0,0,400,400", children = listOf(node("r", "0,0,400,80", role = "Button"))),
       )
     val svg = SemanticsWireframeSvg.render(payload)
     assertTrue(svg.contains(">Button</text>"))
@@ -165,7 +165,7 @@ class SemanticsWireframeSvgTest {
   fun unparseableBoundsAreSkippedButSubtreeKept() {
     val payload =
       ComposeSemanticsPayload(
-        root = node("root", "garbage", children = listOf(node("a", "0,0,100,100")))
+        root = node("root", "garbage", children = listOf(node("a", "0,0,100,100"))),
       )
     val svg = SemanticsWireframeSvg.render(payload)
     // ground + the one valid child = 2 rects (root skipped).
@@ -191,7 +191,7 @@ class SemanticsWireframeSvgTest {
             "root",
             "0,0,400,800",
             children = listOf(node("a", "0,0,400,100", label = "A", clickable = true)),
-          )
+          ),
       )
     assertEquals(SemanticsWireframeSvg.render(payload), SemanticsWireframeSvg.render(payload))
   }

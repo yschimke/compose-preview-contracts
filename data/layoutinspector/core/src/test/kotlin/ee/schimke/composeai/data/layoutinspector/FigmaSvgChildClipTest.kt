@@ -41,7 +41,7 @@ class FigmaSvgChildClipTest {
             bounds = bounds(40, 20, childRight, 80),
             size = LayoutInspectorSize(childRight - 40, 60),
             tokens = ComposeSemanticsTokens(backgroundColor = "#FF3366CC"),
-          )
+          ),
         ),
     )
 
@@ -119,7 +119,7 @@ class FigmaSvgChildClipTest {
             bounds = bounds(0, 0, 100, 100),
             size = LayoutInspectorSize(100, 100),
             tokens = ComposeSemanticsTokens(backgroundColor = "#FF3366CC"),
-          )
+          ),
         ),
     )
 
@@ -134,7 +134,7 @@ class FigmaSvgChildClipTest {
           layout =
             LayoutInspectorPayload(cardWithFullBleedChild(shape = null, cornerRadius = "16.0dp")),
           density = 1f,
-        )
+        ),
       )
     assertTrue(
       "a full-bleed child under a rounded clip must be masked:\n$svg",
@@ -154,7 +154,7 @@ class FigmaSvgChildClipTest {
           layout =
             LayoutInspectorPayload(cardWithFullBleedChild(shape = "circle", cornerRadius = null)),
           density = 1f,
-        )
+        ),
       )
     assertTrue(
       "a full-bleed child under a circle clip must be masked:\n$svg",

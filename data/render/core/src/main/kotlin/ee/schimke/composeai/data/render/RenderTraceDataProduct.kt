@@ -71,7 +71,7 @@ public object RenderTraceDataProduct {
                 put("durationUs", totalMs * 1_000L)
                 put("category", "render")
                 put("depth", 0)
-              }
+              },
             )
           } else {
             spans.forEach { span ->
@@ -84,7 +84,7 @@ public object RenderTraceDataProduct {
                   put("durationUs", span.durationMicros)
                   put("category", span.category)
                   put("depth", span.depth)
-                }
+                },
               )
             }
           }
@@ -103,7 +103,7 @@ public object RenderTraceDataProduct {
                   put("totalUs", section.totalMicros)
                   put("meanUs", section.meanMicros)
                   put("maxUs", section.maxMicros)
-                }
+                },
               )
             }
           },

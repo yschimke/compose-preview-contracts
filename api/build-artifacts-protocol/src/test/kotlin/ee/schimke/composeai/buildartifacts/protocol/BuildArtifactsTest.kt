@@ -24,7 +24,7 @@ class BuildArtifactsTest {
           "sourceFiles": ["app/Ui.kt"],
           "dataFiles": []
         }
-        """
+        """,
       )
     assertEquals(BuildArtifacts.SCHEMA_VERSION_JVM, artifacts.schemaVersion)
     assertNull(artifacts.android)
@@ -55,7 +55,7 @@ class BuildArtifactsTest {
     assertEquals(BuildArtifacts.SCHEMA_VERSION_ANDROID, artifacts.schemaVersion)
     val decoded =
       json.decodeFromString<BuildArtifacts>(
-        Json.encodeToString(BuildArtifacts.serializer(), artifacts)
+        Json.encodeToString(BuildArtifacts.serializer(), artifacts),
       )
     assertEquals(artifacts, decoded)
     assertEquals(artifacts, artifacts.newBuilder().build())
@@ -89,21 +89,21 @@ class BuildArtifactsTest {
             }
           }
         }
-        """
+        """,
       )
     val link = assertNotNull(artifacts.android?.link)
     assertEquals(listOf("com.example.ui", "com.example.theme"), link.packages)
     assertEquals(listOf("theme/theme.zip", "ui/ui_impl.zip"), link.compiledResources)
     assertEquals(
       listOf(
-        AndroidLinkAsset.Builder("nested/ui-only.txt", "ui/assets/nested/ui-only.txt").build()
+        AndroidLinkAsset.Builder("nested/ui-only.txt", "ui/assets/nested/ui-only.txt").build(),
       ),
       link.assets,
     )
     assertEquals(
       artifacts,
       json.decodeFromString<BuildArtifacts>(
-        Json.encodeToString(BuildArtifacts.serializer(), artifacts)
+        Json.encodeToString(BuildArtifacts.serializer(), artifacts),
       ),
     )
     assertEquals(link, link.newBuilder().build())

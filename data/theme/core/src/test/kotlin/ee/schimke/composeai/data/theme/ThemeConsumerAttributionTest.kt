@@ -104,7 +104,7 @@ class ThemeConsumerAttributionTest {
             nodeId = "9",
             foregroundColor = "#FFFFFFFF",
             backgroundColor = "#FF6750A4", // primary
-          )
+          ),
         ),
       )
 
@@ -140,7 +140,7 @@ class ThemeConsumerAttributionTest {
           NodeThemeFacts(
             nodeId = "6",
             shape = "RoundedCornerShape(12.0.dp, 12.0.dp, 12.0.dp, 12.0.dp)",
-          )
+          ),
         ),
       )
 
@@ -153,7 +153,10 @@ class ThemeConsumerAttributionTest {
       tokensFor(
         "7",
         listOf(
-          NodeThemeFacts(nodeId = "7", shape = "RoundedCornerShape(8.0.dp, 8.0.dp, 8.0.dp, 8.0.dp)")
+          NodeThemeFacts(
+            nodeId = "7",
+            shape = "RoundedCornerShape(8.0.dp, 8.0.dp, 8.0.dp, 8.0.dp)",
+          ),
         ),
       )
 

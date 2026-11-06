@@ -328,5 +328,5 @@ internal constructor(
 /** Explicit absent-content branch, never an inferred placeholder. */
 @Serializable
 public enum class ProductionNullPolicyV1 {
-  @SerialName("skip") SKIP
+  @SerialName("skip") SKIP,
 }

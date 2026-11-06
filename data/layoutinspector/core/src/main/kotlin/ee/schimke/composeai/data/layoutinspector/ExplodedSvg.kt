@@ -659,8 +659,8 @@ public object ExplodedSvg {
           "stroke-dasharray:6 4;opacity:.82}" +
           ".cp-exploded-leader{fill:none;stroke:#747b85;stroke-width:1.25}" +
           ".cp-exploded-leader-dot{fill:#3c4043}" +
-          ".cp-exploded-label{fill:#3c4043;font-family:sans-serif}"
-      )
+          ".cp-exploded-label{fill:#3c4043;font-family:sans-serif}",
+      ),
     )
     return style
   }

@@ -61,7 +61,7 @@ class FigmaSvgRetiredSlotTest {
                   bounds = LayoutInspectorBounds(0, 0, 0, 0),
                   size = LayoutInspectorSize(120, 24),
                   placed = false,
-                )
+                ),
               ),
           ),
         ),
@@ -99,9 +99,9 @@ class FigmaSvgRetiredSlotTest {
                   nodeId = "2",
                   boundsInRoot = "0,0,0,0",
                   layoutText = "Retired row",
-                )
+                ),
               ),
-          )
+          ),
       )
 
     val model = FigmaSvgModel.from(layout = LayoutInspectorPayload(root), semantics = semantics)

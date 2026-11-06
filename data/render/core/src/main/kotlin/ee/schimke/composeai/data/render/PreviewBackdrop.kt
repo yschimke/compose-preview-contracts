@@ -202,7 +202,7 @@ public object PreviewBackdrop {
   private fun sheetFor(surface: CatalogSurface): String =
     hexArgb(
       if (surface == CatalogSurface.DARK) PreviewBackground.NIGHT_ARGB
-      else PreviewBackground.DAY_ARGB
+      else PreviewBackground.DAY_ARGB,
     )
 
   /**

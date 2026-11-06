@@ -23,7 +23,7 @@ class StructuralPreviewWrapperTest {
       isStructuralPreviewWrapper(
         "androidx.compose.remote.tooling.preview.RemotePreviewWrapper",
         javaClass.classLoader,
-      )
+      ),
     )
   }
 
@@ -33,7 +33,7 @@ class StructuralPreviewWrapperTest {
       isStructuralPreviewWrapper(
         "ee.schimke.composeai.data.render.extensions.FakeStructuralWrapper",
         javaClass.classLoader,
-      )
+      ),
     )
   }
 
@@ -43,7 +43,7 @@ class StructuralPreviewWrapperTest {
     // *supposed* to replace. Answering true here would silently disable the theme selector by
     // letting the preview's own theme shadow the chosen one.
     assertFalse(
-      isStructuralPreviewWrapper("com.example.AppLightThemeProvider", javaClass.classLoader)
+      isStructuralPreviewWrapper("com.example.AppLightThemeProvider", javaClass.classLoader),
     )
   }
 }

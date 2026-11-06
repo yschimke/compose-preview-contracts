@@ -87,7 +87,7 @@ public object RenderPreviewExtension {
               ),
             requiresDaemon = true,
             productKinds = listOf(KIND_DEVICE_CLIP),
-          )
+          ),
         ),
       steps = listOf(deviceClipProcessor),
     )
@@ -114,7 +114,7 @@ public object RenderPreviewExtension {
               ),
             requiresDaemon = true,
             productKinds = listOf(KIND_DEVICE_BACKGROUND),
-          )
+          ),
         ),
       steps = listOf(deviceBackgroundProcessor),
     )
@@ -142,7 +142,7 @@ public object RenderPreviewExtension {
             agentRecommended = true,
             requiresDaemon = true,
             productKinds = listOf(KIND_TRACE),
-          )
+          ),
         ),
       steps = listOf(renderTraceProfiler),
     )
@@ -169,7 +169,7 @@ public object RenderPreviewExtension {
               ),
             agentRecommended = true,
             productKinds = listOf(KIND_COMPOSE_AI_TRACE),
-          )
+          ),
         ),
       steps = listOf(composeTraceProfiler),
     )

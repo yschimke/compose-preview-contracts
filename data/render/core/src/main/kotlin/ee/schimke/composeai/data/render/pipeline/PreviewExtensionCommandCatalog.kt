@@ -58,7 +58,7 @@ public object PreviewExtensionCommandCatalog {
               ),
             agentRecommended = true,
             productKinds = listOf("a11y/hierarchy"),
-          )
+          ),
         ),
     )
 
@@ -165,7 +165,7 @@ public object PreviewExtensionCommandCatalog {
               ),
             agentRecommended = true,
             usageModes = setOf(PreviewExtensionUsageMode.SuggestedExtraPreview),
-          )
+          ),
         ),
     )
 
@@ -196,7 +196,7 @@ public object PreviewExtensionCommandCatalog {
                 "<path>",
               ),
             productKinds = listOf("render/scroll/long"),
-          )
+          ),
         ),
     )
 
@@ -227,7 +227,7 @@ public object PreviewExtensionCommandCatalog {
                 "<path>",
               ),
             productKinds = listOf("render/scroll/gif"),
-          )
+          ),
         ),
     )
 }

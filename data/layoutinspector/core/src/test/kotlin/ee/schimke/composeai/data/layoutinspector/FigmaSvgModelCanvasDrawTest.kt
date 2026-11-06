@@ -118,7 +118,7 @@ class FigmaSvgModelCanvasDrawTest {
         drawsContent = true,
         tokens =
           ComposeSemanticsTokens(
-            backgroundGradient = LayoutInspectorGradient(colors = listOf("#00000000", "#00FFFFFF"))
+            backgroundGradient = LayoutInspectorGradient(colors = listOf("#00000000", "#00FFFFFF")),
           ),
       )
 
@@ -188,7 +188,7 @@ class FigmaSvgModelCanvasDrawTest {
               component = "Text",
               bounds = bounds(8, 8, 92, 32),
               size = LayoutInspectorSize(84, 24),
-            )
+            ),
           ),
       )
     val m = model(container, captureCanvasDraws = true)

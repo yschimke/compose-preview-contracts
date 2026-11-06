@@ -119,7 +119,7 @@ public object WearScrollSliceStitcher {
               component = EDGE_COMPONENT,
               bounds = it.dest,
               size = LayoutInspectorSize(width, it.dest.bottom - it.dest.top),
-            )
+            ),
           )
         } ?: emptyList())
 
@@ -131,7 +131,7 @@ public object WearScrollSliceStitcher {
           bounds = LayoutInspectorBounds(0, 0, width, totalHeight),
           size = LayoutInspectorSize(width, totalHeight),
           children = children,
-        )
+        ),
       )
     val semantics =
       ComposeSemanticsPayload(
@@ -139,7 +139,7 @@ public object WearScrollSliceStitcher {
           nodeId = "$rootId-root",
           boundsInRoot = "0,0,$width,$totalHeight",
           children = semLayers,
-        )
+        ),
       )
     return Stitched(layout, semantics, width, totalHeight, edge)
   }

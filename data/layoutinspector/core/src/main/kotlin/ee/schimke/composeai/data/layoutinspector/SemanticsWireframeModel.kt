@@ -86,7 +86,7 @@ public data class WireframeModel(
             clickable = node.clickable,
             clearAndSet = node.mergeMode == "clearAndSet",
             label = node.bestLabel(),
-          )
+          ),
         )
       }
       // Recurse even when this node's own bounds are unparseable — children carry their own

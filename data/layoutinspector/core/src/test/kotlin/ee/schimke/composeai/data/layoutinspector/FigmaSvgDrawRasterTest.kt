@@ -47,7 +47,7 @@ class FigmaSvgDrawRasterTest {
             component = "Text",
             bounds = bounds(24, 24, 176, 60),
             size = LayoutInspectorSize(152, 36),
-          )
+          ),
         ),
     )
 
@@ -86,11 +86,12 @@ class FigmaSvgDrawRasterTest {
                 name = "drawWithContent",
                 properties =
                   mapOf(
-                    "onDraw" to "com.android.internal.widget.remotecompose.player.RcPlayerModifiers"
+                    "onDraw" to
+                      "com.android.internal.widget.remotecompose.player.RcPlayerModifiers",
                   ),
                 bounds = bounds(0, 0, 200, 120),
               ),
-            )
+            ),
         )
 
     val m = model(remoteCompose, captureCanvasDraws = true)
@@ -113,7 +114,7 @@ class FigmaSvgDrawRasterTest {
                 name = "drawWithContent",
                 properties = mapOf("onDraw" to "anonymous.application.lambda"),
                 bounds = bounds(0, 0, 200, 120),
-              )
+              ),
             ),
         )
 
@@ -167,7 +168,7 @@ class FigmaSvgDrawRasterTest {
         size = LayoutInspectorSize(227, 227),
         modifiers =
           listOf(
-            LayoutInspectorModifier(name = "drawWithContent", bounds = bounds(0, 0, 227, 227))
+            LayoutInspectorModifier(name = "drawWithContent", bounds = bounds(0, 0, 227, 227)),
           ),
         curvedTexts =
           listOf(
@@ -180,7 +181,7 @@ class FigmaSvgDrawRasterTest {
               sweepRadians = 0.6,
               clockwise = true,
               fontSizePx = 14.0,
-            )
+            ),
           ),
         drawRaster =
           LayoutInspectorDrawRaster(left = 0, top = 0, right = 227, bottom = 227, pngBase64 = png),
@@ -194,7 +195,7 @@ class FigmaSvgDrawRasterTest {
               component = "CurvedText",
               bounds = bounds(60, 8, 167, 40),
               size = LayoutInspectorSize(107, 32),
-            )
+            ),
           ),
       )
     val m = model(curved, captureCanvasDraws = true)
@@ -229,7 +230,7 @@ class FigmaSvgDrawRasterTest {
               component = "Text",
               bounds = bounds(8, 8, 92, 32),
               size = LayoutInspectorSize(84, 24),
-            )
+            ),
           ),
       )
     val m = model(node, captureCanvasDraws = true)
@@ -267,7 +268,7 @@ class FigmaSvgDrawRasterTest {
               component = "Text",
               bounds = bounds(8, 8, 92, 32),
               size = LayoutInspectorSize(84, 24),
-            )
+            ),
           ),
       )
     val m = model(node, captureCanvasDraws = true)
@@ -393,7 +394,7 @@ class FigmaSvgDrawRasterTest {
               nodeId = "sem",
               boundsInRoot = "0,0,240,48",
               text = "Message #composers",
-            )
+            ),
           ),
         captureCanvasDraws = true,
       )
