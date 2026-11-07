@@ -967,6 +967,9 @@
           "$ref": "#/$defs/DesignMutationV1.removeComponent"
         },
         {
+          "$ref": "#/$defs/DesignMutationV1.removeHostLogic"
+        },
+        {
           "$ref": "#/$defs/DesignMutationV1.removeNodeProperty"
         },
         {
@@ -980,6 +983,9 @@
         },
         {
           "$ref": "#/$defs/DesignMutationV1.setEventBinding"
+        },
+        {
+          "$ref": "#/$defs/DesignMutationV1.setHostLogic"
         },
         {
           "$ref": "#/$defs/DesignMutationV1.setModifiers"
@@ -1087,6 +1093,18 @@
       "required": [
         "type",
         "componentKey"
+      ],
+      "additionalProperties": false
+    },
+    "DesignMutationV1.removeHostLogic": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "removeHostLogic"
+        }
+      },
+      "required": [
+        "type"
       ],
       "additionalProperties": false
     },
@@ -1199,6 +1217,22 @@
         "nodeId",
         "event",
         "actions"
+      ],
+      "additionalProperties": false
+    },
+    "DesignMutationV1.setHostLogic": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "setHostLogic"
+        },
+        "hostLogic": {
+          "$ref": "#/$defs/HostLogicV1"
+        }
+      },
+      "required": [
+        "type",
+        "hostLogic"
       ],
       "additionalProperties": false
     },
@@ -2210,6 +2244,28 @@
         "centerHorizontally",
         "end"
       ]
+    },
+    "HostLogicLanguageV1": {
+      "type": "string",
+      "enum": [
+        "javascript"
+      ]
+    },
+    "HostLogicV1": {
+      "type": "object",
+      "properties": {
+        "language": {
+          "$ref": "#/$defs/HostLogicLanguageV1"
+        },
+        "source": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "language",
+        "source"
+      ],
+      "additionalProperties": false
     },
     "LayoutDirectionV1": {
       "type": "string",

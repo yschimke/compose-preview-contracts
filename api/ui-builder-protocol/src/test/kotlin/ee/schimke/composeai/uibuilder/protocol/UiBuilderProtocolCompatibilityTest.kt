@@ -564,6 +564,54 @@ class UiBuilderProtocolCompatibilityTest {
   }
 
   @Test
+  fun hostLogicRidesTheDocumentAndIsSetAndRemovedByItsOwnMutations() {
+    val legacy =
+      strictJson.decodeFromString(
+        DesignDocumentV1.serializer(),
+        fixture("materialized-confetti.json"),
+      )
+    // A document written before the field has none, and re-encodes to the same bytes.
+    assertNull(legacy.hostLogic)
+    assertEquals(
+      strictJson.parseToJsonElement(fixture("materialized-confetti.json")),
+      strictJson.encodeToJsonElement(DesignDocumentV1.serializer(), legacy),
+    )
+
+    val logic =
+      HostLogicV1.Builder(HostLogicLanguageV1.JAVASCRIPT, "export function init() {}").build()
+    val withLogic = legacy.newBuilder().apply { hostLogic = logic }.build()
+    val encoded = strictJson.encodeToJsonElement(DesignDocumentV1.serializer(), withLogic)
+    assertEquals(
+      strictJson.parseToJsonElement(
+        """{"language":"javascript","source":"export function init() {}"}""",
+      ),
+      (encoded as JsonObject)["hostLogic"],
+    )
+    assertEquals(
+      withLogic,
+      strictJson.decodeFromJsonElement(DesignDocumentV1.serializer(), encoded),
+    )
+    // The `copy` of earlier releases keeps the logic rather than dropping it.
+    assertEquals(logic, withLogic.copy(title = "Renamed").hostLogic)
+
+    val set =
+      strictJson.decodeFromString(
+        DesignMutationV1.serializer(),
+        """{"type":"setHostLogic",
+            "hostLogic":{"language":"javascript","source":"export function init() {}"}}""",
+      )
+    assertEquals(SetHostLogicMutationV1.Builder(logic).build(), set)
+    assertEquals(
+      RemoveHostLogicMutationV1,
+      strictJson.decodeFromString(DesignMutationV1.serializer(), """{"type":"removeHostLogic"}"""),
+    )
+    assertEquals(
+      strictJson.parseToJsonElement("""{"type":"removeHostLogic"}"""),
+      strictJson.encodeToJsonElement(DesignMutationV1.serializer(), RemoveHostLogicMutationV1),
+    )
+  }
+
+  @Test
   fun aHostActionCarriesANameAndAtMostOneValue() {
     val wire =
       """

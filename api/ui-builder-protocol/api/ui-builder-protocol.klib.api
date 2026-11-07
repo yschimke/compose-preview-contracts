@@ -353,6 +353,21 @@ final enum class ee.schimke.composeai.uibuilder.protocol/HorizontalAlignmentV1 :
     }
 }
 
+final enum class ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1 : kotlin/Enum<ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1> { // ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1|null[0]
+    enum entry JAVASCRIPT // ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1.JAVASCRIPT|null[0]
+
+    final val entries // ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1> // ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1 // ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1> // ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1.values|values#static(){}[0]
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1> // ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
 final enum class ee.schimke.composeai.uibuilder.protocol/JsonValueTypeV1 : kotlin/Enum<ee.schimke.composeai.uibuilder.protocol/JsonValueTypeV1> { // ee.schimke.composeai.uibuilder.protocol/JsonValueTypeV1|null[0]
     enum entry ARRAY // ee.schimke.composeai.uibuilder.protocol/JsonValueTypeV1.ARRAY|null[0]
     enum entry BOOLEAN // ee.schimke.composeai.uibuilder.protocol/JsonValueTypeV1.BOOLEAN|null[0]
@@ -3789,6 +3804,7 @@ final class ee.schimke.composeai.uibuilder.protocol/DesignComponentV1 { // ee.sc
 
 final class ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1 { // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1|null[0]
     constructor <init>(kotlin/String, kotlin/String, kotlin/String, kotlin/Long, ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1, ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1, kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/StateVariableV1> = ..., kotlin.collections/List<kotlin/String>, kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/DesignNodeV1>, kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/AssetBindingV1> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiValueV1> = ..., kotlin/Long? = ..., kotlin/Long? = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/DesignComponentV1> = ..., ee.schimke.composeai.uibuilder.protocol/DesignHomeV1? = ...) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.<init>|<init>(kotlin.String;kotlin.String;kotlin.String;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1;ee.schimke.composeai.uibuilder.protocol.DesignEnvironmentV1;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.StateVariableV1>;kotlin.collections.List<kotlin.String>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.DesignNodeV1>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.AssetBindingV1>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.UiValueV1>;kotlin.Long?;kotlin.Long?;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.DesignComponentV1>;ee.schimke.composeai.uibuilder.protocol.DesignHomeV1?){}[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlin/String, kotlin/Long, ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1, ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1, kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/StateVariableV1> = ..., kotlin.collections/List<kotlin/String>, kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/DesignNodeV1>, kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/AssetBindingV1> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiValueV1> = ..., kotlin/Long? = ..., kotlin/Long? = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/DesignComponentV1> = ..., ee.schimke.composeai.uibuilder.protocol/DesignHomeV1? = ..., ee.schimke.composeai.uibuilder.protocol/HostLogicV1? = ...) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.<init>|<init>(kotlin.String;kotlin.String;kotlin.String;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1;ee.schimke.composeai.uibuilder.protocol.DesignEnvironmentV1;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.StateVariableV1>;kotlin.collections.List<kotlin.String>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.DesignNodeV1>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.AssetBindingV1>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.UiValueV1>;kotlin.Long?;kotlin.Long?;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.DesignComponentV1>;ee.schimke.composeai.uibuilder.protocol.DesignHomeV1?;ee.schimke.composeai.uibuilder.protocol.HostLogicV1?){}[0]
 
     final val assets // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.assets|{}assets[0]
         final fun <get-assets>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/AssetBindingV1> // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.assets.<get-assets>|<get-assets>(){}[0]
@@ -3802,6 +3818,8 @@ final class ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1 { // ee.sch
         final fun <get-environment>(): ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1 // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.environment.<get-environment>|<get-environment>(){}[0]
     final val home // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.home|{}home[0]
         final fun <get-home>(): ee.schimke.composeai.uibuilder.protocol/DesignHomeV1? // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.home.<get-home>|<get-home>(){}[0]
+    final val hostLogic // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.hostLogic|{}hostLogic[0]
+        final fun <get-hostLogic>(): ee.schimke.composeai.uibuilder.protocol/HostLogicV1? // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.hostLogic.<get-hostLogic>|<get-hostLogic>(){}[0]
     final val id // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.id|{}id[0]
         final fun <get-id>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.id.<get-id>|<get-id>(){}[0]
     final val nodes // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.nodes|{}nodes[0]
@@ -3828,6 +3846,7 @@ final class ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1 { // ee.sch
     final fun component13(): kotlin/Long? // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.component13|component13(){}[0]
     final fun component14(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/DesignComponentV1> // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.component14|component14(){}[0]
     final fun component15(): ee.schimke.composeai.uibuilder.protocol/DesignHomeV1? // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.component15|component15(){}[0]
+    final fun component16(): ee.schimke.composeai.uibuilder.protocol/HostLogicV1? // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.component16|component16(){}[0]
     final fun component2(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.component2|component2(){}[0]
     final fun component3(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.component3|component3(){}[0]
     final fun component4(): kotlin/Long // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.component4|component4(){}[0]
@@ -3837,9 +3856,66 @@ final class ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1 { // ee.sch
     final fun component8(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.component8|component8(){}[0]
     final fun component9(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/DesignNodeV1> // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.component9|component9(){}[0]
     final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String = ..., kotlin/Long = ..., ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 = ..., ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1 = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/StateVariableV1> = ..., kotlin.collections/List<kotlin/String> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/DesignNodeV1> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/AssetBindingV1> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiValueV1> = ..., kotlin/Long? = ..., kotlin/Long? = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/DesignComponentV1> = ..., ee.schimke.composeai.uibuilder.protocol/DesignHomeV1? = ...): ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1 // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.copy|copy(kotlin.String;kotlin.String;kotlin.String;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1;ee.schimke.composeai.uibuilder.protocol.DesignEnvironmentV1;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.StateVariableV1>;kotlin.collections.List<kotlin.String>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.DesignNodeV1>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.AssetBindingV1>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.UiValueV1>;kotlin.Long?;kotlin.Long?;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.DesignComponentV1>;ee.schimke.composeai.uibuilder.protocol.DesignHomeV1?){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String = ..., kotlin/Long = ..., ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 = ..., ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1 = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/StateVariableV1> = ..., kotlin.collections/List<kotlin/String> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/DesignNodeV1> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/AssetBindingV1> = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiValueV1> = ..., kotlin/Long? = ..., kotlin/Long? = ..., kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/DesignComponentV1> = ..., ee.schimke.composeai.uibuilder.protocol/DesignHomeV1? = ..., ee.schimke.composeai.uibuilder.protocol/HostLogicV1? = ...): ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1 // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.copy|copy(kotlin.String;kotlin.String;kotlin.String;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1;ee.schimke.composeai.uibuilder.protocol.DesignEnvironmentV1;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.StateVariableV1>;kotlin.collections.List<kotlin.String>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.DesignNodeV1>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.AssetBindingV1>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.UiValueV1>;kotlin.Long?;kotlin.Long?;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.DesignComponentV1>;ee.schimke.composeai.uibuilder.protocol.DesignHomeV1?;ee.schimke.composeai.uibuilder.protocol.HostLogicV1?){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.hashCode|hashCode(){}[0]
+    final fun newBuilder(): ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.newBuilder|newBuilder(){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.toString|toString(){}[0]
+
+    final class Builder { // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder|null[0]
+        constructor <init>(kotlin/String, kotlin/String, kotlin/String, kotlin/Long, ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1, ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1, kotlin.collections/List<kotlin/String>, kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/DesignNodeV1>) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.<init>|<init>(kotlin.String;kotlin.String;kotlin.String;kotlin.Long;ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1;ee.schimke.composeai.uibuilder.protocol.DesignEnvironmentV1;kotlin.collections.List<kotlin.String>;kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.DesignNodeV1>){}[0]
+
+        final var assets // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.assets|{}assets[0]
+            final fun <get-assets>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/AssetBindingV1> // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.assets.<get-assets>|<get-assets>(){}[0]
+            final fun <set-assets>(kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/AssetBindingV1>) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.assets.<set-assets>|<set-assets>(kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.AssetBindingV1>){}[0]
+        final var catalogPin // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.catalogPin|{}catalogPin[0]
+            final fun <get-catalogPin>(): ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1 // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.catalogPin.<get-catalogPin>|<get-catalogPin>(){}[0]
+            final fun <set-catalogPin>(ee.schimke.composeai.uibuilder.protocol/CatalogReferenceV1) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.catalogPin.<set-catalogPin>|<set-catalogPin>(ee.schimke.composeai.uibuilder.protocol.CatalogReferenceV1){}[0]
+        final var components // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.components|{}components[0]
+            final fun <get-components>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/DesignComponentV1> // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.components.<get-components>|<get-components>(){}[0]
+            final fun <set-components>(kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/DesignComponentV1>) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.components.<set-components>|<set-components>(kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.DesignComponentV1>){}[0]
+        final var createdAtEpochMillis // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.createdAtEpochMillis|{}createdAtEpochMillis[0]
+            final fun <get-createdAtEpochMillis>(): kotlin/Long? // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.createdAtEpochMillis.<get-createdAtEpochMillis>|<get-createdAtEpochMillis>(){}[0]
+            final fun <set-createdAtEpochMillis>(kotlin/Long?) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.createdAtEpochMillis.<set-createdAtEpochMillis>|<set-createdAtEpochMillis>(kotlin.Long?){}[0]
+        final var environment // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.environment|{}environment[0]
+            final fun <get-environment>(): ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1 // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.environment.<get-environment>|<get-environment>(){}[0]
+            final fun <set-environment>(ee.schimke.composeai.uibuilder.protocol/DesignEnvironmentV1) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.environment.<set-environment>|<set-environment>(ee.schimke.composeai.uibuilder.protocol.DesignEnvironmentV1){}[0]
+        final var home // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.home|{}home[0]
+            final fun <get-home>(): ee.schimke.composeai.uibuilder.protocol/DesignHomeV1? // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.home.<get-home>|<get-home>(){}[0]
+            final fun <set-home>(ee.schimke.composeai.uibuilder.protocol/DesignHomeV1?) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.home.<set-home>|<set-home>(ee.schimke.composeai.uibuilder.protocol.DesignHomeV1?){}[0]
+        final var hostLogic // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.hostLogic|{}hostLogic[0]
+            final fun <get-hostLogic>(): ee.schimke.composeai.uibuilder.protocol/HostLogicV1? // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.hostLogic.<get-hostLogic>|<get-hostLogic>(){}[0]
+            final fun <set-hostLogic>(ee.schimke.composeai.uibuilder.protocol/HostLogicV1?) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.hostLogic.<set-hostLogic>|<set-hostLogic>(ee.schimke.composeai.uibuilder.protocol.HostLogicV1?){}[0]
+        final var id // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.id|{}id[0]
+            final fun <get-id>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.id.<get-id>|<get-id>(){}[0]
+            final fun <set-id>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.id.<set-id>|<set-id>(kotlin.String){}[0]
+        final var nodes // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.nodes|{}nodes[0]
+            final fun <get-nodes>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/DesignNodeV1> // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.nodes.<get-nodes>|<get-nodes>(){}[0]
+            final fun <set-nodes>(kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/DesignNodeV1>) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.nodes.<set-nodes>|<set-nodes>(kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.DesignNodeV1>){}[0]
+        final var revision // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.revision|{}revision[0]
+            final fun <get-revision>(): kotlin/Long // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.revision.<get-revision>|<get-revision>(){}[0]
+            final fun <set-revision>(kotlin/Long) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.revision.<set-revision>|<set-revision>(kotlin.Long){}[0]
+        final var roots // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.roots|{}roots[0]
+            final fun <get-roots>(): kotlin.collections/List<kotlin/String> // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.roots.<get-roots>|<get-roots>(){}[0]
+            final fun <set-roots>(kotlin.collections/List<kotlin/String>) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.roots.<set-roots>|<set-roots>(kotlin.collections.List<kotlin.String>){}[0]
+        final var schema // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.schema|{}schema[0]
+            final fun <get-schema>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.schema.<get-schema>|<get-schema>(){}[0]
+            final fun <set-schema>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.schema.<set-schema>|<set-schema>(kotlin.String){}[0]
+        final var stateVariables // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.stateVariables|{}stateVariables[0]
+            final fun <get-stateVariables>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/StateVariableV1> // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.stateVariables.<get-stateVariables>|<get-stateVariables>(){}[0]
+            final fun <set-stateVariables>(kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/StateVariableV1>) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.stateVariables.<set-stateVariables>|<set-stateVariables>(kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.StateVariableV1>){}[0]
+        final var title // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.title|{}title[0]
+            final fun <get-title>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.title.<get-title>|<get-title>(){}[0]
+            final fun <set-title>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.title.<set-title>|<set-title>(kotlin.String){}[0]
+        final var tokenBindings // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.tokenBindings|{}tokenBindings[0]
+            final fun <get-tokenBindings>(): kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiValueV1> // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.tokenBindings.<get-tokenBindings>|<get-tokenBindings>(){}[0]
+            final fun <set-tokenBindings>(kotlin.collections/Map<kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiValueV1>) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.tokenBindings.<set-tokenBindings>|<set-tokenBindings>(kotlin.collections.Map<kotlin.String,ee.schimke.composeai.uibuilder.protocol.UiValueV1>){}[0]
+        final var updatedAtEpochMillis // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.updatedAtEpochMillis|{}updatedAtEpochMillis[0]
+            final fun <get-updatedAtEpochMillis>(): kotlin/Long? // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.updatedAtEpochMillis.<get-updatedAtEpochMillis>|<get-updatedAtEpochMillis>(){}[0]
+            final fun <set-updatedAtEpochMillis>(kotlin/Long?) // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.updatedAtEpochMillis.<set-updatedAtEpochMillis>|<set-updatedAtEpochMillis>(kotlin.Long?){}[0]
+
+        final fun build(): ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1 // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.Builder.build|build(){}[0]
+    }
 
     final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1> { // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.$serializer|null[0]
         final val descriptor // ee.schimke.composeai.uibuilder.protocol/DesignDocumentV1.$serializer.descriptor|{}descriptor[0]
@@ -5162,6 +5238,48 @@ final class ee.schimke.composeai.uibuilder.protocol/HostActionV1 : ee.schimke.co
 
     final object Companion { // ee.schimke.composeai.uibuilder.protocol/HostActionV1.Companion|null[0]
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/HostActionV1> // ee.schimke.composeai.uibuilder.protocol/HostActionV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/HostLogicV1 { // ee.schimke.composeai.uibuilder.protocol/HostLogicV1|null[0]
+    final val language // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.language|{}language[0]
+        final fun <get-language>(): ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1 // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.language.<get-language>|<get-language>(){}[0]
+    final val source // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.source|{}source[0]
+        final fun <get-source>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.source.<get-source>|<get-source>(){}[0]
+
+    final fun component1(): ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1 // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.component1|component1(){}[0]
+    final fun component2(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.component2|component2(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.hashCode|hashCode(){}[0]
+    final fun newBuilder(): ee.schimke.composeai.uibuilder.protocol/HostLogicV1.Builder // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.newBuilder|newBuilder(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.toString|toString(){}[0]
+
+    final class Builder { // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.Builder|null[0]
+        constructor <init>(ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1, kotlin/String) // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.Builder.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.HostLogicLanguageV1;kotlin.String){}[0]
+
+        final var language // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.Builder.language|{}language[0]
+            final fun <get-language>(): ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1 // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.Builder.language.<get-language>|<get-language>(){}[0]
+            final fun <set-language>(ee.schimke.composeai.uibuilder.protocol/HostLogicLanguageV1) // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.Builder.language.<set-language>|<set-language>(ee.schimke.composeai.uibuilder.protocol.HostLogicLanguageV1){}[0]
+        final var source // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.Builder.source|{}source[0]
+            final fun <get-source>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.Builder.source.<get-source>|<get-source>(){}[0]
+            final fun <set-source>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.Builder.source.<set-source>|<set-source>(kotlin.String){}[0]
+
+        final fun build(): ee.schimke.composeai.uibuilder.protocol/HostLogicV1 // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.Builder.build|build(){}[0]
+    }
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/HostLogicV1> { // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/HostLogicV1 // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/HostLogicV1) // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.HostLogicV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.Companion|null[0]
+        final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/HostLogicV1> // ee.schimke.composeai.uibuilder.protocol/HostLogicV1.Companion.serializer|serializer(){}[0]
     }
 }
 
@@ -7129,6 +7247,40 @@ final class ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChange
         final val $childSerializers // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.Companion.$childSerializers|{}$childSerializers[0]
 
         final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1> // ee.schimke.composeai.uibuilder.protocol/SetHeightDpEnvironmentChangeV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1 : ee.schimke.composeai.uibuilder.protocol/DesignMutationV1 { // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1|null[0]
+    final val hostLogic // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.hostLogic|{}hostLogic[0]
+        final fun <get-hostLogic>(): ee.schimke.composeai.uibuilder.protocol/HostLogicV1 // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.hostLogic.<get-hostLogic>|<get-hostLogic>(){}[0]
+
+    final fun component1(): ee.schimke.composeai.uibuilder.protocol/HostLogicV1 // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.component1|component1(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.hashCode|hashCode(){}[0]
+    final fun newBuilder(): ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.Builder // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.newBuilder|newBuilder(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.toString|toString(){}[0]
+
+    final class Builder { // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.Builder|null[0]
+        constructor <init>(ee.schimke.composeai.uibuilder.protocol/HostLogicV1) // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.Builder.<init>|<init>(ee.schimke.composeai.uibuilder.protocol.HostLogicV1){}[0]
+
+        final var hostLogic // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.Builder.hostLogic|{}hostLogic[0]
+            final fun <get-hostLogic>(): ee.schimke.composeai.uibuilder.protocol/HostLogicV1 // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.Builder.hostLogic.<get-hostLogic>|<get-hostLogic>(){}[0]
+            final fun <set-hostLogic>(ee.schimke.composeai.uibuilder.protocol/HostLogicV1) // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.Builder.hostLogic.<set-hostLogic>|<set-hostLogic>(ee.schimke.composeai.uibuilder.protocol.HostLogicV1){}[0]
+
+        final fun build(): ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1 // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.Builder.build|build(){}[0]
+    }
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1> { // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1 // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1) // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.SetHostLogicMutationV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1> // ee.schimke.composeai.uibuilder.protocol/SetHostLogicMutationV1.Companion.serializer|serializer(){}[0]
     }
 }
 
@@ -9320,6 +9472,14 @@ final object ee.schimke.composeai.uibuilder.protocol/NullValueV1 : ee.schimke.co
     final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/NullValueV1> // ee.schimke.composeai.uibuilder.protocol/NullValueV1.serializer|serializer(){}[0]
     final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/NullValueV1.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/NullValueV1.toString|toString(){}[0]
+}
+
+final object ee.schimke.composeai.uibuilder.protocol/RemoveHostLogicMutationV1 : ee.schimke.composeai.uibuilder.protocol/DesignMutationV1, kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/RemoveHostLogicMutationV1|null[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/RemoveHostLogicMutationV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/RemoveHostLogicMutationV1.hashCode|hashCode(){}[0]
+    final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/RemoveHostLogicMutationV1> // ee.schimke.composeai.uibuilder.protocol/RemoveHostLogicMutationV1.serializer|serializer(){}[0]
+    final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // ee.schimke.composeai.uibuilder.protocol/RemoveHostLogicMutationV1.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/RemoveHostLogicMutationV1.toString|toString(){}[0]
 }
 
 final object ee.schimke.composeai.uibuilder.protocol/ResetAnimationsEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1, kotlinx.serialization.internal/SerializerFactory { // ee.schimke.composeai.uibuilder.protocol/ResetAnimationsEnvironmentChangeV1|null[0]

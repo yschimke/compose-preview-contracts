@@ -44,7 +44,196 @@ public data class DesignDocumentV1(
   public val components: Map<String, DesignComponentV1> = emptyMap(),
   /** The design's canonical location, retained when it is opened or copied elsewhere. */
   @EncodeDefault(EncodeDefault.Mode.NEVER) public val home: DesignHomeV1? = null,
-)
+  /**
+   * The program that stands in for the host feeding this design, when it has one; see
+   * [HostLogicV1]. Absent in every document written before this field, and in every design that
+   * talks to a real host instead.
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val hostLogic: HostLogicV1? = null,
+) {
+  /**
+   * Preserves the constructor that predates [hostLogic], including its default-argument form, so a
+   * jar compiled against an earlier release still links when it builds a document.
+   */
+  public constructor(
+    schema: String,
+    id: String,
+    title: String,
+    revision: Long,
+    catalogPin: CatalogReferenceV1,
+    environment: DesignEnvironmentV1,
+    stateVariables: Map<String, StateVariableV1> = emptyMap(),
+    roots: List<String>,
+    nodes: Map<String, DesignNodeV1>,
+    assets: Map<String, AssetBindingV1> = emptyMap(),
+    tokenBindings: Map<String, UiValueV1> = emptyMap(),
+    createdAtEpochMillis: Long? = null,
+    updatedAtEpochMillis: Long? = null,
+    components: Map<String, DesignComponentV1> = emptyMap(),
+    home: DesignHomeV1? = null,
+  ) : this(
+    schema,
+    id,
+    title,
+    revision,
+    catalogPin,
+    environment,
+    stateVariables,
+    roots,
+    nodes,
+    assets,
+    tokenBindings,
+    createdAtEpochMillis,
+    updatedAtEpochMillis,
+    components,
+    home,
+    null,
+  )
+
+  /**
+   * Builds a [DesignDocumentV1]. Prefer this to a constructor: a field added later is a new
+   * property here, and never replaces a signature a released consumer has already linked against.
+   * The constructors stay public until the next major release, when they become `internal`.
+   */
+  public class Builder(
+    schema: String,
+    id: String,
+    title: String,
+    revision: Long,
+    catalogPin: CatalogReferenceV1,
+    environment: DesignEnvironmentV1,
+    roots: List<String>,
+    nodes: Map<String, DesignNodeV1>,
+  ) {
+    public var schema: String = schema
+    public var id: String = id
+    public var title: String = title
+    public var revision: Long = revision
+    public var catalogPin: CatalogReferenceV1 = catalogPin
+    public var environment: DesignEnvironmentV1 = environment
+    public var stateVariables: Map<String, StateVariableV1> = emptyMap()
+    public var roots: List<String> = roots
+    public var nodes: Map<String, DesignNodeV1> = nodes
+    public var assets: Map<String, AssetBindingV1> = emptyMap()
+    public var tokenBindings: Map<String, UiValueV1> = emptyMap()
+    public var createdAtEpochMillis: Long? = null
+    public var updatedAtEpochMillis: Long? = null
+    public var components: Map<String, DesignComponentV1> = emptyMap()
+    public var home: DesignHomeV1? = null
+    public var hostLogic: HostLogicV1? = null
+
+    public fun build(): DesignDocumentV1 =
+      DesignDocumentV1(
+        schema,
+        id,
+        title,
+        revision,
+        catalogPin,
+        environment,
+        stateVariables,
+        roots,
+        nodes,
+        assets,
+        tokenBindings,
+        createdAtEpochMillis,
+        updatedAtEpochMillis,
+        components,
+        home,
+        hostLogic,
+      )
+  }
+
+  /** This document as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder =
+    Builder(schema, id, title, revision, catalogPin, environment, roots, nodes).also {
+      it.stateVariables = stateVariables
+      it.assets = assets
+      it.tokenBindings = tokenBindings
+      it.createdAtEpochMillis = createdAtEpochMillis
+      it.updatedAtEpochMillis = updatedAtEpochMillis
+      it.components = components
+      it.home = home
+      it.hostLogic = hostLogic
+    }
+
+  /**
+   * The `copy` of earlier releases, for the same reason as the constructor; it carries [hostLogic].
+   */
+  public fun copy(
+    schema: String = this.schema,
+    id: String = this.id,
+    title: String = this.title,
+    revision: Long = this.revision,
+    catalogPin: CatalogReferenceV1 = this.catalogPin,
+    environment: DesignEnvironmentV1 = this.environment,
+    stateVariables: Map<String, StateVariableV1> = this.stateVariables,
+    roots: List<String> = this.roots,
+    nodes: Map<String, DesignNodeV1> = this.nodes,
+    assets: Map<String, AssetBindingV1> = this.assets,
+    tokenBindings: Map<String, UiValueV1> = this.tokenBindings,
+    createdAtEpochMillis: Long? = this.createdAtEpochMillis,
+    updatedAtEpochMillis: Long? = this.updatedAtEpochMillis,
+    components: Map<String, DesignComponentV1> = this.components,
+    home: DesignHomeV1? = this.home,
+  ): DesignDocumentV1 =
+    copy(
+      schema,
+      id,
+      title,
+      revision,
+      catalogPin,
+      environment,
+      stateVariables,
+      roots,
+      nodes,
+      assets,
+      tokenBindings,
+      createdAtEpochMillis,
+      updatedAtEpochMillis,
+      components,
+      home,
+      this.hostLogic,
+    )
+}
+
+/**
+ * A design's host logic: a small program, stored with the design, that answers the host actions the
+ * design fires ([HostActionV1]) and responds by setting its host inputs (state variables whose
+ * `persistence` is `host`). It stands in for the host wherever the design is played without its
+ * real one — the editor's canvas, a simulator, an exported reference host.
+ *
+ * Only the [source] is stored. What runs is compiled from it by whoever plays the design, so a
+ * compiled form can never describe an older revision than the one it is stored beside.
+ *
+ * The program is a pure reducer — `init(env)` and `onAction(state, action, env)`, each returning `{
+ * state, values }` — whose contract belongs to the players, not this type: this is the shape, and a
+ * player validates the program as it validates a `remoteCall` name.
+ */
+@Serializable
+@ConsistentCopyVisibility
+public data class HostLogicV1
+internal constructor(
+  public val language: HostLogicLanguageV1,
+  public val source: String,
+) {
+  /** Builds a [HostLogicV1]; [WasmCapabilityV1.Builder] says why the constructor is internal. */
+  public class Builder(language: HostLogicLanguageV1, source: String) {
+    public var language: HostLogicLanguageV1 = language
+    public var source: String = source
+
+    public fun build(): HostLogicV1 = HostLogicV1(language, source)
+  }
+
+  /** This [HostLogicV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder = Builder(language, source)
+}
+
+/** The language a [HostLogicV1]'s source is written in. */
+@Serializable
+public enum class HostLogicLanguageV1 {
+  /** JavaScript as a module exporting `init` and `onAction`; TypeScript's type syntax allowed. */
+  @SerialName("javascript") JAVASCRIPT,
+}
 
 /**
  * The authoritative location from which a host can open a design.

@@ -23,6 +23,9 @@ client, service and MCP adapter. It owns:
   `setText`, `toggle`, `increment`), `navigatePage`, and `hostAction` (`HostActionV1`), which hands
   a named event with at most one string or number value to the host feeding the document — Remote
   Compose's named host action — and writes nothing in the design;
+- optional host logic on a document (`HostLogicV1`): the source of a program that answers the
+  design's host actions by setting its host inputs, standing in for the real host wherever the
+  design is played without one. Set and removed by `setHostLogic` and `removeHostLogic`;
 - atomic, client-identified edit batches using stable neighbour anchors, plus undo and redo; stable
   position keys remain reducer/server internals and are never client supplied;
 - explicit catalog-pin upgrade previews with deterministic validation, structural diffs and
