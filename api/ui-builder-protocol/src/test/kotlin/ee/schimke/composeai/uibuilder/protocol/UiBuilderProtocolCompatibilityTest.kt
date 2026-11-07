@@ -1282,29 +1282,18 @@ class UiBuilderProtocolCompatibilityTest {
     assertEquals(4L, replayed.copy(baseRevision = 13).stalenessBaseRevision)
     assertEquals(13L, replayed.newBuilder().apply { baseRevision = 13 }.build().baseRevision)
   }
-}
 
-@Serializable
-private data class LosslessProtocolFixtureV1(
-  val document: DesignDocumentV1,
-  val values: List<UiValueV1>,
-  val assetSources: List<AssetSourceV1>,
-  val submissions: List<DesignSubmissionV1>,
-  val outcomes: List<CommandOutcomeV1>,
-  val componentKinds: List<ComponentKindV1>,
-  val propertyValueKinds: List<PropertyValueKindV1>,
-  val dimensionUnits: List<DimensionUnitV1>,
-  val jsonValueTypes: List<JsonValueTypeV1>,
-  val wasmStatuses: List<WasmAdapterStatusV1>,
-  val svgStatuses: List<SvgCapabilityStatusV1>,
-  val svgFallbacks: List<SvgFallbackV1>,
-  val themes: List<ThemeV1>,
-  val layoutDirections: List<LayoutDirectionV1>,
-  val windowPostures: List<WindowPostureV1>,
-  val animationStates: List<AnimationStateV1>,
-  val stateVariableTypes: List<StateVariableTypeV1>,
-  val stateValueTypes: List<StateValueTypeV1>,
-  val statePersistences: List<StatePersistenceV1>,
-  val conflictCodes: List<ConflictCodeV1>,
-  val rejectionCodes: List<RejectionCodeV1>,
-)
+  @Test
+  fun `a host input's declaration decodes and keeps its persistence`() {
+    // The editor has written `"persistence": "host"` since host inputs shipped; a service decoding
+    // the document refused it until StatePersistenceV1 named it.
+    val wire =
+      """{"type":"text","valueType":"string","nullable":false,"initialValue":"0","persistence":"host"}"""
+    val declaration = strictJson.decodeFromString(StateVariableV1.serializer(), wire)
+    assertEquals(StatePersistenceV1.HOST, declaration.persistence)
+    assertEquals(
+      strictJson.parseToJsonElement(wire),
+      strictJson.encodeToJsonElement(StateVariableV1.serializer(), declaration),
+    )
+  }
+}
