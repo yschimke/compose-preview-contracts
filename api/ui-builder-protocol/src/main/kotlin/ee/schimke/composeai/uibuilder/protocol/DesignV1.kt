@@ -699,6 +699,14 @@ public enum class StatePersistenceV1 {
   @SerialName("design") DESIGN,
   @SerialName("preview") PREVIEW,
   @SerialName("session") SESSION,
+  /**
+   * A host input: the host feeding the design owns the value, and the design reads it and never
+   * writes it. A Remote Compose export names it so the host can push values into the running
+   * document, and a design's [HostLogicV1] is the program that sets it when the design is played
+   * without its real host. The editor has written this since host inputs shipped; until this entry
+   * a service decoding the document refused it.
+   */
+  @SerialName("host") HOST,
 }
 
 /**

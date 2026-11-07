@@ -1282,6 +1282,20 @@ class UiBuilderProtocolCompatibilityTest {
     assertEquals(4L, replayed.copy(baseRevision = 13).stalenessBaseRevision)
     assertEquals(13L, replayed.newBuilder().apply { baseRevision = 13 }.build().baseRevision)
   }
+
+  @Test
+  fun `a host input's declaration decodes and keeps its persistence`() {
+    // The editor has written `"persistence": "host"` since host inputs shipped; a service decoding
+    // the document refused it until StatePersistenceV1 named it.
+    val wire =
+      """{"type":"text","valueType":"string","nullable":false,"initialValue":"0","persistence":"host"}"""
+    val declaration = strictJson.decodeFromString(StateVariableV1.serializer(), wire)
+    assertEquals(StatePersistenceV1.HOST, declaration.persistence)
+    assertEquals(
+      strictJson.parseToJsonElement(wire),
+      strictJson.encodeToJsonElement(StateVariableV1.serializer(), declaration),
+    )
+  }
 }
 
 @Serializable
