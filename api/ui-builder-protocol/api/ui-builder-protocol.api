@@ -2353,6 +2353,8 @@ public final class ee/schimke/composeai/uibuilder/protocol/DesignDocumentV1 {
 	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/DesignDocumentV1$Companion;
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLee/schimke/composeai/uibuilder/protocol/CatalogReferenceV1;Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1;Ljava/util/Map;Ljava/util/List;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Long;Ljava/lang/Long;Ljava/util/Map;Lee/schimke/composeai/uibuilder/protocol/DesignHomeV1;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLee/schimke/composeai/uibuilder/protocol/CatalogReferenceV1;Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1;Ljava/util/Map;Ljava/util/List;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Long;Ljava/lang/Long;Ljava/util/Map;Lee/schimke/composeai/uibuilder/protocol/DesignHomeV1;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLee/schimke/composeai/uibuilder/protocol/CatalogReferenceV1;Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1;Ljava/util/Map;Ljava/util/List;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Long;Ljava/lang/Long;Ljava/util/Map;Lee/schimke/composeai/uibuilder/protocol/DesignHomeV1;Lee/schimke/composeai/uibuilder/protocol/HostLogicV1;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLee/schimke/composeai/uibuilder/protocol/CatalogReferenceV1;Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1;Ljava/util/Map;Ljava/util/List;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Long;Ljava/lang/Long;Ljava/util/Map;Lee/schimke/composeai/uibuilder/protocol/DesignHomeV1;Lee/schimke/composeai/uibuilder/protocol/HostLogicV1;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component10 ()Ljava/util/Map;
 	public final fun component11 ()Ljava/util/Map;
@@ -2360,6 +2362,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/DesignDocumentV1 {
 	public final fun component13 ()Ljava/lang/Long;
 	public final fun component14 ()Ljava/util/Map;
 	public final fun component15 ()Lee/schimke/composeai/uibuilder/protocol/DesignHomeV1;
+	public final fun component16 ()Lee/schimke/composeai/uibuilder/protocol/HostLogicV1;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()J
@@ -2369,7 +2372,9 @@ public final class ee/schimke/composeai/uibuilder/protocol/DesignDocumentV1 {
 	public final fun component8 ()Ljava/util/List;
 	public final fun component9 ()Ljava/util/Map;
 	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLee/schimke/composeai/uibuilder/protocol/CatalogReferenceV1;Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1;Ljava/util/Map;Ljava/util/List;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Long;Ljava/lang/Long;Ljava/util/Map;Lee/schimke/composeai/uibuilder/protocol/DesignHomeV1;)Lee/schimke/composeai/uibuilder/protocol/DesignDocumentV1;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLee/schimke/composeai/uibuilder/protocol/CatalogReferenceV1;Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1;Ljava/util/Map;Ljava/util/List;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Long;Ljava/lang/Long;Ljava/util/Map;Lee/schimke/composeai/uibuilder/protocol/DesignHomeV1;Lee/schimke/composeai/uibuilder/protocol/HostLogicV1;)Lee/schimke/composeai/uibuilder/protocol/DesignDocumentV1;
 	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/DesignDocumentV1;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLee/schimke/composeai/uibuilder/protocol/CatalogReferenceV1;Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1;Ljava/util/Map;Ljava/util/List;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Long;Ljava/lang/Long;Ljava/util/Map;Lee/schimke/composeai/uibuilder/protocol/DesignHomeV1;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/DesignDocumentV1;
+	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/DesignDocumentV1;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLee/schimke/composeai/uibuilder/protocol/CatalogReferenceV1;Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1;Ljava/util/Map;Ljava/util/List;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Long;Ljava/lang/Long;Ljava/util/Map;Lee/schimke/composeai/uibuilder/protocol/DesignHomeV1;Lee/schimke/composeai/uibuilder/protocol/HostLogicV1;ILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/DesignDocumentV1;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAssets ()Ljava/util/Map;
 	public final fun getCatalogPin ()Lee/schimke/composeai/uibuilder/protocol/CatalogReferenceV1;
@@ -2377,6 +2382,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/DesignDocumentV1 {
 	public final fun getCreatedAtEpochMillis ()Ljava/lang/Long;
 	public final fun getEnvironment ()Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1;
 	public final fun getHome ()Lee/schimke/composeai/uibuilder/protocol/DesignHomeV1;
+	public final fun getHostLogic ()Lee/schimke/composeai/uibuilder/protocol/HostLogicV1;
 	public final fun getId ()Ljava/lang/String;
 	public final fun getNodes ()Ljava/util/Map;
 	public final fun getRevision ()J
@@ -2387,6 +2393,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/DesignDocumentV1 {
 	public final fun getTokenBindings ()Ljava/util/Map;
 	public final fun getUpdatedAtEpochMillis ()Ljava/lang/Long;
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/DesignDocumentV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -2399,6 +2406,43 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/DesignDocum
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/DesignDocumentV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/DesignDocumentV1$Builder {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLee/schimke/composeai/uibuilder/protocol/CatalogReferenceV1;Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1;Ljava/util/List;Ljava/util/Map;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/DesignDocumentV1;
+	public final fun getAssets ()Ljava/util/Map;
+	public final fun getCatalogPin ()Lee/schimke/composeai/uibuilder/protocol/CatalogReferenceV1;
+	public final fun getComponents ()Ljava/util/Map;
+	public final fun getCreatedAtEpochMillis ()Ljava/lang/Long;
+	public final fun getEnvironment ()Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1;
+	public final fun getHome ()Lee/schimke/composeai/uibuilder/protocol/DesignHomeV1;
+	public final fun getHostLogic ()Lee/schimke/composeai/uibuilder/protocol/HostLogicV1;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getNodes ()Ljava/util/Map;
+	public final fun getRevision ()J
+	public final fun getRoots ()Ljava/util/List;
+	public final fun getSchema ()Ljava/lang/String;
+	public final fun getStateVariables ()Ljava/util/Map;
+	public final fun getTitle ()Ljava/lang/String;
+	public final fun getTokenBindings ()Ljava/util/Map;
+	public final fun getUpdatedAtEpochMillis ()Ljava/lang/Long;
+	public final fun setAssets (Ljava/util/Map;)V
+	public final fun setCatalogPin (Lee/schimke/composeai/uibuilder/protocol/CatalogReferenceV1;)V
+	public final fun setComponents (Ljava/util/Map;)V
+	public final fun setCreatedAtEpochMillis (Ljava/lang/Long;)V
+	public final fun setEnvironment (Lee/schimke/composeai/uibuilder/protocol/DesignEnvironmentV1;)V
+	public final fun setHome (Lee/schimke/composeai/uibuilder/protocol/DesignHomeV1;)V
+	public final fun setHostLogic (Lee/schimke/composeai/uibuilder/protocol/HostLogicV1;)V
+	public final fun setId (Ljava/lang/String;)V
+	public final fun setNodes (Ljava/util/Map;)V
+	public final fun setRevision (J)V
+	public final fun setRoots (Ljava/util/List;)V
+	public final fun setSchema (Ljava/lang/String;)V
+	public final fun setStateVariables (Ljava/util/Map;)V
+	public final fun setTitle (Ljava/lang/String;)V
+	public final fun setTokenBindings (Ljava/util/Map;)V
+	public final fun setUpdatedAtEpochMillis (Ljava/lang/Long;)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/DesignDocumentV1$Companion {
@@ -3834,6 +3878,54 @@ public final class ee/schimke/composeai/uibuilder/protocol/HostActionV1$Companio
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class ee/schimke/composeai/uibuilder/protocol/HostLogicLanguageV1 : java/lang/Enum {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/HostLogicLanguageV1$Companion;
+	public static final field JAVASCRIPT Lee/schimke/composeai/uibuilder/protocol/HostLogicLanguageV1;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lee/schimke/composeai/uibuilder/protocol/HostLogicLanguageV1;
+	public static fun values ()[Lee/schimke/composeai/uibuilder/protocol/HostLogicLanguageV1;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/HostLogicLanguageV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/HostLogicV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/HostLogicV1$Companion;
+	public final fun component1 ()Lee/schimke/composeai/uibuilder/protocol/HostLogicLanguageV1;
+	public final fun component2 ()Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getLanguage ()Lee/schimke/composeai/uibuilder/protocol/HostLogicLanguageV1;
+	public final fun getSource ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/HostLogicV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/HostLogicV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/HostLogicV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/HostLogicV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/HostLogicV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/HostLogicV1$Builder {
+	public fun <init> (Lee/schimke/composeai/uibuilder/protocol/HostLogicLanguageV1;Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/HostLogicV1;
+	public final fun getLanguage ()Lee/schimke/composeai/uibuilder/protocol/HostLogicLanguageV1;
+	public final fun getSource ()Ljava/lang/String;
+	public final fun setLanguage (Lee/schimke/composeai/uibuilder/protocol/HostLogicLanguageV1;)V
+	public final fun setSource (Ljava/lang/String;)V
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/HostLogicV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class ee/schimke/composeai/uibuilder/protocol/HttpRequestEnvelopeV1 {
 	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/HttpRequestEnvelopeV1$Companion;
 	public fun <init> (ILjava/lang/String;Ljava/lang/String;Lee/schimke/composeai/uibuilder/protocol/UiBuilderRequestV1;)V
@@ -5092,6 +5184,14 @@ public final class ee/schimke/composeai/uibuilder/protocol/RemoveComponentMutati
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class ee/schimke/composeai/uibuilder/protocol/RemoveHostLogicMutationV1 : ee/schimke/composeai/uibuilder/protocol/DesignMutationV1 {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/RemoveHostLogicMutationV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
 public final class ee/schimke/composeai/uibuilder/protocol/RemoveNodePropertyMutationV1 : ee/schimke/composeai/uibuilder/protocol/DesignMutationV1 {
 	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/RemoveNodePropertyMutationV1$Companion;
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
@@ -5979,6 +6079,38 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetHeightDp
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetHeightDpEnvironmentChangeV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetHostLogicMutationV1 : ee/schimke/composeai/uibuilder/protocol/DesignMutationV1 {
+	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/SetHostLogicMutationV1$Companion;
+	public final fun component1 ()Lee/schimke/composeai/uibuilder/protocol/HostLogicV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHostLogic ()Lee/schimke/composeai/uibuilder/protocol/HostLogicV1;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetHostLogicMutationV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetHostLogicMutationV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/uibuilder/protocol/SetHostLogicMutationV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/uibuilder/protocol/SetHostLogicMutationV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetHostLogicMutationV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetHostLogicMutationV1$Builder {
+	public fun <init> (Lee/schimke/composeai/uibuilder/protocol/HostLogicV1;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetHostLogicMutationV1;
+	public final fun getHostLogic ()Lee/schimke/composeai/uibuilder/protocol/HostLogicV1;
+	public final fun setHostLogic (Lee/schimke/composeai/uibuilder/protocol/HostLogicV1;)V
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetHostLogicMutationV1$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

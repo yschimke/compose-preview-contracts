@@ -230,6 +230,39 @@ public data class SetStateVariableMutationV1(
 public data class RemoveStateVariableMutationV1(public val name: String) : DesignMutationV1
 
 /**
+ * Set the design's host logic ([DesignDocumentV1.hostLogic]), replacing any it has.
+ *
+ * Whole-value, because the logic is one program: two authors editing it are editing the same thing,
+ * as two authors editing one event's actions are ([SetEventBindingMutationV1]).
+ *
+ * Removal is [RemoveHostLogicMutationV1] rather than a null [hostLogic] here, for the reason
+ * [SetStateVariableMutationV1] gives.
+ */
+@Serializable
+@SerialName("setHostLogic")
+@ConsistentCopyVisibility
+public data class SetHostLogicMutationV1 internal constructor(public val hostLogic: HostLogicV1) :
+  DesignMutationV1 {
+  /** Additive construction API; a field added later does not replace a public constructor. */
+  public class Builder(hostLogic: HostLogicV1) {
+    public var hostLogic: HostLogicV1 = hostLogic
+
+    public fun build(): SetHostLogicMutationV1 = SetHostLogicMutationV1(hostLogic)
+  }
+
+  /** This mutation as a mutable builder, for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder = Builder(hostLogic)
+}
+
+/**
+ * Remove the design's host logic, leaving its host actions unanswered on the canvas. A no-op on a
+ * design that has none, so a retry is idempotent.
+ */
+@Serializable
+@SerialName("removeHostLogic")
+public data object RemoveHostLogicMutationV1 : DesignMutationV1
+
+/**
  * Declare one composable this design defines, or replace the declaration under that key.
  *
  * The `components` map arrived on [DesignDocumentV1] able to be *carried* but not *authored*: a

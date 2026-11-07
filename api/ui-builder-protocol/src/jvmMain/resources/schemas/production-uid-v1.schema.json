@@ -603,6 +603,16 @@
               "type": "null"
             }
           ]
+        },
+        "hostLogic": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/HostLogicV1"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
@@ -1580,6 +1590,28 @@
         "centerHorizontally",
         "end"
       ]
+    },
+    "HostLogicLanguageV1": {
+      "type": "string",
+      "enum": [
+        "javascript"
+      ]
+    },
+    "HostLogicV1": {
+      "type": "object",
+      "properties": {
+        "language": {
+          "$ref": "#/$defs/HostLogicLanguageV1"
+        },
+        "source": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "language",
+        "source"
+      ],
+      "additionalProperties": false
     },
     "LayoutDirectionV1": {
       "type": "string",
