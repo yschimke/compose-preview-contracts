@@ -254,6 +254,39 @@ class CatalogWireTest {
   }
 
   @Test
+  fun newDesignDeviceRoundTripsAndIsLeftOutWhenAbsent() {
+    val policyNewDesign = """{"label":"Launcher widget","device":"widget"}"""
+    val policy = authored.decodeFromString(UiBuilderNewDesign.serializer(), policyNewDesign)
+    assertEquals("widget", policy.device)
+    assertEquals(policy, policy.newBuilder().build())
+    assertEquals(
+      Json.parseToJsonElement(policyNewDesign),
+      authored.encodeToJsonElement(UiBuilderNewDesign.serializer(), policy),
+    )
+
+    val semantics =
+      UiBuilderNewDesignSemantics.Builder()
+        .apply {
+          label = "Glasses"
+          device = "glasses"
+        }
+        .build()
+    assertEquals(semantics, semantics.newBuilder().build())
+    assertEquals(
+      Json.parseToJsonElement("""{"label":"Glasses","device":"glasses"}"""),
+      authored.encodeToJsonElement(UiBuilderNewDesignSemantics.serializer(), semantics),
+    )
+
+    // A block written before the field existed decodes to no device and re-encodes without one.
+    val legacy = """{"label":"Wear OS","order":2}"""
+    assertEquals(null, authored.decodeFromString(UiBuilderNewDesign.serializer(), legacy).device)
+    assertEquals(
+      null,
+      authored.decodeFromString(UiBuilderNewDesignSemantics.serializer(), legacy).device,
+    )
+  }
+
+  @Test
   fun templateLocalsAndScopesAreAdditiveAndRoundTrip() {
     val legacy = """{"strategy":"templates","templates":{"list-item":"item${'$'}{key} {}"}}"""
     val bare = authored.decodeFromString(UiBuilderCode.serializer(), legacy)

@@ -805,8 +805,10 @@ internal object UiBuilderTemplateEntrySerializer : KSerializer<UiBuilderTemplate
 
 /**
  * How a catalog appears in the New design chooser as a whole: its chip's label and position, the
- * second line on its type card ([description]), and whether that card is a primary design type or
- * sits under "Other design types" ([primary]; `null` leaves the choice to the chooser).
+ * second line on its type card ([description]), whether that card is a primary design type or sits
+ * under "Other design types" ([primary]; `null` leaves the choice to the chooser), and the device
+ * its designs are for ([device]), which the chooser asks first when its catalogs span more than
+ * one.
  */
 @Serializable
 @ConsistentCopyVisibility
@@ -816,6 +818,12 @@ internal constructor(
   public val order: Int? = null,
   public val description: String? = null,
   public val primary: Boolean? = null,
+  /**
+   * What the catalog's designs are for, as a WORD: `phone`, `watch`, `widget`, `glasses`,
+   * `smart-home`, `agent`, or one of the catalog's own. Unlike `platform`, it decides nothing about
+   * rendering; it only groups the chooser's catalogs. `null` leaves the chooser to infer it.
+   */
+  public val device: String? = null,
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder {
@@ -823,8 +831,10 @@ internal constructor(
     public var order: Int? = null
     public var description: String? = null
     public var primary: Boolean? = null
+    public var device: String? = null
 
-    public fun build(): UiBuilderNewDesign = UiBuilderNewDesign(label, order, description, primary)
+    public fun build(): UiBuilderNewDesign =
+      UiBuilderNewDesign(label, order, description, primary, device)
   }
 
   /** This value as a [Builder], for deriving a modified one. Replaces `copy`. */
@@ -834,14 +844,15 @@ internal constructor(
       it.order = order
       it.description = description
       it.primary = primary
+      it.device = device
     }
 }
 
 /**
  * What a published catalog tells the New design chooser: its own chip, its type card's
- * [description] and [primary] placement (carried from [UiBuilderNewDesign]), and the copy for each
- * template it offers. Published only when the policy authored any of it, so a catalog that names
- * bare paths and no chip publishes exactly what it did before.
+ * [description], [primary] placement and [device] (carried from [UiBuilderNewDesign]), and the copy
+ * for each template it offers. Published only when the policy authored any of it, so a catalog that
+ * names bare paths and no chip publishes exactly what it did before.
  */
 @Serializable
 @ConsistentCopyVisibility
@@ -852,6 +863,8 @@ internal constructor(
   public val templates: List<UiBuilderNewDesignTemplateSemantics> = emptyList(),
   public val description: String? = null,
   public val primary: Boolean? = null,
+  /** The device word, as [UiBuilderNewDesign.device]. */
+  public val device: String? = null,
 ) {
   /** Additive construction API; future optional fields do not replace a public constructor. */
   public class Builder {
@@ -860,9 +873,10 @@ internal constructor(
     public var templates: List<UiBuilderNewDesignTemplateSemantics> = emptyList()
     public var description: String? = null
     public var primary: Boolean? = null
+    public var device: String? = null
 
     public fun build(): UiBuilderNewDesignSemantics =
-      UiBuilderNewDesignSemantics(label, order, templates, description, primary)
+      UiBuilderNewDesignSemantics(label, order, templates, description, primary, device)
   }
 
   /** This value as a [Builder], for deriving a modified one. Replaces `copy`. */
@@ -873,6 +887,7 @@ internal constructor(
       it.templates = templates
       it.description = description
       it.primary = primary
+      it.device = device
     }
 }
 

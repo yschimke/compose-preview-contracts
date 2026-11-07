@@ -1373,8 +1373,10 @@ public final class ee/schimke/composeai/discovery/UiBuilderNewDesign {
 	public final fun component2 ()Ljava/lang/Integer;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/Boolean;
+	public final fun component5 ()Ljava/lang/String;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getDescription ()Ljava/lang/String;
+	public final fun getDevice ()Ljava/lang/String;
 	public final fun getLabel ()Ljava/lang/String;
 	public final fun getOrder ()Ljava/lang/Integer;
 	public final fun getPrimary ()Ljava/lang/Boolean;
@@ -1398,10 +1400,12 @@ public final class ee/schimke/composeai/discovery/UiBuilderNewDesign$Builder {
 	public fun <init> ()V
 	public final fun build ()Lee/schimke/composeai/discovery/UiBuilderNewDesign;
 	public final fun getDescription ()Ljava/lang/String;
+	public final fun getDevice ()Ljava/lang/String;
 	public final fun getLabel ()Ljava/lang/String;
 	public final fun getOrder ()Ljava/lang/Integer;
 	public final fun getPrimary ()Ljava/lang/Boolean;
 	public final fun setDescription (Ljava/lang/String;)V
+	public final fun setDevice (Ljava/lang/String;)V
 	public final fun setLabel (Ljava/lang/String;)V
 	public final fun setOrder (Ljava/lang/Integer;)V
 	public final fun setPrimary (Ljava/lang/Boolean;)V
@@ -1418,8 +1422,10 @@ public final class ee/schimke/composeai/discovery/UiBuilderNewDesignSemantics {
 	public final fun component3 ()Ljava/util/List;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ljava/lang/Boolean;
+	public final fun component6 ()Ljava/lang/String;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getDescription ()Ljava/lang/String;
+	public final fun getDevice ()Ljava/lang/String;
 	public final fun getLabel ()Ljava/lang/String;
 	public final fun getOrder ()Ljava/lang/Integer;
 	public final fun getPrimary ()Ljava/lang/Boolean;
@@ -1444,11 +1450,13 @@ public final class ee/schimke/composeai/discovery/UiBuilderNewDesignSemantics$Bu
 	public fun <init> ()V
 	public final fun build ()Lee/schimke/composeai/discovery/UiBuilderNewDesignSemantics;
 	public final fun getDescription ()Ljava/lang/String;
+	public final fun getDevice ()Ljava/lang/String;
 	public final fun getLabel ()Ljava/lang/String;
 	public final fun getOrder ()Ljava/lang/Integer;
 	public final fun getPrimary ()Ljava/lang/Boolean;
 	public final fun getTemplates ()Ljava/util/List;
 	public final fun setDescription (Ljava/lang/String;)V
+	public final fun setDevice (Ljava/lang/String;)V
 	public final fun setLabel (Ljava/lang/String;)V
 	public final fun setOrder (Ljava/lang/Integer;)V
 	public final fun setPrimary (Ljava/lang/Boolean;)V
