@@ -509,6 +509,7 @@ final enum class ee.schimke.composeai.uibuilder.protocol/ServiceErrorCodeV1 : ko
 
 final enum class ee.schimke.composeai.uibuilder.protocol/StatePersistenceV1 : kotlin/Enum<ee.schimke.composeai.uibuilder.protocol/StatePersistenceV1> { // ee.schimke.composeai.uibuilder.protocol/StatePersistenceV1|null[0]
     enum entry DESIGN // ee.schimke.composeai.uibuilder.protocol/StatePersistenceV1.DESIGN|null[0]
+    enum entry HOST // ee.schimke.composeai.uibuilder.protocol/StatePersistenceV1.HOST|null[0]
     enum entry PREVIEW // ee.schimke.composeai.uibuilder.protocol/StatePersistenceV1.PREVIEW|null[0]
     enum entry SESSION // ee.schimke.composeai.uibuilder.protocol/StatePersistenceV1.SESSION|null[0]
 

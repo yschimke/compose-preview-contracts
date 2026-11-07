@@ -1642,7 +1642,8 @@
       "enum": [
         "design",
         "preview",
-        "session"
+        "session",
+        "host"
       ]
     },
     "StateValueTypeV1": {

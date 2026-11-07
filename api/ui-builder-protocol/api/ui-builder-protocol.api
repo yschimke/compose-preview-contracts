@@ -6770,6 +6770,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/StateEqualsValueV1$Co
 public final class ee/schimke/composeai/uibuilder/protocol/StatePersistenceV1 : java/lang/Enum {
 	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/StatePersistenceV1$Companion;
 	public static final field DESIGN Lee/schimke/composeai/uibuilder/protocol/StatePersistenceV1;
+	public static final field HOST Lee/schimke/composeai/uibuilder/protocol/StatePersistenceV1;
 	public static final field PREVIEW Lee/schimke/composeai/uibuilder/protocol/StatePersistenceV1;
 	public static final field SESSION Lee/schimke/composeai/uibuilder/protocol/StatePersistenceV1;
 	public static fun getEntries ()Lkotlin/enums/EnumEntries;
