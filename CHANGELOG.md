@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.40.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.39.1...v3.40.0) (2026-11-07)
+
+
+### Features
+
+* carry a catalog's new-design device ([#217](https://github.com/yschimke/compose-preview-contracts/issues/217)) ([7ec7085](https://github.com/yschimke/compose-preview-contracts/commit/7ec70855ae980a11918b0dc52ae594c2e8cc6811))
+* **ui-builder-protocol:** add HostActionV1, an action that hands an event to the host ([#216](https://github.com/yschimke/compose-preview-contracts/issues/216)) ([f18b695](https://github.com/yschimke/compose-preview-contracts/commit/f18b695261fdd9fdae6547d768d907382585db67))
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.ncorti.ktfmt.gradle:com.ncorti.ktfmt.gradle.gradle.plugin to v0.28.0 ([#213](https://github.com/yschimke/compose-preview-contracts/issues/213)) ([7cd5147](https://github.com/yschimke/compose-preview-contracts/commit/7cd51478bfed3036cac000889a1aa66c6800faff))
+
 ## [3.39.1](https://github.com/yschimke/compose-preview-contracts/compare/v3.39.0...v3.39.1) (2026-10-28)
 
 
