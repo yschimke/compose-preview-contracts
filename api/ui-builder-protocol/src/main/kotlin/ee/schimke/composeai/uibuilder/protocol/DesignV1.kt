@@ -854,15 +854,15 @@ public data class IncrementActionV1(
 public data class NavigatePageActionV1(public val pageKey: String) : DesignActionV1
 
 /**
- * Hand an event to the host that feeds the document, by [name], with at most one [value]; it
- * writes nothing in the design itself. A host answers, if at all, by pushing the host inputs it
- * owns (a state variable whose `persistence` is `host`).
+ * Hand an event to the host that feeds the document, by [name], with at most one [value]; it writes
+ * nothing in the design itself. A host answers, if at all, by pushing the host inputs it owns (a
+ * state variable whose `persistence` is `host`).
  *
- * The shape is Remote Compose's named host action: `hostAction(name)` and `hostAction(name,
- * value)` for a `RemoteString`, `RemoteInt` or `RemoteFloat` value, which is what the player
- * delivers. So [value] is a JSON string or number when present — a wire field cannot promise the
- * rest, so a consumer validates it as it validates a `remoteCall` name: a flag, a whole number
- * past `Int`, or a non-finite decimal is refused by the lane that cannot send it.
+ * The shape is Remote Compose's named host action: `hostAction(name)` and `hostAction(name, value)`
+ * for a `RemoteString`, `RemoteInt` or `RemoteFloat` value, which is what the player delivers. So
+ * [value] is a JSON string or number when present — a wire field cannot promise the rest, so a
+ * consumer validates it as it validates a `remoteCall` name: a flag, a whole number past `Int`, or
+ * a non-finite decimal is refused by the lane that cannot send it.
  */
 @Serializable
 @SerialName("hostAction")
