@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.42.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.41.0...v3.42.0) (2026-11-07)
+
+
+### Features
+
+* **ui-builder-protocol:** name a host input's persistence ([#220](https://github.com/yschimke/compose-preview-contracts/issues/220)) ([ae8d297](https://github.com/yschimke/compose-preview-contracts/commit/ae8d297a4e9681b0468a1ea83be61e1685303afd))
+
 ## [3.41.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.40.0...v3.41.0) (2026-11-07)
 
 
