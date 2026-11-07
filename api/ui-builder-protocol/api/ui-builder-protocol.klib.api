@@ -5125,6 +5125,46 @@ final class ee.schimke.composeai.uibuilder.protocol/HeightModifierV1 : ee.schimk
     }
 }
 
+final class ee.schimke.composeai.uibuilder.protocol/HostActionV1 : ee.schimke.composeai.uibuilder.protocol/DesignActionV1 { // ee.schimke.composeai.uibuilder.protocol/HostActionV1|null[0]
+    final val name // ee.schimke.composeai.uibuilder.protocol/HostActionV1.name|{}name[0]
+        final fun <get-name>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/HostActionV1.name.<get-name>|<get-name>(){}[0]
+    final val value // ee.schimke.composeai.uibuilder.protocol/HostActionV1.value|{}value[0]
+        final fun <get-value>(): kotlinx.serialization.json/JsonPrimitive? // ee.schimke.composeai.uibuilder.protocol/HostActionV1.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/HostActionV1.component1|component1(){}[0]
+    final fun component2(): kotlinx.serialization.json/JsonPrimitive? // ee.schimke.composeai.uibuilder.protocol/HostActionV1.component2|component2(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/HostActionV1.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/HostActionV1.hashCode|hashCode(){}[0]
+    final fun newBuilder(): ee.schimke.composeai.uibuilder.protocol/HostActionV1.Builder // ee.schimke.composeai.uibuilder.protocol/HostActionV1.newBuilder|newBuilder(){}[0]
+    final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/HostActionV1.toString|toString(){}[0]
+
+    final class Builder { // ee.schimke.composeai.uibuilder.protocol/HostActionV1.Builder|null[0]
+        constructor <init>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/HostActionV1.Builder.<init>|<init>(kotlin.String){}[0]
+
+        final var name // ee.schimke.composeai.uibuilder.protocol/HostActionV1.Builder.name|{}name[0]
+            final fun <get-name>(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/HostActionV1.Builder.name.<get-name>|<get-name>(){}[0]
+            final fun <set-name>(kotlin/String) // ee.schimke.composeai.uibuilder.protocol/HostActionV1.Builder.name.<set-name>|<set-name>(kotlin.String){}[0]
+        final var value // ee.schimke.composeai.uibuilder.protocol/HostActionV1.Builder.value|{}value[0]
+            final fun <get-value>(): kotlinx.serialization.json/JsonPrimitive? // ee.schimke.composeai.uibuilder.protocol/HostActionV1.Builder.value.<get-value>|<get-value>(){}[0]
+            final fun <set-value>(kotlinx.serialization.json/JsonPrimitive?) // ee.schimke.composeai.uibuilder.protocol/HostActionV1.Builder.value.<set-value>|<set-value>(kotlinx.serialization.json.JsonPrimitive?){}[0]
+
+        final fun build(): ee.schimke.composeai.uibuilder.protocol/HostActionV1 // ee.schimke.composeai.uibuilder.protocol/HostActionV1.Builder.build|build(){}[0]
+    }
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/HostActionV1> { // ee.schimke.composeai.uibuilder.protocol/HostActionV1.$serializer|null[0]
+        final val descriptor // ee.schimke.composeai.uibuilder.protocol/HostActionV1.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // ee.schimke.composeai.uibuilder.protocol/HostActionV1.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // ee.schimke.composeai.uibuilder.protocol/HostActionV1.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): ee.schimke.composeai.uibuilder.protocol/HostActionV1 // ee.schimke.composeai.uibuilder.protocol/HostActionV1.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, ee.schimke.composeai.uibuilder.protocol/HostActionV1) // ee.schimke.composeai.uibuilder.protocol/HostActionV1.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;ee.schimke.composeai.uibuilder.protocol.HostActionV1){}[0]
+    }
+
+    final object Companion { // ee.schimke.composeai.uibuilder.protocol/HostActionV1.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<ee.schimke.composeai.uibuilder.protocol/HostActionV1> // ee.schimke.composeai.uibuilder.protocol/HostActionV1.Companion.serializer|serializer(){}[0]
+    }
+}
+
 final class ee.schimke.composeai.uibuilder.protocol/HttpRequestEnvelopeV1 { // ee.schimke.composeai.uibuilder.protocol/HttpRequestEnvelopeV1|null[0]
     constructor <init>(kotlin/Int = ..., kotlin/String, kotlin/String, ee.schimke.composeai.uibuilder.protocol/UiBuilderRequestV1) // ee.schimke.composeai.uibuilder.protocol/HttpRequestEnvelopeV1.<init>|<init>(kotlin.Int;kotlin.String;kotlin.String;ee.schimke.composeai.uibuilder.protocol.UiBuilderRequestV1){}[0]
 

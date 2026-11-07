@@ -19,6 +19,10 @@ client, service and MCP adapter. It owns:
   exhaustive by modifier name: a consumer that renders or exports `remoteCall` validates its name
   and arguments against the catalog's vocabulary (generated from the released Remote Compose API)
   and refuses a call that catalog does not declare;
+- event bindings as ordered action lists: state writes (`set`, `select`, `selectOrClear`,
+  `setText`, `toggle`, `increment`), `navigatePage`, and `hostAction` (`HostActionV1`), which hands
+  a named event with at most one string or number value to the host feeding the document — Remote
+  Compose's named host action — and writes nothing in the design;
 - atomic, client-identified edit batches using stable neighbour anchors, plus undo and redo; stable
   position keys remain reducer/server internals and are never client supplied;
 - explicit catalog-pin upgrade previews with deterministic validation, structural diffs and

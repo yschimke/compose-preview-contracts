@@ -564,6 +564,44 @@ class UiBuilderProtocolCompatibilityTest {
   }
 
   @Test
+  fun aHostActionCarriesANameAndAtMostOneValue() {
+    val wire =
+      """
+      {"type":"setEventBinding","nodeId":"key-7","event":"click",
+       "actions":[{"type":"toggle","variable":"pressed"},
+                  {"type":"hostAction","name":"calc.key","value":"7"},
+                  {"type":"hostAction","name":"calc.digit","value":7},
+                  {"type":"hostAction","name":"calc.clear"}]}
+      """
+        .trimIndent()
+        .replace("\n", "")
+    val bound =
+      strictJson.decodeFromString(DesignMutationV1.serializer(), wire) as SetEventBindingMutationV1
+
+    assertEquals(
+      listOf(
+        ToggleActionV1("pressed"),
+        HostActionV1.Builder("calc.key").apply { value = JsonPrimitive("7") }.build(),
+        HostActionV1.Builder("calc.digit").apply { value = JsonPrimitive(7) }.build(),
+        HostActionV1.Builder("calc.clear").build(),
+      ),
+      bound.actions,
+    )
+    // No value is no field, not `"value": null`, so a bare action round-trips byte for byte.
+    assertEquals(
+      strictJson.parseToJsonElement(wire),
+      strictJson.encodeToJsonElement(DesignMutationV1.serializer(), bound),
+    )
+    // A string stays a string and a number a number: the player sends them as different types.
+    val digit = bound.actions[2] as HostActionV1
+    assertEquals(false, digit.value!!.isString)
+    assertEquals(
+      HostActionV1.Builder("calc.key").build(),
+      (bound.actions[1] as HostActionV1).newBuilder().apply { value = null }.build(),
+    )
+  }
+
+  @Test
   fun removingAStateVariableIsNotSpelledAsAnAbsentDeclaration() {
     // Strict readers run with explicitNulls = false, so an absent field and a null one are the same
     // bytes. If removal were `declaration: null`, it would be indistinguishable from a malformed

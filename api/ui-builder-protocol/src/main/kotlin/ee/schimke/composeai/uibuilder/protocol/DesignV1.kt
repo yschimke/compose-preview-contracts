@@ -853,6 +853,37 @@ public data class IncrementActionV1(
 @SerialName("navigatePage")
 public data class NavigatePageActionV1(public val pageKey: String) : DesignActionV1
 
+/**
+ * Hand an event to the host that feeds the document, by [name], with at most one [value]; it writes
+ * nothing in the design itself. A host answers, if at all, by pushing the host inputs it owns (a
+ * state variable whose `persistence` is `host`).
+ *
+ * The shape is Remote Compose's named host action: `hostAction(name)` and `hostAction(name, value)`
+ * for a `RemoteString`, `RemoteInt` or `RemoteFloat` value, which is what the player delivers. So
+ * [value] is a JSON string or number when present — a wire field cannot promise the rest, so a
+ * consumer validates it as it validates a `remoteCall` name: a flag, a whole number past `Int`, or
+ * a non-finite decimal is refused by the lane that cannot send it.
+ */
+@Serializable
+@SerialName("hostAction")
+@ConsistentCopyVisibility
+public data class HostActionV1
+internal constructor(
+  public val name: String,
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val value: JsonPrimitive? = null,
+) : DesignActionV1 {
+  /** Builds a [HostActionV1]; [WasmCapabilityV1.Builder] says why the constructor is internal. */
+  public class Builder(name: String) {
+    public var name: String = name
+    public var value: JsonPrimitive? = null
+
+    public fun build(): HostActionV1 = HostActionV1(name, value)
+  }
+
+  /** This [HostActionV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder = Builder(name).also { it.value = value }
+}
+
 /** Optional deterministic composition predicate. */
 @Serializable public sealed interface DesignPredicateV1
 
