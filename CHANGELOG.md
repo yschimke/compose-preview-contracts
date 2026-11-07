@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.41.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.40.0...v3.41.0) (2026-11-07)
+
+
+### Features
+
+* **ui-builder-protocol:** add host logic to the design document ([#218](https://github.com/yschimke/compose-preview-contracts/issues/218)) ([4b750bc](https://github.com/yschimke/compose-preview-contracts/commit/4b750bcc957367804dfffeae254869bfae8ea868))
+
 ## [3.40.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.39.1...v3.40.0) (2026-11-07)
 
 
