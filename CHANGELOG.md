@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.43.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.42.0...v3.43.0) (2026-11-12)
+
+
+### Features
+
+* **protocol:** RemoteDocumentCasesV1, a file of Remote Compose documents to render with their data ([#223](https://github.com/yschimke/compose-preview-contracts/issues/223)) ([f5e5cba](https://github.com/yschimke/compose-preview-contracts/commit/f5e5cba15fbf51ed91cd798c8ab5b6a1511bde66))
+
+
+### Bug Fixes
+
+* **deps:** update dependency org.jetbrains.kotlinx:kotlinx-serialization-json to v1.13.0 ([#224](https://github.com/yschimke/compose-preview-contracts/issues/224)) ([5419a78](https://github.com/yschimke/compose-preview-contracts/commit/5419a78430aef4a7c5a270d05927eabee5afc154))
+
 ## [3.42.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.41.0...v3.42.0) (2026-11-07)
 
 
