@@ -746,6 +746,9 @@
               "type": "null"
             }
           ]
+        },
+        "wffVersion": {
+          "type": "integer"
         }
       },
       "required": [

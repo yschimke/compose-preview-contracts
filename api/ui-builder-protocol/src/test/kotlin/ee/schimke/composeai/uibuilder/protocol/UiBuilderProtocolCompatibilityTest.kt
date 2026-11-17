@@ -935,6 +935,130 @@ class UiBuilderProtocolCompatibilityTest {
     assertEquals(120, resized.heightDp)
   }
 
+  private fun wffEnvironment() =
+    DesignEnvironmentV1(
+      widthDp = 192,
+      heightDp = 192,
+      density = 2.0,
+      theme = ThemeV1.DARK,
+      locale = "en",
+      fontScale = 1.0,
+      layoutDirection = LayoutDirectionV1.LTR,
+    )
+
+  @Test
+  fun `a WFF version defaults to 2, is absent at the default and round-trips otherwise`() {
+    val plain = wffEnvironment()
+    assertEquals(2, plain.wffVersion)
+    val eager = Json {
+      encodeDefaults = true
+      classDiscriminator = "type"
+    }
+    // Absent at the default, even for an encoder that asks for defaults, so a document written
+    // before the field existed canonicalises as it did.
+    val plainWire = eager.encodeToJsonElement(DesignEnvironmentV1.serializer(), plain) as JsonObject
+    assertEquals(false, "wffVersion" in plainWire)
+
+    val v4 = plain.newBuilder().apply { wffVersion = 4 }.build()
+    val wire = strictJson.encodeToJsonElement(DesignEnvironmentV1.serializer(), v4) as JsonObject
+    assertEquals(JsonPrimitive(4), wire["wffVersion"])
+    assertEquals(v4, strictJson.decodeFromJsonElement(DesignEnvironmentV1.serializer(), wire))
+
+    // A document from before the field decodes to the default.
+    val old = JsonObject(wire - "wffVersion")
+    assertEquals(
+      DesignEnvironmentV1.DEFAULT_WFF_VERSION,
+      strictJson.decodeFromJsonElement(DesignEnvironmentV1.serializer(), old).wffVersion,
+    )
+    assertEquals(1, DesignEnvironmentV1.MIN_WFF_VERSION)
+    assertEquals(4, DesignEnvironmentV1.MAX_WFF_VERSION)
+  }
+
+  @Test
+  fun `a reader that predates the WFF version keeps working over a document that sets one`() {
+    val v3 = wffEnvironment().newBuilder().apply { wffVersion = 3 }.build()
+    val wire = strictJson.encodeToJsonElement(DesignEnvironmentV1.serializer(), v3) as JsonObject
+    // Old readers ignore unknown keys (the Json in service use does), and lose only the version.
+    val lenient = Json {
+      ignoreUnknownKeys = true
+      classDiscriminator = "type"
+    }
+    val decoded = lenient.decodeFromJsonElement(DesignEnvironmentV1.serializer(), wire)
+    assertEquals(192, decoded.widthDp)
+    assertEquals(true, "wffVersion" in wire)
+  }
+
+  @Test
+  fun `the environment keeps the constructor and copy it had before wffVersion`() {
+    // The positional shape released consumers compiled against: seventeen parameters.
+    val environment =
+      DesignEnvironmentV1(
+        192,
+        192,
+        2.0,
+        ThemeV1.DARK,
+        null,
+        "en",
+        1.0,
+        LayoutDirectionV1.LTR,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        emptyList(),
+        null,
+      )
+    assertEquals(2, environment.wffVersion)
+    val v4 = environment.newBuilder().apply { wffVersion = 4 }.build()
+    // The old copy keeps the version it does not name.
+    val resized =
+      v4.copy(
+        192,
+        200,
+        2.0,
+        ThemeV1.DARK,
+        null,
+        "en",
+        1.0,
+        LayoutDirectionV1.LTR,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        emptyList(),
+        null,
+      )
+    assertEquals(4, resized.wffVersion)
+    assertEquals(200, resized.heightDp)
+  }
+
+  @Test
+  fun `setting and resetting a WFF version round-trip under their discriminators`() {
+    val set: EnvironmentChangeV1 = SetWffVersionEnvironmentChangeV1.Builder(3).build()
+    assertEquals(set, (set as SetWffVersionEnvironmentChangeV1).newBuilder().build())
+    val reset: EnvironmentChangeV1 = ResetWffVersionEnvironmentChangeV1
+    val setWire =
+      strictJson.encodeToJsonElement(EnvironmentChangeV1.serializer(), set) as JsonObject
+    assertEquals(JsonPrimitive("setWffVersion"), setWire["type"])
+    assertEquals(JsonPrimitive(3), setWire["value"])
+    assertEquals(set, strictJson.decodeFromJsonElement(EnvironmentChangeV1.serializer(), setWire))
+    val resetWire =
+      strictJson.encodeToJsonElement(EnvironmentChangeV1.serializer(), reset) as JsonObject
+    assertEquals(JsonPrimitive("resetWffVersion"), resetWire["type"])
+    assertEquals(
+      reset,
+      strictJson.decodeFromJsonElement(EnvironmentChangeV1.serializer(), resetWire),
+    )
+    assertEquals(EnvironmentFieldV1.WFF_VERSION, set.field)
+    assertEquals(EnvironmentFieldV1.WFF_VERSION, reset.field)
+  }
+
   @Test
   fun `setting and resetting a Remote profile round-trip under their discriminators`() {
     val set: EnvironmentChangeV1 =
@@ -1048,6 +1172,7 @@ class UiBuilderProtocolCompatibilityTest {
             RemoteProfileV1.Builder(RemoteProfileTargetV1.ANDROIDX).build(),
           )
           .field,
+        SetWffVersionEnvironmentChangeV1.Builder(2).build().field,
       )
 
     assertEquals(EnvironmentFieldV1.entries.toSet(), named)

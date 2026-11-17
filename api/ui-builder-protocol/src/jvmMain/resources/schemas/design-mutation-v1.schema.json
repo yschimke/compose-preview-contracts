@@ -1580,6 +1580,9 @@
           "$ref": "#/$defs/EnvironmentChangeV1.resetTypeface"
         },
         {
+          "$ref": "#/$defs/EnvironmentChangeV1.resetWffVersion"
+        },
+        {
           "$ref": "#/$defs/EnvironmentChangeV1.resetWindowPosture"
         },
         {
@@ -1626,6 +1629,9 @@
         },
         {
           "$ref": "#/$defs/EnvironmentChangeV1.setTypeface"
+        },
+        {
+          "$ref": "#/$defs/EnvironmentChangeV1.setWffVersion"
         },
         {
           "$ref": "#/$defs/EnvironmentChangeV1.setWidthDp"
@@ -1736,6 +1742,18 @@
       "properties": {
         "type": {
           "const": "resetTypeface"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "EnvironmentChangeV1.resetWffVersion": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "resetWffVersion"
         }
       },
       "required": [
@@ -2043,6 +2061,25 @@
       ],
       "additionalProperties": false
     },
+    "EnvironmentChangeV1.setWffVersion": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "setWffVersion"
+        },
+        "value": {
+          "type": "integer"
+        },
+        "field": {
+          "$ref": "#/$defs/EnvironmentFieldV1"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
     "EnvironmentChangeV1.setWidthDp": {
       "type": "object",
       "properties": {
@@ -2100,7 +2137,8 @@
         "background",
         "typeface",
         "exportDevices",
-        "remoteProfile"
+        "remoteProfile",
+        "wffVersion"
       ]
     },
     "HorizontalAlignmentV1": {

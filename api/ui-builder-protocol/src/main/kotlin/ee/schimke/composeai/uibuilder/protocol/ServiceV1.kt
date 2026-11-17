@@ -145,7 +145,9 @@ public data class ExportDesignRequestV1(
  * A member is additive on the wire in one direction only: a server answers [BUNDLE] to a request
  * that named it, so a client too old to decode the name never receives it. Whether a server can
  * produce one at all is [ExportCapabilitiesV1.bundle], which defaults to false for exactly that
- * reason.
+ * reason. The three `WFF_*` members follow the same rule, gated by [ExportCapabilitiesV1.wffXml],
+ * [ExportCapabilitiesV1.wffBundle] and [ExportCapabilitiesV1.wffApk]; the media type of each
+ * artifact travels in [ExportArtifactV1.mediaType], so the contract carries no extension table.
  */
 @Serializable
 public enum class ExportFormatV1 {
@@ -157,6 +159,23 @@ public enum class ExportFormatV1 {
   @SerialName("json") JSON,
   /** Compiled Remote Compose document bytes. The artifact uses BASE64 encoding. */
   @SerialName("rc") RC,
+  /**
+   * The `watchface.xml` text of a Wear OS Watch Face Format face, at
+   * [DesignEnvironmentV1.wffVersion]. UTF8, `application/xml`.
+   */
+  @SerialName("wff-xml") WFF_XML,
+  /**
+   * A Watch Face Format project as a zip: `AndroidManifest.xml`, `res/raw/watchface.xml`,
+   * `res/xml/watch_face_info.xml`, `res/drawable-*` and `res/font/` folders,
+   * `res/values/strings.xml`, `preview.png` and optionally `build.gradle.kts`. BASE64,
+   * `application/zip`.
+   */
+  @SerialName("wff-bundle") WFF_BUNDLE,
+  /**
+   * A resource-only, debug-signed APK of the face, installable without a build. BASE64,
+   * `application/vnd.android.package-archive`.
+   */
+  @SerialName("wff-apk") WFF_APK,
 }
 
 /** Response payloads shared by HTTP handlers and MCP tools. */

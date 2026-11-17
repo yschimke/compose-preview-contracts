@@ -434,7 +434,106 @@ public data class DesignEnvironmentV1(
    * that names no profile serialises exactly as it did before this field existed.
    */
   @EncodeDefault(EncodeDefault.Mode.NEVER) public val remoteProfile: RemoteProfileV1? = null,
+  /**
+   * The Wear OS Watch Face Format version this design is authored and exported for, 1 through 4
+   * ([MIN_WFF_VERSION]..[MAX_WFF_VERSION]); [DEFAULT_WFF_VERSION] (2) when a document names none.
+   * Meaningful only for a design exported as a watch face ([ExportFormatV1.WFF_XML],
+   * [ExportFormatV1.WFF_BUNDLE], [ExportFormatV1.WFF_APK]).
+   *
+   * The consumer refuses an export that needs anything newer than this, naming the offending node;
+   * this field only states the target. The range is not enforced while decoding, so a document that
+   * names a version this release does not know still reads and the consumer decides what to say.
+   *
+   * Appended last for the reason [exportDevices] was, and never encoded while it is the default, so
+   * a document that does not ask for a version serialises exactly as it did before this field
+   * existed, and one written before it decodes to [DEFAULT_WFF_VERSION].
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val wffVersion: Int = DEFAULT_WFF_VERSION,
 ) {
+  /**
+   * Preserves the constructor that predates [wffVersion], **including its default-argument form**,
+   * for the reason the one below does.
+   */
+  public constructor(
+    widthDp: Int,
+    heightDp: Int,
+    density: Double,
+    theme: ThemeV1,
+    dynamicColor: Boolean? = null,
+    locale: String,
+    fontScale: Double,
+    layoutDirection: LayoutDirectionV1,
+    windowPosture: WindowPostureV1? = null,
+    browserZoomPercent: Int? = null,
+    fixedTime: String? = null,
+    animations: AnimationStateV1? = null,
+    networkAccess: Boolean? = null,
+    background: UiValueV1? = null,
+    typeface: String? = null,
+    exportDevices: List<String> = emptyList(),
+    remoteProfile: RemoteProfileV1? = null,
+  ) : this(
+    widthDp,
+    heightDp,
+    density,
+    theme,
+    dynamicColor,
+    locale,
+    fontScale,
+    layoutDirection,
+    windowPosture,
+    browserZoomPercent,
+    fixedTime,
+    animations,
+    networkAccess,
+    background,
+    typeface,
+    exportDevices,
+    remoteProfile,
+    DEFAULT_WFF_VERSION,
+  )
+
+  /** The `copy` that predates [wffVersion]; it carries [wffVersion] through unchanged. */
+  public fun copy(
+    widthDp: Int = this.widthDp,
+    heightDp: Int = this.heightDp,
+    density: Double = this.density,
+    theme: ThemeV1 = this.theme,
+    dynamicColor: Boolean? = this.dynamicColor,
+    locale: String = this.locale,
+    fontScale: Double = this.fontScale,
+    layoutDirection: LayoutDirectionV1 = this.layoutDirection,
+    windowPosture: WindowPostureV1? = this.windowPosture,
+    browserZoomPercent: Int? = this.browserZoomPercent,
+    fixedTime: String? = this.fixedTime,
+    animations: AnimationStateV1? = this.animations,
+    networkAccess: Boolean? = this.networkAccess,
+    background: UiValueV1? = this.background,
+    typeface: String? = this.typeface,
+    exportDevices: List<String> = this.exportDevices,
+    remoteProfile: RemoteProfileV1? = this.remoteProfile,
+  ): DesignEnvironmentV1 =
+    copy(
+      widthDp,
+      heightDp,
+      density,
+      theme,
+      dynamicColor,
+      locale,
+      fontScale,
+      layoutDirection,
+      windowPosture,
+      browserZoomPercent,
+      fixedTime,
+      animations,
+      networkAccess,
+      background,
+      typeface,
+      exportDevices,
+      remoteProfile,
+      this.wffVersion,
+    )
+
   /**
    * Preserves the constructor that predates [remoteProfile], **including its default-argument
    * form**. Code compiled against earlier releases calls the synthetic `(..., Int,
@@ -477,6 +576,7 @@ public data class DesignEnvironmentV1(
     typeface,
     exportDevices,
     null,
+    DEFAULT_WFF_VERSION,
   )
 
   /** The `copy` of earlier releases, for the same reason; it carries [remoteProfile]. */
@@ -516,6 +616,7 @@ public data class DesignEnvironmentV1(
       typeface,
       exportDevices,
       this.remoteProfile,
+      this.wffVersion,
     )
 
   /**
@@ -543,6 +644,7 @@ public data class DesignEnvironmentV1(
     public var typeface: String? = null
     public var exportDevices: List<String> = emptyList()
     public var remoteProfile: RemoteProfileV1? = null
+    public var wffVersion: Int = DEFAULT_WFF_VERSION
 
     public fun build(): DesignEnvironmentV1 =
       DesignEnvironmentV1(
@@ -563,6 +665,7 @@ public data class DesignEnvironmentV1(
         typeface,
         exportDevices,
         remoteProfile,
+        wffVersion,
       )
   }
 
@@ -579,7 +682,19 @@ public data class DesignEnvironmentV1(
       it.typeface = typeface
       it.exportDevices = exportDevices
       it.remoteProfile = remoteProfile
+      it.wffVersion = wffVersion
     }
+
+  public companion object {
+    /** The oldest Watch Face Format version a design can target. */
+    public const val MIN_WFF_VERSION: Int = 1
+
+    /** The newest Watch Face Format version a design can target. */
+    public const val MAX_WFF_VERSION: Int = 4
+
+    /** The version a document that names none targets. */
+    public const val DEFAULT_WFF_VERSION: Int = 2
+  }
 }
 
 /**
