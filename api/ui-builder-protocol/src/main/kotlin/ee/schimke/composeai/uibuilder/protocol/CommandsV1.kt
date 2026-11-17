@@ -446,52 +446,180 @@ public enum class EnvironmentFieldV1 {
 
 @Serializable
 @SerialName("setWidthDp")
-public data class SetWidthDpEnvironmentChangeV1(public val value: Int) : EnvironmentChangeV1 {
+public data class SetWidthDpEnvironmentChangeV1
+@Deprecated(
+  "Use SetWidthDpEnvironmentChangeV1.Builder; the public constructor goes internal at the next major release.",
+  ReplaceWith("SetWidthDpEnvironmentChangeV1.Builder(value).build()"),
+)
+constructor(public val value: Int) : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.WIDTH_DP
+
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(value: Int) {
+    public var value: Int = value
+
+    @Suppress("DEPRECATION")
+    public fun build(): SetWidthDpEnvironmentChangeV1 = SetWidthDpEnvironmentChangeV1(value)
+  }
+
+  /** This change as a [Builder], for deriving a modified one. */
+  public fun newBuilder(): Builder = Builder(value)
 }
 
 @Serializable
 @SerialName("setHeightDp")
-public data class SetHeightDpEnvironmentChangeV1(public val value: Int) : EnvironmentChangeV1 {
+public data class SetHeightDpEnvironmentChangeV1
+@Deprecated(
+  "Use SetHeightDpEnvironmentChangeV1.Builder; the public constructor goes internal at the next major release.",
+  ReplaceWith("SetHeightDpEnvironmentChangeV1.Builder(value).build()"),
+)
+constructor(public val value: Int) : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.HEIGHT_DP
+
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(value: Int) {
+    public var value: Int = value
+
+    @Suppress("DEPRECATION")
+    public fun build(): SetHeightDpEnvironmentChangeV1 = SetHeightDpEnvironmentChangeV1(value)
+  }
+
+  /** This change as a [Builder], for deriving a modified one. */
+  public fun newBuilder(): Builder = Builder(value)
 }
 
 @Serializable
 @SerialName("setDensity")
-public data class SetDensityEnvironmentChangeV1(public val value: Double) : EnvironmentChangeV1 {
+public data class SetDensityEnvironmentChangeV1
+@Deprecated(
+  "Use SetDensityEnvironmentChangeV1.Builder; the public constructor goes internal at the next major release.",
+  ReplaceWith("SetDensityEnvironmentChangeV1.Builder(value).build()"),
+)
+constructor(public val value: Double) : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.DENSITY
+
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(value: Double) {
+    public var value: Double = value
+
+    @Suppress("DEPRECATION")
+    public fun build(): SetDensityEnvironmentChangeV1 = SetDensityEnvironmentChangeV1(value)
+  }
+
+  /** This change as a [Builder], for deriving a modified one. */
+  public fun newBuilder(): Builder = Builder(value)
 }
 
 @Serializable
 @SerialName("setTheme")
-public data class SetThemeEnvironmentChangeV1(public val value: ThemeV1) : EnvironmentChangeV1 {
+public data class SetThemeEnvironmentChangeV1
+@Deprecated(
+  "Use SetThemeEnvironmentChangeV1.Builder; the public constructor goes internal at the next major release.",
+  ReplaceWith("SetThemeEnvironmentChangeV1.Builder(value).build()"),
+)
+constructor(public val value: ThemeV1) : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.THEME
+
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(value: ThemeV1) {
+    public var value: ThemeV1 = value
+
+    @Suppress("DEPRECATION")
+    public fun build(): SetThemeEnvironmentChangeV1 = SetThemeEnvironmentChangeV1(value)
+  }
+
+  /** This change as a [Builder], for deriving a modified one. */
+  public fun newBuilder(): Builder = Builder(value)
 }
 
 @Serializable
 @SerialName("setLocale")
-public data class SetLocaleEnvironmentChangeV1(public val value: String) : EnvironmentChangeV1 {
+public data class SetLocaleEnvironmentChangeV1
+@Deprecated(
+  "Use SetLocaleEnvironmentChangeV1.Builder; the public constructor goes internal at the next major release.",
+  ReplaceWith("SetLocaleEnvironmentChangeV1.Builder(value).build()"),
+)
+constructor(public val value: String) : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.LOCALE
+
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(value: String) {
+    public var value: String = value
+
+    @Suppress("DEPRECATION")
+    public fun build(): SetLocaleEnvironmentChangeV1 = SetLocaleEnvironmentChangeV1(value)
+  }
+
+  /** This change as a [Builder], for deriving a modified one. */
+  public fun newBuilder(): Builder = Builder(value)
 }
 
 @Serializable
 @SerialName("setFontScale")
-public data class SetFontScaleEnvironmentChangeV1(public val value: Double) : EnvironmentChangeV1 {
+public data class SetFontScaleEnvironmentChangeV1
+@Deprecated(
+  "Use SetFontScaleEnvironmentChangeV1.Builder; the public constructor goes internal at the next major release.",
+  ReplaceWith("SetFontScaleEnvironmentChangeV1.Builder(value).build()"),
+)
+constructor(public val value: Double) : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.FONT_SCALE
+
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(value: Double) {
+    public var value: Double = value
+
+    @Suppress("DEPRECATION")
+    public fun build(): SetFontScaleEnvironmentChangeV1 = SetFontScaleEnvironmentChangeV1(value)
+  }
+
+  /** This change as a [Builder], for deriving a modified one. */
+  public fun newBuilder(): Builder = Builder(value)
 }
 
 @Serializable
 @SerialName("setLayoutDirection")
-public data class SetLayoutDirectionEnvironmentChangeV1(public val value: LayoutDirectionV1) :
-  EnvironmentChangeV1 {
+public data class SetLayoutDirectionEnvironmentChangeV1
+@Deprecated(
+  "Use SetLayoutDirectionEnvironmentChangeV1.Builder; the public constructor goes internal at the next major release.",
+  ReplaceWith("SetLayoutDirectionEnvironmentChangeV1.Builder(value).build()"),
+)
+constructor(public val value: LayoutDirectionV1) : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.LAYOUT_DIRECTION
+
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(value: LayoutDirectionV1) {
+    public var value: LayoutDirectionV1 = value
+
+    @Suppress("DEPRECATION")
+    public fun build(): SetLayoutDirectionEnvironmentChangeV1 =
+      SetLayoutDirectionEnvironmentChangeV1(value)
+  }
+
+  /** This change as a [Builder], for deriving a modified one. */
+  public fun newBuilder(): Builder = Builder(value)
 }
 
 @Serializable
 @SerialName("setDynamicColor")
-public data class SetDynamicColorEnvironmentChangeV1(public val value: Boolean) :
-  EnvironmentChangeV1 {
+public data class SetDynamicColorEnvironmentChangeV1
+@Deprecated(
+  "Use SetDynamicColorEnvironmentChangeV1.Builder; the public constructor goes internal at the next major release.",
+  ReplaceWith("SetDynamicColorEnvironmentChangeV1.Builder(value).build()"),
+)
+constructor(public val value: Boolean) : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.DYNAMIC_COLOR
+
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(value: Boolean) {
+    public var value: Boolean = value
+
+    @Suppress("DEPRECATION")
+    public fun build(): SetDynamicColorEnvironmentChangeV1 =
+      SetDynamicColorEnvironmentChangeV1(value)
+  }
+
+  /** This change as a [Builder], for deriving a modified one. */
+  public fun newBuilder(): Builder = Builder(value)
 }
 
 @Serializable
@@ -502,9 +630,25 @@ public data object ResetDynamicColorEnvironmentChangeV1 : EnvironmentChangeV1 {
 
 @Serializable
 @SerialName("setWindowPosture")
-public data class SetWindowPostureEnvironmentChangeV1(public val value: WindowPostureV1) :
-  EnvironmentChangeV1 {
+public data class SetWindowPostureEnvironmentChangeV1
+@Deprecated(
+  "Use SetWindowPostureEnvironmentChangeV1.Builder; the public constructor goes internal at the next major release.",
+  ReplaceWith("SetWindowPostureEnvironmentChangeV1.Builder(value).build()"),
+)
+constructor(public val value: WindowPostureV1) : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.WINDOW_POSTURE
+
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(value: WindowPostureV1) {
+    public var value: WindowPostureV1 = value
+
+    @Suppress("DEPRECATION")
+    public fun build(): SetWindowPostureEnvironmentChangeV1 =
+      SetWindowPostureEnvironmentChangeV1(value)
+  }
+
+  /** This change as a [Builder], for deriving a modified one. */
+  public fun newBuilder(): Builder = Builder(value)
 }
 
 @Serializable
@@ -515,9 +659,25 @@ public data object ResetWindowPostureEnvironmentChangeV1 : EnvironmentChangeV1 {
 
 @Serializable
 @SerialName("setBrowserZoomPercent")
-public data class SetBrowserZoomPercentEnvironmentChangeV1(public val value: Int) :
-  EnvironmentChangeV1 {
+public data class SetBrowserZoomPercentEnvironmentChangeV1
+@Deprecated(
+  "Use SetBrowserZoomPercentEnvironmentChangeV1.Builder; the public constructor goes internal at the next major release.",
+  ReplaceWith("SetBrowserZoomPercentEnvironmentChangeV1.Builder(value).build()"),
+)
+constructor(public val value: Int) : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.BROWSER_ZOOM_PERCENT
+
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(value: Int) {
+    public var value: Int = value
+
+    @Suppress("DEPRECATION")
+    public fun build(): SetBrowserZoomPercentEnvironmentChangeV1 =
+      SetBrowserZoomPercentEnvironmentChangeV1(value)
+  }
+
+  /** This change as a [Builder], for deriving a modified one. */
+  public fun newBuilder(): Builder = Builder(value)
 }
 
 @Serializable
@@ -528,8 +688,24 @@ public data object ResetBrowserZoomPercentEnvironmentChangeV1 : EnvironmentChang
 
 @Serializable
 @SerialName("setFixedTime")
-public data class SetFixedTimeEnvironmentChangeV1(public val value: String) : EnvironmentChangeV1 {
+public data class SetFixedTimeEnvironmentChangeV1
+@Deprecated(
+  "Use SetFixedTimeEnvironmentChangeV1.Builder; the public constructor goes internal at the next major release.",
+  ReplaceWith("SetFixedTimeEnvironmentChangeV1.Builder(value).build()"),
+)
+constructor(public val value: String) : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.FIXED_TIME
+
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(value: String) {
+    public var value: String = value
+
+    @Suppress("DEPRECATION")
+    public fun build(): SetFixedTimeEnvironmentChangeV1 = SetFixedTimeEnvironmentChangeV1(value)
+  }
+
+  /** This change as a [Builder], for deriving a modified one. */
+  public fun newBuilder(): Builder = Builder(value)
 }
 
 @Serializable
@@ -540,9 +716,24 @@ public data object ResetFixedTimeEnvironmentChangeV1 : EnvironmentChangeV1 {
 
 @Serializable
 @SerialName("setAnimations")
-public data class SetAnimationsEnvironmentChangeV1(public val value: AnimationStateV1) :
-  EnvironmentChangeV1 {
+public data class SetAnimationsEnvironmentChangeV1
+@Deprecated(
+  "Use SetAnimationsEnvironmentChangeV1.Builder; the public constructor goes internal at the next major release.",
+  ReplaceWith("SetAnimationsEnvironmentChangeV1.Builder(value).build()"),
+)
+constructor(public val value: AnimationStateV1) : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.ANIMATIONS
+
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(value: AnimationStateV1) {
+    public var value: AnimationStateV1 = value
+
+    @Suppress("DEPRECATION")
+    public fun build(): SetAnimationsEnvironmentChangeV1 = SetAnimationsEnvironmentChangeV1(value)
+  }
+
+  /** This change as a [Builder], for deriving a modified one. */
+  public fun newBuilder(): Builder = Builder(value)
 }
 
 @Serializable
@@ -553,9 +744,25 @@ public data object ResetAnimationsEnvironmentChangeV1 : EnvironmentChangeV1 {
 
 @Serializable
 @SerialName("setNetworkAccess")
-public data class SetNetworkAccessEnvironmentChangeV1(public val value: Boolean) :
-  EnvironmentChangeV1 {
+public data class SetNetworkAccessEnvironmentChangeV1
+@Deprecated(
+  "Use SetNetworkAccessEnvironmentChangeV1.Builder; the public constructor goes internal at the next major release.",
+  ReplaceWith("SetNetworkAccessEnvironmentChangeV1.Builder(value).build()"),
+)
+constructor(public val value: Boolean) : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.NETWORK_ACCESS
+
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(value: Boolean) {
+    public var value: Boolean = value
+
+    @Suppress("DEPRECATION")
+    public fun build(): SetNetworkAccessEnvironmentChangeV1 =
+      SetNetworkAccessEnvironmentChangeV1(value)
+  }
+
+  /** This change as a [Builder], for deriving a modified one. */
+  public fun newBuilder(): Builder = Builder(value)
 }
 
 @Serializable
@@ -566,9 +773,24 @@ public data object ResetNetworkAccessEnvironmentChangeV1 : EnvironmentChangeV1 {
 
 @Serializable
 @SerialName("setBackground")
-public data class SetBackgroundEnvironmentChangeV1(public val value: UiValueV1) :
-  EnvironmentChangeV1 {
+public data class SetBackgroundEnvironmentChangeV1
+@Deprecated(
+  "Use SetBackgroundEnvironmentChangeV1.Builder; the public constructor goes internal at the next major release.",
+  ReplaceWith("SetBackgroundEnvironmentChangeV1.Builder(value).build()"),
+)
+constructor(public val value: UiValueV1) : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.BACKGROUND
+
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(value: UiValueV1) {
+    public var value: UiValueV1 = value
+
+    @Suppress("DEPRECATION")
+    public fun build(): SetBackgroundEnvironmentChangeV1 = SetBackgroundEnvironmentChangeV1(value)
+  }
+
+  /** This change as a [Builder], for deriving a modified one. */
+  public fun newBuilder(): Builder = Builder(value)
 }
 
 @Serializable
@@ -584,8 +806,24 @@ public data object ResetBackgroundEnvironmentChangeV1 : EnvironmentChangeV1 {
  */
 @Serializable
 @SerialName("setTypeface")
-public data class SetTypefaceEnvironmentChangeV1(public val value: String) : EnvironmentChangeV1 {
+public data class SetTypefaceEnvironmentChangeV1
+@Deprecated(
+  "Use SetTypefaceEnvironmentChangeV1.Builder; the public constructor goes internal at the next major release.",
+  ReplaceWith("SetTypefaceEnvironmentChangeV1.Builder(value).build()"),
+)
+constructor(public val value: String) : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.TYPEFACE
+
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(value: String) {
+    public var value: String = value
+
+    @Suppress("DEPRECATION")
+    public fun build(): SetTypefaceEnvironmentChangeV1 = SetTypefaceEnvironmentChangeV1(value)
+  }
+
+  /** This change as a [Builder], for deriving a modified one. */
+  public fun newBuilder(): Builder = Builder(value)
 }
 
 /** Returns the document to the renderer's platform default face. */
@@ -606,9 +844,25 @@ public data object ResetTypefaceEnvironmentChangeV1 : EnvironmentChangeV1 {
  */
 @Serializable
 @SerialName("setExportDevices")
-public data class SetExportDevicesEnvironmentChangeV1(public val value: List<String>) :
-  EnvironmentChangeV1 {
+public data class SetExportDevicesEnvironmentChangeV1
+@Deprecated(
+  "Use SetExportDevicesEnvironmentChangeV1.Builder; the public constructor goes internal at the next major release.",
+  ReplaceWith("SetExportDevicesEnvironmentChangeV1.Builder(value).build()"),
+)
+constructor(public val value: List<String>) : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.EXPORT_DEVICES
+
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(value: List<String>) {
+    public var value: List<String> = value
+
+    @Suppress("DEPRECATION")
+    public fun build(): SetExportDevicesEnvironmentChangeV1 =
+      SetExportDevicesEnvironmentChangeV1(value)
+  }
+
+  /** This change as a [Builder], for deriving a modified one. */
+  public fun newBuilder(): Builder = Builder(value)
 }
 
 /** Returns the design to exporting at its own frame alone. */
@@ -624,9 +878,25 @@ public data object ResetExportDevicesEnvironmentChangeV1 : EnvironmentChangeV1 {
  */
 @Serializable
 @SerialName("setRemoteProfile")
-public data class SetRemoteProfileEnvironmentChangeV1(public val value: RemoteProfileV1) :
-  EnvironmentChangeV1 {
+public data class SetRemoteProfileEnvironmentChangeV1
+@Deprecated(
+  "Use SetRemoteProfileEnvironmentChangeV1.Builder; the public constructor goes internal at the next major release.",
+  ReplaceWith("SetRemoteProfileEnvironmentChangeV1.Builder(value).build()"),
+)
+constructor(public val value: RemoteProfileV1) : EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.REMOTE_PROFILE
+
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(value: RemoteProfileV1) {
+    public var value: RemoteProfileV1 = value
+
+    @Suppress("DEPRECATION")
+    public fun build(): SetRemoteProfileEnvironmentChangeV1 =
+      SetRemoteProfileEnvironmentChangeV1(value)
+  }
+
+  /** This change as a [Builder], for deriving a modified one. */
+  public fun newBuilder(): Builder = Builder(value)
 }
 
 /** Returns the design to its consumer's default profile for the document's kind. */
@@ -637,7 +907,7 @@ public data object ResetRemoteProfileEnvironmentChangeV1 : EnvironmentChangeV1 {
 }
 
 /**
- * Sets the Watch Face Format version the design targets, 1 through 4; see
+ * Sets the Watch Face Format version the design targets, 1 through 5; see
  * [DesignEnvironmentV1.wffVersion].
  */
 @Serializable

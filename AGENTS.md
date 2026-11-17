@@ -32,12 +32,16 @@ the server runs ui-builder jars compiled against an older contracts, and got HTT
   This includes a new single-value command variant (an `EnvironmentChangeV1` `Set…` with one
   `value`): it takes the Builder shape too, since its one field is the first of any it may gain. A
   `data object` variant (a `Reset…`) has no fields and needs none. The existing public single-value
-  variants (`SetWidthDpEnvironmentChangeV1` and its siblings) are grandfathered and move to
-  `internal` at the next major release.
+  variants (`SetWidthDpEnvironmentChangeV1` and its siblings) are on the next bullet's migration
+  path: a Builder and `newBuilder()`, the old constructor kept but `@Deprecated`.
 - **A type still on a public constructor** gets a `Builder` and `newBuilder()` the first time it gains
   a field, keeps its old constructors and `copy` (with the default-argument form) so released jars
-  still link, and moves to `internal` at the next major release. `AssetBindingV1`, `DesignStateV1` and
-  `CommandConflictV1` are there now.
+  still link, and moves to `internal` at the next major release. `AssetBindingV1`, `DesignStateV1`,
+  `CommandConflictV1` and the single-value `Set…EnvironmentChangeV1` variants (`SetWidthDp`,
+  `SetHeightDp`, `SetDensity`, `SetTheme`, `SetLocale`, `SetFontScale`, `SetLayoutDirection`,
+  `SetDynamicColor`, `SetWindowPosture`, `SetBrowserZoomPercent`, `SetFixedTime`, `SetAnimations`,
+  `SetNetworkAccess`, `SetBackground`, `SetTypeface`, `SetExportDevices`, `SetRemoteProfile`) are there
+  now: each is moving to `internal` at the next major release.
 - **`checkKotlinAbi` is not the guard; `.github/scripts/check-abi-superset.py` is.** It fails a pull
   request that removes any line from a committed `.api` dump relative to the last release, synthetic
   lines included. Never read a removed `synthetic` line in a dump diff as noise. A deliberate break is a

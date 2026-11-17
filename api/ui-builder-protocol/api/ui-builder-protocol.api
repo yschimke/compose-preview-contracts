@@ -5809,6 +5809,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetAnimationsEnvironm
 	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public final fun getValue ()Lee/schimke/composeai/uibuilder/protocol/AnimationStateV1;
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetAnimationsEnvironmentChangeV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -5821,6 +5822,13 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetAnimatio
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetAnimationsEnvironmentChangeV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetAnimationsEnvironmentChangeV1$Builder {
+	public fun <init> (Lee/schimke/composeai/uibuilder/protocol/AnimationStateV1;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetAnimationsEnvironmentChangeV1;
+	public final fun getValue ()Lee/schimke/composeai/uibuilder/protocol/AnimationStateV1;
+	public final fun setValue (Lee/schimke/composeai/uibuilder/protocol/AnimationStateV1;)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetAnimationsEnvironmentChangeV1$Companion {
@@ -5837,6 +5845,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetBackgroundEnvironm
 	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public final fun getValue ()Lee/schimke/composeai/uibuilder/protocol/UiValueV1;
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetBackgroundEnvironmentChangeV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -5849,6 +5858,13 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetBackgrou
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetBackgroundEnvironmentChangeV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetBackgroundEnvironmentChangeV1$Builder {
+	public fun <init> (Lee/schimke/composeai/uibuilder/protocol/UiValueV1;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetBackgroundEnvironmentChangeV1;
+	public final fun getValue ()Lee/schimke/composeai/uibuilder/protocol/UiValueV1;
+	public final fun setValue (Lee/schimke/composeai/uibuilder/protocol/UiValueV1;)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetBackgroundEnvironmentChangeV1$Companion {
@@ -5865,6 +5881,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetBrowserZoomPercent
 	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public final fun getValue ()I
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetBrowserZoomPercentEnvironmentChangeV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -5877,6 +5894,13 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetBrowserZ
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetBrowserZoomPercentEnvironmentChangeV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetBrowserZoomPercentEnvironmentChangeV1$Builder {
+	public fun <init> (I)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetBrowserZoomPercentEnvironmentChangeV1;
+	public final fun getValue ()I
+	public final fun setValue (I)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetBrowserZoomPercentEnvironmentChangeV1$Companion {
@@ -5929,6 +5953,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetDensityEnvironment
 	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public final fun getValue ()D
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetDensityEnvironmentChangeV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -5941,6 +5966,13 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetDensityE
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetDensityEnvironmentChangeV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetDensityEnvironmentChangeV1$Builder {
+	public fun <init> (D)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetDensityEnvironmentChangeV1;
+	public final fun getValue ()D
+	public final fun setValue (D)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetDensityEnvironmentChangeV1$Companion {
@@ -5957,6 +5989,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetDynamicColorEnviro
 	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public final fun getValue ()Z
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetDynamicColorEnvironmentChangeV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -5969,6 +6002,13 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetDynamicC
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetDynamicColorEnvironmentChangeV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetDynamicColorEnvironmentChangeV1$Builder {
+	public fun <init> (Z)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetDynamicColorEnvironmentChangeV1;
+	public final fun getValue ()Z
+	public final fun setValue (Z)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetDynamicColorEnvironmentChangeV1$Companion {
@@ -6016,6 +6056,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetExportDevicesEnvir
 	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public final fun getValue ()Ljava/util/List;
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetExportDevicesEnvironmentChangeV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -6028,6 +6069,13 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetExportDe
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetExportDevicesEnvironmentChangeV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetExportDevicesEnvironmentChangeV1$Builder {
+	public fun <init> (Ljava/util/List;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetExportDevicesEnvironmentChangeV1;
+	public final fun getValue ()Ljava/util/List;
+	public final fun setValue (Ljava/util/List;)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetExportDevicesEnvironmentChangeV1$Companion {
@@ -6044,6 +6092,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetFixedTimeEnvironme
 	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public final fun getValue ()Ljava/lang/String;
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetFixedTimeEnvironmentChangeV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -6056,6 +6105,13 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetFixedTim
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetFixedTimeEnvironmentChangeV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetFixedTimeEnvironmentChangeV1$Builder {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetFixedTimeEnvironmentChangeV1;
+	public final fun getValue ()Ljava/lang/String;
+	public final fun setValue (Ljava/lang/String;)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetFixedTimeEnvironmentChangeV1$Companion {
@@ -6072,6 +6128,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetFontScaleEnvironme
 	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public final fun getValue ()D
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetFontScaleEnvironmentChangeV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -6084,6 +6141,13 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetFontScal
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetFontScaleEnvironmentChangeV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetFontScaleEnvironmentChangeV1$Builder {
+	public fun <init> (D)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetFontScaleEnvironmentChangeV1;
+	public final fun getValue ()D
+	public final fun setValue (D)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetFontScaleEnvironmentChangeV1$Companion {
@@ -6100,6 +6164,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetHeightDpEnvironmen
 	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public final fun getValue ()I
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetHeightDpEnvironmentChangeV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -6112,6 +6177,13 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetHeightDp
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetHeightDpEnvironmentChangeV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetHeightDpEnvironmentChangeV1$Builder {
+	public fun <init> (I)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetHeightDpEnvironmentChangeV1;
+	public final fun getValue ()I
+	public final fun setValue (I)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetHeightDpEnvironmentChangeV1$Companion {
@@ -6160,6 +6232,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetLayoutDirectionEnv
 	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public final fun getValue ()Lee/schimke/composeai/uibuilder/protocol/LayoutDirectionV1;
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetLayoutDirectionEnvironmentChangeV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -6172,6 +6245,13 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetLayoutDi
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetLayoutDirectionEnvironmentChangeV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetLayoutDirectionEnvironmentChangeV1$Builder {
+	public fun <init> (Lee/schimke/composeai/uibuilder/protocol/LayoutDirectionV1;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetLayoutDirectionEnvironmentChangeV1;
+	public final fun getValue ()Lee/schimke/composeai/uibuilder/protocol/LayoutDirectionV1;
+	public final fun setValue (Lee/schimke/composeai/uibuilder/protocol/LayoutDirectionV1;)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetLayoutDirectionEnvironmentChangeV1$Companion {
@@ -6188,6 +6268,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetLocaleEnvironmentC
 	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public final fun getValue ()Ljava/lang/String;
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetLocaleEnvironmentChangeV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -6200,6 +6281,13 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetLocaleEn
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetLocaleEnvironmentChangeV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetLocaleEnvironmentChangeV1$Builder {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetLocaleEnvironmentChangeV1;
+	public final fun getValue ()Ljava/lang/String;
+	public final fun setValue (Ljava/lang/String;)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetLocaleEnvironmentChangeV1$Companion {
@@ -6245,6 +6333,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetNetworkAccessEnvir
 	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public final fun getValue ()Z
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetNetworkAccessEnvironmentChangeV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -6257,6 +6346,13 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetNetworkA
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetNetworkAccessEnvironmentChangeV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetNetworkAccessEnvironmentChangeV1$Builder {
+	public fun <init> (Z)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetNetworkAccessEnvironmentChangeV1;
+	public final fun getValue ()Z
+	public final fun setValue (Z)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetNetworkAccessEnvironmentChangeV1$Companion {
@@ -6304,6 +6400,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetRemoteProfileEnvir
 	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public final fun getValue ()Lee/schimke/composeai/uibuilder/protocol/RemoteProfileV1;
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetRemoteProfileEnvironmentChangeV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -6316,6 +6413,13 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetRemotePr
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetRemoteProfileEnvironmentChangeV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetRemoteProfileEnvironmentChangeV1$Builder {
+	public fun <init> (Lee/schimke/composeai/uibuilder/protocol/RemoteProfileV1;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetRemoteProfileEnvironmentChangeV1;
+	public final fun getValue ()Lee/schimke/composeai/uibuilder/protocol/RemoteProfileV1;
+	public final fun setValue (Lee/schimke/composeai/uibuilder/protocol/RemoteProfileV1;)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetRemoteProfileEnvironmentChangeV1$Companion {
@@ -6388,6 +6492,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetThemeEnvironmentCh
 	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public final fun getValue ()Lee/schimke/composeai/uibuilder/protocol/ThemeV1;
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetThemeEnvironmentChangeV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -6400,6 +6505,13 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetThemeEnv
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetThemeEnvironmentChangeV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetThemeEnvironmentChangeV1$Builder {
+	public fun <init> (Lee/schimke/composeai/uibuilder/protocol/ThemeV1;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetThemeEnvironmentChangeV1;
+	public final fun getValue ()Lee/schimke/composeai/uibuilder/protocol/ThemeV1;
+	public final fun setValue (Lee/schimke/composeai/uibuilder/protocol/ThemeV1;)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetThemeEnvironmentChangeV1$Companion {
@@ -6416,6 +6528,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetTypefaceEnvironmen
 	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public final fun getValue ()Ljava/lang/String;
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetTypefaceEnvironmentChangeV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -6428,6 +6541,13 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetTypeface
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetTypefaceEnvironmentChangeV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetTypefaceEnvironmentChangeV1$Builder {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetTypefaceEnvironmentChangeV1;
+	public final fun getValue ()Ljava/lang/String;
+	public final fun setValue (Ljava/lang/String;)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetTypefaceEnvironmentChangeV1$Companion {
@@ -6506,6 +6626,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetWidthDpEnvironment
 	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public final fun getValue ()I
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetWidthDpEnvironmentChangeV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -6518,6 +6639,13 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetWidthDpE
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetWidthDpEnvironmentChangeV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetWidthDpEnvironmentChangeV1$Builder {
+	public fun <init> (I)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetWidthDpEnvironmentChangeV1;
+	public final fun getValue ()I
+	public final fun setValue (I)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetWidthDpEnvironmentChangeV1$Companion {
@@ -6534,6 +6662,7 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetWindowPostureEnvir
 	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public final fun getValue ()Lee/schimke/composeai/uibuilder/protocol/WindowPostureV1;
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetWindowPostureEnvironmentChangeV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -6546,6 +6675,13 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetWindowPo
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetWindowPostureEnvironmentChangeV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetWindowPostureEnvironmentChangeV1$Builder {
+	public fun <init> (Lee/schimke/composeai/uibuilder/protocol/WindowPostureV1;)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetWindowPostureEnvironmentChangeV1;
+	public final fun getValue ()Lee/schimke/composeai/uibuilder/protocol/WindowPostureV1;
+	public final fun setValue (Lee/schimke/composeai/uibuilder/protocol/WindowPostureV1;)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetWindowPostureEnvironmentChangeV1$Companion {

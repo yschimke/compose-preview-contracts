@@ -959,9 +959,9 @@ class UiBuilderProtocolCompatibilityTest {
     val plainWire = eager.encodeToJsonElement(DesignEnvironmentV1.serializer(), plain) as JsonObject
     assertEquals(false, "wffVersion" in plainWire)
 
-    val v4 = plain.newBuilder().apply { wffVersion = 4 }.build()
+    val v4 = plain.newBuilder().apply { wffVersion = DesignEnvironmentV1.MAX_WFF_VERSION }.build()
     val wire = strictJson.encodeToJsonElement(DesignEnvironmentV1.serializer(), v4) as JsonObject
-    assertEquals(JsonPrimitive(4), wire["wffVersion"])
+    assertEquals(JsonPrimitive(5), wire["wffVersion"])
     assertEquals(v4, strictJson.decodeFromJsonElement(DesignEnvironmentV1.serializer(), wire))
 
     // A document from before the field decodes to the default.
@@ -971,7 +971,7 @@ class UiBuilderProtocolCompatibilityTest {
       strictJson.decodeFromJsonElement(DesignEnvironmentV1.serializer(), old).wffVersion,
     )
     assertEquals(1, DesignEnvironmentV1.MIN_WFF_VERSION)
-    assertEquals(4, DesignEnvironmentV1.MAX_WFF_VERSION)
+    assertEquals(5, DesignEnvironmentV1.MAX_WFF_VERSION)
   }
 
   @Test
@@ -1057,6 +1057,153 @@ class UiBuilderProtocolCompatibilityTest {
     )
     assertEquals(EnvironmentFieldV1.WFF_VERSION, set.field)
     assertEquals(EnvironmentFieldV1.WFF_VERSION, reset.field)
+  }
+
+  @Suppress("DEPRECATION")
+  @Test
+  fun `single-value environment changes build through a Builder identically to the constructor`() {
+    val ser = EnvironmentChangeV1.serializer()
+    fun check(
+      built: EnvironmentChangeV1,
+      constructed: EnvironmentChangeV1,
+      rebuilt: EnvironmentChangeV1,
+      expectedValue: JsonElement?,
+    ) {
+      assertEquals(constructed, built)
+      assertEquals(rebuilt, built)
+      val wire = strictJson.encodeToJsonElement(ser, built) as JsonObject
+      assertEquals(strictJson.encodeToJsonElement(ser, constructed), wire)
+      assertEquals(built, strictJson.decodeFromJsonElement(ser, wire))
+      if (expectedValue != null) assertEquals(expectedValue, wire["value"])
+      assertEquals(setOf("type", "value"), wire.keys)
+    }
+    check(
+      SetWidthDpEnvironmentChangeV1.Builder(320).build(),
+      SetWidthDpEnvironmentChangeV1(320),
+      SetWidthDpEnvironmentChangeV1.Builder(320).build().newBuilder().build(),
+      JsonPrimitive(320),
+    )
+    check(
+      SetHeightDpEnvironmentChangeV1.Builder(480).build(),
+      SetHeightDpEnvironmentChangeV1(480),
+      SetHeightDpEnvironmentChangeV1.Builder(480).build().newBuilder().build(),
+      JsonPrimitive(480),
+    )
+    check(
+      SetDensityEnvironmentChangeV1.Builder(2.5).build(),
+      SetDensityEnvironmentChangeV1(2.5),
+      SetDensityEnvironmentChangeV1.Builder(2.5).build().newBuilder().build(),
+      JsonPrimitive(2.5),
+    )
+    check(
+      SetThemeEnvironmentChangeV1.Builder(ThemeV1.DARK).build(),
+      SetThemeEnvironmentChangeV1(ThemeV1.DARK),
+      SetThemeEnvironmentChangeV1.Builder(ThemeV1.DARK).build().newBuilder().build(),
+      JsonPrimitive("dark"),
+    )
+    check(
+      SetLocaleEnvironmentChangeV1.Builder("fr-FR").build(),
+      SetLocaleEnvironmentChangeV1("fr-FR"),
+      SetLocaleEnvironmentChangeV1.Builder("fr-FR").build().newBuilder().build(),
+      JsonPrimitive("fr-FR"),
+    )
+    check(
+      SetFontScaleEnvironmentChangeV1.Builder(1.5).build(),
+      SetFontScaleEnvironmentChangeV1(1.5),
+      SetFontScaleEnvironmentChangeV1.Builder(1.5).build().newBuilder().build(),
+      JsonPrimitive(1.5),
+    )
+    check(
+      SetLayoutDirectionEnvironmentChangeV1.Builder(LayoutDirectionV1.RTL).build(),
+      SetLayoutDirectionEnvironmentChangeV1(LayoutDirectionV1.RTL),
+      SetLayoutDirectionEnvironmentChangeV1.Builder(LayoutDirectionV1.RTL)
+        .build()
+        .newBuilder()
+        .build(),
+      JsonPrimitive("rtl"),
+    )
+    check(
+      SetDynamicColorEnvironmentChangeV1.Builder(true).build(),
+      SetDynamicColorEnvironmentChangeV1(true),
+      SetDynamicColorEnvironmentChangeV1.Builder(true).build().newBuilder().build(),
+      JsonPrimitive(true),
+    )
+    check(
+      SetWindowPostureEnvironmentChangeV1.Builder(WindowPostureV1.BOOK).build(),
+      SetWindowPostureEnvironmentChangeV1(WindowPostureV1.BOOK),
+      SetWindowPostureEnvironmentChangeV1.Builder(WindowPostureV1.BOOK)
+        .build()
+        .newBuilder()
+        .build(),
+      JsonPrimitive("book"),
+    )
+    check(
+      SetBrowserZoomPercentEnvironmentChangeV1.Builder(125).build(),
+      SetBrowserZoomPercentEnvironmentChangeV1(125),
+      SetBrowserZoomPercentEnvironmentChangeV1.Builder(125).build().newBuilder().build(),
+      JsonPrimitive(125),
+    )
+    check(
+      SetFixedTimeEnvironmentChangeV1.Builder("2026-01-01T10:00:00Z").build(),
+      SetFixedTimeEnvironmentChangeV1("2026-01-01T10:00:00Z"),
+      SetFixedTimeEnvironmentChangeV1.Builder("2026-01-01T10:00:00Z").build().newBuilder().build(),
+      JsonPrimitive("2026-01-01T10:00:00Z"),
+    )
+    check(
+      SetAnimationsEnvironmentChangeV1.Builder(AnimationStateV1.RUNNING).build(),
+      SetAnimationsEnvironmentChangeV1(AnimationStateV1.RUNNING),
+      SetAnimationsEnvironmentChangeV1.Builder(AnimationStateV1.RUNNING)
+        .build()
+        .newBuilder()
+        .build(),
+      JsonPrimitive("running"),
+    )
+    check(
+      SetNetworkAccessEnvironmentChangeV1.Builder(true).build(),
+      SetNetworkAccessEnvironmentChangeV1(true),
+      SetNetworkAccessEnvironmentChangeV1.Builder(true).build().newBuilder().build(),
+      JsonPrimitive(true),
+    )
+    check(
+      SetBackgroundEnvironmentChangeV1.Builder(StringValueV1("x")).build(),
+      SetBackgroundEnvironmentChangeV1(StringValueV1("x")),
+      SetBackgroundEnvironmentChangeV1.Builder(StringValueV1("x")).build().newBuilder().build(),
+      null,
+    )
+    check(
+      SetTypefaceEnvironmentChangeV1.Builder("Inter").build(),
+      SetTypefaceEnvironmentChangeV1("Inter"),
+      SetTypefaceEnvironmentChangeV1.Builder("Inter").build().newBuilder().build(),
+      JsonPrimitive("Inter"),
+    )
+    check(
+      SetExportDevicesEnvironmentChangeV1.Builder(listOf("a", "b")).build(),
+      SetExportDevicesEnvironmentChangeV1(listOf("a", "b")),
+      SetExportDevicesEnvironmentChangeV1.Builder(listOf("a", "b")).build().newBuilder().build(),
+      JsonArray(listOf(JsonPrimitive("a"), JsonPrimitive("b"))),
+    )
+    check(
+      SetRemoteProfileEnvironmentChangeV1.Builder(
+          RemoteProfileV1.Builder(RemoteProfileTargetV1.LAUNCHER_WIDGETS_V6).build(),
+        )
+        .build(),
+      SetRemoteProfileEnvironmentChangeV1(
+        RemoteProfileV1.Builder(RemoteProfileTargetV1.LAUNCHER_WIDGETS_V6).build(),
+      ),
+      SetRemoteProfileEnvironmentChangeV1.Builder(
+          RemoteProfileV1.Builder(RemoteProfileTargetV1.LAUNCHER_WIDGETS_V6).build(),
+        )
+        .build()
+        .newBuilder()
+        .build(),
+      null,
+    )
+    // A Builder var is mutable and newBuilder() derives a modified copy without touching the
+    // source.
+    val width = SetWidthDpEnvironmentChangeV1.Builder(320).build()
+    val wider = width.newBuilder().apply { value = 640 }.build()
+    assertEquals(320, width.value)
+    assertEquals(640, wider.value)
   }
 
   @Test

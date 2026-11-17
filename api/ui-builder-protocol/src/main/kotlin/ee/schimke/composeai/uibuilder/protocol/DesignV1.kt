@@ -435,7 +435,7 @@ public data class DesignEnvironmentV1(
    */
   @EncodeDefault(EncodeDefault.Mode.NEVER) public val remoteProfile: RemoteProfileV1? = null,
   /**
-   * The Wear OS Watch Face Format version this design is authored and exported for, 1 through 4
+   * The Wear OS Watch Face Format version this design is authored and exported for, 1 through 5
    * ([MIN_WFF_VERSION]..[MAX_WFF_VERSION]); [DEFAULT_WFF_VERSION] (2) when a document names none.
    * Meaningful only for a design exported as a watch face ([ExportFormatV1.WFF_XML],
    * [ExportFormatV1.WFF_BUNDLE], [ExportFormatV1.WFF_APK]).
@@ -690,7 +690,7 @@ public data class DesignEnvironmentV1(
     public const val MIN_WFF_VERSION: Int = 1
 
     /** The newest Watch Face Format version a design can target. */
-    public const val MAX_WFF_VERSION: Int = 4
+    public const val MAX_WFF_VERSION: Int = 5
 
     /** The version a document that names none targets. */
     public const val DEFAULT_WFF_VERSION: Int = 2
