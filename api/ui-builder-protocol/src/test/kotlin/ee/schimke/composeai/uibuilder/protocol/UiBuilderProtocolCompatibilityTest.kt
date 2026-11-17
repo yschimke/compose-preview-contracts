@@ -1040,7 +1040,8 @@ class UiBuilderProtocolCompatibilityTest {
 
   @Test
   fun `setting and resetting a WFF version round-trip under their discriminators`() {
-    val set: EnvironmentChangeV1 = SetWffVersionEnvironmentChangeV1(3)
+    val set: EnvironmentChangeV1 = SetWffVersionEnvironmentChangeV1.Builder(3).build()
+    assertEquals(set, (set as SetWffVersionEnvironmentChangeV1).newBuilder().build())
     val reset: EnvironmentChangeV1 = ResetWffVersionEnvironmentChangeV1
     val setWire =
       strictJson.encodeToJsonElement(EnvironmentChangeV1.serializer(), set) as JsonObject
@@ -1171,7 +1172,7 @@ class UiBuilderProtocolCompatibilityTest {
             RemoteProfileV1.Builder(RemoteProfileTargetV1.ANDROIDX).build(),
           )
           .field,
-        SetWffVersionEnvironmentChangeV1(2).field,
+        SetWffVersionEnvironmentChangeV1.Builder(2).build().field,
       )
 
     assertEquals(EnvironmentFieldV1.entries.toSet(), named)

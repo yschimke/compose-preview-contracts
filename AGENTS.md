@@ -29,6 +29,11 @@ the server runs ui-builder jars compiled against an older contracts, and got HTT
   3.0.0, #910): an `internal` constructor, `@ConsistentCopyVisibility`, a public `Builder` with one
   `var` per optional field, and `newBuilder()` in place of `copy`. A new field is a new `var`; no
   signature changes. Write new wire types this way.
+  This includes a new single-value command variant (an `EnvironmentChangeV1` `Set…` with one
+  `value`): it takes the Builder shape too, since its one field is the first of any it may gain. A
+  `data object` variant (a `Reset…`) has no fields and needs none. The existing public single-value
+  variants (`SetWidthDpEnvironmentChangeV1` and its siblings) are grandfathered and move to
+  `internal` at the next major release.
 - **A type still on a public constructor** gets a `Builder` and `newBuilder()` the first time it gains
   a field, keeps its old constructors and `copy` (with the default-argument form) so released jars
   still link, and moves to `internal` at the next major release. `AssetBindingV1`, `DesignStateV1` and

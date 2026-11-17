@@ -6465,14 +6465,12 @@ public final class ee/schimke/composeai/uibuilder/protocol/SetValueActionV1$Comp
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetWffVersionEnvironmentChangeV1 : ee/schimke/composeai/uibuilder/protocol/EnvironmentChangeV1 {
 	public static final field Companion Lee/schimke/composeai/uibuilder/protocol/SetWffVersionEnvironmentChangeV1$Companion;
-	public fun <init> (I)V
 	public final fun component1 ()I
-	public final fun copy (I)Lee/schimke/composeai/uibuilder/protocol/SetWffVersionEnvironmentChangeV1;
-	public static synthetic fun copy$default (Lee/schimke/composeai/uibuilder/protocol/SetWffVersionEnvironmentChangeV1;IILjava/lang/Object;)Lee/schimke/composeai/uibuilder/protocol/SetWffVersionEnvironmentChangeV1;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getField ()Lee/schimke/composeai/uibuilder/protocol/EnvironmentFieldV1;
 	public final fun getValue ()I
 	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/uibuilder/protocol/SetWffVersionEnvironmentChangeV1$Builder;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -6485,6 +6483,13 @@ public final synthetic class ee/schimke/composeai/uibuilder/protocol/SetWffVersi
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/uibuilder/protocol/SetWffVersionEnvironmentChangeV1;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/uibuilder/protocol/SetWffVersionEnvironmentChangeV1$Builder {
+	public fun <init> (I)V
+	public final fun build ()Lee/schimke/composeai/uibuilder/protocol/SetWffVersionEnvironmentChangeV1;
+	public final fun getValue ()I
+	public final fun setValue (I)V
 }
 
 public final class ee/schimke/composeai/uibuilder/protocol/SetWffVersionEnvironmentChangeV1$Companion {

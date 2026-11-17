@@ -642,11 +642,26 @@ public data object ResetRemoteProfileEnvironmentChangeV1 : EnvironmentChangeV1 {
  */
 @Serializable
 @SerialName("setWffVersion")
-public data class SetWffVersionEnvironmentChangeV1(public val value: Int) : EnvironmentChangeV1 {
+@ConsistentCopyVisibility
+public data class SetWffVersionEnvironmentChangeV1 internal constructor(public val value: Int) :
+  EnvironmentChangeV1 {
   override val field: EnvironmentFieldV1 = EnvironmentFieldV1.WFF_VERSION
+
+  /** Additive construction API; future optional fields do not replace a public constructor. */
+  public class Builder(value: Int) {
+    public var value: Int = value
+
+    public fun build(): SetWffVersionEnvironmentChangeV1 = SetWffVersionEnvironmentChangeV1(value)
+  }
+
+  /** This change as a [Builder], for deriving a modified one. Replaces `copy`. */
+  public fun newBuilder(): Builder = Builder(value)
 }
 
-/** Returns the design to the default Watch Face Format version. */
+/**
+ * Returns the design to the default Watch Face Format version. A `data object` carries no fields,
+ * so it has nothing to grow and needs no Builder.
+ */
 @Serializable
 @SerialName("resetWffVersion")
 public data object ResetWffVersionEnvironmentChangeV1 : EnvironmentChangeV1 {

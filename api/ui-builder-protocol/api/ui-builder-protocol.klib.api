@@ -7652,18 +7652,26 @@ final class ee.schimke.composeai.uibuilder.protocol/SetValueActionV1 : ee.schimk
 }
 
 final class ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1 : ee.schimke.composeai.uibuilder.protocol/EnvironmentChangeV1 { // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1|null[0]
-    constructor <init>(kotlin/Int) // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.<init>|<init>(kotlin.Int){}[0]
-
     final val field // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.field|{}field[0]
         final fun <get-field>(): ee.schimke.composeai.uibuilder.protocol/EnvironmentFieldV1 // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.field.<get-field>|<get-field>(){}[0]
     final val value // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.value|{}value[0]
         final fun <get-value>(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.value.<get-value>|<get-value>(){}[0]
 
     final fun component1(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.component1|component1(){}[0]
-    final fun copy(kotlin/Int = ...): ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.copy|copy(kotlin.Int){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.hashCode|hashCode(){}[0]
+    final fun newBuilder(): ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.Builder // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.newBuilder|newBuilder(){}[0]
     final fun toString(): kotlin/String // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.toString|toString(){}[0]
+
+    final class Builder { // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.Builder|null[0]
+        constructor <init>(kotlin/Int) // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.Builder.<init>|<init>(kotlin.Int){}[0]
+
+        final var value // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.Builder.value|{}value[0]
+            final fun <get-value>(): kotlin/Int // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.Builder.value.<get-value>|<get-value>(){}[0]
+            final fun <set-value>(kotlin/Int) // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.Builder.value.<set-value>|<set-value>(kotlin.Int){}[0]
+
+        final fun build(): ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1 // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.Builder.build|build(){}[0]
+    }
 
     final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1> { // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.$serializer|null[0]
         final val descriptor // ee.schimke.composeai.uibuilder.protocol/SetWffVersionEnvironmentChangeV1.$serializer.descriptor|{}descriptor[0]
