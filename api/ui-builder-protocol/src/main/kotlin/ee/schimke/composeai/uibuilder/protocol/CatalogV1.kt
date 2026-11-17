@@ -643,6 +643,12 @@ internal constructor(
   @EncodeDefault(EncodeDefault.Mode.NEVER) public val remoteJson: Boolean = false,
   /** A compatible compiler is configured to assemble binary Remote Compose documents. */
   @EncodeDefault(EncodeDefault.Mode.NEVER) public val remoteDocument: Boolean = false,
+  /** Designs export as Watch Face Format `watchface.xml` ([ExportFormatV1.WFF_XML]). */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val wffXml: Boolean = false,
+  /** Designs export as a Watch Face Format project zip ([ExportFormatV1.WFF_BUNDLE]). */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val wffBundle: Boolean = false,
+  /** Designs export as a resource-only debug-signed APK ([ExportFormatV1.WFF_APK]). */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val wffApk: Boolean = false,
 ) {
   /**
    * Builds an [ExportCapabilitiesV1]; see [WasmCapabilityV1.Builder] for why the constructor is
@@ -655,9 +661,22 @@ internal constructor(
     public var bundle: Boolean = false
     public var remoteJson: Boolean = false
     public var remoteDocument: Boolean = false
+    public var wffXml: Boolean = false
+    public var wffBundle: Boolean = false
+    public var wffApk: Boolean = false
 
     public fun build(): ExportCapabilitiesV1 =
-      ExportCapabilitiesV1(composeCode, svg, png, bundle, remoteJson, remoteDocument)
+      ExportCapabilitiesV1(
+        composeCode,
+        svg,
+        png,
+        bundle,
+        remoteJson,
+        remoteDocument,
+        wffXml,
+        wffBundle,
+        wffApk,
+      )
   }
 
   /** This [ExportCapabilitiesV1] as a [Builder], for deriving a modified one. Replaces `copy`. */
@@ -669,6 +688,9 @@ internal constructor(
       it.bundle = bundle
       it.remoteJson = remoteJson
       it.remoteDocument = remoteDocument
+      it.wffXml = wffXml
+      it.wffBundle = wffBundle
+      it.wffApk = wffApk
     }
 }
 
