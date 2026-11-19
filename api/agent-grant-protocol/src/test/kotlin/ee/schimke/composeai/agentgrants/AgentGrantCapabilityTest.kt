@@ -27,6 +27,7 @@ class AgentGrantCapabilityTest {
         "ui-builder-write",
         "ui-builder-export",
         "ui-builder-destructive",
+        "ui-builder-publish",
       ),
       AgentGrantCapability.wireNames(AgentGrantCapability.entries.toSet()),
     )
@@ -46,6 +47,41 @@ class AgentGrantCapabilityTest {
   }
 
   @Test
+  fun `publish is its own capability, never implied by write or destructive`() {
+    val publish = AgentGrantCapability.parse("ui-builder-publish")
+    assertEquals(AgentGrantCapability.UI_BUILDER_PUBLISH, publish)
+    assertEquals(
+      AgentGrantCapability.UI_BUILDER_PUBLISH,
+      AgentGrantCapability.parse(" UI-Builder-Publish "),
+    )
+    assertEquals(
+      listOf("ui-builder-publish"),
+      AgentGrantCapability.wireNames(AgentGrantCapability.parseAll("ui-builder-publish")),
+    )
+    assertEquals(
+      "Publish this account's watch faces to watches, including to every watch for public designs",
+      AgentGrantCapability.UI_BUILDER_PUBLISH.humanDescription,
+    )
+    assertFalse(
+      AgentGrantCapability.UI_BUILDER_PUBLISH in
+        AgentGrantCapability.parseAll(
+          "images, ui-builder-read, ui-builder-write, ui-builder-export, ui-builder-destructive",
+        ),
+    )
+  }
+
+  @Test
+  fun `every capability round-trips through its wire name`() {
+    AgentGrantCapability.entries.forEach { capability ->
+      assertEquals(capability, AgentGrantCapability.parse(capability.wire))
+      assertEquals(
+        setOf(capability),
+        AgentGrantCapability.parseAll(AgentGrantCapability.wireNames(setOf(capability)).single()),
+      )
+    }
+  }
+
+  @Test
   fun `scope ladder never implies persistent ui builder permission`() {
     val uiBuilderCapabilities =
       setOf(
@@ -53,6 +89,7 @@ class AgentGrantCapabilityTest {
         AgentGrantCapability.UI_BUILDER_WRITE,
         AgentGrantCapability.UI_BUILDER_EXPORT,
         AgentGrantCapability.UI_BUILDER_DESTRUCTIVE,
+        AgentGrantCapability.UI_BUILDER_PUBLISH,
       )
     AgentGrantScope.entries.forEach { scope ->
       uiBuilderCapabilities.forEach { capability ->
