@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.44.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.43.0...v3.44.0) (2026-11-19)
+
+
+### Features
+
+* **agent-grant-protocol:** add the ui-builder-publish capability ([#230](https://github.com/yschimke/compose-preview-contracts/issues/230)) ([9078065](https://github.com/yschimke/compose-preview-contracts/commit/90780656df8c96eb0331120a4679012e1a4ed683))
+* **ui-builder-protocol:** put the environment change commands on Builders ([#229](https://github.com/yschimke/compose-preview-contracts/issues/229)) ([bcbc2f0](https://github.com/yschimke/compose-preview-contracts/commit/bcbc2f0a2205974303288c86d20019056562171f))
+* **ui-builder-protocol:** watch face export formats and a WFF version on the environment ([#227](https://github.com/yschimke/compose-preview-contracts/issues/227)) ([d6a0ad2](https://github.com/yschimke/compose-preview-contracts/commit/d6a0ad23cb3b4916b3eb1faa5f70fd5a3152d695))
+
 ## [3.43.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.42.0...v3.43.0) (2026-11-12)
 
 
