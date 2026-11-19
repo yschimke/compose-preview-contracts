@@ -73,6 +73,20 @@ public enum class AgentGrantCapability(
   UI_BUILDER_DESTRUCTIVE(
     "ui-builder-destructive",
     "Delete UI builder designs you own (they stay restorable from the trash for a day)",
+  ),
+
+  /**
+   * Publish the principal's watch faces to watches — including, for a design whose sharing policy
+   * is public, to every watch.
+   *
+   * This reaches outside the builder: a published watch face lands on a device someone is wearing,
+   * and a public one on devices nobody here owns. Neither [UI_BUILDER_WRITE] (editing a design) nor
+   * [UI_BUILDER_DESTRUCTIVE] (removing one) says anything about that, so it is its own box and is
+   * never implied by either.
+   */
+  UI_BUILDER_PUBLISH(
+    "ui-builder-publish",
+    "Publish this account's watch faces to watches, including to every watch for public designs",
   );
 
   public companion object {
