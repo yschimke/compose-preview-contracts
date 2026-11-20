@@ -120,4 +120,34 @@ class RemoteDocumentExportProtocolTest {
     assertEquals(xmlOnly, json.decodeFromJsonElement<ExportCapabilitiesV1>(encoded))
     assertEquals(xmlOnly, xmlOnly.newBuilder().build())
   }
+
+  @Test
+  fun `kobento component json keeps its spelling and is gated on its own`() {
+    val request =
+      ExportDesignRequestV1(designId = "screen", revision = 7, format = ExportFormatV1.KOBENTO_JSON)
+    val encoded = json.encodeToJsonElement(request).jsonObject
+    assertEquals(JsonPrimitive("kobento-json"), encoded["format"])
+    assertEquals(request, json.decodeFromJsonElement<ExportDesignRequestV1>(encoded))
+
+    val artifact =
+      ExportArtifactV1(
+        ExportFormatV1.KOBENTO_JSON,
+        "application/json",
+        ExportEncodingV1.UTF8,
+        "{}",
+        "digest",
+      )
+    assertEquals(artifact, json.decodeFromString<ExportArtifactV1>(json.encodeToString(artifact)))
+
+    val kobento = ExportCapabilitiesV1.Builder().apply { kobentoJson = true }.build()
+    val advertised = json.encodeToJsonElement(kobento).jsonObject
+    assertEquals(JsonPrimitive(true), advertised["kobentoJson"])
+    assertNull(advertised["remoteJson"])
+    assertNull(advertised["remoteDocument"])
+    assertEquals(kobento, json.decodeFromJsonElement<ExportCapabilitiesV1>(advertised))
+    assertTrue(kobento.newBuilder().build().kobentoJson)
+
+    val old = """{"composeCode":false,"svg":false,"png":false,"bundle":false}"""
+    assertFalse(json.decodeFromString<ExportCapabilitiesV1>(old).kobentoJson)
+  }
 }

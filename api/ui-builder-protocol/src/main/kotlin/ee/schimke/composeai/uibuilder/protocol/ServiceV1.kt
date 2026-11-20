@@ -146,8 +146,9 @@ public data class ExportDesignRequestV1(
  * that named it, so a client too old to decode the name never receives it. Whether a server can
  * produce one at all is [ExportCapabilitiesV1.bundle], which defaults to false for exactly that
  * reason. The three `WFF_*` members follow the same rule, gated by [ExportCapabilitiesV1.wffXml],
- * [ExportCapabilitiesV1.wffBundle] and [ExportCapabilitiesV1.wffApk]; the media type of each
- * artifact travels in [ExportArtifactV1.mediaType], so the contract carries no extension table.
+ * [ExportCapabilitiesV1.wffBundle] and [ExportCapabilitiesV1.wffApk], and [KOBENTO_JSON] by
+ * [ExportCapabilitiesV1.kobentoJson]; the media type of each artifact travels in
+ * [ExportArtifactV1.mediaType], so the contract carries no extension table.
  */
 @Serializable
 public enum class ExportFormatV1 {
@@ -176,6 +177,12 @@ public enum class ExportFormatV1 {
    * `application/vnd.android.package-archive`.
    */
   @SerialName("wff-apk") WFF_APK,
+  /**
+   * Kobento component JSON: the design lowered to a Kobento screen whose components name entries of
+   * Kobento's component library, for Kobento's `convert` to compile into a Remote Compose document.
+   * UTF8, `application/json`. Gated by [ExportCapabilitiesV1.kobentoJson].
+   */
+  @SerialName("kobento-json") KOBENTO_JSON,
 }
 
 /** Response payloads shared by HTTP handlers and MCP tools. */
