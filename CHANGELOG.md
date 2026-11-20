@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.45.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.44.0...v3.45.0) (2026-11-20)
+
+
+### Features
+
+* **ui-builder:** add the Kobento component JSON export format ([#232](https://github.com/yschimke/compose-preview-contracts/issues/232)) ([e485668](https://github.com/yschimke/compose-preview-contracts/commit/e4856680d0e171019288388087581b5e302d3ae2))
+
 ## [3.44.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.43.0...v3.44.0) (2026-11-19)
 
 
