@@ -649,6 +649,11 @@ internal constructor(
   @EncodeDefault(EncodeDefault.Mode.NEVER) public val wffBundle: Boolean = false,
   /** Designs export as a resource-only debug-signed APK ([ExportFormatV1.WFF_APK]). */
   @EncodeDefault(EncodeDefault.Mode.NEVER) public val wffApk: Boolean = false,
+  /**
+   * Designs export as Kobento component JSON ([ExportFormatV1.KOBENTO_JSON]). True only for a
+   * catalog of Kobento's component library; individual designs can still report lowering errors.
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) public val kobentoJson: Boolean = false,
 ) {
   /**
    * Builds an [ExportCapabilitiesV1]; see [WasmCapabilityV1.Builder] for why the constructor is
@@ -664,6 +669,7 @@ internal constructor(
     public var wffXml: Boolean = false
     public var wffBundle: Boolean = false
     public var wffApk: Boolean = false
+    public var kobentoJson: Boolean = false
 
     public fun build(): ExportCapabilitiesV1 =
       ExportCapabilitiesV1(
@@ -676,6 +682,7 @@ internal constructor(
         wffXml,
         wffBundle,
         wffApk,
+        kobentoJson,
       )
   }
 
@@ -691,6 +698,7 @@ internal constructor(
       it.wffXml = wffXml
       it.wffBundle = wffBundle
       it.wffApk = wffApk
+      it.kobentoJson = kobentoJson
     }
 }
 
