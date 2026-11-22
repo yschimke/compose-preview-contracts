@@ -70,7 +70,11 @@ public object DeploymentApisV1 {
    */
   public const val UI_BUILDER_ROOT_OFFLINE: String = "ui-builder-root-offline"
 
-  /** The preview server's catalog read API; see DEPLOYMENT_PROTOCOL.md (not yet typed). */
+  /**
+   * The preview server's catalog read API (`/status.json`, `/{system}/api/previews`, the published
+   * `/{system}/render/{previewId}.png`). The routes are typed in `component-catalog-protocol`
+   * (`CatalogReadRoutesV1`); see `docs/design/CATALOG_READ_API.md`.
+   */
   public const val CATALOG_READ: String = "catalog-read"
 
   /** The render / export request; see DEPLOYMENT_PROTOCOL.md (not yet typed). */
