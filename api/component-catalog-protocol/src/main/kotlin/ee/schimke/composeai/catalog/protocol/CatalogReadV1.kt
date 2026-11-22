@@ -10,11 +10,13 @@ import kotlinx.serialization.json.JsonObject
  * The preview server's **catalog read API**: the routes a client outside the server reads catalogs
  * and their previews from, by method and path.
  *
- * Derived from compose-preview-server 3.192.0, which serves every route here today, so the server
- * already conforms. The route table, the credentials, caching, the gaps (data the hosted catalog
- * MCP reads in process that no route serves) and how the set is versioned are in
- * `docs/design/CATALOG_READ_API.md`. Path templates name their parameters in braces; a client
- * substitutes the percent-encoded path segment.
+ * Level 1 was derived from compose-preview-server 3.192.0, which serves every level-1 route, so the
+ * server conforms unchanged. Level 2 adds the capabilities, history and guidelines routes, the
+ * `ETag` on every JSON read and [CatalogReadPreviewsV1.revision], typed from the bodies of the
+ * server change that first serves them (compose-preview-server#2092). The route table, the
+ * credentials, caching, the gaps (data the hosted catalog MCP reads in process that no route
+ * serves) and how the set is versioned are in `docs/design/CATALOG_READ_API.md`. Path templates
+ * name their parameters in braces; a client substitutes the percent-encoded path segment.
  *
  * Every JSON body here is decoded with `ignoreUnknownKeys = true`: the types are the part of each
  * body a client may rely on, and the server sends more (operator counters, engagement, caches).
@@ -28,12 +30,26 @@ public object CatalogReadRoutesV1 {
    */
   public const val API_NAME: String = "catalog-read"
 
-  /** The level of [API_NAME] these routes describe. */
-  public const val API_LEVEL: Int = 1
+  /**
+   * [STATUS_PATH], [PREVIEWS_PATH] and [RENDER_PNG_PATH] (with [PIN_QUERY]): what every preview
+   * server since 3.192.0 serves.
+   */
+  public const val API_LEVEL_1: Int = 1
 
   /**
-   * The `serveSchema` a preview server's `/version` reports when it serves level 1 of this API.
-   * Until the server reports `apis["catalog-read"]` itself, this is how a client detects it.
+   * Level 1 plus [CAPABILITIES_PATH], [HISTORY_PATH], [PREVIEW_HISTORY_PATH], [GUIDELINES_PATH],
+   * [ETAG_HEADER] / [IF_NONE_MATCH_HEADER] revalidation on those four and [PREVIEWS_PATH], and
+   * [CatalogReadPreviewsV1.revision]. Only additions: a level-1 reader reads a level-2 server.
+   */
+  public const val API_LEVEL_2: Int = 2
+
+  /** The level of [API_NAME] these routes describe: [API_LEVEL_2]. */
+  public const val API_LEVEL: Int = API_LEVEL_2
+
+  /**
+   * The `serveSchema` a preview server's `/version` reports when it serves this API, at level 1 or
+   * 2: the server did not change it for level 2. Until the server reports `apis["catalog-read"]`
+   * itself, this says level 1 at least, and an [ETAG_HEADER] on [PREVIEWS_PATH] says level 2.
    */
   public const val SERVE_SCHEMA: String = "compose-preview-serve/v3"
 
@@ -98,6 +114,63 @@ public object CatalogReadRoutesV1 {
 
   /** The `Retry-After` seconds a still-loading catalog is answered with. */
   public const val LOADING_RETRY_AFTER_SECONDS: Int = 3
+
+  /**
+   * Level 2. `GET`: what each preview of one catalog can answer, as a [CatalogReadCapabilitiesV1].
+   * Leases the catalog as [PREVIEWS_PATH] does, with the same `503` and `404`.
+   */
+  public const val CAPABILITIES_PATH: String = "/{system}/api/capabilities"
+
+  /** [CAPABILITIES_PATH] for the catalog [SESSION_QUERY] names, or the host's default. */
+  public const val ROOT_CAPABILITIES_PATH: String = "/api/capabilities"
+
+  /**
+   * Level 2. `GET`: where one catalog's history lives and the delivery commit it serves, as a
+   * [CatalogReadHistoryV1].
+   */
+  public const val HISTORY_PATH: String = "/{system}/api/history"
+
+  /** [HISTORY_PATH] for the catalog [SESSION_QUERY] names, or the host's default. */
+  public const val ROOT_HISTORY_PATH: String = "/api/history"
+
+  /**
+   * Level 2. `GET`: one preview's render timeline, as a [CatalogReadPreviewHistoryV1]. `404`, text
+   * `no such preview`, for a preview the catalog does not have.
+   */
+  public const val PREVIEW_HISTORY_PATH: String = "/{system}/api/history/{previewId}"
+
+  /** [PREVIEW_HISTORY_PATH] for the catalog [SESSION_QUERY] names, or the host's default. */
+  public const val ROOT_PREVIEW_HISTORY_PATH: String = "/api/history/{previewId}"
+
+  /**
+   * Level 2. `GET`: one preview's published guidelines result, as a [CatalogReadGuidelinesV1].
+   * `404`, text `no such preview`, for a preview the catalog does not have; `200` with `found:
+   * false` for one with no result.
+   */
+  public const val GUIDELINES_PATH: String = "/{system}/api/guidelines/{previewId}"
+
+  /** [GUIDELINES_PATH] for the catalog [SESSION_QUERY] names, or the host's default. */
+  public const val ROOT_GUIDELINES_PATH: String = "/api/guidelines/{previewId}"
+
+  /**
+   * Level 2. The validator on every `200` of [PREVIEWS_PATH], [CAPABILITIES_PATH], [HISTORY_PATH],
+   * [PREVIEW_HISTORY_PATH] and [GUIDELINES_PATH]: always weak, `W/"…"`, and opaque. A refusal never
+   * carries one.
+   */
+  public const val ETAG_HEADER: String = "ETag"
+
+  /**
+   * Level 2. A request header naming [ETAG_HEADER] values the client holds; a match (weak
+   * comparison, or `*`) answers `304 Not Modified` with no body and the same [ETAG_HEADER].
+   */
+  public const val IF_NONE_MATCH_HEADER: String = "If-None-Match"
+
+  /**
+   * Level 2. The `Cache-Control` on [CAPABILITIES_PATH], [HISTORY_PATH], [PREVIEW_HISTORY_PATH] and
+   * [GUIDELINES_PATH]: keep a copy, revalidate it every time, never in a shared cache.
+   * [PREVIEWS_PATH] sends no `Cache-Control`.
+   */
+  public const val READ_CACHE_CONTROL: String = "private, no-cache"
 }
 
 /**
@@ -360,6 +433,13 @@ internal constructor(
   /** Landing-page visits since the server started. Engagement, not identity. */
   @EncodeDefault public val views: Long = 0,
   @EncodeDefault public val previews: List<CatalogReadPreviewV1> = emptyList(),
+  /**
+   * Level 2. The delivery-branch commit the catalog was loaded from, the revision [previews]
+   * describe; null for a catalog with none (an uploaded bundle, a local project, a daemon-backed
+   * module) and absent from a level-1 server. Names the revision; the response's
+   * [CatalogReadRoutesV1.ETAG_HEADER] is what to cache against.
+   */
+  @EncodeDefault public val revision: String? = null,
 ) {
   /**
    * Additive construction API; see `CatalogCapabilityV1.Builder` in `ui-builder-protocol` for why
@@ -373,9 +453,19 @@ internal constructor(
     public var degradations: List<CatalogReadDegradationV1> = emptyList()
     public var views: Long = 0
     public var previews: List<CatalogReadPreviewV1> = emptyList()
+    public var revision: String? = null
 
     public fun build(): CatalogReadPreviewsV1 =
-      CatalogReadPreviewsV1(schema, module, catalogVersion, trust, degradations, views, previews)
+      CatalogReadPreviewsV1(
+        schema,
+        module,
+        catalogVersion,
+        trust,
+        degradations,
+        views,
+        previews,
+        revision,
+      )
   }
 
   /** This body as a [Builder]. Replaces `copy`. */
@@ -387,6 +477,7 @@ internal constructor(
       it.degradations = degradations
       it.views = views
       it.previews = previews
+      it.revision = revision
     }
 }
 

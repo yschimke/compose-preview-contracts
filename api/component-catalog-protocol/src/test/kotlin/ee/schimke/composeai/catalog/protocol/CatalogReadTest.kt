@@ -155,10 +155,28 @@ class CatalogReadTest {
   }
 
   @Test
-  fun `the api is catalog-read level 1`() {
+  fun `the api is catalog-read level 2, and level 1 is still named`() {
     assertEquals("catalog-read", CatalogReadRoutesV1.API_NAME)
-    assertEquals(1, CatalogReadRoutesV1.API_LEVEL)
+    assertEquals(2, CatalogReadRoutesV1.API_LEVEL)
+    assertEquals(1, CatalogReadRoutesV1.API_LEVEL_1)
+    assertEquals(CatalogReadRoutesV1.API_LEVEL, CatalogReadRoutesV1.API_LEVEL_2)
     assertEquals("compose-preview-serve/v3", CatalogReadRoutesV1.SERVE_SCHEMA)
+  }
+
+  @Test
+  fun `previews carry the served revision`() {
+    val body = decodeProjected(CatalogReadPreviewsV1.serializer(), CatalogReadGoldens.PREVIEWS)
+    assertEquals(CatalogReadGoldens.SERVED, body.revision)
+    assertEquals(body, body.newBuilder().build())
+  }
+
+  @Test
+  fun `a level-1 previews body, with no revision key, still decodes`() {
+    val level1 =
+      JsonObject(Json.parseToJsonElement(CatalogReadGoldens.PREVIEWS).jsonObject - "revision")
+    val body = readerJson.decodeFromJsonElement(CatalogReadPreviewsV1.serializer(), level1)
+    assertNull(body.revision)
+    assertEquals(2, body.previews.size)
   }
 
   private fun <T> decodeProjected(serializer: KSerializer<T>, body: String): T {
@@ -194,6 +212,9 @@ class CatalogReadTest {
 }
 
 internal object CatalogReadGoldens {
+  /** The delivery commit the catalog was loaded from: #2092's tests' `served`. */
+  const val SERVED: String = "4444444444444444444444444444444444444444"
+
   private const val APK_DISABLED =
     "catalog-native-render-disabled: wfRenderer 'dwf-apk' renders a catalog's watch face on the " +
       "Android watch-face runtime, which this server has switched off for catalog renders"
@@ -361,6 +382,7 @@ internal object CatalogReadGoldens {
           ),
         ),
       views = 17,
+      revision = SERVED,
       previews =
         listOf(
           ServerPreviewDto(
@@ -426,7 +448,8 @@ internal object CatalogReadGoldens {
       """"badgeLabel":"dwf → apk","available":false,"unavailableReason":"$APK_DISABLED",""" +
       """"supportsLiveOverrides":false,"isDefault":false},{"id":"dwf-rc",""" +
       """"label":"DWF RemoteCompose","badgeLabel":"dwf → rc-jvm","available":true,""" +
-      """"unavailableReason":null,"supportsLiveOverrides":true,"isDefault":true}]}]}"""
+      """"unavailableReason":null,"supportsLiveOverrides":true,"isDefault":true}]}],""" +
+      """"revision":"$SERVED"}"""
 
   /**
    * data-preview-overrides-core's `PreviewOverrideDeclaration` as the server writes it, every
