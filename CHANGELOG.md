@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.46.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.45.0...v3.46.0) (2026-11-22)
+
+
+### Features
+
+* add deployment-protocol (deployable endpoints, release manifest, session whoami) ([#236](https://github.com/yschimke/compose-preview-contracts/issues/236)) ([289328f](https://github.com/yschimke/compose-preview-contracts/commit/289328ffdb03932d084525a63a66feb526d542eb))
+* **catalog:** type the catalog read API the hosted MCP reads ([#239](https://github.com/yschimke/compose-preview-contracts/issues/239)) ([024661b](https://github.com/yschimke/compose-preview-contracts/commit/024661ba9e0c839c589f55a48af5aeb59713e524))
+* **ui-builder:** type the HTTP routes ha-designs calls ([#238](https://github.com/yschimke/compose-preview-contracts/issues/238)) ([3fe57b3](https://github.com/yschimke/compose-preview-contracts/commit/3fe57b3f1b51700b07bbfce10bf90495d35747e6))
+
 ## [3.45.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.44.0...v3.45.0) (2026-11-20)
 
 
