@@ -5,7 +5,8 @@ import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 
 /*
- * Test-only copies of compose-preview-server 3.192.0's private response DTOs, field for field and in
+ * Test-only copies of compose-preview-server 3.192.0's private response DTOs (and, below and on
+ * `ServerPreviewsResponse.revision`, of #2092's), field for field and in
  * declaration order, so the goldens in [CatalogReadGoldens] are pinned to what the server's own
  * serializer writes (`ServeHttpServer`'s companion `JSON = Json { encodeDefaults = true }`).
  *
@@ -153,6 +154,8 @@ internal data class ServerPreviewsResponse(
   val degradations: List<ServerDegradationDto> = emptyList(),
   val views: Long = 0,
   val previews: List<ServerPreviewDto>,
+  /** Added by compose-preview-server#2092 (`catalog-read` level 2), as the last field. */
+  val revision: String? = null,
 )
 
 @Serializable internal data class ServerDegradationDto(val code: String, val detail: String)
@@ -182,4 +185,86 @@ internal data class ServerWatchFaceRendererInfo(
   val unavailableReason: String? = null,
   val supportsLiveOverrides: Boolean = false,
   val isDefault: Boolean = false,
+)
+
+/*
+ * compose-preview-server#2092's `ServeCatalogRead.kt` DTOs (`catalog-read` level 2), field for field
+ * and in declaration order. `record` is the server's `GuidelineRecordV1`, held as the JSON
+ * design-guidelines-protocol's serializer writes for it under the server's `Json`, for the same
+ * reason the knobs above are JSON.
+ */
+
+@Serializable
+internal data class ServerCatalogCapabilitiesResponse(
+  val schema: String = "compose-preview-serve/capabilities/v1",
+  val revision: String? = null,
+  val previews: List<ServerPreviewCapabilitiesDto>,
+)
+
+@Serializable
+internal data class ServerPreviewCapabilitiesDto(
+  val id: String,
+  val dataProductKinds: List<String>,
+  val productKinds: List<String>,
+  val svgAvailable: Boolean,
+  val scrollAvailable: Boolean,
+  val state: String? = null,
+  val theme: String? = null,
+  val a11yOverlay: Boolean,
+  val designAnnotations: Boolean,
+  val publishedTypography: Boolean,
+  val guidelinesResult: Boolean,
+)
+
+@Serializable
+internal data class ServerCatalogHistoryResponse(
+  val schema: String = "compose-preview-serve/history/v1",
+  val mode: String,
+  val repo: String? = null,
+  val branch: String? = null,
+  val commit: String? = null,
+  val manifestUrl: String? = null,
+  val renderUrlTemplate: String? = null,
+  val publishesManifest: Boolean = false,
+  val reason: String? = null,
+)
+
+@Serializable
+internal data class ServerPreviewHistoryResponse(
+  val schema: String = "compose-preview-serve/preview-history/v1",
+  val previewId: String,
+  val mode: String,
+  val repo: String? = null,
+  val branch: String? = null,
+  val commit: String? = null,
+  val manifestUrl: String? = null,
+  val renderUrlTemplate: String? = null,
+  val reason: String? = null,
+  val path: String? = null,
+  val observations: Int? = null,
+  val unstable: Boolean? = null,
+  val flapCount: Int? = null,
+  val versions: List<ServerHistoryVersionDto>? = null,
+)
+
+@Serializable
+internal data class ServerHistoryVersionDto(
+  val commit: String,
+  val date: String,
+  val blob: String,
+  val commits: Int,
+  val sourceSha: String? = null,
+  val sinceCommit: String? = null,
+  val occurrences: Int? = null,
+  val renderUrl: String,
+)
+
+@Serializable
+internal data class ServerPreviewGuidelinesResponse(
+  val schema: String = "compose-preview-serve/guidelines/v1",
+  val revision: String? = null,
+  val kind: String = "guidelines/result",
+  val previewId: String,
+  val found: Boolean,
+  val record: JsonElement? = null,
 )

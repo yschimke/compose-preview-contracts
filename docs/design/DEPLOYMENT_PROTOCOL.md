@@ -210,13 +210,15 @@ load state, provenance), a catalog's previews and their metadata, and the publis
 **Partly typed**: [CATALOG_READ_API.md](CATALOG_READ_API.md) writes down the routes the server
 already serves for what the hosted catalog MCP reads: `GET /status.json` (its catalog list),
 `GET /{system}/api/previews` and the published `GET /{system}/render/{previewId}.png` (with `?at=`
-pinning), their credentials, caching and irregularities, and `catalog-read` level 1. The types
+pinning), their credentials, caching and irregularities: `catalog-read` level 1. Level 2 adds the
+routes the server gained to close level 1's gaps: `GET /{system}/api/capabilities`,
+`/api/history`, `/api/history/{previewId}` and `/api/guidelines/{previewId}`, with an `ETag` /
+`304` on those and `/api/previews` and a `revision` on the latter. The types
 (`CatalogReadRoutesV1`, `CatalogReadCredentialsV1`, `CatalogReadStatusV1`,
-`CatalogReadPreviewsV1`, …) are in `component-catalog-protocol` rather than here, because the UI
-builder's Wasm editor is the API's second client and this module is JVM only. It also lists the
-**gaps**, data the MCP reads in process that no route serves (per-preview capabilities, the history
-timeline and served commit, a preview's guidelines result), as server additions for a later level,
-and what the MCP's render tools need from the render request, which is not typed yet.
+`CatalogReadPreviewsV1`, `CatalogReadCapabilitiesV1`, `CatalogReadHistoryV1`, …) are in
+`component-catalog-protocol` rather than here, because the UI builder's Wasm editor is the API's
+second client and this module is JVM only. It also lists what the MCP's render tools need from the
+render request (`catalog-render`), which is not typed yet.
 
 Not covered yet: the UI builder's catalog reads, `/api/components`,
 `/api/ui-builder/v1/component-library[/{system}/{componentId}[/file]]`,

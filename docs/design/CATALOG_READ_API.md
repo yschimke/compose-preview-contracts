@@ -14,12 +14,16 @@ as its own container. Today it reads catalogs through the server's in-process
 to fetch the same data from the server over HTTP, and the two release trains have to agree on those
 routes, so the agreement goes to layer 0.
 
-This first cut types **the routes the server already serves** that carry what the MCP reads, and
-lists the rest as gaps. **Every shape was derived from the server's current code**
-(compose-preview-server 3.192.0: `ServeHttpServer.kt`, `ServeCatalogMcp.kt`,
-`ServeMachineAuthorization.kt`), so the server conforms without a change. `CatalogReadTest` holds
-the goldens: the server's bodies as its own serializer writes them, pinned against test-only copies
-of its private DTOs, then decoded as the contract types.
+**Level 1** typed the routes the server already served that carry what the MCP reads, and listed the
+rest as four gaps. Every level-1 shape was derived from the server's code (compose-preview-server
+3.192.0: `ServeHttpServer.kt`, `ServeCatalogMcp.kt`, `ServeMachineAuthorization.kt`), so the server
+conformed without a change. **Level 2** types the routes compose-preview-server#2092 added to close
+those gaps (`ServeCatalogRead.kt`): per-preview capabilities, the catalog's history and one
+preview's timeline, a preview's guidelines result, and an `ETag` plus a `revision` field on
+`/{system}/api/previews`. `CatalogReadTest` (level 1) and `CatalogReadLevel2Test` hold the goldens:
+the server's bodies as its own serializer writes them, pinned against test-only copies of its
+private DTOs, then decoded as the contract types (the level-2 bodies strictly, since they are typed
+whole).
 
 The render request (a made-to-order render with overrides, an SVG, semantics, a data product) is a
 separate contract and is **not** typed here; see [the last section](#render-request-not-yet-typed).
@@ -35,14 +39,27 @@ In **`component-catalog-protocol`**, not `deployment-protocol`:
 - **It has two clients, and one is Wasm.** DEPLOYMENT_PROTOCOL §4a names the UI builder as a reader
   of this API beside the MCP. `component-catalog-protocol` has JVM and Wasm variants;
   `deployment-protocol` is JVM only.
-- **No new dependency.** The module still depends on `kotlinx-serialization-json` alone. Two parts
-  of a preview's metadata belong to modules it must not take on: a knob is a
+- **No new dependency.** The module still depends on `kotlinx-serialization-json` alone. Three
+  shapes belong to modules it must not take on: a knob is a
   `PreviewOverrideDeclaration` (`data-preview-overrides-core`, JVM only) and a watch face is
   compose-ai-tools' `WatchFaceComplicationsPayload` (layer 1b). The first is projected to
   `CatalogReadKnobV1`, the part a reader needs; the second is an opaque `JsonObject`. The goldens
   hold the knob JSON `PreviewOverrideDeclaration`'s serializer writes, as a literal: even a
   test-only `project(…)` dependency would make `maven-publish-plan.sh` republish this module
   whenever that one changes.
+- **The guidelines record is opaque too.** `CatalogReadGuidelinesV1.record` is a
+  `GuidelineRecordV1` from `design-guidelines-protocol`, which is in this repository, at layer 0,
+  JVM and Wasm, and depends on nothing but `kotlinx-serialization-json`: taking it would be
+  technically clean. It is still a `JsonObject`, for what it would do to consumers and releases.
+  Every client of this module would resolve a second coordinate and its ABI, including compose-ai-tools'
+  Gradle plugin, which reads only the catalog wire files and has no use for guidelines; and
+  `maven-publish-plan.sh`'s rule 2 republishes a module whenever a dependency of it publishes, so
+  every guidelines change would cut a new `component-catalog-protocol` the catalog files did not
+  need. The record carries its own `schema` (`CatalogReadGuidelinesV1.RECORD_SCHEMA`), and a reader
+  that wants it typed — the MCP, which already links `design-guidelines-protocol` — decodes it with
+  `GuidelineRecordV1.serializer()` in one call. The golden holds the record's JSON as
+  `GuidelineRecordV1`'s serializer writes it under the server's `Json`, as a literal, for the same
+  reason the knob JSON is one.
 
 | Kotlin | what it is |
 | --- | --- |
@@ -50,11 +67,21 @@ In **`component-catalog-protocol`**, not `deployment-protocol`:
 | `CatalogReadCredentialsV1` | the credential headers, query parameter and cookies the server reads |
 | `CatalogReadStatusV1`, `CatalogReadCatalogV1` | the catalog part of `GET /status.json` (server-private `StatusResponse`, `CatalogDto`) |
 | `CatalogReadPreviewsV1`, `CatalogReadPreviewV1`, `CatalogReadDegradationV1`, `CatalogReadKnobV1`, `CatalogReadWatchFaceRendererV1` | the body of `GET /{system}/api/previews` (server-private `PreviewsResponse`, `PreviewDto`, `DegradationDto`; render-host's `WatchFaceRendererInfo`) |
+| `CatalogReadCapabilitiesV1`, `CatalogReadPreviewCapabilitiesV1` | level 2: `GET /{system}/api/capabilities` (server-private `CatalogCapabilitiesResponse`, `PreviewCapabilitiesDto`) |
+| `CatalogReadHistoryV1` | level 2: `GET /{system}/api/history` (`CatalogHistoryResponse`) |
+| `CatalogReadPreviewHistoryV1`, `CatalogReadHistoryVersionV1` | level 2: `GET /{system}/api/history/{previewId}` (`PreviewHistoryResponse`, `HistoryVersionDto`) |
+| `CatalogReadGuidelinesV1` | level 2: `GET /{system}/api/guidelines/{previewId}` (`PreviewGuidelinesResponse`) |
 
 Every type is on the Builder pattern ([AGENTS.md](../../AGENTS.md)). Every field the server always
 writes (its `Json` sets `encodeDefaults = true`) is `@EncodeDefault`, so a second host or a test
 double built with these types writes the server's bytes whatever its encoder's settings. A field
-added later is a Builder `var` with `@EncodeDefault(NEVER)`.
+added later is a Builder `var` at the end of the internal constructor, `@EncodeDefault` when the
+server always writes it (as `CatalogReadPreviewsV1.revision`: a level-2 server writes
+`"revision": null` for a catalog with none) and `@EncodeDefault(NEVER)` when it leaves it out.
+
+**Absent and `null` read the same.** The server writes an absent optional as `null`; every optional
+field here defaults to `null` (or `false`, or empty), so a body from a writer that leaves them out
+decodes to the same value. `CatalogReadLevel2Test` checks every level-2 golden both ways.
 
 **Decode every body with `ignoreUnknownKeys = true`.** The types are the part of each body a reader
 may rely on. `/status.json` is the operator status and also carries daemons, configuration,
@@ -63,7 +90,7 @@ counters are engagement since the server started, never identity.
 
 ## What the MCP reads, and where it comes from
 
-Every read `ServeCatalogMcp` makes of the registry or a host, mapped to a route or a gap:
+Every read `ServeCatalogMcp` makes of the registry or a host, mapped to a route:
 
 | the MCP reads (in process) | used by | served by |
 | --- | --- | --- |
@@ -74,13 +101,13 @@ Every read `ServeCatalogMcp` makes of the registry or a host, mapped to a route 
 | each preview's declared knobs (`seedKey`, `type`) | `list_previews` `knobs`, override validation | `previews[].overrides` → `CatalogReadKnobV1.seedKey` |
 | whether a preview is a watch face, its slot and user-configuration counts | `list_previews`, override validation | `previews[].watchFace` (`slots`, `userConfigurations`) |
 | the watch-face renderer backends and their availability | `list_previews`, `wfRenderer` resolution | `previews[].watchFaceRenderers` |
-| `svgAvailable`, `scrollAvailable`, `state`, `theme`, `dataProductKinds` per preview | `list_previews`, `list_data_products`, `observe=svg` / `scroll-*` refusals | **gap 1** |
-| whether a preview has an a11y overlay, design annotations, published typography, a guidelines result | `list_data_products` | **gap 1** |
+| `svgAvailable`, `scrollAvailable`, `state`, `theme`, `dataProductKinds` per preview | `list_previews`, `list_data_products`, `observe=svg` / `scroll-*` refusals | level 2: `GET /{system}/api/capabilities` |
+| whether a preview has an a11y overlay, design annotations, published typography, a guidelines result | `list_data_products` | level 2: `GET /{system}/api/capabilities` (`productKinds` is `list_data_products`' derived set) |
 | the published render (`bakedRender`) | `resources/read`, `render_preview` without live scope, `catalog_library` | `GET /{system}/render/{previewId}.png` |
-| the catalog's delivery-branch provenance (`repo`, `branch`, served `commit`) | `history_list` | `repo`, `branch` in `/status.json`; the served commit is **gap 2** |
-| a preview's indexed timeline (`indexedTimeline`: path, observations, unstable, flapCount, versions) | `history_list`, `history_diff`, `history_read` | **gap 2** |
+| the catalog's delivery-branch provenance (`repo`, `branch`, served `commit`) | `history_list` | level 2: `GET /{system}/api/history` (also `repo`, `branch` in `/status.json`) |
+| a preview's indexed timeline (`indexedTimeline`: path, observations, unstable, flapCount, versions) | `history_list`, `history_diff`, `history_read` | level 2: `GET /{system}/api/history/{previewId}` |
 | one historical render's bytes (`pinnedIndexedRender`) | `history_read` | `GET /{system}/render/{previewId}.png?at=<commit>`, with a path difference (see irregularities) |
-| a preview's published guidelines result (`guidelineResultFor`, a `GuidelineRecordV1`) | `get_preview_data kind=guidelines/result` | **gap 3** |
+| a preview's published guidelines result (`guidelineResultFor`, a `GuidelineRecordV1`) | `get_preview_data kind=guidelines/result` | level 2: `GET /{system}/api/guidelines/{previewId}` |
 | the device catalog (`DeviceDimensions`) | `list_devices` | no route needed: `daemon-devices` is a layer-0 library the MCP links |
 | the host's public origin and its aliases | `status`, `initialize`, signed image URLs | MCP deployment configuration, not a route |
 | live renders, SVG, semantics, data products, matrices, semantics diffs | the render tools | the render request ([below](#render-request-not-yet-typed)) |
@@ -107,7 +134,15 @@ segment.
 | `GET` | `/{system}/api/previews` (or `/api/previews?session={system}`) | read credential | `200` `CatalogReadPreviewsV1` |
 | `GET` | `/{system}/render/{previewId}.png` (or `/render/{previewId}.png?session={system}`) | read credential | `200` `image/png` |
 | `GET` | `/{system}/render/{previewId}.png?at=<commit>` | read credential | `200` `image/png`, as published at that commit |
+| `GET` | `/{system}/api/capabilities` (level 2) | read credential | `200` `CatalogReadCapabilitiesV1` |
+| `GET` | `/{system}/api/history` (level 2) | read credential | `200` `CatalogReadHistoryV1` |
+| `GET` | `/{system}/api/history/{previewId}` (level 2) | read credential | `200` `CatalogReadPreviewHistoryV1` |
+| `GET` | `/{system}/api/guidelines/{previewId}` (level 2) | read credential | `200` `CatalogReadGuidelinesV1` |
 | `GET` | `/version` | none | `DeployableVersionV1` ([DEPLOYMENT_PROTOCOL.md](DEPLOYMENT_PROTOCOL.md#the-version-body)) |
+
+Each level-2 route also answers as `/api/…?session={system}` (`CatalogReadRoutesV1.ROOT_…_PATH`),
+like `/api/previews`. Every `200` of `/api/previews` and the four level-2 routes carries an `ETag`
+(see [caching](#caching-validators-and-paging)).
 
 ### `GET /status.json`
 
@@ -148,9 +183,45 @@ ref. Unanswerable is `404` (never today's bytes); combined with a render paramet
 `HEAD` is answered where the `GET` would replay published bytes (unfurlers probe with it); a `HEAD`
 that would commission a render is refused.
 
+### `GET /{system}/api/capabilities` (level 2)
+
+What each preview can answer, in the catalog's order, unpaged, built from the calls the MCP's
+`list_previews` and `list_data_products` make. `dataProductKinds` is the preview's declared list;
+`productKinds` adds the derived kinds (`watchface/complications`, `a11y/hierarchy`,
+`guidelines/result`, `compose/annotations`, constants on `CatalogReadPreviewCapabilitiesV1`); both
+are sorted. `revision` is the served delivery commit, or `null`. It leases the catalog, with
+`/api/previews`' `503` and `404`.
+
+### `GET /{system}/api/history` (level 2)
+
+Where the catalog's history lives. `mode` is `published` (the delivery branch: `repo`, `branch` and
+the served `commit` are set), `local` (the server's own checkout, project mode) or `none` (with a
+`reason`), in that precedence. `renderUrlTemplate` substitutes `{commit}` and `{path}`;
+`publishesManifest` says the served tree carried a `history.json`, so the per-preview route can
+answer with a timeline. `manifestUrl` names that file at the branch head; its format is
+compose-ai-tools', not this contract.
+
+### `GET /{system}/api/history/{previewId}` (level 2)
+
+One preview's timeline, in all three modes, with the catalog's provenance fields repeated. With a
+timeline: `path`, `observations`, `unstable`, `flapCount`, and `versions` newest first, each with
+`commit`, `date`, `blob`, `commits`, `sourceSha`, `sinceCommit`, `occurrences` and the `renderUrl`
+serving those exact bytes. Two versions with the same `blob` have the same bytes: that is
+`history_diff`'s `changed`. Without one, `versions` is `null` and `reason` says why, never an empty
+list that would read as "never changed"; the one exception is `local` mode with fewer than two
+distinct renders, which answers `[]` with a `reason`, as `history_list` does. An unknown preview is
+`404`, text `no such preview`.
+
+### `GET /{system}/api/guidelines/{previewId}` (level 2)
+
+The preview's published guidelines result: `found: true` with the `GuidelineRecordV1` as `record`
+(opaque here; [above](#where-the-types-live-and-why)), or `found: false` with `record: null`.
+`kind` is always `guidelines/result`. `revision` is the served delivery commit, not the record's own
+integer `revision`. An unknown preview is `404`, text `no such preview`.
+
 ## Credentials
 
-The three routes share one gate (`rejectBadToken` → `isAuthorizedCall`):
+Every route here but `/version` shares one gate (`rejectBadToken` → `isAuthorizedCall`):
 
 | credential | presented as |
 | --- | --- |
@@ -174,8 +245,24 @@ grant introspection DEPLOYMENT_PROTOCOL §3 leaves to agent-grant-protocol.
 ## Caching, validators and paging
 
 - `/status.json`: `Cache-Control: no-store`. No `ETag`.
-- `/api/previews`: **no `Cache-Control` and no `ETag`**. A reader must not assume freshness across
-  requests; the body changes when a catalog refreshes in place.
+- `/api/previews`: **no `Cache-Control`**. At level 1, no `ETag` either: a reader must not assume
+  freshness across requests; the body changes when a catalog refreshes in place.
+- **Level 2: `ETag` and `If-None-Match`.** Every `200` of `/api/previews`, `/api/capabilities`,
+  `/api/history`, `/api/history/{previewId}` and `/api/guidelines/{previewId}` carries a weak
+  `ETag` (`W/"…"`). A request whose `If-None-Match` names it (weak comparison; `*` matches too) is
+  answered `304 Not Modified`, no body, the same `ETag`. A refusal (`404 not found`) carries no
+  `ETag`, so a validator never leaks what a gated host serves.
+  - The tag is **opaque**. The server builds it as the first 12 characters of the served commit,
+    when there is one, then a SHA-256 prefix of the body, but a reader only stores it and sends it
+    back; it never parses a revision out of it. Read `revision` (or `commit`) for that.
+  - It follows the body, not only the commit: a body can change at the same commit (a renderer comes
+    up, a degradation clears), and its tag changes with it.
+  - On `/api/previews` the digest leaves out the `views` engagement counters, which move on every
+    page open and are not catalog identity; that is why the tag is weak. A `304` there does not mean
+    the counters are unchanged.
+  - The four level-2 routes send `Cache-Control: private, no-cache`
+    (`CatalogReadRoutesV1.READ_CACHE_CONTROL`): keep a copy, revalidate every time, never in a shared
+    cache, since a gated catalog's data must not sit in one. `/api/previews` keeps sending none.
 - The published PNG, with no render parameters: `no-store` on a gated host; on a public host
   `public, max-age=300, stale-while-revalidate=3600`, or `public, max-age=31536000, immutable` when
   the request carries the catalog's current `?gen=`. A pinned `?at=` render is `immutable` on a
@@ -184,39 +271,43 @@ grant introspection DEPLOYMENT_PROTOCOL §3 leaves to agent-grant-protocol.
 - **Nothing is paged.** `/api/previews` returns the whole catalog (a large one is megabytes). The MCP
   pages its own answer (`offset`, `limit` 100 by default, at most 500, and a `query` over id and
   label) after reading it; that stays the MCP's behaviour, over a cached copy if it likes.
-- **Nothing is addressed by revision** except the PNG's `?at=`. There is no catalog revision or
-  generation id in either JSON body, so a reader cannot ask "has this catalog changed" short of
-  comparing bodies.
+- **Nothing is addressed by revision** except the PNG's `?at=`. At level 1 there is no catalog
+  revision in either JSON body; at level 2 `/api/previews`' `revision` (and the level-2 bodies'
+  `revision` or `commit`) names the delivery commit served, and the `ETag` is how a reader asks "has
+  this catalog changed" without re-downloading it. Neither selects a revision: every route answers
+  for the commit the server serves now.
 
-## Gaps: server additions the MCP needs
+## The level-1 gaps, now typed
 
-Data the MCP reads in process that no route serves today. None is invented here as a route; each is
-a server addition, then a new optional field or route at this API's next level (below).
+Level 1 listed four reads the MCP made in process that no route served. compose-preview-server#2092
+added a route or field for each, and level 2 types them:
 
-1. **Per-preview capabilities.** `dataProductKinds`, `svgAvailable` (`hasSvgExportFor`),
-   `scrollAvailable` (`hasScrollExportFor`), `state`, `theme`, and the derived product kinds
-   `a11y/hierarchy` (`hasA11yOverlayFor`), `compose/annotations` (`hasDesignAnnotationsFor` or
-   `hasPublishedTypographyFor`) and `guidelines/result`. The natural home is new optional fields on
-   `PreviewDto`; `watchface/complications` is already derivable from `watchFace != null`.
-2. **History.** The served delivery commit (`provenance.commit`: what `pinnedCommit` reports) and a
-   preview's indexed timeline: `path`, `observations`, `unstable`, `flapCount`, and each version's
-   `commit`, `date`, `blob`, `commits`, `sourceSha`, `occurrences`. The nearest route,
-   `GET /{system}/api/render-runs/{previewId}`, collapses revisions into runs and carries neither
-   blobs nor dates, so `history_diff`'s `changed` (blob equality) cannot be answered from it. The
-   delivery branch's `history.json` can be fetched from GitHub with `repo` and `branch`, but its
-   format is compose-ai-tools', and without the served commit a reader cannot pin it to the catalog
-   state the server serves.
-3. **A preview's published guidelines result**: the `GuidelineRecordV1`
-   (`design-guidelines-protocol`) the server holds per preview, with `found: false` when the catalog
-   publishes none.
-4. **A catalog revision to cache against.** Not read by the MCP today, but needed once it reads
-   `/api/previews` over the network: a generation id in the body, or an `ETag`, so a reader does not
-   re-download a megabyte catalog to learn nothing changed.
+| gap | what the MCP read | typed at level 2 as |
+| --- | --- | --- |
+| 1. per-preview capabilities | `dataProductKinds`, `hasSvgExportFor`, `hasScrollExportFor`, `state`, `theme`, and the derived `a11y/hierarchy`, `compose/annotations`, `guidelines/result` kinds | `GET /{system}/api/capabilities`: its own route rather than the new `PreviewDto` fields level 1 suggested |
+| 2. history | the served delivery commit (`provenance.commit`) and a preview's indexed timeline, with blobs and dates (`/api/render-runs` carries neither) | `GET /{system}/api/history` and `GET /{system}/api/history/{previewId}` |
+| 3. a preview's guidelines result | `guidelineResultFor`, a `GuidelineRecordV1` | `GET /{system}/api/guidelines/{previewId}` |
+| 4. a catalog revision to cache against | — (needed once the MCP reads `/api/previews` over the network) | the `ETag` / `304` on all five JSON reads, and `CatalogReadPreviewsV1.revision` |
 
 ## Irregularities the server has today
 
 Recorded so a reader reproduces them rather than guessing. Changing any is a decision about this
 API's level, not a bug fix:
+
+- **Level 2 is not announced.** The server that adds the level-2 routes still reports
+  `serveSchema: "compose-preview-serve/v3"` and no `apis` on `/version`, so a reader cannot tell
+  level 1 from level 2 there. An `ETag` on a `200` of `/api/previews` is the level-2 signal; a
+  level-2 route on a level-1 server answers as an unknown path does, which a reader cannot tell
+  from a refusal.
+- **Two names for the served commit.** `/api/previews`, `/api/capabilities` and `/api/guidelines`
+  call it `revision`; `/api/history` and `/api/history/{previewId}` call it `commit`, as the MCP's
+  `history_list` does. Same value.
+- **Two `revision`s in the guidelines body.** The body's is the served commit (a string); its
+  `record`'s is the record's own integer.
+- **A local-mode `renderUrl` is a path on the server.** In `local` mode each version's `renderUrl`
+  is `/history/render/<blob>.png`, to resolve against the answering server's origin, under the same
+  read credential, and served only in project mode. That route is not typed here; a `published`
+  `renderUrl` is an absolute `raw.githubusercontent.com` URL.
 
 - **Two names for a catalog.** `/status.json`'s `title` is the bundle's title, else the host's
   label; the MCP's `label` (and `/api/previews`' `module`) is the host's label. A catalog whose
@@ -245,21 +336,33 @@ API's level, not a bug fix:
 ## How the API is versioned
 
 The routes are the `catalog-read` API (`CatalogReadRoutesV1.API_NAME`, the same string as
-`DeploymentApisV1.CATALOG_READ`), at level **1** (`CatalogReadRoutesV1.API_LEVEL`): exactly what the
-server serves today.
+`DeploymentApisV1.CATALOG_READ`), now at level **2** (`CatalogReadRoutesV1.API_LEVEL`):
+
+| level | constant | what it is |
+| --- | --- | --- |
+| 1 | `API_LEVEL_1` | `/status.json`, `/{system}/api/previews`, the published render and `?at=`: what compose-preview-server 3.192.0 serves |
+| 2 | `API_LEVEL_2` | level 1 plus `/api/capabilities`, `/api/history`, `/api/history/{previewId}`, `/api/guidelines/{previewId}`, the `ETag` / `304` on those and `/api/previews`, and `/api/previews`' `revision`: what the server serves from the release that merges compose-preview-server#2092 |
+
+**Why closing the gaps is a level, though nothing is removed.** Level 2 is only additions, so a
+level-1 reader reads a level-2 server unchanged, and 1 keeps meaning exactly the level-1 routes. It
+is a level anyway because a reader has to know the new routes are there before it calls them: on a
+level-1 server they answer as an unknown path, which on these routes is indistinguishable from a
+refusal, so "try it and see" does not work. An MCP that requires them says `min: 2`; one that degrades without them
+keeps `min: 1`.
 
 - The server does not report `apis` on `/version` yet. Until it does, a reader takes
-  `serveSchema: "compose-preview-serve/v3"` (`CatalogReadRoutesV1.SERVE_SCHEMA`) as level 1. When
-  the server adopts `DeployableVersionV1`, it reports `apis["catalog-read"] = 1` through
-  `DeployableVersionV1.Builder.apis`; no field is added for it.
-- The MCP's release manifest says `requires["catalog-read"] = {min: 1, max: 1}`; a deploy tool checks
-  it against the server's `apis` before a rollout
+  `serveSchema: "compose-preview-serve/v3"` (`CatalogReadRoutesV1.SERVE_SCHEMA`) as level 1 at
+  least, and an `ETag` on `/api/previews` as level 2. When the server adopts `DeployableVersionV1`,
+  it reports `apis["catalog-read"] = 2` through `DeployableVersionV1.Builder.apis`; no field is
+  added for it.
+- The MCP's release manifest says `requires["catalog-read"] = {min: 2, max: 2}` once it reads the
+  level-2 routes, `{min: 1, max: 2}` while it can fall back; a deploy tool checks it against the
+  server's `apis` before a rollout
   ([DEPLOYMENT_PROTOCOL.md](DEPLOYMENT_PROTOCOL.md#how-a-deploy-tool-decides-convergence)).
 - **What bumps the level**: removing or renaming a route or a typed field, changing a status a reader
   branches on (`503` for loading, `404` for unknown), or changing what a route requires. **What does
-  not**: a new route, a new optional field through the Builder. The gaps above are additions, so
-  closing them is level 2 only because a reader needs to know they are there: an MCP that requires
-  them says `min: 2`, and one that degrades without them keeps `min: 1`.
+  not, by itself**: a new route, a new optional field through the Builder; level 2 is such a set,
+  made a level because a reader needs to know it is there (above).
 
 ## Render request: not yet typed
 
