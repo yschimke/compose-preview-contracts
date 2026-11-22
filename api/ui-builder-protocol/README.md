@@ -33,7 +33,10 @@ client, service and MCP adapter. It owns:
 - revisioned snapshots, ordered event deltas and presence updates;
 - independently revisioned ownership, actor ACL and opaque bearer-link sharing metadata, plus
   paginated actor-specific design listings;
-- request/response envelopes used over HTTP and by MCP tools;
+- request/response envelopes used over HTTP and by MCP tools, and the HTTP routes a client outside
+  the editor calls: their paths, the credential names the host reads, and the identity and admin
+  design-listing bodies (`UiBuilderHttpRoutesV1`, see
+  [`docs/design/UI_BUILDER_HTTP_ROUTES.md`](../../docs/design/UI_BUILDER_HTTP_ROUTES.md));
 - published template-document sets paired with their complete `CatalogReferenceV1`, for clients to
   validate and cache before offline creation (`CatalogTemplateDocumentsV1`).
 - catalog-owned renderer artifact, manifest, installed-descriptor, iframe-message and inspection
