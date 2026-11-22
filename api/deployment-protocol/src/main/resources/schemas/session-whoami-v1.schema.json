@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Session whoami (v1)",
+  "description": "Generated from the ee.schimke.composeai:deployment-protocol serializers; do not edit.",
+  "$ref": "#/$defs/SessionWhoamiV1",
+  "$defs": {
+    "SessionWhoamiV1": {
+      "type": "object",
+      "properties": {
+        "login": {
+          "type": "string"
+        },
+        "guest": {
+          "type": "boolean"
+        },
+        "scopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expiresAtEpochSeconds": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "login"
+      ]
+    }
+  }
+}

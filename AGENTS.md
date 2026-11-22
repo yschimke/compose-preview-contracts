@@ -131,7 +131,7 @@ even though the catalog no longer carries Robolectric.
 ## Releasing
 
 Merging the `chore(main): release X.Y.Z` pull request is the whole release: it cuts the tag,
-drafts the GitHub Release, publishes the changed subset of twenty-two coordinates from fourteen modules
+drafts the GitHub Release, publishes the changed subset of twenty-three coordinates from fifteen modules
 to Maven Central, then un-drafts. Which subset is `.github/scripts/maven-publish-plan.sh`'s call —
 rules and tests in [`docs/VERSIONING.md`](docs/VERSIONING.md#a-release-publishes-only-what-changed).
 Each KMP module (`component-catalog-protocol`, `design-guidelines-protocol`, `screen-document` and
@@ -139,7 +139,7 @@ Each KMP module (`component-catalog-protocol`, `design-guidelines-protocol`, `sc
 
 **A published coordinate is permanent.** Central does not accept a second upload of the same
 GAV, and `publishToMavenCentral(automaticRelease = true)` promotes without a human looking. So
-every check that can run before the upload does: `check` for all fourteen modules, the tag against
+every check that can run before the upload does: `check` for all fifteen modules, the tag against
 `.release-please-manifest.json`, a `publishToMavenLocal` dry run asserting each module produced a
 POM, and a credentials preflight that names any missing secret. The release stays a draft until
 the upload succeeds, so a failure never leaves a release announcing artifacts that are not there.

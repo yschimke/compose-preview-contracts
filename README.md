@@ -19,6 +19,7 @@ Extracted from [yschimke/compose-ai-tools](https://github.com/yschimke/compose-a
 | `design-guidelines-protocol` | the design-guideline vocabulary: a catalog's rules and picture frames, the request a guidelines model is sent and the recorded result, for every host that checks guidelines |
 | `component-catalog-protocol` | the catalog wire files: the component record discovery writes (`components.json`), the UI-builder policy a catalog authors, and the generated `ui-builder.json`; deriving and generating stay in compose-ai-tools |
 | `parity-issues-protocol` | the versioned catalog artifact that joins GitHub issues back to components, previews and design references |
+| `deployment-protocol` | what every container deployed beside the preview server shares with its deploy tooling and siblings: the `/healthz`, `/readyz` and `/version` endpoints, the release manifest a component publishes, and the session-whoami reply a sibling reads to authenticate a browser ([design](docs/design/DEPLOYMENT_PROTOCOL.md)) |
 | `build-artifacts-protocol` | the versioned artifacts file a non-Gradle build integration (a Bazel aspect, a wrapper) writes for one configured target: application and runtime jars, sources, runfiles and, for Android, the linked resources |
 
 `daemon-protocol` depends on **no other `ee.schimke.composeai` module**: the payload schemas that

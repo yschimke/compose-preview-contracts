@@ -85,6 +85,13 @@ include(":build-artifacts-protocol")
 
 project(":build-artifacts-protocol").projectDir = file("api/build-artifacts-protocol")
 
+// The endpoints, release manifest and session-introspection reply every container deployed beside
+// the preview server shares with its deploy tooling and its siblings (the UI builder, the hosted
+// MCP), which ship on their own release trains.
+include(":deployment-protocol")
+
+project(":deployment-protocol").projectDir = file("api/deployment-protocol")
+
 // The serializable input to the offline Compose source generator.
 include(":screen-document")
 
