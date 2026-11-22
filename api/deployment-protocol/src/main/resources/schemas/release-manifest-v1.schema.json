@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Release manifest (v1)",
+  "description": "Generated from the ee.schimke.composeai:deployment-protocol serializers; do not edit.",
+  "$ref": "#/$defs/ReleaseManifestV1",
+  "$defs": {
+    "ApiRangeV1": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "integer"
+        },
+        "max": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "min",
+        "max"
+      ]
+    },
+    "ReleaseAssetV1": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "mediaType": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "sha256"
+      ]
+    },
+    "ReleaseImageV1": {
+      "type": "object",
+      "properties": {
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "digest": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "repository",
+        "tag"
+      ]
+    },
+    "ReleaseManifestV1": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "provides": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer"
+          }
+        },
+        "requires": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/ApiRangeV1"
+          }
+        },
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReleaseAssetV1"
+          }
+        },
+        "image": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ReleaseImageV1"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "component",
+        "version"
+      ]
+    }
+  }
+}

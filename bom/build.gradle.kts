@@ -18,7 +18,7 @@ plugins {
 //
 // The constraints are derived, not listed. `settings.gradle.kts` collects every project path whose
 // build script applies `composeai.maven-publishing` and hands them over as a system property; the
-// artifact id is the path with its separators flattened. That convention holds for all fourteen
+// artifact id is the path with its separators flattened. That convention holds for all fifteen
 // modules here, verified rather than assumed, and `PublishedArtifactIdTest` in build-logic pins it
 // so a module that breaks it fails the build rather than going missing from the BOM.
 //

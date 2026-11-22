@@ -1,0 +1,291 @@
+public final class ee/schimke/composeai/deployment/protocol/ApiRangeV1 {
+	public static final field Companion Lee/schimke/composeai/deployment/protocol/ApiRangeV1$Companion;
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMax ()I
+	public final fun getMin ()I
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/deployment/protocol/ApiRangeV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/deployment/protocol/ApiRangeV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/deployment/protocol/ApiRangeV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/deployment/protocol/ApiRangeV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/deployment/protocol/ApiRangeV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/deployment/protocol/ApiRangeV1$Builder {
+	public fun <init> (II)V
+	public final fun build ()Lee/schimke/composeai/deployment/protocol/ApiRangeV1;
+	public final fun getMax ()I
+	public final fun getMin ()I
+	public final fun setMax (I)V
+	public final fun setMin (I)V
+}
+
+public final class ee/schimke/composeai/deployment/protocol/ApiRangeV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/deployment/protocol/DeployableEndpointsV1 {
+	public static final field HEALTHZ_BODY Ljava/lang/String;
+	public static final field HEALTHZ_PATH Ljava/lang/String;
+	public static final field INSTANCE Lee/schimke/composeai/deployment/protocol/DeployableEndpointsV1;
+	public static final field READYZ_PATH Ljava/lang/String;
+	public static final field READY_BODY Ljava/lang/String;
+	public static final field VERSION_PATH Ljava/lang/String;
+	public static final field WARMING_BODY Ljava/lang/String;
+}
+
+public final class ee/schimke/composeai/deployment/protocol/DeployableVersionV1 {
+	public static final field Companion Lee/schimke/composeai/deployment/protocol/DeployableVersionV1$Companion;
+	public static final field PREVIEW_SERVER_SCHEMA Ljava/lang/String;
+	public static final field SCHEMA Ljava/lang/String;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/util/Map;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getApis ()Ljava/util/Map;
+	public final fun getComponent ()Ljava/lang/String;
+	public final fun getSchema ()Ljava/lang/String;
+	public final fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/deployment/protocol/DeployableVersionV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/deployment/protocol/DeployableVersionV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/deployment/protocol/DeployableVersionV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/deployment/protocol/DeployableVersionV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/deployment/protocol/DeployableVersionV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/deployment/protocol/DeployableVersionV1$Builder {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/deployment/protocol/DeployableVersionV1;
+	public final fun getApis ()Ljava/util/Map;
+	public final fun getComponent ()Ljava/lang/String;
+	public final fun getSchema ()Ljava/lang/String;
+	public final fun getVersion ()Ljava/lang/String;
+	public final fun setApis (Ljava/util/Map;)V
+	public final fun setComponent (Ljava/lang/String;)V
+	public final fun setSchema (Ljava/lang/String;)V
+	public final fun setVersion (Ljava/lang/String;)V
+}
+
+public final class ee/schimke/composeai/deployment/protocol/DeployableVersionV1$Companion {
+	public final fun getSCHEMAS ()Ljava/util/Set;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/deployment/protocol/DeploymentApisV1 {
+	public static final field CATALOG_READ Ljava/lang/String;
+	public static final field INSTANCE Lee/schimke/composeai/deployment/protocol/DeploymentApisV1;
+	public static final field RENDER_EXPORT Ljava/lang/String;
+	public static final field SESSION_WHOAMI Ljava/lang/String;
+	public static final field UI_BUILDER_EDITOR Ljava/lang/String;
+	public static final field UI_BUILDER_ROOT_OFFLINE Ljava/lang/String;
+}
+
+public final class ee/schimke/composeai/deployment/protocol/DeploymentComponentsV1 {
+	public static final field CATALOG_MCP Ljava/lang/String;
+	public static final field INSTANCE Lee/schimke/composeai/deployment/protocol/DeploymentComponentsV1;
+	public static final field PREVIEW_SERVER Ljava/lang/String;
+	public static final field UI_BUILDER Ljava/lang/String;
+}
+
+public final class ee/schimke/composeai/deployment/protocol/ReleaseAssetV1 {
+	public static final field Companion Lee/schimke/composeai/deployment/protocol/ReleaseAssetV1$Companion;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMediaType ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getSha256 ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/deployment/protocol/ReleaseAssetV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/deployment/protocol/ReleaseAssetV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/deployment/protocol/ReleaseAssetV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/deployment/protocol/ReleaseAssetV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/deployment/protocol/ReleaseAssetV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/deployment/protocol/ReleaseAssetV1$Builder {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/deployment/protocol/ReleaseAssetV1;
+	public final fun getMediaType ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getSha256 ()Ljava/lang/String;
+	public final fun setMediaType (Ljava/lang/String;)V
+	public final fun setName (Ljava/lang/String;)V
+	public final fun setSha256 (Ljava/lang/String;)V
+}
+
+public final class ee/schimke/composeai/deployment/protocol/ReleaseAssetV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/deployment/protocol/ReleaseImageV1 {
+	public static final field Companion Lee/schimke/composeai/deployment/protocol/ReleaseImageV1$Companion;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDigest ()Ljava/lang/String;
+	public final fun getRepository ()Ljava/lang/String;
+	public final fun getTag ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/deployment/protocol/ReleaseImageV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/deployment/protocol/ReleaseImageV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/deployment/protocol/ReleaseImageV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/deployment/protocol/ReleaseImageV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/deployment/protocol/ReleaseImageV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/deployment/protocol/ReleaseImageV1$Builder {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/deployment/protocol/ReleaseImageV1;
+	public final fun getDigest ()Ljava/lang/String;
+	public final fun getRepository ()Ljava/lang/String;
+	public final fun getTag ()Ljava/lang/String;
+	public final fun setDigest (Ljava/lang/String;)V
+	public final fun setRepository (Ljava/lang/String;)V
+	public final fun setTag (Ljava/lang/String;)V
+}
+
+public final class ee/schimke/composeai/deployment/protocol/ReleaseImageV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/deployment/protocol/ReleaseManifestV1 {
+	public static final field Companion Lee/schimke/composeai/deployment/protocol/ReleaseManifestV1$Companion;
+	public static final field FILE Ljava/lang/String;
+	public static final field SCHEMA Ljava/lang/String;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/util/Map;
+	public final fun component5 ()Ljava/util/Map;
+	public final fun component6 ()Ljava/util/List;
+	public final fun component7 ()Lee/schimke/composeai/deployment/protocol/ReleaseImageV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAssets ()Ljava/util/List;
+	public final fun getComponent ()Ljava/lang/String;
+	public final fun getImage ()Lee/schimke/composeai/deployment/protocol/ReleaseImageV1;
+	public final fun getProvides ()Ljava/util/Map;
+	public final fun getRequires ()Ljava/util/Map;
+	public final fun getSchema ()Ljava/lang/String;
+	public final fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/deployment/protocol/ReleaseManifestV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/deployment/protocol/ReleaseManifestV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/deployment/protocol/ReleaseManifestV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/deployment/protocol/ReleaseManifestV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/deployment/protocol/ReleaseManifestV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/deployment/protocol/ReleaseManifestV1$Builder {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/deployment/protocol/ReleaseManifestV1;
+	public final fun getAssets ()Ljava/util/List;
+	public final fun getComponent ()Ljava/lang/String;
+	public final fun getImage ()Lee/schimke/composeai/deployment/protocol/ReleaseImageV1;
+	public final fun getProvides ()Ljava/util/Map;
+	public final fun getRequires ()Ljava/util/Map;
+	public final fun getVersion ()Ljava/lang/String;
+	public final fun setAssets (Ljava/util/List;)V
+	public final fun setComponent (Ljava/lang/String;)V
+	public final fun setImage (Lee/schimke/composeai/deployment/protocol/ReleaseImageV1;)V
+	public final fun setProvides (Ljava/util/Map;)V
+	public final fun setRequires (Ljava/util/Map;)V
+	public final fun setVersion (Ljava/lang/String;)V
+}
+
+public final class ee/schimke/composeai/deployment/protocol/ReleaseManifestV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/deployment/protocol/SessionWhoamiV1 {
+	public static final field CACHE_CONTROL Ljava/lang/String;
+	public static final field Companion Lee/schimke/composeai/deployment/protocol/SessionWhoamiV1$Companion;
+	public static final field PATH Ljava/lang/String;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Z
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/lang/Long;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExpiresAtEpochSeconds ()Ljava/lang/Long;
+	public final fun getGuest ()Z
+	public final fun getLogin ()Ljava/lang/String;
+	public final fun getScopes ()Ljava/util/List;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/deployment/protocol/SessionWhoamiV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/deployment/protocol/SessionWhoamiV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/deployment/protocol/SessionWhoamiV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/deployment/protocol/SessionWhoamiV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/deployment/protocol/SessionWhoamiV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/deployment/protocol/SessionWhoamiV1$Builder {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/deployment/protocol/SessionWhoamiV1;
+	public final fun getExpiresAtEpochSeconds ()Ljava/lang/Long;
+	public final fun getGuest ()Z
+	public final fun getLogin ()Ljava/lang/String;
+	public final fun getScopes ()Ljava/util/List;
+	public final fun setExpiresAtEpochSeconds (Ljava/lang/Long;)V
+	public final fun setGuest (Z)V
+	public final fun setLogin (Ljava/lang/String;)V
+	public final fun setScopes (Ljava/util/List;)V
+}
+
+public final class ee/schimke/composeai/deployment/protocol/SessionWhoamiV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
