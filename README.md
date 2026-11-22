@@ -14,7 +14,7 @@ Extracted from [yschimke/compose-ai-tools](https://github.com/yschimke/compose-a
 | `daemon-protocol` | the `@Serializable` request / response / notification shapes, the stream frame header and the reason enums |
 | `daemon-devices` | the device catalog and the `spec:` parser |
 | `agent-grant-protocol` | the `--agent-grants` vocabulary; the server mints, the client asks |
-| `ui-builder-protocol` | versioned catalog, design, command, collaboration, transport-envelope and catalog-renderer runtime shapes shared by UI-builder clients, servers, publishers and renderer SDKs |
+| `ui-builder-protocol` | versioned catalog, design, command, collaboration, transport-envelope and catalog-renderer runtime shapes shared by UI-builder clients, servers, publishers and renderer SDKs, and the HTTP routes they call ([routes](docs/design/UI_BUILDER_HTTP_ROUTES.md)) |
 | `screen-document` | serializable screen trees, values, actions, selections, authored rows and reusable function declarations; generation and validation stay in compose-ai-tools |
 | `design-guidelines-protocol` | the design-guideline vocabulary: a catalog's rules and picture frames, the request a guidelines model is sent and the recorded result, for every host that checks guidelines |
 | `component-catalog-protocol` | the catalog wire files: the component record discovery writes (`components.json`), the UI-builder policy a catalog authors, and the generated `ui-builder.json`; deriving and generating stay in compose-ai-tools |

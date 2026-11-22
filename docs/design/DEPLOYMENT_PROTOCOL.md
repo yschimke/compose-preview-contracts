@@ -217,8 +217,16 @@ revision addressing.
 
 The `/api/ui-builder/*` routes the editor calls on its host — designs, comments, guidelines,
 references, assets, agents, exports, thumbnails. Its level is already on the wire as
-`ui-builder-web.json`'s `serverApi` (2 today). The request/response bodies are largely
-`ui-builder-protocol`'s; the route set itself is to be written down as OpenAPI, later.
+`ui-builder-web.json`'s `serverApi` (2 today).
+
+**Partly typed**: [UI_BUILDER_HTTP_ROUTES.md](UI_BUILDER_HTTP_ROUTES.md) writes down the routes
+ha-designs calls — the envelope route, a design's `GET`/`PUT`, the two Remote Compose exports, the
+identity route, the admin design listing and the editor link — with their credentials, statuses
+and error shapes, and how the `ui-builder-editor` level versions them. The types
+(`UiBuilderHttpRoutesV1`, `UiBuilderHttpCredentialsV1`, `UiBuilderIdentityV1`,
+`UiBuilderAdminDesignsV1`, …) are in `ui-builder-protocol` rather than here, because the Wasm editor
+is a client and this module is JVM only. The editor's other routes are listed there by name, not
+yet typed.
 
 ### 4c. Render / export request (`render-export`)
 

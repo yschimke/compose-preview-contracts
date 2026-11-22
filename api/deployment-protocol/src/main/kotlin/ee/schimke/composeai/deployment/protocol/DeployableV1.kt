@@ -59,7 +59,8 @@ public object DeploymentComponentsV1 {
 public object DeploymentApisV1 {
   /**
    * The editor↔host HTTP route set (`/api/ui-builder/…`). The editor archive's
-   * `ui-builder-web.json` already carries it as `serverApi`.
+   * `ui-builder-web.json` already carries it as `serverApi`. The routes are typed in
+   * `ui-builder-protocol` (`UiBuilderHttpRoutesV1`); see `docs/design/UI_BUILDER_HTTP_ROUTES.md`.
    */
   public const val UI_BUILDER_EDITOR: String = "ui-builder-editor"
 
