@@ -205,13 +205,24 @@ Named here so later pull requests fill them in. None has a type, schema or API l
 ### 4a. Catalog read API (`catalog-read`)
 
 What the UI builder and the hosted catalog MCP read from the preview server: the catalog list (ids,
-load state, revision), a catalog's revisions, and its component records. Today these are spread
-across `/status.json`'s `catalogList`, `/api/components`, `/api/previews`,
+load state, provenance), a catalog's previews and their metadata, and the published renders.
+
+**Partly typed**: [CATALOG_READ_API.md](CATALOG_READ_API.md) writes down the routes the server
+already serves for what the hosted catalog MCP reads: `GET /status.json` (its catalog list),
+`GET /{system}/api/previews` and the published `GET /{system}/render/{previewId}.png` (with `?at=`
+pinning), their credentials, caching and irregularities, and `catalog-read` level 1. The types
+(`CatalogReadRoutesV1`, `CatalogReadCredentialsV1`, `CatalogReadStatusV1`,
+`CatalogReadPreviewsV1`, …) are in `component-catalog-protocol` rather than here, because the UI
+builder's Wasm editor is the API's second client and this module is JVM only. It also lists the
+**gaps**, data the MCP reads in process that no route serves (per-preview capabilities, the history
+timeline and served commit, a preview's guidelines result), as server additions for a later level,
+and what the MCP's render tools need from the render request, which is not typed yet.
+
+Not covered yet: the UI builder's catalog reads, `/api/components`,
 `/api/ui-builder/v1/component-library[/{system}/{componentId}[/file]]`,
 `/api/ui-builder/v1/catalogs/{system}/component-record`, `/templates`, `/guidelines` and
 `/api/ui-builder/v1/catalog-capabilities/{file}`. The record shapes are largely
-`component-catalog-protocol`'s already; what is missing is the read surface's routes, paging and
-revision addressing.
+`component-catalog-protocol`'s already.
 
 ### 4b. Editor ↔ host route set (`ui-builder-editor`)
 

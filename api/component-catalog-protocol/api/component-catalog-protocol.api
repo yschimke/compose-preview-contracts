@@ -1,3 +1,462 @@
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadCatalogV1 {
+	public static final field Companion Lee/schimke/composeai/catalog/protocol/CatalogReadCatalogV1$Companion;
+	public static final field FAILED Ljava/lang/String;
+	public static final field LOADED Ljava/lang/String;
+	public static final field PENDING Ljava/lang/String;
+	public static final field STALE Ljava/lang/String;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Ljava/lang/String;
+	public final fun component12 ()Ljava/lang/String;
+	public final fun component13 ()Ljava/lang/String;
+	public final fun component14 ()Ljava/lang/String;
+	public final fun component15 ()Ljava/lang/String;
+	public final fun component16 ()Ljava/lang/String;
+	public final fun component17 ()Z
+	public final fun component18 ()Ljava/lang/String;
+	public final fun component19 ()Ljava/lang/String;
+	public final fun component2 ()Z
+	public final fun component20 ()Ljava/lang/Long;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/Integer;
+	public final fun component6 ()I
+	public final fun component7 ()I
+	public final fun component8 ()Z
+	public final fun component9 ()Z
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBranch ()Ljava/lang/String;
+	public final fun getComposeAiToolsVersion ()Ljava/lang/String;
+	public final fun getDeferredPreviews ()I
+	public final fun getDegradation ()Ljava/lang/String;
+	public final fun getDesignParityVersion ()Ljava/lang/String;
+	public final fun getFailedRenders ()I
+	public final fun getGeneratedAt ()Ljava/lang/String;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getLastLoadAttemptEpochMillis ()Ljava/lang/Long;
+	public final fun getListed ()Z
+	public final fun getLive ()Z
+	public final fun getLoadError ()Ljava/lang/String;
+	public final fun getLoadState ()Ljava/lang/String;
+	public final fun getMetaStale ()Z
+	public final fun getPath ()Ljava/lang/String;
+	public final fun getPreviews ()Ljava/lang/Integer;
+	public final fun getRepo ()Ljava/lang/String;
+	public final fun getRunning ()Z
+	public final fun getTitle ()Ljava/lang/String;
+	public final fun getTrust ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/catalog/protocol/CatalogReadCatalogV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/catalog/protocol/CatalogReadCatalogV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/catalog/protocol/CatalogReadCatalogV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/catalog/protocol/CatalogReadCatalogV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/catalog/protocol/CatalogReadCatalogV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadCatalogV1$Builder {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/catalog/protocol/CatalogReadCatalogV1;
+	public final fun getBranch ()Ljava/lang/String;
+	public final fun getComposeAiToolsVersion ()Ljava/lang/String;
+	public final fun getDeferredPreviews ()I
+	public final fun getDegradation ()Ljava/lang/String;
+	public final fun getDesignParityVersion ()Ljava/lang/String;
+	public final fun getFailedRenders ()I
+	public final fun getGeneratedAt ()Ljava/lang/String;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getLastLoadAttemptEpochMillis ()Ljava/lang/Long;
+	public final fun getListed ()Z
+	public final fun getLive ()Z
+	public final fun getLoadError ()Ljava/lang/String;
+	public final fun getLoadState ()Ljava/lang/String;
+	public final fun getMetaStale ()Z
+	public final fun getPath ()Ljava/lang/String;
+	public final fun getPreviews ()Ljava/lang/Integer;
+	public final fun getRepo ()Ljava/lang/String;
+	public final fun getRunning ()Z
+	public final fun getTitle ()Ljava/lang/String;
+	public final fun getTrust ()Ljava/lang/String;
+	public final fun setBranch (Ljava/lang/String;)V
+	public final fun setComposeAiToolsVersion (Ljava/lang/String;)V
+	public final fun setDeferredPreviews (I)V
+	public final fun setDegradation (Ljava/lang/String;)V
+	public final fun setDesignParityVersion (Ljava/lang/String;)V
+	public final fun setFailedRenders (I)V
+	public final fun setGeneratedAt (Ljava/lang/String;)V
+	public final fun setId (Ljava/lang/String;)V
+	public final fun setLastLoadAttemptEpochMillis (Ljava/lang/Long;)V
+	public final fun setListed (Z)V
+	public final fun setLive (Z)V
+	public final fun setLoadError (Ljava/lang/String;)V
+	public final fun setLoadState (Ljava/lang/String;)V
+	public final fun setMetaStale (Z)V
+	public final fun setPath (Ljava/lang/String;)V
+	public final fun setPreviews (Ljava/lang/Integer;)V
+	public final fun setRepo (Ljava/lang/String;)V
+	public final fun setRunning (Z)V
+	public final fun setTitle (Ljava/lang/String;)V
+	public final fun setTrust (Ljava/lang/String;)V
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadCatalogV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadCredentialsV1 {
+	public static final field AGENT_GRANT_COOKIE Ljava/lang/String;
+	public static final field BEARER_SCHEME Ljava/lang/String;
+	public static final field BROWSE_COOKIE Ljava/lang/String;
+	public static final field INSTANCE Lee/schimke/composeai/catalog/protocol/CatalogReadCredentialsV1;
+	public static final field PREVIEW_SCOPE Ljava/lang/String;
+	public static final field TOKEN_HEADER Ljava/lang/String;
+	public static final field TOKEN_QUERY Ljava/lang/String;
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadDegradationV1 {
+	public static final field Companion Lee/schimke/composeai/catalog/protocol/CatalogReadDegradationV1$Companion;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()Ljava/lang/String;
+	public final fun getDetail ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/catalog/protocol/CatalogReadDegradationV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/catalog/protocol/CatalogReadDegradationV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/catalog/protocol/CatalogReadDegradationV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/catalog/protocol/CatalogReadDegradationV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/catalog/protocol/CatalogReadDegradationV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadDegradationV1$Builder {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/catalog/protocol/CatalogReadDegradationV1;
+	public final fun getCode ()Ljava/lang/String;
+	public final fun getDetail ()Ljava/lang/String;
+	public final fun setCode (Ljava/lang/String;)V
+	public final fun setDetail (Ljava/lang/String;)V
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadDegradationV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadKnobV1 {
+	public static final field Companion Lee/schimke/composeai/catalog/protocol/CatalogReadKnobV1$Companion;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/Integer;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getIndex ()Ljava/lang/Integer;
+	public final fun getKey ()Ljava/lang/String;
+	public final fun getLabel ()Ljava/lang/String;
+	public final fun getSeedKey ()Ljava/lang/String;
+	public final fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/catalog/protocol/CatalogReadKnobV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/catalog/protocol/CatalogReadKnobV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/catalog/protocol/CatalogReadKnobV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/catalog/protocol/CatalogReadKnobV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/catalog/protocol/CatalogReadKnobV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadKnobV1$Builder {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/catalog/protocol/CatalogReadKnobV1;
+	public final fun getIndex ()Ljava/lang/Integer;
+	public final fun getKey ()Ljava/lang/String;
+	public final fun getLabel ()Ljava/lang/String;
+	public final fun getType ()Ljava/lang/String;
+	public final fun setIndex (Ljava/lang/Integer;)V
+	public final fun setKey (Ljava/lang/String;)V
+	public final fun setLabel (Ljava/lang/String;)V
+	public final fun setType (Ljava/lang/String;)V
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadKnobV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadPreviewV1 {
+	public static final field Companion Lee/schimke/composeai/catalog/protocol/CatalogReadPreviewV1$Companion;
+	public static final field MODE_LIVE Ljava/lang/String;
+	public static final field MODE_SNAPSHOT Ljava/lang/String;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component10 ()Lkotlinx/serialization/json/JsonObject;
+	public final fun component11 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Ljava/util/List;
+	public final fun component6 ()Z
+	public final fun component7 ()Z
+	public final fun component8 ()J
+	public final fun component9 ()Z
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getId ()Ljava/lang/String;
+	public final fun getLabel ()Ljava/lang/String;
+	public final fun getLiveOnly ()Z
+	public final fun getModes ()Ljava/util/List;
+	public final fun getOverrides ()Ljava/util/List;
+	public final fun getRemoteCompose ()Z
+	public final fun getRemoteComposeKnobs ()Ljava/util/List;
+	public final fun getSpatial ()Z
+	public final fun getViews ()J
+	public final fun getWatchFace ()Lkotlinx/serialization/json/JsonObject;
+	public final fun getWatchFaceRenderers ()Ljava/util/List;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/catalog/protocol/CatalogReadPreviewV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/catalog/protocol/CatalogReadPreviewV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/catalog/protocol/CatalogReadPreviewV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/catalog/protocol/CatalogReadPreviewV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/catalog/protocol/CatalogReadPreviewV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadPreviewV1$Builder {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/catalog/protocol/CatalogReadPreviewV1;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getLabel ()Ljava/lang/String;
+	public final fun getLiveOnly ()Z
+	public final fun getModes ()Ljava/util/List;
+	public final fun getOverrides ()Ljava/util/List;
+	public final fun getRemoteCompose ()Z
+	public final fun getRemoteComposeKnobs ()Ljava/util/List;
+	public final fun getSpatial ()Z
+	public final fun getViews ()J
+	public final fun getWatchFace ()Lkotlinx/serialization/json/JsonObject;
+	public final fun getWatchFaceRenderers ()Ljava/util/List;
+	public final fun setId (Ljava/lang/String;)V
+	public final fun setLabel (Ljava/lang/String;)V
+	public final fun setLiveOnly (Z)V
+	public final fun setModes (Ljava/util/List;)V
+	public final fun setOverrides (Ljava/util/List;)V
+	public final fun setRemoteCompose (Z)V
+	public final fun setRemoteComposeKnobs (Ljava/util/List;)V
+	public final fun setSpatial (Z)V
+	public final fun setViews (J)V
+	public final fun setWatchFace (Lkotlinx/serialization/json/JsonObject;)V
+	public final fun setWatchFaceRenderers (Ljava/util/List;)V
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadPreviewV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadPreviewsV1 {
+	public static final field Companion Lee/schimke/composeai/catalog/protocol/CatalogReadPreviewsV1$Companion;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/util/List;
+	public final fun component6 ()J
+	public final fun component7 ()Ljava/util/List;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCatalogVersion ()Ljava/lang/String;
+	public final fun getDegradations ()Ljava/util/List;
+	public final fun getModule ()Ljava/lang/String;
+	public final fun getPreviews ()Ljava/util/List;
+	public final fun getSchema ()Ljava/lang/String;
+	public final fun getTrust ()Ljava/lang/String;
+	public final fun getViews ()J
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/catalog/protocol/CatalogReadPreviewsV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/catalog/protocol/CatalogReadPreviewsV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/catalog/protocol/CatalogReadPreviewsV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/catalog/protocol/CatalogReadPreviewsV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/catalog/protocol/CatalogReadPreviewsV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadPreviewsV1$Builder {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/catalog/protocol/CatalogReadPreviewsV1;
+	public final fun getCatalogVersion ()Ljava/lang/String;
+	public final fun getDegradations ()Ljava/util/List;
+	public final fun getModule ()Ljava/lang/String;
+	public final fun getPreviews ()Ljava/util/List;
+	public final fun getSchema ()Ljava/lang/String;
+	public final fun getTrust ()Ljava/lang/String;
+	public final fun getViews ()J
+	public final fun setCatalogVersion (Ljava/lang/String;)V
+	public final fun setDegradations (Ljava/util/List;)V
+	public final fun setModule (Ljava/lang/String;)V
+	public final fun setPreviews (Ljava/util/List;)V
+	public final fun setSchema (Ljava/lang/String;)V
+	public final fun setTrust (Ljava/lang/String;)V
+	public final fun setViews (J)V
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadPreviewsV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadRoutesV1 {
+	public static final field API_LEVEL I
+	public static final field API_NAME Ljava/lang/String;
+	public static final field GENERATION_HEADER Ljava/lang/String;
+	public static final field GENERATION_QUERY Ljava/lang/String;
+	public static final field INSTANCE Lee/schimke/composeai/catalog/protocol/CatalogReadRoutesV1;
+	public static final field LOADING_RETRY_AFTER_SECONDS I
+	public static final field PIN_QUERY Ljava/lang/String;
+	public static final field PREVIEWS_PATH Ljava/lang/String;
+	public static final field PREVIEW_ID_PARAMETER Ljava/lang/String;
+	public static final field RENDER_PNG_PATH Ljava/lang/String;
+	public static final field ROOT_PREVIEWS_PATH Ljava/lang/String;
+	public static final field ROOT_RENDER_PNG_PATH Ljava/lang/String;
+	public static final field SERVE_SCHEMA Ljava/lang/String;
+	public static final field SESSION_QUERY Ljava/lang/String;
+	public static final field STATUS_PATH Ljava/lang/String;
+	public static final field SYSTEM_PARAMETER Ljava/lang/String;
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadStatusV1 {
+	public static final field Companion Lee/schimke/composeai/catalog/protocol/CatalogReadStatusV1$Companion;
+	public static final field SCHEMA Ljava/lang/String;
+	public static final field STATUS_DEGRADED Ljava/lang/String;
+	public static final field STATUS_OK Ljava/lang/String;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Z
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/util/List;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCatalogList ()Ljava/util/List;
+	public final fun getPublic ()Z
+	public final fun getSchema ()Ljava/lang/String;
+	public final fun getStatus ()Ljava/lang/String;
+	public final fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun newBuilder ()Lee/schimke/composeai/catalog/protocol/CatalogReadStatusV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/catalog/protocol/CatalogReadStatusV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/catalog/protocol/CatalogReadStatusV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/catalog/protocol/CatalogReadStatusV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/catalog/protocol/CatalogReadStatusV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadStatusV1$Builder {
+	public fun <init> (Ljava/lang/String;Z)V
+	public final fun build ()Lee/schimke/composeai/catalog/protocol/CatalogReadStatusV1;
+	public final fun getCatalogList ()Ljava/util/List;
+	public final fun getPublic ()Z
+	public final fun getSchema ()Ljava/lang/String;
+	public final fun getStatus ()Ljava/lang/String;
+	public final fun getVersion ()Ljava/lang/String;
+	public final fun setCatalogList (Ljava/util/List;)V
+	public final fun setPublic (Z)V
+	public final fun setSchema (Ljava/lang/String;)V
+	public final fun setStatus (Ljava/lang/String;)V
+	public final fun setVersion (Ljava/lang/String;)V
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadStatusV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadWatchFaceRendererV1 {
+	public static final field Companion Lee/schimke/composeai/catalog/protocol/CatalogReadWatchFaceRendererV1$Companion;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Z
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Z
+	public final fun component7 ()Z
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAvailable ()Z
+	public final fun getBadgeLabel ()Ljava/lang/String;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getLabel ()Ljava/lang/String;
+	public final fun getSupportsLiveOverrides ()Z
+	public final fun getUnavailableReason ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isDefault ()Z
+	public final fun newBuilder ()Lee/schimke/composeai/catalog/protocol/CatalogReadWatchFaceRendererV1$Builder;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class ee/schimke/composeai/catalog/protocol/CatalogReadWatchFaceRendererV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lee/schimke/composeai/catalog/protocol/CatalogReadWatchFaceRendererV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lee/schimke/composeai/catalog/protocol/CatalogReadWatchFaceRendererV1;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lee/schimke/composeai/catalog/protocol/CatalogReadWatchFaceRendererV1;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadWatchFaceRendererV1$Builder {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun build ()Lee/schimke/composeai/catalog/protocol/CatalogReadWatchFaceRendererV1;
+	public final fun getAvailable ()Z
+	public final fun getBadgeLabel ()Ljava/lang/String;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getLabel ()Ljava/lang/String;
+	public final fun getSupportsLiveOverrides ()Z
+	public final fun getUnavailableReason ()Ljava/lang/String;
+	public final fun isDefault ()Z
+	public final fun setAvailable (Z)V
+	public final fun setBadgeLabel (Ljava/lang/String;)V
+	public final fun setDefault (Z)V
+	public final fun setId (Ljava/lang/String;)V
+	public final fun setLabel (Ljava/lang/String;)V
+	public final fun setSupportsLiveOverrides (Z)V
+	public final fun setUnavailableReason (Ljava/lang/String;)V
+}
+
+public final class ee/schimke/composeai/catalog/protocol/CatalogReadWatchFaceRendererV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class ee/schimke/composeai/discovery/BuilderOrphan {
 	public static final field Companion Lee/schimke/composeai/discovery/BuilderOrphan$Companion;
 	public final fun component1 ()Ljava/lang/String;

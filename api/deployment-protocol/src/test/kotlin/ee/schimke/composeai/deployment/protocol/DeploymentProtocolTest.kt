@@ -227,4 +227,12 @@ class DeploymentProtocolTest {
     assertEquals("/version", DeployableEndpointsV1.VERSION_PATH)
     assertEquals("/auth/github/whoami", SessionWhoamiV1.PATH)
   }
+
+  @Test
+  fun `api names match the modules that type them`() {
+    // `component-catalog-protocol`'s `CatalogReadRoutesV1.API_NAME` and `ui-builder-protocol`'s
+    // `UiBuilderHttpRoutesV1.API_NAME` spell the same strings; neither module depends on this one.
+    assertEquals("catalog-read", DeploymentApisV1.CATALOG_READ)
+    assertEquals("ui-builder-editor", DeploymentApisV1.UI_BUILDER_EDITOR)
+  }
 }
