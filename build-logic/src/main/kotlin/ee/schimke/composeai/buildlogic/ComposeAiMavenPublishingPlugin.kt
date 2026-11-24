@@ -29,7 +29,6 @@ constructor(objects: ObjectFactory) {
 
 class ComposeAiMavenPublishingPlugin : Plugin<Project> {
   override fun apply(project: Project) {
-    project.pluginManager.apply("composeai.android-conventions")
     project.pluginManager.apply("composeai.jvm-conventions")
     project.pluginManager.apply("composeai.kotlin-conventions")
     project.pluginManager.apply("maven-publish")
