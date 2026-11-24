@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.47.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.46.0...v3.47.0) (2026-11-24)
+
+
+### Features
+
+* **catalog:** type the catalog-read level-2 routes the server added ([#240](https://github.com/yschimke/compose-preview-contracts/issues/240)) ([f0cd1ed](https://github.com/yschimke/compose-preview-contracts/commit/f0cd1ed1ed909b709b662f3eebdac2ebb2724b8f))
+
 ## [3.46.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.45.0...v3.46.0) (2026-11-22)
 
 
