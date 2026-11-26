@@ -273,12 +273,14 @@ public final class ee/schimke/composeai/daemon/protocol/BtaCompileConfig {
 	public final fun component5 ()Ljava/lang/String;
 	public final fun component6 ()Ljava/lang/String;
 	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/String;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getCompileClasspath ()Ljava/util/List;
 	public final fun getCompilerPlugins ()Ljava/util/List;
 	public final fun getIcWorkingDir ()Ljava/lang/String;
 	public final fun getImplClasspath ()Ljava/util/List;
 	public final fun getIneligibilityReason ()Ljava/lang/String;
+	public final fun getJvmTarget ()Ljava/lang/String;
 	public final fun getModuleName ()Ljava/lang/String;
 	public final fun getOutputDir ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -305,6 +307,7 @@ public final class ee/schimke/composeai/daemon/protocol/BtaCompileConfig$Builder
 	public final fun getIcWorkingDir ()Ljava/lang/String;
 	public final fun getImplClasspath ()Ljava/util/List;
 	public final fun getIneligibilityReason ()Ljava/lang/String;
+	public final fun getJvmTarget ()Ljava/lang/String;
 	public final fun getModuleName ()Ljava/lang/String;
 	public final fun getOutputDir ()Ljava/lang/String;
 	public final fun setCompileClasspath (Ljava/util/List;)V
@@ -312,6 +315,7 @@ public final class ee/schimke/composeai/daemon/protocol/BtaCompileConfig$Builder
 	public final fun setIcWorkingDir (Ljava/lang/String;)V
 	public final fun setImplClasspath (Ljava/util/List;)V
 	public final fun setIneligibilityReason (Ljava/lang/String;)V
+	public final fun setJvmTarget (Ljava/lang/String;)V
 	public final fun setModuleName (Ljava/lang/String;)V
 	public final fun setOutputDir (Ljava/lang/String;)V
 }

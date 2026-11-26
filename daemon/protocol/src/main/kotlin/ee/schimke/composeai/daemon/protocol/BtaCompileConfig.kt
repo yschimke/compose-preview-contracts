@@ -1,5 +1,7 @@
 package ee.schimke.composeai.daemon.protocol
 
+import kotlinx.serialization.EncodeDefault
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 
 /**
@@ -14,6 +16,7 @@ import kotlinx.serialization.Serializable
  * `internal` and `@ConsistentCopyVisibility` keeps `copy` internal with it, so a new optional
  * property adds a setter rather than changing a public signature.
  */
+@OptIn(ExperimentalSerializationApi::class)
 @Serializable
 @ConsistentCopyVisibility
 public data class BtaCompileConfig
@@ -47,6 +50,13 @@ internal constructor(
    * this reason verbatim. `null` means eligible.
    */
   val ineligibilityReason: String? = null,
+  /**
+   * The module's Kotlin JVM bytecode target (for example `"17"` or `"21"`), passed to both the
+   * Build Tools API compiler and the warm in-process compiler so inlined bytecode targeting a newer
+   * JVM compiles in process. `null` when unknown (including descriptors written before this field
+   * existed), in which case the daemon falls back to JVM 17. Omitted on the wire when `null`.
+   */
+  @EncodeDefault(EncodeDefault.Mode.NEVER) val jvmTarget: String? = null,
 ) {
   /** Builds a [BtaCompileConfig]; see the class KDoc for why the constructor is internal. */
   public class Builder(
@@ -64,6 +74,7 @@ internal constructor(
     public var moduleName: String = moduleName
     public var icWorkingDir: String = icWorkingDir
     public var ineligibilityReason: String? = null
+    public var jvmTarget: String? = null
 
     public fun build(): BtaCompileConfig =
       BtaCompileConfig(
@@ -74,11 +85,15 @@ internal constructor(
         moduleName,
         icWorkingDir,
         ineligibilityReason,
+        jvmTarget,
       )
   }
 
   /** This [BtaCompileConfig] as a [Builder], for deriving a modified one. Replaces `copy`. */
   public fun newBuilder(): Builder =
     Builder(implClasspath, compileClasspath, compilerPlugins, outputDir, moduleName, icWorkingDir)
-      .also { it.ineligibilityReason = ineligibilityReason }
+      .also {
+        it.ineligibilityReason = ineligibilityReason
+        it.jvmTarget = jvmTarget
+      }
 }

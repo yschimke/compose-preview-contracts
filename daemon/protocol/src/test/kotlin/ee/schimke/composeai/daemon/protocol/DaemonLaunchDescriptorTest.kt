@@ -163,6 +163,34 @@ class DaemonLaunchDescriptorTest {
   }
 
   @Test
+  fun `btaCompile jvmTarget round-trips through json and newBuilder and defaults to null`() {
+    assertNull(DaemonLaunchDescriptor.parse(pluginWrittenV2).btaCompile?.jvmTarget)
+
+    val bta =
+      BtaCompileConfig.Builder(
+          implClasspath = listOf("/k/kotlin-build-tools-impl.jar"),
+          compileClasspath = listOf("/c/compose-runtime.jar"),
+          compilerPlugins = listOf("/k/kotlin-compose-compiler-plugin-embeddable.jar"),
+          outputDir = "/w/samples/android/build/classes",
+          moduleName = "android_debug",
+          icWorkingDir = "/w/samples/android/build/compose-previews/daemon-state/bta-ic",
+        )
+        .also { it.jvmTarget = "21" }
+        .build()
+    assertEquals(bta, bta.newBuilder().build())
+    assertEquals("21", bta.jvmTarget)
+
+    val descriptor = expected().newBuilder().also { it.btaCompile = bta }.build()
+    val encoded = writerJson.encodeToString(DaemonLaunchDescriptor.serializer(), descriptor)
+    assertEquals(true, "\"jvmTarget\": \"21\"" in encoded, encoded)
+    assertEquals(descriptor, DaemonLaunchDescriptor.parse(encoded))
+
+    // Null default is omitted on the wire so descriptors without a target stay byte-identical.
+    val withoutTarget = writerJson.encodeToString(DaemonLaunchDescriptor.serializer(), expected())
+    assertEquals(false, "jvmTarget" in withoutTarget, withoutTarget)
+  }
+
+  @Test
   fun `parses a sourceWatch block, and a descriptor without one parses to null`() {
     assertNull(DaemonLaunchDescriptor.parse(pluginWrittenV2).sourceWatch)
 
