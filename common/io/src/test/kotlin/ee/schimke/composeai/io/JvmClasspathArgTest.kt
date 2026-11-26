@@ -4,6 +4,7 @@ import java.io.File
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
+import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class JvmClasspathArgTest {
@@ -16,6 +17,10 @@ class JvmClasspathArgTest {
     assertTrue(token.startsWith("@"), "expected an @argfile token, got: $token")
     val file = File(token.removePrefix("@"))
     assertTrue(file.isFile, "argfile should exist on disk")
+    assertTrue(
+      file.name.startsWith("composeai-cp-p${ProcessHandle.current().pid()}-"),
+      "argfile should be tagged with the current PID, got: ${file.name}",
+    )
     assertEquals("-classpath \"${cp.joinToString(File.pathSeparator)}\"\n", file.readText())
   }
 
@@ -59,6 +64,62 @@ class JvmClasspathArgTest {
       val file = File(token.removePrefix("@"))
       assertEquals(dir.canonicalFile, file.parentFile.canonicalFile)
       assertTrue(file.readText().contains("/a/b.jar"))
+    } finally {
+      dir.deleteRecursively()
+    }
+  }
+
+  @Test
+  fun `sweeps stale argfiles for dead PIDs while preserving live, self, legacy and unrelated files`() {
+    val dir = java.nio.file.Files.createTempDirectory("argfile-sweep").toFile()
+    try {
+      val selfPid = ProcessHandle.current().pid()
+      val deadPid = selfPid + 100_000L
+      val liveOtherPid = selfPid + 100_001L
+
+      val deadFile =
+        File(dir, "composeai-cp-p$deadPid-111.args").apply { writeText("-classpath a") }
+      val liveOtherFile =
+        File(dir, "composeai-cp-p$liveOtherPid-222.args").apply { writeText("-classpath b") }
+      val selfFile =
+        File(dir, "composeai-cp-p$selfPid-333.args").apply { writeText("-classpath c") }
+      val legacyFile = File(dir, "composeai-cp123456.args").apply { writeText("-classpath d") }
+      val unrelatedFile = File(dir, "other.args").apply { writeText("keep") }
+
+      val removed =
+        sweepStaleClasspathArgFiles(directory = dir, isAlive = { pid -> pid == liveOtherPid })
+
+      assertEquals(1, removed)
+      assertFalse(deadFile.exists(), "dead-PID argfile should be deleted")
+      assertTrue(liveOtherFile.exists(), "live-PID argfile must be preserved")
+      assertTrue(selfFile.exists(), "current-PID argfile must be preserved")
+      assertTrue(legacyFile.exists(), "untagged legacy argfile must be preserved")
+      assertTrue(unrelatedFile.exists(), "unrelated file must be preserved")
+    } finally {
+      dir.deleteRecursively()
+    }
+  }
+
+  @Test
+  fun `classpathArgFile automatically reclaims stale dead-PID argfiles in its directory`() {
+    val dir = java.nio.file.Files.createTempDirectory("argfile-auto-sweep").toFile()
+    try {
+      // Spawn a short-lived process and wait for it to exit so its PID is genuinely dead.
+      val javaBin = File(System.getProperty("java.home"), "bin/java").absolutePath
+      val exited = ProcessBuilder(javaBin, "-version").redirectErrorStream(true).start()
+      val deadPid = exited.pid()
+      exited.inputStream.use { it.readBytes() }
+      exited.waitFor()
+
+      val orphan =
+        File(dir, "composeai-cp-p$deadPid-999.args").apply { writeText("-classpath old") }
+      assertTrue(orphan.isFile)
+
+      val token = classpathArgFile(listOf("/fresh.jar"), dir)
+      val fresh = File(token.removePrefix("@"))
+
+      assertFalse(orphan.exists(), "orphaned argfile from exited process should be swept")
+      assertTrue(fresh.isFile, "newly written argfile should exist")
     } finally {
       dir.deleteRecursively()
     }

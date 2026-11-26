@@ -12,5 +12,7 @@ public final class ee/schimke/composeai/io/FileSystemsKt {
 public final class ee/schimke/composeai/io/JvmClasspathArgKt {
 	public static final fun classpathArgFile (Ljava/util/List;Ljava/io/File;)Ljava/lang/String;
 	public static synthetic fun classpathArgFile$default (Ljava/util/List;Ljava/io/File;ILjava/lang/Object;)Ljava/lang/String;
+	public static final fun sweepStaleClasspathArgFiles (Ljava/io/File;)I
+	public static synthetic fun sweepStaleClasspathArgFiles$default (Ljava/io/File;ILjava/lang/Object;)I
 }
 
