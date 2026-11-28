@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.48.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.47.0...v3.48.0) (2026-11-28)
+
+
+### Features
+
+* **daemon-protocol:** add optional jvmTarget to BtaCompileConfig ([#246](https://github.com/yschimke/compose-preview-contracts/issues/246)) ([49c2d4a](https://github.com/yschimke/compose-preview-contracts/commit/49c2d4af818119c1bf3e47047fa293c8bd27f9c9))
+
+
+### Bug Fixes
+
+* **common-io:** tag classpath argfiles with PID and sweep stale files ([#247](https://github.com/yschimke/compose-preview-contracts/issues/247)) ([1fd4325](https://github.com/yschimke/compose-preview-contracts/commit/1fd4325c708c2ebd6487f24186bf510afb137c01))
+
 ## [3.47.0](https://github.com/yschimke/compose-preview-contracts/compare/v3.46.0...v3.47.0) (2026-11-24)
 
 
